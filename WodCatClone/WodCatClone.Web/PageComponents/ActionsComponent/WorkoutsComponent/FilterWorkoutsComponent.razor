@@ -1,0 +1,107 @@
+﻿<div class="row filterWorkoutsBlock" style="visibility: @Visible">
+    <div class="filterWorkoutsComponent">
+        <div class="row">
+            <input 
+                type="text" 
+                class="form-control m-4 mr-5 select ml-2"
+                placeholder="Название тренеровки"
+                @bind-value="_filterName"
+                @bind-value:event="oninput"/>
+        </div>
+        <div class="row">
+            <select
+                class="select form-control ml-2 m-4 mr-5"
+                style="background: #424242; color: lightgrey;"
+                @bind="_filterCategory">
+
+                <option value="None">Категория</option>
+                @foreach (var item in FilterCategory)
+                {
+                    <option value="@item.Filter">@item.Content</option>
+                }
+            </select>
+        </div>
+        <div class="row">
+            <select
+                class="select form-control ml-2 m-4 mr-5"
+                style="background: #424242; color: lightgrey;"
+                @bind="_filterModality">
+
+                <option value="None">Модальность</option>
+                @foreach (var item in FilterModality)
+                {
+                    <option value="@item.Filter">@item.Content</option>
+                }
+            </select>
+        </div>
+        <div class="row">
+            <select
+                class="select form-control ml-2 m-4 mr-5"
+                style="background: #424242; color: lightgrey;"
+                @bind="_filterMovement">
+                <option value="None">Движения</option>
+                @foreach (var item in FilterMovement)
+                {
+                    <option value="@item.Filter">@item.Content</option>
+                }
+            </select>
+        </div>
+        <div class="row">
+            <select
+                class="select form-control ml-2 m-4 mr-5"
+                style="background: #424242; color: lightgrey;"
+                @bind="_filterComplexity">
+                <option value="None">Сложность</option>
+                @foreach (var item in FilterComplexity)
+                {
+                    <option value="@item.Filter">@item.Content</option>
+                }
+            </select>
+        </div>
+        <div class="row">
+            <select
+                class="select form-control ml-2 m-4 mr-5"
+                style="background: #424242; color: lightgrey;"
+                @bind="_filterInventory">
+                <option value="None">Инвентарь</option>
+                @foreach (var item in FilterInventory)
+                {
+                    <option value="@item.Filter">@item.Content</option>
+                }
+            </select>
+        </div>
+        <div class="row">
+            <div class="col-5 ml-2">
+                <button
+                    type="button"
+                    class="btn btn-primary form-control mb-2"
+                    @onclick="Filter">
+                    Search
+                </button>
+            </div>
+            <div class="col-1"></div>
+            <div class="col-5">
+                <button
+                    type="button"
+                    class="btn btn-danger form-control mb-2"
+                    @onclick="Reset">
+                    Reset
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col text-left text-light pages">
+        <a href="/" class="link">WODCAT</a> &rarr; КросcФит Тренировки (WOD)
+    </div>
+</div>
+<div class="row">
+    <div class="col mt-3 filterWorkouts">
+        <a @onclick="ChangeVisible">Открыть фильтры поиска</a>
+    </div>
+</div>
+
+<div class="p-3">
+    <ListWorkoutsComponent ListOfItems="Workouts"/>
+</div>

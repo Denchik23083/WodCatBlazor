@@ -1,0 +1,132 @@
+﻿<div class="row">
+    <div class="col">
+        <h3 class="addResult">Добавление результата</h3>
+        <hr class="hr"/>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <EditForm Model="@_resultWorkouts" OnSubmit="@Result">
+            <div class="row">
+                <div class="col-6">
+                    <i class="fa-solid fa-stopwatch" style="font-size: 25px;"></i>
+                    <span class="mr-2" style="font-size: 20px;">Время</span>
+                    <InputText
+                        @bind-Value="_resultWorkouts.Minutes"
+                        class="formResult mb-2 mr-2"
+                        id="minutes"
+                        type="number"
+                        min="0" max="60"
+                        placeholder="min"/>
+                    <InputText
+                        @bind-Value="_resultWorkouts.Seconds"
+                        class="formResult mb-2 mr-2"
+                        id="seconds"
+                        type="number"
+                        min="0" max="60"
+                        placeholder="sec"/>
+                </div>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col">
+                            <div class="rating-area">
+                                <span style="font-size: 20px;">Увлекательность</span>
+                                <input
+                                    type="checkbox"
+                                    id="starFascination-5"
+                                    @bind="_fiveFascination"/>
+                                <label for="starFascination-5"></label>
+                                <input
+                                    type="checkbox"
+                                    id="starFascination-4"
+                                    @bind="_fourFascination">
+                                <label for="starFascination-4"></label>
+                                <input
+                                    type="checkbox"
+                                    id="starFascination-3"
+                                    @bind="_threeFascination">
+                                <label for="starFascination-3"></label>
+                                <input
+                                    type="checkbox"
+                                    id="starFascination-2"
+                                    @bind="_twoFascination">
+                                <label for="starFascination-2"></label>
+                                <input
+                                    type="checkbox"
+                                    id="starFascination-1"
+                                    @bind="_oneFascination">
+                                <label for="starFascination-1"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-6">
+                    <span class="mr-2" style="font-size: 20px;">Повторений</span>
+                    <InputNumber
+                        @bind-Value="_resultWorkouts.Repeat"
+                        class="formResult mb-2 mr-2"
+                        id="repeat"
+                        type="number"
+                        min="0"/>
+                    <InputDate
+                        @bind-Value="_resultWorkouts.PublishDate"
+                        class="formResult mb-2 mr-2"
+                        id="publishDate"
+                        type="date"/>
+                </div>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col">
+                            <div class="rating-area text-center">
+                                <span style="font-size: 20px;">Нагрузка</span>
+                                <input
+                                    type="checkbox"
+                                    id="starLoad-5"
+                                    @bind="_fiveLoad"/>
+                                <label for="starLoad-5"></label>
+                                <input
+                                    type="checkbox"
+                                    id="starLoad-4"
+                                    @bind="_fourLoad">
+                                <label for="starLoad-4"></label>
+                                <input
+                                    type="checkbox"
+                                    id="starLoad-3"
+                                    @bind="_threeLoad">
+                                <label for="starLoad-3"></label>
+                                <input
+                                    type="checkbox"
+                                    id="starLoad-2"
+                                    @bind="_twoLoad">
+                                <label for="starLoad-2"></label>
+                                <input
+                                    type="checkbox"
+                                    id="starLoad-1"
+                                    @bind="_oneLoad">
+                                <label for="starLoad-1"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <textarea 
+                        placeholder="Напишите комментарий к результату" 
+                        class="textarea" 
+                        @bind="_resultWorkouts.Comment">
+                        
+                    </textarea>
+                </div>
+            </div><br/>
+            <div class="row text-right">
+                <div class="col">
+                    <button class="btn btn-primary mb-2 mr-2" type="submit">Добавить результат</button>
+                    <button class="btn btn-danger mb-2" @onclick="ResetFascinationLoadStars">Отменить</button>
+                </div>
+            </div>
+        </EditForm>
+    </div>
+</div>

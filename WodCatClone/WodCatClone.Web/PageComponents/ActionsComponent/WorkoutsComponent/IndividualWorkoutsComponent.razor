@@ -1,0 +1,42 @@
+﻿<div class="workouts mb-3 p-2" @onclick="Id">
+    <div class="row ml-1 mt-3 mr-1 mb-3">
+        <div class="col">
+            <a class="Name" href="@_url"><span class="bold">@Workouts.Name</span></a>
+            <span class="cub">@Workouts.Modality</span>
+            <span class="greenCub">@Workouts.Rating / 10</span>
+        </div>
+    </div>
+
+    <div class="row ml-1 mt-3 mr-1 mb-3">
+        <div class="col-6">
+            <span class="exercisesInWorkouts">На время:</span><br/>
+            @foreach (var item in WorkoutsExercises)
+            {
+                <span class="exercisesInWorkouts">@item</span><br/>
+            }
+        </div>
+        <div class="col-6 text-right">
+            <img src="@Workouts.Image"/>
+        </div>
+    </div>
+
+    <div class="row  ml-1 mt-3 mr-1 mb-3">
+        <div class="col-4 text-left">
+            @foreach (var item in WorkoutsCategory)
+            {
+                <span>@item&nbsp;&nbsp;</span>
+            }
+        </div>
+
+        <div class="col-4 text-center">
+            <span class="exercisesInWorkouts">
+                <i class="fa-regular fa-clock"></i>&nbsp;
+                @Workouts.Minutes<span>m</span>:@Workouts.Seconds<span>s</span>
+            </span>
+            &nbsp;&nbsp;&nbsp;
+            <span class="exercisesInWorkouts">
+                <i class="fa-solid fa-clipboard-check"></i>&nbsp;@ResultWorkoutsCount
+            </span>
+        </div>
+    </div>
+</div>

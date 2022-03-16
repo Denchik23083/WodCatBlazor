@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "b633b6f9-6fdf-444e-b513-12c9cf110f89": {
+      "ProjectGuid": "b633b6f9-6fdf-444e-b513-12c9cf110f89",
+      "DisplayName": "BookingClone",
+      "ColorIndex": 0
+    },
+    "31fad2ef-87ff-4151-b7d5-890099dbcd29": {
+      "ProjectGuid": "31fad2ef-87ff-4151-b7d5-890099dbcd29",
+      "DisplayName": "WodCatClone.Web",
+      "ColorIndex": 1
+    },
+    "95d88e38-bd15-4264-8167-68fcba2c221b": {
+      "ProjectGuid": "95d88e38-bd15-4264-8167-68fcba2c221b",
+      "DisplayName": "WodCatClone.Db",
+      "ColorIndex": 2
+    },
+    "fa21552a-303d-4e76-b867-126ae1a276ef": {
+      "ProjectGuid": "fa21552a-303d-4e76-b867-126ae1a276ef",
+      "DisplayName": "WodCatClone.Logic",
+      "ColorIndex": 3
+    },
+    "270a994c-0cf6-4699-80dd-c14854badc4c": {
+      "ProjectGuid": "270a994c-0cf6-4699-80dd-c14854badc4c",
+      "DisplayName": "WodCatClone.WebDb",
+      "ColorIndex": 4
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 5
+}

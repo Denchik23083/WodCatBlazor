@@ -1,0 +1,17 @@
+﻿@page "/login"
+
+<HeaderComponent />
+
+<div class="row mb-2 ml-1">
+    <div class="col auth">
+        <EditForm Model="@_login" OnSubmit="@Login"> <br/>
+            <InputText id="email" @bind-Value="_login.Email" class="mb-2"/><br/>
+            <InputText id="password" type="password" @bind-Value="_login.Password" class="mb-2"/><br/>
+        
+            <button class="btn btn-primary mb-2" type="submit">Войти</button>
+        
+        </EditForm>
+        
+        <a href="/register">Регистрация</a>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+﻿@if (IsLoginUser)
+{
+    <div class="row">
+        <div class="col finger">
+            <select class="d-inline fingerMoreProfile" @onchange="Route">
+                <option selected value="">V</option>
+                @foreach (var item in SelectProfile)
+                {
+                    <option value="@item.Link">@item.Content</option>
+                }
+            </select>
+            <div class="d-inline fingerMore mr-4">
+                <i class="fa-solid fa-coins"></i> 0 @*@coins*@ 
+            </div>
+            <select class="d-inline fingerMore mr-4" @onchange="Route">
+                <option selected value="">Еще...</option>
+                @foreach (var item in SelectedMore)
+                {
+                    <option value="@item.Link">@item.Content</option>
+                }
+            </select>
+        </div>
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col mr-4 finger">
+            <div class="d-inline fingerMore mr-4" @onclick="Auth">
+                <i class="fa-solid fa-fingerprint mr-1"></i>Вход
+            </div>
+            <select class="d-inline fingerMore mr-4" @onchange="Route">
+                <option selected value="">Еще...</option>
+                @foreach (var item in SelectedMore)
+                {
+                    <option value="@item.Link">@item.Content</option>
+                }
+            </select>
+        </div>
+    </div>
+}

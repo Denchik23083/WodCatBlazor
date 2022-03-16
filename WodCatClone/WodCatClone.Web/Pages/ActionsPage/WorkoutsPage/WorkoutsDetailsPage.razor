@@ -1,0 +1,79 @@
+﻿@page "/workouts/{WorkoutId:int}"
+
+<HeaderComponent />
+
+<div class="wrapperId">
+    <div class="row mb-2">
+        <div class="col text-left text-light pages">
+            <a href="/" class="link">WODCAT</a>&nbsp;&rarr;&nbsp;
+            <a href="/workouts" class="link">КросcФит Тренировки (WOD)</a>&nbsp;&rarr;&nbsp;
+            @Workout.Name
+        </div>
+    </div>
+    <div class="row mb-2">
+        <div class="col">
+            <span class="NameId">@Workout.Name</span>
+            <span class="cub">@Workout.Modality</span>
+            <span class="greenCub">@Workout.Rating / 10</span>
+            <span class="greenCub">Рекомендуется</span>
+        </div>
+    </div>
+    
+    <div class="row p-3 mb-2">
+        <div class="col-4 pl-0">
+            <div class="workoutsId p-3">
+                <div class="row">
+                    <div class="col">
+                        <span>На время:<br/>
+                            @foreach (var item in WorkoutExercises)
+                            {
+                                @item
+                                <br/>
+                            }
+                        </span><br/>
+                        <span class="workoutsTimeId">
+                            Время @Workout.Minutes<span>m</span>:@Workout.Seconds<span>s</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <img src="@Workout.Image" alt="Image"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col p-3 text-right">
+                        <button class="btn btn-primary">Старт</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="workoutsId p-3">
+                @if (IsLogin)
+                {
+                    <ResultWorkoutsComponent WorkoutId="WorkoutId"/>
+                    <EditDeleteResult @ref="EditDeleteResult"
+                                      OnDelete="OnDelete"
+                                      OnEdit="OnEdit"
+                                      OnCancel="OnCancel">
+                    </EditDeleteResult>
+                }
+                else
+                {
+                    <div class="row">
+                        <div class="col">
+                            <h1>You need login!</h1>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    
+    <div class="row p-3 mb-2">
+        <div class="col pl-0" @onclick="IsDisplayDialog">
+            <GetAllResultWorkouts WorkoutId="WorkoutId" />
+        </div>
+    </div>
+</div>

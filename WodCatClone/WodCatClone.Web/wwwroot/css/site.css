@@ -1,0 +1,210 @@
+﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+html, body {font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;}
+a, .btn-link {color: #0366d6;}
+.btn-primary {color: #fff;background-color: #1b6ec2;border-color: #1861ac;}
+.valid.modified:not([type=checkbox]) {outline: 1px solid #26b050;}
+.invalid {outline: 1px solid red;}
+.validation-message {color: red;}
+#blazor-error-ui {background: lightyellow;bottom: 0;box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);display: none;left: 0;padding: 0.6rem 1.25rem 0.7rem 1.25rem;position: fixed;width: 100%;z-index: 1000;}
+#blazor-error-ui .dismiss {cursor: pointer;position: absolute;right: 0.75rem;top: 0.5rem;}
+.auth {top: 96px;}
+.finger {
+    cursor: pointer;
+    display: block;
+}
+.fingerMore {
+    background: #161521;
+    color: gray;
+    border-color: #161521;
+    width: 70px;
+    cursor: pointer;
+}
+.fingerMoreProfile {
+    background: #161521;
+    color: gray;
+    border-color: #161521;
+    width: 40px;
+    cursor: pointer;
+}
+.fingerFilter {
+    width: 100%;
+    border-radius: 0.25rem;
+    background: #202124;
+    color: #bdc1c6;
+    border-color: #bdc1c6;
+    cursor: pointer;
+}
+.profile {
+    background-color: #161521;
+    color: gray;
+}
+.actions {
+    background-color: #2a2b3c;
+    color: gray;
+}
+.exercises, .exercisesId, .workouts, .workoutsId {
+    background-color: #424242;
+    width: 100%;
+    border-radius: 5px;
+    color: #bdc1c6;
+}
+.exercisesId {height: 100%;}
+.workoutsId {
+    height: 100%;
+}
+.workouts:hover {background-color: black;}
+.workoutsTimeId {
+    color: #a3a3a3;
+}
+.Name {
+    width: 200px;
+    font-size: 1.75rem;
+    color: #8ab4f8;
+}
+.Name:hover {
+    color: #8ab4f8;
+    text-decoration: none;
+}
+.NameId {
+    width: 200px;
+    color: white;
+    font-size: 1.5rem;
+}
+.cub, .cubId, .greenCub {
+    color: white;
+    background-color: #8ab4f8;
+    border-radius: 5px;
+    margin-left: 10px;
+    padding: 0.3em 0.7em 0.3em;
+}
+.greenCub {background-color: #4caf50;}
+.wrapper, .wrapperId, wrapperWork {
+    background-color: #202124;
+    min-height: 100vh;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 96px;
+}
+.wrapper {
+    padding-left: 100px;
+    padding-right: 100px;
+}
+.wrapperId {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.wrapperWork:hover { background-color: black;}
+.header {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    padding: 0;
+}
+.pages {margin-top: 20px;}
+.link {color: #8ab4f8;}
+.link:hover {
+    cursor: pointer;
+    color: #8ab4f8;
+}
+.hr { background-color: white;}
+.full { color: #bdc1c6;}
+.home{ cursor: pointer;}
+.bold{ font-weight: bolder;}
+.exercisesInWorkouts {color: white;}
+.filterWorkouts {color: #bdc1c6;}
+.filterWorkouts:hover {
+    color: #8ab4f8;
+    cursor: pointer;
+}
+.filterWorkoutsBlock {
+    position: fixed;
+    right: 0;
+    background-color: #424242;
+    width: 400px;
+    z-index: 2;
+    height: 100%;
+    margin-right: 0;
+    padding: 10px;
+    border: 1px solid black;
+}
+.filterWorkoutsComponent {
+    position: absolute;
+    margin-bottom: 50px;
+    display: block;
+    color: #bdc1c6;
+    width: 100%;
+    height: 100%;
+}
+.select {
+    color: lightgrey;
+    cursor: pointer;
+    background: #424242;
+    border-color: #424242;
+    border-bottom-color: lightgrey;
+}
+.select::placeholder {color: lightgrey;}
+.select:focus {
+    background-color: #424242;
+    background: #424242;
+    color: lightgrey;
+}
+.formResult {
+    color: lightgrey;
+    cursor: pointer;
+    border: 0;
+    background: #424242;
+    border-bottom: 1px solid lightgrey;
+    width: 150px;
+}
+.formResult::placeholder {color: lightgrey;}
+.addResult {color: white;}
+.textarea {
+    width: 100%;
+    background: #424242;
+    border: 0;
+    border-bottom: 1px solid lightgrey;
+    min-height: 25px;
+    color: white;
+}
+.textarea::placeholder {color: lightgrey;}
+.displayDialog, .tableheader { color: #bdc1c6; }
+.displayDialog:hover {
+    background-color: black;
+    cursor: pointer;
+}
+
+/****************************************************/
+.rating-area {
+    overflow: hidden;
+    width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+.rating-area:not(:checked) > input {display: none;}
+.rating-area:not(:checked) > label {
+    float: right;
+    width: 42px;
+    padding: 0;
+    cursor: pointer;
+    font-size: 32px;
+    line-height: 32px;
+    color: lightgrey;
+    text-shadow: 1px 1px #bbb;
+}
+.rating-area:not(:checked) > label:before {content: '★';}
+.rating-area > input:checked ~ label {
+    color: gold;
+    text-shadow: 1px 1px #c60;
+}
+.rating-area:not(:checked) > label:hover,
+.rating-area:not(:checked) > label:hover ~ label {color: gold;}
+.rating-area > input:checked + label:hover,
+.rating-area > input:checked + label:hover ~ label,
+.rating-area > input:checked ~ label:hover,
+.rating-area > input:checked ~ label:hover ~ label,
+.rating-area > label:hover ~ input:checked ~ label {
+    color: gold;
+    text-shadow: 1px 1px goldenrod;
+}
+.rate-area > label:active {position: relative;}
