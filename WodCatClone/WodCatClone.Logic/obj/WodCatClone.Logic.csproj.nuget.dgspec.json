@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\source\\repos\\BlazorFinal\\WodCatClone\\WodCatClone.Logic\\WodCatClone.Logic.csproj": {}
+    "C:\\Users\\User\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.Logic\\WodCatClone.Logic.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\source\\repos\\BlazorFinal\\WodCatClone\\WodCatClone.Db\\WodCatClone.Db.csproj": {
+    "C:\\Users\\User\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.Db\\WodCatClone.Db.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\source\\repos\\BlazorFinal\\WodCatClone\\WodCatClone.Db\\WodCatClone.Db.csproj",
+        "projectUniqueName": "C:\\Users\\User\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.Db\\WodCatClone.Db.csproj",
         "projectName": "WodCatClone.Db",
-        "projectPath": "C:\\Users\\User\\source\\repos\\BlazorFinal\\WodCatClone\\WodCatClone.Db\\WodCatClone.Db.csproj",
+        "projectPath": "C:\\Users\\User\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.Db\\WodCatClone.Db.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\source\\repos\\BlazorFinal\\WodCatClone\\WodCatClone.Db\\obj\\",
+        "outputPath": "C:\\Users\\User\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.Db\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -74,14 +74,14 @@
         }
       }
     },
-    "C:\\Users\\User\\source\\repos\\BlazorFinal\\WodCatClone\\WodCatClone.Logic\\WodCatClone.Logic.csproj": {
+    "C:\\Users\\User\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.Logic\\WodCatClone.Logic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\source\\repos\\BlazorFinal\\WodCatClone\\WodCatClone.Logic\\WodCatClone.Logic.csproj",
+        "projectUniqueName": "C:\\Users\\User\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.Logic\\WodCatClone.Logic.csproj",
         "projectName": "WodCatClone.Logic",
-        "projectPath": "C:\\Users\\User\\source\\repos\\BlazorFinal\\WodCatClone\\WodCatClone.Logic\\WodCatClone.Logic.csproj",
+        "projectPath": "C:\\Users\\User\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.Logic\\WodCatClone.Logic.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\source\\repos\\BlazorFinal\\WodCatClone\\WodCatClone.Logic\\obj\\",
+        "outputPath": "C:\\Users\\User\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.Logic\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -98,11 +98,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\User\\source\\repos\\BlazorFinal\\WodCatClone\\WodCatClone.Db\\WodCatClone.Db.csproj": {
-                "projectPath": "C:\\Users\\User\\source\\repos\\BlazorFinal\\WodCatClone\\WodCatClone.Db\\WodCatClone.Db.csproj"
+              "C:\\Users\\User\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.Db\\WodCatClone.Db.csproj": {
+                "projectPath": "C:\\Users\\User\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.Db\\WodCatClone.Db.csproj"
               },
-              "C:\\Users\\User\\source\\repos\\BlazorFinal\\WodCatClone\\WodCatClone.WebDb\\WodCatClone.WebDb.csproj": {
-                "projectPath": "C:\\Users\\User\\source\\repos\\BlazorFinal\\WodCatClone\\WodCatClone.WebDb\\WodCatClone.WebDb.csproj"
+              "C:\\Users\\User\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.WebDb\\WodCatClone.WebDb.csproj": {
+                "projectPath": "C:\\Users\\User\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.WebDb\\WodCatClone.WebDb.csproj"
               }
             }
           }
@@ -135,14 +135,14 @@
         }
       }
     },
-    "C:\\Users\\User\\source\\repos\\BlazorFinal\\WodCatClone\\WodCatClone.WebDb\\WodCatClone.WebDb.csproj": {
+    "C:\\Users\\User\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.WebDb\\WodCatClone.WebDb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\source\\repos\\BlazorFinal\\WodCatClone\\WodCatClone.WebDb\\WodCatClone.WebDb.csproj",
+        "projectUniqueName": "C:\\Users\\User\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.WebDb\\WodCatClone.WebDb.csproj",
         "projectName": "WodCatClone.WebDb",
-        "projectPath": "C:\\Users\\User\\source\\repos\\BlazorFinal\\WodCatClone\\WodCatClone.WebDb\\WodCatClone.WebDb.csproj",
+        "projectPath": "C:\\Users\\User\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.WebDb\\WodCatClone.WebDb.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\source\\repos\\BlazorFinal\\WodCatClone\\WodCatClone.WebDb\\obj\\",
+        "outputPath": "C:\\Users\\User\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.WebDb\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -159,8 +159,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\User\\source\\repos\\BlazorFinal\\WodCatClone\\WodCatClone.Db\\WodCatClone.Db.csproj": {
-                "projectPath": "C:\\Users\\User\\source\\repos\\BlazorFinal\\WodCatClone\\WodCatClone.Db\\WodCatClone.Db.csproj"
+              "C:\\Users\\User\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.Db\\WodCatClone.Db.csproj": {
+                "projectPath": "C:\\Users\\User\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.Db\\WodCatClone.Db.csproj"
               }
             }
           }

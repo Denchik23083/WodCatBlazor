@@ -5802,11 +5802,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\source\\repos\\BlazorFinal\\WodCatClone\\WodCatClone.Db\\WodCatClone.Db.csproj",
+      "projectUniqueName": "C:\\Users\\User\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.Db\\WodCatClone.Db.csproj",
       "projectName": "WodCatClone.Db",
-      "projectPath": "C:\\Users\\User\\source\\repos\\BlazorFinal\\WodCatClone\\WodCatClone.Db\\WodCatClone.Db.csproj",
+      "projectPath": "C:\\Users\\User\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.Db\\WodCatClone.Db.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\source\\repos\\BlazorFinal\\WodCatClone\\WodCatClone.Db\\obj\\",
+      "outputPath": "C:\\Users\\User\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.Db\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",

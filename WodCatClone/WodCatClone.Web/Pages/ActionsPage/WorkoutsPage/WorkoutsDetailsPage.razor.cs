@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
+using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.ActionsService.WorkoutsService;
 using WodCatClone.Logic.UserService;
 using WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent;
@@ -15,6 +16,8 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
 
         [Inject] public IUserService _userService { get; set; }
 
+        [Inject] public IResultWorkoutsService _service { get; set; }
+
         public Workouts Workout { get; set; }
 
         public string[] WorkoutExercises { get; set; }
@@ -23,11 +26,19 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
 
         public EditDeleteResult EditDeleteResult { get; set; }
 
+        public IEnumerable<ResultWorkouts> ResultWorkouts { get; set; }
+
+        public User user = new();
+
+        public int EditDeleteResultId { get; set; }
+
         protected override void OnInitialized()
         {
             IsLogin = _userService.IsLoginUser();
             Workout = _workoutsService.GetWorkout(WorkoutId);
             WorkoutExercises = Workout.Exercises.Split(",");
+            ResultWorkouts = _service.GetAllResultWorkouts(WorkoutId);
+            user = _userService.GetUser();
         }
 
         public void IsDisplayDialog() { EditDeleteResult.Show(); }
@@ -36,14 +47,19 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
 
         public void OnDelete()
         {
-            //TODO: Logic Delete
+            var id = EditDeleteResultId;
             EditDeleteResult.Hide();
         }
 
         public void OnEdit()
         {
-            //TODO: Logic Delete Edit
+            //TODO: Logic Edit
             EditDeleteResult.Hide();
+        }
+
+        public void GetId(int itemId)
+        {
+            EditDeleteResultId = itemId;
         }
     }
 }

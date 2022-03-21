@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VUMCjVbl1KhRp9gEBa4Aab0k92OfBZw1fPJ0bQmeISmUEDUfL3EHCi19mCzdM4LQ6M0RIrJ5He1+bNsqKVuncg==",
+  "dgSpecHash": "t7iUtqPESodU5kLSGL7AVlEYcLEh9YDIWI5pghcmLLo0wk2uaZwYUi/JbVFjlI5uFc8tCKK/VhM3WIUzSUSPKA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\User\\source\\repos\\BlazorFinal\\WodCatClone\\WodCatClone.Db\\WodCatClone.Db.csproj",
+  "projectFilePath": "C:\\Users\\User\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.Db\\WodCatClone.Db.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
