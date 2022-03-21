@@ -18,48 +18,38 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
 
         [Inject] public IResultWorkoutsService _service { get; set; }
 
+        [Inject] public NavigationManager _manager { get; set; }
+
         public Workouts Workout { get; set; }
 
         public string[] WorkoutExercises { get; set; }
 
         public bool IsLogin { get; set; }
 
-        public EditDeleteResult EditDeleteResult { get; set; }
+        public DeleteResult DeleteResult { get; set; }
 
-        public IEnumerable<ResultWorkouts> ResultWorkouts { get; set; }
-
-        public User user = new();
-
-        public int EditDeleteResultId { get; set; }
+        public int ResultId { get; set; }
 
         protected override void OnInitialized()
         {
             IsLogin = _userService.IsLoginUser();
             Workout = _workoutsService.GetWorkout(WorkoutId);
             WorkoutExercises = Workout.Exercises.Split(",");
-            ResultWorkouts = _service.GetAllResultWorkouts(WorkoutId);
-            user = _userService.GetUser();
         }
 
-        public void IsDisplayDialog() { EditDeleteResult.Show(); }
+        public void IsDisplayDialog() { DeleteResult.Show(); }
 
-        public void OnCancel() { EditDeleteResult.Hide(); }
+        public void OnCancel() { DeleteResult.Hide(); }
 
         public void OnDelete()
         {
-            var id = EditDeleteResultId;
-            EditDeleteResult.Hide();
-        }
+            var result = _service.DeleteResultWorkouts();
 
-        public void OnEdit()
-        {
-            //TODO: Logic Edit
-            EditDeleteResult.Hide();
-        }
-
-        public void GetId(int itemId)
-        {
-            EditDeleteResultId = itemId;
+            if (result)
+            {
+                DeleteResult.Hide();
+                _manager.NavigateTo($"/workouts/{WorkoutId}", true);
+            }
         }
     }
 }

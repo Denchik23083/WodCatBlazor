@@ -2,11 +2,9 @@
 
 namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 {
-    public partial class EditDeleteResult
+    public partial class DeleteResult
     {
         [Parameter] public EventCallback OnDelete { get; set; }
-
-        [Parameter] public EventCallback OnEdit { get; set; }
 
         [Parameter] public EventCallback OnCancel { get; set; }
 

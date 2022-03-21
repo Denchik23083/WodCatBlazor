@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using WodCatClone.Db;
 using WodCatClone.Db.Entities.Actions;
@@ -27,6 +28,21 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
         public bool AddResultWorkouts(ResultWorkouts resultWorkouts)
         {
             _context.ResultWorkouts.Add(resultWorkouts);
+            _context.SaveChanges();
+
+            return true;
+        }
+
+        public bool DeleteResultWorkouts(int resultWorkoutsId)
+        {
+            var resultWorkoutRemove = _context.ResultWorkouts.FirstOrDefault(b => b.Id == resultWorkoutsId);
+
+            if (resultWorkoutRemove is null)
+            {
+                return false;
+            }
+
+            _context.ResultWorkouts.Remove(resultWorkoutRemove);
             _context.SaveChanges();
 
             return true;

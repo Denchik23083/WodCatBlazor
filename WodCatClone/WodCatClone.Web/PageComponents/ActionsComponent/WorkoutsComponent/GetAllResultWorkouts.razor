@@ -1,1 +1,36 @@
-﻿
+﻿@if (user is not null)
+{
+    <h2 class="text-white">@ResultWorkouts.Count() результатов</h2>
+    <hr class="hr"/>
+    <table class="table table-borderless">
+        <thead>
+        <tr class="tableheader">
+            <th scope="col">Имя</th>
+            <th scope="col">Время</th>
+            <th scope="col">Повт.</th>
+            <th scope="col">Страна</th>
+            <th scope="col">Город</th>
+            <th scope="col">Дата</th>
+            <th scope="col">Увлекательность</th>
+            <th scope="col">Нагрузка</th>
+            <th scope="col">Комме.</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in ResultWorkouts)
+        {
+            <tr class="displayDialog" @onclick="() => PostId(item.Id)">
+                <td>@user.Name</td>
+                <td>@item.Minutes<span>m</span>:@item.Seconds<span>s</span></td>
+                <td>@item.Repeat</td>
+                <td>@user.Country</td>
+                <td>@user.Town</td>
+                <td>@item.PublishDate</td>
+                <td>@item.Fascination</td>
+                <td>@item.Load</td>
+                <td>@item.Comment</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
