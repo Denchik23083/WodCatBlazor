@@ -38,10 +38,5 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService
         {
             ResultWorkoutsId = itemId;
         }
-
-        public int GetId()
-        {
-            return ResultWorkoutsId;
-        }
     }
 }

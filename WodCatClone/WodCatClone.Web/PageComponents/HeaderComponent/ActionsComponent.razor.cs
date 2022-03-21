@@ -8,6 +8,8 @@ namespace WodCatClone.Web.PageComponents.HeaderComponent
     {
         [Inject] private NavigationManager _manager { get; set; }
 
+        public int value = 0;
+
         public List<SelectedLink> Actions = new()
         {
             new() { Content = "ПРОГРАММЫ", Link = "/programs" },

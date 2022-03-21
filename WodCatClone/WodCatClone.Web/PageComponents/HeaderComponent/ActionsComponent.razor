@@ -6,7 +6,12 @@
     <div class="col-9 p-4">
         @foreach (var item in Actions)
         {
-            <a href="@item.Link">@item.Content</a> <span> | </span>
+            <a href="@item.Link" class="actionsContent">@item.Content</a>
+            @if (value < Actions.Count - 1)
+            {
+                <span class="actionsContent">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                value++;
+            }
         }
     </div>
 </div>

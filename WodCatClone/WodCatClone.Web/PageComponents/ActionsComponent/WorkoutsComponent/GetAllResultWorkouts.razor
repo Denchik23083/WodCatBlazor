@@ -16,7 +16,7 @@
             <th scope="col">Комме.</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody @onclick="IsDisplayDialog">
         @foreach (var item in ResultWorkouts)
         {
             <tr class="displayDialog" @onclick="() => PostId(item.Id)">

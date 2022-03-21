@@ -11,7 +11,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
     {
         [Parameter] public int WorkoutId { get; set; }
 
-        [Parameter] public int ResultId { get; set; }
+        [Parameter] public EventCallback IsDisplayDialog { get; set; }
 
         [Inject] public IResultWorkoutsService _service { get; set; }
 

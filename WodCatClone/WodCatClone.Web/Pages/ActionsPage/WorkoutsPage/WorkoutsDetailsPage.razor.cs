@@ -28,8 +28,6 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
 
         public DeleteResult DeleteResult { get; set; }
 
-        public int ResultId { get; set; }
-
         protected override void OnInitialized()
         {
             IsLogin = _userService.IsLoginUser();

@@ -7,7 +7,7 @@ a, .btn-link {color: #0366d6;}
 .validation-message {color: red;}
 #blazor-error-ui {background: lightyellow;bottom: 0;box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);display: none;left: 0;padding: 0.6rem 1.25rem 0.7rem 1.25rem;position: fixed;width: 100%;z-index: 1000;}
 #blazor-error-ui .dismiss {cursor: pointer;position: absolute;right: 0.75rem;top: 0.5rem;}
-.auth {top: 96px;}
+.auth {top: 95px;}
 .finger {
     cursor: pointer;
     display: block;
@@ -41,6 +41,16 @@ a, .btn-link {color: #0366d6;}
 .actions {
     background-color: #2a2b3c;
     color: gray;
+}
+.actionsContent {
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff9;
+}
+.actionsContent:hover {
+    color: #8ab4f8;
+    text-decoration: none;
 }
 .exercises, .exercisesId, .workouts, .workoutsId {
     background-color: #424242;
@@ -84,7 +94,7 @@ a, .btn-link {color: #0366d6;}
     position: absolute;
     left: 0;
     right: 0;
-    top: 96px;
+    top: 95px;
 }
 .wrapper {
     padding-left: 100px;
