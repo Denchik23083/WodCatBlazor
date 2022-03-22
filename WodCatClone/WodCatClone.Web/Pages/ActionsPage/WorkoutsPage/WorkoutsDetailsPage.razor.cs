@@ -26,7 +26,9 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
 
         public bool IsLogin { get; set; }
 
-        public DeleteResult DeleteResult { get; set; }
+        public EditDeleteResult EditDeleteResult { get; set; }
+
+        public GetAllResultWorkouts GetAllResultWorkouts { get; set; }
 
         protected override void OnInitialized()
         {
@@ -35,19 +37,29 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
             WorkoutExercises = Workout.Exercises.Split(",");
         }
 
-        public void IsDisplayDialog() { DeleteResult.Show(); }
+        public void IsDisplayDialog() { EditDeleteResult.Show(); }
 
-        public void OnCancel() { DeleteResult.Hide(); }
+        public void OnCancel() { EditDeleteResult.Hide(); }
+
+        public void OnCancelEdit() { EditDeleteResult.EditHide(); }
 
         public void OnDelete()
         {
-            var result = _service.DeleteResultWorkouts();
+            var id = GetAllResultWorkouts.ResultWorkoutId;
+
+            var result = _service.DeleteResultWorkouts(id);
 
             if (result)
             {
-                DeleteResult.Hide();
+                EditDeleteResult.Hide();
+                
                 _manager.NavigateTo($"/workouts/{WorkoutId}", true);
             }
+        }
+
+        public void OnEdit()
+        {
+            var id = GetAllResultWorkouts.ResultWorkoutId;
         }
     }
 }

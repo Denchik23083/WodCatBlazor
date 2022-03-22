@@ -7,7 +7,6 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService
     public class ResultWorkoutsService : IResultWorkoutsService
     {
         private readonly IResultWorkoutsRepository _repository;
-        public static int ResultWorkoutsId;
 
         public ResultWorkoutsService(IResultWorkoutsRepository repository)
         {
@@ -29,14 +28,9 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService
             return _repository.AddResultWorkouts(resultWorkouts);
         }
 
-        public bool DeleteResultWorkouts()
+        public bool DeleteResultWorkouts(int id)
         {
-            return _repository.DeleteResultWorkouts(ResultWorkoutsId);
-        }
-
-        public void PostId(int itemId)
-        {
-            ResultWorkoutsId = itemId;
+            return _repository.DeleteResultWorkouts(id);
         }
     }
 }

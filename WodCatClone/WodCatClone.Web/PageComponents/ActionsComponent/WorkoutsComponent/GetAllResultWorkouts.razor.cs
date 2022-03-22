@@ -17,6 +17,8 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         [Inject] public IUserService _userService { get; set; }
 
+        public int ResultWorkoutId { get; set; }
+
         public IEnumerable<ResultWorkouts> ResultWorkouts { get; set; }
 
         public User user = new();
@@ -29,7 +31,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         public void PostId(int itemId)
         {
-            _service.PostId(itemId);
+            ResultWorkoutId = itemId;
         }
     }
 }

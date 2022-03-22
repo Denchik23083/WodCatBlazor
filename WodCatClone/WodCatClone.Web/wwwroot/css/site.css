@@ -42,7 +42,7 @@ a, .btn-link {color: #0366d6;}
     background-color: #2a2b3c;
     color: gray;
 }
-.actionsContent {
+.actionsContent, .actionsSlash {
     font-size: 15px;
     font-weight: bold;
     text-transform: uppercase;
@@ -52,6 +52,7 @@ a, .btn-link {color: #0366d6;}
     color: #8ab4f8;
     text-decoration: none;
 }
+.actionsSlash { margin: 0 10px 0 10px; }
 .exercises, .exercisesId, .workouts, .workoutsId {
     background-color: #424242;
     width: 100%;
