@@ -28,6 +28,11 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService
             return _repository.AddResultWorkouts(resultWorkouts);
         }
 
+        public bool EditResultWorkouts(ResultWorkouts resultWorkouts, int id)
+        {
+            return _repository.EditResultWorkouts(resultWorkouts, id);
+        }
+
         public bool DeleteResultWorkouts(int id)
         {
             return _repository.DeleteResultWorkouts(id);

@@ -11,6 +11,8 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService
 
         bool AddResultWorkouts(ResultWorkouts resultWorkouts);
 
+        bool EditResultWorkouts(ResultWorkouts resultWorkouts, int id);
+
         bool DeleteResultWorkouts(int id);
     }
 }

@@ -11,6 +11,8 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
 
         bool AddResultWorkouts(ResultWorkouts resultWorkouts);
 
+        bool EditResultWorkouts(ResultWorkouts resultWorkouts, int id);
+
         bool DeleteResultWorkouts(int resultWorkoutsId);
     }
 }

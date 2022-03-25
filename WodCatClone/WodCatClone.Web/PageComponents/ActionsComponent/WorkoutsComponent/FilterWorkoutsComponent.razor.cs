@@ -11,8 +11,6 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
     {
         [Parameter] public IEnumerable<Workouts> Workouts { get; set; }
 
-        public IEnumerable<Workouts> FilterWorkouts { get; set; }
-
         [Inject] public IWorkoutsService _service { get; set; }
 
         public bool IsVisible { get; set; }
@@ -81,27 +79,27 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
             if (_filterCategory != "None")
             {
-                Workouts = Workouts.Where(b => b.Category.Contains(_filterCategory)).ToList();
+                Workouts = Workouts.Where(o => o.Category.Split(",").Contains(_filterCategory)).ToList();
             }
 
             if (_filterModality != "None")
             {
-                Workouts = Workouts.Where(b => b.Modality.Equals(_filterModality)).ToList();
+                Workouts = Workouts.Where(b => b.Modality.Split(",").Contains(_filterModality)).ToList();
             }
 
             if (_filterMovement != "None")
             {
-                Workouts = Workouts.Where(b => b.Movement.Equals(_filterMovement)).ToList();
+                Workouts = Workouts.Where(b => b.Movement.Split(",").Contains(_filterMovement)).ToList();
             }
 
             if (_filterComplexity != "None")
             {
-                Workouts = Workouts.Where(b => b.Complexity.Equals(_filterComplexity)).ToList();
+                Workouts = Workouts.Where(b => b.Complexity.Split(",").Contains(_filterComplexity)).ToList();
             }
 
             if (_filterInventory != "None")
             {
-                Workouts = Workouts.Where(b => b.Inventory.Equals(_filterInventory)).ToList();
+                Workouts = Workouts.Where(b => b.Inventory.Split(",").Contains(_filterInventory)).ToList();
             }
         }
 

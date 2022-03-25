@@ -15,13 +15,6 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         private ResultWorkouts _resultWorkouts = new();
 
-        private bool _oneFascination, _twoFascination, _threeFascination, _fourFascination, _fiveFascination;
-        private bool _oneLoad, _twoLoad, _threeLoad, _fourLoad, _fiveLoad;
-
-        public int ResultFascination { get; set; }
-
-        public int ResultLoad { get; set; }
-
         public void Result()
         {
             FillData();
@@ -36,37 +29,27 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
             _manager.NavigateTo($"/workouts/{WorkoutId}", true);
         }
 
+        private bool _oneFascination, _twoFascination, _threeFascination, _fourFascination, _fiveFascination;
+        private bool _oneLoad, _twoLoad, _threeLoad, _fourLoad, _fiveLoad;
+
+        public int ResultFascination { get; set; }
+
+        public int ResultLoad { get; set; }
+
         public void ResetAll()
         {
             ResetFascinationLoadStars();
 
             _resultWorkouts.Fascination = 0;
             _resultWorkouts.Load = 0;
-            _resultWorkouts.Minutes = string.Empty;
-            _resultWorkouts.Seconds = string.Empty;
+            _resultWorkouts.Minutes = "0";
+            _resultWorkouts.Seconds = "0";
             _resultWorkouts.Repeat = 0;
             _resultWorkouts.PublishDate = new DateTime();
             _resultWorkouts.Comment = string.Empty;
         }
 
-        private void FillData()
-        {
-            ResultFascinationStars();
-            ResultLoadStars();
-
-            var minutes = int.Parse(_resultWorkouts.Minutes);
-            var seconds = int.Parse(_resultWorkouts.Seconds);
-
-            if (minutes < 10) _resultWorkouts.Minutes = $"0{minutes}";
-
-            if (seconds < 10) _resultWorkouts.Seconds = $"0{seconds}";
-
-            _resultWorkouts.Fascination = ResultFascination;
-            _resultWorkouts.Load = ResultLoad;
-            _resultWorkouts.WorkoutId = WorkoutId;
-        }
-
-        private void ResetFascinationLoadStars()
+        public void ResetFascinationLoadStars()
         {
             _oneFascination = false;
             _twoFascination = false;
@@ -78,6 +61,27 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
             _threeLoad = false;
             _fourLoad = false;
             _fiveLoad = false;
+        }
+
+        public void FillData()
+        {
+            ResultFascinationStars();
+            ResultLoadStars();
+
+            _resultWorkouts.Minutes ??= "0";
+            _resultWorkouts.Seconds ??= "0";
+            _resultWorkouts.Comment ??= "";
+
+            var minutes = int.Parse(_resultWorkouts.Minutes);
+            var seconds = int.Parse(_resultWorkouts.Seconds);
+
+            if (minutes < 10) _resultWorkouts.Minutes = $"0{minutes}";
+
+            if (seconds < 10) _resultWorkouts.Seconds = $"0{seconds}";
+
+            _resultWorkouts.Fascination = ResultFascination;
+            _resultWorkouts.Load = ResultLoad;
+            _resultWorkouts.WorkoutId = WorkoutId;
         }
 
         private void ResultFascinationStars()

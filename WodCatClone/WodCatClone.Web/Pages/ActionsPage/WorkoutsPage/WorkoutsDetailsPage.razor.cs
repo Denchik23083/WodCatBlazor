@@ -60,6 +60,14 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
         public void OnEdit()
         {
             var id = GetAllResultWorkouts.ResultWorkoutId;
+            var resultWorkout = EditDeleteResult._editResultWorkout;
+
+            var result = _service.EditResultWorkouts(resultWorkout, id);
+
+            if (result)
+            {
+                _manager.NavigateTo($"/workouts/{WorkoutId}", true);
+            }
         }
     }
 }

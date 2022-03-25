@@ -10,13 +10,13 @@ namespace WodCatClone.Db.EntityConfig.ActionsConfig
         {
             builder.HasKey(_ => _.Id);
 
-            builder.Property(_ => _.Minutes).IsRequired();
-            builder.Property(_ => _.Seconds).IsRequired();
+            builder.Property(_ => _.Minutes);
+            builder.Property(_ => _.Seconds);
             builder.Property(_ => _.Comment);
-            builder.Property(_ => _.Repeat).IsRequired();
-            builder.Property(_ => _.Fascination).IsRequired();
-            builder.Property(_ => _.Load).IsRequired();
-            builder.Property(_ => _.PublishDate).IsRequired();
+            builder.Property(_ => _.Repeat);
+            builder.Property(_ => _.Fascination);
+            builder.Property(_ => _.Load);
+            builder.Property(_ => _.PublishDate);
 
             builder.HasOne(_ => _.Workouts)
                 .WithMany()

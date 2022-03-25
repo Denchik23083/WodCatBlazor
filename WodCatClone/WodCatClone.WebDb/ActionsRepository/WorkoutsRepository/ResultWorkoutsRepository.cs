@@ -33,6 +33,28 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
             return true;
         }
 
+        public bool EditResultWorkouts(ResultWorkouts resultWorkouts, int id)
+        {
+            var resultWorkoutEdit = _context.ResultWorkouts.FirstOrDefault(b => b.Id == id);
+
+            if (resultWorkoutEdit is null)
+            {
+                return false;
+            }
+            
+            resultWorkoutEdit.Comment = resultWorkouts.Comment;
+            resultWorkoutEdit.Fascination = resultWorkouts.Fascination;
+            resultWorkoutEdit.Load = resultWorkouts.Load;
+            resultWorkoutEdit.Minutes = resultWorkouts.Minutes;
+            resultWorkoutEdit.Seconds = resultWorkouts.Seconds;
+            resultWorkoutEdit.Repeat = resultWorkouts.Repeat;
+            resultWorkoutEdit.PublishDate = resultWorkouts.PublishDate;
+
+            _context.SaveChanges();
+
+            return true;
+        }
+
         public bool DeleteResultWorkouts(int resultWorkoutsId)
         {
             var resultWorkoutRemove = _context.ResultWorkouts.FirstOrDefault(b => b.Id == resultWorkoutsId);
