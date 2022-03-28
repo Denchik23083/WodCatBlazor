@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
-using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.ActionsService.WorkoutsService;
 using WodCatClone.Logic.UserService;
 using WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent;
@@ -37,6 +35,8 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
             WorkoutExercises = Workout.Exercises.Split(",");
         }
 
+        public void Login() { _manager.NavigateTo("/login"); }
+
         public void IsDisplayDialog() { EditDeleteResult.Show(); }
 
         public void OnCancel() { EditDeleteResult.Hide(); }
@@ -60,6 +60,8 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
         public void OnEdit()
         {
             var id = GetAllResultWorkouts.ResultWorkoutId;
+
+            EditDeleteResult.FillData();
             var resultWorkout = EditDeleteResult._editResultWorkout;
 
             var result = _service.EditResultWorkouts(resultWorkout, id);
