@@ -13,17 +13,14 @@
              style="display: block">
     
             <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Hallo</h5>
+                <div class="modal-content EditDeleteContent">
+                    <div class="modal-header" style="border: 0;">
+                        <h5 class="modal-title">@User.Name</h5>
                         <button class="close" @onclick="OnCancel" type="button">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        Hallo
-                    </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer" style="border: 0;">
                         <button class="btn btn-danger" @onclick="OnDelete" type="button">Удалить</button>
                         <button class="btn btn-info" @onclick="() => DisplayEditResult = !DisplayEditResult" type="button">Редактировать</button>
                         <button class="btn btn-primary" @onclick="OnCancel" type="button">Отмена</button>

@@ -1,9 +1,10 @@
-﻿.editModalDialog {
-    max-width: 1000px;
+﻿.editModalDialog { max-width: 1000px;}
+.editModalContent, .EditDeleteContent, .StartDialogContent {background-color: #424242;}
+.StartDialog {
+    max-width: 100%;
+    margin: 0;
 }
-.editModalContent {
-    background-color: #424242;
-}
+.StartDialogContent {min-height: 1000px;}
 .close, .close:hover {color: red;}
 .auth {top: 95px;}
 .finger {

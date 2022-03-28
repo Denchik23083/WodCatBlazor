@@ -1,5 +1,8 @@
 ﻿@page "/workouts/{WorkoutId:int}"
 
+<StartWorkout 
+    @ref="StartWorkout"
+    OnCancel="OnCancelEditStart"/>
 <HeaderComponent />
 
 <div class="wrapperId">
@@ -43,7 +46,7 @@
                 </div>
                 <div class="row">
                     <div class="col p-3 text-right">
-                        <button class="btn btn-primary">Старт</button>
+                        <button class="btn btn-primary" @onclick="Start">Старт</button>
                     </div>
                 </div>
             </div>

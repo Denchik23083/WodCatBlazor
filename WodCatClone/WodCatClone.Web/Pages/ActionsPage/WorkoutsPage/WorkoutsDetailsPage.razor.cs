@@ -28,6 +28,8 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
 
         public GetAllResultWorkouts GetAllResultWorkouts { get; set; }
 
+        public StartWorkout StartWorkout { get; set; }
+
         protected override void OnInitialized()
         {
             IsLogin = _userService.IsLoginUser();
@@ -42,6 +44,10 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
         public void OnCancel() { EditDeleteResult.Hide(); }
 
         public void OnCancelEdit() { EditDeleteResult.EditHide(); }
+
+        public void OnCancelEditStart() { StartWorkout.Hide(); }
+
+        public void Start() { StartWorkout.Show(); }
 
         public void OnDelete()
         {
