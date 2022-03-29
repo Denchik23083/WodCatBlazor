@@ -1,10 +1,23 @@
-﻿.editModalDialog { max-width: 1000px;}
-.editModalContent, .EditDeleteContent, .StartDialogContent {background-color: #424242;}
+﻿.editModalContent, .EditDeleteContent, .StartDialogContent {background-color: #424242;}
 .StartDialog {
     max-width: 100%;
     margin: 0;
 }
-.StartDialogContent {min-height: 1000px;}
+.StartDialogContent {height: 1000px;}
+.time {
+    color: #4caf50;
+    font-size: 150px;
+}
+.timerInfo {
+    color: #fff;
+    font-size: 50px;
+}
+.button {
+    color: #fff;
+    box-shadow: 0 3px 1px -2px #060606, 0 2px 2px #060606, 0 1px 5px #060606;
+    border-radius: 5px;
+    border: 0;
+}
 .close, .close:hover {color: red;}
 .auth {top: 95px;}
 .finger {

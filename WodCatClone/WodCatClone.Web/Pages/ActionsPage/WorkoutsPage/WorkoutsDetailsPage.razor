@@ -1,9 +1,11 @@
 ﻿@page "/workouts/{WorkoutId:int}"
 
+<HeaderComponent />
+
 <StartWorkout 
     @ref="StartWorkout"
+    Workout="Workout"
     OnCancel="OnCancelEditStart"/>
-<HeaderComponent />
 
 <div class="wrapperId">
     <div class="row mb-2">

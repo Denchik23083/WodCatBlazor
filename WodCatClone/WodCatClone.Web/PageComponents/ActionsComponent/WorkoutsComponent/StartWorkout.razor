@@ -13,10 +13,39 @@
         <div class="modal-dialog StartDialog" role="document">
             <div class="modal-content StartDialogContent">
                 <div class="modal-header" style="border: 0;">
-                    <h5 class="modal-title">Hallo</h5>
+                    <h5 class="modal-title timerInfo">
+                        На время: @Workout.Minutes<span>m</span>
+                        : @Workout.Seconds<span>s</span>
+                    </h5>
                     <button class="close" @onclick="OnCancel" type="button">
                         <span aria-hidden="true">&times;</span>
                     </button>
+                </div>
+                <div class="modal-body text-center" style="border: 0;">
+                    <h1 class="time">@_minutes : @_seconds</h1><br/>
+                    
+                    @if (IsShowStart)
+                    {
+                        <button 
+                            @onclick="StartTimer" 
+                            class="btn btn-success pl-3 pr-3 pt-2 pb-2 button">Start
+                        </button>
+                    }
+                    else
+                    {
+                        <button 
+                            @onclick="Continue" 
+                            class="btn btn-success pl-3 pr-3 pt-2 pb-2 button">Continue
+                        </button>
+                        <button 
+                            @onclick="Stop" 
+                            class="btn btn-warning pl-3 pr-3 pt-2 pb-2 button">Stop
+                        </button>
+                        <button 
+                            @onclick="Reset" 
+                            class="btn btn-danger pl-3 pr-3 pt-2 pb-2 button">Reset
+                        </button>
+                    }
                 </div>
             </div>
         </div>
