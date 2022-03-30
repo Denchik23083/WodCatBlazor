@@ -13,5 +13,7 @@
         public string Country { get; set; }
 
         public string Town { get; set; }
+
+        public int Points { get; set; }
     }
 }

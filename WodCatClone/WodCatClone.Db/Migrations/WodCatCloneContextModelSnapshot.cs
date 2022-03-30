@@ -185,6 +185,11 @@ namespace WodCatClone.Db.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
+                    b.Property<int>("Points")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
+
                     b.Property<string>("Town")
                         .IsRequired()
                         .HasMaxLength(255)

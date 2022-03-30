@@ -135,6 +135,13 @@ using WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 19 "C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\_Imports.razor"
+using WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/login")]
     public partial class LoginPage : Microsoft.AspNetCore.Components.ComponentBase
     {

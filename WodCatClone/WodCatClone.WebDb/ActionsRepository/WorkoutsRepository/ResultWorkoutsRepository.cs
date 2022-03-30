@@ -32,6 +32,15 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
         public bool AddResultWorkouts(ResultWorkouts resultWorkouts)
         {
             _context.ResultWorkouts.Add(resultWorkouts);
+
+            var loginUser = UserRepository.UserRepository.User;
+            var user = _context.Users.FirstOrDefault(b => b.Id == loginUser.Id);
+
+            if (user is not null)
+            {
+                user.Points += 5;
+            }
+
             _context.SaveChanges();
 
             return true;

@@ -11,8 +11,6 @@ namespace WodCatClone.Web.Pages.ActionsPage.ExercisesPage
 
         private IEnumerable<Exercises> Exercises { get; set; }
 
-        public bool IsDisplay { get; set; }
-
         protected override void OnInitialized()
         {
             Exercises = _service.GetAllExercises();

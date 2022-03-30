@@ -19,7 +19,7 @@ namespace WodCatClone.Logic.UserService
 
         public User GetUser()
         {
-            return AuthService.AuthService.User;
+            return _repository.GetUser(AuthService.AuthService.User);
         }
     }
 }

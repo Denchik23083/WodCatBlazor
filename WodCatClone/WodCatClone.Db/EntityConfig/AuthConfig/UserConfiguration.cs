@@ -15,6 +15,7 @@ namespace WodCatClone.Db.EntityConfig.AuthConfig
             builder.Property(_ => _.Password).IsRequired().HasMaxLength(255);
             builder.Property(_ => _.Country).IsRequired().HasMaxLength(255);
             builder.Property(_ => _.Town).IsRequired().HasMaxLength(255);
+            builder.Property(_ => _.Points).IsRequired().HasDefaultValue(0);
         }
     }
 }

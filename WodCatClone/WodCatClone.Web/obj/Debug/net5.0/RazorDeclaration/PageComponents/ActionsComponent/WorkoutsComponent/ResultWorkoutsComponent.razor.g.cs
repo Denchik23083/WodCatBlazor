@@ -138,6 +138,13 @@ using WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 19 "C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\_Imports.razor"
+using WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent;
+
+#line default
+#line hidden
+#nullable disable
     public partial class ResultWorkoutsComponent : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998

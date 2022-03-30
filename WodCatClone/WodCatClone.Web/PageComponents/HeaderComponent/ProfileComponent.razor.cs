@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Components;
+using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.UserService;
 using WodCatClone.Web.Helpers;
 
@@ -8,13 +9,17 @@ namespace WodCatClone.Web.PageComponents.HeaderComponent
     public partial class ProfileComponent
     {
         [Inject] private NavigationManager _manager { get; set; }
+
         [Inject] IUserService _service { get; set; }
 
-        public bool IsLoginUser = false;
+        public bool IsLoginUser { get; set; }
+
+        public User User { get; set; }
 
         protected override void OnInitialized()
         {
             IsLoginUser = _service.IsLoginUser();
+            User = _service.GetUser();
         }
 
         public void Auth()
