@@ -1,1 +1,49 @@
-﻿
+﻿<div class="halls mb-3">
+    <div class="row">
+        <div class="col-3">
+            <img src="@Halls.Emblem" style="width: 250px; height: 300px;"/>
+        </div>
+        <div class="col-9 p-3">
+            <div class="row">
+                <div class="col mb-2">
+                    <a class="Name mr-2" href="@_url"><span class="bold">@Halls.Name</span></a>
+                    @if (Halls.Rating is not null)
+                    {
+                        <span class="greenCub">@Halls.Rating / 10</span>
+                    }
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-2">
+                    @foreach (var item in HallsType)
+                    {
+                        @item
+                        if (value < HallsType.Length - 1)
+                        {
+                            <span>&nbsp;|&nbsp;</span>
+                            value++;
+                        }
+                    }
+                </div>
+            </div>
+            @if (Halls.Description is not null)
+            {
+                <div class="row">
+                    <div class="col mb-2">
+                        <div class="pr-3">
+
+                            @Halls.Description
+
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="row">
+                <div class="col">
+                    <img src="img/Ukraine.png" style="width: 30px; height: 20px;" class="mr-2"/>
+                    <strong style="color: #a3a2ab;">Украина, @Halls.Location</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

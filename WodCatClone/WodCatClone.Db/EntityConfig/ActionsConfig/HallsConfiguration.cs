@@ -12,7 +12,7 @@ namespace WodCatClone.Db.EntityConfig.ActionsConfig
             builder.Property(_ => _.Name).IsRequired();
             builder.Property(_ => _.Location).IsRequired();
             builder.Property(_ => _.Type).IsRequired();
-            builder.Property(_ => _.Rating).IsRequired();
+            builder.Property(_ => _.Rating);
             builder.Property(_ => _.Description);
             builder.Property(_ => _.Emblem);
         }

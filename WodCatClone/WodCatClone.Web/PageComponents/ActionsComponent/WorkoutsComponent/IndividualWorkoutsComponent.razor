@@ -20,11 +20,17 @@
         </div>
     </div>
 
-    <div class="row  ml-1 mt-3 mr-1 mb-3">
+    <div class="row ml-1 mt-3 mr-1 mb-3">
         <div class="col-4 text-left">
             @foreach (var item in WorkoutsCategory)
             {
-                <span>@item&nbsp;&nbsp;</span>
+                @item
+
+                if (value < WorkoutsCategory.Length - 1)
+                {
+                    <span>&nbsp;|&nbsp;</span>
+                    value++;
+                }
             }
         </div>
 

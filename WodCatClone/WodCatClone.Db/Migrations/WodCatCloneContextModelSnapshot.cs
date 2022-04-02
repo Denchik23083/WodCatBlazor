@@ -85,7 +85,6 @@ namespace WodCatClone.Db.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Rating")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Type")
