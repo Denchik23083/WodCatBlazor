@@ -22,5 +22,7 @@ namespace WodCatClone.Db
         public DbSet<Workouts> Workouts { get; set; }
 
         public DbSet<ResultWorkouts> ResultWorkouts { get; set; }
+
+        public DbSet<Halls> Halls { get; set; }
     }
 }

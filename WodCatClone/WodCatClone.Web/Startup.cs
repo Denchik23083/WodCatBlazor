@@ -5,11 +5,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WodCatClone.Db;
-using WodCatClone.Logic.ActionsService.ExerciseService;
+using WodCatClone.Logic.ActionsService.ExercisesService;
+using WodCatClone.Logic.ActionsService.HallsService;
 using WodCatClone.Logic.ActionsService.WorkoutsService;
 using WodCatClone.Logic.AuthService;
 using WodCatClone.Logic.UserService;
 using WodCatClone.WebDb.ActionsRepository.ExercisesRepository;
+using WodCatClone.WebDb.ActionsRepository.HallsRepository;
 using WodCatClone.WebDb.ActionsRepository.WorkoutsRepository;
 using WodCatClone.WebDb.AuthRepository;
 using WodCatClone.WebDb.UserRepository;
@@ -37,6 +39,8 @@ namespace WodCatClone.Web
             services.AddScoped<IWorkoutsRepository, WorkoutsRepository>();
             services.AddScoped<IResultWorkoutsService, ResultWorkoutsService>();
             services.AddScoped<IResultWorkoutsRepository, ResultWorkoutsRepository>();
+            services.AddScoped<IHallsService, HallsService>();
+            services.AddScoped<IHallsRepository, HallsRepository>();
 
             services.AddRazorPages();
             services.AddServerSideBlazor();

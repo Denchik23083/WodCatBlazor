@@ -2,7 +2,7 @@
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.WebDb.ActionsRepository.ExercisesRepository;
 
-namespace WodCatClone.Logic.ActionsService.ExerciseService
+namespace WodCatClone.Logic.ActionsService.ExercisesService
 {
     public class ExercisesService : IExercisesService
     {
