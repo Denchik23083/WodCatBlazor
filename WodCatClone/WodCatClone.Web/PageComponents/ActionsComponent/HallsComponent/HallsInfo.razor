@@ -1,19 +1,19 @@
 ﻿@if (!IsLoginUser)
     {
         <div class="row">
-            <div class="col">
+            <div class="col p-0">
                 <h1 class="text-light" style="font-size: 30px;">Кроссфит залы и тренажерные залы с кроссфит зоной Украина 2022</h1>
             </div>
         </div>
         <div class="row">
-            <div class="col text-right text-muted mb-2">
+            <div class="col text-right text-muted mb-2 p-0">
                 <i class="fa-solid fa-info info" @onclick="() => IsDisplay = !IsDisplay"></i>
             </div>
         </div>
         @if (IsDisplay)
         {
             <div class="row">
-                <div class="col">
+                <div class="col p-0 mb-3">
                     <div class="halls p-3">
                         <button class="btn hide mb-2" @onclick="() => IsDisplay = !IsDisplay">Скрыть</button>
                         <p><strong>Кроссфит зал</strong> – это специально оборудованное место для занятий Кроссфитом, которое отличается от простых тренажерных залов, просторным помещением с высокими потолками для комфортных занятий групп 10-15 человек. В большей части, кроссфит залы размещены в ангарах или старых производственных зданиях. В кроссфит залах предъявляет высокие требования к прочности бетонных перекрытий для выполнения элементов тяжелой атлетики либо тех, которые требуют специальной подготовки пола (использование помостов).</p>

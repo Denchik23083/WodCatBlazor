@@ -47,6 +47,15 @@
     border-color: #bdc1c6;
     cursor: pointer;
 }
+.fingerFilter:hover {border-color: white;}
+.filterHalls {
+    width: 100%;
+    border-radius: 0.25rem;
+    background: #202124;
+    color: #bdc1c6;
+    border-color: #bdc1c6;
+    cursor: pointer;
+}
 .info:hover {
     color: #8ab4f8;
     cursor: pointer;
