@@ -1,12 +1,12 @@
 ﻿<div class="row">
-    <div class="col text-right text-muted mb-2">
+    <div class="col text-right text-muted mb-2 p-0">
         <i class="fa-solid fa-info info" @onclick="() => IsDisplay = !IsDisplay"></i>
     </div>
 </div>
 @if (IsDisplay)
 {
     <div class="row">
-        <div class="col pr-0">
+        <div class="col p-0 mb-3">
             <div class="exercises p-3">
                 <button class="btn hide mb-2" @onclick="() => IsDisplay = !IsDisplay">Скрыть</button>
                 <p><strong>Упражнение</strong> – это движение, предназначенное для развития определенных навыков атлета. В каждом виде спорта есть свой набор упражнений для совершенствования. На этой странице вы найдете самые разнообразные упражнения: для разных видов спорта, на разные группы мышц, разного уровня сложности.</p>
