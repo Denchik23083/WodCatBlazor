@@ -17,7 +17,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
         public string[] WorkoutsCategory { get; set; }
 
         public string _url = string.Empty;
-        public int value = 0;
+        public int value { get; set; } = 0;
 
         public int ResultWorkoutsCount { get; set; }
 

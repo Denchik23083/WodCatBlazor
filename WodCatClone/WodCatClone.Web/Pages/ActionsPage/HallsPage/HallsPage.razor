@@ -3,14 +3,25 @@
 <HeaderComponent />
 
 <div class="wrapper">
-    <div class="row">
-        <div class="col-6 text-left text-light pages p-0">
-            <a href="/" class="link">WODCAT</a> &rarr; Кроссфит залы
+    @if (IsLoginUser)
+    {
+        <div class="row">
+            <div class="col-6 text-left text-light pages p-0 mb-3">
+                <a href="/" class="link">WODCAT</a> &rarr; Кроссфит залы
+            </div>
+            <div class="col-6 text-right pages p-0 mb-3">
+                <button class="btn text-white createHall" @onclick="Add">Создать клуб</button>
+            </div>
         </div>
-        <div class="col-6 text-right pages p-0">
-            <button class="btn text-white createHall">Создать клуб</button>
+    }
+    else
+    {
+        <div class="row">
+            <div class="col text-left text-light pages p-0 mb-3">
+                <a href="/" class="link">WODCAT</a> &rarr; Кроссфит залы
+            </div>
         </div>
-    </div>
+    }
     <HallsInfo />
     <ListHallsComponent ListOfItems="Halls"/>
 </div>

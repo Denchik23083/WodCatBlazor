@@ -24,13 +24,7 @@
         <div class="col-4 text-left">
             @foreach (var item in WorkoutsCategory)
             {
-                @item
-
-                if (value < WorkoutsCategory.Length - 1)
-                {
-                    <span>&nbsp;|&nbsp;</span>
-                    value++;
-                }
+                <span>@item&nbsp;&nbsp;</span>
             }
         </div>
 
