@@ -1,17 +1,42 @@
 ﻿<div class="formAddHall mt-3 p-3">
     <div class="row">
-        <div class="col pl-4">
+        <div class="col">
             <h5 class="mainInfoAboutHall">Основная информация о клубе</h5>
         </div>
-    </div>
+    </div>    
     <div class="row">
         <div class="col-6">
-            <select>
+            <div class="row">
+                <div class="col">
+                    <h5 style="color: white;">Выберите логотип</h5>
+                    <select class="select form-control"
+                            @bind="_image"
+                            @bind:event="onchange"
+                            style="background: #424242; color: lightgrey;">
 
-            </select>
+                        @foreach (var item in HallEmblem)
+                        {
+                            <option value="@item.Image">
+                                @item.Name
+                            </option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <img src="@_image" alt=""/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-primary" @onclick="Image">HallEmblemId</button>
+                    <h1>@HallEmblemId</h1>
+                </div>
+            </div>
         </div>
         <div class="col-6">
-
+            <EditForm Model="AddHall"></EditForm>
         </div>
     </div>
 </div>

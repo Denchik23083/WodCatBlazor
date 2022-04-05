@@ -28,7 +28,7 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService
         {
             var hallEmblem = _repository.GetImage(imageId);
 
-            return hallEmblem.Name;
+            return hallEmblem.Image;
         }
     }
 }

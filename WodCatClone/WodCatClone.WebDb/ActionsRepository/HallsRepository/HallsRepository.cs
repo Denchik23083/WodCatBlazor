@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using WodCatClone.Db;
 using WodCatClone.Db.Entities.Actions;
 
@@ -16,6 +17,16 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
         public IEnumerable<Halls> GetAllHalls()
         {
             return _context.Halls;
+        }
+
+        public IEnumerable<HallEmblem> GetAllHallEmblem()
+        {
+            return _context.HallEmblem;
+        }
+
+        public HallEmblem GetImage(int imageId)
+        {
+            return _context.HallEmblem.FirstOrDefault(b => b.Id == imageId);
         }
     }
 }
