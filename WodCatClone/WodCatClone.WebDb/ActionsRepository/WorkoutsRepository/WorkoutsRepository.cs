@@ -23,5 +23,10 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
         {
             return _context.Workouts.FirstOrDefault(x => x.Id == workoutId);
         }
+
+        public HallEmblem GetImage(int imageId)
+        {
+            return _context.HallEmblem.FirstOrDefault(b => b.Id == imageId);
+        }
     }
 }

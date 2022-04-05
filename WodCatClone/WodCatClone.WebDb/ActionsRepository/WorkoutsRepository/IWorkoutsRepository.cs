@@ -8,5 +8,7 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
         IEnumerable<Workouts> GetAllWorkouts();
 
         Workouts GetWorkout(int workoutId);
+
+        HallEmblem GetImage(int imageId);
     }
 }

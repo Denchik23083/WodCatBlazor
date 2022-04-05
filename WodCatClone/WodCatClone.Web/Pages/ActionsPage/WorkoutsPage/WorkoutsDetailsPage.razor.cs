@@ -22,6 +22,8 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
 
         public string[] WorkoutExercises { get; set; }
 
+        public string Image { get; set; }
+
         public bool IsLogin { get; set; }
 
         public EditDeleteResult EditDeleteResult { get; set; }
@@ -34,6 +36,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
         {
             IsLogin = _userService.IsLoginUser();
             Workout = _workoutsService.GetWorkout(WorkoutId);
+            Image = _workoutsService.GetImage(Workout.EmblemHallId);
             WorkoutExercises = Workout.Exercises.Split(",");
         }
 
