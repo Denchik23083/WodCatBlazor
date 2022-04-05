@@ -1,19 +1,11 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Components;
-using WodCatClone.Db.Entities.Actions;
-using WodCatClone.Logic.ActionsService.WorkoutsService;
+﻿using Microsoft.AspNetCore.Components;
 
 namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 {
     public partial class AddHallPage
     {
-        [Inject] private IWorkoutsService _service { get; set; }
+        [Inject] public NavigationManager _navigationManager { get; set; }
 
-        public IEnumerable<Workouts> Workouts { get; set; }
-
-        protected override void OnInitialized()
-        {
-            Workouts = _service.GetAllWorkouts();
-        }
+        public void BackToGymList() => _navigationManager.NavigateTo("/gymbox");
     }
 }

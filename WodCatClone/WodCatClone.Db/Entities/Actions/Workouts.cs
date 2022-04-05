@@ -24,6 +24,8 @@
 
         public string Exercises { get; set; }
 
-        public string Image { get; set; }
+        public int EmblemHallId { get; set; }
+
+        public HallEmblem EmblemHall { get; set; }
     }
 }

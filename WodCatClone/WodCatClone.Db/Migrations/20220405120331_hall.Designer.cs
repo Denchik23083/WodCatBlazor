@@ -10,8 +10,8 @@ using WodCatClone.Db;
 namespace WodCatClone.Db.Migrations
 {
     [DbContext(typeof(WodCatCloneContext))]
-    [Migration("20220312134156_back")]
-    partial class back
+    [Migration("20220405120331_hall")]
+    partial class hall
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -63,6 +63,57 @@ namespace WodCatClone.Db.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Exercises");
+                });
+
+            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.HallEmblem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("HallEmblem");
+                });
+
+            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Halls", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EmblemHallId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Rating")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmblemHallId");
+
+                    b.ToTable("Halls");
                 });
 
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.ResultWorkouts", b =>
@@ -120,11 +171,11 @@ namespace WodCatClone.Db.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("EmblemHallId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Exercises")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Inventory")
@@ -157,6 +208,8 @@ namespace WodCatClone.Db.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("EmblemHallId");
+
                     b.ToTable("Workouts");
                 });
 
@@ -187,6 +240,11 @@ namespace WodCatClone.Db.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
+                    b.Property<int>("Points")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
+
                     b.Property<string>("Town")
                         .IsRequired()
                         .HasMaxLength(255)
@@ -195,6 +253,17 @@ namespace WodCatClone.Db.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Halls", b =>
+                {
+                    b.HasOne("WodCatClone.Db.Entities.Actions.HallEmblem", "EmblemHall")
+                        .WithMany()
+                        .HasForeignKey("EmblemHallId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("EmblemHall");
                 });
 
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.ResultWorkouts", b =>
@@ -206,6 +275,17 @@ namespace WodCatClone.Db.Migrations
                         .IsRequired();
 
                     b.Navigation("Workouts");
+                });
+
+            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Workouts", b =>
+                {
+                    b.HasOne("WodCatClone.Db.Entities.Actions.HallEmblem", "EmblemHall")
+                        .WithMany()
+                        .HasForeignKey("EmblemHallId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("EmblemHall");
                 });
 #pragma warning restore 612, 618
         }

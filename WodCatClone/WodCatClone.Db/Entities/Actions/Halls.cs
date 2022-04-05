@@ -10,10 +10,12 @@
 
         public string Location { get; set; }
 
-        public string Emblem { get; set; }
-
         public string Description { get; set; }
 
         public string Rating { get; set; }
+
+        public int EmblemHallId { get; set; }
+
+        public HallEmblem EmblemHall { get; set; }
     }
 }

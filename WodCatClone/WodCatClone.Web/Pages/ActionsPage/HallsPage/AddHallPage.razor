@@ -4,11 +4,15 @@
 
 <div class="row">
     <div class="col visualContainer">
-        <h1>Hallo</h1>
+        <button class="gymList" @onclick="BackToGymList">Gym list</button>
+        <div class="AddHall">
+            <h1 class="h1Add">Добавить зал/клуб</h1>
+            <h3 class="h3Add">Здесь вы можете добавить новый зал в каталог WODCAT</h3>
+        </div>
     </div>
 </div>
 <div class="row">
     <div class="col wrapperHalls">
-        <FilterWorkoutsComponent Workouts="Workouts"/>
+        <AddHallComponent />
     </div>
 </div>

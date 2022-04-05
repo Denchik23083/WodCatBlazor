@@ -1,9 +1,25 @@
-﻿.editModalContent, .EditDeleteContent, .StartDialogContent {background-color: #424242;}
+﻿.editModalContent, 
+.EditDeleteContent, 
+.StartDialogContent, 
+.formAddHall {background-color: #424242;}
 .StartDialog {
     max-width: 100%;
     margin: 0;
 }
 a {cursor: pointer;}
+.gymList {
+    position: absolute;
+    top: 120px;
+    left: 40px;
+    display: block;
+    padding: 10px 15px;
+    border-radius: 3px;
+    border: 0;
+    font-size: 16px;
+    line-height: 18px;
+    color: #e8eaed;
+    background-color: #8ab4f8;
+}
 .StartDialogContent {height: 1000px;}
 .time {
     color: #4caf50;
@@ -57,6 +73,7 @@ a {cursor: pointer;}
     border-color: #bdc1c6;
     cursor: pointer;
 }
+.halls { width: 1311px !important;}
 .info:hover {
     color: #8ab4f8;
     cursor: pointer;
@@ -82,7 +99,7 @@ a {cursor: pointer;}
     font-size: 15px;
     font-weight: bold;
     text-transform: uppercase;
-    color: #fff9;
+    color: #ffffff80;
 }
 .actionsContent:hover {
     color: #8ab4f8;
@@ -167,11 +184,15 @@ a {cursor: pointer;}
 .full { color: #bdc1c6;}
 .home{ cursor: pointer;}
 .bold{ font-weight: bolder;}
-.exercisesInWorkouts {color: white;}
+.exercisesInWorkouts{color: white;}
 .filterWorkouts {color: #bdc1c6;}
 .filterWorkouts:hover {
     color: #8ab4f8;
     cursor: pointer;
+}
+.mainInfoAboutHall {
+    color: white;
+    font-size: 18px;
 }
 .filterWorkoutsBlock {
     position: fixed;
@@ -241,4 +262,19 @@ a {cursor: pointer;}
     right: 0;
     padding: 0;
     top: 95px;
+}
+.AddHall {
+    color: #e8eaed;
+    text-align: center;
+    margin-top: 75px;
+}
+.h1Add {
+    font-size: 40px;
+    line-height: 55px;
+    font-weight: 500;
+}
+.h3Add {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 40px;
 }
