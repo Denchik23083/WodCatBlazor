@@ -29,5 +29,10 @@ namespace WodCatClone.Logic.ActionsService.HallsService
 
             return hallEmblem.Image;
         }
+
+        public bool AddHall(Halls hall)
+        {
+            return _repository.AddHall(hall);
+        }
     }
 }

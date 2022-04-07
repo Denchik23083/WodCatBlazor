@@ -36,7 +36,17 @@ a {cursor: pointer;}
     border: 0;
 }
 .button:hover{ color: white;}
-.close, .close:hover {color: red;}
+.close, .close:hover, .selectedTypeClose:hover {color: red;}
+.selectedTypeClose {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #cc0000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+    background-color: #424242;
+    border: 0;
+}
 .auth {top: 95px;}
 .finger {
     cursor: pointer;
@@ -226,7 +236,7 @@ a {cursor: pointer;}
     background: #424242;
     color: lightgrey;
 }
-.formResult {
+.formResult, .selectedFormResult {
     color: lightgrey;
     cursor: pointer;
     border: 0;
@@ -234,7 +244,9 @@ a {cursor: pointer;}
     border-bottom: 1px solid lightgrey;
     width: 150px;
 }
-.formResult::placeholder {color: lightgrey;}
+.formResult {width: 150px;}
+.formResult::placeholder, .foo, .selectedFormResult::placeholder {color: lightgrey;}
+.selectedFormResult {width: 100%;}
 .addResult {color: white;}
 .textarea {
     width: 100%;

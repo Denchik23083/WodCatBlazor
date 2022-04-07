@@ -48,7 +48,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
 
             if (_filterTown != "None")
             {
-                Halls = Halls.Where(b => b.Location.Contains(_filterTown)).ToList();
+                Halls = Halls.Where(b => b.Town.Contains(_filterTown)).ToList();
             }
             if (_filterType != "None")
             {

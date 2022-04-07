@@ -9,11 +9,8 @@
             <div class="row">
                 <div class="col">
                     <h5 style="color: white;">Выберите логотип</h5>
-                    <select class="select form-control"
-                            @bind="_image"
-                            @bind:event="onchange"
-                            style="background: #424242; color: lightgrey;">
-
+                    <select class="select form-control" @onchange="Image">
+                        <option value="None">None</option>
                         @foreach (var item in HallEmblem)
                         {
                             <option value="@item.Image">
@@ -28,15 +25,100 @@
                     <img src="@_image" alt=""/>
                 </div>
             </div>
-            <div class="row">
-                <div class="col">
-                    <button class="btn btn-primary" @onclick="Image">HallEmblemId</button>
-                    <h1>@HallEmblemId</h1>
-                </div>
-            </div>
         </div>
         <div class="col-6">
-            <EditForm Model="AddHall"></EditForm>
+            <EditForm Model="AddHall" OnSubmit="Submit">
+                <div class="row">
+                    <div class="col mb-2">
+                        <InputText
+                            @bind-Value="AddHall.Name"
+                            class="selectedFormResult mb-2 mr-2"
+                            placeholder="Имя Клуба"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-2">
+                        <select class="selectedFormResult mb-2" @onchange="Type">
+                            @foreach (var item in HallTypes)
+                            {
+                                <option value="@item.Value">
+                                    @item.Content
+                                </option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col mb-2">
+                        @foreach (var item in SelectedType)
+                        {
+                            <span class="foo">@item
+                                <button class="selectedTypeClose" @onclick="() => RemoveSelectedType(item)" type="button">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </span><br/>
+                        }
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-2">
+                        <select class="selectedFormResult mb-2" @bind="AddHall.Town">
+                            <option>Город</option>
+                            @foreach (var item in Town)
+                            {
+                                <option value="@item.Filter">
+                                    @item.Content
+                                </option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-2">
+                        <InputText
+                            @bind-Value="AddHall.Location"
+                            class="selectedFormResult mb-2"
+                            placeholder="Адрес"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-2">
+                        <InputText
+                            @bind-Value="AddHall.Rating"
+                            class="selectedFormResult mb-2"
+                            placeholder="Рейтинг от 1 до 10"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-2">
+                        <textarea 
+                                placeholder="Описание" 
+                                class="textarea" 
+                                @bind="AddHall.Description">                                
+                        </textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-right">
+                        @if (!IsDisplaySubmitButton)
+                        {
+                            <button 
+                                class="btn btn-primary" 
+                                @onclick="Submit"
+                                disabled="disabled"
+                                type="button">Сохранить</button>
+                        }
+                        else
+                        {
+                            <button 
+                                class="btn btn-primary" 
+                                @onclick="Submit"
+                                type="button">Сохранить</button>
+                        }
+                    </div>
+                </div>
+            </EditForm>
         </div>
     </div>
 </div>

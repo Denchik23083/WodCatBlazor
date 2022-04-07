@@ -10,8 +10,9 @@ namespace WodCatClone.Db.EntityConfig.ActionsConfig
         {
             builder.HasKey(_ => _.Id);
             builder.Property(_ => _.Name).IsRequired();
-            builder.Property(_ => _.Location).IsRequired();
-            builder.Property(_ => _.Type).IsRequired();
+            builder.Property(_ => _.Town);
+            builder.Property(_ => _.Location);
+            builder.Property(_ => _.Type);
             builder.Property(_ => _.Rating);
             builder.Property(_ => _.Description);
 

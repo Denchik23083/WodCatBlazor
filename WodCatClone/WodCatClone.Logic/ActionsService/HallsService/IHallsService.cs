@@ -10,5 +10,7 @@ namespace WodCatClone.Logic.ActionsService.HallsService
         IEnumerable<HallEmblem> GetAllHallEmblem();
 
         string GetImage(int imageId);
+
+        bool AddHall(Halls hall);
     }
 }

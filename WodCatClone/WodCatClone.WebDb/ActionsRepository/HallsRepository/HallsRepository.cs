@@ -28,5 +28,22 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
         {
             return _context.HallEmblem.FirstOrDefault(b => b.Id == imageId);
         }
+
+        public bool AddHall(Halls hall)
+        {
+            _context.Halls.Add(hall);
+
+            var loginUser = UserRepository.UserRepository.User;
+            var user = _context.Users.FirstOrDefault(b => b.Id == loginUser.Id);
+
+            if (user is not null)
+            {
+                user.Points += 50;
+            }
+
+            _context.SaveChanges();
+
+            return true;
+        }
     }
 }
