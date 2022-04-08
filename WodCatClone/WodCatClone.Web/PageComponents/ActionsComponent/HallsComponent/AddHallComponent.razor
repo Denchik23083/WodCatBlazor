@@ -10,7 +10,7 @@
                 <div class="col">
                     <h5 style="color: white;">Выберите логотип</h5>
                     <select class="select form-control" @onchange="Image">
-                        <option value="None">None</option>
+                        <option value="None">Эмблема</option>
                         @foreach (var item in HallEmblem)
                         {
                             <option value="@item.Image">
@@ -63,8 +63,8 @@
                 </div>
                 <div class="row">
                     <div class="col mb-2">
-                        <select class="selectedFormResult mb-2" @bind="AddHall.Town">
-                            <option>Город</option>
+                        <select class="selectedFormResult mb-2" @onchange="TownValue">
+                            <option value="None">Город</option>
                             @foreach (var item in Town)
                             {
                                 <option value="@item.Filter">

@@ -19,6 +19,10 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
 
         public bool IsDisplaySubmitButton { get; set; } = false;
 
+        public bool IsImage { get; set; } = false;
+
+        public bool IsTown { get; set; } = false;
+
         public string _image = "None";
 
         public int Value { get; set; }
@@ -98,6 +102,12 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
         {
             var selected = e.Value?.ToString();
 
+            if (selected == "None")
+            {
+                IsDisplaySubmitButton = false;
+                IsImage = false;
+            }
+
             var hallEmblem = HallEmblem.FirstOrDefault(b => b.Image == selected);
 
             _image = selected;
@@ -105,11 +115,33 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
             if (hallEmblem is not null)
             {
                 AddHall.EmblemHallId = hallEmblem.Id;
+                IsImage = true;
+            }
+
+            if (IsTown && IsImage)
+            {
                 IsDisplaySubmitButton = true;
+            }
+        }
+
+        public void TownValue(ChangeEventArgs e)
+        {
+            var selected = e.Value?.ToString();
+
+            if (selected == "None")
+            {
+                IsDisplaySubmitButton = false;
+                IsTown = false;
             }
             else
             {
-                IsDisplaySubmitButton = false;
+                IsTown = true;
+                AddHall.Town = selected;
+            }
+
+            if (IsTown && IsImage)
+            {
+                IsDisplaySubmitButton = true;
             }
         }
     }
