@@ -9,6 +9,8 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
 
         IEnumerable<HallEmblem> GetAllHallEmblem();
 
+        Halls GetHall(int hallId);
+
         HallEmblem GetImage(int imageId);
 
         bool AddHall(Halls hall);

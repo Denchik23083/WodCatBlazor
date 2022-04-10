@@ -28,6 +28,8 @@
         </div>
         <div class="col-6">
             <EditForm Model="AddHall" OnSubmit="Submit">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
                 <div class="row">
                     <div class="col mb-2">
                         <InputText
@@ -48,7 +50,7 @@
                         </select>
                     </div>
                 </div>
-                
+
                 <div class="row">
                     <div class="col mb-2">
                         @foreach (var item in SelectedType)
@@ -103,18 +105,16 @@
                     <div class="col text-right">
                         @if (!IsDisplaySubmitButton)
                         {
-                            <button 
-                                class="btn btn-primary" 
-                                @onclick="Submit"
+                            <button
+                                class="btn btn-primary"
                                 disabled="disabled"
-                                type="button">Сохранить</button>
+                                type="submit">Сохранить</button>
                         }
                         else
                         {
-                            <button 
-                                class="btn btn-primary" 
-                                @onclick="Submit"
-                                type="button">Сохранить</button>
+                            <button
+                                class="btn btn-primary"
+                                type="submit">Сохранить</button>
                         }
                     </div>
                 </div>

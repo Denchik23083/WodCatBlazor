@@ -1,15 +1,19 @@
-﻿namespace WodCatClone.Db.Entities.Actions
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace WodCatClone.Db.Entities.Actions
 {
     public class Halls
     {
         public int Id { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
         public string Type { get; set; }
 
         public string Town { get; set; }
 
+        [Required]
         public string Location { get; set; }
 
         public string Description { get; set; }
