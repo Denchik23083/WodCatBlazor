@@ -145,7 +145,7 @@ using WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/gymbox/{HallId:int}")]
+    [Microsoft.AspNetCore.Components.RouteAttribute("/gymboxs/{HallId:int}")]
     public partial class HallsDetailsPage : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998

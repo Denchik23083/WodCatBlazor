@@ -18,7 +18,7 @@ namespace WodCatClone.Db.EntityConfig.ActionsConfig
 
             builder.HasOne(_ => _.EmblemHall)
                 .WithMany()
-                .HasForeignKey(_ => _.EmblemHallId);
+                .HasForeignKey(b => b.EmblemHallId);
         }
     }
 }

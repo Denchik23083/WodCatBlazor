@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using WodCatClone.Db.Entities.Auth;
 
 namespace WodCatClone.Db.Entities.Actions
 {
@@ -6,14 +7,12 @@ namespace WodCatClone.Db.Entities.Actions
     {
         public int Id { get; set; }
 
-        [Required]
         public string Name { get; set; }
 
         public string Type { get; set; }
 
         public string Town { get; set; }
 
-        [Required]
         public string Location { get; set; }
 
         public string Description { get; set; }

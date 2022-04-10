@@ -88,7 +88,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
 
             var result = HallsService.AddHall(AddHall);
 
-            NavigationManager.NavigateTo(result ? "/gymbox" : "/gymbox/add");
+            NavigationManager.NavigateTo(result ? "/gymboxs" : "/gymboxs/add");
         }
 
         public void RemoveSelectedType(string item)

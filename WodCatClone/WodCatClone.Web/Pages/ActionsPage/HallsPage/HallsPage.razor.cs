@@ -24,6 +24,6 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
             IsLoginUser = _userService.IsLoginUser();
         }
 
-        public void Add() => _navigationManager.NavigateTo("/gymbox/add");
+        public void Add() => _navigationManager.NavigateTo("/gymboxs/add");
     }
 }

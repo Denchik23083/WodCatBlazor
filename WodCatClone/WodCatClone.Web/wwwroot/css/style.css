@@ -194,15 +194,11 @@ a {cursor: pointer;}
 .full { color: #bdc1c6;}
 .home{ cursor: pointer;}
 .bold{ font-weight: bolder;}
-.exercisesInWorkouts{color: white;}
+.exercisesInWorkouts, .mainInfoAboutHall {color: white;}
 .filterWorkouts {color: #bdc1c6;}
 .filterWorkouts:hover {
     color: #8ab4f8;
     cursor: pointer;
-}
-.mainInfoAboutHall {
-    color: white;
-    font-size: 18px;
 }
 .filterWorkoutsBlock {
     position: fixed;

@@ -19,7 +19,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
 
         protected override void OnInitialized()
         {
-            _url = $"gymbox/{Halls.Id}";
+            _url = $"gymboxs/{Halls.Id}";
             HallsType = Halls.Type.Split(",");
             Image = HallsService.GetImage(Halls.EmblemHallId);
         }

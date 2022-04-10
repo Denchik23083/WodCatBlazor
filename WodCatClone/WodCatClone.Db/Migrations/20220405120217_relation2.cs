@@ -10,7 +10,7 @@ namespace WodCatClone.Db.Migrations
                 name: "EmblemHallId",
                 table: "Workouts",
                 type: "int",
-                nullable: false,
+                nullable: true,
                 defaultValue: 0);
 
             migrationBuilder.CreateIndex(

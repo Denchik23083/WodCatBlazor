@@ -22,10 +22,7 @@ namespace WodCatClone.Web.PageComponents.HeaderComponent
             User = _service.GetUser();
         }
 
-        public void Auth()
-        {
-            _manager.NavigateTo("/login");
-        }
+        public void Auth() => _manager.NavigateTo("/login");
 
         [Inject] public IUserService Service { get; set; }
 

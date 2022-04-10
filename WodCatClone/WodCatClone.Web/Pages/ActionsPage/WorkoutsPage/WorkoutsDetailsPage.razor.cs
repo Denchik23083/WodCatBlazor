@@ -40,7 +40,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
             WorkoutExercises = Workout.Exercises.Split(",");
         }
 
-        public void Login() { _manager.NavigateTo("/login"); }
+        public void Login() => _manager.NavigateTo("/login"); 
 
         public void IsDisplayDialog() { EditDeleteResult.Show(); }
 
