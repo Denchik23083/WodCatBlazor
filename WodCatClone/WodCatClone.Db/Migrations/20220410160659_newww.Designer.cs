@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WodCatClone.Db;
 
 namespace WodCatClone.Db.Migrations
 {
     [DbContext(typeof(WodCatCloneContext))]
-    partial class WodCatCloneContextModelSnapshot : ModelSnapshot
+    [Migration("20220410160659_newww")]
+    partial class newww
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -93,7 +95,7 @@ namespace WodCatClone.Db.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("EmblemHallId")
+                    b.Property<int>("EmblemHallId")
                         .HasColumnType("int");
 
                     b.Property<string>("Location")
@@ -180,7 +182,7 @@ namespace WodCatClone.Db.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("EmblemHallId")
+                    b.Property<int>("EmblemHallId")
                         .HasColumnType("int");
 
                     b.Property<string>("Exercises")
@@ -268,7 +270,9 @@ namespace WodCatClone.Db.Migrations
                 {
                     b.HasOne("WodCatClone.Db.Entities.Actions.HallEmblem", "EmblemHall")
                         .WithMany()
-                        .HasForeignKey("EmblemHallId");
+                        .HasForeignKey("EmblemHallId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("WodCatClone.Db.Entities.Auth.User", "User")
                         .WithMany()
@@ -294,7 +298,9 @@ namespace WodCatClone.Db.Migrations
                 {
                     b.HasOne("WodCatClone.Db.Entities.Actions.HallEmblem", "EmblemHall")
                         .WithMany()
-                        .HasForeignKey("EmblemHallId");
+                        .HasForeignKey("EmblemHallId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("EmblemHall");
                 });

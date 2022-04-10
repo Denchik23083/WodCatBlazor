@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.WebDb.ActionsRepository.WorkoutsRepository;
 
@@ -24,11 +23,11 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService
             return _repository.GetWorkout(workoutId);
         }
 
-        public string GetImage(int imageId)
+        public string GetImage(int? imageId)
         {
             var hallEmblem = _repository.GetImage(imageId);
 
-            return hallEmblem.Image;
+            return hallEmblem?.Image;
         }
     }
 }

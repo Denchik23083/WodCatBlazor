@@ -9,6 +9,6 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService
 
         Workouts GetWorkout(int workoutId);
 
-        string GetImage(int imageId);
+        string GetImage(int? imageId);
     }
 }

@@ -43,7 +43,10 @@
                 </div>
                 <div class="row">
                     <div class="col text-center">
-                        <img src="@Image" alt="Image"/>
+                        @if (Workout.EmblemHallId is not null)
+                        {
+                            <img src="@Image" alt="Image"/>
+                        }
                     </div>
                 </div>
                 <div class="row">

@@ -16,7 +16,10 @@
             }
         </div>
         <div class="col-6 text-right">
-            <img src="@Image"/>
+            @if (Workouts.EmblemHallId is not null)
+            {
+                <img src="@Image"/>
+            }
         </div>
     </div>
 

@@ -29,7 +29,7 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
             return _context.Halls.FirstOrDefault(b => b.Id == hallId);
         }
 
-        public HallEmblem GetImage(int imageId)
+        public HallEmblem GetImage(int? imageId)
         {
             return _context.HallEmblem.FirstOrDefault(b => b.Id == imageId);
         }
