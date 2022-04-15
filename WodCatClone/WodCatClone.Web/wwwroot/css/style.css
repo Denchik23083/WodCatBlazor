@@ -271,15 +271,43 @@ a {cursor: pointer;}
     padding: 0;
     top: 95px;
 }
+.visualContainerId {
+    background-image: url("/img/gym_cover_def.jpg");
+    min-height: 600px;
+    justify-content: center;
+    background-size: 100%;
+    position: absolute;
+    align-items: center;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    padding: 0;
+    top: 95px;
+}
 .AddHall {
     color: #e8eaed;
     text-align: center;
     margin-top: 75px;
 }
+.HallId {
+    color: #e8eaed;
+    text-align: center;
+    background-color: #dededee6;
+    margin: 15px 300px;
+    border-radius: 5px;
+    padding: 30px;
+}
 .h1Add {
     font-size: 40px;
     line-height: 55px;
     font-weight: 500;
+}
+.h1Id {
+    font-size: 40px;
+    line-height: 42px;
+    font-weight: 700;
+    color: #8ab4f8;
+    text-transform: uppercase;
 }
 .h3Add {
     font-size: 18px;

@@ -3,7 +3,7 @@
 <HeaderComponent />
 
 <div class="row">
-    <div class="col visualContainer">
+    <div class="col visualContainerId">
         <div class="row" style="margin: 0 250px;">
             <div class="col-6 text-left text-light pages p-0 mb-3">
                 <a href="/" class="link">WODCAT</a> &rarr; 
@@ -13,8 +13,39 @@
                 <button class="btn text-white createHall" @*@onclick="Add*@">Редактировать</button>
             </div>
         </div>
-        <div class="AddHall">
-            <h1 class="h1Add" style="text-transform: uppercase">Добавить зал/клуб</h1>
+        <div class="HallId">
+            <div class="row">
+                <div class="col-4">
+                    <img src="@Image" style="background: white; width: 150px; height: 150px;" alt=""/>
+                </div>
+                <div class="col-8">
+                    <div class="row">
+                        <div class="col">
+                            <h1 class="h1Id">@Hall.Name</h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <img src="img/Ukraine.png" style="width: 30px; height: 20px;" class="mr-2"/>
+                            <strong style="color: #333333;">Украина, @Hall.Town</strong>
+                        </div>
+                    </div>
+                    @if (Hall.Rating is not null)
+                    {
+                        <div class="row">
+                            <div class="col">
+                                <span style="color: #4caf50;">@Hall.Rating / 10</span>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+
+                </div>
+            </div>
+            
             <h3 class="h3Add">Здесь вы можете добавить новый зал в каталог WODCAT</h3>
         </div>
     </div>

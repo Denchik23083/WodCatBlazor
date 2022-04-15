@@ -12,9 +12,12 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 
         public Halls Hall { get; set; }
 
+        public string Image { get; set; }
+
         protected override void OnInitialized()
         {
             Hall = HallsService.GetHall(HallId);
+            Image = HallsService.GetImage(Hall.EmblemHallId);
         }
     }
 }
