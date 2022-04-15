@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.WebDb.ActionsRepository.HallsRepository;
 
@@ -25,7 +26,13 @@ namespace WodCatClone.Logic.ActionsService.HallsService
 
         public Halls GetHall(int hallId)
         {
-            return _repository.GetHall(hallId);
+            var hall = _repository.GetHall(hallId);
+
+            hall.Type = hall.Type.Trim().Replace("\r", string.Empty);
+            hall.Type = hall.Type.Trim().Replace("\n", string.Empty);
+            hall.Type = hall.Type.Replace(Environment.NewLine, string.Empty);
+
+            return hall;
         }
 
         public string GetImage(int? imageId)

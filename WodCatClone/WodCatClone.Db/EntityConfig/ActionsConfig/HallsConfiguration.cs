@@ -15,6 +15,7 @@ namespace WodCatClone.Db.EntityConfig.ActionsConfig
             builder.Property(_ => _.Type);
             builder.Property(_ => _.Rating);
             builder.Property(_ => _.Description);
+            builder.Property(_ => _.Athletes).HasDefaultValue(0);
 
             builder.HasOne(_ => _.EmblemHall)
                 .WithMany()

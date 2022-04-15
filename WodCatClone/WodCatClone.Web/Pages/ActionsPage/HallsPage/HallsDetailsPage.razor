@@ -14,9 +14,9 @@
             </div>
         </div>
         <div class="HallId">
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-4">
-                    <img src="@Image" style="background: white; width: 150px; height: 150px;" alt=""/>
+                    <img src="@Image" style="background: white; width: 150px; height: 200px;" alt=""/>
                 </div>
                 <div class="col-8">
                     <div class="row">
@@ -41,12 +41,20 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col">
-
+                <div class="col p-3 mb-3" style="font-size: 20px;line-height: 21px;font-weight: 500;">
+                    @foreach (var item in Type)
+                    {
+                        <span style="color: grey;">@item</span>
+                        if (Value < Type.Length - 1)
+                        {
+                            <span style="color: grey;">,&nbsp;</span>
+                            Value++;
+                        }
+                    }
                 </div>
             </div>
             
-            <h3 class="h3Add">Здесь вы можете добавить новый зал в каталог WODCAT</h3>
+            
         </div>
     </div>
 </div>

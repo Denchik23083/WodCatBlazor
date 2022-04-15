@@ -14,10 +14,15 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 
         public string Image { get; set; }
 
+        public string[] Type { get; set; }
+
+        public int Value = 0;
+
         protected override void OnInitialized()
         {
             Hall = HallsService.GetHall(HallId);
             Image = HallsService.GetImage(Hall.EmblemHallId);
+            Type = Hall.Type.Split(",");
         }
     }
 }
