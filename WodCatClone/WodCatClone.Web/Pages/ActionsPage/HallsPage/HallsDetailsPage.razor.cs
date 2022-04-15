@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.HallsService;
+using WodCatClone.Logic.UserService;
 
 namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 {
@@ -10,11 +11,21 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 
         [Inject] public IHallsService HallsService { get; set; }
 
+        [Inject] public IUserService UserService { get; set; }
+
+        [Inject] public NavigationManager NavigationManager { get; set; }
+
         public Halls Hall { get; set; }
 
         public string Image { get; set; }
 
         public string[] Type { get; set; }
+
+        public bool UserJoin { get; set; }
+
+        public bool HallAthlete { get; set; }
+
+        public bool IsLoginUser { get; set; }
 
         public int Value = 0;
 
@@ -23,6 +34,18 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
             Hall = HallsService.GetHall(HallId);
             Image = HallsService.GetImage(Hall.EmblemHallId);
             Type = Hall.Type.Split(",");
+            IsLoginUser = UserService.IsLoginUser();
+        }
+
+        public void Join()
+        {
+            UserJoin = UserService.Join(Hall.Id);
+            HallAthlete = HallsService.AddAthlete(Hall.Id);
+
+            if (UserJoin && HallAthlete)
+            {
+                NavigationManager.NavigateTo($"/gymboxs/{HallId}", true);
+            }
         }
     }
 }

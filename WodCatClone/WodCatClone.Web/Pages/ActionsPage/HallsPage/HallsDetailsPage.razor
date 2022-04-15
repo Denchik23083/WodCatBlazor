@@ -53,8 +53,29 @@
                     }
                 </div>
             </div>
-            
-            
+            <div class="row">
+                <div class="col countAthletes" style="margin: 0 400px;">
+                    @Hall.Athletes
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col text-center">
+                    <span class="athletes">Атлетов</span>
+                </div>
+            </div>
+            @if (IsLoginUser)
+            {
+                <div class="row mb-3">
+                    <div class="col">
+                        <button class="joinHall" @onclick="Join">Присоединиться</button>
+                    </div>
+                </div>
+            }
+            <div class="row mb-3">
+                <div class="col text-center">
+                    <strong style="color: #333333;">Whiteboard</strong>
+                </div>
+            </div>
         </div>
     </div>
 </div>

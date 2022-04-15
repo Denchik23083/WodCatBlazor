@@ -21,5 +21,10 @@ namespace WodCatClone.Logic.UserService
         {
             return _repository.GetUser(AuthService.AuthService.User);
         }
+
+        public bool Join(int hallId)
+        {
+            return _repository.Join(hallId);
+        }
     }
 }

@@ -314,3 +314,33 @@ a {cursor: pointer;}
     font-weight: 300;
     line-height: 40px;
 }
+.countAthletes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    height: 85px;
+    width: 85px;
+    border-radius: 10px;
+    background-color: #424242;
+}
+.athletes {
+    text-align: center;
+    font-size: 15px;
+    line-height: 30px;
+    font-weight: 700;
+    text-shadow: 1px 1px 0 #424242;
+}
+.joinHall {
+    color: #424242;
+    font-size: 20px;
+    padding: 22px 30px;
+    background-color: #cf6679;
+    margin: 0 auto;
+    border-radius: 5px;
+    border: 0;
+}
+.joinHall:hover {background-color: #ff345f;}

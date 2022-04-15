@@ -14,5 +14,7 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
         HallEmblem GetImage(int? imageId);
 
         bool AddHall(Halls hall);
+
+        bool AddAthlete(int hallId);
     }
 }
