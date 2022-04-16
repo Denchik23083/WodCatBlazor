@@ -21,20 +21,22 @@ namespace WodCatClone.WebDb.UserRepository
             return User;
         }
 
-        public bool Join(int hallId)
+        public void Join(int hallId)
         {
             var user = _context.Users.FirstOrDefault(b => b.Id == User.Id);
-
-            if (user is null)
-            {
-                return false;
-            }
 
             user!.HallId = hallId;
 
             _context.SaveChanges();
+        }
+        
+        public void Exit(int hallId)
+        {
+            var user = _context.Users.FirstOrDefault(b => b.Id == User.Id);
 
-            return true;
+            user!.HallId = null;
+
+            _context.SaveChanges();
         }
     }
 }

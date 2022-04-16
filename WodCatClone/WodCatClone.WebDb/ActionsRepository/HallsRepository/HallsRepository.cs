@@ -51,20 +51,32 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
             return true;
         }
 
-        public bool AddAthlete(int hallId)
+        public void AddAthlete(int hallId)
+        {
+            var loginUser = UserRepository.UserRepository.User;
+            var user = _context.Users.FirstOrDefault(b => b.Id == loginUser.Id);
+
+            var userHall = _context.Halls.FirstOrDefault(b => b.Id == user.HallId);
+
+            if (userHall is not null)
+            {
+                userHall!.Athletes -= 1;
+            }
+
+            var hall = _context.Halls.FirstOrDefault(b => b.Id == hallId);
+
+            hall!.Athletes += 1;
+
+            _context.SaveChanges();
+        }
+
+        public void RemoveAthlete(int hallId)
         {
             var hall = _context.Halls.FirstOrDefault(b => b.Id == hallId);
 
-            if (hall is null)
-            {
-                return false;
-            }
-
-            hall.Athletes += 1;
+            hall!.Athletes -= 1;
 
             _context.SaveChanges();
-
-            return true;
         }
     }
 }

@@ -7,5 +7,7 @@ namespace WodCatClone.Logic.AuthService
         bool Login(Login login);
 
         bool Register(Register register);
+
+        bool Logout();
     }
 }

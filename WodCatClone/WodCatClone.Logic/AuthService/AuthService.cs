@@ -33,5 +33,13 @@ namespace WodCatClone.Logic.AuthService
         {
             return _repository.Register(register);
         }
+
+        public bool Logout()
+        {
+            User = null;
+            IsLoginUser = false;
+
+            return true;
+        }
     }
 }

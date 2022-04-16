@@ -8,6 +8,8 @@ namespace WodCatClone.Logic.UserService
 
         User GetUser();
 
-        bool Join(int hallId);
+        void Join(int hallId);
+
+        void Exit(int hallId);
     }
 }
