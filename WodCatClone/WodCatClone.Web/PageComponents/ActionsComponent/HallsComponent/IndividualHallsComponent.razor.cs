@@ -6,7 +6,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
 {
     public partial class IndividualHallsComponent
     {
-        [Parameter] public Halls Halls { get; set; }
+        [Parameter] public Halls Hall { get; set; }
 
         [Inject] public IHallsService HallsService { get; set; }
 
@@ -19,9 +19,9 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
 
         protected override void OnInitialized()
         {
-            _url = $"gymboxs/{Halls.Id}";
-            HallsType = Halls.Type.Split(",");
-            Image = HallsService.GetImage(Halls.EmblemHallId);
+            _url = $"gymboxs/{Hall.Id}";
+            HallsType = Hall.Type.Split(",");
+            Image = HallsService.GetImage(Hall.EmblemHallId);
         }
     }
 }

@@ -284,6 +284,19 @@ a {cursor: pointer;}
     padding: 0;
     top: 95px;
 }
+.footerHall {
+    background-color: #424242;
+    justify-content: center;
+    background-size: 100%;
+    position: absolute;
+    align-items: center;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    padding: 0;
+}
+.loginTop {top: 790px;}
+.notLoginTop {top: 695px;}
 .AddHall {
     color: #e8eaed;
     text-align: center;
@@ -296,6 +309,20 @@ a {cursor: pointer;}
     margin: 15px 300px;
     border-radius: 5px;
     padding: 30px;
+}
+.footerLocation {
+    color: #e8eaed;
+    text-align: center;
+    margin: 15px 300px;
+    border-radius: 5px;
+    padding: 30px;
+}
+.location {
+    font-size: 40px;
+    line-height: 40px;
+    text-transform: uppercase;
+    color: #8ab4f8;
+    font-weight: bold;
 }
 .h1Add {
     font-size: 40px;
@@ -334,13 +361,16 @@ a {cursor: pointer;}
     font-weight: 700;
     text-shadow: 1px 1px 0 #424242;
 }
-.joinHall {
+.joinHall, .exitHall {
     color: #424242;
     font-size: 20px;
     padding: 22px 30px;
-    background-color: #cf6679;
     margin: 0 auto;
     border-radius: 5px;
     border: 0;
+    color: white;
 }
-.joinHall:hover {background-color: #ff345f;}
+.exitHall:hover { background-color: red;}
+.joinHall:hover {background-color: blue;}
+.joinHall {background-color: #2196f3;}
+.exitHall {background-color: #ff0036;}

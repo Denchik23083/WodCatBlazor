@@ -28,6 +28,8 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 
         public int Value = 0;
 
+        public string Top = "notLoginTop";
+
         protected override void OnInitialized()
         {
             Hall = HallsService.GetHall(HallId);
@@ -35,6 +37,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
             Type = Hall.Type.Split(",");
             IsLoginUser = UserService.IsLoginUser();
             User = UserService.GetUser();
+            if (IsLoginUser) { Top = "loginTop"; }
         }
 
         public void Join()
