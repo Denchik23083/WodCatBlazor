@@ -3,6 +3,8 @@ using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.ActionsService.HallsService;
 using WodCatClone.Logic.UserService;
+using WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent;
+using WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent;
 
 namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 {
@@ -15,6 +17,8 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
         [Inject] public IUserService UserService { get; set; }
 
         [Inject] public NavigationManager NavigationManager { get; set; }
+
+        public ConfirmRemoveHall ConfirmRemoveHall { get; set; }
 
         public Halls Hall { get; set; }
 
@@ -40,17 +44,11 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
             if (IsLoginUser) { Top = "loginTop"; }
         }
 
-        public void Edit()
-        {
-            NavigationManager.NavigateTo($"/gymboxs/{HallId}/edit");
-        }
+        public void Edit() => NavigationManager.NavigateTo($"/gymboxs/{HallId}/edit");
 
-        public void Remove()
-        {
-            var result = HallsService.RemoveHall(HallId);
+        public void OnShow() => ConfirmRemoveHall.Show(); 
 
-            NavigationManager.NavigateTo(result ? "/gymboxs" : $"/gymboxs/{HallId}");
-        }
+        public void OnCancel() => ConfirmRemoveHall.Hide(); 
 
         public void Join()
         {
