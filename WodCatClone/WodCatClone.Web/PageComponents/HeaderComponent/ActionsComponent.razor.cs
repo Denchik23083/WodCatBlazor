@@ -12,10 +12,8 @@ namespace WodCatClone.Web.PageComponents.HeaderComponent
 
         public List<SelectedLink> Actions = new()
         {
-            new() { Content = "ПРОГРАММЫ", Link = "/programs" },
             new() { Content = "ТРЕНИРОВКИ", Link = "/workouts" },
             new() { Content = "УПРАЖНЕНИЯ", Link = "/exercises" },
-            new() { Content = "МЕРОПРИЯТИЯ", Link = "/events" },
             new() { Content = "ЗАЛЫ", Link = "/gymboxs" },
             new() { Content = "РЕЙТИНГИ", Link = " /ratings" },
             new() { Content = "СТАТЬИ", Link = "/articles" }
