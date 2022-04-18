@@ -40,6 +40,11 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
             if (IsLoginUser) { Top = "loginTop"; }
         }
 
+        public void Edit()
+        {
+            NavigationManager.NavigateTo($"/gymboxs/{HallId}/edit");
+        }
+
         public void Join()
         {
             HallsService.AddAthlete(Hall.Id);

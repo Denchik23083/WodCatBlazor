@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
+namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 {
     #line hidden
     using System;
@@ -145,7 +145,8 @@ using WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent;
 #line default
 #line hidden
 #nullable disable
-    public partial class AddHallComponent : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/gymboxs/{HallId:int}/edit")]
+    public partial class EditHallPage : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)

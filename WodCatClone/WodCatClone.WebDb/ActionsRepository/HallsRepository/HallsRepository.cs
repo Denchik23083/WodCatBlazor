@@ -51,6 +51,28 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
             return true;
         }
 
+        public bool EditHall(Halls hall, int hallId)
+        {
+            var hallToEdit = _context.Halls.FirstOrDefault(b => b.Id == hallId);
+
+            if (hallToEdit is null)
+            {
+                return false;
+            }
+
+            hallToEdit.Name = hall.Name;
+            hallToEdit.Type = hall.Type;
+            hallToEdit.Town = hall.Town;
+            hallToEdit.Location = hall.Location;
+            hallToEdit.Rating = hall.Rating;
+            hallToEdit.Description = hall.Description;
+            hallToEdit.EmblemHallId = hall.EmblemHallId;
+
+            _context.SaveChanges();
+
+            return true;
+        }
+
         public void AddAthlete(int hallId)
         {
             var loginUser = UserRepository.UserRepository.User;

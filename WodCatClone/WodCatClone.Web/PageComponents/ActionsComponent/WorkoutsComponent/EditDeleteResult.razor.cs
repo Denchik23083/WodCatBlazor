@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
-using WodCatClone.Logic.ActionsService.WorkoutsService;
 using WodCatClone.Logic.UserService;
 
 namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
@@ -23,6 +22,8 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
         public bool DisplayEditResult { get; set; } = true;
 
         public ResultWorkouts _editResultWorkout = new();
+
+        public ResultWorkouts Result { get; set; }
 
         public void Show() => DisplayEditDeleteResult = true;
 

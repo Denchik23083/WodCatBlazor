@@ -27,13 +27,13 @@
             </div>
         </div>
         <div class="col-6">
-            <EditForm Model="AddHall" OnSubmit="Submit">
+            <EditForm Model="Hall" OnSubmit="Submit">
                 <DataAnnotationsValidator />
                 <ValidationSummary />
                 <div class="row">
                     <div class="col mb-2">
                         <InputText
-                            @bind-Value="AddHall.Name"
+                            @bind-Value="Hall.Name"
                             class="selectedFormResult mb-2 mr-2"
                             placeholder="Имя Клуба"/>
                     </div>
@@ -79,7 +79,7 @@
                 <div class="row">
                     <div class="col mb-2">
                         <InputText
-                            @bind-Value="AddHall.Location"
+                            @bind-Value="Hall.Location"
                             class="selectedFormResult mb-2"
                             placeholder="Адрес"/>
                     </div>
@@ -87,7 +87,7 @@
                 <div class="row">
                     <div class="col mb-2">
                         <InputText
-                            @bind-Value="AddHall.Rating"
+                            @bind-Value="Hall.Rating"
                             class="selectedFormResult mb-2"
                             placeholder="Рейтинг от 1 до 10"/>
                     </div>
@@ -97,7 +97,7 @@
                         <textarea 
                                 placeholder="Описание" 
                                 class="textarea" 
-                                @bind="AddHall.Description">                                
+                                @bind="Hall.Description">                                
                         </textarea>
                     </div>
                 </div>

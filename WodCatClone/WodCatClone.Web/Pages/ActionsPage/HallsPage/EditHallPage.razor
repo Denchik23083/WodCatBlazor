@@ -1,0 +1,18 @@
+﻿@page "/gymboxs/{HallId:int}/edit"
+
+<HeaderComponent />
+
+<div class="row">
+    <div class="col visualContainer">
+        <button class="gymList" @onclick="BackToGymList">Back to gym page</button>
+        <div class="AddHall">
+            <h1 class="h1Add">Редактирование зала/клуба</h1>
+            <h3 class="h3Add">Здесь вы можете изменить данные о зале в каталоге WODCAT</h3>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col wrapperHalls">
+        <AddEditHallComponent Add="false" Edit="true" HallId="HallId"/>
+    </div>
+</div>

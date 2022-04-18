@@ -7,15 +7,21 @@ using WodCatClone.Web.Helpers;
 
 namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
 {
-    public partial class AddHallComponent
+    public partial class AddEditHallComponent
     {
         [Inject] public IHallsService HallsService { get; set; }
 
         [Inject] public NavigationManager NavigationManager { get; set; }
 
+        [Parameter] public bool Edit { get; set; }
+
+        [Parameter] public bool Add { get; set; }
+
+        [Parameter] public int HallId { get; set; }
+
         public IEnumerable<HallEmblem> HallEmblem { get; set; }
 
-        public Halls AddHall = new();
+        public Halls Hall = new();
 
         public bool IsDisplaySubmitButton { get; set; } = false;
 
@@ -77,18 +83,28 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
             {
                 if (Value == 0)
                 {
-                    AddHall.Type = $"{item}";
+                    Hall.Type = $"{item}";
                     Value++;
                 }
                 else
                 {
-                    AddHall.Type += $",{item}";
+                    Hall.Type += $",{item}";
                 }
             }
 
-            var result = HallsService.AddHall(AddHall);
+            if (Add)
+            {
+                var result = HallsService.AddHall(Hall);
 
-            NavigationManager.NavigateTo(result ? "/gymboxs" : "/gymboxs/add");
+                NavigationManager.NavigateTo(result ? "/gymboxs" : "/gymboxs/add");
+            }
+
+            if (Edit)
+            {
+                var result = HallsService.EditHall(Hall, HallId);
+
+                NavigationManager.NavigateTo(result ? $"/gymboxs/{HallId}" : $"/gymboxs/{HallId}/edit");
+            }
         }
 
         public void RemoveSelectedType(string item)
@@ -114,7 +130,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
 
             if (hallEmblem is not null)
             {
-                AddHall.EmblemHallId = hallEmblem.Id;
+                Hall.EmblemHallId = hallEmblem.Id;
                 IsImage = true;
             }
 
@@ -136,7 +152,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
             else
             {
                 IsTown = true;
-                AddHall.Town = selected;
+                Hall.Town = selected;
             }
 
             if (IsTown && IsImage)

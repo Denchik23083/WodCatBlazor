@@ -47,6 +47,11 @@ namespace WodCatClone.Logic.ActionsService.HallsService
             return _repository.AddHall(hall);
         }
 
+        public bool EditHall(Halls hall, int hallId)
+        {
+            return _repository.EditHall(hall, hallId);
+        }
+
         public void AddAthlete(int hallId)
         {
             _repository.AddAthlete(hallId);
