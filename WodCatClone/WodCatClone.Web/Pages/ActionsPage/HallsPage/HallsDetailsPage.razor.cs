@@ -45,6 +45,13 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
             NavigationManager.NavigateTo($"/gymboxs/{HallId}/edit");
         }
 
+        public void Remove()
+        {
+            var result = HallsService.RemoveHall(HallId);
+
+            NavigationManager.NavigateTo(result ? "/gymboxs" : $"/gymboxs/{HallId}");
+        }
+
         public void Join()
         {
             HallsService.AddAthlete(Hall.Id);

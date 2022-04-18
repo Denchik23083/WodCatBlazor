@@ -17,6 +17,8 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
 
         bool EditHall(Halls hall, int hallId);
 
+        bool RemoveHall(int hallId);
+
         void AddAthlete(int hallId);
 
         void RemoveAthlete(int hallId);

@@ -73,6 +73,21 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
             return true;
         }
 
+        public bool RemoveHall(int hallId)
+        {
+            var hallToRemove = _context.Halls.FirstOrDefault(b => b.Id == hallId);
+
+            if (hallToRemove is null)
+            {
+                return false;
+            }
+
+            _context.Halls.Remove(hallToRemove);
+            _context.SaveChanges();
+
+            return true;
+        }
+
         public void AddAthlete(int hallId)
         {
             var loginUser = UserRepository.UserRepository.User;
