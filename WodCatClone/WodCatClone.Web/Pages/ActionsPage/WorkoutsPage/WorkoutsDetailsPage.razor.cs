@@ -42,15 +42,15 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
 
         public void Login() => _manager.NavigateTo("/login"); 
 
-        public void IsDisplayDialog() { EditDeleteResult.Show(); }
+        public void IsDisplayDialog() => EditDeleteResult.Show();
 
-        public void OnCancel() { EditDeleteResult.Hide(); }
+        public void OnCancel() => EditDeleteResult.Hide(); 
 
-        public void OnCancelEdit() { EditDeleteResult.EditHide(); }
+        public void OnCancelEdit() => EditDeleteResult.EditHide(); 
 
-        public void OnCancelEditStart() { StartWorkout.Hide(); }
+        public void OnCancelEditStart() => StartWorkout.Hide(); 
 
-        public void Start() { StartWorkout.Show(); }
+        public void Start() => StartWorkout.Show(); 
 
         public void OnDelete()
         {

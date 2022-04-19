@@ -1,4 +1,5 @@
-﻿using WodCatClone.Db.Entities.Auth;
+﻿using System.Collections.Generic;
+using WodCatClone.Db.Entities.Auth;
 using WodCatClone.WebDb.UserRepository;
 
 namespace WodCatClone.Logic.UserService
@@ -10,6 +11,11 @@ namespace WodCatClone.Logic.UserService
         public UserService(IUserRepository repository)
         {
             _repository = repository;
+        }
+
+        public IEnumerable<User> GetAllUsers()
+        {
+            return _repository.GetAllUsers();
         }
 
         public bool IsLoginUser()

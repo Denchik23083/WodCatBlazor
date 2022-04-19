@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using WodCatClone.Db;
 using WodCatClone.Db.Entities.Auth;
 
@@ -12,6 +13,11 @@ namespace WodCatClone.WebDb.UserRepository
         public UserRepository(WodCatCloneContext context)
         {
             _context = context;
+        }
+
+        public IEnumerable<User> GetAllUsers()
+        {
+            return _context.Users.OrderBy(b => b.Points).Reverse();
         }
 
         public User GetUser(User user)

@@ -41,7 +41,8 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
             Type = Hall.Type.Split(",");
             IsLoginUser = UserService.IsLoginUser();
             User = UserService.GetUser();
-            if (IsLoginUser) { Top = "loginTop"; }
+
+            if (IsLoginUser) Top = "loginTop";
         }
 
         public void Edit() => NavigationManager.NavigateTo($"/gymboxs/{HallId}/edit");
