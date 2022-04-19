@@ -35,6 +35,11 @@ namespace WodCatClone.Logic.ActionsService.HallsService
             return hall;
         }
 
+        public Halls GetHall(int? hallId)
+        {
+            return _repository.GetHall(hallId);
+        }
+
         public string GetImage(int? imageId)
         {
             var hallEmblem = _repository.GetImage(imageId);

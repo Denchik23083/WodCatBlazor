@@ -11,6 +11,8 @@ namespace WodCatClone.Logic.ActionsService.HallsService
 
         Halls GetHall(int hallId);
 
+        Halls GetHall(int? userHallId);
+
         string GetImage(int? imageId);
 
         bool AddHall(Halls hall);
