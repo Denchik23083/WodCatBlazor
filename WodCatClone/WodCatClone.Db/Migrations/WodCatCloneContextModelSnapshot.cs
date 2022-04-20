@@ -19,6 +19,61 @@ namespace WodCatClone.Db.Migrations
                 .HasAnnotation("ProductVersion", "5.0.14")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Articles", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("ArticlesEmblemId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Rating")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ArticlesEmblemId");
+
+                    b.ToTable("Articles");
+                });
+
+            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.ArticlesEmblem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ArticlesEmblem");
+                });
+
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Exercises", b =>
                 {
                     b.Property<int>("Id")
@@ -272,6 +327,15 @@ namespace WodCatClone.Db.Migrations
                     b.HasIndex("HallId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Articles", b =>
+                {
+                    b.HasOne("WodCatClone.Db.Entities.Actions.ArticlesEmblem", "ArticlesEmblem")
+                        .WithMany()
+                        .HasForeignKey("ArticlesEmblemId");
+
+                    b.Navigation("ArticlesEmblem");
                 });
 
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Halls", b =>

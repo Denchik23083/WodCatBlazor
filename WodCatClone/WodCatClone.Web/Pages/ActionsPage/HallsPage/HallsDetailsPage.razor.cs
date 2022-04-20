@@ -4,7 +4,6 @@ using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.ActionsService.HallsService;
 using WodCatClone.Logic.UserService;
 using WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent;
-using WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent;
 
 namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 {
