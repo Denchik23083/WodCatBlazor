@@ -6,6 +6,6 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
 {
     public partial class ListArticlesComponent
     {
-        [Parameter] public IEnumerable<Exercises> ListOfItems { get; set; }
+        [Parameter] public IEnumerable<Articles> ListOfItems { get; set; }
     }
 }

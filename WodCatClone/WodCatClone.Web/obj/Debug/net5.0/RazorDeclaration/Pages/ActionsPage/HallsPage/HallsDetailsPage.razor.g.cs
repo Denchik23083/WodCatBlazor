@@ -152,6 +152,13 @@ using WodCatClone.Web.PageComponents.ActionsComponent.RatingsComponent;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 21 "C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\_Imports.razor"
+using WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/gymboxs/{HallId:int}")]
     public partial class HallsDetailsPage : Microsoft.AspNetCore.Components.ComponentBase
     {

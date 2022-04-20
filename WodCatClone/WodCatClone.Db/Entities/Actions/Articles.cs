@@ -14,8 +14,8 @@
 
         public string Rating { get; set; }
 
-        public int? ArticlesEmblemId { get; set; }
+        public int ArticlesEmblemId { get; set; }
 
-        public ArticlesEmblem ArticlesEmblem { get; set; }
+        public ArticlesEmblem ArticleEmblem { get; set; }
     }
 }

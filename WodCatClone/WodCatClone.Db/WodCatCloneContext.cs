@@ -26,5 +26,9 @@ namespace WodCatClone.Db
         public DbSet<Halls> Halls { get; set; }
 
         public DbSet<HallEmblem> HallEmblem { get; set; }
+
+        public DbSet<Articles> Articles { get; set; }
+
+        public DbSet<ArticlesEmblem> ArticlesEmblem { get; set; }
     }
 }

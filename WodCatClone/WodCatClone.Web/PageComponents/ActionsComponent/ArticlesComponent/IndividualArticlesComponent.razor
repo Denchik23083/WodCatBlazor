@@ -1,38 +1,31 @@
 ﻿<div class="exercises mb-3">
-    <div class="row ml-1 mt-3 mr-1 mb-3">
+    <div class="row p-3">
         <div class="col">
-            <a class="Name" href="@_url">@Exercises.Name</a>
-            <span class="cub">@Exercises.Modality</span>
+            <a class="ArticleName" href="@_url">@Article.Name</a>
         </div>
     </div>
-
-    <div class="row ml-1 mt-3 mr-1 mb-3">
-        <div class="col-6">
-            @Exercises.Description
+    @if (Article.Rating is not null)
+    {
+        <div class="row p-3 pt-0">
+            <div class="col">
+                <span class="greenCub" style="margin-left: 0">@Article.Rating / 10</span>
+            </div>
         </div>
-        <div class="col-6">
-            <iframe
-                width="600"
-                height="300"
-                src="@Exercises.Image"
-                frameborder="0"
-                allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture"
-                allowfullscreen>
-            </iframe>
+    }
+    <div class="row p-3">
+        <div class="col-3">
+            <div class="ArticleImage" style="background-image: url(/@Image)"></div>
+        </div>
+        <div class="col-9">
+            @Article.Description
         </div>
     </div>
-
-    <div class="row  ml-1 mt-3 mr-1 mb-3">
-        <div class="col-4 text-left">
-            <span>Сложность: @Exercises.Complexity</span>
-        </div>
-
-        <div class="col-4 text-center">
-            <span>Движения: @Exercises.Movement</span>
-        </div>
-
-        <div class="col-4 text-right">
-            <span>Инвентарь: @Exercises.Inventory</span>
+    <div class="row p-3">
+        <div class="col">
+            @foreach (var item in Article.Type.Split(","))
+            {
+                <span class="articlesType">@item&nbsp;&nbsp;</span>
+            }
         </div>
     </div>
 </div>

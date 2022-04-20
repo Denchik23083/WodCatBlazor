@@ -19,6 +19,26 @@ namespace WodCatClone.Db.Migrations
                 .HasAnnotation("ProductVersion", "5.0.14")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.ArticleEmblem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ArticleEmblem");
+                });
+
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Articles", b =>
                 {
                     b.Property<int>("Id")
@@ -26,7 +46,7 @@ namespace WodCatClone.Db.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ArticlesEmblemId")
+                    b.Property<int>("ArticlesEmblemId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -52,26 +72,6 @@ namespace WodCatClone.Db.Migrations
                     b.HasIndex("ArticlesEmblemId");
 
                     b.ToTable("Articles");
-                });
-
-            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.ArticlesEmblem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Image")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ArticlesEmblem");
                 });
 
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Exercises", b =>
@@ -331,11 +331,13 @@ namespace WodCatClone.Db.Migrations
 
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Articles", b =>
                 {
-                    b.HasOne("WodCatClone.Db.Entities.Actions.ArticlesEmblem", "ArticlesEmblem")
+                    b.HasOne("WodCatClone.Db.Entities.Actions.ArticleEmblem", "ArticleEmblem")
                         .WithMany()
-                        .HasForeignKey("ArticlesEmblemId");
+                        .HasForeignKey("ArticlesEmblemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("ArticlesEmblem");
+                    b.Navigation("ArticleEmblem");
                 });
 
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Halls", b =>

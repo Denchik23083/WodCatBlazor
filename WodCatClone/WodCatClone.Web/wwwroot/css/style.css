@@ -127,8 +127,16 @@ a {cursor: pointer;}
     height: 100%;
 }
 .workouts:hover {background-color: black;}
-.workoutsTimeId {
-    color: #a3a3a3;
+.workoutsTimeId, .articlesType {color: #a3a3a3;}
+.ArticleName {
+    width: 200px;
+    font-weight: bold;
+    color: #8ab4f8;
+    font-size: 32px;
+}
+.ArticleName:hover {
+    color: #8ab4f8;
+    text-decoration: none;
 }
 .Name {
     width: 200px;
@@ -257,6 +265,11 @@ a {cursor: pointer;}
 .displayDialog:hover {
     background-color: black;
     cursor: pointer;
+}
+.ArticleImage {
+    min-height: 300px;
+    min-width: 300px;
+    background-size: 100%;
 }
 .visualContainer {
     background-image: url("/img/addgym-bg.jpg");
