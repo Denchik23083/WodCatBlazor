@@ -1,3 +1,103 @@
 ﻿@page "/articles/{ArticleId:int}"
 
-@ArticleId
+<HeaderComponent />
+
+<div class="wrapperId">
+    <div class="row mb-2">
+        <div class="col text-left text-light pages">
+            <a href="/" class="link">WODCAT</a>&nbsp;&rarr;&nbsp;
+            <a href="/articles" class="link">Статьи</a>&nbsp;&rarr;&nbsp;
+            @Article.Name
+        </div>
+    </div>
+    <div class="row mb-2">
+        <div class="col">
+            <span class="NameId">@Article.Name</span>
+            @foreach (var item in Article.Type.Split(","))
+            {
+                <span class="cubId">@item</span>
+            }
+        </div>
+    </div>
+    @if (Image is not null)
+    {
+        <div class="row mb-2">
+            <div class="col-5">
+                <div class="exercisesId p-3">
+                    @if (Article.Rating is null)
+                    {
+                        @Article.Description
+                    }
+                    else
+                    {
+                        <div class="row mb-2">
+                            <div class="col">
+                                @Article.Description
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                @Article.Rating / 10
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="exercisesId p-3">
+                    <img src="@Image" style="width: 100%; height: auto;"/>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="exercisesId p-3">
+                    <span style="color: blue">7 причин, почему нужно заниматься CrossFit
+                        The Role of Skeletal Muscle Insulin Resistance in the Pathogenesis of the Metabolic Syndrome
+                        How do U.S. Marines stack up when it comes to conquering the Navy SEALs fitness test?</span>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row mb-2">
+            <div class="col-6">
+                <div class="exercisesId p-3">
+                    @if (Article.Rating is null)
+                    {
+                        @Article.Description
+                    }
+                    else
+                    {
+                        <div class="row mb-2">
+                            <div class="col">
+                                @Article.Description
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                @Article.Rating / 10
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="exercisesId p-3">
+                    <span style="color: blue">7 причин, почему нужно заниматься CrossFit
+                        The Role of Skeletal Muscle Insulin Resistance in the Pathogenesis of the Metabolic Syndrome
+                        How do U.S. Marines stack up when it comes to conquering the Navy SEALs fitness test?</span>
+                </div>
+            </div>
+        </div>
+    }
+    <div class="row">
+        <div class="col">
+            <h2 class="NameId">Описание</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p class="full">@Article.FullDescription</p>
+        </div>
+    </div>
+</div>
