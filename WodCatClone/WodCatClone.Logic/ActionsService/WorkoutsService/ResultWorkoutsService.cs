@@ -30,6 +30,8 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService
 
         public bool AddResultWorkouts(ResultWorkouts resultWorkouts)
         {
+            resultWorkouts.UserId = AuthService.AuthService.User.Id;
+
             return _repository.AddResultWorkouts(resultWorkouts);
         }
 

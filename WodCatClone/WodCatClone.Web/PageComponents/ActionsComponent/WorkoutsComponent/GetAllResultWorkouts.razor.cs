@@ -19,14 +19,16 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         public int ResultWorkoutId { get; set; }
 
+        public IndividualResultWorkouts Irw { get; set; }
+
         public IEnumerable<ResultWorkouts> ResultWorkouts { get; set; }
 
-        public User user = new();
+        public User User { get; set; }
 
         protected override void OnInitialized()
         {
             ResultWorkouts = _service.GetAllResultWorkouts(WorkoutId);
-            user = _userService.GetUser();
+            User = _userService.GetUser();
         }
 
         public void PostId(int itemId)

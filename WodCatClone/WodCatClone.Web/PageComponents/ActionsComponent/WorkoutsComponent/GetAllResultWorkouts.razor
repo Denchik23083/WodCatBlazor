@@ -1,4 +1,4 @@
-﻿@if (user is not null)
+﻿@if (User is not null)
 {
     <h2 class="text-white">@ResultWorkouts.Count() результатов</h2>
     <hr class="hr"/>
@@ -13,24 +13,26 @@
             <th scope="col">Дата</th>
             <th scope="col">Увлекательность</th>
             <th scope="col">Нагрузка</th>
-            <th scope="col">Комме.</th>
         </tr>
         </thead>
-        <tbody @onclick="IsDisplayDialog">
         @foreach (var item in ResultWorkouts)
         {
-            <tr class="displayDialog" @onclick="() => PostId(item.Id)">
-                <td>@user.Name</td>
-                <td>@item.Minutes<span>m</span>:@item.Seconds<span>s</span></td>
-                <td>@item.Repeat</td>
-                <td>@user.Country</td>
-                <td>@user.Town</td>
-                <td>@item.PublishDate</td>
-                <td>@item.Fascination</td>
-                <td>@item.Load</td>
-                <td>@item.Comment</td>
-            </tr>
+            if (item.UserId == User.Id)
+            {
+                <tbody @onclick="IsDisplayDialog">
+                    <tr class="displayDialog" @onclick="() => PostId(item.Id)">
+                        <IndividualResultWorkouts ResultWorkout="item"/>
+                    </tr>
+                </tbody>
+            }
+            else
+            {
+                <tbody>
+                    <tr class="displayDialog">
+                        <IndividualResultWorkouts ResultWorkout="item"/>
+                    </tr>
+                </tbody>
+            }
         }
-        </tbody>
     </table>
 }

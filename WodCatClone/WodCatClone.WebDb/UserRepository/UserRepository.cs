@@ -27,6 +27,11 @@ namespace WodCatClone.WebDb.UserRepository
             return User;
         }
 
+        public User GetUser(int? id)
+        {
+            return _context.Users.FirstOrDefault(b => b.Id == id);
+        }
+
         public void Join(int hallId)
         {
             var user = _context.Users.FirstOrDefault(b => b.Id == User.Id);

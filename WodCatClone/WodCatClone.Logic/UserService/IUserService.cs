@@ -11,6 +11,8 @@ namespace WodCatClone.Logic.UserService
 
         User GetUser();
 
+        User GetUser(int? id);
+
         void Join(int hallId);
 
         void Exit(int hallId);

@@ -21,6 +21,10 @@ namespace WodCatClone.Db.EntityConfig.ActionsConfig
             builder.HasOne(_ => _.Workouts)
                 .WithMany()
                 .HasForeignKey(_ => _.WorkoutId);
+
+            builder.HasOne(_ => _.User)
+                .WithMany()
+                .HasForeignKey(b => b.UserId);
         }
     }
 }

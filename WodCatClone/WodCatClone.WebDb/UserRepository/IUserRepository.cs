@@ -9,6 +9,8 @@ namespace WodCatClone.WebDb.UserRepository
 
         User GetUser(User user);
 
+        User GetUser(int? id);
+
         void Join(int hallId);
 
         void Exit(int hallId);

@@ -1,4 +1,5 @@
 ﻿using System;
+using WodCatClone.Db.Entities.Auth;
 
 namespace WodCatClone.Db.Entities.Actions
 {
@@ -23,5 +24,9 @@ namespace WodCatClone.Db.Entities.Actions
         public int WorkoutId { get; set; }
 
         public Workouts Workouts { get; set; }
+
+        public int? UserId { get; set; }
+
+        public User User { get; set; }
     }
 }
