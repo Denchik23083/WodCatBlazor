@@ -30,6 +30,8 @@ namespace WodCatClone.Logic.UserService
 
         public void Join(int hallId)
         {
+            AuthService.AuthService.User.HallId = hallId;
+
             _repository.Join(hallId);
         }
 
