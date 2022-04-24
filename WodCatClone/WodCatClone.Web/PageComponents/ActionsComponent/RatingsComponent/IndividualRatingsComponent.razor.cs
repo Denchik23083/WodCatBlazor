@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.ActionsService.HallsService;
 using WodCatClone.Logic.UserService;
@@ -18,17 +17,17 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.RatingsComponent
 
         public string Image { get; set; }
 
-        public IEnumerable<User> Users { get; set; }
+        public string Gender { get; set; }
 
         protected override void OnInitialized()
         {
-            Users = UserService.GetAllUsers();
-
             var hall  = HallsService.GetHall(User.HallId);
             if (hall is not null)
             {
                 Image = HallsService.GetImage(hall.EmblemHallId);
             }
+
+            Gender = UserService.GetGender(User.GenderId);
         }
     }
 }

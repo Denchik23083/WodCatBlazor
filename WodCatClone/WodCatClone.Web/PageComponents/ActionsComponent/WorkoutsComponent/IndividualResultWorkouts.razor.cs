@@ -12,10 +12,14 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
         [Inject] public IUserService UserService { get; set; }
 
         public User User { get; set; }
+        
+        public string Image { get; set; }
 
         protected override void OnInitialized()
         {
             User = UserService.GetUser(ResultWorkout.UserId);
+
+            Image = UserService.GetGender(User.GenderId);
         }
     }
 }

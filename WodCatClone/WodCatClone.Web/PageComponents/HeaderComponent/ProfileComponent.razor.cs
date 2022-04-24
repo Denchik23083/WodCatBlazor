@@ -16,10 +16,16 @@ namespace WodCatClone.Web.PageComponents.HeaderComponent
 
         public User User { get; set; }
 
+        public string Image { get; set; }
+
         protected override void OnInitialized()
         {
             IsLoginUser = UserService.IsLoginUser();
             User = UserService.GetUser();
+            if (User is not null)
+            {
+                Image = UserService.GetGender(User.GenderId);
+            }
         }
 
         public void Auth() => NavigationManager.NavigateTo("/login");
@@ -48,5 +54,12 @@ namespace WodCatClone.Web.PageComponents.HeaderComponent
 
             NavigationManager.NavigateTo($"{_link}");
         }
+
+        public List<SelectedLink> SelectedMore = new()
+        {
+            new() { Content = "RM-Calc", Link = "/calc" },
+            new() { Content = "Обратная связь", Link = "/callback" },
+            new() { Content = "Developer", Link = "developer" },
+        };
     }
 }

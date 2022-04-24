@@ -2,26 +2,43 @@
 {
     <div class="row">
         <div class="col finger">
-            <select class="d-inline fingerMoreProfile" @onchange="Route">
-                <option selected value="">V</option>
-                @foreach (var item in SelectProfile)
+            <div class="d-inline mr-2">
+                <img src="@Image" style="width: 30px; height: 25px; margin-top: -3px;"/>
+                <select class="d-inline fingerMoreProfile" @onchange="Route">
+                    <option selected value="">V</option>
+                    @foreach (var item in SelectProfile)
+                    {
+                        <option value="@item.Link">@item.Content</option>
+                    }
+                </select>
+            </div>
+            <div class="d-inline fingerMore mr-2">
+                <i class="fa-solid fa-coins"></i> @User.Points
+            </div>
+            <select class="d-inline fingerMore mr-2" @onchange="Route">
+                <option selected value="">Еще...</option>
+                @foreach (var item in SelectedMore)
                 {
                     <option value="@item.Link">@item.Content</option>
                 }
             </select>
-            <div class="d-inline fingerMore mr-4">
-                <i class="fa-solid fa-coins"></i> @User.Points
-            </div>
         </div>
     </div>
 }
 else
 {
     <div class="row">
-        <div class="col mr-4 finger">
-            <div class="d-inline fingerMore mr-4" @onclick="Auth">
+        <div class="col finger">
+            <div class="d-inline fingerMore mr-2" @onclick="Auth">
                 <i class="fa-solid fa-fingerprint mr-1"></i>Вход
             </div>
+            <select class="d-inline fingerMore mr-2" @onchange="Route">
+                <option selected value="">Еще...</option>
+                @foreach (var item in SelectedMore)
+                {
+                    <option value="@item.Link">@item.Content</option>
+                }
+            </select>
         </div>
     </div>
 }
