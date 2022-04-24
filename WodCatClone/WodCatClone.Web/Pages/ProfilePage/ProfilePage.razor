@@ -9,54 +9,86 @@
                 <a href="/" class="link">WODCAT</a> &rarr; 
                 Профиль &rarr; @User.NickName
             </div>
-            @if (User is not null)
+            @if (IsEnterUser)
             {
-                @*@if (User.Id == Hall.UserId)
-                {
-                    <div class="col-6 text-right text-light pages p-0 mb-3">
-                        <button class="btn btn-primary text-white" @onclick="Edit" style="font-weight: bold;">Редактировать</button>
-                        <button class="btn btn-danger text-white" @onclick="OnShow" style="font-weight: bold;">Удалить</button>
-                    </div>
-                }*@
+                <div class="col-6 text-right text-light pages p-0 mb-3">
+                    <button class="btn btn-primary text-white" @onclick="Edit" style="font-weight: bold;">Редактировать</button>
+                </div>
             }
         </div>
-        <div class="HallId">
+        <div class="ProfileId">
             <div class="row mb-3">
-                <div class="col-4">
-                    <img src="" style="background: white; width: 150px; height: 200px;" alt=""/>
+                <div class="col-3"></div>
+                <div class="col-3">
+                    <img src="@Image" style="width: 200px; height: 200px;" alt=""/>
                 </div>
-                <div class="col-8">
+                <div class="col-6">
                     <div class="row">
-                        <div class="col">
+                        <div class="col mb-2 text-left">
+                            <h2 style="font-size: 30px; font-weight: 700; margin: 10px 0; color: #161521;">
+                                @User.Name @User.Surname
+                            </h2>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col">
+                        <div class="col mb-2 text-left">
+                            <span style="color: #161521;">@User.Age&nbsp;лет</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mb-2 text-left">
                             <img src="img/Ukraine.png" style="width: 30px; height: 20px;" class="mr-2"/>
-                            <strong style="color: #333333;">Украина,</strong>
+                            <span style="color: #161521;">@User.Town Украина</span>
                         </div>
                     </div>
-                    
+                    @if (Hall is not null && HallEmblem is not null)
+                    {
+                        <div class="row">
+                            <div class="col mb-2 text-left">
+                                <img src="@HallEmblem" style="width: 50px; height: 75px;" />
+                                <a href="/gymboxs/@Hall.Id" class="link">@Hall.Name</a>
+                            </div>
+                        </div>
+                    }
+                    <div class="row">
+                        <div class="col mb-2 text-left">
+                            <i class="fa-solid fa-coins" style="color: #9f9ea3;"></i>
+                            <span style="color: #161521;">@User.Points баллов</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col p-3 mb-3" style="font-size: 20px;line-height: 21px;font-weight: 500;">
-                    
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col footerHall userTop" style="color: #bdc1c6;">
+        <div class="p-3">
+            <div class="row p-3">
+                <div class="col">
+                    <strong class="mr-2">Рост:</strong>
+                    @if (User.Height is not null)
+                    {
+                        @User.Height
+                    }
                 </div>
             </div>
-            <div class="row">
-                <div class="col countAthletes text-white" style="margin: 0 400px;">
-                    
+            <div class="row p-3">
+                <div class="col">
+                    <strong class="mr-2">Вес:</strong>
+                    @if (User.Weight is not null)
+                    {
+                        @User.Weight
+                    }
                 </div>
             </div>
-            <div class="row mb-3">
-                <div class="col text-center">
-                    <span class="athletes">Атлетов</span>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col text-center">
-                    <strong style="color: #333333;">Whiteboard</strong>
+            <div class="row p-3">
+                <div class="col">
+                    <strong class="mr-2">О себе:</strong>
+                    @if (User.AboutMe is not null)
+                    {
+                        @User.AboutMe
+                    }
                 </div>
             </div>
         </div>

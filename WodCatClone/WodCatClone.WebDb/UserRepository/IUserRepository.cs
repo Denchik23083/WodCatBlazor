@@ -11,10 +11,13 @@ namespace WodCatClone.WebDb.UserRepository
 
         User GetUser(int? id);
 
+        User GetUser(string nickName);
+
         Gender GetGender(int? id);
 
         void Join(int hallId);
 
         void Exit(int hallId);
+        
     }
 }

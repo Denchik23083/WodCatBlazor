@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WodCatClone.Db;
 
 namespace WodCatClone.Db.Migrations
 {
     [DbContext(typeof(WodCatCloneContext))]
-    partial class WodCatCloneContextModelSnapshot : ModelSnapshot
+    [Migration("20220424175518_birthday")]
+    partial class birthday
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -314,9 +316,6 @@ namespace WodCatClone.Db.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AboutMe")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("Age")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
@@ -343,10 +342,6 @@ namespace WodCatClone.Db.Migrations
                     b.Property<int?>("HallId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Height")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(255)
@@ -372,10 +367,6 @@ namespace WodCatClone.Db.Migrations
 
                     b.Property<string>("Town")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<string>("Weight")
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 

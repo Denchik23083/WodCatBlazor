@@ -13,6 +13,8 @@ namespace WodCatClone.Logic.UserService
 
         User GetUser(int? id);
 
+        User GetUser(string nickName);
+
         string GetGender(int? id);
 
         void Join(int hallId);

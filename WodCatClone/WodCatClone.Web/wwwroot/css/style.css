@@ -285,7 +285,6 @@ a {cursor: pointer;}
     top: 95px;
 }
 .visualContainerId, .visualContainerProfile {
-    min-height: 600px;
     justify-content: center;
     background-size: 100%;
     position: absolute;
@@ -296,8 +295,14 @@ a {cursor: pointer;}
     padding: 0;
     top: 95px;
 }
-.visualContainerId {background-image: url("/img/gym_cover_def.jpg");}
-.visualContainerProfile {background-image: url("/img/profileBackground.jpg");}
+.visualContainerId {
+    background-image: url("/img/gym_cover_def.jpg");
+    min-height: 600px;
+}
+.visualContainerProfile {
+    min-height: 500px;
+    background-image: url("/img/profileBackground.jpg");
+}
 .footerHall {
     background-color: #424242;
     justify-content: center;
@@ -311,12 +316,16 @@ a {cursor: pointer;}
 }
 .loginTop {top: 790px;}
 .notLoginTop {top: 695px;}
+.userTop {
+    top: 595px;
+    background-color: #202124;
+}
 .AddHall {
     color: #e8eaed;
     text-align: center;
     margin-top: 75px;
 }
-.HallId {
+.HallId, .ProfileId {
     color: #e8eaed;
     text-align: center;
     background-color: #dededee6;

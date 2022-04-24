@@ -1,4 +1,5 @@
-﻿using WodCatClone.Db.Entities.Actions;
+﻿using System;
+using WodCatClone.Db.Entities.Actions;
 
 namespace WodCatClone.Db.Entities.Auth
 {
@@ -21,6 +22,16 @@ namespace WodCatClone.Db.Entities.Auth
         public string Town { get; set; }
 
         public int Points { get; set; }
+
+        public int Age { get; set; }
+
+        public DateTime Birthday { get; set; }
+
+        public string Height { get; set; }
+
+        public string Weight { get; set; }
+
+        public string AboutMe { get; set; }
 
         public int? GenderId { get; set; }
 
