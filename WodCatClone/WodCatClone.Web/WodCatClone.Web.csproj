@@ -16,8 +16,4 @@
     <ProjectReference Include="..\WodCatClone.Logic\WodCatClone.Logic.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\img\" />
-  </ItemGroup>
-
 </Project>

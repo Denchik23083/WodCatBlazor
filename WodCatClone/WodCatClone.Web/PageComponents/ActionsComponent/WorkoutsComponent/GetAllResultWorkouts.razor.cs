@@ -13,13 +13,11 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         [Parameter] public EventCallback IsDisplayDialog { get; set; }
 
-        [Inject] public IResultWorkoutsService _service { get; set; }
+        [Inject] public IResultWorkoutsService ResultWorkoutsService { get; set; }
 
-        [Inject] public IUserService _userService { get; set; }
+        [Inject] public IUserService UserService { get; set; }
 
         public int ResultWorkoutId { get; set; }
-
-        public IndividualResultWorkouts Irw { get; set; }
 
         public IEnumerable<ResultWorkouts> ResultWorkouts { get; set; }
 
@@ -27,8 +25,8 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         protected override void OnInitialized()
         {
-            ResultWorkouts = _service.GetAllResultWorkouts(WorkoutId);
-            User = _userService.GetUser();
+            ResultWorkouts = ResultWorkoutsService.GetAllResultWorkouts(WorkoutId);
+            User = UserService.GetUser();
         }
 
         public void PostId(int itemId)

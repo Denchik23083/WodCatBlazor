@@ -159,7 +159,7 @@ using WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/profile")]
+    [Microsoft.AspNetCore.Components.RouteAttribute("/profile/{NickName}")]
     public partial class ProfilePage : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998

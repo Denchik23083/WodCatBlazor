@@ -1,11 +1,64 @@
-﻿@page "/profile"
+﻿@page "/profile/{NickName}"
 
 <HeaderComponent />
 
-<div class="wrapper">
-    <div class="row">
-        <div class="col">
-            @User.Name
+<div class="row">
+    <div class="col visualContainerProfile">
+        <div class="row" style="margin: 0 250px;">
+            <div class="col-6 text-left text-light pages p-0 mb-3">
+                <a href="/" class="link">WODCAT</a> &rarr; 
+                Профиль &rarr; @User.NickName
+            </div>
+            @if (User is not null)
+            {
+                @*@if (User.Id == Hall.UserId)
+                {
+                    <div class="col-6 text-right text-light pages p-0 mb-3">
+                        <button class="btn btn-primary text-white" @onclick="Edit" style="font-weight: bold;">Редактировать</button>
+                        <button class="btn btn-danger text-white" @onclick="OnShow" style="font-weight: bold;">Удалить</button>
+                    </div>
+                }*@
+            }
+        </div>
+        <div class="HallId">
+            <div class="row mb-3">
+                <div class="col-4">
+                    <img src="" style="background: white; width: 150px; height: 200px;" alt=""/>
+                </div>
+                <div class="col-8">
+                    <div class="row">
+                        <div class="col">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <img src="img/Ukraine.png" style="width: 30px; height: 20px;" class="mr-2"/>
+                            <strong style="color: #333333;">Украина,</strong>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col p-3 mb-3" style="font-size: 20px;line-height: 21px;font-weight: 500;">
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col countAthletes text-white" style="margin: 0 400px;">
+                    
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col text-center">
+                    <span class="athletes">Атлетов</span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col text-center">
+                    <strong style="color: #333333;">Whiteboard</strong>
+                </div>
+            </div>
         </div>
     </div>
 </div>

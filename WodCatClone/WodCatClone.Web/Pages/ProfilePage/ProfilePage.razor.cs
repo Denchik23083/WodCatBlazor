@@ -6,6 +6,8 @@ namespace WodCatClone.Web.Pages.ProfilePage
 {
     public partial class ProfilePage
     {
+        [Parameter] public string NickName { get; set; }
+
         [Inject] public IUserService UserService { get; set; }
 
         [Inject] public NavigationManager NavigationManager { get; set; }

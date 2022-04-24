@@ -8,9 +8,9 @@ namespace WodCatClone.Web.PageComponents.HeaderComponent
 {
     public partial class ProfileComponent
     {
-        [Inject] private NavigationManager _manager { get; set; }
+        [Inject] private NavigationManager NavigationManager { get; set; }
 
-        [Inject] IUserService _service { get; set; }
+        [Inject] IUserService UserService { get; set; }
 
         public bool IsLoginUser { get; set; }
 
@@ -18,13 +18,11 @@ namespace WodCatClone.Web.PageComponents.HeaderComponent
 
         protected override void OnInitialized()
         {
-            IsLoginUser = _service.IsLoginUser();
-            User = _service.GetUser();
+            IsLoginUser = UserService.IsLoginUser();
+            User = UserService.GetUser();
         }
 
-        public void Auth() => _manager.NavigateTo("/login");
-
-        [Inject] public IUserService Service { get; set; }
+        public void Auth() => NavigationManager.NavigateTo("/login");
 
         public List<SelectedLink> SelectProfile = new()
         {
@@ -38,15 +36,17 @@ namespace WodCatClone.Web.PageComponents.HeaderComponent
         void Route(ChangeEventArgs currentItem)
         {
             _link = currentItem.Value?.ToString();
-            _manager.NavigateTo($"{_link}");
-        }
 
-        public List<SelectedLink> SelectedMore = new()
-        {
-            new() { Content = "RM-Calc", Link = "/calc" },
-            new() { Content = "Обратная связь", Link = "/callback" },
-            new() { Content = "Developer", Link = "developer" },
-            new() { Content = "Dark / Light theme", Link = "/ua" },
-        };
+            if (_link == "/profile")
+            {
+                _link += $"/{User.NickName}";
+            }
+            if (_link == "/edit")
+            {
+                _link = $"/profile/{User.NickName}/edit";
+            }
+
+            NavigationManager.NavigateTo($"{_link}");
+        }
     }
 }

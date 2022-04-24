@@ -8,6 +8,10 @@ namespace WodCatClone.Db.Entities.Auth
 
         public string Name { get; set; }
 
+        public string Surname { get; set; }
+
+        public string NickName { get; set; }
+
         public string Email { get; set; }
 
         public string Password { get; set; }
@@ -18,6 +22,10 @@ namespace WodCatClone.Db.Entities.Auth
 
         public int Points { get; set; }
 
+        public int? GenderId { get; set; }
+
+        public Gender Gender { get; set; } 
+        
         public int? HallId { get; set; }
 
         public Halls Halls { get; set; }

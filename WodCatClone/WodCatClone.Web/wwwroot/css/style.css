@@ -284,8 +284,7 @@ a {cursor: pointer;}
     padding: 0;
     top: 95px;
 }
-.visualContainerId {
-    background-image: url("/img/gym_cover_def.jpg");
+.visualContainerId, .visualContainerProfile {
     min-height: 600px;
     justify-content: center;
     background-size: 100%;
@@ -297,6 +296,8 @@ a {cursor: pointer;}
     padding: 0;
     top: 95px;
 }
+.visualContainerId {background-image: url("/img/gym_cover_def.jpg");}
+.visualContainerProfile {background-image: url("/img/profileBackground.jpg");}
 .footerHall {
     background-color: #424242;
     justify-content: center;
@@ -361,7 +362,6 @@ a {cursor: pointer;}
     font-size: 44px;
     font-weight: 700;
     line-height: 1;
-    color: #000;
     height: 85px;
     width: 85px;
     border-radius: 10px;

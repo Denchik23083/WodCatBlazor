@@ -12,13 +12,6 @@
             <div class="d-inline fingerMore mr-4">
                 <i class="fa-solid fa-coins"></i> @User.Points
             </div>
-            <select class="d-inline fingerMore mr-4" @onchange="Route">
-                <option selected value="">Еще...</option>
-                @foreach (var item in SelectedMore)
-                {
-                    <option value="@item.Link">@item.Content</option>
-                }
-            </select>
         </div>
     </div>
 }
@@ -29,13 +22,6 @@ else
             <div class="d-inline fingerMore mr-4" @onclick="Auth">
                 <i class="fa-solid fa-fingerprint mr-1"></i>Вход
             </div>
-            <select class="d-inline fingerMore mr-4" @onchange="Route">
-                <option selected value="">Еще...</option>
-                @foreach (var item in SelectedMore)
-                {
-                    <option value="@item.Link">@item.Content</option>
-                }
-            </select>
         </div>
     </div>
 }

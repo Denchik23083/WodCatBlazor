@@ -287,6 +287,26 @@ namespace WodCatClone.Db.Migrations
                     b.ToTable("Workouts");
                 });
 
+            modelBuilder.Entity("WodCatClone.Db.Entities.Auth.Gender", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Gender");
+                });
+
             modelBuilder.Entity("WodCatClone.Db.Entities.Auth.User", b =>
                 {
                     b.Property<int>("Id")
@@ -304,11 +324,18 @@ namespace WodCatClone.Db.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
+                    b.Property<int?>("GenderId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("HallId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("NickName")
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
@@ -322,12 +349,18 @@ namespace WodCatClone.Db.Migrations
                         .HasColumnType("int")
                         .HasDefaultValue(0);
 
+                    b.Property<string>("Surname")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
                     b.Property<string>("Town")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("GenderId");
 
                     b.HasIndex("HallId");
 
@@ -388,9 +421,15 @@ namespace WodCatClone.Db.Migrations
 
             modelBuilder.Entity("WodCatClone.Db.Entities.Auth.User", b =>
                 {
+                    b.HasOne("WodCatClone.Db.Entities.Auth.Gender", "Gender")
+                        .WithMany()
+                        .HasForeignKey("GenderId");
+
                     b.HasOne("WodCatClone.Db.Entities.Actions.Halls", "Halls")
                         .WithMany()
                         .HasForeignKey("HallId");
+
+                    b.Navigation("Gender");
 
                     b.Navigation("Halls");
                 });

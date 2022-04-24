@@ -30,5 +30,7 @@ namespace WodCatClone.Db
         public DbSet<Articles> Articles { get; set; }
 
         public DbSet<ArticlesEmblem> ArticlesEmblem { get; set; }
+
+        public DbSet<Gender> Gender { get; set; }
     }
 }
