@@ -12,18 +12,18 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 
         public bool IsLoginUser { get; set; }  
 
-        [Inject] public IHallsService _service { get; set; }
+        [Inject] public IHallsService HallsService { get; set; }
 
-        [Inject] public IUserService _userService { get; set; }
+        [Inject] public IUserService UserService { get; set; }
 
-        [Inject] public NavigationManager _navigationManager { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; }
 
         protected override void OnInitialized()
         {
-            Halls = _service.GetAllHalls();
-            IsLoginUser = _userService.IsLoginUser();
+            Halls = HallsService.GetAllHalls();
+            IsLoginUser = UserService.IsLoginUser();
         }
 
-        public void Add() => _navigationManager.NavigateTo("/gymboxs/add");
+        public void Add() => NavigationManager.NavigateTo("/gymboxs/add");
     }
 }

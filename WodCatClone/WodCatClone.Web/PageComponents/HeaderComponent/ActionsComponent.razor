@@ -7,10 +7,10 @@
         @foreach (var item in Actions)
         {
             <a href="@item.Link" class="actionsContent">@item.Content</a>
-            @if (value < Actions.Count - 1)
+            @if (Value < Actions.Count - 1)
             {
                 <span class="actionsSlash">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-                value++;
+                Value++;
             }
         }
     </div>

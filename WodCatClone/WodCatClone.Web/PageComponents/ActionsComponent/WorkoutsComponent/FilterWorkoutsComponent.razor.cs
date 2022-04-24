@@ -11,7 +11,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
     {
         [Parameter] public IEnumerable<Workouts> Workouts { get; set; }
 
-        [Inject] public IWorkoutsService _service { get; set; }
+        [Inject] public IWorkoutsService WorkoutsService { get; set; }
 
         public bool IsVisible { get; set; }
 
@@ -70,7 +70,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         void Filter()
         {
-            Workouts = _service.GetAllWorkouts();
+            Workouts = WorkoutsService.GetAllWorkouts();
 
             if (!string.IsNullOrWhiteSpace(_filterName))
             {

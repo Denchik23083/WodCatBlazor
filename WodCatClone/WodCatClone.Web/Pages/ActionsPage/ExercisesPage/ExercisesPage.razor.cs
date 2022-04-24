@@ -7,13 +7,13 @@ namespace WodCatClone.Web.Pages.ActionsPage.ExercisesPage
 {
     public partial class ExercisesPage
     {
-        [Inject] private IExercisesService _service { get; set; }
+        [Inject] private IExercisesService ExercisesService { get; set; }
 
         private IEnumerable<Exercises> Exercises { get; set; }
 
         protected override void OnInitialized()
         {
-            Exercises = _service.GetAllExercises();
+            Exercises = ExercisesService.GetAllExercises();
         }
     }
 }

@@ -5,7 +5,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ExercisesComponent
 {
     public partial class ExercisesInfo
     {
-        [Inject] public IUserService _userService { get; set; }
+        [Inject] public IUserService UserService { get; set; }
 
         public bool IsDisplay { get; set; }
 
@@ -13,7 +13,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ExercisesComponent
 
         protected override void OnInitialized()
         {
-            IsLoginUser = _userService.IsLoginUser();
+            IsLoginUser = UserService.IsLoginUser();
         }
     }
 }

@@ -11,7 +11,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
     {
         [Parameter] public IEnumerable<Halls> Halls { get; set; }
 
-        [Inject] public IHallsService _service { get; set; }
+        [Inject] public IHallsService HallsService { get; set; }
 
         private string _filterTown = "None";
         private string _filterType = "None";
@@ -44,7 +44,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
 
         public void Filter()
         {
-            Halls = _service.GetAllHalls();
+            Halls = HallsService.GetAllHalls();
 
             if (_filterTown != "None")
             {

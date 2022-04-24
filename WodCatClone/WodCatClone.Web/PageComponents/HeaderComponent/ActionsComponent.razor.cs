@@ -6,9 +6,9 @@ namespace WodCatClone.Web.PageComponents.HeaderComponent
 {
     public partial class ActionsComponent
     {
-        [Inject] private NavigationManager _manager { get; set; }
+        [Inject] private NavigationManager NavigationManager { get; set; }
 
-        public int value = 0;
+        public int Value = 0;
 
         public List<SelectedLink> Actions = new()
         {
@@ -19,6 +19,6 @@ namespace WodCatClone.Web.PageComponents.HeaderComponent
             new() { Content = "СТАТЬИ", Link = "/articles" }
         };
 
-        public void Home() => _manager.NavigateTo("/");
+        public void Home() => NavigationManager.NavigateTo("/");
     }
 }

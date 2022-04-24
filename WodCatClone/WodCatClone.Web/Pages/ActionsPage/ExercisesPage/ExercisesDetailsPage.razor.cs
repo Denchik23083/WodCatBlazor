@@ -10,11 +10,11 @@ namespace WodCatClone.Web.Pages.ActionsPage.ExercisesPage
 
         private Exercises Exercise { get; set; }
 
-        [Inject] public IExercisesService _service { get; set; }
+        [Inject] public IExercisesService ExercisesService { get; set; }
 
         protected override void OnInitialized()
         {
-            Exercise = _service.GetExercise(ExerciseId);
+            Exercise = ExercisesService.GetExercise(ExerciseId);
         }
     }
 }

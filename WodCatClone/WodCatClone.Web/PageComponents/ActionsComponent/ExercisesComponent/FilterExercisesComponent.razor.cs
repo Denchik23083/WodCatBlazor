@@ -11,7 +11,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ExercisesComponent
     {
         [Parameter] public IEnumerable<Exercises> Exercises { get; set; }
 
-        [Inject] public IExercisesService _service { get; set; }
+        [Inject] public IExercisesService ExercisesService { get; set; }
 
         private string _filterModality = "None";
         private string _filterMovement = "None";
@@ -48,7 +48,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ExercisesComponent
 
         void Filter()
         {
-            Exercises = _service.GetAllExercises();
+            Exercises = ExercisesService.GetAllExercises();
 
             if (_filterModality != "None")
             {

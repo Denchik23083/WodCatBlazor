@@ -8,11 +8,11 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
     {
         [Parameter] public Workouts Workouts { get; set; }
 
-        [Inject] public NavigationManager _manager { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; }
 
-        [Inject] public IResultWorkoutsService _service { get; set; }
+        [Inject] public IResultWorkoutsService ResultWorkoutsService { get; set; }
 
-        [Inject] public IWorkoutsService _workoutsService { get; set; }
+        [Inject] public IWorkoutsService WorkoutsService { get; set; }
 
         public string[] WorkoutsExercises { get; set; }
 
@@ -27,16 +27,16 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         protected override void OnInitialized()
         {
-            Image = _workoutsService.GetImage(Workouts.EmblemHallId);
+            Image = WorkoutsService.GetImage(Workouts.EmblemHallId);
             WorkoutsExercises = Workouts.Exercises.Split(",");
             WorkoutsCategory = Workouts.Category.Split(",");
-            ResultWorkoutsCount = _service.GetCountResultWorkouts(Workouts.Id);
+            ResultWorkoutsCount = ResultWorkoutsService.GetCountResultWorkouts(Workouts.Id);
         }
 
         public void Id()
         {
             _url = $"workouts/{Workouts.Id}";
-            _manager.NavigateTo(_url);
+            NavigationManager.NavigateTo(_url);
         }
     }
 }

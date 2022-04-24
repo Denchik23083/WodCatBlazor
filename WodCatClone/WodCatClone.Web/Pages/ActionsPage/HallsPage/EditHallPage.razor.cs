@@ -6,8 +6,8 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
     {
         [Parameter] public int HallId { get; set; }
 
-        [Inject] public NavigationManager _navigationManager { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; }
 
-        public void BackToGymList() => _navigationManager.NavigateTo($"/gymboxs/{HallId}");
+        public void BackToGymList() => NavigationManager.NavigateTo($"/gymboxs/{HallId}");
     }
 }

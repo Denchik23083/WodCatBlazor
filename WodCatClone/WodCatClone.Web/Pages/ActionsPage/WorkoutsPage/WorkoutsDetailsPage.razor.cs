@@ -10,13 +10,13 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
     {
         [Parameter] public int WorkoutId { get; set; }
 
-        [Inject] public IWorkoutsService _workoutsService { get; set; }
+        [Inject] public IWorkoutsService WorkoutsService { get; set; }
 
-        [Inject] public IUserService _userService { get; set; }
+        [Inject] public IUserService UserService { get; set; }
 
-        [Inject] public IResultWorkoutsService _service { get; set; }
+        [Inject] public IResultWorkoutsService ResultWorkoutsService { get; set; }
 
-        [Inject] public NavigationManager _manager { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; }
 
         public Workouts Workout { get; set; }
 
@@ -34,13 +34,13 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
 
         protected override void OnInitialized()
         {
-            IsLogin = _userService.IsLoginUser();
-            Workout = _workoutsService.GetWorkout(WorkoutId);
-            Image = _workoutsService.GetImage(Workout.EmblemHallId);
+            IsLogin = UserService.IsLoginUser();
+            Workout = WorkoutsService.GetWorkout(WorkoutId);
+            Image = WorkoutsService.GetImage(Workout.EmblemHallId);
             WorkoutExercises = Workout.Exercises.Split(",");
         }
 
-        public void Login() => _manager.NavigateTo("/login"); 
+        public void Login() => NavigationManager.NavigateTo("/login"); 
 
         public void IsDisplayDialog() => EditDeleteResult.Show();
 
@@ -56,13 +56,13 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
         {
             var id = GetAllResultWorkouts.ResultWorkoutId;
 
-            var result = _service.DeleteResultWorkouts(id);
+            var result = ResultWorkoutsService.DeleteResultWorkouts(id);
 
             if (result)
             {
                 EditDeleteResult.Hide();
                 
-                _manager.NavigateTo($"/workouts/{WorkoutId}", true);
+                NavigationManager.NavigateTo($"/workouts/{WorkoutId}", true);
             }
         }
 
@@ -73,11 +73,11 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
             EditDeleteResult.FillData();
             var resultWorkout = EditDeleteResult._editResultWorkout;
 
-            var result = _service.EditResultWorkouts(resultWorkout, id);
+            var result = ResultWorkoutsService.EditResultWorkouts(resultWorkout, id);
 
             if (result)
             {
-                _manager.NavigateTo($"/workouts/{WorkoutId}", true);
+                NavigationManager.NavigateTo($"/workouts/{WorkoutId}", true);
             }
         }
     }

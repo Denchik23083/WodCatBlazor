@@ -9,9 +9,9 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
     {
         [Parameter] public int WorkoutId { get; set; }
 
-        [Inject] public IResultWorkoutsService _service { get; set; }
+        [Inject] public IResultWorkoutsService ResultWorkoutsService { get; set; }
 
-        [Inject] public NavigationManager _manager { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; }
 
         private ResultWorkouts _resultWorkouts = new();
 
@@ -19,14 +19,14 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
         {
             FillData();
 
-            var result = _service.AddResultWorkouts(_resultWorkouts);
+            var result = ResultWorkoutsService.AddResultWorkouts(_resultWorkouts);
 
             if (result)
             {
                 ResetAll();
             }
 
-            _manager.NavigateTo($"/workouts/{WorkoutId}", true);
+            NavigationManager.NavigateTo($"/workouts/{WorkoutId}", true);
         }
 
         private bool _oneFascination, _twoFascination, _threeFascination, _fourFascination, _fiveFascination;
