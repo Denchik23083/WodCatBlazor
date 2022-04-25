@@ -18,6 +18,8 @@ namespace WodCatClone.Web.Pages.ProfilePage
 
         public User User { get; set; }
 
+        public User UserEnter { get; set; }
+
         public bool IsLoginUser { get; set; }
 
         public bool IsEnterUser { get; set; }
@@ -31,20 +33,24 @@ namespace WodCatClone.Web.Pages.ProfilePage
         protected override void OnInitialized()
         {
             User = UserService.GetUser(NickName);
+            UserEnter = UserService.GetUser();
+
             IsLoginUser = UserService.IsLoginUser();
 
             Image = UserService.GetGender(User.GenderId);
 
-            Hall = HallsService.GetHall(User.HallId);
-            HallEmblem = HallsService.GetImage(Hall.EmblemHallId);
-
-            if (!IsLoginUser)
+            if (User.HallId is not null)
             {
-                NavigationManager.NavigateTo("/login");
+                Hall = HallsService.GetHall(User.HallId);
+                HallEmblem = HallsService.GetImage(Hall.EmblemHallId);
             }
-            if (User.NickName == NickName)
+
+            if (UserEnter is not null)
             {
-                IsEnterUser = true;
+                if (User.NickName == UserEnter.NickName)
+                {
+                    IsEnterUser = true;
+                }
             }
         }
 

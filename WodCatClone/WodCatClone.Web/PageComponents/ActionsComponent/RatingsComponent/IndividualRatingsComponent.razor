@@ -2,14 +2,16 @@
     <tr class="tableheader">
         <td>
             <img src="@Gender" width="50" height="50"/>&nbsp;
-            @User.Name&nbsp;
-            @User.Surname
+            <a href="/profile/@User.NickName" class="link">
+                @User.Name&nbsp;
+                @User.Surname
+            </a>
         </td>
         <td>@User.Town</td>
         <td class="p-0">
             @if (Image is not null)
             {
-                <img src="@Image" width="70" height="70"/>
+                <img src="@Image" width="60" height="80"/>
             }
         </td>
         <td>@User.Points</td>

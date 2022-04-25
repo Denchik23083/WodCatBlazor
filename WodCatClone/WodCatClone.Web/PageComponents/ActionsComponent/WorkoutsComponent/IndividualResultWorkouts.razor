@@ -1,7 +1,9 @@
 ﻿<td>
     <img src="@Image" width="40" height="40"/>&nbsp;
-    @User.Name&nbsp;
-    @User.Surname
+    <a href="/profile/@User.NickName" class="link">
+        @User.Name&nbsp;
+        @User.Surname
+    </a>
 </td>
 <td>@ResultWorkout.Minutes<span>m</span>:@ResultWorkout.Seconds<span>s</span></td>
 <td>@ResultWorkout.Repeat</td>
