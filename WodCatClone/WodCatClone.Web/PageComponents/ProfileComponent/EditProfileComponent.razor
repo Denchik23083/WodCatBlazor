@@ -1,0 +1,122 @@
+﻿<div class="formAddHall mt-3 p-3">   
+    <div class="row">
+        <div class="col-6">
+            <div class="row">
+                <div class="col mb-2">
+                    <img src="@Image" alt="" width="150" height="150"/>
+                </div>
+            </div>
+            <div class="col mb-2">
+                <img src="img/profileBackground.jpg" alt="" width="500" height="300"/>
+            </div>
+        </div>
+        <div class="col-6">
+            <EditForm Model="EditUser" OnSubmit="Submit">
+                <div class="row">
+                    <div class="col mb-2">
+                        <InputText
+                            @bind-Value="User.Name"
+                            class="selectedFormResult mb-2 mr-2"
+                            placeholder="Имя"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-2">
+                        <InputText
+                            @bind-Value="User.Surname"
+                            class="selectedFormResult mb-2 mr-2"
+                            placeholder="Фамилия"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-2">
+                        <select class="selectedFormResult mb-2" @onchange="TownValue">
+                            <option value="None">Город</option>
+                            @foreach (var item in Town)
+                            {
+                                <option value="@item.Filter">
+                                    @item.Content
+                                </option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                @*//TODO: Hall*@
+                <div class="row">
+                    <div class="col mb-2">
+                        <div class="custom-control custom-checkbox">
+                            <input 
+                                type="checkbox" 
+                                class="custom-control-input" 
+                                id="man" 
+                                @bind="Man" 
+                                @onclick="() => Woman = !Woman"/>
+                            <label 
+                                class="custom-control-label" 
+                                for="man"
+                                style="color: lightgrey">Мужчина</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-2">
+                        <div class="custom-control custom-checkbox">
+                            <input 
+                                type="checkbox" 
+                                class="custom-control-input" 
+                                id="woman" 
+                                @bind="Woman" 
+                                @onclick="() => Man = !Man"/>
+                            <label 
+                                class="custom-control-label" 
+                                for="woman" 
+                                style="color: lightgrey">Женщина</label>
+                        </div>
+                    </div>
+                </div>
+                @*<div class="row">
+                    <div class="col mb-2">
+                        <InputText
+                            @bind-Value="Hall.Location"
+                            class="selectedFormResult mb-2"
+                            placeholder="Адрес"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-2">
+                        <InputText
+                            @bind-Value="Hall.Rating"
+                            class="selectedFormResult mb-2"
+                            placeholder="Рейтинг от 1 до 10"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-2">
+                        <textarea 
+                                placeholder="Описание" 
+                                class="textarea" 
+                                @bind="Hall.Description">                                
+                        </textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-right">
+                        @if (!IsDisplaySubmitButton)
+                        {
+                            <button
+                                class="btn btn-primary"
+                                disabled="disabled"
+                                type="submit">Сохранить</button>
+                        }
+                        else
+                        {
+                            <button
+                                class="btn btn-primary"
+                                type="submit">Сохранить</button>
+                        }
+                    </div>
+                </div>*@
+            </EditForm>
+        </div>
+    </div>
+</div>

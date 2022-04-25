@@ -38,13 +38,6 @@ namespace WodCatClone.Logic.UserService
             return _repository.GetUser(nickName);
         }
 
-        public string GetGender(int? id)
-        {
-            var gender = _repository.GetGender(id);
-
-            return gender.Image;
-        }
-
         public void Join(int hallId)
         {
             AuthService.AuthService.User.HallId = hallId;

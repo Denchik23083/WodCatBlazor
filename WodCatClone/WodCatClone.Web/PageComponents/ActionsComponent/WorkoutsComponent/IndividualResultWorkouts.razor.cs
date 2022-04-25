@@ -11,6 +11,8 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         [Inject] public IUserService UserService { get; set; }
 
+        [Inject] public IGenderService GenderService { get; set; }
+
         public User User { get; set; }
         
         public string Image { get; set; }
@@ -19,7 +21,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
         {
             User = UserService.GetUser(ResultWorkout.UserId);
 
-            Image = UserService.GetGender(User.GenderId);
+            Image = GenderService.GetGenderImage(User.GenderId);
         }
     }
 }

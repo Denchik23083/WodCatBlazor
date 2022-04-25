@@ -1,0 +1,18 @@
+﻿@page "/profile/{NickName}/edit"
+
+<HeaderComponent />
+
+<div class="row">
+    <div class="col visualContainer">
+        <button class="gymList" @onclick="BackToProfile">Back to Profile</button>
+        <div class="AddHall">
+            <h1 class="h1Add">Редактировать профиль</h1>
+            <h3 class="h3Add">Здесь вы можете изменять настойки личного профиля</h3>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col wrapperHalls">
+        <EditProfileComponent User="User"/>
+    </div>
+</div>

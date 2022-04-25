@@ -11,7 +11,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.RatingsComponent
 
         [Inject] public IHallsService HallsService { get; set; }
 
-        [Inject] public IUserService UserService { get; set; }
+        [Inject] public IGenderService GenderService { get; set; }
 
         [Parameter] public int Position { get; set; }
 
@@ -27,7 +27,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.RatingsComponent
                 Image = HallsService.GetImage(hall.EmblemHallId);
             }
 
-            Gender = UserService.GetGender(User.GenderId);
+            Gender = GenderService.GetGenderImage(User.GenderId);
         }
     }
 }

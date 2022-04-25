@@ -12,6 +12,8 @@ namespace WodCatClone.Web.Pages.ProfilePage
 
         [Inject] public IUserService UserService { get; set; }
 
+        [Inject] public IGenderService GenderService { get; set; }
+
         [Inject] public IHallsService HallsService { get; set; }
 
         [Inject] public NavigationManager NavigationManager { get; set; }
@@ -37,7 +39,7 @@ namespace WodCatClone.Web.Pages.ProfilePage
 
             IsLoginUser = UserService.IsLoginUser();
 
-            Image = UserService.GetGender(User.GenderId);
+            Image = GenderService.GetGenderImage(User.GenderId);
 
             if (User.HallId is not null)
             {

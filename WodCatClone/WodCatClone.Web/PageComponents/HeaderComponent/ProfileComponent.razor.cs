@@ -8,9 +8,11 @@ namespace WodCatClone.Web.PageComponents.HeaderComponent
 {
     public partial class ProfileComponent
     {
-        [Inject] private NavigationManager NavigationManager { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; }
 
-        [Inject] IUserService UserService { get; set; }
+        [Inject] public IUserService UserService { get; set; }
+
+        [Inject] public IGenderService GenderService { get; set; }
 
         public bool IsLoginUser { get; set; }
 
@@ -24,7 +26,7 @@ namespace WodCatClone.Web.PageComponents.HeaderComponent
             User = UserService.GetUser();
             if (User is not null)
             {
-                Image = UserService.GetGender(User.GenderId);
+                Image = GenderService.GetGenderImage(User.GenderId);
             }
         }
 
