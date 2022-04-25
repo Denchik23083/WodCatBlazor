@@ -37,6 +37,30 @@ namespace WodCatClone.WebDb.UserRepository
             return _context.Users.FirstOrDefault(b => b.NickName == nickName);
         }
 
+        public bool Update(User editUser, int id)
+        {
+            var userToUpdate = _context.Users.FirstOrDefault(b => b.Id == id);
+
+            if (userToUpdate is null)
+            {
+                return false;
+            }
+
+            userToUpdate.Name = editUser.Name;
+            userToUpdate.Surname = editUser.Surname;
+            userToUpdate.Town = editUser.Town;
+            userToUpdate.HallId = editUser.HallId;
+            userToUpdate.GenderId = editUser.GenderId;
+            userToUpdate.Birthday = editUser.Birthday;
+            userToUpdate.Height = editUser.Height;
+            userToUpdate.Weight = editUser.Weight;
+            userToUpdate.AboutMe = editUser.AboutMe;
+
+            _context.SaveChanges();
+
+            return true;
+        }
+
         public void Join(int hallId)
         {
             var user = _context.Users.FirstOrDefault(b => b.Id == User.Id);

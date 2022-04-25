@@ -22,5 +22,10 @@ namespace WodCatClone.WebDb.UserRepository
         {
             return _context.Gender.FirstOrDefault(b => b.Id == id);
         }
+
+        public Gender GetGender(string gender)
+        {
+            return _context.Gender.FirstOrDefault(b => b.Name == gender);
+        }
     }
 }

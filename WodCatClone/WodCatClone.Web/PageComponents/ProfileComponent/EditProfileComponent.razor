@@ -15,7 +15,7 @@
                 <div class="row">
                     <div class="col mb-2">
                         <InputText
-                            @bind-Value="User.Name"
+                            @bind-Value="EditUser.Name"
                             class="selectedFormResult mb-2 mr-2"
                             placeholder="Имя"/>
                     </div>
@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="col mb-2">
                         <InputText
-                            @bind-Value="User.Surname"
+                            @bind-Value="EditUser.Surname"
                             class="selectedFormResult mb-2 mr-2"
                             placeholder="Фамилия"/>
                     </div>
@@ -41,7 +41,31 @@
                         </select>
                     </div>
                 </div>
-                @*//TODO: Hall*@
+                <div class="row">
+                    <div class="col mb-2">
+                        <select class="selectedFormResult mb-2" @bind="EditUser.HallId">
+                            @if (UserHall is not null)
+                            {
+                                <option value="@UserHall.Id">@UserHall.Name</option>
+                            }
+                            else
+                            {
+                                <option value=""></option>
+                            }
+                            @foreach (var item in Halls)
+                            {
+                                <option value="@item.Id">
+                                    @item.Name
+                                </option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span style="color: lightgrey">Пол</span>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col mb-2">
                         <div class="custom-control custom-checkbox">
@@ -74,29 +98,56 @@
                         </div>
                     </div>
                 </div>
-                @*<div class="row">
+                <div class="row">
+                    <div class="col">
+                        <span style="color: lightgrey">День рождения</span>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col mb-2">
-                        <InputText
-                            @bind-Value="Hall.Location"
+                        <InputDate
+                            @bind-Value="EditUser.Birthday"
                             class="selectedFormResult mb-2"
-                            placeholder="Адрес"/>
+                            placeholder="День рождения"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span style="color: lightgrey">Рост</span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col mb-2">
                         <InputText
-                            @bind-Value="Hall.Rating"
+                            @bind-Value="EditUser.Height"
                             class="selectedFormResult mb-2"
-                            placeholder="Рейтинг от 1 до 10"/>
+                            placeholder="Рост"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span style="color: lightgrey">Вес</span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col mb-2">
-                        <textarea 
-                                placeholder="Описание" 
-                                class="textarea" 
-                                @bind="Hall.Description">                                
-                        </textarea>
+                        <InputText
+                            @bind-Value="EditUser.Weight"
+                            class="selectedFormResult mb-2"
+                            placeholder="Вес"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span style="color: lightgrey">О себе</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-2">
+                        <InputText
+                            @bind-Value="EditUser.AboutMe"
+                            class="selectedFormResult mb-2"
+                            placeholder="О себе"/>
                     </div>
                 </div>
                 <div class="row">
@@ -115,7 +166,7 @@
                                 type="submit">Сохранить</button>
                         }
                     </div>
-                </div>*@
+                </div>
             </EditForm>
         </div>
     </div>

@@ -15,6 +15,8 @@ namespace WodCatClone.Logic.UserService
 
         User GetUser(string nickName);
 
+        bool Update(User updateUser, int id, string gender);
+
         void Join(int hallId);
 
         void Exit(int hallId);

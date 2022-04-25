@@ -7,5 +7,7 @@ namespace WodCatClone.WebDb.UserRepository
         Gender GetGenderImage(int? id);
 
         Gender GetGender(int? id);
+
+        Gender GetGender(string gender);
     }
 }
