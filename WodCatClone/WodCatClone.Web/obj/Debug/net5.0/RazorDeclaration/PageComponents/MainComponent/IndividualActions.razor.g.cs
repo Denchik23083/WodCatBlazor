@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace WodCatClone.Web.Pages.MainPage
+namespace WodCatClone.Web.PageComponents.MainComponent
 {
     #line hidden
     using System;
@@ -166,8 +166,14 @@ using WodCatClone.Web.PageComponents.ProfileComponent;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/")]
-    public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
+#nullable restore
+#line 23 "C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\_Imports.razor"
+using WodCatClone.Web.PageComponents.MainComponent;
+
+#line default
+#line hidden
+#nullable disable
+    public partial class IndividualActions : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)

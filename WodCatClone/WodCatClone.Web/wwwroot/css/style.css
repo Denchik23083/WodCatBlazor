@@ -193,10 +193,15 @@ a {cursor: pointer;}
     font-weight: bold;
 }
 .pages {margin-top: 20px;}
-.link {color: #8ab4f8;}
+.link, .mainLink {color: #8ab4f8;}
 .link:hover {
     cursor: pointer;
     color: #8ab4f8;
+}
+.mainLink:hover {
+    cursor: pointer;
+    color: #8ab4f8;
+    text-decoration: none;
 }
 .hr { background-color: white;}
 .full { color: #bdc1c6;}

@@ -1,0 +1,84 @@
+﻿@if (Workout is not null)
+{
+    <div class="row">
+        <div class="col-3 mt-2">
+            <img src="@WorkoutImage" width="75" height="75"/>
+        </div>
+        <div class="col-9 pt-3 mt-2">
+            <h4 style="font-size: 18px; font-weight: bold;">
+                <a class="mainLink" href="/workouts/@Workout.Id">@Workout.Name</a>
+            </h4>
+        </div>
+    </div>
+}
+else if (Exercise is not null)
+{
+    <div class="row">
+        <div class="col-6 mt-2">
+            <iframe
+                width="300"
+                height="150"
+                src="@ExerciseImage"
+                frameborder="0"
+                allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+        <div class="col-6 pt-3 mt-2">
+            <h4 style="font-size: 18px; font-weight: bold;">
+                <a class="mainLink" href="/exercises/@Exercise.Id">@Exercise.Name</a>
+            </h4>
+        </div>
+    </div>
+}
+else if (Hall is not null)
+{
+    <div class="row">
+        <div class="col-3 mt-2">
+            <img src="@HallImage" width="75" height="75"/>
+        </div>
+        <div class="col-9 pt-3 mt-2">
+            <h4 style="font-size: 18px; font-weight: bold;">
+                <a class="mainLink" href="/gymboxs/@Hall.Id">@Hall.Name</a>
+            </h4>
+        </div>
+    </div>
+}
+else if (User is not null)
+{
+    <div class="row">
+        <div class="col-3 mt-2">
+            <img src="@UserImage" width="75" height="75"/>
+        </div>
+        <div class="col-9 pt-3">
+            <div class="row">
+                <div class="col mt-2">
+                    <h4 style="font-size: 18px; font-weight: bold;">
+                        <a class="mainLink" href="/profile/@User.NickName">
+                            @User.Name&nbsp;@User.Surname
+                        </a>
+                    </h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <span>@User.Points</span>&nbsp;
+                    <span>баллов</span>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else if (Article is not null)
+{
+    <div class="row">
+        <div class="col-3 mt-2">
+            <img src="@ArticleImage" width="75" height="75"/>
+        </div>
+        <div class="col-9 pt-3 mt-2">
+            <h4 style="font-size: 18px; font-weight: bold;">
+                <a class="mainLink" href="/articles/@Article.Id">@Article.Name</a>
+            </h4>
+        </div>
+    </div>
+}

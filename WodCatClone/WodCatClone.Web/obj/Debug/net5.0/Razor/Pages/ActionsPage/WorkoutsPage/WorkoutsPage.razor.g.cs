@@ -163,6 +163,13 @@ using WodCatClone.Web.PageComponents.ProfileComponent;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 23 "C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\_Imports.razor"
+using WodCatClone.Web.PageComponents.MainComponent;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/workouts")]
     public partial class WorkoutsPage : Microsoft.AspNetCore.Components.ComponentBase
     {
