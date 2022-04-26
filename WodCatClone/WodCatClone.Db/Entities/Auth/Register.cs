@@ -1,4 +1,6 @@
-﻿namespace WodCatClone.Db.Entities.Auth
+﻿using System;
+
+namespace WodCatClone.Db.Entities.Auth
 {
     public class Register
     {
@@ -6,7 +8,13 @@
 
         public string Name { get; set; }
 
+        public string Surname { get; set; }
+
         public string Email { get; set; }
+
+        public string NickName { get; set; }
+
+        public DateTime Birthday { get; set; }
 
         public string Password { get; set; }
 

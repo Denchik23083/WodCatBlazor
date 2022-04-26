@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using System;
+using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.ActionsService.HallsService;
@@ -32,9 +33,15 @@ namespace WodCatClone.Web.Pages.ProfilePage
 
         public string HallEmblem { get; set; }
 
+        public int Age { get; set; }
+
         protected override void OnInitialized()
         {
             User = UserService.GetUser(NickName);
+
+            var today = DateTime.Today;
+            Age = (today - User.Birthday).Days / 365;
+
             UserEnter = UserService.GetUser();
 
             IsLoginUser = UserService.IsLoginUser();

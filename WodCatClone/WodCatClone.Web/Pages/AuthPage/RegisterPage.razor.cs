@@ -7,21 +7,29 @@ namespace WodCatClone.Web.Pages.AuthPage
     public partial class RegisterPage
     {
         [Inject] private IAuthService Service { get; set; }
+
         [Inject] private NavigationManager Manager { get; set; }
 
-        private Register _register = new();
+        private Register _mainRegister = new();
 
-        private bool _isRegister;
+        private bool IsRegister { get; set; }
+
+        public bool IsNext { get; set; }
 
         public void Register()
         {
-            if (_register.Password == _register.ConfirmPassword)
+            IsRegister = Service.Register(_mainRegister);
+            if (IsRegister)
             {
-                _isRegister = Service.Register(_register);
-                if (_isRegister)
-                {
-                    Manager.NavigateTo("/login");
-                }
+                Manager.NavigateTo("/login");
+            }
+        }
+
+        public void MainRegister()
+        {
+            if (_mainRegister.Password == _mainRegister.ConfirmPassword)
+            {
+                IsNext = true;
             }
         }
     }

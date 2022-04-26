@@ -2,16 +2,33 @@
 
 <HeaderComponent />
 
-<div class="row mb-2 ml-1">
-    <div class="col auth">
-        <EditForm Model="@_login" OnSubmit="@Login"> <br/>
-            <InputText id="email" @bind-Value="_login.Email" class="mb-2"/><br/>
-            <InputText id="password" type="password" @bind-Value="_login.Password" class="mb-2"/><br/>
-        
-            <button class="btn btn-primary mb-2" type="submit">Войти</button>
-        
-        </EditForm>
-        
-        <a href="/register">Регистрация</a>
+<div class="newWrapper">
+    <div class="row">
+        <div class="col loginContainer">
+            <div class="login">
+                <h1 style="color: white; font-size: 35px;">Войти</h1>
+                <EditForm Model="@_login" OnSubmit="@Login"> <br/>
+                    <InputText
+                        id="email"
+                        @bind-Value="_login.Email"
+                        class="mb-3 formLogin"
+                        placeholder="E-mail"/><br/>
+                    <InputText
+                        id="password"
+                        type="password"
+                        @bind-Value="_login.Password"
+                        class="mb-3 formLogin"
+                        style="width: 100%; height: 40px; padding-left: 20px;"
+                        placeholder="Пароль"/><br/>
+
+                    <button class="mb-2 authButton" type="submit">Войти</button>
+
+                </EditForm>
+
+                <p style="color: #bdc1c6;">Еще нет аккаунта? &nbsp;
+                    <a href="/register" class="mainLink">Регистрация</a>
+                </p>
+            </div>
+        </div>
     </div>
 </div>

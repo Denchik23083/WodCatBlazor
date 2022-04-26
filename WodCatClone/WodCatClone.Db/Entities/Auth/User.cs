@@ -23,8 +23,6 @@ namespace WodCatClone.Db.Entities.Auth
 
         public int Points { get; set; }
 
-        public int Age { get; set; }
-
         public DateTime Birthday { get; set; }
 
         public string Height { get; set; }
