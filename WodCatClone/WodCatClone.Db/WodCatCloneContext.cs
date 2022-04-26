@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
+using WodCatClone.Db.Entities.CallBack;
 
 namespace WodCatClone.Db
 {
@@ -32,5 +33,9 @@ namespace WodCatClone.Db
         public DbSet<ArticlesEmblem> ArticlesEmblem { get; set; }
 
         public DbSet<Gender> Gender { get; set; }
+
+        public DbSet<Question> Question { get; set; }
+        
+        public DbSet<Answer> Answer { get; set; }
     }
 }

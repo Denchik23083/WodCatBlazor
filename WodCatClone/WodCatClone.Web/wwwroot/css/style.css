@@ -238,6 +238,22 @@ a {cursor: pointer;}
     color: #8ab4f8;
     cursor: pointer;
 }
+.question, .answer {
+    background-color: #424242;
+    width: 100%;
+    padding: 10px;
+    color: #bdc1c6;
+}
+.question:hover {
+    background-color: black;
+    cursor: pointer;
+}
+.answer {
+    background-color: #00ff00;
+    width: 100%;
+    padding: 10px;
+    color: white;
+}
 .filterWorkoutsBlock {
     position: fixed;
     right: 0;

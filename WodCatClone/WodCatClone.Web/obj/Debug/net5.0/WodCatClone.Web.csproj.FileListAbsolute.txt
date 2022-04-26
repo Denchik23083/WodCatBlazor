@@ -409,3 +409,7 @@ C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\ne
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\Pages\MainPage\MainPage.razor.g.cs
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\RazorDeclaration\PageComponents\MainComponent\IndividualActions.razor.g.cs
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\PageComponents\MainComponent\IndividualActions.razor.g.cs
+C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\RazorDeclaration\Pages\MorePage\CallBackPage.razor.g.cs
+C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\Pages\MorePage\CallBackPage.razor.g.cs
+C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\RazorDeclaration\Pages\MorePage\DeveloperPage.razor.g.cs
+C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\Pages\MorePage\DeveloperPage.razor.g.cs

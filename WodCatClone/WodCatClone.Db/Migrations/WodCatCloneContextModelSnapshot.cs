@@ -380,6 +380,43 @@ namespace WodCatClone.Db.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("WodCatClone.Db.Entities.CallBack.Answer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Answer");
+                });
+
+            modelBuilder.Entity("WodCatClone.Db.Entities.CallBack.Question", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AnswerId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AnswerId");
+
+                    b.ToTable("Question");
+                });
+
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Articles", b =>
                 {
                     b.HasOne("WodCatClone.Db.Entities.Actions.ArticlesEmblem", "ArticleEmblem")
@@ -445,6 +482,17 @@ namespace WodCatClone.Db.Migrations
                     b.Navigation("Gender");
 
                     b.Navigation("Halls");
+                });
+
+            modelBuilder.Entity("WodCatClone.Db.Entities.CallBack.Question", b =>
+                {
+                    b.HasOne("WodCatClone.Db.Entities.CallBack.Answer", "Answer")
+                        .WithMany()
+                        .HasForeignKey("AnswerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Answer");
                 });
 #pragma warning restore 612, 618
         }

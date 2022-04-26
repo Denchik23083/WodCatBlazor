@@ -59,9 +59,8 @@ namespace WodCatClone.Web.PageComponents.HeaderComponent
 
         public List<SelectedLink> SelectedMore = new()
         {
-            new() { Content = "RM-Calc", Link = "/calc" },
-            new() { Content = "Обратная связь", Link = "/callback" },
-            new() { Content = "Developer", Link = "developer" },
+            new() { Content = "Callback", Link = "/callback" },
+            new() { Content = "Developer", Link = "/developer" },
         };
     }
 }

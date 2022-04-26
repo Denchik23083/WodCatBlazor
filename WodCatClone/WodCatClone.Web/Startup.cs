@@ -10,12 +10,14 @@ using WodCatClone.Logic.ActionsService.ExercisesService;
 using WodCatClone.Logic.ActionsService.HallsService;
 using WodCatClone.Logic.ActionsService.WorkoutsService;
 using WodCatClone.Logic.AuthService;
+using WodCatClone.Logic.CallBackService;
 using WodCatClone.Logic.UserService;
 using WodCatClone.WebDb.ActionsRepository.ArticlesRepository;
 using WodCatClone.WebDb.ActionsRepository.ExercisesRepository;
 using WodCatClone.WebDb.ActionsRepository.HallsRepository;
 using WodCatClone.WebDb.ActionsRepository.WorkoutsRepository;
 using WodCatClone.WebDb.AuthRepository;
+using WodCatClone.WebDb.CallBackRepository;
 using WodCatClone.WebDb.UserRepository;
 
 namespace WodCatClone.Web
@@ -47,6 +49,8 @@ namespace WodCatClone.Web
             services.AddScoped<IArticlesRepository, ArticlesRepository>();
             services.AddScoped<IGenderService, GenderService>();
             services.AddScoped<IGenderRepository, GenderRepository>();
+            services.AddScoped<ICallBackService, CallBackService>();
+            services.AddScoped<ICallBackRepository, CallBackRepository>();
 
             services.AddRazorPages();
             services.AddServerSideBlazor();
