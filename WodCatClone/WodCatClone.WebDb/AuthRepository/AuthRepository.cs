@@ -25,7 +25,8 @@ namespace WodCatClone.WebDb.AuthRepository
         {
             var allUsers = _context.Users;
 
-            if (allUsers.Any(b => b.Email == register.Email))
+            if (allUsers.Any(b => b.Email == register.Email) 
+                || allUsers.Any(b => b.NickName == register.NickName))
             {
                 return false;
             }

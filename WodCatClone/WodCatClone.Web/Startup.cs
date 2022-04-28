@@ -85,6 +85,18 @@ namespace WodCatClone.Web
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
             });
+
+            EnsureDbCreated(app);
+        }
+
+        private void EnsureDbCreated(IApplicationBuilder app)
+        {
+            var scopeFactory = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>();
+
+            using var scope = scopeFactory.CreateScope();
+            var context = scope.ServiceProvider.GetService<WodCatCloneContext>();
+
+            context!.Database.EnsureCreated();
         }
     }
 }
