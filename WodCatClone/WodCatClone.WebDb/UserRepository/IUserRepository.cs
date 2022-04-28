@@ -13,6 +13,10 @@ namespace WodCatClone.WebDb.UserRepository
 
         User GetUser(string nickName);
 
+        Gender GetGender(int? id);
+
+        Gender GetGender(string gender);
+
         bool Update(User editUser, int id);
 
         void Join(int hallId);

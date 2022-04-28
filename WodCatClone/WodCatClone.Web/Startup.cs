@@ -47,8 +47,6 @@ namespace WodCatClone.Web
             services.AddScoped<IHallsRepository, HallsRepository>();
             services.AddScoped<IArticlesService, ArticlesService>();
             services.AddScoped<IArticlesRepository, ArticlesRepository>();
-            services.AddScoped<IGenderService, GenderService>();
-            services.AddScoped<IGenderRepository, GenderRepository>();
             services.AddScoped<ICallBackService, CallBackService>();
             services.AddScoped<ICallBackRepository, CallBackRepository>();
 

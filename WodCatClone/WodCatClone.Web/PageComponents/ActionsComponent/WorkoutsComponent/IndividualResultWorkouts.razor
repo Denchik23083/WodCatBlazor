@@ -1,5 +1,8 @@
 ﻿<td>
-    <img src="@Image" width="40" height="40"/>&nbsp;
+    @if (Image is not null)
+    {
+        <img src="@Image" width="40" height="40"/>
+    }&nbsp;
     <a href="/profile/@User.NickName" class="link">
         @User.Name&nbsp;
         @User.Surname

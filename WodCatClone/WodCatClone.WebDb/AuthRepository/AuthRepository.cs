@@ -24,14 +24,17 @@ namespace WodCatClone.WebDb.AuthRepository
         public bool Register(Register register)
         {
             var allUsers = _context.Users;
+            var registerUser = Map(register);
 
-            if (allUsers.Any(b => b.Email == register.Email) 
-                || allUsers.Any(b => b.NickName == register.NickName))
+            if (allUsers.Any(b => b.Email == registerUser.Email) 
+                || allUsers.Any(b => b.NickName == registerUser.NickName))
             {
                 return false;
             }
 
-            _context.Users.Add(Map(register));
+            registerUser.Country = "Ukraine";
+
+            _context.Users.Add(registerUser);
             _context.SaveChanges();
 
             return true;

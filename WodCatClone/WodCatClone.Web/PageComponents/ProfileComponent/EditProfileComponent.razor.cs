@@ -15,8 +15,6 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
 
         [Inject] public NavigationManager NavigationManager { get; set; }
 
-        [Inject] public IGenderService GenderService { get; set; }
-
         [Inject] public IHallsService HallsService { get; set; }
 
         [Inject] public IUserService UserService { get; set; }
@@ -54,7 +52,10 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
         protected override void OnInitialized()
         {
             EditUser = User;
-            Image = GenderService.GetGenderImage(User.GenderId);
+            if (User.GenderId is not null)
+            {
+                Image = UserService.GetGender(User.GenderId).Image;
+            }
             Halls = HallsService.GetAllHalls();
             UserHall = HallsService.GetHall(User.HallId);
             if (UserHall is not null)
@@ -62,14 +63,14 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
                 Halls = Halls.Where(b => b.Id != UserHall.Id);
             }
 
-            var gender = GenderService.GetGender(User.GenderId);
+            var gender = UserService.GetGender(User.GenderId);
 
-            if (gender == "Мужской")
+            if (gender.Name == "Мужской")
             {
                 Man = true;
                 Woman = false;
             }
-            if (gender == "Женский")
+            if (gender.Name == "Женский")
             {
                 Man = false;
                 Woman = true;
@@ -78,16 +79,16 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
 
         public void Submit()
         {
-            var gender = GenderService.GetGender(User.GenderId);
+            var gender = UserService.GetGender(User.GenderId);
 
             if (Man && !Woman)
             {
-                gender = "Мужской";
+                gender.Name = "Мужской";
             }
 
             if (Woman && !Man)
             {
-                gender = "Женский";
+                gender.Name = "Женский";
             }
 
             var result = UserService.Update(EditUser, User.Id, gender);

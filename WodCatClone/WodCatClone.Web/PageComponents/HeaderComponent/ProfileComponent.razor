@@ -3,7 +3,10 @@
     <div class="row">
         <div class="col finger">
             <div class="d-inline mr-2">
-                <img src="@Image" style="width: 22px; height: 22px;"/>
+                @if (Image is not null)
+                {
+                    <img src="@Image" style="width: 22px; height: 22px;"/>
+                }
                 <select class="d-inline fingerMoreProfile" @onchange="Route">
                     <option selected value="">V</option>
                     @foreach (var item in SelectProfile)

@@ -7,12 +7,10 @@ namespace WodCatClone.Logic.UserService
     public class UserService : IUserService
     {
         private readonly IUserRepository _repository;
-        private readonly IGenderRepository _genderRepository;
 
-        public UserService(IUserRepository repository, IGenderRepository genderRepository)
+        public UserService(IUserRepository repository)
         {
             _repository = repository;
-            _genderRepository = genderRepository;
         }
 
         public IEnumerable<User> GetAllUsers()
@@ -40,9 +38,14 @@ namespace WodCatClone.Logic.UserService
             return _repository.GetUser(nickName);
         }
 
-        public bool Update(User updateUser, int id, string gender)
+        public Gender GetGender(int? id)
         {
-            var genre = _genderRepository.GetGender(gender);
+            return _repository.GetGender(id);
+        }
+
+        public bool Update(User updateUser, int id, Gender gender)
+        {
+            var genre = _repository.GetGender(gender.Name);
 
             updateUser.GenderId = genre.Id;
 

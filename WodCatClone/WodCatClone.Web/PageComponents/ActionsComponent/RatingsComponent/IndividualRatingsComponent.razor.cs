@@ -11,13 +11,13 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.RatingsComponent
 
         [Inject] public IHallsService HallsService { get; set; }
 
-        [Inject] public IGenderService GenderService { get; set; }
+        [Inject] public IUserService UserService { get; set; }
 
         [Parameter] public int Position { get; set; }
 
         public string Image { get; set; }
 
-        public string Gender { get; set; }
+        public string GenderImage { get; set; }
 
         protected override void OnInitialized()
         {
@@ -27,7 +27,10 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.RatingsComponent
                 Image = HallsService.GetImage(hall.EmblemHallId);
             }
 
-            Gender = GenderService.GetGenderImage(User.GenderId);
+            if (User.GenderId is not null)
+            {
+                GenderImage = UserService.GetGender(User.GenderId).Image;
+            }
         }
     }
 }

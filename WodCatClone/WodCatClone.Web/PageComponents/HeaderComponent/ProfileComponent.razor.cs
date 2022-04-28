@@ -12,8 +12,6 @@ namespace WodCatClone.Web.PageComponents.HeaderComponent
 
         [Inject] public IUserService UserService { get; set; }
 
-        [Inject] public IGenderService GenderService { get; set; }
-
         public bool IsLoginUser { get; set; }
 
         public User User { get; set; }
@@ -24,9 +22,10 @@ namespace WodCatClone.Web.PageComponents.HeaderComponent
         {
             IsLoginUser = UserService.IsLoginUser();
             User = UserService.GetUser();
-            if (User is not null)
+
+            if (User is not null && User.GenderId is not null)
             {
-                Image = GenderService.GetGenderImage(User.GenderId);
+                Image = UserService.GetGender(User.GenderId).Image;
             }
         }
 

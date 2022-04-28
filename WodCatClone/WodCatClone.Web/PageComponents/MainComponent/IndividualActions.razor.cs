@@ -17,7 +17,7 @@ namespace WodCatClone.Web.PageComponents.MainComponent
 
         [Inject] public IHallsService HallsService { get; set; }
         
-        [Inject] public IGenderService GenderService { get; set; }
+        [Inject] public IUserService UserService { get; set; }
         
         [Inject] public IArticlesService ArticlesService { get; set; }
 
@@ -55,9 +55,9 @@ namespace WodCatClone.Web.PageComponents.MainComponent
             {
                 HallImage = HallsService.GetImage(Hall.EmblemHallId);
             }
-            if (User is not null)
+            if (User is not null && User.GenderId is not null)
             {
-                UserImage = GenderService.GetGenderImage(User.GenderId);
+                UserImage = UserService.GetGender(User.GenderId).Image;
             }
             if (Article is not null)
             {
