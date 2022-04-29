@@ -43,6 +43,11 @@ namespace WodCatClone.Logic.UserService
             return _repository.GetGender(id);
         }
 
+        public Gender GetGender(string gender)
+        {
+            return _repository.GetGender(gender);
+        }
+
         public bool Update(User updateUser, int id, Gender gender)
         {
             var genre = _repository.GetGender(gender.Name);

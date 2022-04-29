@@ -17,6 +17,8 @@ namespace WodCatClone.Logic.UserService
 
         Gender GetGender(int? id);
 
+        Gender GetGender(string gender);
+
         bool Update(User updateUser, int id, Gender gender);
 
         void Join(int hallId);

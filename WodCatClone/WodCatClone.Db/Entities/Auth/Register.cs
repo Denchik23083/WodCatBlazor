@@ -14,6 +14,8 @@ namespace WodCatClone.Db.Entities.Auth
 
         public string NickName { get; set; }
 
+        public int GenderId { get; set; }
+
         public DateTime Birthday { get; set; }
 
         public string Password { get; set; }

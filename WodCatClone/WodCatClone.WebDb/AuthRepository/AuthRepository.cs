@@ -46,8 +46,12 @@ namespace WodCatClone.WebDb.AuthRepository
             {
                 Id = model.Id,
                 Name = model.Name,
+                Surname = model.Surname,
+                NickName = model.NickName,
                 Email = model.Email,
                 Password = model.Password,
+                Birthday = model.Birthday,
+                GenderId = model.GenderId
             };
         }
     }

@@ -58,7 +58,40 @@
                             class="mb-3 formLogin"
                             placeholder="Birthday"/><br/>
                         
-                        <button class="mb-2 authButton" type="submit">Регистрация</button>
+                        <div class="custom-control custom-checkbox mb-2">
+                            <input 
+                                type="checkbox" 
+                                class="custom-control-input" 
+                                id="man" 
+                                @bind="Man" 
+                                @onclick="() => { Man = true; Woman = false; }"/>
+                            <label 
+                                class="custom-control-label" 
+                                for="man"
+                                style="color: lightgrey">Мужчина</label>
+                        </div>
+                        <div class="custom-control custom-checkbox mb-2">
+                            <input 
+                                type="checkbox" 
+                                class="custom-control-input" 
+                                id="woman" 
+                                @bind="Woman" 
+                                @onclick="() => { Man = false; Woman = true; }"/>
+                            <label 
+                                class="custom-control-label" 
+                                for="woman" 
+                                style="color: lightgrey">Женщина</label>
+                        </div>
+
+                        @if (Man || Woman)
+                        {
+                            <button class="mb-2 authButton" type="submit">Регистрация</button>
+                        }
+                        else
+                        {
+                            <button class="mb-2 authButton" type="submit" disabled="disabled">Регистрация</button>
+                        }
+                        
 
                     </EditForm>
                 }
