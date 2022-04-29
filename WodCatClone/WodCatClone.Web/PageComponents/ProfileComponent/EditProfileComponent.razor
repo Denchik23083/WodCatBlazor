@@ -45,26 +45,6 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col mb-2">
-                        <select class="selectedFormResult mb-2" @bind="EditUser.HallId">
-                            @if (UserHall is not null)
-                            {
-                                <option value="@UserHall.Id">@UserHall.Name</option>
-                            }
-                            else
-                            {
-                                <option value=""></option>
-                            }
-                            @foreach (var item in Halls)
-                            {
-                                <option value="@item.Id">
-                                    @item.Name
-                                </option>
-                            }
-                        </select>
-                    </div>
-                </div>
-                <div class="row">
                     <div class="col">
                         <span style="color: lightgrey">Пол</span>
                     </div>

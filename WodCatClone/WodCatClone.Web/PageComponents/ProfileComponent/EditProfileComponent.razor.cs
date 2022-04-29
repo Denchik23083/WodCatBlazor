@@ -15,8 +15,6 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
 
         [Inject] public NavigationManager NavigationManager { get; set; }
 
-        [Inject] public IHallsService HallsService { get; set; }
-
         [Inject] public IUserService UserService { get; set; }
 
         public User EditUser { get; set; }
@@ -55,12 +53,6 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
             if (User.GenderId is not null)
             {
                 Image = UserService.GetGender(User.GenderId).Image;
-            }
-            Halls = HallsService.GetAllHalls();
-            UserHall = HallsService.GetHall(User.HallId);
-            if (UserHall is not null)
-            {
-                Halls = Halls.Where(b => b.Id != UserHall.Id);
             }
 
             var gender = UserService.GetGender(User.GenderId);

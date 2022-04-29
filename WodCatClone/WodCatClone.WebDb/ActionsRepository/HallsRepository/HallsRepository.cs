@@ -2,6 +2,7 @@
 using System.Linq;
 using WodCatClone.Db;
 using WodCatClone.Db.Entities.Actions;
+using WodCatClone.Db.Entities.Auth;
 
 namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
 {
@@ -94,30 +95,13 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
             return true;
         }
 
-        public void AddAthlete(int hallId)
+        public void Athlete(IEnumerable<User> users, int hallId)
         {
-            var loginUser = UserRepository.UserRepository.User;
-            var user = _context.Users.FirstOrDefault(b => b.Id == loginUser.Id);
-
-            var userHall = _context.Halls.FirstOrDefault(b => b.Id == user.HallId);
-
-            if (userHall is not null)
-            {
-                userHall!.Athletes -= 1;
-            }
+            var hallUsers = users.Count(b => b.HallId == hallId);
 
             var hall = _context.Halls.FirstOrDefault(b => b.Id == hallId);
 
-            hall!.Athletes += 1;
-
-            _context.SaveChanges();
-        }
-
-        public void RemoveAthlete(int hallId)
-        {
-            var hall = _context.Halls.FirstOrDefault(b => b.Id == hallId);
-
-            hall!.Athletes -= 1;
+            hall!.Athletes = hallUsers;
 
             _context.SaveChanges();
         }

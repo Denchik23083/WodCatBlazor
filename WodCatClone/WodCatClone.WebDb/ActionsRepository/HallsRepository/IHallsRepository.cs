@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using WodCatClone.Db.Entities.Actions;
+using WodCatClone.Db.Entities.Auth;
 
 namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
 {
@@ -21,8 +22,6 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
 
         bool RemoveHall(int hallId);
 
-        void AddAthlete(int hallId);
-
-        void RemoveAthlete(int hallId);
+        void Athlete(IEnumerable<User> users, int hallId);
     }
 }

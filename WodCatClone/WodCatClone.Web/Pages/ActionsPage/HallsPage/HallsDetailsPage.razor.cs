@@ -52,14 +52,14 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 
         public void Join()
         {
-            HallsService.AddAthlete(Hall.Id);
             UserService.Join(Hall.Id);
+            HallsService.Athlete(Hall.Id);
         }
 
         public void Exit()
         {
-            HallsService.RemoveAthlete(Hall.Id);
             UserService.Exit(Hall.Id);
+            HallsService.Athlete(Hall.Id);
         }
     }
 }
