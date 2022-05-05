@@ -19,9 +19,10 @@ namespace WodCatClone.WebDb.UserRepository
 
         bool Update(User editUser, int id);
 
+        bool UpdateAuth(User updateUser, int id);
+
         void Join(int hallId);
 
         void Exit(int hallId);
-        
     }
 }

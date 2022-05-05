@@ -1,9 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Microsoft.AspNetCore.Components;
-using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
-using WodCatClone.Logic.ActionsService.HallsService;
 using WodCatClone.Logic.UserService;
 using WodCatClone.Web.Helpers;
 
@@ -19,6 +16,8 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
 
         public User EditUser { get; set; }
 
+        public Register AuthUser { get; set; }
+
         public string Image { get; set; }
 
         public bool IsTown { get; set; } = false;
@@ -28,10 +27,6 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
         public bool Man { get; set; }
         
         public bool Woman { get; set; }
-
-        public IEnumerable<Halls> Halls { get; set; }
-
-        public Halls UserHall { get; set; }
 
         public List<FilterHalls> Town = new()
         {
@@ -50,6 +45,8 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
         protected override void OnInitialized()
         {
             EditUser = User;
+            AuthUser = Map(User);
+
             if (User.GenderId is not null)
             {
                 Image = UserService.GetGender(User.GenderId).Image;
@@ -91,6 +88,21 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
             }
         }
 
+        public void Auth()
+        {
+            if (AuthUser.Password == AuthUser.ConfirmPassword)
+            {
+                var result = UserService.UpdateAuth(Map(AuthUser), User.Id);
+
+                if (result)
+                {
+                    var user = UserService.GetUser();
+
+                    NavigationManager.NavigateTo($"/profile/{user.NickName}");
+                }
+            }
+        }
+
         public void TownValue(ChangeEventArgs e)
         {
             var selected = e.Value?.ToString();
@@ -110,6 +122,26 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
             {
                 IsDisplaySubmitButton = true;
             }
+        }
+
+        private Register Map(User model)
+        {
+            return new Register
+            {
+                NickName = model.NickName,
+                Email = model.Email,
+                Password = model.Password
+            };
+        }
+
+        private User Map(Register model)
+        {
+            return new User
+            {
+                NickName = model.NickName,
+                Email = model.Email,
+                Password = model.Password
+            };
         }
     }
 }

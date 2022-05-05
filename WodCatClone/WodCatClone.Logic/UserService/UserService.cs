@@ -57,6 +57,10 @@ namespace WodCatClone.Logic.UserService
             return _repository.Update(updateUser, id);
         }
 
+        public bool UpdateAuth(User updateUser, int id)
+        {
+            return _repository.UpdateAuth(updateUser, id);
+        }
 
         public void Join(int hallId)
         {

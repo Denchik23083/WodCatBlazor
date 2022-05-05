@@ -9,31 +9,31 @@
                 <h1 style="color: white; font-size: 35px;">Регистрация</h1>
                 @if (!IsNext)
                 {
-                    <EditForm Model="@_mainRegister" OnSubmit="@MainRegister"> <br/>
+                    <EditForm Model="@_mainRegister" OnSubmit="@MainRegister">
                         <InputText
                             id="nickname"
                             @bind-Value="_mainRegister.NickName"
                             class="mb-3 formLogin"
-                            placeholder="Ник"/><br/>
+                            placeholder="Ник"/>
                         <InputText
                             id="email"
                             @bind-Value="_mainRegister.Email"
                             class="mb-3 formLogin"
-                            placeholder="E-mail"/><br/>
+                            placeholder="E-mail"/>
                         <InputText
                             id="password"
                             type="password"
                             @bind-Value="_mainRegister.Password"
                             class="mb-3 formLogin"
                             style="width: 100%; height: 40px; padding-left: 20px;"
-                            placeholder="Пароль"/><br/>
+                            placeholder="Пароль"/>
                         <InputText
                             id="confirmPassword"
                             type="password"
                             @bind-Value="_mainRegister.ConfirmPassword"
                             class="mb-3 formLogin"
                             style="width: 100%; height: 40px; padding-left: 20px;"
-                            placeholder="Подтвердить Пароль"/><br/>
+                            placeholder="Подтвердить Пароль"/>
 
                         <button class="mb-2 authButton" type="submit">Регистрация</button>
 
@@ -41,22 +41,22 @@
                 }
                 else
                 {
-                    <EditForm Model="@_mainRegister" OnSubmit="@Register"> <br/>
+                    <EditForm Model="@_mainRegister" OnSubmit="@Register">
                         <InputText
                             id="name"
                             @bind-Value="_mainRegister.Name"
                             class="mb-3 formLogin"
-                            placeholder="Имя"/><br/>
+                            placeholder="Имя"/>
                         <InputText
                             id="surname"
                             @bind-Value="_mainRegister.Surname"
                             class="mb-3 formLogin"
-                            placeholder="Фимилия"/><br/>
+                            placeholder="Фимилия"/>
                         <InputDate
                             id="birthday"
                             @bind-Value="_mainRegister.Birthday"
                             class="mb-3 formLogin"
-                            placeholder="Birthday"/><br/>
+                            placeholder="Birthday"/>
                         
                         <div class="custom-control custom-checkbox mb-2">
                             <input 

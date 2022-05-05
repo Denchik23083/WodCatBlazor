@@ -7,19 +7,19 @@
         <div class="col loginContainer">
             <div class="login">
                 <h1 style="color: white; font-size: 35px;">Войти</h1>
-                <EditForm Model="@_login" OnSubmit="@Login"> <br/>
+                <EditForm Model="@_login" OnSubmit="@Login">
                     <InputText
                         id="email"
                         @bind-Value="_login.Email"
                         class="mb-3 formLogin"
-                        placeholder="E-mail"/><br/>
+                        placeholder="E-mail"/>
                     <InputText
                         id="password"
                         type="password"
                         @bind-Value="_login.Password"
                         class="mb-3 formLogin"
                         style="width: 100%; height: 40px; padding-left: 20px;"
-                        placeholder="Пароль"/><br/>
+                        placeholder="Пароль"/>
 
                     <button class="mb-2 authButton" type="submit">Войти</button>
 

@@ -9,8 +9,50 @@
                     }
                 </div>
             </div>
-            <div class="col mb-2">
-                <img src="img/profileBackground.jpg" alt="" width="500" height="300"/>
+            <div class="row">
+                <div class="col mb-2">
+                    <EditForm Model="AuthUser" OnSubmit="Auth">
+                        <div class="row">
+                            <div class="col mb-2">
+                                <InputText
+                                    @bind-Value="AuthUser.NickName"
+                                    class="selectedFormResult mb-2 mr-2"
+                                    placeholder="Ник"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col mb-2">
+                                <InputText
+                                    @bind-Value="AuthUser.Email"
+                                    class="selectedFormResult mb-2 mr-2"
+                                    placeholder="E-mail"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col mb-2">
+                                <InputText
+                                    type="password"
+                                    @bind-Value="AuthUser.Password"
+                                    class="selectedFormResult mb-2 mr-2"
+                                    placeholder="Пароль"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col mb-2">
+                                <InputText
+                                    type="password"
+                                    @bind-Value="AuthUser.ConfirmPassword"
+                                    class="selectedFormResult mb-2 mr-2"
+                                    placeholder="Подтвердить Пароль"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col text-right">
+                                <button class="btn btn-primary" type="submit">Сохранить</button>
+                            </div> 
+                        </div>
+                    </EditForm>
+                </div>
             </div>
         </div>
         <div class="col-6">

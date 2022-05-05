@@ -44,7 +44,6 @@ namespace WodCatClone.WebDb.AuthRepository
         {
             return new User
             {
-                Id = model.Id,
                 Name = model.Name,
                 Surname = model.Surname,
                 NickName = model.NickName,
