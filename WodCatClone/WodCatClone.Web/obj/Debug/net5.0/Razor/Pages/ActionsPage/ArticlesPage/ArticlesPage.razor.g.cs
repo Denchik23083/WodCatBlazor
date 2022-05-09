@@ -123,7 +123,7 @@ using WodCatClone.Web.PageComponents.HeaderComponent;
 #nullable disable
 #nullable restore
 #line 17 "C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\_Imports.razor"
-using WodCatClone.Web.PageComponents.ActionsComponent.ExercisesComponent;
+using WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent;
 
 #line default
 #line hidden
@@ -137,34 +137,41 @@ using WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent;
 #nullable disable
 #nullable restore
 #line 19 "C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\_Imports.razor"
-using WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent;
+using WodCatClone.Web.PageComponents.ActionsComponent.ExercisesComponent;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 20 "C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\_Imports.razor"
-using WodCatClone.Web.PageComponents.ActionsComponent.RatingsComponent;
+using WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 21 "C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\_Imports.razor"
-using WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent;
+using WodCatClone.Web.PageComponents.ActionsComponent.RatingsComponent;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 22 "C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\_Imports.razor"
-using WodCatClone.Web.PageComponents.ProfileComponent;
+using WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 23 "C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\_Imports.razor"
+using WodCatClone.Web.PageComponents.ProfileComponent;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 24 "C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\_Imports.razor"
 using WodCatClone.Web.PageComponents.MainComponent;
 
 #line default
