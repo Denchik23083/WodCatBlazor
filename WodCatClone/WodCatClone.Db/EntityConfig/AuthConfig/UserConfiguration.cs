@@ -30,6 +30,10 @@ namespace WodCatClone.Db.EntityConfig.AuthConfig
             builder.HasOne(_ => _.Halls)
                 .WithMany()
                 .HasForeignKey(b => b.HallId);
+
+            builder.HasOne(_ => _.Programs)
+                .WithMany()
+                .HasForeignKey(b => b.ProgramsId);
         }
     }
 }

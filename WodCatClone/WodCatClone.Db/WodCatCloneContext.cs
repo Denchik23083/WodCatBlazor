@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Db.Entities.CallBack;
@@ -176,6 +177,88 @@ namespace WodCatClone.Db
                     EmblemHallId = 1
                 });
 
+            modelBuilder.Entity<Programs>().HasData(
+                new Programs
+                {
+                    Id = 1,
+                    Name = "Программа тренировки кроссфит на массу",
+                    Rating = "8.0",
+                    Description = "Программа тренировок состоит из 38 комплексов с большим преобладанием коротких силовых тренировок и полным отсутствием кардио нагрузки. План тренировок подойдет, если ваша цель - увеличение силы и прирост мышечной масса в ущерб выносливости. План тренировок комбинирует в себе силовые тренировки и короткие “тяжелые” комплексы кроссфит, преобладают базовые упражнения с большими весами на малое кол-во повторов, что является основным условием развития силы и набора массы (мышечной массы) В данной программе встречаются технически сложные тяжелоатлетические упражнения, поэтому обязательно пр...",
+                    Type = "Кроссфит,Набор мышечной массы",
+                    HallId = 1
+                },
+                new Programs
+                {
+                    Id = 2,
+                    Name = "Plan for the amateur",
+                    Image = "img/wod.png",
+                    Type = "Кроссфит,На силу"
+                },
+                new Programs
+                {
+                    Id = 3,
+                    Name = "Кроссфит программа тренировок дома без оборудования",
+                    Description = "Программа тренировок идеально подойдет для новичков. Большая часть плана состоит из гимнастических тренировок со своим весом и не требует вспомогательных предметов для выполнения. Сами же упражнения очень просты и наверняка давно вам знакомы, поэтому вы можете не обладать специальными знаниями, чтобы заниматься по данному плану. С этой программой вам не нужно обязательно быть в зале во время тренировки, вы можете выполнять тренировки в любом удобном месте.",
+                    Type = "Кроссфит,Fitness",
+                    HallId = 2
+                });
+
+            modelBuilder.Entity<ProgramsWorkouts>().HasData(
+                new ProgramsWorkouts
+                {
+                    Id = 1,
+                    ProgramsId = 1,
+                    WorkoutsId = 1
+                },
+                new ProgramsWorkouts
+                {
+                    Id = 2,
+                    ProgramsId = 1,
+                    WorkoutsId = 2
+                },
+                new ProgramsWorkouts
+                {
+                    Id = 3,
+                    ProgramsId = 1,
+                    WorkoutsId = 3
+                },
+                new ProgramsWorkouts
+                {
+                    Id = 4,
+                    ProgramsId = 2,
+                    WorkoutsId = 1
+                },
+                new ProgramsWorkouts
+                {
+                    Id = 5,
+                    ProgramsId = 2,
+                    WorkoutsId = 3
+                },
+                new ProgramsWorkouts
+                {
+                    Id = 6,
+                    ProgramsId = 3,
+                    WorkoutsId = 2
+                });
+
+            modelBuilder.Entity<User>().HasData(
+                new User
+                {
+                    Id = 1,
+                    Name = "Денис",
+                    Surname = "Кудрявов",
+                    NickName = "SoEasyBlef",
+                    Email = "deniskudravov228@gmail.com",
+                    Password = "0000",
+                    Country = "Ukraine",
+                    Town = "Херсон",
+                    Points = 185,
+                    Birthday = new DateTime(2003, 08, 23),
+                    Height = "185",
+                    Weight = "70",
+                    AboutMe = "I am a developer C#",
+                    GenderId = 1
+                });
 
             modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
 
@@ -184,9 +267,13 @@ namespace WodCatClone.Db
 
         public DbSet<User> Users { get; set; }
 
-        public DbSet<Exercises> Exercises { get; set; }
+        public DbSet<ProgramsWorkouts> ProgramsWorkouts { get; set; }
+
+        public DbSet<Programs> Programs { get; set; }
 
         public DbSet<Workouts> Workouts { get; set; }
+
+        public DbSet<Exercises> Exercises { get; set; }
 
         public DbSet<ResultWorkouts> ResultWorkouts { get; set; }
 

@@ -1,4 +1,6 @@
-﻿namespace WodCatClone.Db.Entities.Actions
+﻿using System.Collections.Generic;
+
+namespace WodCatClone.Db.Entities.Actions
 {
     public class Workouts
     {
@@ -27,5 +29,7 @@
         public int? EmblemHallId { get; set; }
 
         public HallEmblem EmblemHall { get; set; }
+
+        public List<ProgramsWorkouts> ProgramsWorkouts { get; set; }
     }
 }

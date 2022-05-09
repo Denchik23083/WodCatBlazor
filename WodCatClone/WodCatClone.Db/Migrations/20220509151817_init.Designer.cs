@@ -10,8 +10,8 @@ using WodCatClone.Db;
 namespace WodCatClone.Db.Migrations
 {
     [DbContext(typeof(WodCatCloneContext))]
-    [Migration("20220428133609_initializeDb")]
-    partial class initializeDb
+    [Migration("20220509151817_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -73,7 +73,7 @@ namespace WodCatClone.Db.Migrations
                             FullDescription = "It is becoming a more common idea that strength training should be utilized in every population for maintaining general health and varied performance goals. There is a growing body of anecdotal evidence showing the benefits of including general strength training in populations where it was previously ignored or deemed harmful. However, there is still confusion on how to best implement strength training in programs focused on sport performance, rehabilitation, or general health. Hopefully this article can provide insight and guidance on how to use one of the most important strength movements—the deadlift.The deadlift should be a staple for not only increasing performance but also overall resiliency.Almost every job in any tactical field(e.g., police, fire, military) requires stabilization of the trunk while expressing large amounts of force through the lower extremities. There are few exercises that will activate trunk muscles like the deadlift because it requires the entire body to be engaged for proper completion. The deadlift requires the upper and lower extremities to move or stabilize the bar, which engages a large number of motor units and muscles fibers simultaneously.In terms of positive changes and strength progressions in short - or long - term adaptation, there are few substitutes for the deadlift. Its simplicity and function should make it a priority in all strength training regimens.The positive changes in bone density, muscle mass, resting metabolic rate, decreased low back pain, and even dynamic strength development emphasize the importance of the deadlift(1, 2, 3).Research has also shown that long - term lifting with deadlifts and squats not only promotes an increase of bone density in younger populations, but it may also help maintain that increase well into the later stages of life(1, 4, 5).The coordinated effort required to perform the deadlift, and its variations, places a large amount of stress on the musculoskeletal system and drives adaptation.The deadlift is a base for all other ground - based lifts(e.g., cleans, snatches, and their variations) as well as many tactical agility tests(e.g., dummy drags, equipment lifting, patient loading, etc.).Proper execution of the deadlift, and the ability to stabilize the trunk and spine while exerting maximal effort is a skill that can help tactical personnel and the general population avoid injury.The deadlift should be a staple for not only increasing performance but also overall resiliency.Almost every job in any tactical field(e.g., police, fire, military) requires stabilization of the trunk while expressing large amounts of force through the lower extremities. There are few exercises that will activate trunk muscles like the deadlift because it requires the entire body to be engaged for proper completion. The deadlift requires the upper and lower extremities to move or stabilize the bar, which engages a large number of motor units and muscles fibers simultaneously.There are a few key pointers that advanced coaches and lifters can use in order to achieve excellent results while reducing the risk of injury and promoting safe motor patterns.The remainder of this article will present four of the most important tips for deadlifting from an anecdotal base to not only increase performance, but also to decrease injury rates in tactical populations.TIP 1 | Head Posture: The Head Needs To Be Looking Slightly UpwardThere has been a lot of debate with this topic, but keeping the head looking slightly upward allows the shoulders to stay back and the spine to stay in a more erect, and neutral, position.Half of the battle with performing near - maximal deadlifts and doing it safely is keeping the back as neutral as possible with the head in a more upright position, which keeps the hips and leg extensors working at the same time.Often if the head falls forward or the eyes drift downward while performing the lift, it can cause the weight to be distributed over the leg extensors and reduce the involvement of the hips and posterior chain.It has been debated that a “head up” position can cause cervical spine issues, but research is currently lacking to warrant such concern. Hundreds, if not thousands, of powerlifters have lifted this way for many years, and cervical spine injury has not become an epidemic in this population, or been at a high enough prevalence to cause concern.A more vertical, and neutral, back position allows for increased hip drive, which can be better utilized with the head looking slightly upward.From experience, often a slightly upward head angle results in better deadlift form.TIP 2 | Lat Activation: The Lats Need to Engage FirstThis allows the bar path to be as close to the legs as possible.By contracting the lats first, the bar stays closer to the lower extremities and gives the hips and legs more leverage to perform the task.The further the bar is away from the legs, the more the lower back has to activate to perform the lift.A great deadlift should leave marks on the shins.This indicates that the bar was as close to the lower extremities as possible, and the bar weight was kept as close as possible to the lifter’s center of mass.This activation of the lats can create a posture that is advantageous to lifting large loads safely by creating tension on the bar prior to initiating the lift.Advanced lifters may actually try to bend the bar with the lats while the barbell is on the ground, to ensure the bar stays close to the body.This preliminary activation of the lats also reduces the tendency for the shoulders to drop, keeping the thoracic and lumbar spine more vertical and less likely to round.TIP 3 | Knee Motion Cues: Regardless of Position(Sumo, Conventional, or Some Variation) Always Try to Push the Knees ApartPushing the knees apart throughout the deadlift can help the glutes remain active during the lift.When first learning, most people will tend to use all quads, hamstrings, and spinal erectors to pull the weight up off the ground.By driving the knees apart, the glute medius will be triggered to stabilize the pelvis and help the posterior chain to maximize hip extension.This is crucial with not only coaching, but also lifting larger loads(i.e., 80 % of one repetition maximum[1RM] or higher).This key coaching cue can allow the athlete to lift more weight by including more muscle groups throughout the entire lift.Another helpful tip is to try to spread the floor with the feet.This lateral pressure can force the knees outward and ensure a strong supportive base from which to lift.TIP 4 | Positional Weakness: Train Your Weakest PositionMany times when an athlete first starts to deadlift, one position feels more natural or stronger(usually conventional) than others. An athlete will tend to gravitate towards this stronger position naturally.However, it can be very helpful to focus on the position that feels weaker and more awkward for long - term improvement.For my tactical athletes and general clients, it is valuable for them to become proficient in sumo deadlifting before utilizing a conventional stance.There are a few reasons for this:It teaches the lifter to use the hips primarily, which can reduce the risk of excessive lumber flexion under load.Hip strength and mobility are crucial in general performance.One of the main indicators of future lower back problems and / or health is hip mobility. Completing sumo deadlifts correctly can aid in developing strong hips, as well as improving mobility.From experience, sumo deadlifts can actually help one learn to pull conventional deadlifts correctly, by first addressing hip mobility and learning how to maximally activate the glutes.This allows the lifter to take some pressure off the lower back and place it on the glutes.The sumo deadlift seems to be able to withstand more volume in a training block or cycle than deadlifting with a conventional stance.A logical reason for this is that the sumo stance utilizes less lower back musculature and more of the glutes.Since the glutes are larger, and more powerful, they can handle the increased training volume when compared to the lower back.From experience, the sumo deadlift can be used more frequently and with higher resistances for longer periods of time than the conventional deadlift(assuming the lifter is healthy).Hopefully this article has provided a few key tips on how to perform the deadlift more efficiently and safely.Some helpful coaching cues, like keeping the head slightly up, activating the lats, and pushing the knees out can assist a tactical athlete in executing the deadlift while increasing strength over time.",
                             Name = "article provides a few key tips on how to perform the deadlift more efficiently and safely",
                             Rating = "10.0",
-                            Type = "img/M4.png"
+                            Type = "Кроссфит,Тренировки"
                         });
                 });
 
@@ -183,7 +183,7 @@ namespace WodCatClone.Db.Migrations
                         {
                             Id = 3,
                             Complexity = "Сложный",
-                            Description = "img/M4.pngВыбросы со штангой или «Трастеры» - это упражнение, которое одновременно задействует большое количество крупных мышц. Данное упражнение отлично развивает как и силовые показатели так и выносливые, это зависит от того какой вес и диапазон повторений вы будете использовать в своих тренировках.Трастеры – это так же и универсальное упражнение,классический вариант исполнения,это выбросы со штангой,но вы легко можете использовать самое разнообразное оборудование(гири, гантели, мешок с песком, медболы, и т.д.).",
+                            Description = "Выбросы со штангой или «Трастеры» - это упражнение, которое одновременно задействует большое количество крупных мышц. Данное упражнение отлично развивает как и силовые показатели так и выносливые, это зависит от того какой вес и диапазон повторений вы будете использовать в своих тренировках.Трастеры – это так же и универсальное упражнение,классический вариант исполнения,это выбросы со штангой,но вы легко можете использовать самое разнообразное оборудование(гири, гантели, мешок с песком, медболы, и т.д.).",
                             FullDescription = "Техника выполнения упражнения: «Выбросы со штангой Thrusters»Исходное положение:-Возьмите штангу в передний упор на груди,так же как в стартовой позиции для фронтальных приседаний.- Спина ровная,положение ступней на ширине плеч.- Локти подняты,взгляд направлен вперед.Выполнение упражнения:-Опуститесь в нижнее положение приседания,со штангой на груди.- Начните мощно вставать и одновременно выжимайте штангу в положение над головой,до тех пор,пока ваши руки не окажутся прямыми.- Зафиксируйте штангу на вытянутых руках,и после небольшой паузы опуститесь обратно в положение приседа,во время опускания так же опустите штангу на грудь.",
                             Image = "https://www.youtube.com/embed/aea5BGj9a8Y",
                             Inventory = "Штанга",
@@ -295,6 +295,126 @@ namespace WodCatClone.Db.Migrations
                             Rating = "10.0",
                             Town = "Харьков",
                             Type = "Crossfit (not Aff.)"
+                        });
+                });
+
+            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Programs", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("HallId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Rating")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HallId");
+
+                    b.ToTable("Programs");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Программа тренировок состоит из 38 комплексов с большим преобладанием коротких силовых тренировок и полным отсутствием кардио нагрузки. План тренировок подойдет, если ваша цель - увеличение силы и прирост мышечной масса в ущерб выносливости. План тренировок комбинирует в себе силовые тренировки и короткие “тяжелые” комплексы кроссфит, преобладают базовые упражнения с большими весами на малое кол-во повторов, что является основным условием развития силы и набора массы (мышечной массы) В данной программе встречаются технически сложные тяжелоатлетические упражнения, поэтому обязательно пр...",
+                            HallId = 1,
+                            Name = "Программа тренировки кроссфит на массу",
+                            Rating = "8.0",
+                            Type = "Кроссфит,Набор мышечной массы"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Image = "img/wod.png",
+                            Name = "Plan for the amateur",
+                            Type = "Кроссфит,На силу"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Программа тренировок идеально подойдет для новичков. Большая часть плана состоит из гимнастических тренировок со своим весом и не требует вспомогательных предметов для выполнения. Сами же упражнения очень просты и наверняка давно вам знакомы, поэтому вы можете не обладать специальными знаниями, чтобы заниматься по данному плану. С этой программой вам не нужно обязательно быть в зале во время тренировки, вы можете выполнять тренировки в любом удобном месте.",
+                            HallId = 2,
+                            Name = "Кроссфит программа тренировок дома без оборудования",
+                            Type = "Кроссфит,Fitness"
+                        });
+                });
+
+            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.ProgramsWorkouts", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ProgramsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WorkoutsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProgramsId");
+
+                    b.HasIndex("WorkoutsId");
+
+                    b.ToTable("ProgramsWorkouts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ProgramsId = 1,
+                            WorkoutsId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ProgramsId = 1,
+                            WorkoutsId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ProgramsId = 1,
+                            WorkoutsId = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ProgramsId = 2,
+                            WorkoutsId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ProgramsId = 2,
+                            WorkoutsId = 3
+                        },
+                        new
+                        {
+                            Id = 6,
+                            ProgramsId = 3,
+                            WorkoutsId = 2
                         });
                 });
 
@@ -533,6 +653,9 @@ namespace WodCatClone.Db.Migrations
                         .HasColumnType("int")
                         .HasDefaultValue(0);
 
+                    b.Property<int?>("ProgramsId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Surname")
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
@@ -551,7 +674,28 @@ namespace WodCatClone.Db.Migrations
 
                     b.HasIndex("HallId");
 
+                    b.HasIndex("ProgramsId");
+
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AboutMe = "I am a developer C#",
+                            Birthday = new DateTime(2003, 8, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Country = "Ukraine",
+                            Email = "deniskudravov228@gmail.com",
+                            GenderId = 1,
+                            Height = "185",
+                            Name = "Денис",
+                            NickName = "SoEasyBlef",
+                            Password = "0000",
+                            Points = 180,
+                            Surname = "Кудрявов",
+                            Town = "Херсон",
+                            Weight = "70"
+                        });
                 });
 
             modelBuilder.Entity("WodCatClone.Db.Entities.CallBack.Answer", b =>
@@ -687,6 +831,34 @@ namespace WodCatClone.Db.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Programs", b =>
+                {
+                    b.HasOne("WodCatClone.Db.Entities.Actions.Halls", "Halls")
+                        .WithMany()
+                        .HasForeignKey("HallId");
+
+                    b.Navigation("Halls");
+                });
+
+            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.ProgramsWorkouts", b =>
+                {
+                    b.HasOne("WodCatClone.Db.Entities.Actions.Programs", "Programs")
+                        .WithMany("ProgramsWorkouts")
+                        .HasForeignKey("ProgramsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WodCatClone.Db.Entities.Actions.Workouts", "Workouts")
+                        .WithMany("ProgramsWorkouts")
+                        .HasForeignKey("WorkoutsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Programs");
+
+                    b.Navigation("Workouts");
+                });
+
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.ResultWorkouts", b =>
                 {
                     b.HasOne("WodCatClone.Db.Entities.Auth.User", "User")
@@ -723,9 +895,15 @@ namespace WodCatClone.Db.Migrations
                         .WithMany()
                         .HasForeignKey("HallId");
 
+                    b.HasOne("WodCatClone.Db.Entities.Actions.Programs", "Programs")
+                        .WithMany()
+                        .HasForeignKey("ProgramsId");
+
                     b.Navigation("Gender");
 
                     b.Navigation("Halls");
+
+                    b.Navigation("Programs");
                 });
 
             modelBuilder.Entity("WodCatClone.Db.Entities.CallBack.Question", b =>
@@ -737,6 +915,16 @@ namespace WodCatClone.Db.Migrations
                         .IsRequired();
 
                     b.Navigation("Answer");
+                });
+
+            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Programs", b =>
+                {
+                    b.Navigation("ProgramsWorkouts");
+                });
+
+            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Workouts", b =>
+                {
+                    b.Navigation("ProgramsWorkouts");
                 });
 #pragma warning restore 612, 618
         }

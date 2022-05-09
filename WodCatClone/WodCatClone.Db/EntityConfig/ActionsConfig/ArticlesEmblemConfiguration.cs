@@ -4,7 +4,7 @@ using WodCatClone.Db.Entities.Actions;
 
 namespace WodCatClone.Db.EntityConfig.ActionsConfig
 {
-    internal class ArticlesEmblemConfiguration : IEntityTypeConfiguration<ArticlesEmblem>
+    public class ArticlesEmblemConfiguration : IEntityTypeConfiguration<ArticlesEmblem>
     {
         public void Configure(EntityTypeBuilder<ArticlesEmblem> builder)
         {
