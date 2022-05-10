@@ -18,8 +18,6 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
 
         public string HallEmblem { get; set; }
 
-        public string[] Type { get; set; }
-
         protected override void OnInitialized()
         {
             _url = $"programs/{Programs.Id}";
@@ -28,8 +26,6 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
                 Hall = HallsService.GetHall(Programs.HallId);
                 HallEmblem = HallsService.GetImage(Hall.EmblemHallId);
             }
-
-            Type = Programs.Type.Split(",");
         }
 
         public void LinkHall(int id) => NavigationManager.NavigateTo($"/gymboxs/{id}");

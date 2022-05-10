@@ -3,82 +3,53 @@ using System.Linq;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.ExercisesService;
+using WodCatClone.Logic.ActionsService.ProgramsService;
 using WodCatClone.Web.Helpers;
 
 namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
 {
     public partial class FilterProgramsComponent
     {
-        //TODO: Programs
+        [Parameter] public IEnumerable<Programs> Programs { get; set; }
 
-        [Parameter] public IEnumerable<Exercises> Exercises { get; set; }
+        [Inject] public IProgramsService ProgramsService { get; set; }
 
-        [Inject] public IExercisesService ExercisesService { get; set; }
+        private string _filterType = "None";
+        private string _filterAim = "None";
 
-        private string _filterModality = "None";
-        private string _filterMovement = "None";
-        private string _filterComplexity = "None";
-        private string _filterInventory = "None";
-
-        public List<FilterExercises> FilterModality = new()
+        public List<FilterPrograms> FilterType = new()
         {
-            new() { Content = "G", Filter = "G" },
-            new() { Content = "W", Filter = "W" },
-            new() { Content = "M", Filter = "M" },
+            new() { Content = "Кроссфит", Filter = "Кроссфит" },
+            new() { Content = "Тяжелая атлетика", Filter = "Тяжелая атлетика" },
+            new() { Content = "Фитнесс", Filter = "Фитнесс" },
         };
 
-        public List<FilterExercises> FilterMovement = new()
+        public List<FilterPrograms> FilterAim = new()
         {
-            new() { Content = "Бег", Filter = "Бег" },
-            new() { Content = "Выход на кольцах", Filter = "Выход на кольцах" },
-            new() { Content = "Выбросы", Filter = "Выбросы" },
-        };
-
-        public List<FilterExercises> FilterComplexity = new()
-        {
-            new() { Content = "Легкий", Filter = "Легкий" },
-            new() { Content = "Нормальный", Filter = "Нормальный" },
-            new() { Content = "Сложный", Filter = "Сложный" },
-        };
-
-        public List<FilterExercises> FilterInventory = new()
-        {
-            new() { Content = "Нет", Filter = "Нет" },
-            new() { Content = "Кольца гимнастические", Filter = "Кольца гимнастические" },
-            new() { Content = "Штанга", Filter = "Штанга" },
+            new() { Content = "На силу", Filter = "На силу" },
+            new() { Content = "Набор мышечной массы", Filter = "Набор мышечной массы" },
+            new() { Content = "Fitness", Filter = "Fitness" },
         };
 
         void Filter()
         {
-            Exercises = ExercisesService.GetAllExercises();
+            Programs = ProgramsService.GetAllPrograms();
 
-            if (_filterModality != "None")
+            if (_filterType != "None")
             {
-                Exercises = Exercises.Where(b => b.Modality.Equals(_filterModality)).ToList();
+                Programs = Programs.Where(b => b.Type.Equals(_filterType)).ToList();
             }
 
-            if (_filterMovement != "None")
+            if (_filterAim != "None")
             {
-                Exercises = Exercises.Where(b => b.Movement.Equals(_filterMovement)).ToList();
-            }
-
-            if (_filterComplexity != "None")
-            {
-                Exercises = Exercises.Where(b => b.Complexity.Equals(_filterComplexity)).ToList();
-            }
-
-            if (_filterInventory != "None")
-            {
-                Exercises = Exercises.Where(b => b.Inventory.Equals(_filterInventory)).ToList();
+                Programs = Programs.Where(b => b.Aim.Equals(_filterAim)).ToList();
             }
         }
 
         void Reset()
         {
-            _filterModality = "None";
-            _filterMovement = "None";
-            _filterComplexity = "None";
-            _filterInventory = "None";
+            _filterType = "None";
+            _filterAim = "None";
 
             Filter();
         }

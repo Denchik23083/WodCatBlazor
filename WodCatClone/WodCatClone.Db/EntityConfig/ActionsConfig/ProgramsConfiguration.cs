@@ -12,6 +12,7 @@ namespace WodCatClone.Db.EntityConfig.ActionsConfig
 
             builder.Property(_ => _.Name).IsRequired();
             builder.Property(_ => _.Type).IsRequired();
+            builder.Property(_ => _.Aim).IsRequired();
             builder.Property(_ => _.Description);
             builder.Property(_ => _.Image);
             builder.Property(_ => _.Rating);
