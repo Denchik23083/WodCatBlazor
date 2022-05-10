@@ -6,5 +6,7 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
     public interface IProgramsService
     {
         IEnumerable<Programs> GetAllPrograms();
+
+        Programs GetProgram(int id);
     }
 }

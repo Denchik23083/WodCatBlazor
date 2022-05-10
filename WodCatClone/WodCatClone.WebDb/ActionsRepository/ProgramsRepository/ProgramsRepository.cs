@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using WodCatClone.Db;
 using WodCatClone.Db.Entities.Actions;
 
@@ -16,6 +17,11 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
         public IEnumerable<Programs> GetAllPrograms()
         {
             return _context.Programs;
+        }
+
+        public Programs GetProgram(int id)
+        {
+            return _context.Programs.FirstOrDefault(b => b.Id == id);
         }
     }
 }

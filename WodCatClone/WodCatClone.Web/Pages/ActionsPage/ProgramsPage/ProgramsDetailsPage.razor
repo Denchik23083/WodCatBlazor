@@ -1,0 +1,47 @@
+﻿@page "/programs/{ProgramId:int}"
+
+<HeaderComponent />
+
+<div class="wrapperId">
+    <div class="row mb-2">
+        <div class="col text-left text-light pages">
+            <a href="/" class="link">WODCAT</a>&nbsp;&rarr;&nbsp;
+            <a href="/programs" class="link">Программы тренировок</a>&nbsp;&rarr;&nbsp;
+            @Program.Name
+        </div>
+    </div>
+    <div class="row mb-2">
+        <div class="col">
+            <span class="NameId">@Program.Name</span>
+            <span class="cubId">@Program.Type</span>
+            <span class="greenCub">@Program.Aim</span>
+            <span class="greenCub">@Program.Rating / 10</span>
+        </div>
+    </div>
+    @if (IsLoginUser)
+    {
+        <div class="row">
+            <div class="col text-center">
+                <button
+                    type="button"
+                    class="btn btn-primary mb-2 mt-2"
+                    @onclick="BeginProgram">
+                    Начать тренировки по данной программе
+                </button>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <div class="col text-center">
+                <button
+                    type="button"
+                    class="btn btn-primary mb-2 mt-2"
+                    @onclick="NeedLogin">
+                    Начать тренировки по данной программе
+                </button>
+            </div>
+        </div>
+    }
+</div>

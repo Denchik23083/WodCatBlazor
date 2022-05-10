@@ -17,5 +17,10 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
         {
             return _repository.GetAllPrograms();
         }
+
+        public Programs GetProgram(int id)
+        {
+            return _repository.GetProgram(id);
+        }
     }
 }

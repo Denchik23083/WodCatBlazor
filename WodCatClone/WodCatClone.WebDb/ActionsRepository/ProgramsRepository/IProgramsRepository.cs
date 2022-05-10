@@ -6,5 +6,7 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
     public interface IProgramsRepository
     {
         IEnumerable<Programs> GetAllPrograms();
+
+        Programs GetProgram(int id);
     }
 }
