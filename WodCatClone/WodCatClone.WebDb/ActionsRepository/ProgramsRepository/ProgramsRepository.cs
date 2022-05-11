@@ -19,6 +19,11 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
             return _context.Programs;
         }
 
+        public IEnumerable<ProgramsWorkouts> GetAllProgramsWorkouts(int id)
+        {
+            return _context.ProgramsWorkouts.Where(b => b.ProgramsId == id);
+        }
+
         public Programs GetProgram(int id)
         {
             return _context.Programs.FirstOrDefault(b => b.Id == id);

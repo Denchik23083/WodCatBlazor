@@ -1,0 +1,16 @@
+﻿<div class="work p-2">
+    <div class="row mb-2">
+        <div class="col">
+            <a href="/workouts/@Workout.Id" class="newLink">@Workout.Name</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <span class="exercisesInWorkouts">На время:</span><br/>
+            @foreach (var item in WorkoutsExercises)
+            {
+                <span class="exercisesInWorkouts">@item</span><br/>
+            }
+        </div>
+    </div>
+</div>

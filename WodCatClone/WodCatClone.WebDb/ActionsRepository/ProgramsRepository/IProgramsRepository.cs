@@ -7,6 +7,8 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
     {
         IEnumerable<Programs> GetAllPrograms();
 
+        IEnumerable<ProgramsWorkouts> GetAllProgramsWorkouts(int id);
+
         Programs GetProgram(int id);
     }
 }

@@ -7,6 +7,10 @@
     margin: 0;
 }
 a {cursor: pointer;}
+.work {
+    border: 1px solid grey;
+    border-radius: 5px;
+}
 .gymList {
     position: absolute;
     top: 120px;
@@ -123,9 +127,7 @@ a {cursor: pointer;}
     color: #bdc1c6;
 }
 .exercisesId {height: 100%;}
-.workoutsId {
-    height: 100%;
-}
+.workoutsId {height: 100%;}
 .workouts:hover {background-color: black;}
 .workoutsTimeId, .articlesType {color: #a3a3a3;}
 .ArticleName {
@@ -205,10 +207,34 @@ a {cursor: pointer;}
     cursor: pointer;
     color: #8ab4f8;
 }
+.programslink {
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 0 10px;
+    color: #bdc1c6;
+}
+.programslink:hover {
+    cursor: pointer;
+    color: #bdc1c6;
+    text-decoration: none;
+    color: #8ab4f8;
+}
 .mainLink:hover {
     cursor: pointer;
     color: #8ab4f8;
     text-decoration: none;
+}
+.newLink {
+    width: 200px;
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+.newLink:hover {
+    text-decoration: none;
+    cursor: pointer;
+    color: #8ab4f8;
 }
 .authButton {
     background-color: #4caf50;

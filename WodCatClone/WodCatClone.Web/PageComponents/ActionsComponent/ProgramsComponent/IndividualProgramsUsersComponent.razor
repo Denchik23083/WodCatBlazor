@@ -1,0 +1,22 @@
+﻿<tbody>
+    <tr class="tableheader">
+        <td>
+            @if (GenderImage is not null)
+            {
+                <img src="@GenderImage" width="50" height="50"/>
+            }&nbsp;
+            <a href="/profile/@User.NickName" class="link">
+                @User.Name&nbsp;
+                @User.Surname
+            </a>
+        </td>
+        <td>@User.Town</td>
+        <td class="p-0">
+            @if (Image is not null)
+            {
+                <img src="@Image" width="60" height="80"/>
+            }
+        </td>
+        <td>@User.Points</td>
+    </tr>
+</tbody>

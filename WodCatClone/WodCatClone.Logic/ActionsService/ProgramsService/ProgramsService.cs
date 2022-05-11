@@ -18,6 +18,11 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
             return _repository.GetAllPrograms();
         }
 
+        public IEnumerable<ProgramsWorkouts> GetAllProgramsWorkouts(int id)
+        {
+            return _repository.GetAllProgramsWorkouts(id);
+        }
+
         public Programs GetProgram(int id)
         {
             return _repository.GetProgram(id);
