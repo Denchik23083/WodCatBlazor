@@ -21,21 +21,40 @@
             }
         </div>
     </div>
-    <div class="row">
-        <div class="col text-center">
-            <button
-                type="button"
-                class="btn btn-primary mb-2 mt-2"
-                @onclick="BeginProgram">
-                Начать тренировки по данной программе
-            </button>
-        </div>
-    </div>
+    @if (IsLoginUser)
+    {
+        @if (User!.ProgramsId != Program.Id)
+        {
+            <div class="row">
+                <div class="col text-center">
+                    <button
+                        type="button"
+                        class="btn btn-primary mb-2 mt-2"
+                        @onclick="BeginProgram">
+                        Начать тренировки по данной программе
+                    </button>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="row">
+                <div class="col text-center">
+                    <button
+                        type="button"
+                        class="btn btn-danger mb-2 mt-2"
+                        @onclick="StopProgram">
+                        Отписаться
+                    </button>
+                </div>
+            </div>
+        }
+    }
     <div class="p-3" style="background-color: #424242; border-radius: 5px;">
         <div class="row">
             <div class="col text-center">
-                <span class="programslink" @onclick="Workout">ТРЕНИРОВКИ</span>&nbsp;
-                <span class="programslink" @onclick="User">ПОДПИСЧИКИ</span>
+                <span class="programslink" @onclick="DisplayWorkout">ТРЕНИРОВКИ</span>&nbsp;
+                <span class="programslink" @onclick="DisplayUser">ПОДПИСЧИКИ</span>
             </div>
         </div>
         @if (DisplayWorkouts)

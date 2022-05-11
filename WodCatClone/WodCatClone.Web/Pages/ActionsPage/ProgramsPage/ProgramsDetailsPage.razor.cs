@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
@@ -19,6 +20,8 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
 
         public Programs Program { get; set; }
 
+        public User User { get; set; }
+
         public bool IsLoginUser { get; set; }
 
         public bool DisplayWorkouts { get; set; } = true;
@@ -34,24 +37,37 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
             Program = ProgramsService.GetProgram(ProgramId);
             IsLoginUser = UserService.IsLoginUser();
             ProgramsWorkouts = ProgramsService.GetAllProgramsWorkouts(ProgramId);
-            Users = UserService.GetAllUsers();
+            Users = ProgramsService.GetAllProgramsUsers(ProgramId);
+            User = UserService.GetUser();
         }
 
         public void BeginProgram()
         {
-            if (!IsLoginUser)
+            var result = ProgramsService.BeginProgram(ProgramId, User);
+
+            if (result)
             {
-                NavigationManager.NavigateTo("/login");
+                NavigationManager.NavigateTo($"/programs/{ProgramId}");
             }
         }
 
-        public void Workout()
+        public void StopProgram()
+        {
+            var result = ProgramsService.StopProgram(ProgramId, User);
+
+            if (result)
+            {
+                NavigationManager.NavigateTo($"/programs/{ProgramId}");
+            }
+        }
+
+        public void DisplayWorkout()
         {
             DisplayWorkouts = true;
             DisplayUsers = false;
         }
 
-        public void User()
+        public void DisplayUser()
         {
             DisplayWorkouts = false;
             DisplayUsers = true;
