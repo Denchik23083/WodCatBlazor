@@ -4,6 +4,7 @@ using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.ActionsService.ArticlesService;
 using WodCatClone.Logic.ActionsService.ExercisesService;
 using WodCatClone.Logic.ActionsService.HallsService;
+using WodCatClone.Logic.ActionsService.ProgramsService;
 using WodCatClone.Logic.ActionsService.WorkoutsService;
 using WodCatClone.Logic.UserService;
 
@@ -11,15 +12,17 @@ namespace WodCatClone.Web.PageComponents.MainComponent
 {
     public partial class IndividualActions
     {
+        [Inject] public IProgramsService ProgramsService { get; set; }
+
         [Inject] public IWorkoutsService WorkoutsService { get; set; }
 
         [Inject] public IExercisesService ExercisesService { get; set; }
 
         [Inject] public IHallsService HallsService { get; set; }
-        
-        [Inject] public IUserService UserService { get; set; }
-        
+
         [Inject] public IArticlesService ArticlesService { get; set; }
+
+        [Parameter] public Programs Program { get; set; }
 
         [Parameter] public Workouts Workout { get; set; }
 
@@ -27,9 +30,9 @@ namespace WodCatClone.Web.PageComponents.MainComponent
 
         [Parameter] public Halls Hall { get; set; }
 
-        [Parameter] public User User { get; set; }
-
         [Parameter] public Articles Article { get; set; }
+
+        public string ProgramImage { get; set; }
 
         public string WorkoutImage { get; set; }
         
@@ -37,12 +40,15 @@ namespace WodCatClone.Web.PageComponents.MainComponent
         
         public string HallImage { get; set; }
 
-        public string UserImage { get; set; }
-
         public string ArticleImage { get; set; }
 
         protected override void OnInitialized()
         {
+            if (Program is not null && Program.HallId is not null)
+            {
+                var hall = HallsService.GetHall(Program.HallId);
+                ProgramImage = HallsService.GetImage(hall.EmblemHallId);
+            }
             if (Workout is not null)
             {
                 WorkoutImage = WorkoutsService.GetImage(Workout.EmblemHallId);
@@ -54,10 +60,6 @@ namespace WodCatClone.Web.PageComponents.MainComponent
             if (Hall is not null)
             {
                 HallImage = HallsService.GetImage(Hall.EmblemHallId);
-            }
-            if (User is not null && User.GenderId is not null)
-            {
-                UserImage = UserService.GetGender(User.GenderId).Image;
             }
             if (Article is not null)
             {
