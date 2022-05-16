@@ -22,14 +22,9 @@
             </div>
             <div class="row">
                 <div class="col mb-2">
-                    @foreach (var item in HallsType)
+                    @foreach (var item in Hall.Type.Split(","))
                     {
-                        @item
-                        if (value < HallsType.Length - 1)
-                        {
-                            <span>&nbsp;|&nbsp;</span>
-                            value++;
-                        }
+                        <span>@item&nbsp;&nbsp;</span>
                     }
                 </div>
             </div>

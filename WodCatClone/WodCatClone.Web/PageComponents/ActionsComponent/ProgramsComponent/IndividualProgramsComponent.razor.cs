@@ -28,6 +28,16 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
             }
         }
 
+        protected override void OnParametersSet()
+        {
+            _url = $"programs/{Programs.Id}";
+            if (Programs.HallId is not null)
+            {
+                Hall = HallsService.GetHall(Programs.HallId);
+                HallEmblem = HallsService.GetImage(Hall.EmblemHallId);
+            }
+        }
+
         public void LinkHall(int id) => NavigationManager.NavigateTo($"/gymboxs/{id}");
     }
 }

@@ -76,27 +76,22 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
             {
                 Workouts = Workouts.Where(b => b.Name.ToLower().Contains(_filterName.ToLower())).ToList();
             }
-
             if (_filterCategory != "None")
             {
                 Workouts = Workouts.Where(o => o.Category.Contains(_filterCategory)).ToList();
             }
-
             if (_filterModality != "None")
             {
                 Workouts = Workouts.Where(b => b.Modality.Equals(_filterModality)).ToList();
             }
-
             if (_filterMovement != "None")
             {
                 Workouts = Workouts.Where(b => b.Movement.Contains(_filterMovement)).ToList();
             }
-
             if (_filterComplexity != "None")
             {
                 Workouts = Workouts.Where(b => b.Complexity.Equals(_filterComplexity)).ToList();
             }
-
             if (_filterInventory != "None")
             {
                 Workouts = Workouts.Where(b => b.Inventory.Equals(_filterInventory)).ToList();
