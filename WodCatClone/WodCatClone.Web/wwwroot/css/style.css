@@ -87,7 +87,17 @@ a {cursor: pointer;}
     border-color: #bdc1c6;
     cursor: pointer;
 }
-.halls { width: 1311px !important;}
+.filterArticles {
+    cursor: pointer;
+    background-color: #202124;
+    padding: 0 16px;
+    border: 1px solid black;
+    color: #e8eaed;
+    border-radius: 5px;
+}
+.halls {
+    width: 1311px !important;
+}
 .info:hover {
     color: #8ab4f8;
     cursor: pointer;

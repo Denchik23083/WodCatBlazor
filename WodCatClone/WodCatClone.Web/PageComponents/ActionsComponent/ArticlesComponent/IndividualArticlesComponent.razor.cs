@@ -12,12 +12,21 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
 
         public string Image { get; set; }
 
+        public string[] ArticleType { get; set; }
+
         string _url = string.Empty;
 
         protected override void OnInitialized()
         {
             _url = $"articles/{Article.Id}";
             Image = ArticlesService.GetImage(Article.ArticlesEmblemId);
+            ArticleType = Article.Type.Split(",");
+        }
+        protected override void OnParametersSet()
+        {
+            _url = $"articles/{Article.Id}";
+            Image = ArticlesService.GetImage(Article.ArticlesEmblemId);
+            ArticleType = Article.Type.Split(",");
         }
     }
 }
