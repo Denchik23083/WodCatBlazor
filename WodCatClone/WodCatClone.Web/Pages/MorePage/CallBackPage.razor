@@ -4,19 +4,19 @@
 
 <div class="wrapper">
     <div class="row">
-        <div class="col text-left text-light pages p-0 mb-2">
+        <div class="col text-left text-light pages mb-2">
             <a href="/" class="link">WODCAT</a> &rarr; Ответы на вопросы
         </div>
     </div>
     <div class="row">
-        <div class="col p-0 mb-2">
+        <div class="col mb-2">
             <h1 class="text-light" style="font-size: 30px;">Ответы на вопросы</h1>
         </div>
     </div>
     @foreach (var item in Questions)
     {
         <div class="row">
-            <div class="col question" @onclick="() => GetAnswer(item.AnswerId)">
+            <div class="col question mr-3 ml-3" @onclick="() => GetAnswer(item.AnswerId)">
                 @item.Name
             </div>
         </div>
@@ -24,7 +24,7 @@
     @if (Answer is not null)
     {
         <div class="row">
-            <div class="col answer mt-3">
+            <div class="col answer m-3">
                 Ответ: @Answer.Name
             </div>
         </div>

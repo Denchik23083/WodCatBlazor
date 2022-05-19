@@ -1,4 +1,4 @@
-﻿<div class="exercises mb-3">
+﻿<div class="articles m-3">
     <div class="row p-3">
         <div class="col">
             <a class="ArticleName" href="@_url">@Article.Name</a>
@@ -24,7 +24,12 @@
         <div class="col">
             @foreach (var item in ArticleType)
             {
-                <span class="articlesType">@item&nbsp;&nbsp;</span>
+                <span class="articlesType">@item</span>
+                @if (Value < ArticleType.Length - 1)
+                {
+                    <span class="articlesType">&nbsp;|&nbsp;</span>
+                    Value++;
+                }
             }
         </div>
     </div>

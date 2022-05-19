@@ -29,7 +29,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
         {
             Articles = ArticlesService.GetAllArticles();
 
-            Articles = Articles.Where(b => b.Type.Contains(type));
+            Articles = Articles.Where(b => b.Type.Contains(type)).ToList();
         }
     }
 }

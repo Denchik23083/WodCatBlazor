@@ -14,16 +14,20 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
 
         public string[] ArticleType { get; set; }
 
+        public int Value { get; set; }
+
         string _url = string.Empty;
 
         protected override void OnInitialized()
         {
+            Value = 0;
             _url = $"articles/{Article.Id}";
             Image = ArticlesService.GetImage(Article.ArticlesEmblemId);
             ArticleType = Article.Type.Split(",");
         }
         protected override void OnParametersSet()
         {
+            Value = 0;
             _url = $"articles/{Article.Id}";
             Image = ArticlesService.GetImage(Article.ArticlesEmblemId);
             ArticleType = Article.Type.Split(",");

@@ -22,12 +22,13 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         public string _url = string.Empty;
 
-        public int value { get; set; } = 0;
+        public int Value { get; set; }
 
         public int ResultWorkoutsCount { get; set; }
 
         protected override void OnInitialized()
         {
+            Value = 0;
             Image = WorkoutsService.GetImage(Workouts.EmblemHallId);
             WorkoutsCategory = Workouts.Category.Split(",");
             WorkoutsExercises = Workouts.Exercises.Split(",");
@@ -36,6 +37,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         protected override void OnParametersSet()
         {
+            Value = 0;
             Image = WorkoutsService.GetImage(Workouts.EmblemHallId);
             WorkoutsCategory = Workouts.Category.Split(",");
             WorkoutsExercises = Workouts.Exercises.Split(",");

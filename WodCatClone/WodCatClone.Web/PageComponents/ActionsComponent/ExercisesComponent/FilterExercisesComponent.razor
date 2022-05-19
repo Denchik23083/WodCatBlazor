@@ -1,5 +1,5 @@
 ﻿<div class="row">
-    <div class="col-2 p-0 pr-1">
+    <div class="col-2 pr-1">
         <select class="d-inline fingerFilter pt-2 pb-2" @bind="_filterModality">
             <option value="None">Модальность</option>
             @foreach (var item in FilterModality)
@@ -8,7 +8,7 @@
             }
         </select>
     </div>
-    <div class="col-2 p-0 pr-1">
+    <div class="col-2 pr-1">
         <select class="d-inline fingerFilter pt-2 pb-2" @bind="_filterMovement">
             <option value="None">Движения</option>
             @foreach (var item in FilterMovement)
@@ -17,7 +17,7 @@
             }
         </select>
     </div>
-    <div class="col-2 p-0 pr-1">
+    <div class="col-2 pr-1">
         <select class="d-inline fingerFilter pt-2 pb-2" @bind="_filterComplexity">
             <option value="None">Cложности</option>
             @foreach (var item in FilterComplexity)
@@ -26,7 +26,7 @@
             }
         </select>
     </div>
-    <div class="col-2 p-0 pr-1">
+    <div class="col-2 pr-1">
         <select class="d-inline fingerFilter pt-2 pb-2" @bind="_filterInventory">
             <option value="None">Инвентарь</option>
             @foreach (var item in FilterInventory)
@@ -35,7 +35,7 @@
             }
         </select>
     </div>
-    <div class="col-2 p-0 pr-1">
+    <div class="col-2 pr-1">
         <button
             type="button"
             class="btn btn-primary form-control mb-2"
@@ -43,7 +43,7 @@
             Search
         </button>
     </div>
-    <div class="col-2 p-0">
+    <div class="col-2">
         <button
             type="button"
             class="btn btn-danger form-control mb-2"

@@ -95,9 +95,6 @@ a {cursor: pointer;}
     color: #e8eaed;
     border-radius: 5px;
 }
-.halls {
-    width: 1311px !important;
-}
 .info:hover {
     color: #8ab4f8;
     cursor: pointer;
@@ -130,7 +127,7 @@ a {cursor: pointer;}
     text-decoration: none;
 }
 .actionsSlash { margin: 0 10px 0 10px; }
-.exercises, .exercisesId, .workouts, .workoutsId, .halls {
+.exercises, .exercisesId, .workouts, .workoutsId, .halls, .programs, .articles {
     background-color: #424242;
     width: 100%;
     border-radius: 5px;
@@ -285,7 +282,7 @@ a {cursor: pointer;}
     cursor: pointer;
 }
 .answer {
-    background-color: #00ff00;
+    background-color: #3b5c3b;
     width: 100%;
     padding: 10px;
     color: white;

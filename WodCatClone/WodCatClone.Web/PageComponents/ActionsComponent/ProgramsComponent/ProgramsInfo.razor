@@ -1,17 +1,17 @@
 ﻿<div class="row">
-    <div class="col p-0">
+    <div class="col">
         <h1 class="text-light" style="font-size: 30px;">Программы тренировок</h1>
     </div>
 </div>
 <div class="row">
-    <div class="col text-right text-muted mb-2 p-0">
+    <div class="col text-right text-muted mb-2">
         <i class="fa-solid fa-info info" @onclick="() => IsDisplay = !IsDisplay"></i>
     </div>
 </div>
 @if (IsDisplay)
 {
     <div class="row">
-        <div class="col p-0 mb-3">
+        <div class="col mb-3">
             <div class="exercises p-3">
                 <button class="btn hide mb-2" @onclick="() => IsDisplay = !IsDisplay">Скрыть</button>
                 <p><strong>Программа тренировок</strong> – это движение, систематизированный, последовательный набор тренировок (список тренировок), рассчитанный на определенную цель и определённый уровень спортсмена (новичок или опытный). В зависимости от направления фитнеса или спорта, план тренировок будет отличаться как по содержанию и разнообразию упражнений, так и их цикличности.</p>
