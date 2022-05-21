@@ -39,7 +39,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
         {
             new() { Content = "Affiliate Crossfit", Value = "Affiliate Crossfit" },
             new() { Content = "Boxing", Value = "Boxing" },
-            new() { Content = "Crossfit(not Aff.)", Value = "Crossfit(not Aff.)" },
+            new() { Content = "Crossfit (not Aff.)", Value = "Crossfit (not Aff.)" },
             new() { Content = "Fitness", Value = "Fitness" },
             new() { Content = "Gym Crossfit", Value = "Gym" },
             new() { Content = "MMA", Value = "MMA" },

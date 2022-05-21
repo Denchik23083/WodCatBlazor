@@ -1,4 +1,6 @@
-﻿namespace WodCatClone.Db.Entities.Actions
+﻿using WodCatClone.Db.Entities.Auth;
+
+namespace WodCatClone.Db.Entities.Actions
 {
     public class Articles
     {
@@ -17,5 +19,9 @@
         public int ArticlesEmblemId { get; set; }
 
         public ArticlesEmblem ArticleEmblem { get; set; }
+
+        public int? UserId { get; set; }
+
+        public User User { get; set; }
     }
 }

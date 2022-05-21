@@ -169,7 +169,7 @@ a {cursor: pointer;}
     padding: 0.3em 0.7em 0.3em;
 }
 .greenCub {background-color: #4caf50;}
-.wrapper, .wrapperId, .wrapperHalls{
+.wrapper, .wrapperId, .wrapperHalls, .wrapperArticles {
     background-color: #202124;
     min-height: 100vh;
     position: absolute;
@@ -188,7 +188,7 @@ a {cursor: pointer;}
     padding-left: 150px;
     padding-right: 150px;
 }
-.wrapperHalls {
+.wrapperHalls, .wrapperArticles {
     top: 395px;
     padding-left: 150px;
     padding-right: 150px;
@@ -204,7 +204,7 @@ a {cursor: pointer;}
     left: 0;
     padding: 0;
 }
-.createHall {
+.createHall, .createArticle {
     background-color: #2196f3;
     font-weight: bold;
 }
@@ -363,7 +363,7 @@ a {cursor: pointer;}
     padding: 0;
     top: 95px;
 }
-.visualContainerId, .visualContainerProfile, .loginContainer {
+.visualContainerId, .visualContainerProfile, .loginContainer, .visualContainerArticle {
     justify-content: center;
     background-size: 100%;
     position: absolute;
@@ -381,6 +381,10 @@ a {cursor: pointer;}
 .visualContainerProfile {
     min-height: 500px;
     background-image: url("/img/profileBackground.jpg");
+}
+.visualContainerArticle {
+    background-image: url("/img/addarticle-bg.jpg");
+    min-height: 300px;
 }
 .loginContainer {
     min-height: 400px;

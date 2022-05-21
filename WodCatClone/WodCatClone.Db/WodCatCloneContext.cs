@@ -25,12 +25,18 @@ namespace WodCatClone.Db
                 new Gender { Id = 2, Name = "Женский", Image = "img/woman.png" });
 
             modelBuilder.Entity<ArticlesEmblem>().HasData(
-                new ArticlesEmblem { Id = 1, Name = "Buildhome", Image = "img/buildhome.png" },
-                new ArticlesEmblem { Id = 2, Name = "Provides", Image = "img/provides.png" });
+                new ArticlesEmblem { Id = 1, Name = "Buildhome", Image = "img/EmblemArticles/buildhome.png" },
+                new ArticlesEmblem { Id = 2, Name = "Functional", Image = "img/EmblemArticles/Functional.png" },
+                new ArticlesEmblem { Id = 3, Name = "OvercomeDoubt", Image = "img/EmblemArticles/OvercomeDoubt.png" },
+                new ArticlesEmblem { Id = 4, Name = "TwoMen", Image = "img/EmblemArticles/TwoMen.png" },
+                new ArticlesEmblem { Id = 5, Name = "Provides", Image = "img/EmblemArticles/provides.png" });
 
             modelBuilder.Entity<HallEmblem>().HasData(
-                new HallEmblem { Id = 1, Name = "Dog", Image = "img/Dog.png" },
-                new HallEmblem { Id = 2, Name = "M4", Image = "img/M4.png" });
+                new HallEmblem { Id = 1, Name = "Dog", Image = "img/EmblemHalls/Dog.png" },
+                new HallEmblem { Id = 2, Name = "M4", Image = "img/EmblemHalls/M4.png" },
+                new HallEmblem { Id = 3, Name = "Olimp", Image = "img/EmblemHalls/Olimp.png" },
+                new HallEmblem { Id = 4, Name = "BlasArea", Image = "img/EmblemHalls/BlasArea.png" },
+                new HallEmblem { Id = 5, Name = "TitanBox", Image = "img/EmblemHalls/Titanbox.png" });
 
             modelBuilder.Entity<Question>().HasData(
                 new Question { Id = 1, Name = "Как добавить результат о тренировке?", AnswerId = 1 },

@@ -10,7 +10,7 @@ using WodCatClone.Db;
 namespace WodCatClone.Db.Migrations
 {
     [DbContext(typeof(WodCatCloneContext))]
-    [Migration("20220510060042_init")]
+    [Migration("20220521153556_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -49,9 +49,14 @@ namespace WodCatClone.Db.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ArticlesEmblemId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Articles");
 
@@ -100,13 +105,13 @@ namespace WodCatClone.Db.Migrations
                         new
                         {
                             Id = 1,
-                            Image = "img/buildhome.png",
+                            Image = "img/EmblemArticles/buildhome.png",
                             Name = "Buildhome"
                         },
                         new
                         {
                             Id = 2,
-                            Image = "img/provides.png",
+                            Image = "img/EmblemArticles/provides.png",
                             Name = "Provides"
                         });
                 });
@@ -216,13 +221,13 @@ namespace WodCatClone.Db.Migrations
                         new
                         {
                             Id = 1,
-                            Image = "img/Dog.png",
+                            Image = "img/EmblemHalls/Dog.png",
                             Name = "Dog"
                         },
                         new
                         {
                             Id = 2,
-                            Image = "img/M4.png",
+                            Image = "img/EmblemHalls/M4.png",
                             Name = "M4"
                         });
                 });
@@ -821,7 +826,13 @@ namespace WodCatClone.Db.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("WodCatClone.Db.Entities.Auth.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
                     b.Navigation("ArticleEmblem");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Halls", b =>
