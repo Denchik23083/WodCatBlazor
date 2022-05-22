@@ -36,10 +36,12 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
             var loginUser = UserRepository.UserRepository.User;
             var user = _context.Users.FirstOrDefault(b => b.Id == loginUser.Id);
 
-            if (user is not null)
+            if (user is null)
             {
-                user.Points += 5;
+                return false;
             }
+
+            user.Points += 10;
 
             _context.SaveChanges();
 
@@ -49,6 +51,14 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
         public bool EditResultWorkouts(ResultWorkouts resultWorkouts, int id)
         {
             var resultWorkoutEdit = _context.ResultWorkouts.FirstOrDefault(b => b.Id == id);
+
+            var loginUser = UserRepository.UserRepository.User;
+            var user = _context.Users.FirstOrDefault(b => b.Id == loginUser.Id);
+
+            if (user is null)
+            {
+                return false;
+            }
 
             if (resultWorkoutEdit is null)
             {
@@ -62,6 +72,8 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
             resultWorkoutEdit.Seconds = resultWorkouts.Seconds;
             resultWorkoutEdit.Repeat = resultWorkouts.Repeat;
             resultWorkoutEdit.PublishDate = resultWorkouts.PublishDate;
+
+            user.Points += 5;
 
             _context.SaveChanges();
 

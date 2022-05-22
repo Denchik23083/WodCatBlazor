@@ -18,6 +18,11 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
             return _repository.GetAllArticles();
         }
 
+        public IEnumerable<ArticlesEmblem> GetAllArticlesEmblem()
+        {
+            return _repository.GetAllArticlesEmblem();
+        }
+
         public Articles GetArticle(int id)
         {
             return _repository.GetArticle(id);
@@ -28,6 +33,11 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
             var article = _repository.GetImage(articleId);
 
             return article.Image;
+        }
+
+        public bool AddArticle(Articles article)
+        {
+            return _repository.AddArticle(article);
         }
     }
 }

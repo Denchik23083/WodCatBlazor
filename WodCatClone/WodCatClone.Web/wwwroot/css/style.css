@@ -95,7 +95,7 @@ a {cursor: pointer;}
     color: #e8eaed;
     border-radius: 5px;
 }
-.info:hover {
+.info:hover, .item:hover {
     color: #8ab4f8;
     cursor: pointer;
 }
@@ -263,7 +263,7 @@ a {cursor: pointer;}
 }
 .hr { background-color: white;}
 .full { color: #bdc1c6;}
-.home, .item { cursor: pointer;}
+.home { cursor: pointer;}
 .bold{ font-weight: bolder;}
 .exercisesInWorkouts, .mainInfoAboutHall {color: white;}
 .filterWorkouts {color: #bdc1c6;}
@@ -320,11 +320,10 @@ a {cursor: pointer;}
     color: lightgrey;
 }
 .selected {
-    position: absolute;
     z-index: 60;
     color: #d3d3d3;
     background-color: #424242;
-    border: 1px solid black;
+    border: 1px solid lightgrey;
     padding: 5px;
 }
 .formResult, .selectedFormResult {

@@ -45,14 +45,16 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
             var loginUser = UserRepository.UserRepository.User;
             var user = _context.Users.FirstOrDefault(b => b.Id == loginUser.Id);
 
-            if (user is not null)
+            if (user is null)
             {
-                user.Points += 50;
+                return false;
             }
 
             hall.UserId = user!.Id;
 
             _context.Halls.Add(hall);
+            user.Points += 50;
+
             _context.SaveChanges();
 
             return true;
@@ -60,6 +62,14 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
 
         public bool EditHall(Halls hall, int hallId)
         {
+            var loginUser = UserRepository.UserRepository.User;
+            var user = _context.Users.FirstOrDefault(b => b.Id == loginUser.Id);
+
+            if (user is null)
+            {
+                return false;
+            }
+
             var hallToEdit = _context.Halls.FirstOrDefault(b => b.Id == hallId);
 
             if (hallToEdit is null)
@@ -74,6 +84,8 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
             hallToEdit.Rating = hall.Rating;
             hallToEdit.Description = hall.Description;
             hallToEdit.EmblemHallId = hall.EmblemHallId;
+
+            user.Points += 25;
 
             _context.SaveChanges();
 

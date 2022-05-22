@@ -1,1 +1,125 @@
-﻿
+﻿<div class="formAddHall mt-3 p-3">
+    <div class="row">
+        <div class="col">
+            <h2 class="mainInfoAboutHall mb-3">Основная информация о статьи</h2>
+        </div>
+    </div>    
+    <div class="row">
+        <div class="col-6">
+            <div class="row">
+                <div class="col mb-2">
+                    <h5 style="color: white;">Выберите логотип</h5>
+                    <select class="select form-control" @onchange="Image">
+                        <option value="None">Эмблема</option>
+                        @foreach (var item in ArticlesEmblem)
+                        {
+                            <option value="@item.Image">
+                                @item.Name
+                            </option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @if(_image is not "None")
+                    {
+                        <img src="@_image" width="150" height="150"/>
+                    }                    
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <EditForm Model="Article" OnSubmit="Submit">
+                <div class="row">
+                    <div class="col mb-2">
+                        <InputText
+                            @bind-Value="Article.Name"
+                            class="selectedFormResult mb-2 mr-2"
+                            placeholder="Имя Статьи"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-2">
+                        <div class="selectedFormResult" @onclick="() => IsShow = !IsShow">Тип</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        @if (IsShow)
+                        {
+                            @if (ArticleTypes.Count is not 0)
+                            {
+                                <div class="selected mb-2">
+                                    @foreach (var item in ArticleTypes)
+                                    {
+                                        <span class="item mb-2" @onclick="() => AddArticleType(item.Value)">@item.Content</span><br/>
+                                    }
+                                </div>
+                            }
+                            else
+                            {
+                                IsShow = false;
+                            }
+                        }
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-2">
+                        @foreach (var item in SelectedType)
+                        {
+                            <span class="foo">@item
+                                <button class="selectedTypeClose p-0 mr-3" @onclick="() => RemoveSelectedType(item)" type="button">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </span>
+                        }
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-2">
+                        <InputText
+                            @bind-Value="Article.Rating"
+                            class="selectedFormResult mb-2"
+                            placeholder="Рейтинг от 1 до 10"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-2">
+                        <textarea 
+                                placeholder="Описание" 
+                                class="textarea" 
+                                @bind="Article.Description">                                
+                        </textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-2">
+                        <textarea 
+                                placeholder="Полное описание" 
+                                class="textarea" 
+                                @bind="Article.FullDescription">                                
+                        </textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-right">
+                        @if (!IsDisplaySubmitButton)
+                        {
+                            <button
+                                class="btn btn-primary"
+                                disabled="disabled"
+                                type="submit">Сохранить</button>
+                        }
+                        else
+                        {
+                            <button
+                                class="btn btn-primary"
+                                type="submit">Сохранить</button>
+                        }
+                    </div>
+                </div>
+            </EditForm>
+        </div>
+    </div>
+</div>

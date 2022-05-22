@@ -68,7 +68,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
             HallEmblem = HallsService.GetAllHallEmblem();
         }
 
-        public void AddHall(string selected)
+        public void AddHallType(string selected)
         {
             SelectedType.Add(selected);
 
