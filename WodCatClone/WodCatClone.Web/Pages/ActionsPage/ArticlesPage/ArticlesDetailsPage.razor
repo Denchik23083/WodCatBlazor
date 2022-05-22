@@ -2,6 +2,13 @@
 
 <HeaderComponent />
 
+<ConfirmRemoveArticle
+    @ref="ConfirmRemoveArticle"
+    OnCancel="OnCancel" 
+    OnShow="OnShow"
+    Article="Article"
+    ArticleId="ArticleId"/>
+
 <div class="wrapperId">
     <div class="row mb-2">
         <div class="col text-left text-light pages">
@@ -9,6 +16,16 @@
             <a href="/articles" class="link">Статьи</a>&nbsp;&rarr;&nbsp;
             @Article.Name
         </div>
+        @if (User is not null)
+        {
+            @if (User.Id == Article.UserId)
+            {
+                <div class="col-6 text-right text-light pages mb-3">
+                    <button class="btn btn-primary text-white" @onclick="Edit" style="font-weight: bold;">Редактировать</button>
+                    <button class="btn btn-danger text-white" @onclick="OnShow" style="font-weight: bold;">Удалить</button>
+                </div>
+            }
+        }
     </div>
     <div class="row mb-2">
         <div class="col">

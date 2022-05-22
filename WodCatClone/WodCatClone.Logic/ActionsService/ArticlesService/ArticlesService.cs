@@ -39,5 +39,10 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
         {
             return _repository.AddArticle(article);
         }
+
+        public bool RemoveArticle(int id)
+        {
+            return _repository.RemoveArticle(id);
+        }
     }
 }

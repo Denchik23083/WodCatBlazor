@@ -14,5 +14,7 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
         string GetImage(int articleId);
 
         bool AddArticle(Articles article);
+
+        bool RemoveArticle(int id);
     }
 }

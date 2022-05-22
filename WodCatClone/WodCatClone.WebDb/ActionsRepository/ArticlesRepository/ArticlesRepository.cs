@@ -36,8 +36,6 @@ namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
 
         public bool AddArticle(Articles article)
         {
-            _context.Articles.Add(article);
-
             var loginUser = UserRepository.UserRepository.User;
             var user = _context.Users.FirstOrDefault(b => b.Id == loginUser.Id);
 
@@ -46,7 +44,26 @@ namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
                 return false;
             }
 
+            article.UserId = user.Id;
+            _context.Articles.Add(article);
+
             user.Points += 50;
+
+            _context.SaveChanges();
+
+            return true;
+        }
+
+        public bool RemoveArticle(int id)
+        {
+            var articleToRemove = _context.Articles.FirstOrDefault(b => b.Id == id);
+
+            if (articleToRemove is null)
+            {
+                return false;
+            }
+
+            _context.Articles.Remove(articleToRemove);
 
             _context.SaveChanges();
 
