@@ -40,6 +40,11 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
             return _repository.AddArticle(article);
         }
 
+        public bool EditArticle(Articles article, int id)
+        {
+            return _repository.EditArticle(article, id);
+        }
+
         public bool RemoveArticle(int id)
         {
             return _repository.RemoveArticle(id);

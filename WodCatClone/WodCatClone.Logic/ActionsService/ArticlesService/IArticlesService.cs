@@ -15,6 +15,8 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
 
         bool AddArticle(Articles article);
 
+        bool EditArticle(Articles article, int id);
+
         bool RemoveArticle(int id);
     }
 }

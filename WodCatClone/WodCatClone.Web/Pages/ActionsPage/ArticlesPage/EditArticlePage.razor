@@ -1,1 +1,18 @@
-﻿
+﻿@page "/articles/{ArticleId:int}/edit"
+
+<HeaderComponent />
+
+<div class="row">
+    <div class="col visualContainer">
+        <button class="gymList" @onclick="BackToArticle">Back to article page</button>
+        <div class="AddHall">
+            <h1 class="h1Add">Редактирование статьи</h1>
+            <h3 class="h3Add">Здесь вы можете изменить данные о статьи в каталоге WODCAT</h3>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col wrapperArticles">
+        <AddEditArticleComponent Add="false" Edit="true" ArticleId="ArticleId"/>
+    </div>
+</div>

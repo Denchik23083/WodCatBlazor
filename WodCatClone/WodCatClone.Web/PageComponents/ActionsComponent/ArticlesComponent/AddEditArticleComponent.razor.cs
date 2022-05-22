@@ -84,12 +84,12 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
                 NavigationManager.NavigateTo(result ? "/articles" : "/articles/add");
             }
 
-            /*if (Edit)
+            if (Edit)
             {
-                var result = HallsService.EditHall(Hall, HallId);
+                var result = ArticlesService.EditArticle(Article, ArticleId);
 
-                NavigationManager.NavigateTo(result ? $"/gymboxs/{HallId}" : $"/gymboxs/{HallId}/edit");
-            }*/
+                NavigationManager.NavigateTo(result ? $"/articles/{ArticleId}" : $"/articles/{ArticleId}/edit");
+            }
         }
 
         public void RemoveSelectedType(string item)

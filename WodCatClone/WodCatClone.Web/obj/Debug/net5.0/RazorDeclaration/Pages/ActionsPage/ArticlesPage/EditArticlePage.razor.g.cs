@@ -180,6 +180,7 @@ using WodCatClone.Web.PageComponents.MainComponent;
 #line default
 #line hidden
 #nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/articles/{ArticleId:int}/edit")]
     public partial class EditArticlePage : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998

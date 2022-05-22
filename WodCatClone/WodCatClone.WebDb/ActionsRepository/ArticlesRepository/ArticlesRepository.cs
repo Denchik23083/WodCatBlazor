@@ -54,6 +54,37 @@ namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
             return true;
         }
 
+        public bool EditArticle(Articles article, int id)
+        {
+            var loginUser = UserRepository.UserRepository.User;
+            var user = _context.Users.FirstOrDefault(b => b.Id == loginUser.Id);
+
+            if (user is null)
+            {
+                return false;
+            }
+
+            var articleToEdit = _context.Articles.FirstOrDefault(b => b.Id == id);
+
+            if (articleToEdit is null)
+            {
+                return false;
+            }
+
+            articleToEdit.Name = article.Name;
+            articleToEdit.Type = article.Type;
+            articleToEdit.ArticlesEmblemId = article.ArticlesEmblemId;
+            articleToEdit.Rating = article.Rating;
+            articleToEdit.Description = article.Description;
+            articleToEdit.FullDescription = article.FullDescription;
+
+            user.Points += 25;
+
+            _context.SaveChanges();
+
+            return true;
+        }
+
         public bool RemoveArticle(int id)
         {
             var articleToRemove = _context.Articles.FirstOrDefault(b => b.Id == id);

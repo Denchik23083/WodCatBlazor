@@ -15,6 +15,8 @@ namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
 
         bool AddArticle(Articles article);
 
+        bool EditArticle(Articles article, int id);
+
         bool RemoveArticle(int id);
     }
 }
