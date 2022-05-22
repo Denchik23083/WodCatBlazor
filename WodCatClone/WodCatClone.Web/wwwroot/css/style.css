@@ -263,7 +263,7 @@ a {cursor: pointer;}
 }
 .hr { background-color: white;}
 .full { color: #bdc1c6;}
-.home{ cursor: pointer;}
+.home, .item { cursor: pointer;}
 .bold{ font-weight: bolder;}
 .exercisesInWorkouts, .mainInfoAboutHall {color: white;}
 .filterWorkouts {color: #bdc1c6;}
@@ -319,6 +319,14 @@ a {cursor: pointer;}
     background: #424242;
     color: lightgrey;
 }
+.selected {
+    position: absolute;
+    z-index: 60;
+    color: #d3d3d3;
+    background-color: #424242;
+    border: 1px solid black;
+    padding: 5px;
+}
 .formResult, .selectedFormResult {
     color: lightgrey;
     cursor: pointer;
@@ -350,9 +358,8 @@ a {cursor: pointer;}
     min-width: 300px;
     background-size: 100%;
 }
-.visualContainer {
-    background-image: url("/img/addgym-bg.jpg");
-    min-height: 300px;
+
+.visualContainer, .visualContainerId, .visualContainerProfile, .loginContainer, .visualContainerArticle {
     justify-content: center;
     background-size: 100%;
     position: absolute;
@@ -363,16 +370,9 @@ a {cursor: pointer;}
     padding: 0;
     top: 95px;
 }
-.visualContainerId, .visualContainerProfile, .loginContainer, .visualContainerArticle {
-    justify-content: center;
-    background-size: 100%;
-    position: absolute;
-    align-items: center;
-    z-index: 2;
-    left: 0;
-    right: 0;
-    padding: 0;
-    top: 95px;
+.visualContainer {
+    background-image: url("/img/addgym-bg.jpg");
+    min-height: 300px;
 }
 .visualContainerId {
     background-image: url("/img/gym_cover_def.jpg");

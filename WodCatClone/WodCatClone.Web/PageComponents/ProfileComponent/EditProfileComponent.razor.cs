@@ -20,10 +20,6 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
 
         public string Image { get; set; }
 
-        public bool IsTown { get; set; } = false;
-
-        public bool IsDisplaySubmitButton { get; set; } = false;
-
         public bool Man { get; set; }
         
         public bool Woman { get; set; }
@@ -107,21 +103,7 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
         {
             var selected = e.Value?.ToString();
 
-            if (selected == "None")
-            {
-                IsDisplaySubmitButton = false;
-                IsTown = false;
-            }
-            else
-            {
-                IsTown = true;
-                User.Town = selected;
-            }
-
-            if (IsTown)
-            {
-                IsDisplaySubmitButton = true;
-            }
+            User.Town = selected;
         }
 
         private Register Map(User model)

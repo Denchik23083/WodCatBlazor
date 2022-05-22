@@ -31,8 +31,6 @@
         </div>
         <div class="col-6">
             <EditForm Model="Hall" OnSubmit="Submit">
-                <DataAnnotationsValidator />
-                <ValidationSummary />
                 <div class="row">
                     <div class="col mb-2">
                         <InputText
@@ -43,26 +41,38 @@
                 </div>
                 <div class="row">
                     <div class="col mb-2">
-                        <select class="selectedFormResult mb-2" @onchange="Type">
-                            @foreach (var item in HallTypes)
-                            {
-                                <option value="@item.Value">
-                                    @item.Content
-                                </option>
-                            }
-                        </select>
+                        <div class="selectedFormResult" @onclick="() => IsShow = !IsShow">Тип</div>
                     </div>
                 </div>
-
+                <div class="row">
+                    <div class="col">
+                        @if (IsShow)
+                        {
+                            @if (HallTypes.Count is not 0)
+                            {
+                                <div class="selected">
+                                    @foreach (var item in HallTypes)
+                                    {
+                                        <span class="item mb-2" @onclick="() => AddHall(item.Value)">@item.Content</span><br/>
+                                    }
+                                </div>
+                            }
+                            else
+                            {
+                                IsShow = false;
+                            }
+                        }
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col mb-2">
                         @foreach (var item in SelectedType)
                         {
                             <span class="foo">@item
-                                <button class="selectedTypeClose" @onclick="() => RemoveSelectedType(item)" type="button">
+                                <button class="selectedTypeClose p-0 mr-3" @onclick="() => RemoveSelectedType(item)" type="button">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
-                            </span><br/>
+                            </span>
                         }
                     </div>
                 </div>

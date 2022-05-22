@@ -29,6 +29,8 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
 
         public bool IsTown { get; set; } = false;
 
+        public bool IsShow { get; set; } = false;
+
         public string _image = "None";
 
         public int Value { get; set; }
@@ -66,10 +68,8 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
             HallEmblem = HallsService.GetAllHallEmblem();
         }
 
-        public void Type(ChangeEventArgs e)
+        public void AddHall(string selected)
         {
-            var selected = e.Value?.ToString();
-
             SelectedType.Add(selected);
 
             var item = HallTypes.FirstOrDefault(b => b.Value == selected);
