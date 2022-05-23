@@ -54,6 +54,35 @@
                     </EditForm>
                 </div>
             </div>
+            <div class="row">
+                <div class="col mb-2">
+                    <h5 style="color: white;">Выберите зал</h5>
+                    @if (UserHall is not null)
+                    {
+                        <div class="selectedFormResult" @onclick="() => IsShow = !IsShow">
+                            <img src="@HallImage" width="75" height="75"/>
+                            @UserHall.Name
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="selectedFormResult" @onclick="() => IsShow = !IsShow">Зал</div>
+                    }
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @if (IsShow)
+                    {
+                        <div class="selected mb-2">
+                            @foreach (var item in Halls)
+                            {
+                                <IndividualProfileHallComponent Hall="item"/>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
         </div>
         <div class="col-6">
             <EditForm Model="EditUser" OnSubmit="Submit">

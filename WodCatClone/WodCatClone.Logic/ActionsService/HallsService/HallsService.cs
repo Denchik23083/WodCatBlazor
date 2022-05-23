@@ -65,10 +65,10 @@ namespace WodCatClone.Logic.ActionsService.HallsService
             return _repository.RemoveHall(hallId);
         }
 
-        public void Athlete(int hallId)
+        public int Athlete(int hallId)
         {
             var users = _userRepository.GetAllUsers();
-            _repository.Athlete(users, hallId);
+            return _repository.Athlete(users, hallId);
         }
     }
 }

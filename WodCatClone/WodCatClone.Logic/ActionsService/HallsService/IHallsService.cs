@@ -21,6 +21,6 @@ namespace WodCatClone.Logic.ActionsService.HallsService
 
         bool RemoveHall(int hallId);
 
-        void Athlete(int hallId);
+        int Athlete(int hallId);
     }
 }

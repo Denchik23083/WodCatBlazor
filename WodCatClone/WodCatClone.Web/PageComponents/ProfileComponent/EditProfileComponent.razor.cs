@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Components;
+using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
+using WodCatClone.Logic.ActionsService.HallsService;
 using WodCatClone.Logic.UserService;
 using WodCatClone.Web.Helpers;
 
@@ -14,15 +16,25 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
 
         [Inject] public IUserService UserService { get; set; }
 
+        [Inject] public IHallsService HallsService { get; set; }
+
         public User EditUser { get; set; }
 
         public Register AuthUser { get; set; }
+
+        public Halls UserHall { get; set; }
+
+        public IEnumerable<Halls> Halls { get; set; }
+
+        public string HallImage { get; set; }
 
         public string Image { get; set; }
 
         public bool Man { get; set; }
         
         public bool Woman { get; set; }
+
+        public bool IsShow { get; set; } = false;
 
         public List<FilterHalls> Town = new()
         {
@@ -40,6 +52,13 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
 
         protected override void OnInitialized()
         {
+            UserHall = HallsService.GetHall(User.HallId);
+            Halls = HallsService.GetAllHalls();
+            if (UserHall is not null)
+            {
+                HallImage = HallsService.GetImage(UserHall.EmblemHallId);
+            }
+
             EditUser = User;
             AuthUser = Map(User);
 
@@ -60,6 +79,13 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
                 Man = false;
                 Woman = true;
             }
+        }
+
+        protected override void OnParametersSet()
+        {
+            UserHall = HallsService.GetHall(User.HallId);
+            Halls = HallsService.GetAllHalls();
+            HallImage = HallsService.GetImage(UserHall.EmblemHallId);
         }
 
         public void Submit()

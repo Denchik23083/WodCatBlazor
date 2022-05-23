@@ -107,7 +107,7 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
             return true;
         }
 
-        public void Athlete(IEnumerable<User> users, int hallId)
+        public int Athlete(IEnumerable<User> users, int hallId)
         {
             var hallUsers = users.Count(b => b.HallId == hallId);
 
@@ -116,6 +116,8 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
             hall!.Athletes = hallUsers;
 
             _context.SaveChanges();
+
+            return hall.Athletes;
         }
     }
 }

@@ -17,6 +17,8 @@ namespace WodCatClone.WebDb.UserRepository
 
         Gender GetGender(string gender);
 
+        bool EditUserHall(User user, int id);
+
         bool Update(User editUser, int id);
 
         bool UpdateAuth(User updateUser, int id);

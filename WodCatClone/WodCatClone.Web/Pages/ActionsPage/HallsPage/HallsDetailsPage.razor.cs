@@ -27,6 +27,8 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 
         public bool IsLoginUser { get; set; }
 
+        public int Athlete { get; set; }
+
         public User User { get; set; } 
 
         public int Value = 0;
@@ -40,6 +42,19 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
             Type = Hall.Type.Split(",");
             IsLoginUser = UserService.IsLoginUser();
             User = UserService.GetUser();
+            Athlete = HallsService.Athlete(Hall.Id);
+
+            if (IsLoginUser) Top = "loginTop";
+        }
+
+        protected override void OnParametersSet()
+        {
+            Hall = HallsService.GetHall(HallId);
+            Image = HallsService.GetImage(Hall.EmblemHallId);
+            Type = Hall.Type.Split(",");
+            IsLoginUser = UserService.IsLoginUser();
+            User = UserService.GetUser();
+            Athlete = HallsService.Athlete(Hall.Id);
 
             if (IsLoginUser) Top = "loginTop";
         }
@@ -53,13 +68,13 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
         public void Join()
         {
             UserService.Join(Hall.Id);
-            HallsService.Athlete(Hall.Id);
+            Athlete = HallsService.Athlete(Hall.Id);
         }
 
         public void Exit()
         {
             UserService.Exit(Hall.Id);
-            HallsService.Athlete(Hall.Id);
+            Athlete = HallsService.Athlete(Hall.Id);
         }
     }
 }
