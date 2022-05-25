@@ -85,7 +85,10 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
         {
             UserHall = HallsService.GetHall(User.HallId);
             Halls = HallsService.GetAllHalls();
-            HallImage = HallsService.GetImage(UserHall.EmblemHallId);
+            if (UserHall is not null)
+            {
+                HallImage = HallsService.GetImage(UserHall.EmblemHallId);
+            }
         }
 
         public void Submit()

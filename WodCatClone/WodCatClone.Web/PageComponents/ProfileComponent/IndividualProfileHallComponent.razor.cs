@@ -36,7 +36,10 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
         {
             var result = UserService.EditUserHall(User, id);
 
-            NavigationManager.NavigateTo(result ? $"/profile/{User.NickName}" : $"/profile/{User.NickName}/edit");
+            if (result)
+            {
+                NavigationManager.NavigateTo($"/profile/{User.NickName}/edit", true);
+            }
         }
     }
 }

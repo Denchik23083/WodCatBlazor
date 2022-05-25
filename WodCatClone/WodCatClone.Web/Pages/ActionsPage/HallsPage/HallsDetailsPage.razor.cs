@@ -27,7 +27,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 
         public bool IsLoginUser { get; set; }
 
-        public int Athlete { get; set; }
+        public int Athletes { get; set; }
 
         public User User { get; set; } 
 
@@ -42,7 +42,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
             Type = Hall.Type.Split(",");
             IsLoginUser = UserService.IsLoginUser();
             User = UserService.GetUser();
-            Athlete = HallsService.Athlete(Hall.Id);
+            Athletes = HallsService.Athlete(Hall.Id);
 
             if (IsLoginUser) Top = "loginTop";
         }
@@ -54,7 +54,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
             Type = Hall.Type.Split(",");
             IsLoginUser = UserService.IsLoginUser();
             User = UserService.GetUser();
-            Athlete = HallsService.Athlete(Hall.Id);
+            Athletes = HallsService.Athlete(Hall.Id);
 
             if (IsLoginUser) Top = "loginTop";
         }
@@ -68,13 +68,13 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
         public void Join()
         {
             UserService.Join(Hall.Id);
-            Athlete = HallsService.Athlete(Hall.Id);
+            Athletes = HallsService.Athlete(Hall.Id);
         }
 
         public void Exit()
         {
             UserService.Exit(Hall.Id);
-            Athlete = HallsService.Athlete(Hall.Id);
+            Athletes = HallsService.Athlete(Hall.Id);
         }
     }
 }

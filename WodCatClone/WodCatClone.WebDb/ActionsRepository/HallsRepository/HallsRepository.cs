@@ -111,13 +111,7 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
         {
             var hallUsers = users.Count(b => b.HallId == hallId);
 
-            var hall = _context.Halls.FirstOrDefault(b => b.Id == hallId);
-
-            hall!.Athletes = hallUsers;
-
-            _context.SaveChanges();
-
-            return hall.Athletes;
+            return hallUsers;
         }
     }
 }

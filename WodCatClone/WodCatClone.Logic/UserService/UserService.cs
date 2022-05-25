@@ -78,6 +78,8 @@ namespace WodCatClone.Logic.UserService
 
         public void Exit(int hallId)
         {
+            AuthService.AuthService.User.HallId = null;
+
             _repository.Exit(hallId);
         }
     }
