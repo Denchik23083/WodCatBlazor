@@ -8,11 +8,11 @@ namespace WodCatClone.Db
 {
     public class WodCatCloneContext : DbContext
     {
-        public WodCatCloneContext(DbContextOptions options) : base(options) { }
+        public WodCatCloneContext(DbContextOptions<WodCatCloneContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Answer>().HasData(
+            modelBuilder.Entity<Answer>().ToTable("Answer").HasData(
                 new Answer { Id = 1, Name = "Зарегестрироваться" },
                 new Answer { Id = 2, Name = "Зайти в залы и присоединиться" },
                 new Answer { Id = 3, Name = "Баллы дают за создание нового зала и добовление результата о тренировке" },
@@ -20,25 +20,25 @@ namespace WodCatClone.Db
                 new Answer { Id = 5, Name = "Только те, которые создал?" },
                 new Answer { Id = 6, Name = "Зайти на тренировку и нажать старт и еще раз старт" });
 
-            modelBuilder.Entity<Gender>().HasData(
+            modelBuilder.Entity<Gender>().ToTable("AnsGenderwer").HasData(
                 new Gender { Id = 1, Name = "Мужской", Image = "img/man.png" },
                 new Gender { Id = 2, Name = "Женский", Image = "img/woman.png" });
 
-            modelBuilder.Entity<ArticlesEmblem>().HasData(
+            modelBuilder.Entity<ArticlesEmblem>().ToTable("ArticlesEmblem").HasData(
                 new ArticlesEmblem { Id = 1, Name = "Buildhome", Image = "img/EmblemArticles/buildhome.png" },
                 new ArticlesEmblem { Id = 2, Name = "Functional", Image = "img/EmblemArticles/Functional.png" },
                 new ArticlesEmblem { Id = 3, Name = "OvercomeDoubt", Image = "img/EmblemArticles/OvercomeDoubt.png" },
                 new ArticlesEmblem { Id = 4, Name = "TwoMen", Image = "img/EmblemArticles/TwoMen.png" },
                 new ArticlesEmblem { Id = 5, Name = "Provides", Image = "img/EmblemArticles/provides.png" });
 
-            modelBuilder.Entity<HallEmblem>().HasData(
+            modelBuilder.Entity<HallEmblem>().ToTable("HallEmblem").HasData(
                 new HallEmblem { Id = 1, Name = "Dog", Image = "img/EmblemHalls/Dog.png" },
                 new HallEmblem { Id = 2, Name = "M4", Image = "img/EmblemHalls/M4.png" },
                 new HallEmblem { Id = 3, Name = "Olimp", Image = "img/EmblemHalls/Olimp.png" },
                 new HallEmblem { Id = 4, Name = "BlasArea", Image = "img/EmblemHalls/BlasArea.png" },
                 new HallEmblem { Id = 5, Name = "TitanBox", Image = "img/EmblemHalls/Titanbox.png" });
 
-            modelBuilder.Entity<Question>().HasData(
+            modelBuilder.Entity<Question>().ToTable("Question").HasData(
                 new Question { Id = 1, Name = "Как добавить результат о тренировке?", AnswerId = 1 },
                 new Question { Id = 2, Name = "Как получить баллы?", AnswerId = 3 },
                 new Question { Id = 3, Name = "Как присоединиться к залу?", AnswerId = 2 },
@@ -46,11 +46,11 @@ namespace WodCatClone.Db
                 new Question { Id = 5, Name = "Какие залы можно редактировать и удалять?", AnswerId = 5 },
                 new Question { Id = 6, Name = "Как начать тренировку?", AnswerId = 6 });
 
-            modelBuilder.Entity<Articles>().HasData(
+            modelBuilder.Entity<Articles>().ToTable("Articles").HasData(
                 new Articles
                 {
-                    Id = 1, 
-                    Name = "Build a Home Gym in 2020 That You Will Actually Use", 
+                    Id = 1,
+                    Name = "Build a Home Gym in 2020 That You Will Actually Use",
                     Type = "Кроссфит,Статьи",
                     Description = "A Home Gym You’ll Actually Use Learn from my mistakes &the times I got it right My Home Gym Gear Shopping List for a Garage Gym",
                     FullDescription = "A Home Gym You’ll Actually Use For those new to functional training, such as CrossFit,and looking to build out your own garage gym or home gym and training space,here’s an equipment guide to get you started.My aim is to save you from buying equipment that you’ll rarely use — equipment that wastes your money and takes up valuable space.In this article,I share with you what I setup recently after I sold my CrossFit gym and wanted a place at home to train.Learn from my mistakes &the times I got it right For more than 25 years I’ve been an endurance athlete,half of that time working as a coach,I’ve either had a small gym at home or access to a great gym near home.I also built a full CrossFit gym in Switzerland,ran it for 5 years, and sold it to a great friend and trainer.After selling my gym and spending more time at home writing coaching books, I was desperate to build a home gym once again.In this article, I share with you my recommendations for equipment to buy for home that you will actually use, not one that is ego - driven or based on what looks great in an Instagram post, but is not what you will really use.I’ve purchased a wide range of equipment over the years, spanning a mix of great buying decisions and some terrible choices.I aim to guide you toward building a home gym that you’ll feel great about now, as well as in a few years.I offer my top recommendations, share what I purchased and suggest a super saver option for each item.My Home GymOf all the gyms I’ve setup over the years, this is my favorite home gym.Why ? Because it’s right where it needs to be for me to actually use it and has exactly what I need for my indoors training.I set it up in a small winter garden room.I love this gym — it has everything I want and nothing more.It’s not flashy or showy, yet it can handle the heaviest lifts I’ll ever do, high intensity training, strength training, CrossFit WODs, Hero WODs and more. I carefully selected every piece of equipment.Gear Shopping List for a Garage GymMust - Have EquipmentI’ll start with what I consider must - have gear."
@@ -61,8 +61,8 @@ namespace WodCatClone.Db
                 },
                 new Articles
                 {
-                    Id = 2, 
-                    Name = "article provides a few key tips on how to perform the deadlift more efficiently and safely", 
+                    Id = 2,
+                    Name = "article provides a few key tips on how to perform the deadlift more efficiently and safely",
                     Type = "Кроссфит,Тренировки",
                     Rating = "10.0",
                     Description = "This article provides a few key tips on how to perform the deadlift more efficiently and safely. Some helpful coaching cues—such as keeping the head slightly up, activating the lats, and pushing the knees out—can assist a tactical athlete in executing the deadlift while increasing strength over time.",
@@ -73,11 +73,11 @@ namespace WodCatClone.Db
                     ArticlesEmblemId = 2
                 });
 
-            modelBuilder.Entity<Exercises>().HasData(
+            modelBuilder.Entity<Exercises>().ToTable("Exercises").HasData(
                 new Exercises
                 {
-                    Id = 1, 
-                    Name = "Бег", 
+                    Id = 1,
+                    Name = "Бег",
                     Description = "Бег, равно как и ходьба – абсолютно естественное для организма состояние.Но начинающие бегуны могут столкнуться со множеством проблем.Оказывается,бегать – не так - то просто.Существует даже такое понятие как правильный беговой почерк.Оно подразумевает прямо поставленную голову,ровную спину,правильное расположение ног.Только когда все составляющие выдержаны,можно добиться легкого и быстрого бега.",
                     FullDescription = "Итак, какие аспекты необходимо выдерживать тем, кто стремится овладеть правильной техникой бега:- Свести вертикальные колебания тела к минимуму.Резкие удары о беговую поверхность,равно как и выбрасывания тела в воздух могут привести к сильному возрастанию нагрузки на суставы и позвоночник.- Не допускать раскачиваний тела в разные стороны.Вообще такие раскачивания могут быть,если стопы относительно друг друга стоят неправильно.Потому необходимо учиться бегать так,чтобы внутренние края стоп находились на одной линии.Допускается лишь небольшой угол,который может образовываться между носками стоп.Это позволит при толчке максимальное усилие направить на большой палец.- Правильный бег предусматривает также грамотную постановку ступней,когда они касаются поверхности земли.Специалисты выделяют три метода – вся стопа,носок - пятка и пятка - носок.Начинающие бегуны должны стремиться распределять нагрузку равномерно на всю стопу – это существенно разгрузит суставы.Правильная техника бега позволяет проверить постановку стоп таким образом: нужно провести прямую линию к беговой поверхности через центр тяжести тела.Пройти эта линия должна через центр стопы.Для сравнения,при ходьбе она проходит через пятку.Еще один момент: при касании земли стопу следует слегка напрячь.- Чтобы научиться бегать,следует также правильно подобрать длину шага.Узкий шаг не дает достаточный тонус мышцам.Тогда как чрезмерно широкий шаг увеличивает риск приземления на прямую ногу.- Верхняя часть туловища при правильном беге должна быть неподвижной.Осанку придется выдерживать,то есть не наклоняться вперед и не запрокидывать туловище назад.Все это позволит уберечь от травм суставы и позвоночник.Также следует следить за положением рук.Так,в локтях они должны быть согнуты под прямым углом,кисти должны быть слегка сжатыми.Голову также нельзя наклонять низко взгляд должен быть направлен метров на 10 - 15 вперед.- Правильная техника бега невозможна без непринужденного ритмичного дыхания – это не позволяет организму слишком рано устать.Итак,какие аспекты необходимо выдерживать тем,кто стремится овладеть правильной техникой бега:-Свести вертикальные колебания тела к минимуму.Резкие удары о беговую поверхность,равно как и выбрасывания тела в воздух могут привести к сильному возрастанию нагрузки на суставы и позвоночник."
                     + "- Не допускать раскачиваний тела в разные стороны.Вообще такие раскачивания могут быть,если стопы относительно друг друга стоят неправильно.Потому необходимо учиться бегать так,чтобы внутренние края стоп находились на одной линии.Допускается лишь небольшой угол,который может образовываться между носками стоп.Это позволит при толчке максимальное усилие направить на большой палец.- Правильный бег предусматривает также грамотную постановку ступней,когда они касаются поверхности земли.Специалисты выделяют три метода – вся стопа,носок - пятка и пятка - носок.Начинающие бегуны должны стремиться распределять нагрузку равномерно на всю стопу – это существенно разгрузит суставы.Правильная техника бега позволяет проверить постановку стоп таким образом: нужно провести прямую линию к беговой поверхности через центр тяжести тела.Пройти эта линия должна через центр стопы.Для сравнения,при ходьбе она проходит через пятку.Еще один момент: при касании земли стопу следует слегка напрячь.- Чтобы научиться бегать,следует также правильно подобрать длину шага.Узкий шаг не дает достаточный тонус мышцам.Тогда как чрезмерно широкий шаг увеличивает риск приземления на прямую ногу.- Верхняя часть туловища при правильном беге должна быть неподвижной.Осанку придется выдерживать,то есть не наклоняться вперед и не запрокидывать туловище назад.Все это позволит уберечь от травм суставы и позвоночник.Также следует следить за положением рук.Так,в локтях они должны быть согнуты под прямым углом,кисти должны быть слегка сжатыми.Голову также нельзя наклонять низко взгляд должен быть направлен метров на 10 - 15 вперед.- Правильная техника бега невозможна без непринужденного ритмичного дыхания – это не позволяет организму слишком рано устать.",
@@ -101,8 +101,8 @@ namespace WodCatClone.Db
                 },
                 new Exercises
                 {
-                    Id = 3, 
-                    Name = "Выбросы", 
+                    Id = 3,
+                    Name = "Выбросы",
                     Description = "Выбросы со штангой или «Трастеры» - это упражнение, которое одновременно задействует большое количество крупных мышц. Данное упражнение отлично развивает как и силовые показатели так и выносливые, это зависит от того какой вес и диапазон повторений вы будете использовать в своих тренировках.Трастеры – это так же и универсальное упражнение,классический вариант исполнения,это выбросы со штангой,но вы легко можете использовать самое разнообразное оборудование(гири, гантели, мешок с песком, медболы, и т.д.).",
                     FullDescription = "Техника выполнения упражнения: «Выбросы со штангой Thrusters»Исходное положение:-Возьмите штангу в передний упор на груди,так же как в стартовой позиции для фронтальных приседаний.- Спина ровная,положение ступней на ширине плеч.- Локти подняты,взгляд направлен вперед.Выполнение упражнения:-Опуститесь в нижнее положение приседания,со штангой на груди.- Начните мощно вставать и одновременно выжимайте штангу в положение над головой,до тех пор,пока ваши руки не окажутся прямыми.- Зафиксируйте штангу на вытянутых руках,и после небольшой паузы опуститесь обратно в положение приседа,во время опускания так же опустите штангу на грудь.",
                     Complexity = "Сложный",
@@ -112,11 +112,11 @@ namespace WodCatClone.Db
                     Image = "https://www.youtube.com/embed/aea5BGj9a8Y"
                 });
 
-            modelBuilder.Entity<Halls>().HasData(
+            modelBuilder.Entity<Halls>().ToTable("Halls").HasData(
                 new Halls
                 {
                     Id = 1,
-                    Name = "DOG & GRAND CROSSFIT", 
+                    Name = "DOG & GRAND CROSSFIT",
                     Type = "Affiliate Crossfit,Boxing,Fitness,Gym,MMA,Yoga",
                     Town = "Киев",
                     Location = "Днепровская набережная, 14К",
@@ -125,7 +125,7 @@ namespace WodCatClone.Db
                 },
                 new Halls
                 {
-                    Id = 2, 
+                    Id = 2,
                     Name = "M4",
                     Type = "Crossfit (not Aff.)",
                     Town = "Харьков",
@@ -134,11 +134,11 @@ namespace WodCatClone.Db
                     EmblemHallId = 2
                 });
 
-            modelBuilder.Entity<Workouts>().HasData(
+            modelBuilder.Entity<Workouts>().ToTable("Workouts").HasData(
                 new Workouts
                 {
-                    Id = 1, 
-                    Name = "100 Burpees", 
+                    Id = 1,
+                    Name = "100 Burpees",
                     Rating = "7.0",
                     Category = "Singlet,Bodyweight,For-Time",
                     Complexity = "Легкий",
@@ -152,8 +152,8 @@ namespace WodCatClone.Db
                 },
                 new Workouts
                 {
-                    Id = 2, 
-                    Name = "1000", 
+                    Id = 2,
+                    Name = "1000",
                     Rating = "8.5",
                     Category = "Couplet,Bodyweight,For-Time",
                     Complexity = "Сложный",
@@ -167,8 +167,8 @@ namespace WodCatClone.Db
                 },
                 new Workouts
                 {
-                    Id = 3, 
-                    Name = "Titan wod", 
+                    Id = 3,
+                    Name = "Titan wod",
                     Rating = "10.0",
                     Category = "Couplet,Bodyweight,Rower,ForTime",
                     Complexity = "Нормальный",
@@ -181,7 +181,7 @@ namespace WodCatClone.Db
                     EmblemHallId = 1
                 });
 
-            modelBuilder.Entity<Programs>().HasData(
+            modelBuilder.Entity<Programs>().ToTable("Programs").HasData(
                 new Programs
                 {
                     Id = 1,
@@ -211,7 +211,7 @@ namespace WodCatClone.Db
                     HallId = 2
                 });
 
-            modelBuilder.Entity<ProgramsWorkouts>().HasData(
+            modelBuilder.Entity<ProgramsWorkouts>().ToTable("ProgramsWorkouts").HasData(
                 new ProgramsWorkouts
                 {
                     Id = 1,
@@ -249,7 +249,7 @@ namespace WodCatClone.Db
                     WorkoutsId = 2
                 });
 
-            modelBuilder.Entity<User>().HasData(
+            modelBuilder.Entity<User>().ToTable("User").HasData(
                 new User
                 {
                     Id = 1,

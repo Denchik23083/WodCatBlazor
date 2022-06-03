@@ -63,6 +63,13 @@ namespace WodCatClone.Web
 
                 options.UseSqlServer(connectionString);
             });
+
+            services.AddDbContext<TestsWodCatCloneDbContext>(options =>
+            {
+                var connectionString = Configuration.GetConnectionString("TestsWodCatCloneDb");
+
+                options.UseSqlServer(connectionString);
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -88,15 +95,26 @@ namespace WodCatClone.Web
                 endpoints.MapFallbackToPage("/_Host");
             });
 
-            EnsureDbCreated(app);
+            EnsureWodCatCloneDbCreated(app);
+            EnsureTestsWodCatCloneDbCreated(app);
         }
 
-        private void EnsureDbCreated(IApplicationBuilder app)
+        private void EnsureWodCatCloneDbCreated(IApplicationBuilder app)
         {
             var scopeFactory = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>();
 
             using var scope = scopeFactory.CreateScope();
             var context = scope.ServiceProvider.GetService<WodCatCloneContext>();
+
+            context!.Database.EnsureCreated();
+        }
+
+        private void EnsureTestsWodCatCloneDbCreated(IApplicationBuilder app)
+        {
+            var scopeFactory = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>();
+
+            using var scope = scopeFactory.CreateScope();
+            var context = scope.ServiceProvider.GetService<TestsWodCatCloneDbContext>();
 
             context!.Database.EnsureCreated();
         }
