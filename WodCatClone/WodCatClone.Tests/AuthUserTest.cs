@@ -6,38 +6,21 @@ using Xunit;
 
 namespace WodCatClone.Tests
 {
-    public class AuthTest
+    public class AuthUserTest
     {
         public static bool IsLoginUser;
         public static User User;
+        public static int CountUser;
 
         [Fact]
         public void LoginTest()
         {
             var context = new TestsWodCatCloneDbContext();
 
-            var login = new Login
-            {
-                Email = "deniskudravov228@gmail.com",
-                Password = "0000"
-            };
-
-            var user = context.Users.FirstOrDefault(l => l.Email == login.Email &&
-                                                         l.Password == login.Password);
-
-            if (user is null)
-            {
-                IsLoginUser = false;
-                User = null;
-            }
-            else
-            {
-                IsLoginUser = true;
-                User = user;
-            }
+            HelperLoginFunction(context);
 
             Assert.True(IsLoginUser);
-            Assert.NotNull(user);
+            Assert.NotNull(User);
         }
 
         [Fact]
@@ -59,7 +42,8 @@ namespace WodCatClone.Tests
             
             var allUsers = context.Users;
             var registerUser = Map(register);
-            var countUsers = allUsers.Count();
+
+            CountUser = allUsers.Count();
 
             registerUser.Country = "Ukraine";
 
@@ -71,11 +55,11 @@ namespace WodCatClone.Tests
                     context.Users.Add(registerUser);
                     context.SaveChanges();
 
-                    countUsers += 1;
+                    CountUser += 1;
                 }
             }
 
-            Assert.Equal(countUsers, allUsers.Count());
+            Assert.Equal(CountUser, allUsers.Count());
             Assert.True(register.Password == register.ConfirmPassword);
         }
 
@@ -87,6 +71,75 @@ namespace WodCatClone.Tests
 
             Assert.Null(User);
             Assert.False(IsLoginUser);
+        }
+
+        [Fact]
+        public void GetAllUsersTest()
+        {
+            var context = new TestsWodCatCloneDbContext();
+
+            var users = context.Users.Count();
+
+            Assert.Equal(CountUser, users);
+        }
+
+        [Fact]
+        public void IsLoginUserTest()
+        {
+            var context = new TestsWodCatCloneDbContext();
+            HelperLoginFunction(context);
+
+            Assert.True(IsLoginUser);
+        }
+
+        [Fact]
+        public void GetUserTest()
+        {
+            var context = new TestsWodCatCloneDbContext();
+            HelperLoginFunction(context);
+
+            Assert.NotNull(User);
+        }
+
+        [Fact]
+        public void GetGenderTest()
+        {
+            var context = new TestsWodCatCloneDbContext();
+
+            HelperLoginFunction(context);
+
+            var gender = context.Gender.FirstOrDefault(b => b.Id == User.GenderId);
+
+            Assert.NotNull(gender);
+        }
+
+        /*[Fact]
+        public void EditUserHallTest()
+        {
+
+        }*/
+
+        private void HelperLoginFunction(TestsWodCatCloneDbContext context)
+        {
+            var login = new Login
+            {
+                Email = "deniskudravov228@gmail.com",
+                Password = "0000"
+            };
+
+            var user = context.Users.FirstOrDefault(l => l.Email == login.Email &&
+                                                         l.Password == login.Password);
+
+            if (user is null)
+            {
+                IsLoginUser = false;
+                User = null;
+            }
+            else
+            {
+                IsLoginUser = true;
+                User = user;
+            }
         }
 
         private User Map(Register model)

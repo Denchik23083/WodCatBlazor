@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WodCatClone.Db;
 
-namespace WodCatClone.Db.Migrations
+namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
 {
-    [DbContext(typeof(WodCatCloneContext))]
-    [Migration("20220521153556_init")]
-    partial class init
+    [DbContext(typeof(TestsWodCatCloneDbContext))]
+    [Migration("20220603111332_tests")]
+    partial class tests
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,18 +35,15 @@ namespace WodCatClone.Db.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FullDescription")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Rating")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Type")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("UserId")
@@ -90,11 +87,9 @@ namespace WodCatClone.Db.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Image")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -111,6 +106,24 @@ namespace WodCatClone.Db.Migrations
                         new
                         {
                             Id = 2,
+                            Image = "img/EmblemArticles/Functional.png",
+                            Name = "Functional"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Image = "img/EmblemArticles/OvercomeDoubt.png",
+                            Name = "OvercomeDoubt"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Image = "img/EmblemArticles/TwoMen.png",
+                            Name = "TwoMen"
+                        },
+                        new
+                        {
+                            Id = 5,
                             Image = "img/EmblemArticles/provides.png",
                             Name = "Provides"
                         });
@@ -124,35 +137,27 @@ namespace WodCatClone.Db.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Complexity")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FullDescription")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Inventory")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Modality")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Movement")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -206,11 +211,9 @@ namespace WodCatClone.Db.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Image")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -229,6 +232,24 @@ namespace WodCatClone.Db.Migrations
                             Id = 2,
                             Image = "img/EmblemHalls/M4.png",
                             Name = "M4"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Image = "img/EmblemHalls/Olimp.png",
+                            Name = "Olimp"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Image = "img/EmblemHalls/BlasArea.png",
+                            Name = "BlasArea"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Image = "img/EmblemHalls/Titanbox.png",
+                            Name = "TitanBox"
                         });
                 });
 
@@ -238,11 +259,6 @@ namespace WodCatClone.Db.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("Athletes")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(0);
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -254,14 +270,12 @@ namespace WodCatClone.Db.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Rating")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Town")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Type")
@@ -274,7 +288,9 @@ namespace WodCatClone.Db.Migrations
 
                     b.HasIndex("EmblemHallId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId")
+                        .IsUnique()
+                        .HasFilter("[UserId] IS NOT NULL");
 
                     b.ToTable("Halls");
 
@@ -282,7 +298,6 @@ namespace WodCatClone.Db.Migrations
                         new
                         {
                             Id = 1,
-                            Athletes = 0,
                             Description = "DOG – первый фитнес клуб Киева, который получил официальную CrossFit сертификацию. Высокие стандарты обслуживания, качества оборудования и подхода к тренировкам обязательны для получения сертификации.Титулованный тренерский состав и профессиональное оборудование сделают ваши занятия более эффективными и помогут выйти на новый уровень физической подготовки.Главные тренера клубов ДОГ - Валентин Литвинчук и Леонид Леус - настоящие профессионалы которые стоят у истоков развития Кроссфита в Украине Более 50 различных & nb...",
                             EmblemHallId = 1,
                             Location = "Днепровская набережная, 14К",
@@ -293,7 +308,6 @@ namespace WodCatClone.Db.Migrations
                         new
                         {
                             Id = 2,
-                            Athletes = 0,
                             EmblemHallId = 2,
                             Location = "пр. Тракторостроителей 57б",
                             Name = "M4",
@@ -311,7 +325,6 @@ namespace WodCatClone.Db.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Aim")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
@@ -320,23 +333,24 @@ namespace WodCatClone.Db.Migrations
                     b.Property<int?>("HallId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("HallsId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Rating")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Type")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("HallId");
+                    b.HasIndex("HallsId");
 
                     b.ToTable("Programs");
 
@@ -448,7 +462,6 @@ namespace WodCatClone.Db.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Minutes")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("PublishDate")
@@ -458,7 +471,6 @@ namespace WodCatClone.Db.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Seconds")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("UserId")
@@ -467,11 +479,14 @@ namespace WodCatClone.Db.Migrations
                     b.Property<int>("WorkoutId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("WorkoutsId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("UserId");
 
-                    b.HasIndex("WorkoutId");
+                    b.HasIndex("WorkoutsId");
 
                     b.ToTable("ResultWorkouts");
                 });
@@ -484,46 +499,36 @@ namespace WodCatClone.Db.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Category")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Complexity")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("EmblemHallId")
                         .HasColumnType("int");
 
                     b.Property<string>("Exercises")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Inventory")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Minutes")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Modality")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Movement")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Rating")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Seconds")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -588,16 +593,14 @@ namespace WodCatClone.Db.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Image")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Gender");
+                    b.ToTable("AnsGenderwer");
 
                     b.HasData(
                         new
@@ -628,14 +631,10 @@ namespace WodCatClone.Db.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Country")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("GenderId")
                         .HasColumnType("int");
@@ -644,52 +643,39 @@ namespace WodCatClone.Db.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Height")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NickName")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Points")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(0);
+                        .HasColumnType("int");
 
                     b.Property<int?>("ProgramsId")
                         .HasColumnType("int");
 
                     b.Property<string>("Surname")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Town")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Weight")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("GenderId");
 
-                    b.HasIndex("HallId");
-
                     b.HasIndex("ProgramsId");
 
-                    b.ToTable("Users");
+                    b.ToTable("User");
 
                     b.HasData(
                         new
@@ -719,7 +705,6 @@ namespace WodCatClone.Db.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -770,7 +755,6 @@ namespace WodCatClone.Db.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -842,8 +826,8 @@ namespace WodCatClone.Db.Migrations
                         .HasForeignKey("EmblemHallId");
 
                     b.HasOne("WodCatClone.Db.Entities.Auth.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
+                        .WithOne("Halls")
+                        .HasForeignKey("WodCatClone.Db.Entities.Actions.Halls", "UserId");
 
                     b.Navigation("EmblemHall");
 
@@ -854,7 +838,7 @@ namespace WodCatClone.Db.Migrations
                 {
                     b.HasOne("WodCatClone.Db.Entities.Actions.Halls", "Halls")
                         .WithMany()
-                        .HasForeignKey("HallId");
+                        .HasForeignKey("HallsId");
 
                     b.Navigation("Halls");
                 });
@@ -886,9 +870,7 @@ namespace WodCatClone.Db.Migrations
 
                     b.HasOne("WodCatClone.Db.Entities.Actions.Workouts", "Workouts")
                         .WithMany()
-                        .HasForeignKey("WorkoutId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("WorkoutsId");
 
                     b.Navigation("User");
 
@@ -910,17 +892,11 @@ namespace WodCatClone.Db.Migrations
                         .WithMany()
                         .HasForeignKey("GenderId");
 
-                    b.HasOne("WodCatClone.Db.Entities.Actions.Halls", "Halls")
-                        .WithMany()
-                        .HasForeignKey("HallId");
-
                     b.HasOne("WodCatClone.Db.Entities.Actions.Programs", "Programs")
                         .WithMany()
                         .HasForeignKey("ProgramsId");
 
                     b.Navigation("Gender");
-
-                    b.Navigation("Halls");
 
                     b.Navigation("Programs");
                 });
@@ -944,6 +920,11 @@ namespace WodCatClone.Db.Migrations
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Workouts", b =>
                 {
                     b.Navigation("ProgramsWorkouts");
+                });
+
+            modelBuilder.Entity("WodCatClone.Db.Entities.Auth.User", b =>
+                {
+                    b.Navigation("Halls");
                 });
 #pragma warning restore 612, 618
         }

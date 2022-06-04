@@ -10,6 +10,7 @@
         "dependencies": {
           "Microsoft.NET.Test.Sdk": "17.1.0",
           "WodCatClone.Db": "1.0.0",
+          "WodCatClone.Logic": "1.0.0",
           "coverlet.collector": "3.1.2",
           "xunit": "2.4.1",
           "xunit.runner.visualstudio": "2.4.3"
@@ -1695,6 +1696,23 @@
         "runtime": {
           "WodCatClone.Db.dll": {}
         }
+      },
+      "WodCatClone.Logic/1.0.0": {
+        "dependencies": {
+          "WodCatClone.Db": "1.0.0",
+          "WodCatClone.WebDb": "1.0.0"
+        },
+        "runtime": {
+          "WodCatClone.Logic.dll": {}
+        }
+      },
+      "WodCatClone.WebDb/1.0.0": {
+        "dependencies": {
+          "WodCatClone.Db": "1.0.0"
+        },
+        "runtime": {
+          "WodCatClone.WebDb.dll": {}
+        }
       }
     }
   },
@@ -2692,6 +2710,16 @@
       "hashPath": "xunit.runner.visualstudio.2.4.3.nupkg.sha512"
     },
     "WodCatClone.Db/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "WodCatClone.Logic/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "WodCatClone.WebDb/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
