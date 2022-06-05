@@ -20,7 +20,7 @@ namespace WodCatClone.Db
                 new Answer { Id = 5, Name = "Только те, которые создал?" },
                 new Answer { Id = 6, Name = "Зайти на тренировку и нажать старт и еще раз старт" });
 
-            modelBuilder.Entity<Gender>().ToTable("AnsGenderwer").HasData(
+            modelBuilder.Entity<Gender>().ToTable("Gender").HasData(
                 new Gender { Id = 1, Name = "Мужской", Image = "img/man.png" },
                 new Gender { Id = 2, Name = "Женский", Image = "img/woman.png" });
 
