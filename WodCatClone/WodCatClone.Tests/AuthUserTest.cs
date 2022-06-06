@@ -9,8 +9,8 @@ namespace WodCatClone.Tests
     public class AuthUserTest
     {
         public static bool IsLoginUser;
-        public static User User;
         public static int CountUser;
+        public static User User;
         public static User TestUser;
 
         [Fact]
@@ -125,25 +125,6 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void EditUserHallTest()
-        {
-            var context = new TestsWodCatCloneDbContext();
-            HelperLoginFunction(context);
-
-            var newHallId = 2;
-            User.HallId = newHallId;
-
-            var loginUser = HelperUserLogin(context);
-            loginUser.HallId = newHallId;
-
-            context.SaveChanges();
-
-            Assert.NotNull(loginUser);
-            Assert.Equal(newHallId, User.HallId);
-            Assert.Equal(newHallId, loginUser.HallId);
-        }
-
-        [Fact]
         public void UpdateTest()
         {
             var context = new TestsWodCatCloneDbContext();
@@ -233,22 +214,74 @@ namespace WodCatClone.Tests
         public void RemoveTest()
         {
             var context = new TestsWodCatCloneDbContext();
-
             var allUsers = context.Users;
+            CountUser = allUsers.Count();
 
-            var removedUser = UserForRemove(context);
+            var testUser = new User
+            {
+                Name = "",
+                Surname = "",
+                Town = "",
+                HallId = 1,
+                Birthday = new DateTime(),
+                Height = "",
+                Weight = "",
+                AboutMe = "",
+                NickName = "NewNickName",
+                Email = "newEmail@gmail.com",
+                Password = "1111",
+                GenderId = 1
+            };
 
-            Assert.NotNull(removedUser);
+            context.Users.Add(testUser);
+            context.SaveChanges();
 
-            context.Users.Remove(removedUser);
+            CountUser += 1;
+            TestUser = testUser;
 
+            Assert.NotNull(testUser);
+
+            context.Users.Remove(testUser);
             context.SaveChanges();
 
             CountUser -= 1;
-
             Assert.Equal(CountUser, allUsers.Count());
         }
-        
+
+        [Fact]
+        public void JoinTest()
+        {
+            var newHallId = 2;
+
+            var context = new TestsWodCatCloneDbContext();
+            HelperLoginFunction(context);
+            User.HallId = newHallId;
+
+            var dbUser = HelperUserLogin(context);
+            dbUser.HallId = newHallId;
+            context.SaveChanges();
+
+            Assert.NotNull(dbUser);
+            Assert.Equal(newHallId, User.HallId);
+            Assert.Equal(newHallId, dbUser.HallId);
+        }
+
+        [Fact]
+        public void ExitTest()
+        {
+            var context = new TestsWodCatCloneDbContext();
+            HelperLoginFunction(context);
+            User.HallId = null;
+
+            var dbUser = HelperUserLogin(context);
+            dbUser.HallId = null;
+            context.SaveChanges();
+
+            Assert.NotNull(dbUser);
+            Assert.Null(User.HallId);
+            Assert.Null(dbUser.HallId);
+        }
+
         private void HelperLoginFunction(TestsWodCatCloneDbContext context)
         {
             var login = new Login
@@ -284,37 +317,6 @@ namespace WodCatClone.Tests
                                                          l.Password == login.Password);
 
             return user;
-        }
-
-        private User UserForRemove(TestsWodCatCloneDbContext context)
-        {
-            var allUsers = context.Users;
-            CountUser = allUsers.Count();
-
-            var testUser = new User
-            {
-                Name = "",
-                Surname = "",
-                Town = "",
-                HallId = 1,
-                Birthday = new DateTime(),
-                Height = "",
-                Weight = "",
-                AboutMe = "",
-                NickName = "NewNickName",
-                Email = "newEmail@gmail.com",
-                Password = "1111",
-                GenderId = 1
-            };
-
-            context.Users.Add(testUser);
-            context.SaveChanges();
-
-            CountUser += 1;
-
-            TestUser = testUser;
-
-            return testUser;
         }
 
         private User UserMap(Register model)
