@@ -1,50 +1,33 @@
 ﻿using System.Linq;
 using WodCatClone.Db;
-using WodCatClone.Db.Entities.Auth;
 using Xunit;
 
 namespace WodCatClone.Tests
 {
     public class ExercisesTest
     {
-        public static bool IsLoginUser;
-        public static User User;
-
-        private void HelperLoginFunction(TestsWodCatCloneDbContext context)
+        [Fact]
+        public void GetAllExercisesTest()
         {
-            var login = new Login
-            {
-                Email = "deniskudravov228@gmail.com",
-                Password = "0000"
-            };
+            var context = new TestsWodCatCloneDbContext();
 
-            var user = context.Users.FirstOrDefault(l => l.Email == login.Email &&
-                                                         l.Password == login.Password);
+            var countExercises = 3;
+            var exercises = context.Exercises;
 
-            if (user is null)
-            {
-                IsLoginUser = false;
-                User = null;
-            }
-            else
-            {
-                IsLoginUser = true;
-                User = user;
-            }
+            Assert.NotNull(exercises);
+            Assert.Equal(countExercises, exercises.Count());
         }
 
-        private User HelperUserLogin(TestsWodCatCloneDbContext context)
+        [Fact]
+        public void GetExerciseTest()
         {
-            var login = new Login
-            {
-                Email = "deniskudravov228@gmail.com",
-                Password = "0000"
-            };
+            var context = new TestsWodCatCloneDbContext();
 
-            var user = context.Users.FirstOrDefault(l => l.Email == login.Email &&
-                                                         l.Password == login.Password);
+            var id = 2;
+            var exercise = context.Exercises.FirstOrDefault(b => b.Id == id);
 
-            return user;
+            Assert.NotNull(exercise);
+            Assert.Equal(id, exercise.Id);
         }
     }
 }
