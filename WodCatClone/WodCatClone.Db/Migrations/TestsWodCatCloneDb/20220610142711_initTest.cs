@@ -1,33 +1,19 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace WodCatClone.Db.Migrations
+namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
 {
-    public partial class main : Migration
+    public partial class initTest : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "AnsGenderwer",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AnsGenderwer", x => x.Id);
-                });
-
             migrationBuilder.CreateTable(
                 name: "Answer",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -40,8 +26,8 @@ namespace WodCatClone.Db.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -54,18 +40,32 @@ namespace WodCatClone.Db.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FullDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Complexity = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Movement = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Modality = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Inventory = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FullDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Complexity = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Movement = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Modality = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Inventory = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Exercises", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Gender",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Gender", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -74,8 +74,8 @@ namespace WodCatClone.Db.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -88,7 +88,7 @@ namespace WodCatClone.Db.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AnswerId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -108,16 +108,16 @@ namespace WodCatClone.Db.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Rating = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Category = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Complexity = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Movement = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Modality = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Inventory = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Minutes = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Seconds = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Exercises = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Rating = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Category = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Complexity = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Movement = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Modality = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Inventory = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Minutes = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Seconds = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Exercises = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EmblemHallId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -132,48 +132,15 @@ namespace WodCatClone.Db.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "User",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    Surname = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    NickName = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    Country = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    Town = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    Points = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
-                    Birthday = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Height = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    Weight = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    AboutMe = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    GenderId = table.Column<int>(type: "int", nullable: true),
-                    HallId = table.Column<int>(type: "int", nullable: true),
-                    ProgramsId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_User", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_User_AnsGenderwer_GenderId",
-                        column: x => x.GenderId,
-                        principalTable: "AnsGenderwer",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Articles",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FullDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FullDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Rating = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ArticlesEmblemId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: true)
@@ -187,10 +154,37 @@ namespace WodCatClone.Db.Migrations
                         principalTable: "ArticlesEmblem",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "User",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Surname = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NickName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Town = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Points = table.Column<int>(type: "int", nullable: false),
+                    Birthday = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Height = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Weight = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AboutMe = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    GenderId = table.Column<int>(type: "int", nullable: true),
+                    HallId = table.Column<int>(type: "int", nullable: true),
+                    ProgramsId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_User", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Articles_User_UserId",
-                        column: x => x.UserId,
-                        principalTable: "User",
+                        name: "FK_User_Gender_GenderId",
+                        column: x => x.GenderId,
+                        principalTable: "Gender",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -201,12 +195,13 @@ namespace WodCatClone.Db.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Town = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Town = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Location = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Rating = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CountUser = table.Column<int>(type: "int", nullable: false),
                     EmblemHallId = table.Column<int>(type: "int", nullable: true),
                     UserId = table.Column<int>(type: "int", nullable: true)
                 },
@@ -233,14 +228,15 @@ namespace WodCatClone.Db.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Minutes = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Seconds = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Minutes = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Seconds = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Comment = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Repeat = table.Column<int>(type: "int", nullable: false),
                     Fascination = table.Column<int>(type: "int", nullable: false),
                     Load = table.Column<int>(type: "int", nullable: false),
                     PublishDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     WorkoutId = table.Column<int>(type: "int", nullable: false),
+                    WorkoutsId = table.Column<int>(type: "int", nullable: true),
                     UserId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -253,11 +249,11 @@ namespace WodCatClone.Db.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_ResultWorkouts_Workouts_WorkoutId",
-                        column: x => x.WorkoutId,
+                        name: "FK_ResultWorkouts_Workouts_WorkoutsId",
+                        column: x => x.WorkoutsId,
                         principalTable: "Workouts",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -266,20 +262,22 @@ namespace WodCatClone.Db.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Rating = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Aim = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    HallId = table.Column<int>(type: "int", nullable: true)
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Aim = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CountUser = table.Column<int>(type: "int", nullable: false),
+                    HallId = table.Column<int>(type: "int", nullable: true),
+                    HallsId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Programs", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Programs_Halls_HallId",
-                        column: x => x.HallId,
+                        name: "FK_Programs_Halls_HallsId",
+                        column: x => x.HallsId,
                         principalTable: "Halls",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -312,15 +310,6 @@ namespace WodCatClone.Db.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "AnsGenderwer",
-                columns: new[] { "Id", "Image", "Name" },
-                values: new object[,]
-                {
-                    { 2, "img/woman.png", "Женский" },
-                    { 1, "img/man.png", "Мужской" }
-                });
-
-            migrationBuilder.InsertData(
                 table: "Answer",
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
@@ -339,10 +328,10 @@ namespace WodCatClone.Db.Migrations
                 values: new object[,]
                 {
                     { 1, "img/EmblemArticles/buildhome.png", "Buildhome" },
-                    { 5, "img/EmblemArticles/provides.png", "Provides" },
-                    { 4, "img/EmblemArticles/TwoMen.png", "TwoMen" },
+                    { 2, "img/EmblemArticles/Functional.png", "Functional" },
                     { 3, "img/EmblemArticles/OvercomeDoubt.png", "OvercomeDoubt" },
-                    { 2, "img/EmblemArticles/Functional.png", "Functional" }
+                    { 4, "img/EmblemArticles/TwoMen.png", "TwoMen" },
+                    { 5, "img/EmblemArticles/provides.png", "Provides" }
                 });
 
             migrationBuilder.InsertData(
@@ -351,8 +340,17 @@ namespace WodCatClone.Db.Migrations
                 values: new object[,]
                 {
                     { 3, "Сложный", "Выбросы со штангой или «Трастеры» - это упражнение, которое одновременно задействует большое количество крупных мышц. Данное упражнение отлично развивает как и силовые показатели так и выносливые, это зависит от того какой вес и диапазон повторений вы будете использовать в своих тренировках.Трастеры – это так же и универсальное упражнение,классический вариант исполнения,это выбросы со штангой,но вы легко можете использовать самое разнообразное оборудование(гири, гантели, мешок с песком, медболы, и т.д.).", "Техника выполнения упражнения: «Выбросы со штангой Thrusters»Исходное положение:-Возьмите штангу в передний упор на груди,так же как в стартовой позиции для фронтальных приседаний.- Спина ровная,положение ступней на ширине плеч.- Локти подняты,взгляд направлен вперед.Выполнение упражнения:-Опуститесь в нижнее положение приседания,со штангой на груди.- Начните мощно вставать и одновременно выжимайте штангу в положение над головой,до тех пор,пока ваши руки не окажутся прямыми.- Зафиксируйте штангу на вытянутых руках,и после небольшой паузы опуститесь обратно в положение приседа,во время опускания так же опустите штангу на грудь.", "https://www.youtube.com/embed/aea5BGj9a8Y", "Штанга", "W", "Выбросы", "Выбросы" },
-                    { 2, "Нормальный", "Выход на кольцах - упражнение продвинутого уровня в кроссфите. Обычный выход на кольцах  или же (киппинг выход на кольцах), немного легче, нежели строгий вариант выходов, хотя он требует не меньших усилий в изучении. Перед тем как приступать к изучению выходов на кольцах, желательно уметь подтягиваться в строгом стиле на кольцах минимум 15 раз и уметь отжиматься на кольцах 15-20 раз, тогда вы можете быть уверены, что ваши мышцы вас не подведут.Помните,что выходы на кольцах это больше техническое,нежели силовое упражнение и чаще всего упражнение может не получатся из за нехватки опыта и техники,нежели сил! ", "Техника выполнения упражнения: <<Выход на кольцах>>Исходное положение:-Повисните на вытянутых руках,на кольцах- Хват обычныйВыполнение упражнения:-Сделайте несколько махов телом в положении виса на кольцах- Затем сделайте достаточно сильных замах назад,выгнувшись в спине в обратную сторону.- Из положения прогиба сделайте вымах вперед,вылетая таким образом в на уровень колец.По мере приближении тела к кольцам начните разгибать тело в горизонтально ровную позицию,придавая телу инерцию.Тело от такого маха должно оказаться примерно параллельным полу.- Используя полученную энергию,подтяните себя как можно ближе к кольцам,вылетая при этом в положение упора кольцах,не гася при этом инерцию полета.- Если вам не хватило инерции и вы вылетели в положение на согнутых руках в упор,выжмите себя в положение на прямые руки используя силу трицепса и плеч,так же можно придать дополнительный импульс,делая рывок ногами.", "https://www.youtube.com/embed/BQS4Kw7q7OQ", "Кольца гимнастические", "G", "Выход на кольцах", "Выход на кольцах" },
-                    { 1, "Легкий", "Бег, равно как и ходьба – абсолютно естественное для организма состояние.Но начинающие бегуны могут столкнуться со множеством проблем.Оказывается,бегать – не так - то просто.Существует даже такое понятие как правильный беговой почерк.Оно подразумевает прямо поставленную голову,ровную спину,правильное расположение ног.Только когда все составляющие выдержаны,можно добиться легкого и быстрого бега.", "Итак, какие аспекты необходимо выдерживать тем, кто стремится овладеть правильной техникой бега:- Свести вертикальные колебания тела к минимуму.Резкие удары о беговую поверхность,равно как и выбрасывания тела в воздух могут привести к сильному возрастанию нагрузки на суставы и позвоночник.- Не допускать раскачиваний тела в разные стороны.Вообще такие раскачивания могут быть,если стопы относительно друг друга стоят неправильно.Потому необходимо учиться бегать так,чтобы внутренние края стоп находились на одной линии.Допускается лишь небольшой угол,который может образовываться между носками стоп.Это позволит при толчке максимальное усилие направить на большой палец.- Правильный бег предусматривает также грамотную постановку ступней,когда они касаются поверхности земли.Специалисты выделяют три метода – вся стопа,носок - пятка и пятка - носок.Начинающие бегуны должны стремиться распределять нагрузку равномерно на всю стопу – это существенно разгрузит суставы.Правильная техника бега позволяет проверить постановку стоп таким образом: нужно провести прямую линию к беговой поверхности через центр тяжести тела.Пройти эта линия должна через центр стопы.Для сравнения,при ходьбе она проходит через пятку.Еще один момент: при касании земли стопу следует слегка напрячь.- Чтобы научиться бегать,следует также правильно подобрать длину шага.Узкий шаг не дает достаточный тонус мышцам.Тогда как чрезмерно широкий шаг увеличивает риск приземления на прямую ногу.- Верхняя часть туловища при правильном беге должна быть неподвижной.Осанку придется выдерживать,то есть не наклоняться вперед и не запрокидывать туловище назад.Все это позволит уберечь от травм суставы и позвоночник.Также следует следить за положением рук.Так,в локтях они должны быть согнуты под прямым углом,кисти должны быть слегка сжатыми.Голову также нельзя наклонять низко взгляд должен быть направлен метров на 10 - 15 вперед.- Правильная техника бега невозможна без непринужденного ритмичного дыхания – это не позволяет организму слишком рано устать.Итак,какие аспекты необходимо выдерживать тем,кто стремится овладеть правильной техникой бега:-Свести вертикальные колебания тела к минимуму.Резкие удары о беговую поверхность,равно как и выбрасывания тела в воздух могут привести к сильному возрастанию нагрузки на суставы и позвоночник.- Не допускать раскачиваний тела в разные стороны.Вообще такие раскачивания могут быть,если стопы относительно друг друга стоят неправильно.Потому необходимо учиться бегать так,чтобы внутренние края стоп находились на одной линии.Допускается лишь небольшой угол,который может образовываться между носками стоп.Это позволит при толчке максимальное усилие направить на большой палец.- Правильный бег предусматривает также грамотную постановку ступней,когда они касаются поверхности земли.Специалисты выделяют три метода – вся стопа,носок - пятка и пятка - носок.Начинающие бегуны должны стремиться распределять нагрузку равномерно на всю стопу – это существенно разгрузит суставы.Правильная техника бега позволяет проверить постановку стоп таким образом: нужно провести прямую линию к беговой поверхности через центр тяжести тела.Пройти эта линия должна через центр стопы.Для сравнения,при ходьбе она проходит через пятку.Еще один момент: при касании земли стопу следует слегка напрячь.- Чтобы научиться бегать,следует также правильно подобрать длину шага.Узкий шаг не дает достаточный тонус мышцам.Тогда как чрезмерно широкий шаг увеличивает риск приземления на прямую ногу.- Верхняя часть туловища при правильном беге должна быть неподвижной.Осанку придется выдерживать,то есть не наклоняться вперед и не запрокидывать туловище назад.Все это позволит уберечь от травм суставы и позвоночник.Также следует следить за положением рук.Так,в локтях они должны быть согнуты под прямым углом,кисти должны быть слегка сжатыми.Голову также нельзя наклонять низко взгляд должен быть направлен метров на 10 - 15 вперед.- Правильная техника бега невозможна без непринужденного ритмичного дыхания – это не позволяет организму слишком рано устать.", "https://www.youtube.com/embed/t7ZD68RKTT8", "Нет", "M", "Бег", "Бег" }
+                    { 1, "Легкий", "Бег, равно как и ходьба – абсолютно естественное для организма состояние.Но начинающие бегуны могут столкнуться со множеством проблем.Оказывается,бегать – не так - то просто.Существует даже такое понятие как правильный беговой почерк.Оно подразумевает прямо поставленную голову,ровную спину,правильное расположение ног.Только когда все составляющие выдержаны,можно добиться легкого и быстрого бега.", "Итак, какие аспекты необходимо выдерживать тем, кто стремится овладеть правильной техникой бега:- Свести вертикальные колебания тела к минимуму.Резкие удары о беговую поверхность,равно как и выбрасывания тела в воздух могут привести к сильному возрастанию нагрузки на суставы и позвоночник.- Не допускать раскачиваний тела в разные стороны.Вообще такие раскачивания могут быть,если стопы относительно друг друга стоят неправильно.Потому необходимо учиться бегать так,чтобы внутренние края стоп находились на одной линии.Допускается лишь небольшой угол,который может образовываться между носками стоп.Это позволит при толчке максимальное усилие направить на большой палец.- Правильный бег предусматривает также грамотную постановку ступней,когда они касаются поверхности земли.Специалисты выделяют три метода – вся стопа,носок - пятка и пятка - носок.Начинающие бегуны должны стремиться распределять нагрузку равномерно на всю стопу – это существенно разгрузит суставы.Правильная техника бега позволяет проверить постановку стоп таким образом: нужно провести прямую линию к беговой поверхности через центр тяжести тела.Пройти эта линия должна через центр стопы.Для сравнения,при ходьбе она проходит через пятку.Еще один момент: при касании земли стопу следует слегка напрячь.- Чтобы научиться бегать,следует также правильно подобрать длину шага.Узкий шаг не дает достаточный тонус мышцам.Тогда как чрезмерно широкий шаг увеличивает риск приземления на прямую ногу.- Верхняя часть туловища при правильном беге должна быть неподвижной.Осанку придется выдерживать,то есть не наклоняться вперед и не запрокидывать туловище назад.Все это позволит уберечь от травм суставы и позвоночник.Также следует следить за положением рук.Так,в локтях они должны быть согнуты под прямым углом,кисти должны быть слегка сжатыми.Голову также нельзя наклонять низко взгляд должен быть направлен метров на 10 - 15 вперед.- Правильная техника бега невозможна без непринужденного ритмичного дыхания – это не позволяет организму слишком рано устать.Итак,какие аспекты необходимо выдерживать тем,кто стремится овладеть правильной техникой бега:-Свести вертикальные колебания тела к минимуму.Резкие удары о беговую поверхность,равно как и выбрасывания тела в воздух могут привести к сильному возрастанию нагрузки на суставы и позвоночник.- Не допускать раскачиваний тела в разные стороны.Вообще такие раскачивания могут быть,если стопы относительно друг друга стоят неправильно.Потому необходимо учиться бегать так,чтобы внутренние края стоп находились на одной линии.Допускается лишь небольшой угол,который может образовываться между носками стоп.Это позволит при толчке максимальное усилие направить на большой палец.- Правильный бег предусматривает также грамотную постановку ступней,когда они касаются поверхности земли.Специалисты выделяют три метода – вся стопа,носок - пятка и пятка - носок.Начинающие бегуны должны стремиться распределять нагрузку равномерно на всю стопу – это существенно разгрузит суставы.Правильная техника бега позволяет проверить постановку стоп таким образом: нужно провести прямую линию к беговой поверхности через центр тяжести тела.Пройти эта линия должна через центр стопы.Для сравнения,при ходьбе она проходит через пятку.Еще один момент: при касании земли стопу следует слегка напрячь.- Чтобы научиться бегать,следует также правильно подобрать длину шага.Узкий шаг не дает достаточный тонус мышцам.Тогда как чрезмерно широкий шаг увеличивает риск приземления на прямую ногу.- Верхняя часть туловища при правильном беге должна быть неподвижной.Осанку придется выдерживать,то есть не наклоняться вперед и не запрокидывать туловище назад.Все это позволит уберечь от травм суставы и позвоночник.Также следует следить за положением рук.Так,в локтях они должны быть согнуты под прямым углом,кисти должны быть слегка сжатыми.Голову также нельзя наклонять низко взгляд должен быть направлен метров на 10 - 15 вперед.- Правильная техника бега невозможна без непринужденного ритмичного дыхания – это не позволяет организму слишком рано устать.", "https://www.youtube.com/embed/t7ZD68RKTT8", "Нет", "M", "Бег", "Бег" },
+                    { 2, "Нормальный", "Выход на кольцах - упражнение продвинутого уровня в кроссфите. Обычный выход на кольцах  или же (киппинг выход на кольцах), немного легче, нежели строгий вариант выходов, хотя он требует не меньших усилий в изучении. Перед тем как приступать к изучению выходов на кольцах, желательно уметь подтягиваться в строгом стиле на кольцах минимум 15 раз и уметь отжиматься на кольцах 15-20 раз, тогда вы можете быть уверены, что ваши мышцы вас не подведут.Помните,что выходы на кольцах это больше техническое,нежели силовое упражнение и чаще всего упражнение может не получатся из за нехватки опыта и техники,нежели сил! ", "Техника выполнения упражнения: <<Выход на кольцах>>Исходное положение:-Повисните на вытянутых руках,на кольцах- Хват обычныйВыполнение упражнения:-Сделайте несколько махов телом в положении виса на кольцах- Затем сделайте достаточно сильных замах назад,выгнувшись в спине в обратную сторону.- Из положения прогиба сделайте вымах вперед,вылетая таким образом в на уровень колец.По мере приближении тела к кольцам начните разгибать тело в горизонтально ровную позицию,придавая телу инерцию.Тело от такого маха должно оказаться примерно параллельным полу.- Используя полученную энергию,подтяните себя как можно ближе к кольцам,вылетая при этом в положение упора кольцах,не гася при этом инерцию полета.- Если вам не хватило инерции и вы вылетели в положение на согнутых руках в упор,выжмите себя в положение на прямые руки используя силу трицепса и плеч,так же можно придать дополнительный импульс,делая рывок ногами.", "https://www.youtube.com/embed/BQS4Kw7q7OQ", "Кольца гимнастические", "G", "Выход на кольцах", "Выход на кольцах" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Gender",
+                columns: new[] { "Id", "Image", "Name" },
+                values: new object[,]
+                {
+                    { 2, "img/woman.png", "Женский" },
+                    { 1, "img/man.png", "Мужской" }
                 });
 
             migrationBuilder.InsertData(
@@ -360,17 +358,22 @@ namespace WodCatClone.Db.Migrations
                 columns: new[] { "Id", "Image", "Name" },
                 values: new object[,]
                 {
-                    { 2, "img/EmblemHalls/M4.png", "M4" },
                     { 4, "img/EmblemHalls/BlasArea.png", "BlasArea" },
                     { 5, "img/EmblemHalls/Titanbox.png", "TitanBox" },
-                    { 1, "img/EmblemHalls/Dog.png", "Dog" },
-                    { 3, "img/EmblemHalls/Olimp.png", "Olimp" }
+                    { 3, "img/EmblemHalls/Olimp.png", "Olimp" },
+                    { 2, "img/EmblemHalls/M4.png", "M4" },
+                    { 1, "img/EmblemHalls/Dog.png", "Dog" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Programs",
-                columns: new[] { "Id", "Aim", "Description", "HallId", "Image", "Name", "Rating", "Type" },
-                values: new object[] { 2, "На силу", "План, для аматоров CrossFit План для тренировок в зале с использованием упражнений на силу и выносливость, состоящая в основном из аэробных упражнений, гимнастики (упражнения с весом собственного тела) и тяжёлой атлетики, для людей которые имеют слабую или среднюю базовую подготовку, с целью поддержания и увеличиния физической формы. Если твой уровень выше чем этот то тебе на этот план------> CoachMarchenko", null, "img/wod.png", "Plan for the amateur", null, "Тяжелая атлетика" });
+                columns: new[] { "Id", "Aim", "CountUser", "Description", "HallId", "HallsId", "Image", "Name", "Rating", "Type" },
+                values: new object[,]
+                {
+                    { 1, "Набор мышечной массы", 0, "Программа тренировок состоит из 38 комплексов с большим преобладанием коротких силовых тренировок и полным отсутствием кардио нагрузки. План тренировок подойдет, если ваша цель - увеличение силы и прирост мышечной масса в ущерб выносливости. План тренировок комбинирует в себе силовые тренировки и короткие “тяжелые” комплексы кроссфит, преобладают базовые упражнения с большими весами на малое кол-во повторов, что является основным условием развития силы и набора массы (мышечной массы) В данной программе встречаются технически сложные тяжелоатлетические упражнения, поэтому обязательно пр...", 1, null, null, "Программа тренировки кроссфит на массу", "8.0", "Кроссфит" },
+                    { 2, "На силу", 0, "План, для аматоров CrossFit План для тренировок в зале с использованием упражнений на силу и выносливость, состоящая в основном из аэробных упражнений, гимнастики (упражнения с весом собственного тела) и тяжёлой атлетики, для людей которые имеют слабую или среднюю базовую подготовку, с целью поддержания и увеличиния физической формы. Если твой уровень выше чем этот то тебе на этот план------> CoachMarchenko", null, null, "img/wod.png", "Plan for the amateur", null, "Тяжелая атлетика" },
+                    { 3, "Fitness", 0, "Программа тренировок идеально подойдет для новичков. Большая часть плана состоит из гимнастических тренировок со своим весом и не требует вспомогательных предметов для выполнения. Сами же упражнения очень просты и наверняка давно вам знакомы, поэтому вы можете не обладать специальными знаниями, чтобы заниматься по данному плану. С этой программой вам не нужно обязательно быть в зале во время тренировки, вы можете выполнять тренировки в любом удобном месте.", 2, null, null, "Кроссфит программа тренировок дома без оборудования", null, "Кроссфит" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Articles",
@@ -383,11 +386,11 @@ namespace WodCatClone.Db.Migrations
 
             migrationBuilder.InsertData(
                 table: "Halls",
-                columns: new[] { "Id", "Description", "EmblemHallId", "Location", "Name", "Rating", "Town", "Type", "UserId" },
+                columns: new[] { "Id", "CountUser", "Description", "EmblemHallId", "Location", "Name", "Rating", "Town", "Type", "UserId" },
                 values: new object[,]
                 {
-                    { 1, "DOG – первый фитнес клуб Киева, который получил официальную CrossFit сертификацию. Высокие стандарты обслуживания, качества оборудования и подхода к тренировкам обязательны для получения сертификации.Титулованный тренерский состав и профессиональное оборудование сделают ваши занятия более эффективными и помогут выйти на новый уровень физической подготовки.Главные тренера клубов ДОГ - Валентин Литвинчук и Леонид Леус - настоящие профессионалы которые стоят у истоков развития Кроссфита в Украине Более 50 различных & nb...", 1, "Днепровская набережная, 14К", "DOG & GRAND CROSSFIT", null, "Киев", "Affiliate Crossfit,Boxing,Fitness,Gym,MMA,Yoga", null },
-                    { 2, null, 2, "пр. Тракторостроителей 57б", "M4", "10.0", "Харьков", "Crossfit (not Aff.)", null }
+                    { 1, 0, "DOG – первый фитнес клуб Киева, который получил официальную CrossFit сертификацию. Высокие стандарты обслуживания, качества оборудования и подхода к тренировкам обязательны для получения сертификации.Титулованный тренерский состав и профессиональное оборудование сделают ваши занятия более эффективными и помогут выйти на новый уровень физической подготовки.Главные тренера клубов ДОГ - Валентин Литвинчук и Леонид Леус - настоящие профессионалы которые стоят у истоков развития Кроссфита в Украине Более 50 различных & nb...", 1, "Днепровская набережная, 14К", "DOG & GRAND CROSSFIT", null, "Киев", "Affiliate Crossfit,Boxing,Fitness,Gym,MMA,Yoga", null },
+                    { 2, 0, null, 2, "пр. Тракторостроителей 57б", "M4", "10.0", "Харьков", "Crossfit (not Aff.)", null }
                 });
 
             migrationBuilder.InsertData(
@@ -419,31 +422,15 @@ namespace WodCatClone.Db.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Programs",
-                columns: new[] { "Id", "Aim", "Description", "HallId", "Image", "Name", "Rating", "Type" },
-                values: new object[,]
-                {
-                    { 1, "Набор мышечной массы", "Программа тренировок состоит из 38 комплексов с большим преобладанием коротких силовых тренировок и полным отсутствием кардио нагрузки. План тренировок подойдет, если ваша цель - увеличение силы и прирост мышечной масса в ущерб выносливости. План тренировок комбинирует в себе силовые тренировки и короткие “тяжелые” комплексы кроссфит, преобладают базовые упражнения с большими весами на малое кол-во повторов, что является основным условием развития силы и набора массы (мышечной массы) В данной программе встречаются технически сложные тяжелоатлетические упражнения, поэтому обязательно пр...", 1, null, "Программа тренировки кроссфит на массу", "8.0", "Кроссфит" },
-                    { 3, "Fitness", "Программа тренировок идеально подойдет для новичков. Большая часть плана состоит из гимнастических тренировок со своим весом и не требует вспомогательных предметов для выполнения. Сами же упражнения очень просты и наверняка давно вам знакомы, поэтому вы можете не обладать специальными знаниями, чтобы заниматься по данному плану. С этой программой вам не нужно обязательно быть в зале во время тренировки, вы можете выполнять тренировки в любом удобном месте.", 2, null, "Кроссфит программа тренировок дома без оборудования", null, "Кроссфит" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "ProgramsWorkouts",
-                columns: new[] { "Id", "ProgramsId", "WorkoutsId" },
-                values: new object[,]
-                {
-                    { 4, 2, 1 },
-                    { 5, 2, 3 }
-                });
-
-            migrationBuilder.InsertData(
                 table: "ProgramsWorkouts",
                 columns: new[] { "Id", "ProgramsId", "WorkoutsId" },
                 values: new object[,]
                 {
                     { 1, 1, 1 },
-                    { 2, 1, 2 },
+                    { 4, 2, 1 },
                     { 3, 1, 3 },
+                    { 5, 2, 3 },
+                    { 2, 1, 2 },
                     { 6, 3, 2 }
                 });
 
@@ -465,12 +452,14 @@ namespace WodCatClone.Db.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Halls_UserId",
                 table: "Halls",
-                column: "UserId");
+                column: "UserId",
+                unique: true,
+                filter: "[UserId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Programs_HallId",
+                name: "IX_Programs_HallsId",
                 table: "Programs",
-                column: "HallId");
+                column: "HallsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProgramsWorkouts_ProgramsId",
@@ -493,19 +482,14 @@ namespace WodCatClone.Db.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ResultWorkouts_WorkoutId",
+                name: "IX_ResultWorkouts_WorkoutsId",
                 table: "ResultWorkouts",
-                column: "WorkoutId");
+                column: "WorkoutsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_User_GenderId",
                 table: "User",
                 column: "GenderId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_User_HallId",
-                table: "User",
-                column: "HallId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_User_ProgramsId",
@@ -518,10 +502,10 @@ namespace WodCatClone.Db.Migrations
                 column: "EmblemHallId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_User_Halls_HallId",
-                table: "User",
-                column: "HallId",
-                principalTable: "Halls",
+                name: "FK_Articles_User_UserId",
+                table: "Articles",
+                column: "UserId",
+                principalTable: "User",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
 
@@ -568,7 +552,7 @@ namespace WodCatClone.Db.Migrations
                 name: "User");
 
             migrationBuilder.DropTable(
-                name: "AnsGenderwer");
+                name: "Gender");
 
             migrationBuilder.DropTable(
                 name: "Programs");

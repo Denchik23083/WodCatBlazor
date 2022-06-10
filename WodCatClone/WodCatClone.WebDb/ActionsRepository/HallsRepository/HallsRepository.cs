@@ -104,6 +104,13 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
             _context.Halls.Remove(hallToRemove);
             _context.SaveChanges();
 
+            var joinUserHall = _context.Users.Where(b => b.HallId == hallId);
+            foreach (var item in joinUserHall)
+            {
+                item.HallId = null;
+                _context.SaveChanges();
+            }
+
             return true;
         }
 

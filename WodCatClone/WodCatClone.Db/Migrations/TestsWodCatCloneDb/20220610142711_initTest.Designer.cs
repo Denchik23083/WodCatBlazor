@@ -10,8 +10,8 @@ using WodCatClone.Db;
 namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
 {
     [DbContext(typeof(TestsWodCatCloneDbContext))]
-    [Migration("20220603111332_tests")]
-    partial class tests
+    [Migration("20220610142711_initTest")]
+    partial class initTest
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -260,6 +260,9 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("CountUser")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -298,6 +301,7 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                         new
                         {
                             Id = 1,
+                            CountUser = 0,
                             Description = "DOG – первый фитнес клуб Киева, который получил официальную CrossFit сертификацию. Высокие стандарты обслуживания, качества оборудования и подхода к тренировкам обязательны для получения сертификации.Титулованный тренерский состав и профессиональное оборудование сделают ваши занятия более эффективными и помогут выйти на новый уровень физической подготовки.Главные тренера клубов ДОГ - Валентин Литвинчук и Леонид Леус - настоящие профессионалы которые стоят у истоков развития Кроссфита в Украине Более 50 различных & nb...",
                             EmblemHallId = 1,
                             Location = "Днепровская набережная, 14К",
@@ -308,6 +312,7 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                         new
                         {
                             Id = 2,
+                            CountUser = 0,
                             EmblemHallId = 2,
                             Location = "пр. Тракторостроителей 57б",
                             Name = "M4",
@@ -326,6 +331,9 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
 
                     b.Property<string>("Aim")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CountUser")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -359,6 +367,7 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                         {
                             Id = 1,
                             Aim = "Набор мышечной массы",
+                            CountUser = 0,
                             Description = "Программа тренировок состоит из 38 комплексов с большим преобладанием коротких силовых тренировок и полным отсутствием кардио нагрузки. План тренировок подойдет, если ваша цель - увеличение силы и прирост мышечной масса в ущерб выносливости. План тренировок комбинирует в себе силовые тренировки и короткие “тяжелые” комплексы кроссфит, преобладают базовые упражнения с большими весами на малое кол-во повторов, что является основным условием развития силы и набора массы (мышечной массы) В данной программе встречаются технически сложные тяжелоатлетические упражнения, поэтому обязательно пр...",
                             HallId = 1,
                             Name = "Программа тренировки кроссфит на массу",
@@ -369,6 +378,7 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                         {
                             Id = 2,
                             Aim = "На силу",
+                            CountUser = 0,
                             Description = "План, для аматоров CrossFit План для тренировок в зале с использованием упражнений на силу и выносливость, состоящая в основном из аэробных упражнений, гимнастики (упражнения с весом собственного тела) и тяжёлой атлетики, для людей которые имеют слабую или среднюю базовую подготовку, с целью поддержания и увеличиния физической формы. Если твой уровень выше чем этот то тебе на этот план------> CoachMarchenko",
                             Image = "img/wod.png",
                             Name = "Plan for the amateur",
@@ -378,6 +388,7 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                         {
                             Id = 3,
                             Aim = "Fitness",
+                            CountUser = 0,
                             Description = "Программа тренировок идеально подойдет для новичков. Большая часть плана состоит из гимнастических тренировок со своим весом и не требует вспомогательных предметов для выполнения. Сами же упражнения очень просты и наверняка давно вам знакомы, поэтому вы можете не обладать специальными знаниями, чтобы заниматься по данному плану. С этой программой вам не нужно обязательно быть в зале во время тренировки, вы можете выполнять тренировки в любом удобном месте.",
                             HallId = 2,
                             Name = "Кроссфит программа тренировок дома без оборудования",
@@ -600,7 +611,7 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
 
                     b.HasKey("Id");
 
-                    b.ToTable("AnsGenderwer");
+                    b.ToTable("Gender");
 
                     b.HasData(
                         new
