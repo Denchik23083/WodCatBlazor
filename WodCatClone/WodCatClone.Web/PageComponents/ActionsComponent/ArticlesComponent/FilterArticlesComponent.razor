@@ -1,5 +1,6 @@
 ﻿<div class="row">
     <div class="col mb-2">
+        <button class="filterArticles mr-1" @onclick="Reset">All</button>
         @foreach (var item in ArticleType)
         {
             <button class="filterArticles mr-1" @onclick="() => Filter(item)">@item</button>

@@ -31,5 +31,10 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
 
             Articles = Articles.Where(b => b.Type.Contains(type)).ToList();
         }
+
+        public void Reset()
+        {
+            Articles = ArticlesService.GetAllArticles();
+        }
     }
 }

@@ -48,11 +48,8 @@ namespace WodCatClone.Tests
             var program = context.Programs.FirstOrDefault(p => p.Id == id);
             Assert.NotNull(program);
 
-            var countUser = program.CountUser;
-
-            var users = context.Users.Where(b => b.ProgramsId == id);
-            
-            Assert.Equal(countUser, users.Count());
+            var users = context.Users.Where(b => b.ProgramsId == program.Id);
+            Assert.NotNull(users);
         }
 
         [Fact]

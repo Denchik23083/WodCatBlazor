@@ -9,9 +9,7 @@ namespace WodCatClone.Tests
     public class AuthUserTest
     {
         public static bool IsLoginUser;
-        public static int CountUser;
         public static User User;
-        public static User TestUser;
 
         [Fact]
         public void LoginTest()
@@ -43,8 +41,6 @@ namespace WodCatClone.Tests
             var allUsers = context.Users;
             var registerUser = UserMap(register);
 
-            CountUser = allUsers.Count();
-
             registerUser.Country = "Ukraine";
 
             if (register.Password == register.ConfirmPassword)
@@ -54,19 +50,20 @@ namespace WodCatClone.Tests
                 {
                     context.Users.Add(registerUser);
                     context.SaveChanges();
-
-                    CountUser += 1;
                 }
             }
 
             var registeredUser = context.Users.FirstOrDefault(l => l.Email == registerUser.Email &&
                                                                    l.Password == registerUser.Password);
-
-            TestUser = registeredUser;
-
             Assert.NotNull(registeredUser);
-            Assert.Equal(CountUser, allUsers.Count());
             Assert.True(register.Password == register.ConfirmPassword);
+
+            context.Users.Remove(registeredUser);
+            context.SaveChanges();
+
+            var registeredUserRemove = context.Users.FirstOrDefault(l => l.Email == registerUser.Email &&
+                                                                   l.Password == registerUser.Password);
+            Assert.Null(registeredUserRemove);
         }
 
         [Fact]
@@ -84,9 +81,10 @@ namespace WodCatClone.Tests
         {
             var context = new TestsWodCatCloneDbContext();
 
-            var users = context.Users.Count();
+            var users = context.Users;
+            Assert.NotNull(users);
 
-            Assert.Equal(CountUser, users);
+            Assert.Equal(1, users.Count());
         }
 
         [Fact]
@@ -142,110 +140,136 @@ namespace WodCatClone.Tests
                 HallId = 1,
             };
 
-            var testUserEdit = context.Users.FirstOrDefault(l => l.Email == TestUser.Email &&
-                                                                 l.Password == TestUser.Password);
+            context.Users.Add(newUser);
+            context.SaveChanges();
+
+            var editUser = new User
+            {
+                Name = "Michael2",
+                Surname = "de Santa2",
+                Birthday = new DateTime(2013, 09, 17),
+                NickName = "GTA52",
+                Email = "foo@gmail.com",
+                Password = "0000",
+                HallId = 1,
+            };
+
+            var testUserEdit = context.Users.FirstOrDefault(l => l.Email == newUser.Email &&
+                                                                 l.Password == newUser.Password);
+            
             var genre = context.Gender.FirstOrDefault(b => b.Name == genreName);
 
             Assert.NotNull(testUserEdit);
             Assert.NotNull(genre);
 
-            testUserEdit.Name = newUser.Name;
-            testUserEdit.Surname = newUser.Surname;
-            testUserEdit.Town = newUser.Town;
-            testUserEdit.HallId = newUser.HallId;
-            testUserEdit.Birthday = newUser.Birthday;
-            testUserEdit.Height = newUser.Height;
-            testUserEdit.Weight = newUser.Weight;
-            testUserEdit.AboutMe = newUser.AboutMe;
+            testUserEdit.Name = editUser.Name;
+            testUserEdit.Surname = editUser.Surname;
+            testUserEdit.Town = editUser.Town;
+            testUserEdit.HallId = editUser.HallId;
+            testUserEdit.Birthday = editUser.Birthday;
+            testUserEdit.Height = editUser.Height;
+            testUserEdit.Weight = editUser.Weight;
+            testUserEdit.AboutMe = editUser.AboutMe;
             testUserEdit.GenderId = genre.Id;
 
             context.SaveChanges();
 
-            Assert.Equal(testUserEdit.Name, newUser.Name);
-            Assert.Equal(testUserEdit.Surname, newUser.Surname);
-            Assert.Equal(testUserEdit.Town, newUser.Town);
-            Assert.Equal(testUserEdit.HallId, newUser.HallId);
-            Assert.Equal(testUserEdit.Birthday, newUser.Birthday);
-            Assert.Equal(testUserEdit.Height, newUser.Height);
-            Assert.Equal(testUserEdit.Weight, newUser.Weight);
-            Assert.Equal(testUserEdit.AboutMe, newUser.AboutMe);
+            Assert.Equal(testUserEdit.Name, editUser.Name);
+            Assert.Equal(testUserEdit.Surname, editUser.Surname);
+            Assert.Equal(testUserEdit.Town, editUser.Town);
+            Assert.Equal(testUserEdit.HallId, editUser.HallId);
+            Assert.Equal(testUserEdit.Birthday, editUser.Birthday);
+            Assert.Equal(testUserEdit.Height, editUser.Height);
+            Assert.Equal(testUserEdit.Weight, editUser.Weight);
+            Assert.Equal(testUserEdit.AboutMe, editUser.AboutMe);
             Assert.Equal(testUserEdit.GenderId, genre.Id);
+
+            context.Users.Remove(testUserEdit);
+            context.SaveChanges();
+
+            var testUserEditRemove = context.Users.FirstOrDefault(l => l.Email == testUserEdit.Email &&
+                                                                 l.Password == testUserEdit.Password);
+            Assert.Null(testUserEditRemove);
         }
 
         [Fact]
         public void UpdateAuthTest()
         {
             var context = new TestsWodCatCloneDbContext();
-
-            var allUsers = context.Users;
             
-            var testUserEdit = context.Users.FirstOrDefault(l => l.Email == TestUser.Email &&
-                                                                 l.Password == TestUser.Password);
-
-            Assert.NotNull(testUserEdit);
-
-            var newAuth = new User
+            var newUser = new User
             {
+                Name = "Michael",
+                Surname = "de Santa",
+                Birthday = new DateTime(2013, 09, 17),
                 NickName = "GTA5",
                 Email = "foo@gmail.com",
                 Password = "0000",
+                HallId = 1,
             };
 
-            if (!allUsers.Any(b => b.Email == newAuth.Email) &&
-                !allUsers.Any(b => b.NickName == newAuth.NickName))
+            context.Users.Add(newUser);
+            context.SaveChanges();
+
+            var newAuth = new User
             {
-                testUserEdit.NickName = newAuth.NickName;
-                testUserEdit.Email = newAuth.Email;
-                testUserEdit.Password = newAuth.Password;
+                NickName = "GTA52",
+                Email = "foo@gmail.com2",
+                Password = "0000",
+            };
 
-                context.SaveChanges();
-            }
+            var testUserEdit = context.Users.FirstOrDefault(l => l.Email == newUser.Email &&
+                                                                 l.Password == newUser.Password);
 
-            TestUser.NickName = newAuth.NickName;
-            TestUser.Email = newAuth.Email;
-            TestUser.Password = newAuth.Password;
+            Assert.NotNull(testUserEdit);
+
+            testUserEdit.NickName = newAuth.NickName;
+            testUserEdit.Email = newAuth.Email;
+            testUserEdit.Password = newAuth.Password;
+
+            context.SaveChanges();
 
             Assert.Equal(testUserEdit.NickName, newAuth.NickName);
             Assert.Equal(testUserEdit.Email, newAuth.Email);
             Assert.Equal(testUserEdit.Password, newAuth.Password);
+
+            context.Users.Remove(testUserEdit);
+            context.SaveChanges();
+
+            var testUserEditRemove = context.Users.FirstOrDefault(l => l.Email == testUserEdit.Email &&
+                                                                       l.Password == testUserEdit.Password);
+            Assert.Null(testUserEditRemove);
         }
 
         [Fact]
         public void RemoveTest()
         {
             var context = new TestsWodCatCloneDbContext();
-            var allUsers = context.Users;
-            CountUser = allUsers.Count();
 
-            var testUser = new User
+            var newUser = new User
             {
-                Name = "",
-                Surname = "",
-                Town = "",
+                Name = "Michael",
+                Surname = "de Santa",
+                Birthday = new DateTime(2013, 09, 17),
+                NickName = "GTA5",
+                Email = "foo@gmail.com",
+                Password = "0000",
                 HallId = 1,
-                Birthday = new DateTime(),
-                Height = "",
-                Weight = "",
-                AboutMe = "",
-                NickName = "NewNickName",
-                Email = "newEmail@gmail.com",
-                Password = "1111",
-                GenderId = 1
             };
 
-            context.Users.Add(testUser);
+            context.Users.Add(newUser);
             context.SaveChanges();
 
-            CountUser += 1;
-            TestUser = testUser;
+            var testUserRemove = context.Users.FirstOrDefault(l => l.Email == newUser.Email &&
+                                                                 l.Password == newUser.Password);
+            Assert.NotNull(testUserRemove);
 
-            Assert.NotNull(testUser);
-
-            context.Users.Remove(testUser);
+            context.Users.Remove(testUserRemove);
             context.SaveChanges();
 
-            CountUser -= 1;
-            Assert.Equal(CountUser, allUsers.Count());
+            var testUserRemoved = context.Users.FirstOrDefault(l => l.Email == testUserRemove.Email &&
+                                                                 l.Password == testUserRemove.Password);
+            Assert.Null(testUserRemoved);
         }
 
         [Fact]
