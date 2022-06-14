@@ -61,8 +61,9 @@ namespace WodCatClone.Tests
         public void GetCountResultWorkoutsTest()
         {
             var context = new TestsWodCatCloneDbContext();
+            var id = 2;
 
-            var resultWorkouts = context.ResultWorkouts.Count();
+            var resultWorkouts = context.ResultWorkouts.Count(b => b.WorkoutId == id);
             Assert.Equal(0, resultWorkouts);
         }
 
