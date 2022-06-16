@@ -119,11 +119,14 @@
                             <strong style="color: white;">Украина, @Hall.Town</strong>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            <span style="color: #bdc1c6;">@Hall.Location</span>
+                    @if (Hall.Location is not null)
+                    {
+                        <div class="row">
+                            <div class="col">
+                                <span style="color: #bdc1c6;">@Hall.Location</span>
+                            </div>
                         </div>
-                    </div>
+                    }
                 </div>
                 <div class="col-6">
                     <div class="row">
