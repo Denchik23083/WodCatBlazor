@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using WodCatClone.Db.Entities.Actions;
+using WodCatClone.Db.Entities.Auth;
 using WodCatClone.WebDb.ActionsRepository.HallsRepository;
 using WodCatClone.WebDb.UserRepository;
 
@@ -25,6 +26,11 @@ namespace WodCatClone.Logic.ActionsService.HallsService
         public IEnumerable<HallEmblem> GetAllHallEmblem()
         {
             return _repository.GetAllHallEmblem();
+        }
+
+        public IEnumerable<User> GetAllHallsUsers(int id)
+        {
+            return _repository.GetAllHallsUsers(id);
         }
 
         public Halls GetHall(int hallId)

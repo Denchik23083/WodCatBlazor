@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WodCatClone.Logic", "WodCat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WodCatClone.WebDb", "WodCatClone.WebDb\WodCatClone.WebDb.csproj", "{270A994C-0CF6-4699-80DD-C14854BADC4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WodCatClone.Tests", "WodCatClone.Tests\WodCatClone.Tests.csproj", "{EF64DF88-A8BD-4584-8C59-DA90AC38B95F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WodCatClone.Tests", "WodCatClone.Tests\WodCatClone.Tests.csproj", "{EF64DF88-A8BD-4584-8C59-DA90AC38B95F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

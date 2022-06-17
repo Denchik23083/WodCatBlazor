@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using WodCatClone.Db.Entities.Actions;
+using WodCatClone.Db.Entities.Auth;
 
 namespace WodCatClone.Logic.ActionsService.HallsService
 {
@@ -8,6 +9,8 @@ namespace WodCatClone.Logic.ActionsService.HallsService
         IEnumerable<Halls> GetAllHalls();
 
         IEnumerable<HallEmblem> GetAllHallEmblem();
+
+        IEnumerable<User> GetAllHallsUsers(int id);
 
         Halls GetHall(int hallId);
 

@@ -25,6 +25,11 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
             return _context.HallEmblem;
         }
 
+        public IEnumerable<User> GetAllHallsUsers(int id)
+        {
+            return _context.Users.Where(b => b.HallId == id);
+        }
+
         public Halls GetHall(int hallId)
         {
             return _context.Halls.FirstOrDefault(b => b.Id == hallId);

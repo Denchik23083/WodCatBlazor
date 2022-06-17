@@ -57,11 +57,11 @@
                 <span class="programslink" @onclick="DisplayUser">ПОДПИСЧИКИ</span>
             </div>
         </div>
-        @if (DisplayWorkouts)
+        @if (DisplayWorkouts && !DisplayUsers)
         {
             <ListProgramsWorkoutsComponent ListOfItems="ProgramsWorkouts"/>
         }
-        else
+        else if (!DisplayWorkouts && DisplayUsers)
         {
             <ListProgramsUsersComponent ListOfItems="Users"/>
         }

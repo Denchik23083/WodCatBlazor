@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.ActionsService.HallsService;
@@ -21,6 +22,8 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 
         public Halls Hall { get; set; }
 
+        public IEnumerable<User> Users { get; set; }
+
         public string Image { get; set; }
 
         public string[] Type { get; set; }
@@ -28,6 +31,10 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
         public bool IsLoginUser { get; set; }
 
         public int Athletes { get; set; }
+
+        public bool DisplayLocation { get; set; } = true;
+
+        public bool DisplayUsers { get; set; }
 
         public User User { get; set; } 
 
@@ -42,6 +49,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
             Type = Hall.Type.Split(",");
             IsLoginUser = UserService.IsLoginUser();
             User = UserService.GetUser();
+            Users = HallsService.GetAllHallsUsers(HallId);
             Athletes = HallsService.Athlete(Hall.Id);
 
             if (IsLoginUser) Top = "loginTop";
@@ -54,6 +62,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
             Type = Hall.Type.Split(",");
             IsLoginUser = UserService.IsLoginUser();
             User = UserService.GetUser();
+            Users = HallsService.GetAllHallsUsers(HallId);
             Athletes = HallsService.Athlete(Hall.Id);
 
             if (IsLoginUser) Top = "loginTop";
@@ -70,11 +79,23 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
             UserService.Join(Hall.Id);
             Athletes = HallsService.Athlete(Hall.Id);
         }
-
+        
         public void Exit()
         {
             UserService.Exit(Hall.Id);
             Athletes = HallsService.Athlete(Hall.Id);
+        }
+
+        public void DisplayWorkout()
+        {
+            DisplayLocation = true;
+            DisplayUsers = false;
+        }
+
+        public void DisplayUser()
+        {
+            DisplayLocation = false;
+            DisplayUsers = true;
         }
     }
 }

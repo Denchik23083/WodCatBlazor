@@ -60,14 +60,17 @@ a {cursor: pointer;}
     background: #161521;
     color: gray;
     border-color: #161521;
-    width: 70px;
     cursor: pointer;
+    text-align: center;
+    appearance: none;
 }
 .fingerMoreProfile {
     background: #161521;
     color: gray;
+    text-align: center;
     border-color: #161521;
     cursor: pointer;
+    appearance: none;
 }
 .fingerFilter {
     width: 100%;

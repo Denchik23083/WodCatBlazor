@@ -267,7 +267,9 @@ namespace WodCatClone.Db
                     Height = "185",
                     Weight = "70",
                     AboutMe = "I am a developer C#",
-                    GenderId = 1
+                    GenderId = 1,
+                    HallId = null,
+                    ProgramsId = null
                 });
 
             base.OnModelCreating(modelBuilder);
@@ -275,7 +277,7 @@ namespace WodCatClone.Db
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var connectionString = "Data Source=USER-PC\\SQLEXPRESS;Initial Catalog=TestsWodCatCloneDb;Integrated Security=True;";
+            var connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=TestsWodCatCloneDb;Integrated Security=True;";
 
             optionsBuilder.UseSqlServer(connectionString);
         }

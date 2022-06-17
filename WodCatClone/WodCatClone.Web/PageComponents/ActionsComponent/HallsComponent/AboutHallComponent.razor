@@ -1,0 +1,46 @@
+﻿<div class="footerLocation">
+    <div class="row">
+        <div class="col-6">
+            <div class="row">
+                <div class="col">
+                    <img src="img/location-bg.png" width="100" height="150"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h1 class="location">Локация</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <strong style="color: white;">Украина, @Hall.Town</strong>
+                </div>
+            </div>
+            @if (Hall.Location is not null)
+            {
+                <div class="row">
+                    <div class="col">
+                        <span style="color: #bdc1c6;">@Hall.Location</span>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-6">
+            <div class="row">
+                <div class="col">
+                    <img src="img/members-bg.png" width="100" height="150"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h1 class="location">Атлетов</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <strong style="color: white;">@Athletes</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

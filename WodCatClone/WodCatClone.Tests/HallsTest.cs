@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using WodCatClone.Db;
 using WodCatClone.Db.Entities.Actions;
@@ -29,6 +30,18 @@ namespace WodCatClone.Tests
             Assert.NotNull(hallEmblem);
 
             Assert.Equal(5, hallEmblem.Count());
+        }
+
+        [Fact]
+        public void GetAllHallsUsersTest()
+        {
+            var context = new TestsWodCatCloneDbContext();
+            var id = 1;
+
+            var users = context.Users.Where(b => b.HallId == id);
+            Assert.NotNull(users);
+
+            Assert.Equal(0, users.Count());
         }
 
         [Fact]

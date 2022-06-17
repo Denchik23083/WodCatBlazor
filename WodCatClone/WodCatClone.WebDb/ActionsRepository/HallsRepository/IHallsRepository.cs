@@ -10,6 +10,8 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
 
         IEnumerable<HallEmblem> GetAllHallEmblem();
 
+        IEnumerable<User> GetAllHallsUsers(int id);
+
         Halls GetHall(int hallId);
 
         Halls GetHall(int? userHallId);

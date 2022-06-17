@@ -445,3 +445,9 @@ C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\ne
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\WodCatClone.Web.pdb
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\WodCatClone.Web.genruntimeconfig.cache
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\ref\WodCatClone.Web.dll
+C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\RazorDeclaration\PageComponents\ActionsComponent\HallsComponent\AboutHallComponent.razor.g.cs
+C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\PageComponents\ActionsComponent\HallsComponent\AboutHallComponent.razor.g.cs
+C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\RazorDeclaration\PageComponents\ActionsComponent\HallsComponent\IndividualHallsUsersComponent.razor.g.cs
+C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\RazorDeclaration\PageComponents\ActionsComponent\HallsComponent\ListHallsUsersComponent.razor.g.cs
+C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\PageComponents\ActionsComponent\HallsComponent\IndividualHallsUsersComponent.razor.g.cs
+C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\PageComponents\ActionsComponent\HallsComponent\ListHallsUsersComponent.razor.g.cs
