@@ -30,6 +30,13 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ExercisesComponent
             new() { Content = "Бег", Filter = "Бег" },
             new() { Content = "Выход на кольцах", Filter = "Выход на кольцах" },
             new() { Content = "Выбросы", Filter = "Выбросы" },
+            new() { Content = "Бёрпи", Filter = "Бёрпи" },
+            new() { Content = "Отжимания", Filter = "Отжимания" },
+            new() { Content = "Прыжки", Filter = "Прыжки" },
+            new() { Content = "Пресс", Filter = "Пресс" },
+            new() { Content = "Прыжки на скакалке", Filter = "Прыжки на скакалке" },
+            new() { Content = "Брусья", Filter = "Брусья" },
+            new() { Content = "Подтягивание", Filter = "Подтягивание" },
         };
 
         public List<FilterExercises> FilterComplexity = new()
@@ -44,7 +51,11 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ExercisesComponent
             new() { Content = "Нет", Filter = "Нет" },
             new() { Content = "Кольца гимнастические", Filter = "Кольца гимнастические" },
             new() { Content = "Штанга", Filter = "Штанга" },
-        };
+            new() { Content = "Ящик для прыжков", Filter = "Ящик для прыжков" },
+            new() { Content = "Скакалка", Filter = "Скакалка" },
+            new() { Content = "Тренажер GHD", Filter = "Тренажер GHD" },
+            new() { Content = "Кроссфит стойка", Filter = "Кроссфит стойка" },
+    };
 
         void Filter()
         {
@@ -54,17 +65,14 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ExercisesComponent
             {
                 Exercises = Exercises.Where(b => b.Modality.Equals(_filterModality)).ToList();
             }
-
             if (_filterMovement != "None")
             {
                 Exercises = Exercises.Where(b => b.Movement.Equals(_filterMovement)).ToList();
             }
-
             if (_filterComplexity != "None")
             {
                 Exercises = Exercises.Where(b => b.Complexity.Equals(_filterComplexity)).ToList();
             }
-
             if (_filterInventory != "None")
             {
                 Exercises = Exercises.Where(b => b.Inventory.Equals(_filterInventory)).ToList();

@@ -52,10 +52,6 @@ a {cursor: pointer;}
     border: 0;
 }
 .auth {top: 95px;}
-.finger {
-    cursor: pointer;
-    display: block;
-}
 .fingerMore {
     background: #161521;
     color: gray;

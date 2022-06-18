@@ -1,4 +1,6 @@
-﻿namespace WodCatClone.Db.Entities.Actions
+﻿using System.Collections.Generic;
+
+namespace WodCatClone.Db.Entities.Actions
 {
     public class Exercises
     {
@@ -19,5 +21,7 @@
         public string Inventory { get; set; }
 
         public string Image { get; set; }
+
+        public List<WorkoutsExercises> WorkoutsExercises { get; set; }
     }
 }

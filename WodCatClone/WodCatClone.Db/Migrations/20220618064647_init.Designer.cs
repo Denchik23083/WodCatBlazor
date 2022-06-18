@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WodCatClone.Db;
 
-namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
+namespace WodCatClone.Db.Migrations
 {
-    [DbContext(typeof(TestsWodCatCloneDbContext))]
-    [Migration("20220611121744_init")]
+    [DbContext(typeof(WodCatCloneContext))]
+    [Migration("20220618064647_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,15 +35,18 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FullDescription")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Rating")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Type")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("UserId")
@@ -70,12 +73,41 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                         new
                         {
                             Id = 2,
-                            ArticlesEmblemId = 2,
+                            ArticlesEmblemId = 5,
                             Description = "This article provides a few key tips on how to perform the deadlift more efficiently and safely. Some helpful coaching cues—such as keeping the head slightly up, activating the lats, and pushing the knees out—can assist a tactical athlete in executing the deadlift while increasing strength over time.",
                             FullDescription = "It is becoming a more common idea that strength training should be utilized in every population for maintaining general health and varied performance goals. There is a growing body of anecdotal evidence showing the benefits of including general strength training in populations where it was previously ignored or deemed harmful. However, there is still confusion on how to best implement strength training in programs focused on sport performance, rehabilitation, or general health. Hopefully this article can provide insight and guidance on how to use one of the most important strength movements—the deadlift.The deadlift should be a staple for not only increasing performance but also overall resiliency.Almost every job in any tactical field(e.g., police, fire, military) requires stabilization of the trunk while expressing large amounts of force through the lower extremities. There are few exercises that will activate trunk muscles like the deadlift because it requires the entire body to be engaged for proper completion. The deadlift requires the upper and lower extremities to move or stabilize the bar, which engages a large number of motor units and muscles fibers simultaneously.In terms of positive changes and strength progressions in short - or long - term adaptation, there are few substitutes for the deadlift. Its simplicity and function should make it a priority in all strength training regimens.The positive changes in bone density, muscle mass, resting metabolic rate, decreased low back pain, and even dynamic strength development emphasize the importance of the deadlift(1, 2, 3).Research has also shown that long - term lifting with deadlifts and squats not only promotes an increase of bone density in younger populations, but it may also help maintain that increase well into the later stages of life(1, 4, 5).The coordinated effort required to perform the deadlift, and its variations, places a large amount of stress on the musculoskeletal system and drives adaptation.The deadlift is a base for all other ground - based lifts(e.g., cleans, snatches, and their variations) as well as many tactical agility tests(e.g., dummy drags, equipment lifting, patient loading, etc.).Proper execution of the deadlift, and the ability to stabilize the trunk and spine while exerting maximal effort is a skill that can help tactical personnel and the general population avoid injury.The deadlift should be a staple for not only increasing performance but also overall resiliency.Almost every job in any tactical field(e.g., police, fire, military) requires stabilization of the trunk while expressing large amounts of force through the lower extremities. There are few exercises that will activate trunk muscles like the deadlift because it requires the entire body to be engaged for proper completion. The deadlift requires the upper and lower extremities to move or stabilize the bar, which engages a large number of motor units and muscles fibers simultaneously.There are a few key pointers that advanced coaches and lifters can use in order to achieve excellent results while reducing the risk of injury and promoting safe motor patterns.The remainder of this article will present four of the most important tips for deadlifting from an anecdotal base to not only increase performance, but also to decrease injury rates in tactical populations.TIP 1 | Head Posture: The Head Needs To Be Looking Slightly UpwardThere has been a lot of debate with this topic, but keeping the head looking slightly upward allows the shoulders to stay back and the spine to stay in a more erect, and neutral, position.Half of the battle with performing near - maximal deadlifts and doing it safely is keeping the back as neutral as possible with the head in a more upright position, which keeps the hips and leg extensors working at the same time.Often if the head falls forward or the eyes drift downward while performing the lift, it can cause the weight to be distributed over the leg extensors and reduce the involvement of the hips and posterior chain.It has been debated that a “head up” position can cause cervical spine issues, but research is currently lacking to warrant such concern. Hundreds, if not thousands, of powerlifters have lifted this way for many years, and cervical spine injury has not become an epidemic in this population, or been at a high enough prevalence to cause concern.A more vertical, and neutral, back position allows for increased hip drive, which can be better utilized with the head looking slightly upward.From experience, often a slightly upward head angle results in better deadlift form.TIP 2 | Lat Activation: The Lats Need to Engage FirstThis allows the bar path to be as close to the legs as possible.By contracting the lats first, the bar stays closer to the lower extremities and gives the hips and legs more leverage to perform the task.The further the bar is away from the legs, the more the lower back has to activate to perform the lift.A great deadlift should leave marks on the shins.This indicates that the bar was as close to the lower extremities as possible, and the bar weight was kept as close as possible to the lifter’s center of mass.This activation of the lats can create a posture that is advantageous to lifting large loads safely by creating tension on the bar prior to initiating the lift.Advanced lifters may actually try to bend the bar with the lats while the barbell is on the ground, to ensure the bar stays close to the body.This preliminary activation of the lats also reduces the tendency for the shoulders to drop, keeping the thoracic and lumbar spine more vertical and less likely to round.TIP 3 | Knee Motion Cues: Regardless of Position(Sumo, Conventional, or Some Variation) Always Try to Push the Knees ApartPushing the knees apart throughout the deadlift can help the glutes remain active during the lift.When first learning, most people will tend to use all quads, hamstrings, and spinal erectors to pull the weight up off the ground.By driving the knees apart, the glute medius will be triggered to stabilize the pelvis and help the posterior chain to maximize hip extension.This is crucial with not only coaching, but also lifting larger loads(i.e., 80 % of one repetition maximum[1RM] or higher).This key coaching cue can allow the athlete to lift more weight by including more muscle groups throughout the entire lift.Another helpful tip is to try to spread the floor with the feet.This lateral pressure can force the knees outward and ensure a strong supportive base from which to lift.TIP 4 | Positional Weakness: Train Your Weakest PositionMany times when an athlete first starts to deadlift, one position feels more natural or stronger(usually conventional) than others. An athlete will tend to gravitate towards this stronger position naturally.However, it can be very helpful to focus on the position that feels weaker and more awkward for long - term improvement.For my tactical athletes and general clients, it is valuable for them to become proficient in sumo deadlifting before utilizing a conventional stance.There are a few reasons for this:It teaches the lifter to use the hips primarily, which can reduce the risk of excessive lumber flexion under load.Hip strength and mobility are crucial in general performance.One of the main indicators of future lower back problems and / or health is hip mobility. Completing sumo deadlifts correctly can aid in developing strong hips, as well as improving mobility.From experience, sumo deadlifts can actually help one learn to pull conventional deadlifts correctly, by first addressing hip mobility and learning how to maximally activate the glutes.This allows the lifter to take some pressure off the lower back and place it on the glutes.The sumo deadlift seems to be able to withstand more volume in a training block or cycle than deadlifting with a conventional stance.A logical reason for this is that the sumo stance utilizes less lower back musculature and more of the glutes.Since the glutes are larger, and more powerful, they can handle the increased training volume when compared to the lower back.From experience, the sumo deadlift can be used more frequently and with higher resistances for longer periods of time than the conventional deadlift(assuming the lifter is healthy).Hopefully this article has provided a few key tips on how to perform the deadlift more efficiently and safely.Some helpful coaching cues, like keeping the head slightly up, activating the lats, and pushing the knees out can assist a tactical athlete in executing the deadlift while increasing strength over time.",
                             Name = "article provides a few key tips on how to perform the deadlift more efficiently and safely",
                             Rating = "10.0",
                             Type = "Кроссфит,Тренировки"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ArticlesEmblemId = 2,
+                            Description = "Functional fitness (using functional movements) is among the most widely spread buzzwords in the gym industry today, but for logical reason. Functional fitness focuses on body training and preparing your body to handle real life scenarios. Functional Movement: Making the muscles work together Body balance & control",
+                            FullDescription = "Functional fitness (using functional movements) is among the most widely spread buzzwords in the gym industry today, but for logical reason. Functional fitness focuses on body training and preparing your body to handle real life scenarios.The difference between ordinary gym and functional fitness seems minor to many people but it’s actually huge. Functional fitness builds your body capability for carrying out real life activities in real time, unlike ordinary gymming where you just lift a specific weight in an idealized position, sometimes even formed by a gym machine. There’s a shift of focus from traditional and obsolete ways of body strengthening fitness to novel and more effective ways of achieving functional fitness and CrossFit is surely one of the great options available. Being fit is not the only objective of CrossFit, rather being healthy, strong and lean are the ultimate goals.CrossFit as a leading training system of athletes is known for designing and delivering the most comprehensive and high yielding fitness programs around, catering to all age groups and ability levels. With CrossFit, you will find a lot of true success stories and amazing transformations people have gone through. Functional Movement: Making the muscles work together Traditional weight training isolates muscle groups together but it doesn’t train some of the isolated groups with the others.The key to a successful functional exercise lies in integration, focusing all the muscles to work together instead of isolating them to function independently.Here’s an example of what you might consider a functional exercise: Consider a bent - over row; not the type of row you usually carry out on a seated machine, rather one that you do while leaning over a bench, having weight in one hand with arm hanging straight down, and then pulling the weight up to the extent your elbow points towards the ceiling, ending with your upper arm being parallel to the ground. This is the kind of exercise that builds your back, arms, and shoulder muscles, and due to its nature, it would really work for the entire body.Some of the foundation movements of CrossFit include air squats, front squats, shoulder press, deadlift, press push, push jerk etc.CrossFit has designed its workouts on similar ideas that are comprised of functional movements, which also keep on changing.These include pulling, pushing, running, lifting and squatting. Many of these functional movements are executed at a high intensity.Instead of using machines like treadmills etc, CrossFit has equipped itself with kettlebells, pull - up bars, barbells and spacious open space for carrying out running, jumping, squatting, lifting, climbing and throwing.All this is tied together to move your body in the way it should. The CrossFit community has built its exercise methodology on the foundations of weight lifting, gymnastics and endurance / speed / agility - the fundamental components of functional fitness.Body balance & control Most of the people are not even able to control their body weight.They can’t even do a one legged squat without falling over. You can try it now. Can you? As stated by one of the trainers at CrossFit, your first step should be to train your body regarding balancing and controlling its own weight.CrossFit aims to enhance the physical competence of an individual in ten general physical skills. These are defined by CrossFit as:– Cardiovascular / respiratory endurance: It’s the ability of the body to store, process and transmit oxygen.– Stamina: It’s the ability of the body to store, process, transmit and consume energy.– Strength: It’s the ability of a body muscular unit, or group of muscular units, to gain force.– Flexibility: It’s the ability of the body to have maximum motion range at a particular joint.– Power: It’s the ability of a muscular unit, or group of units, to release maximum force in the least time.– Speed: It’s the ability of body to decrease the time cycle of a repeated movement to the least level.– Coordination: It’s the ability of the body to join different movements patterns into a single movement– Agility: It’s the body’s ability to reduce transition time among different movement patterns to least degree.– Balance: It’s the ability to regulate the position of the body’s centre of gravity relative to its support base.– Accuracy: It’s the ability to regulate the movement in a specific direction or at required intensity.CrossFit 6221 is more than an excellent centre for functional fitness training.Apart from this incredible program, specialty classes including endurance, mobility and power lifting are also provided to complement your functional fitness and enhance the overall value you are getting.In order to increase the awareness level of people and the community at large regarding the benefits of functional fitness, CrossFit 6221 also conducts special seminars and community events, bringing the people together from different backgrounds to avail strength for facing real life situations.",
+                            Name = "Functional Fitness and CrossFit",
+                            Type = "Кроссфит,Бокс"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ArticlesEmblemId = 3,
+                            Description = "5 простых способов преодолеть сомнения Рядом с целями и мечтами к нам приходят наши «друзья»: сомнения,ужасы и неуверенность в себе.Как заставить себя поверить в собственные силы ? Как не допускать ошибок и двигаться вперед.",
+                            FullDescription = "Человеческий мозг всегда ждет подвоха и фокусируется на негативе. Ему значительно проще запомнить твои провалы, чем успехи. Именно поэтому ему необходимо периодически напоминать о том, что вообще за спиной у тебя есть неплохие результаты. Сомневаются в себе все. Даже суперзвезда гольфа Тайгер Вуд признается, что перед важными соревнованиями чувствует неуверенность в себе. Но у него есть секретный прием: «Каждый раз перед важным ударом я делаю глубокий вдох и говорю себе:« Я делал это уже тысячу раз ». Это помогает мне вспомнить, что у меня получалось всегда - а значит, получится и сейчас ». Еще один хороший способ - это действовать очень быстро, чтобы сомнения не успели появиться. Так работает Стивен Кинг, он говорит: «Когда меня одолевают сомнения, мне помогает такая штука: я сажусь и начинаю писать максимально быстро, как только могу. Я записываю все подряд, не раздумывая над тем, хорошо получается или плохо. Так мне удается сохранить первоначальный энтузиазм и одновременно уйти от сомнений в себе » Если ты готовишься к какой-то глобальной события - например выступления с презентацией проекту, - тебе нужно максимально снизить внутреннюю важность этого события. Самый простой способ сделать это - вспомнить, что ты классный не только в работе, но и в других сферах. Ты должен убедить себя, что на этой презентации свет клином не сошелся и не произойдет ничего страшного. Часто хороший сон помогает справиться с неуверенностью в себе. Генеральный директор канадской студии по производству анимационных фильмов Amberwood Entertainment Шелдон Уайзмен говорит: «Когда я начинаю сомневаться в себе, я стараюсь быстрее лечь спать. Для меня сомнения - это, в первую очередь, отсутствие энергии на активные действия. Когда ничего не делаешь, начинаешь сомневаться. Так что лучший способ стать увереннее - лечь спать. Когда просыпаешься утром свеженький, ты готов сделать что угодно!",
+                            Name = "5 Easy Ways to Overcome Doubt",
+                            Rating = "10.0",
+                            Type = "Кроссфит,Гиревой спорт"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ArticlesEmblemId = 4,
+                            Description = "How do U.S. Marines stack up when it comes to conquering the Navy SEALs fitness test?",
+                            FullDescription = "How do U.S. Marines stack up when it comes to conquering the Navy SEALs fitness test? Armando Nava Jr. (a.k.a NavaTheBeast) served in the U.S.Marines for four years before taking to YouTube to vlog about life after the military.While he’s not training with SWAT teams and teaching powerlifters how to crush the brutal Marine Corps.physical fitness test, Nava can be found demonstrating the extensive lessons he learned from the Marines while putting his body through hell. In a recent video, Nava brought his friend and fellow veteran, Marcus Perez in front of the camera to see if they could both take on the famously grueling U.S.Navy SEALs Physical Fitness Test(PFT). Nava's version of the test wasn't exactly what you'd have to take on if you were trying to be a SEAL yourself—the standard test calls for a 500 yard swim in 12 minutes, 30 seconds, 50 pushups in 2 minutes, at least 50 curlups (situps) in 2 minutes, at least 10 pullups in 2 minutes, and a 1.5 mile run in at least 10 minutes and 30 seconds. Nava and Perez flip the order and do the run first, then skip the curlups entirely. Since they're not planning to enlist, we'll cut them some slack. The first portion of the test is a 1.5 mile run, which Nava knocks out in 10 minutes and eight seconds—about 6:39 per mile. Perez’ time is considerably slower but finishes in just under 17 minutes. “I haven’t run in a minute,” says an out of breath Nava, but this is a good start.” With Marcus running in the background, Nava reminds his audience to use his video for inspiration as what he’s doing is “easy to watch, but hard to do.” Next up: pushups.Navy SEALs need to do at least 98 reps to qualify for the Optimum distinction; Nava and Perez are aiming for 100.The guys hammer away at the 100 - pushup goal, sweating through the pain as Nava narrates. “The only way you’re gonna get better is by putting yourself through that pain and that suffering, because that’s what’s going to mold you and that’s what’s going to make you a stronger individual.” Seventy pushups in, Nava is unable to continue and taps out of the challenge, while Marcus just makes it to 100.As the guys rise from the floor, physically shaking, they head inside to handle the next portion of the fitness test: pullups. Nava and Marcus only have to make it to 15 to meet the Optimum requirement, but they aim for 20.After each hitting the target reps, Marcus and Nava head out to conquer the very last challenge: a 500 - meter swim. “We pushing through this pain,” says Nava as he prepares to swim 10 laps, “and so should you.Let’s go finish this test.” The guys absolutely go beast - mode during the final swim, clocking in at eight minutes and five seconds. “I’m sore and hungry,” says Marcus, “I’m just glad I attempted it.” As the video wraps, Nava once again tells viewers to not only watch his videos but go out and actually do what he’s doing yourself. After a 1.5 mile run, pushups, pullups, and a swim, Nava showcases the physical toll the body goes through to make the cut for the elite branches of the military.",
+                            Name = "How do U.S. Marines stack up when it comes to conquering the Navy SEALs fitness test?",
+                            Rating = "9.0",
+                            Type = "Кроссфит,Лёгкая атлетика"
                         });
                 });
 
@@ -87,9 +119,11 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Image")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -137,27 +171,35 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Complexity")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FullDescription")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Inventory")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Modality")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Movement")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -200,6 +242,30 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                             Modality = "W",
                             Movement = "Выбросы",
                             Name = "Выбросы"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Complexity = "Легкий",
+                            Description = "Бурпи – это комплексное упражнение которое используется не только в Кроссфит но и во многих других видах спорта где необходимо развивать и силу и выносливость. А это упражнение предназначено именно для этих целей. Бурпи состоит из трех отдельных упражнений соединенных воедино, а именно из: воздушных приседаний, отжиманий и выпрыгиваний.",
+                            FullDescription = "Бурпи – это комплексное упражнение которое используется не только в Кроссфит но и во многих других видах спорта где необходимо развивать и силу и выносливость.А это упражнение предназначено именно для этих целей.Бурпи состоит из трех отдельных упражнений соединенных воедино, а именно из: воздушных приседаний, отжиманий и выпрыгиваний. Исходное положение: -Тело стоит вертикально, ноги на ширине плеч. Выполнение упражнения: -Быстрое опускание в упор лежа - Упор лёжа, отжаться от пола, резко подтянуть колени к груди приняв положение приседа и руки касаются ладонями пола.- Выпрыгнуть вверх, сделав лёгкий хлопок руками над головой. - Вернуться в начальное положение. Как вариант можно - вместо прыжка вверх, выполнить прыжок вперёд, отталкиваясь от пола двумя ногами одновременно. Особенности: Бодибилдинг / фитнес: -Отжимания могут быть как до касания грудью пола, так и без касания. CROSSFIT: -Отжимания могут выполняться как «чистыми», так и в технике «лодка». Касание грудью и бедрами пола обязательно. - В верхней точке все тело должно находиться в вертикальном положении, а хлопок выполняться над или за головой.Рекомендации: -После отжимания, выполняя прыжок ногами к груди, ставьте стопы на ширине таза или шире.Это позволит сократить амплитуду движения и уменьшить нагрузку на коленные суставы. Противопоказания: С осторожностью выполнять при заболеваниях или травмах поясничного отдела позвоночника.",
+                            Image = "https://www.youtube.com/embed/TU8QYVW0gDU",
+                            Inventory = "Нет",
+                            Modality = "G",
+                            Movement = "Бёрпи",
+                            Name = "Бёрпи"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Complexity = "Легкий",
+                            Description = "Отжимания от пола - отличное упражнение для развития мышц груди, плечей и рук как в тренировках в зале так и в домашних тренировках. Существует много видов отжиманий, (отжимания на одной руке, отжимания с узкой постановкой ладоней диамантовые отжимания, отжимания с высокой постановкой ног ) каждый их них по своему уникальный, и все их обязательно стоит научиться делать. Но в КроссФите самые популярные классические отжимания от пола  - которые используются как в отдельных тренировках так и в целых тренировочных комплексах для лучшего эффекта.",
+                            FullDescription = "Исходное положение: - Займите упор лежа на прямых руках - Ноги держите вместе - Тело держите максимально параллельно полу, без прогиба в пояснице. Выполнение упражнения: -Начните опускать ваше тело удерживая спину прямой, пока ваша грудь не коснется пола. - Сделайте небольшую паузу и выжмите тело обратно в исходное положение.",
+                            Image = "https://www.youtube.com/embed/_l3ySVKYVJ8",
+                            Inventory = "Нет",
+                            Modality = "G",
+                            Movement = "Отжимания",
+                            Name = "Отжимания"
                         });
                 });
 
@@ -211,9 +277,11 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Image")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -273,12 +341,14 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Rating")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Town")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Type")
@@ -291,9 +361,7 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
 
                     b.HasIndex("EmblemHallId");
 
-                    b.HasIndex("UserId")
-                        .IsUnique()
-                        .HasFilter("[UserId] IS NOT NULL");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Halls");
 
@@ -319,6 +387,39 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                             Rating = "10.0",
                             Town = "Харьков",
                             Type = "Crossfit (not Aff.)"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CountUser = 0,
+                            Description = "Самая крупная сеть клубов в Западной Украине. 5 специализированных залов со всем необходимым оборудованием в городе Льва. Площадь залов составляет от 400 до 2500кв.м. Залы условно поделены на зоны от кардио до тяжёлой атлетики и кроссфит зон. Качественная система вентиляции и кондиционирования делает занятия ещё эффективней. Общая сауна для отдыха.Квалифицированные тренера, которые помогут даже в скретчинге и диетологии. Олимп рекомендует Василий Вирастюк.",
+                            EmblemHallId = 3,
+                            Name = "Олимп",
+                            Rating = "10.0",
+                            Town = "Львов",
+                            Type = "Crossfit (not Aff.),Fitness,Gym,Yoga"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CountUser = 0,
+                            Description = "Тільки мікс всіх видів спорту може дати найкращі результати в фізичній підготовці. В тренуваннях використовується все найкраще з гімнастики, важкої атлетики, пауерліфтингу, боротьби, боксу, циклічних видів спорту. ГРАФІК РОБОТИ: З ПН - ПТ з 8.00 до 22.00 год. Субота з 10 до 20 год. Неділя з 10 до 18 год. КОНТАКТНІ ТЕЛЕФОНИ: 0978830270 Валерій Михайловський 0979042783 Людвіг Пухальський 0977912229 Олександр Антонюк",
+                            EmblemHallId = 5,
+                            Location = "вулиця Свободи, 1А",
+                            Name = "CF TITAN BOX",
+                            Town = "Хмельницкий",
+                            Type = "Crossfit (not Aff.),Gym"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CountUser = 0,
+                            Description = "Blas (CrossFit — BLaS CA! BLaS = Body Like a Stone) Crossfit Area, Днепр. Целый спортивный комплекс на берегу Днепра - 300 кв.м. Единственный аффилированный зал в городе.Персональные тренировки по всем направлениям, в том числе Crossfit Kids.Отличная команда тренеров.Профессиональное оборудование Rogue(3 тонны железа), кроссфит - рама, 2 Air Bikes, 10 гребных тренажёров Concept.Массажный кабинет, фитнес - бар с самыми лучшими коктейлями, детская комната, если негде оставить ребенка.",
+                            EmblemHallId = 4,
+                            Location = "улица Набережная Победы, 62",
+                            Name = "BLaS CrossFit Area",
+                            Town = "Днепр",
+                            Type = "Affiliate Crossfit,Fitness,Gym"
                         });
                 });
 
@@ -330,6 +431,7 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Aim")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CountUser")
@@ -341,24 +443,23 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                     b.Property<int?>("HallId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("HallsId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Rating")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Type")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("HallsId");
+                    b.HasIndex("HallId");
 
                     b.ToTable("Programs");
 
@@ -473,6 +574,7 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                         .HasColumnType("int");
 
                     b.Property<string>("Minutes")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("PublishDate")
@@ -482,6 +584,7 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                         .HasColumnType("int");
 
                     b.Property<string>("Seconds")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("UserId")
@@ -490,14 +593,11 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                     b.Property<int>("WorkoutId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("WorkoutsId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("UserId");
 
-                    b.HasIndex("WorkoutsId");
+                    b.HasIndex("WorkoutId");
 
                     b.ToTable("ResultWorkouts");
                 });
@@ -510,36 +610,46 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Category")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Complexity")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("EmblemHallId")
                         .HasColumnType("int");
 
                     b.Property<string>("Exercises")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Inventory")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Minutes")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Modality")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Movement")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Rating")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Seconds")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -596,6 +706,31 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                         });
                 });
 
+            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.WorkoutsExercises", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CountRepeats")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ExercisesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WorkoutsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ExercisesId");
+
+                    b.HasIndex("WorkoutsId");
+
+                    b.ToTable("WorkoutsExercises");
+                });
+
             modelBuilder.Entity("WodCatClone.Db.Entities.Auth.Gender", b =>
                 {
                     b.Property<int>("Id")
@@ -604,9 +739,11 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Image")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -642,10 +779,14 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Country")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<int?>("GenderId")
                         .HasColumnType("int");
@@ -654,35 +795,48 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                         .HasColumnType("int");
 
                     b.Property<string>("Height")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("NickName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<int>("Points")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
 
                     b.Property<int?>("ProgramsId")
                         .HasColumnType("int");
 
                     b.Property<string>("Surname")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("Town")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("Weight")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("GenderId");
+
+                    b.HasIndex("HallId");
 
                     b.HasIndex("ProgramsId");
 
@@ -716,6 +870,7 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -766,6 +921,7 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -837,8 +993,8 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                         .HasForeignKey("EmblemHallId");
 
                     b.HasOne("WodCatClone.Db.Entities.Auth.User", "User")
-                        .WithOne("Halls")
-                        .HasForeignKey("WodCatClone.Db.Entities.Actions.Halls", "UserId");
+                        .WithMany()
+                        .HasForeignKey("UserId");
 
                     b.Navigation("EmblemHall");
 
@@ -849,7 +1005,7 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                 {
                     b.HasOne("WodCatClone.Db.Entities.Actions.Halls", "Halls")
                         .WithMany()
-                        .HasForeignKey("HallsId");
+                        .HasForeignKey("HallId");
 
                     b.Navigation("Halls");
                 });
@@ -881,7 +1037,9 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
 
                     b.HasOne("WodCatClone.Db.Entities.Actions.Workouts", "Workouts")
                         .WithMany()
-                        .HasForeignKey("WorkoutsId");
+                        .HasForeignKey("WorkoutId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
 
@@ -897,17 +1055,42 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                     b.Navigation("EmblemHall");
                 });
 
+            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.WorkoutsExercises", b =>
+                {
+                    b.HasOne("WodCatClone.Db.Entities.Actions.Exercises", "Exercises")
+                        .WithMany("WorkoutsExercises")
+                        .HasForeignKey("ExercisesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WodCatClone.Db.Entities.Actions.Workouts", "Workouts")
+                        .WithMany("WorkoutsExercises")
+                        .HasForeignKey("WorkoutsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Exercises");
+
+                    b.Navigation("Workouts");
+                });
+
             modelBuilder.Entity("WodCatClone.Db.Entities.Auth.User", b =>
                 {
                     b.HasOne("WodCatClone.Db.Entities.Auth.Gender", "Gender")
                         .WithMany()
                         .HasForeignKey("GenderId");
 
+                    b.HasOne("WodCatClone.Db.Entities.Actions.Halls", "Halls")
+                        .WithMany()
+                        .HasForeignKey("HallId");
+
                     b.HasOne("WodCatClone.Db.Entities.Actions.Programs", "Programs")
                         .WithMany()
                         .HasForeignKey("ProgramsId");
 
                     b.Navigation("Gender");
+
+                    b.Navigation("Halls");
 
                     b.Navigation("Programs");
                 });
@@ -923,6 +1106,11 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                     b.Navigation("Answer");
                 });
 
+            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Exercises", b =>
+                {
+                    b.Navigation("WorkoutsExercises");
+                });
+
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Programs", b =>
                 {
                     b.Navigation("ProgramsWorkouts");
@@ -931,11 +1119,8 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Workouts", b =>
                 {
                     b.Navigation("ProgramsWorkouts");
-                });
 
-            modelBuilder.Entity("WodCatClone.Db.Entities.Auth.User", b =>
-                {
-                    b.Navigation("Halls");
+                    b.Navigation("WorkoutsExercises");
                 });
 #pragma warning restore 612, 618
         }

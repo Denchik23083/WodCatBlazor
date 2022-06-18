@@ -31,5 +31,7 @@ namespace WodCatClone.Db.Entities.Actions
         public HallEmblem EmblemHall { get; set; }
 
         public List<ProgramsWorkouts> ProgramsWorkouts { get; set; }
+
+        public List<WorkoutsExercises> WorkoutsExercises { get; set; }
     }
 }

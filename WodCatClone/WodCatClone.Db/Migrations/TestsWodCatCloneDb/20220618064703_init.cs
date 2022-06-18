@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace WodCatClone.Db.Migrations
+namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
 {
     public partial class init : Migration
     {
@@ -13,7 +13,7 @@ namespace WodCatClone.Db.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -26,8 +26,8 @@ namespace WodCatClone.Db.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -40,14 +40,14 @@ namespace WodCatClone.Db.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FullDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Complexity = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Movement = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Modality = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Inventory = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FullDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Complexity = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Movement = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Modality = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Inventory = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -60,8 +60,8 @@ namespace WodCatClone.Db.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -74,8 +74,8 @@ namespace WodCatClone.Db.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -88,7 +88,7 @@ namespace WodCatClone.Db.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AnswerId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -108,16 +108,16 @@ namespace WodCatClone.Db.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Rating = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Category = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Complexity = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Movement = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Modality = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Inventory = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Minutes = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Seconds = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Exercises = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Rating = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Category = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Complexity = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Movement = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Modality = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Inventory = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Minutes = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Seconds = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Exercises = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EmblemHallId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -132,15 +132,42 @@ namespace WodCatClone.Db.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "WorkoutsExercises",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CountRepeats = table.Column<int>(type: "int", nullable: false),
+                    WorkoutsId = table.Column<int>(type: "int", nullable: false),
+                    ExercisesId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WorkoutsExercises", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_WorkoutsExercises_Exercises_ExercisesId",
+                        column: x => x.ExercisesId,
+                        principalTable: "Exercises",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_WorkoutsExercises_Workouts_WorkoutsId",
+                        column: x => x.WorkoutsId,
+                        principalTable: "Workouts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Articles",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FullDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FullDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Rating = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ArticlesEmblemId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: true)
@@ -162,17 +189,17 @@ namespace WodCatClone.Db.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    Surname = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    NickName = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    Country = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    Town = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    Points = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Surname = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NickName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Town = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Points = table.Column<int>(type: "int", nullable: false),
                     Birthday = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Height = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    Weight = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    Height = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Weight = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AboutMe = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     GenderId = table.Column<int>(type: "int", nullable: true),
                     HallId = table.Column<int>(type: "int", nullable: true),
@@ -195,9 +222,9 @@ namespace WodCatClone.Db.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Town = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Town = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Location = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Rating = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -228,14 +255,15 @@ namespace WodCatClone.Db.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Minutes = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Seconds = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Minutes = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Seconds = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Comment = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Repeat = table.Column<int>(type: "int", nullable: false),
                     Fascination = table.Column<int>(type: "int", nullable: false),
                     Load = table.Column<int>(type: "int", nullable: false),
                     PublishDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     WorkoutId = table.Column<int>(type: "int", nullable: false),
+                    WorkoutsId = table.Column<int>(type: "int", nullable: true),
                     UserId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -248,11 +276,11 @@ namespace WodCatClone.Db.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_ResultWorkouts_Workouts_WorkoutId",
-                        column: x => x.WorkoutId,
+                        name: "FK_ResultWorkouts_Workouts_WorkoutsId",
+                        column: x => x.WorkoutsId,
                         principalTable: "Workouts",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -261,21 +289,22 @@ namespace WodCatClone.Db.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Rating = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Aim = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Aim = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CountUser = table.Column<int>(type: "int", nullable: false),
-                    HallId = table.Column<int>(type: "int", nullable: true)
+                    HallId = table.Column<int>(type: "int", nullable: true),
+                    HallsId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Programs", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Programs_Halls_HallId",
-                        column: x => x.HallId,
+                        name: "FK_Programs_Halls_HallsId",
+                        column: x => x.HallsId,
                         principalTable: "Halls",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -326,10 +355,10 @@ namespace WodCatClone.Db.Migrations
                 values: new object[,]
                 {
                     { 1, "img/EmblemArticles/buildhome.png", "Buildhome" },
-                    { 5, "img/EmblemArticles/provides.png", "Provides" },
-                    { 4, "img/EmblemArticles/TwoMen.png", "TwoMen" },
+                    { 2, "img/EmblemArticles/Functional.png", "Functional" },
                     { 3, "img/EmblemArticles/OvercomeDoubt.png", "OvercomeDoubt" },
-                    { 2, "img/EmblemArticles/Functional.png", "Functional" }
+                    { 4, "img/EmblemArticles/TwoMen.png", "TwoMen" },
+                    { 5, "img/EmblemArticles/provides.png", "Provides" }
                 });
 
             migrationBuilder.InsertData(
@@ -347,8 +376,8 @@ namespace WodCatClone.Db.Migrations
                 columns: new[] { "Id", "Image", "Name" },
                 values: new object[,]
                 {
-                    { 1, "img/man.png", "Мужской" },
-                    { 2, "img/woman.png", "Женский" }
+                    { 2, "img/woman.png", "Женский" },
+                    { 1, "img/man.png", "Мужской" }
                 });
 
             migrationBuilder.InsertData(
@@ -356,17 +385,22 @@ namespace WodCatClone.Db.Migrations
                 columns: new[] { "Id", "Image", "Name" },
                 values: new object[,]
                 {
-                    { 1, "img/EmblemHalls/Dog.png", "Dog" },
-                    { 2, "img/EmblemHalls/M4.png", "M4" },
                     { 4, "img/EmblemHalls/BlasArea.png", "BlasArea" },
                     { 5, "img/EmblemHalls/Titanbox.png", "TitanBox" },
-                    { 3, "img/EmblemHalls/Olimp.png", "Olimp" }
+                    { 3, "img/EmblemHalls/Olimp.png", "Olimp" },
+                    { 2, "img/EmblemHalls/M4.png", "M4" },
+                    { 1, "img/EmblemHalls/Dog.png", "Dog" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Programs",
-                columns: new[] { "Id", "Aim", "CountUser", "Description", "HallId", "Image", "Name", "Rating", "Type" },
-                values: new object[] { 2, "На силу", 0, "План, для аматоров CrossFit План для тренировок в зале с использованием упражнений на силу и выносливость, состоящая в основном из аэробных упражнений, гимнастики (упражнения с весом собственного тела) и тяжёлой атлетики, для людей которые имеют слабую или среднюю базовую подготовку, с целью поддержания и увеличиния физической формы. Если твой уровень выше чем этот то тебе на этот план------> CoachMarchenko", null, "img/wod.png", "Plan for the amateur", null, "Тяжелая атлетика" });
+                columns: new[] { "Id", "Aim", "CountUser", "Description", "HallId", "HallsId", "Image", "Name", "Rating", "Type" },
+                values: new object[,]
+                {
+                    { 1, "Набор мышечной массы", 0, "Программа тренировок состоит из 38 комплексов с большим преобладанием коротких силовых тренировок и полным отсутствием кардио нагрузки. План тренировок подойдет, если ваша цель - увеличение силы и прирост мышечной масса в ущерб выносливости. План тренировок комбинирует в себе силовые тренировки и короткие “тяжелые” комплексы кроссфит, преобладают базовые упражнения с большими весами на малое кол-во повторов, что является основным условием развития силы и набора массы (мышечной массы) В данной программе встречаются технически сложные тяжелоатлетические упражнения, поэтому обязательно пр...", 1, null, null, "Программа тренировки кроссфит на массу", "8.0", "Кроссфит" },
+                    { 2, "На силу", 0, "План, для аматоров CrossFit План для тренировок в зале с использованием упражнений на силу и выносливость, состоящая в основном из аэробных упражнений, гимнастики (упражнения с весом собственного тела) и тяжёлой атлетики, для людей которые имеют слабую или среднюю базовую подготовку, с целью поддержания и увеличиния физической формы. Если твой уровень выше чем этот то тебе на этот план------> CoachMarchenko", null, null, "img/wod.png", "Plan for the amateur", null, "Тяжелая атлетика" },
+                    { 3, "Fitness", 0, "Программа тренировок идеально подойдет для новичков. Большая часть плана состоит из гимнастических тренировок со своим весом и не требует вспомогательных предметов для выполнения. Сами же упражнения очень просты и наверняка давно вам знакомы, поэтому вы можете не обладать специальными знаниями, чтобы заниматься по данному плану. С этой программой вам не нужно обязательно быть в зале во время тренировки, вы можете выполнять тренировки в любом удобном месте.", 2, null, null, "Кроссфит программа тренировок дома без оборудования", null, "Кроссфит" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Articles",
@@ -415,31 +449,15 @@ namespace WodCatClone.Db.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Programs",
-                columns: new[] { "Id", "Aim", "CountUser", "Description", "HallId", "Image", "Name", "Rating", "Type" },
-                values: new object[,]
-                {
-                    { 1, "Набор мышечной массы", 0, "Программа тренировок состоит из 38 комплексов с большим преобладанием коротких силовых тренировок и полным отсутствием кардио нагрузки. План тренировок подойдет, если ваша цель - увеличение силы и прирост мышечной масса в ущерб выносливости. План тренировок комбинирует в себе силовые тренировки и короткие “тяжелые” комплексы кроссфит, преобладают базовые упражнения с большими весами на малое кол-во повторов, что является основным условием развития силы и набора массы (мышечной массы) В данной программе встречаются технически сложные тяжелоатлетические упражнения, поэтому обязательно пр...", 1, null, "Программа тренировки кроссфит на массу", "8.0", "Кроссфит" },
-                    { 3, "Fitness", 0, "Программа тренировок идеально подойдет для новичков. Большая часть плана состоит из гимнастических тренировок со своим весом и не требует вспомогательных предметов для выполнения. Сами же упражнения очень просты и наверняка давно вам знакомы, поэтому вы можете не обладать специальными знаниями, чтобы заниматься по данному плану. С этой программой вам не нужно обязательно быть в зале во время тренировки, вы можете выполнять тренировки в любом удобном месте.", 2, null, "Кроссфит программа тренировок дома без оборудования", null, "Кроссфит" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "ProgramsWorkouts",
-                columns: new[] { "Id", "ProgramsId", "WorkoutsId" },
-                values: new object[,]
-                {
-                    { 4, 2, 1 },
-                    { 5, 2, 3 }
-                });
-
-            migrationBuilder.InsertData(
                 table: "ProgramsWorkouts",
                 columns: new[] { "Id", "ProgramsId", "WorkoutsId" },
                 values: new object[,]
                 {
                     { 1, 1, 1 },
-                    { 2, 1, 2 },
+                    { 4, 2, 1 },
                     { 3, 1, 3 },
+                    { 5, 2, 3 },
+                    { 2, 1, 2 },
                     { 6, 3, 2 }
                 });
 
@@ -461,12 +479,14 @@ namespace WodCatClone.Db.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Halls_UserId",
                 table: "Halls",
-                column: "UserId");
+                column: "UserId",
+                unique: true,
+                filter: "[UserId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Programs_HallId",
+                name: "IX_Programs_HallsId",
                 table: "Programs",
-                column: "HallId");
+                column: "HallsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProgramsWorkouts_ProgramsId",
@@ -489,19 +509,14 @@ namespace WodCatClone.Db.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ResultWorkouts_WorkoutId",
+                name: "IX_ResultWorkouts_WorkoutsId",
                 table: "ResultWorkouts",
-                column: "WorkoutId");
+                column: "WorkoutsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_User_GenderId",
                 table: "User",
                 column: "GenderId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_User_HallId",
-                table: "User",
-                column: "HallId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_User_ProgramsId",
@@ -513,19 +528,21 @@ namespace WodCatClone.Db.Migrations
                 table: "Workouts",
                 column: "EmblemHallId");
 
+            migrationBuilder.CreateIndex(
+                name: "IX_WorkoutsExercises_ExercisesId",
+                table: "WorkoutsExercises",
+                column: "ExercisesId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_WorkoutsExercises_WorkoutsId",
+                table: "WorkoutsExercises",
+                column: "WorkoutsId");
+
             migrationBuilder.AddForeignKey(
                 name: "FK_Articles_User_UserId",
                 table: "Articles",
                 column: "UserId",
                 principalTable: "User",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_User_Halls_HallId",
-                table: "User",
-                column: "HallId",
-                principalTable: "Halls",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
 
@@ -548,9 +565,6 @@ namespace WodCatClone.Db.Migrations
                 name: "Articles");
 
             migrationBuilder.DropTable(
-                name: "Exercises");
-
-            migrationBuilder.DropTable(
                 name: "ProgramsWorkouts");
 
             migrationBuilder.DropTable(
@@ -560,10 +574,16 @@ namespace WodCatClone.Db.Migrations
                 name: "ResultWorkouts");
 
             migrationBuilder.DropTable(
+                name: "WorkoutsExercises");
+
+            migrationBuilder.DropTable(
                 name: "ArticlesEmblem");
 
             migrationBuilder.DropTable(
                 name: "Answer");
+
+            migrationBuilder.DropTable(
+                name: "Exercises");
 
             migrationBuilder.DropTable(
                 name: "Workouts");

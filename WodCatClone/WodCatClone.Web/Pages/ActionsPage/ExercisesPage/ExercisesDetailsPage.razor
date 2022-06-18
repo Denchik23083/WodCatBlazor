@@ -21,7 +21,11 @@
         <div class="col-6">
             <div class="exercisesId p-2">
                 <span>Сложность: @Exercise.Complexity</span><br/><br/>
-                <span>@Exercise.Description</span>
+                <span>@Exercise.Description</span><br/><br/>
+                @if (Exercise.Inventory is not "Нет")
+                {
+                    <span>@Exercise.Inventory</span><br/><br/>
+                }
             </div>
         </div>
         <div class="col-6">
