@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Timers;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
@@ -10,6 +11,8 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
         [Parameter] public Workouts Workout { get; set; }
 
         [Parameter] public EventCallback OnCancel { get; set; }
+
+        [Parameter] public IEnumerable<WorkoutsExercises> WorkoutsExercises { get; set; }
 
         public bool DisplayStartWorkout { get; set; }
 

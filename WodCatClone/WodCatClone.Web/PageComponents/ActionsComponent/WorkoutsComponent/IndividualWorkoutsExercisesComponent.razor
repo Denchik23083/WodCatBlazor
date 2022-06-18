@@ -1,0 +1,12 @@
+﻿@if (CountRepeats is not null)
+{
+    <span style="color: @Color">@CountRepeats&nbsp;</span>
+}
+@if (IsLink)
+{
+    <a href="/exercises/@Exercises.Id" style="color: @Color">@Exercises.Name</a>
+}
+else
+{
+    <span style="color: @Color">@Exercises.Name</span>
+}

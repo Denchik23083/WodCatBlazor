@@ -18,7 +18,7 @@ namespace WodCatClone.Tests
             var halls = context.Halls;
             Assert.NotNull(halls);
 
-            Assert.Equal(2, halls.Count());
+            Assert.Equal(5, halls.Count());
         }
 
         [Fact]
@@ -36,12 +36,15 @@ namespace WodCatClone.Tests
         public void GetAllHallsUsersTest()
         {
             var context = new TestsWodCatCloneDbContext();
-            var id = 1;
+            var id = 2;
+
+            var hall = context.Halls.FirstOrDefault(b => b.Id == id);
+            Assert.NotNull(hall);
 
             var users = context.Users.Where(b => b.HallId == id);
             Assert.NotNull(users);
 
-            Assert.Equal(0, users.Count());
+            Assert.Equal(1, users.Count());
         }
 
         [Fact]

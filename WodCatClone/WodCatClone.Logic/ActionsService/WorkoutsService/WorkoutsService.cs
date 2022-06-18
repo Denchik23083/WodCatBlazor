@@ -18,6 +18,11 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService
             return _repository.GetAllWorkouts();
         }
 
+        public IEnumerable<WorkoutsExercises> GetAllWorkoutsExercises(int id)
+        {
+            return _repository.GetAllWorkoutsExercises(id);
+        }
+
         public Workouts GetWorkout(int workoutId)
         {
             return _repository.GetWorkout(workoutId);

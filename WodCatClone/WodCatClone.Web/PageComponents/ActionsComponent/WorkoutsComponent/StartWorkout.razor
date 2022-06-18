@@ -23,13 +23,13 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <h5 class="timerInfo p-3">
-                            Упражнения: 
-                            @foreach (var item in Workout.Exercises.Split(","))
-                            {
-                                @item<span>&nbsp;</span>
-                            }
-                        </h5>
+                        <h5 class="timerInfo p-3">Упражнения:</h5>
+                        <div class="p-3">
+                            <ListWorkoutsExercisesComponent 
+                                ListOfItems="WorkoutsExercises"
+                                IsLink="false"
+                                Color="#fff"/>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-body text-center" style="border: 0;">

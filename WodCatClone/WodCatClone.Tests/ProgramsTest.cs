@@ -50,6 +50,8 @@ namespace WodCatClone.Tests
 
             var users = context.Users.Where(b => b.ProgramsId == program.Id);
             Assert.NotNull(users);
+
+            Assert.Equal(1, users.Count());
         }
 
         [Fact]

@@ -15,7 +15,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content EditDeleteContent">
                     <div class="modal-header" style="border: 0;">
-                        <h5 class="modal-title">@User.Name&nbsp;@User.Surname</h5>
+                        <h5 style="color: #bdc1c6;" class="modal-title">@User.Name&nbsp;@User.Surname</h5>
                         <button class="close" @onclick="OnCancel" type="button">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -44,12 +44,12 @@
             <div class="modal-dialog modal-dialog-centered" style="max-width: 1000px;" role="document">
                 <div class="modal-content editModalContent">
                     <div class="modal-header" style="border: 0;">
-                        <h5 class="modal-title">Редактирование</h5>
+                        <h5 style="color: #bdc1c6;" class="modal-title">Редактирование</h5>
                         <button class="close" @onclick="OnCancelEdit" type="button">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body" style="border: 0;">
+                    <div class="modal-body" style="border: 0; color: #bdc1c6;">
                         <EditForm Model="@_editResultWorkout">
                             <div class="row">
                                 <div class="col-6">

@@ -137,6 +137,7 @@ namespace WodCatClone.Tests
                 NickName = "GTA5",
                 Email = "foo@gmail.com",
                 Password = "0000",
+                Country = "Ukraine",
                 HallId = 1,
             };
 
@@ -203,6 +204,7 @@ namespace WodCatClone.Tests
                 Surname = "de Santa",
                 Birthday = new DateTime(2013, 09, 17),
                 NickName = "GTA5",
+                Country = "Ukraine",
                 Email = "foo@gmail.com",
                 Password = "0000",
                 HallId = 1,
@@ -250,6 +252,7 @@ namespace WodCatClone.Tests
             {
                 Name = "Michael",
                 Surname = "de Santa",
+                Country = "Ukraine",
                 Birthday = new DateTime(2013, 09, 17),
                 NickName = "GTA5",
                 Email = "foo@gmail.com",

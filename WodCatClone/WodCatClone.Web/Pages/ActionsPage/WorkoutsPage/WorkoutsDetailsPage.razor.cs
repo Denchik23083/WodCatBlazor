@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.WorkoutsService;
 using WodCatClone.Logic.UserService;
@@ -20,7 +21,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
 
         public Workouts Workout { get; set; }
 
-        public string[] WorkoutExercises { get; set; }
+        public IEnumerable<WorkoutsExercises> WorkoutsExercises { get; set; }
 
         public string Image { get; set; }
 
@@ -37,7 +38,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
             IsLogin = UserService.IsLoginUser();
             Workout = WorkoutsService.GetWorkout(WorkoutId);
             Image = WorkoutsService.GetImage(Workout.EmblemHallId);
-            WorkoutExercises = Workout.Exercises.Split(",");
+            WorkoutsExercises = WorkoutsService.GetAllWorkoutsExercises(WorkoutId);
         }
 
         public void Login() => NavigationManager.NavigateTo("/login"); 

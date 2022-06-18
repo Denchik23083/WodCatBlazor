@@ -320,7 +320,6 @@ namespace WodCatClone.Db
                     Inventory = "Нет",
                     Minutes = "23",
                     Seconds = "20",
-                    Exercises = "100 Бёрпи",
                     EmblemHallId = 1
                 },
                 new Workouts
@@ -335,7 +334,6 @@ namespace WodCatClone.Db
                     Inventory = "Скакалка,Ящик для прыжков,Тренажер GHD",
                     Minutes = "50",
                     Seconds = "30",
-                    Exercises = "100 Приседания,100 Отжимания,100 Запрыгивание на ящик - 24 / 20 inches,100 Подъемы корпуса на пресс,100 Прыжки на скакалке,100 Отжимания на брусьях,100 Попрыгунчик,100 Ситапы на тренажере GHD,100 Подтягивания",
                     EmblemHallId = 5
                 },
                 new Workouts
@@ -350,7 +348,6 @@ namespace WodCatClone.Db
                     Inventory = "Ящик для прыжков",
                     Minutes = "24",
                     Seconds = "00",
-                    Exercises = "100 calories Гребля,100 Берпи с перепрыгиванием через ящик,100 seconds Велотренажер",
                     EmblemHallId = 1
                 });
 
@@ -506,6 +503,26 @@ namespace WodCatClone.Db
                     WorkoutsId = 2,
                     ExercisesId = 12,
                     CountRepeats = 100
+                },
+                new WorkoutsExercises
+                {
+                    Id = 13,
+                    WorkoutsId = 3,
+                    ExercisesId = 1,
+                },
+                new WorkoutsExercises
+                {
+                    Id = 14,
+                    WorkoutsId = 3,
+                    ExercisesId = 7,
+                    CountRepeats = 50
+                },
+                new WorkoutsExercises
+                {
+                    Id = 15,
+                    WorkoutsId = 3,
+                    ExercisesId = 11,
+                    CountRepeats = 50
                 });
 
             modelBuilder.Entity<User>().ToTable("User").HasData(
@@ -537,6 +554,8 @@ namespace WodCatClone.Db
         public DbSet<User> Users { get; set; }
 
         public DbSet<ProgramsWorkouts> ProgramsWorkouts { get; set; }
+
+        public DbSet<WorkoutsExercises> WorkoutsExercises { get; set; }
 
         public DbSet<Programs> Programs { get; set; }
 

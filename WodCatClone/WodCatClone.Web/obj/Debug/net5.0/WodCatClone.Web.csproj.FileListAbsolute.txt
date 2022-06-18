@@ -451,3 +451,7 @@ C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\ne
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\RazorDeclaration\PageComponents\ActionsComponent\HallsComponent\ListHallsUsersComponent.razor.g.cs
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\PageComponents\ActionsComponent\HallsComponent\IndividualHallsUsersComponent.razor.g.cs
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\PageComponents\ActionsComponent\HallsComponent\ListHallsUsersComponent.razor.g.cs
+C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\RazorDeclaration\PageComponents\ActionsComponent\WorkoutsComponent\ListWorkoutsExercisesComponent.razor.g.cs
+C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\PageComponents\ActionsComponent\WorkoutsComponent\ListWorkoutsExercisesComponent.razor.g.cs
+C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\RazorDeclaration\PageComponents\ActionsComponent\WorkoutsComponent\IndividualWorkoutsExercisesComponent.razor.g.cs
+C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\PageComponents\ActionsComponent\WorkoutsComponent\IndividualWorkoutsExercisesComponent.razor.g.cs

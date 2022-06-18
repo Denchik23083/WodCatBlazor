@@ -21,6 +21,18 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
+        public void GetAllWorkoutsExercisesTest()
+        {
+            var context = new TestsWodCatCloneDbContext();
+            var id = 2;
+
+            var workoutsExercises = context.WorkoutsExercises.Where(b => b.WorkoutsId == id);
+            Assert.NotNull(workoutsExercises);
+
+            Assert.Equal(11, workoutsExercises.Count());
+        }
+
+        [Fact]
         public void GetWorkoutTest()
         {
             var context = new TestsWodCatCloneDbContext();

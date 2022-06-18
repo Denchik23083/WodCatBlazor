@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.WorkoutsService;
 
@@ -13,10 +14,10 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
         [Inject] public IResultWorkoutsService ResultWorkoutsService { get; set; }
 
         [Inject] public IWorkoutsService WorkoutsService { get; set; }
+
+        public IEnumerable<WorkoutsExercises> WorkoutsExercises { get; set; }
         
         public string[] WorkoutsCategory { get; set; }
-
-        public string[] WorkoutsExercises { get; set; }
 
         public string Image { get; set; }
 
@@ -31,8 +32,8 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
             Value = 0;
             Image = WorkoutsService.GetImage(Workouts.EmblemHallId);
             WorkoutsCategory = Workouts.Category.Split(",");
-            WorkoutsExercises = Workouts.Exercises.Split(",");
             ResultWorkoutsCount = ResultWorkoutsService.GetCountResultWorkouts(Workouts.Id);
+            WorkoutsExercises = WorkoutsService.GetAllWorkoutsExercises(Workouts.Id);
         }
 
         protected override void OnParametersSet()
@@ -40,8 +41,8 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
             Value = 0;
             Image = WorkoutsService.GetImage(Workouts.EmblemHallId);
             WorkoutsCategory = Workouts.Category.Split(",");
-            WorkoutsExercises = Workouts.Exercises.Split(",");
             ResultWorkoutsCount = ResultWorkoutsService.GetCountResultWorkouts(Workouts.Id);
+            WorkoutsExercises = WorkoutsService.GetAllWorkoutsExercises(Workouts.Id);
         }
 
         public void Id()

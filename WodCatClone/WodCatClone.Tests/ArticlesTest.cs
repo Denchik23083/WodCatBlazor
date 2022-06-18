@@ -16,7 +16,7 @@ namespace WodCatClone.Tests
             var articles = context.Articles;
             Assert.NotNull(articles);
 
-            Assert.Equal(2, articles.Count());
+            Assert.Equal(5, articles.Count());
         }
 
         [Fact]

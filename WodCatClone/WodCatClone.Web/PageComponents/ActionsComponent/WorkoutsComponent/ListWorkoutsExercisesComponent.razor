@@ -1,0 +1,22 @@
+﻿@if (!ListOfItems.Any())
+{
+    <div class="row text-center">
+        <div class="col">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/1534200/header.jpg?t=1616065824" height="500"/>
+        </div>
+    </div>
+}
+else
+{
+    @foreach (var item in ListOfItems)
+    {
+        <div class="row">
+            <div class="col">
+                <IndividualWorkoutsExercisesComponent 
+                    WorkoutsExercises="item" 
+                    IsLink="IsLink"
+                    Color="@Color"/>
+            </div>
+        </div>
+    }
+}

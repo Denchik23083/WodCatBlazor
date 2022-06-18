@@ -38,7 +38,7 @@ namespace WodCatClone.Db
                 new HallEmblem { Id = 2, Name = "M4", Image = "img/EmblemHalls/M4.png" },
                 new HallEmblem { Id = 3, Name = "Olimp", Image = "img/EmblemHalls/Olimp.png" },
                 new HallEmblem { Id = 4, Name = "BlasArea", Image = "img/EmblemHalls/BlasArea.png" },
-                new HallEmblem { Id = 5, Name = "TitanBox", Image = "img/EmblemHalls/Titanbox.png" });
+                new HallEmblem { Id = 5, Name = "Banda", Image = "img/EmblemHalls/Banda.png" });
 
             modelBuilder.Entity<Question>().ToTable("Question").HasData(
                 new Question { Id = 1, Name = "Как добавить результат о тренировке?", AnswerId = 1 },
@@ -72,7 +72,39 @@ namespace WodCatClone.Db
                     + "The deadlift should be a staple for not only increasing performance but also overall resiliency.Almost every job in any tactical field(e.g., police, fire, military) requires stabilization of the trunk while expressing large amounts of force through the lower extremities. There are few exercises that will activate trunk muscles like the deadlift because it requires the entire body to be engaged for proper completion. The deadlift requires the upper and lower extremities to move or stabilize the bar, which engages a large number of motor units and muscles fibers simultaneously.There are a few key pointers that advanced coaches and lifters can use in order to achieve excellent results while reducing the risk of injury and promoting safe motor patterns.The remainder of this article will present four of the most important tips for deadlifting from an anecdotal base to not only increase performance, but also to decrease injury rates in tactical populations.TIP 1 | Head Posture: The Head Needs To Be Looking Slightly UpwardThere has been a lot of debate with this topic, but keeping the head looking slightly upward allows the shoulders to stay back and the spine to stay in a more erect, and neutral, position.Half of the battle with performing near - maximal deadlifts and doing it safely is keeping the back as neutral as possible with the head in a more upright position, which keeps the hips and leg extensors working at the same time.Often if the head falls forward or the eyes drift downward while performing the lift, it can cause the weight to be distributed over the leg extensors and reduce the involvement of the hips and posterior chain.It has been debated that a “head up” position can cause cervical spine issues, but research is currently lacking to warrant such concern. Hundreds, if not thousands, of powerlifters have lifted this way for many years, and cervical spine injury has not become an epidemic in this population, or been at a high enough prevalence to cause concern.A more vertical, and neutral, back position allows for increased hip drive, which can be better utilized with the head looking slightly upward.From experience, often a slightly upward head angle results in better deadlift form.TIP 2 | Lat Activation: The Lats Need to Engage First"
                     + "This allows the bar path to be as close to the legs as possible.By contracting the lats first, the bar stays closer to the lower extremities and gives the hips and legs more leverage to perform the task.The further the bar is away from the legs, the more the lower back has to activate to perform the lift.A great deadlift should leave marks on the shins.This indicates that the bar was as close to the lower extremities as possible, and the bar weight was kept as close as possible to the lifter’s center of mass.This activation of the lats can create a posture that is advantageous to lifting large loads safely by creating tension on the bar prior to initiating the lift.Advanced lifters may actually try to bend the bar with the lats while the barbell is on the ground, to ensure the bar stays close to the body.This preliminary activation of the lats also reduces the tendency for the shoulders to drop, keeping the thoracic and lumbar spine more vertical and less likely to round.TIP 3 | Knee Motion Cues: Regardless of Position(Sumo, Conventional, or Some Variation) Always Try to Push the Knees ApartPushing the knees apart throughout the deadlift can help the glutes remain active during the lift.When first learning, most people will tend to use all quads, hamstrings, and spinal erectors to pull the weight up off the ground.By driving the knees apart, the glute medius will be triggered to stabilize the pelvis and help the posterior chain to maximize hip extension.This is crucial with not only coaching, but also lifting larger loads(i.e., 80 % of one repetition maximum[1RM] or higher).This key coaching cue can allow the athlete to lift more weight by including more muscle groups throughout the entire lift.Another helpful tip is to try to spread the floor with the feet.This lateral pressure can force the knees outward and ensure a strong supportive base from which to lift.TIP 4 | Positional Weakness: Train Your Weakest PositionMany times when an athlete first starts to deadlift, one position feels more natural or stronger(usually conventional) than others. An athlete will tend to gravitate towards this stronger position naturally.However, it can be very helpful to focus on the position that feels weaker and more awkward for long - term improvement.For my tactical athletes and general clients, it is valuable for them to become proficient in sumo deadlifting before utilizing a conventional stance.There are a few reasons for this:"
                     + "It teaches the lifter to use the hips primarily, which can reduce the risk of excessive lumber flexion under load.Hip strength and mobility are crucial in general performance.One of the main indicators of future lower back problems and / or health is hip mobility. Completing sumo deadlifts correctly can aid in developing strong hips, as well as improving mobility.From experience, sumo deadlifts can actually help one learn to pull conventional deadlifts correctly, by first addressing hip mobility and learning how to maximally activate the glutes.This allows the lifter to take some pressure off the lower back and place it on the glutes.The sumo deadlift seems to be able to withstand more volume in a training block or cycle than deadlifting with a conventional stance.A logical reason for this is that the sumo stance utilizes less lower back musculature and more of the glutes.Since the glutes are larger, and more powerful, they can handle the increased training volume when compared to the lower back.From experience, the sumo deadlift can be used more frequently and with higher resistances for longer periods of time than the conventional deadlift(assuming the lifter is healthy).Hopefully this article has provided a few key tips on how to perform the deadlift more efficiently and safely.Some helpful coaching cues, like keeping the head slightly up, activating the lats, and pushing the knees out can assist a tactical athlete in executing the deadlift while increasing strength over time.",
+                    ArticlesEmblemId = 5
+                },
+                new Articles
+                {
+                    Id = 3,
+                    Name = "Functional Fitness and CrossFit",
+                    Type = "Кроссфит,Бокс",
+                    Description = "Functional fitness (using functional movements) is among the most widely spread buzzwords in the gym industry today, but for logical reason. Functional fitness focuses on body training and preparing your body to handle real life scenarios. Functional Movement: Making the muscles work together Body balance & control",
+                    FullDescription = "Functional fitness (using functional movements) is among the most widely spread buzzwords in the gym industry today, but for logical reason. Functional fitness focuses on body training and preparing your body to handle real life scenarios.The difference between ordinary gym and functional fitness seems minor to many people but it’s actually huge. Functional fitness builds your body capability for carrying out real life activities in real time, unlike ordinary gymming where you just lift a specific weight in an idealized position, sometimes even formed by a gym machine. There’s a shift of focus from traditional and obsolete ways of body strengthening fitness to novel and more effective ways of achieving functional fitness and CrossFit is surely one of the great options available. Being fit is not the only objective of CrossFit, rather being healthy, strong and lean are the ultimate goals.CrossFit as a leading training system of athletes is known for designing and delivering the most comprehensive and high yielding fitness programs around, catering to all age groups and ability levels. With CrossFit, you will find a lot of true success stories and amazing transformations people have gone through. Functional Movement: Making the muscles work together Traditional weight training isolates muscle groups together but it doesn’t train some of the isolated groups with the others.The key to a successful functional exercise lies in integration, focusing all the muscles to work together instead of isolating them to function independently.Here’s an example of what you might consider a functional exercise: Consider a bent - over row; not the type of row you usually carry out on a seated machine, rather one that you do while leaning over a bench, having weight in one hand with arm hanging straight down, and then pulling the weight up to the extent your elbow points towards the ceiling, ending with your upper arm being parallel to the ground. This is the kind of exercise that builds your back, arms, and shoulder muscles, and due to its nature, it would really work for the entire body.Some of the foundation movements of CrossFit include air squats, front squats, shoulder press, deadlift, press push, push jerk etc."
+                    + "CrossFit has designed its workouts on similar ideas that are comprised of functional movements, which also keep on changing.These include pulling, pushing, running, lifting and squatting. Many of these functional movements are executed at a high intensity.Instead of using machines like treadmills etc, CrossFit has equipped itself with kettlebells, pull - up bars, barbells and spacious open space for carrying out running, jumping, squatting, lifting, climbing and throwing.All this is tied together to move your body in the way it should. The CrossFit community has built its exercise methodology on the foundations of weight lifting, gymnastics and endurance / speed / agility - the fundamental components of functional fitness.Body balance & control Most of the people are not even able to control their body weight.They can’t even do a one legged squat without falling over. You can try it now. Can you? As stated by one of the trainers at CrossFit, your first step should be to train your body regarding balancing and controlling its own weight.CrossFit aims to enhance the physical competence of an individual in ten general physical skills. These are defined by CrossFit as:– Cardiovascular / respiratory endurance: It’s the ability of the body to store, process and transmit oxygen.– Stamina: It’s the ability of the body to store, process, transmit and consume energy.– Strength: It’s the ability of a body muscular unit, or group of muscular units, to gain force.– Flexibility: It’s the ability of the body to have maximum motion range at a particular joint.– Power: It’s the ability of a muscular unit, or group of units, to release maximum force in the least time.– Speed: It’s the ability of body to decrease the time cycle of a repeated movement to the least level.– Coordination: It’s the ability of the body to join different movements patterns into a single movement– Agility: It’s the body’s ability to reduce transition time among different movement patterns to least degree.– Balance: It’s the ability to regulate the position of the body’s centre of gravity relative to its support base.– Accuracy: It’s the ability to regulate the movement in a specific direction or at required intensity."
+                    + "CrossFit 6221 is more than an excellent centre for functional fitness training.Apart from this incredible program, specialty classes including endurance, mobility and power lifting are also provided to complement your functional fitness and enhance the overall value you are getting.In order to increase the awareness level of people and the community at large regarding the benefits of functional fitness, CrossFit 6221 also conducts special seminars and community events, bringing the people together from different backgrounds to avail strength for facing real life situations.",
                     ArticlesEmblemId = 2
+                },
+                new Articles
+                {
+                    Id = 4,
+                    Name = "5 Easy Ways to Overcome Doubt",
+                    Type = "Кроссфит,Гиревой спорт",
+                    Rating = "10.0",
+                    Description = "5 простых способов преодолеть сомнения Рядом с целями и мечтами к нам приходят наши «друзья»: сомнения,ужасы и неуверенность в себе.Как заставить себя поверить в собственные силы ? Как не допускать ошибок и двигаться вперед.",
+                    FullDescription = "Человеческий мозг всегда ждет подвоха и фокусируется на негативе. Ему значительно проще запомнить твои провалы, чем успехи. Именно поэтому ему необходимо периодически напоминать о том, что вообще за спиной у тебя есть неплохие результаты. Сомневаются в себе все. Даже суперзвезда гольфа Тайгер Вуд признается, что перед важными соревнованиями чувствует неуверенность в себе. Но у него есть секретный прием: «Каждый раз перед важным ударом я делаю глубокий вдох и говорю себе:« Я делал это уже тысячу раз ». Это помогает мне вспомнить, что у меня получалось всегда - а значит, получится и сейчас ». Еще один хороший способ - это действовать очень быстро, чтобы сомнения не успели появиться. Так работает Стивен Кинг, он говорит: «Когда меня одолевают сомнения, мне помогает такая штука: я сажусь и начинаю писать максимально быстро, как только могу. Я записываю все подряд, не раздумывая над тем, хорошо получается или плохо. Так мне удается сохранить первоначальный энтузиазм и одновременно уйти от сомнений в себе » Если ты готовишься к какой-то глобальной события - например выступления с презентацией проекту, - тебе нужно максимально снизить внутреннюю важность этого события. Самый простой способ сделать это - вспомнить, что ты классный не только в работе, но и в других сферах. Ты должен убедить себя, что на этой презентации свет клином не сошелся и не произойдет ничего страшного. Часто хороший сон помогает справиться с неуверенностью в себе. Генеральный директор канадской студии по производству анимационных фильмов Amberwood Entertainment Шелдон Уайзмен говорит: «Когда я начинаю сомневаться в себе, я стараюсь быстрее лечь спать. Для меня сомнения - это, в первую очередь, отсутствие энергии на активные действия. Когда ничего не делаешь, начинаешь сомневаться. Так что лучший способ стать увереннее - лечь спать. Когда просыпаешься утром свеженький, ты готов сделать что угодно!",
+                    ArticlesEmblemId = 3
+                },
+                new Articles
+                {
+                    Id = 5,
+                    Name = "How do U.S. Marines stack up when it comes to conquering the Navy SEALs fitness test?",
+                    Type = "Кроссфит,Лёгкая атлетика",
+                    Rating = "9.0",
+                    Description = "How do U.S. Marines stack up when it comes to conquering the Navy SEALs fitness test?",
+                    FullDescription = "How do U.S. Marines stack up when it comes to conquering the Navy SEALs fitness test? Armando Nava Jr. (a.k.a NavaTheBeast) served in the U.S.Marines for four years before taking to YouTube to vlog about life after the military.While he’s not training with SWAT teams and teaching powerlifters how to crush the brutal Marine Corps.physical fitness test, Nava can be found demonstrating the extensive lessons he learned from the Marines while putting his body through hell. In a recent video, Nava brought his friend and fellow veteran, Marcus Perez in front of the camera to see if they could both take on the famously grueling U.S.Navy SEALs Physical Fitness Test(PFT). Nava's version of the test wasn't exactly what you'd have to take on if you were trying to be a SEAL yourself—the standard test calls for a 500 yard swim in 12 minutes, 30 seconds, 50 pushups in 2 minutes, at least 50 curlups (situps) in 2 minutes, at least 10 pullups in 2 minutes, and a 1.5 mile run in at least 10 minutes and 30 seconds. Nava and Perez flip the order and do the run first, then skip the curlups entirely. Since they're not planning to enlist, we'll cut them some slack. The first portion of the test is a 1.5 mile run, which Nava knocks out in 10 minutes and eight seconds—about 6:39 per mile. Perez’ time is considerably slower but finishes in just under 17 minutes. “I haven’t run in a minute,” says an out of breath Nava, but this is a good start.” With Marcus running in the background, Nava reminds his audience to use his video for inspiration as what he’s doing is “easy to watch, but hard to do.” Next up: pushups.Navy SEALs need to do at least 98 reps to qualify for the Optimum distinction; Nava and Perez are aiming for 100.The guys hammer away at the 100 - pushup goal, sweating through the pain as Nava narrates. “The only way you’re gonna get better is by putting yourself through that pain and that suffering, because that’s what’s going to mold you and that’s what’s going to make you a stronger individual.” "
+                    + "Seventy pushups in, Nava is unable to continue and taps out of the challenge, while Marcus just makes it to 100.As the guys rise from the floor, physically shaking, they head inside to handle the next portion of the fitness test: pullups. Nava and Marcus only have to make it to 15 to meet the Optimum requirement, but they aim for 20.After each hitting the target reps, Marcus and Nava head out to conquer the very last challenge: a 500 - meter swim. “We pushing through this pain,” says Nava as he prepares to swim 10 laps, “and so should you.Let’s go finish this test.” The guys absolutely go beast - mode during the final swim, clocking in at eight minutes and five seconds. “I’m sore and hungry,” says Marcus, “I’m just glad I attempted it.” As the video wraps, Nava once again tells viewers to not only watch his videos but go out and actually do what he’s doing yourself. After a 1.5 mile run, pushups, pullups, and a swim, Nava showcases the physical toll the body goes through to make the cut for the elite branches of the military.",
+                    ArticlesEmblemId = 4
                 });
 
             modelBuilder.Entity<Exercises>().ToTable("Exercises").HasData(
@@ -112,6 +144,116 @@ namespace WodCatClone.Db
                     Modality = "W",
                     Inventory = "Штанга",
                     Image = "https://www.youtube.com/embed/aea5BGj9a8Y"
+                },
+                new Exercises
+                {
+                    Id = 4,
+                    Name = "Бёрпи",
+                    Description = "Бурпи – это комплексное упражнение которое используется не только в Кроссфит но и во многих других видах спорта где необходимо развивать и силу и выносливость. А это упражнение предназначено именно для этих целей. Бурпи состоит из трех отдельных упражнений соединенных воедино, а именно из: воздушных приседаний, отжиманий и выпрыгиваний.",
+                    FullDescription = "Бурпи – это комплексное упражнение которое используется не только в Кроссфит но и во многих других видах спорта где необходимо развивать и силу и выносливость.А это упражнение предназначено именно для этих целей.Бурпи состоит из трех отдельных упражнений соединенных воедино, а именно из: воздушных приседаний, отжиманий и выпрыгиваний. Исходное положение: -Тело стоит вертикально, ноги на ширине плеч. Выполнение упражнения: -Быстрое опускание в упор лежа - Упор лёжа, отжаться от пола, резко подтянуть колени к груди приняв положение приседа и руки касаются ладонями пола."
+                    + "- Выпрыгнуть вверх, сделав лёгкий хлопок руками над головой. - Вернуться в начальное положение. Как вариант можно - вместо прыжка вверх, выполнить прыжок вперёд, отталкиваясь от пола двумя ногами одновременно. Особенности: Бодибилдинг / фитнес: -Отжимания могут быть как до касания грудью пола, так и без касания. CROSSFIT: -Отжимания могут выполняться как «чистыми», так и в технике «лодка». Касание грудью и бедрами пола обязательно. - В верхней точке все тело должно находиться в вертикальном положении, а хлопок выполняться над или за головой."
+                    + "Рекомендации: -После отжимания, выполняя прыжок ногами к груди, ставьте стопы на ширине таза или шире.Это позволит сократить амплитуду движения и уменьшить нагрузку на коленные суставы. Противопоказания: С осторожностью выполнять при заболеваниях или травмах поясничного отдела позвоночника.",
+                    Complexity = "Легкий",
+                    Movement = "Бёрпи",
+                    Modality = "G",
+                    Inventory = "Нет",
+                    Image = "https://www.youtube.com/embed/TU8QYVW0gDU"
+                },
+                new Exercises
+                {
+                    Id = 5,
+                    Name = "Отжимания",
+                    Description = "Отжимания от пола - отличное упражнение для развития мышц груди, плечей и рук как в тренировках в зале так и в домашних тренировках. Существует много видов отжиманий, (отжимания на одной руке, отжимания с узкой постановкой ладоней диамантовые отжимания, отжимания с высокой постановкой ног ) каждый их них по своему уникальный, и все их обязательно стоит научиться делать. Но в КроссФите самые популярные классические отжимания от пола  - которые используются как в отдельных тренировках так и в целых тренировочных комплексах для лучшего эффекта.",
+                    FullDescription = "Исходное положение: - Займите упор лежа на прямых руках - Ноги держите вместе - Тело держите максимально параллельно полу, без прогиба в пояснице. Выполнение упражнения: -Начните опускать ваше тело удерживая спину прямой, пока ваша грудь не коснется пола. - Сделайте небольшую паузу и выжмите тело обратно в исходное положение.",
+                    Complexity = "Легкий",
+                    Movement = "Отжимания",
+                    Modality = "G",
+                    Inventory = "Нет",
+                    Image = "https://www.youtube.com/embed/_l3ySVKYVJ8"
+                },
+                new Exercises
+                {
+                    Id = 6,
+                    Name = "Запрыгивание на ящик",
+                    Description = "Запрыгивания на ящик отлично помогают развить взрывную силу ног. В свою очередь это способствует увеличению результатов в приседаниях со штангой, становой тяге, рывке и толчке штанги. Кроме того выполняя это упражнение  в высоком темпе, оно служит хорошей аэробной нагрузкой для Вашего организма.",
+                    FullDescription = "Исходное положение: - Встаньте перед нужным Вам ящиком.Положение ног на ширине плеч. Выполнение упражнения: -Опуститесь в положение полуприседа, и затем с помощью маха руками сделайте сильный прыжок на ящик. - На ящик необходимо приземлятся на чуть присогнутые ноги, это снизит риск получения травмы во время выполнения упражнения.В верхней точке необходимо выпрямить коленные суставы и тазобедренные. - Вы можете прыгнуть обратно в начальное положение, либо спустится вниз по одной ноге. Противопоказания: С осторожностью выполнять упражнение при заболеваниях или травмах коленных суставов и позвоночника, при гипертонии и ВСД.",
+                    Complexity = "Легкий",
+                    Movement = "Прыжки",
+                    Modality = "G",
+                    Inventory = "Ящик для прыжков",
+                    Image = "https://www.youtube.com/embed/52r_Ul5k03g"
+                },
+                new Exercises
+                {
+                    Id = 7,
+                    Name = "Подъемы корпуса на пресс",
+                    Description = "Ситапы - популярное упражнение среди кроссфитеров, оно является одним из основных упражнений для развития пресса в кроссфите. Техника выполнения ситапов позволяет выдерживать высокую интенсивность нагрузки, что в свою очередь оказывает жиросжигающий эффект.",
+                    FullDescription = "Исходное положение: - Лягте на пол или на коврик для упражнений. - Согните ноги в коленях и разведите в разные стороны. - Положите руки на затылок, а локти направьте в стороны. Выполнение упражнения: -Резко поднимите туловище, помогая делая мах руками.При подъеме коснитесь руками ступней ног, а при опускании коснитесь пола за головой. При высокой интенсивности выполнения упражнения, подложите полотенце под поясничный отдел,это позволит сократить рис возникновения травмы позвоночного отдела.",
+                    Complexity = "Легкий",
+                    Movement = "Пресс",
+                    Modality = "G",
+                    Inventory = "Нет",
+                    Image = "https://www.youtube.com/embed/_HDZODOx7Zw"
+                },
+                new Exercises
+                {
+                    Id = 8,
+                    Name = "Прыжки на скакалке",
+                    Description = "Прыжки на скакалке - это хорошая кардио тренировка, которая не уступает по своим характеристикам бегу или плаванию. За 15 минут тренировки со скакалкой можно сжечь до 200 ккал, при условии постоянной нагрузки.В кроссфите чаще всего пользуются популярностью двойные прыжки на скакалке, выполнение которых потребует от Вас определенных навыков, для такого рода прыжков лучше всего использовать специальные скоростные скакалки на подшипниках.",
+                    FullDescription = "Чтобы научится правильно прыгать на скакалке, необходимо как можно больше практиковаться! Учитесь до тех пор пока ваши движения не станут синхронными и отлаженными. Прыгайте на носках, приземляясь на подушечки пальцев, не приземляйтесь на полную стопу. Соблюдайте амплитуду прыжка около 25 см. Скакалку необходимо вращать только при помощи рук.",
+                    Complexity = "Легкий",
+                    Movement = "Прыжки на скакалке",
+                    Modality = "M",
+                    Inventory = "Скакалка",
+                    Image = "https://www.youtube.com/embed/hCuXYrTOMxI"
+                },
+                new Exercises
+                {
+                    Id = 9,
+                    Name = "Отжимания на брусьях",
+                    Description = "Отжимания на брусьях – одно из лучших базовых многосуставных упражнений, для развития мышц груди, плеч и трицепсов. Отлично подходит как для новичков так и для опытных атлетов. Если вы уверенно отжимаетесь более 20 - и раз, самое время повысить сложность выполнения  упражнения и воспользоваться дополнительным отягощением.",
+                    FullDescription = "Отжимания на брусьях – одно из лучших базовых многосуставных упражнений, для развития мышц груди, плеч и трицепсов. Отлично подходит как для новичков так и для опытных атлетов. Если вы уверенно отжимаетесь более 20 - и раз, самое время повысить сложность выполнения  упражнения и воспользоваться дополнительным отягощением. Исходное положение: -Примите положение упора на брусьях на прямых руках. - Начинать это упражнение из нижней позиции весьма рискованно.Старт из верхней точки позволяет мышцам сократиться и приготовиться к работе. Выполнение упражнения: -Наклоните торс вперед, а затем медленно опуститесь между брусьями, сгибая руки в локтях.Важно сопротивляться гравитации на пути вниз, в противном случае, вы можете повредить грудную мышцу. - Достигнув растянутой позиции в нижней точке, поднимайтесь медленно и ровно, выпрямляя локти. Если вам сложно выполнять классические отжимания на брусьях, попробуйте сделать негативные отжимания.Поднимитесь в верхнюю позицию при помощи ног, и сделайте подконтрольное опускание, как можно больше сопротивляясь гравитации.Затем опять с помощью ног встаньте в начальную позицию и повторяйте до тех пор, пока не будет сил делать медленные опускания.Такие отжимания служат хорошей базой для классических отжиманий на брусьях. Особенности: Бодибилдинг / фитнес: Существуют два варианта отжиманий на брусьях. Первый – при опускании вниз локти направлены назад, а корпус наклонен вперед.Такой вид отжиманий акцентированно нагружает трехглавую мышцу плеча.При подъеме необходимо концентрироваться на разгибании рук за счет трехглавой мышцы плеча. Второй – при опускании вниз локти направлены в стороны, и корпус вертикален.Такой вариант способствует смещению нагрузки на грудные мышцы. Противопоказания: Травмы и хронические заболевания плечевого сустава.",
+                    Complexity = "Легкий",
+                    Movement = "Брусья",
+                    Modality = "G",
+                    Inventory = "Нет",
+                    Image = "https://www.youtube.com/embed/eERwCQHZqfA"
+                },
+                new Exercises
+                {
+                    Id = 10,
+                    Name = "Попрыгунчик",
+                    Description = "Если вы ищете отличное аэробное упражнение которое можно выполнять где угодно, будь вы дома, в отпуске, или на работе. Попрыгунчик это именно то что вам нужно - даже 5 минут выполняя попрыгунчик вы приведете все тело в тонус, разгоните кровь, и получите заряд бодрости и позитива на пару часов!",
+                    FullDescription = "Исходное положение: - Встаньте в стойку, ноги на ширине плеч, руки опущены по швам Выполнение упражнения: -Подпрыгните, одновременно расставив ноги и руки в стороны - Приземлитесь, в положении ноги несколько расставлены шире плеч руки направленны в стороны - Подпрыгните из этого положения и примите исходное положение",
+                    Complexity = "Легкий",
+                    Movement = "Прыжки",
+                    Modality = "M",
+                    Inventory = "Нет",
+                    Image = "https://www.youtube.com/embed/c4DAnQ6DtF8"
+                },
+                new Exercises
+                {
+                    Id = 11,
+                    Name = "Ситапы на тренажере GHD",
+                    Description = "Ситапы на тренажере GHD - ситапы на тренажере GHD немного отличаются от классического выполнения Sit-Up на полу. GHD тренажер, позволяет выполнять упражнение с большей амплитудой и большей скоростью, что несет за собой повышение эффективности упражнения, так как в работу включаются большее количество мышц, и резко повышается энергозатратность упражнения по сравнению с классическими Sit-Up.",
+                    FullDescription = "Исходное положение: - Сядьте на GHD, ноги закрепите в подставках для ног таким образом чтоб ягодицы чуть свисали с подушек. - Держите колени согнутыми Выполнение упражнения: -Опустите себя назад, держа спину прямой а колени согнутыми - Опускайте себя как можно ниже пока можете держать спину прямой, без излишнего изгиба - Как только вы достигните крайнего положения начните возвращаться в исходное положение",
+                    Complexity = "Нормальный",
+                    Movement = "Пресс",
+                    Modality = "G",
+                    Inventory = "Тренажер GHD",
+                    Image = "https://www.youtube.com/embed/1pbZ8mX2D1U"
+                },
+                new Exercises
+                {
+                    Id = 12,
+                    Name = "Подтягивания",
+                    Description = "Подтягивания - это одно из базовых упражнений не только в КроссФите, но и в спорте в целом, почти каждый спортсмен должен уметь выполнять подтягивания. Они помогают развить не только силу мышц спины и рук, но так же помогают обзавестись красивым торсом с использованием всего лишь одного снаряда!",
+                    FullDescription = "Исходное положение: - Повисните на перекладине, охватившись за нее ладонями передним хватом(ладони смотрят от вас) Выполнение упражнения: -Начните подтягиваться до тех пор, пока ваш подбородок не окажется выше перекладины. - Сделайте паузу на секунду и опуститесь в исходное положение.Если Вы не можете подтянуться ни разу, начните осваивать подводящие упражнения. - Прыгающие подтягивания: Найдите низкую перекладину, возьмитесь за нее ладонями, подпрыгните пока ваш подбородок не окажется выше перекладины и попытайтесь задержаться на 3 - 4 секунды.Выполняйте это упражнение, до тех пор пока вам не станет легко выполнять 10 - 15 повторений с паузами в 3 - 4 секунды. - Негативные подтягивания: Держась за перекладину подпрыгните, задержавшись в верхнем положении и начните медленно опускаться.Опускание должно занимать около 5 - и секунд.Тренируйте негативные подтягивания пока не почувствуете что вам легко делать 10 повторений. - Подтягивания с облегчением Прикрепите на перекладине резинку и свесьте один конец вниз.Расположите резину по центру перекладины.Возьмитесь за перекладину двумя руками и одной из ног зацепитесь за резину таким образом чтоб она натянулась.Начните подтягиваться, используя натяжение резины.С каждой новой тренировкой используйте все меньшее и меньшее натяжение резины.",
+                    Complexity = "Легкий",
+                    Movement = "Подтягивание",
+                    Modality = "G",
+                    Inventory = "Кроссфит стойка",
+                    Image = "https://www.youtube.com/embed/r45xLlH7r_M"
                 });
 
             modelBuilder.Entity<Halls>().ToTable("Halls").HasData(
@@ -134,6 +276,37 @@ namespace WodCatClone.Db
                     Location = "пр. Тракторостроителей 57б",
                     Rating = "10.0",
                     EmblemHallId = 2
+                },
+                new Halls
+                {
+                    Id = 3,
+                    Name = "Олимп",
+                    Type = "Crossfit (not Aff.),Fitness,Gym,Yoga",
+                    Description = "Самая крупная сеть клубов в Западной Украине. 5 специализированных залов со всем необходимым оборудованием в городе Льва. Площадь залов составляет от 400 до 2500кв.м. Залы условно поделены на зоны от кардио до тяжёлой атлетики и кроссфит зон. Качественная система вентиляции и кондиционирования делает занятия ещё эффективней. Общая сауна для отдыха.Квалифицированные тренера, которые помогут даже в скретчинге и диетологии. Олимп рекомендует Василий Вирастюк.",
+                    Town = "Львов",
+                    Rating = "10.0",
+                    EmblemHallId = 3
+                },
+                new Halls
+                {
+                    Id = 4,
+                    Name = "Crossfit Banda",
+                    Type = "Affiliate Crossfit,Fitness,Gym,Weightlifting,Yoga",
+                    Description = "Первая сеть кроссфит-залов в Киеве - 4 зала в разных районах города и локации для бесплатных тренировок. Самый большой из них - площадью в 1200 кв.м. Сертифицированные тренера.Физическая реабилитация после травм.Команда Banda Crossfit принимает участие в благотворительном забеге Wings for Life World Run.Клуб проводит все украинские турниры по кроссфиту Banda Arena Challenge.Скретчинг, настольный теннис для отдыха.Школа тренеров, семинары, собственная лаборатория Banda Lab.Множество мероприятий и партнёров.",
+                    Rating = "5.0",
+                    Town = "Киев",
+                    Location = "Новопечерский переулок, 5",
+                    EmblemHallId = 5
+                },
+                new Halls
+                {
+                    Id = 5,
+                    Name = "BLaS CrossFit Area",
+                    Type = "Affiliate Crossfit,Fitness,Gym",
+                    Description = "Blas (CrossFit — BLaS CA! BLaS = Body Like a Stone) Crossfit Area, Днепр. Целый спортивный комплекс на берегу Днепра - 300 кв.м. Единственный аффилированный зал в городе.Персональные тренировки по всем направлениям, в том числе Crossfit Kids.Отличная команда тренеров.Профессиональное оборудование Rogue(3 тонны железа), кроссфит - рама, 2 Air Bikes, 10 гребных тренажёров Concept.Массажный кабинет, фитнес - бар с самыми лучшими коктейлями, детская комната, если негде оставить ребенка.",
+                    Town = "Днепр",
+                    Location = "улица Набережная Победы, 62",
+                    EmblemHallId = 4
                 });
 
             modelBuilder.Entity<Workouts>().ToTable("Workouts").HasData(
@@ -149,7 +322,6 @@ namespace WodCatClone.Db
                     Inventory = "Нет",
                     Minutes = "23",
                     Seconds = "20",
-                    Exercises = "100 Бёрпи",
                     EmblemHallId = 1
                 },
                 new Workouts
@@ -164,8 +336,7 @@ namespace WodCatClone.Db
                     Inventory = "Скакалка,Ящик для прыжков,Тренажер GHD",
                     Minutes = "50",
                     Seconds = "30",
-                    Exercises = "100 Приседания,100 Отжимания,100 Запрыгивание на ящик - 24 / 20 inches,100 Подъемы корпуса на пресс,100 Прыжки на скакалке,100 Отжимания на брусьях,100 Попрыгунчик,100 Ситапы на тренажере GHD,100 Подтягивания",
-                    EmblemHallId = 2
+                    EmblemHallId = 5
                 },
                 new Workouts
                 {
@@ -179,7 +350,6 @@ namespace WodCatClone.Db
                     Inventory = "Ящик для прыжков",
                     Minutes = "24",
                     Seconds = "00",
-                    Exercises = "100 calories Гребля,100 Берпи с перепрыгиванием через ящик,100 seconds Велотренажер",
                     EmblemHallId = 1
                 });
 
@@ -251,6 +421,112 @@ namespace WodCatClone.Db
                     WorkoutsId = 2
                 });
 
+            modelBuilder.Entity<WorkoutsExercises>().ToTable("WorkoutsExercises").HasData(
+                new WorkoutsExercises
+                {
+                    Id = 1,
+                    WorkoutsId = 1,
+                    ExercisesId = 4,
+                    CountRepeats = 100
+                },
+                new WorkoutsExercises
+                {
+                    Id = 2,
+                    WorkoutsId = 2,
+                    ExercisesId = 2,
+                    CountRepeats = 100
+                },
+                new WorkoutsExercises
+                {
+                    Id = 3,
+                    WorkoutsId = 2,
+                    ExercisesId = 3,
+                    CountRepeats = 100
+                },
+                new WorkoutsExercises
+                {
+                    Id = 4,
+                    WorkoutsId = 2,
+                    ExercisesId = 5,
+                    CountRepeats = 100
+                },
+                new WorkoutsExercises
+                {
+                    Id = 5,
+                    WorkoutsId = 2,
+                    ExercisesId = 5,
+                    CountRepeats = 100
+                },
+                new WorkoutsExercises
+                {
+                    Id = 6,
+                    WorkoutsId = 2,
+                    ExercisesId = 6,
+                    CountRepeats = 100
+                },
+                new WorkoutsExercises
+                {
+                    Id = 7,
+                    WorkoutsId = 2,
+                    ExercisesId = 7,
+                    CountRepeats = 100
+                },
+                new WorkoutsExercises
+                {
+                    Id = 8,
+                    WorkoutsId = 2,
+                    ExercisesId = 8,
+                    CountRepeats = 100
+                },
+                new WorkoutsExercises
+                {
+                    Id = 9,
+                    WorkoutsId = 2,
+                    ExercisesId = 9,
+                    CountRepeats = 100
+                },
+                new WorkoutsExercises
+                {
+                    Id = 10,
+                    WorkoutsId = 2,
+                    ExercisesId = 10,
+                    CountRepeats = 100
+                },
+                new WorkoutsExercises
+                {
+                    Id = 11,
+                    WorkoutsId = 2,
+                    ExercisesId = 11,
+                    CountRepeats = 100
+                },
+                new WorkoutsExercises
+                {
+                    Id = 12,
+                    WorkoutsId = 2,
+                    ExercisesId = 12,
+                    CountRepeats = 100
+                },
+                new WorkoutsExercises
+                {
+                    Id = 13,
+                    WorkoutsId = 3,
+                    ExercisesId = 1,
+                },
+                new WorkoutsExercises
+                {
+                    Id = 14,
+                    WorkoutsId = 3,
+                    ExercisesId = 7,
+                    CountRepeats = 50
+                },
+                new WorkoutsExercises
+                {
+                    Id = 15,
+                    WorkoutsId = 3,
+                    ExercisesId = 11,
+                    CountRepeats = 50
+                });
+
             modelBuilder.Entity<User>().ToTable("User").HasData(
                 new User
                 {
@@ -268,9 +544,11 @@ namespace WodCatClone.Db
                     Weight = "70",
                     AboutMe = "I am a developer C#",
                     GenderId = 1,
-                    HallId = null,
-                    ProgramsId = null
+                    HallId = 2,
+                    ProgramsId = 2
                 });
+
+            modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
 
             base.OnModelCreating(modelBuilder);
         }
@@ -285,6 +563,8 @@ namespace WodCatClone.Db
         public DbSet<User> Users { get; set; }
 
         public DbSet<ProgramsWorkouts> ProgramsWorkouts { get; set; }
+
+        public DbSet<WorkoutsExercises> WorkoutsExercises { get; set; }
 
         public DbSet<Programs> Programs { get; set; }
 
