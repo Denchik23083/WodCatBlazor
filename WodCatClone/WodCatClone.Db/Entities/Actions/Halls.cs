@@ -18,8 +18,6 @@ namespace WodCatClone.Db.Entities.Actions
 
         public string Rating { get; set; }
 
-        public int CountUser { get; set; }
-
         public int? EmblemHallId { get; set; }
 
         public HallEmblem EmblemHall { get; set; }

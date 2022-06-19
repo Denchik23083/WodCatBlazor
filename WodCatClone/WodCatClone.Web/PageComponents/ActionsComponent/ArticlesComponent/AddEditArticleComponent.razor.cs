@@ -29,7 +29,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
 
         public bool IsShow { get; set; } = false;
 
-        public string _image = "None";
+        public string Image = "None";
 
         public int Value { get; set; }
 
@@ -99,13 +99,13 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
             ArticleTypes.Add(new() { Content = item, Value = item });
         }
 
-        public void Image(ChangeEventArgs e)
+        public void SelectedImage(ChangeEventArgs e)
         {
             var selected = e.Value?.ToString();
 
             var articlesEmblem = ArticlesEmblem.FirstOrDefault(b => b.Image == selected);
 
-            _image = selected;
+            Image = selected;
 
             if (articlesEmblem is not null)
             {

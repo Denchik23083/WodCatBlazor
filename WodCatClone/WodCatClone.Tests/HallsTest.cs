@@ -82,6 +82,7 @@ namespace WodCatClone.Tests
         {
             var context = new TestsWodCatCloneDbContext();
             var id = 2;
+            var countUser = 1;
 
             var countUsers = context.Users.Where(b => b.HallId == id);
             Assert.NotNull(countUsers);
@@ -90,14 +91,7 @@ namespace WodCatClone.Tests
             Assert.NotNull(hall);
             Assert.Equal(id, hall.Id);
 
-            hall.CountUser = countUsers.Count();
-            context.SaveChanges();
-
-            var hallAfterCount = context.Halls.FirstOrDefault(b => b.Id == id);
-            Assert.NotNull(hallAfterCount);
-
-            Assert.Equal(id, hallAfterCount.Id);
-            Assert.Equal(hall.CountUser, countUsers.Count());
+            Assert.Equal(countUser, countUsers.Count());
         }
 
         [Fact]
@@ -118,7 +112,6 @@ namespace WodCatClone.Tests
                 Rating = "8.5",
                 Type = "TestType",
                 UserId = user.Id,
-                CountUser = 0,
                 EmblemHallId = 3
             };
 
@@ -165,7 +158,6 @@ namespace WodCatClone.Tests
                 Rating = "8.5",
                 Type = "TestType",
                 UserId = user.Id,
-                CountUser = 0,
                 EmblemHallId = 3
             };
 
@@ -238,7 +230,6 @@ namespace WodCatClone.Tests
                 Rating = "8.5",
                 Type = "TestType",
                 UserId = user.Id,
-                CountUser = 0,
                 EmblemHallId = 3
             };
 

@@ -1,7 +1,7 @@
 ﻿<div class="workouts m-3 p-2" @onclick="Id">
     <div class="row ml-1 mt-3 mr-1 mb-3">
         <div class="col">
-            <a class="Name" href="@_url"><span class="bold">@Workouts.Name</span></a>
+            <a class="Name" href="@Url"><span class="bold">@Workouts.Name</span></a>
             <span class="cub">@Workouts.Modality</span>
             <span class="greenCub">@Workouts.Rating / 10</span>
         </div>
@@ -16,7 +16,7 @@
                 Color="#fff"/>
         </div>
         <div class="col-6 text-right">
-            @if (Workouts.EmblemHallId is not null)
+            @if (Image is not null)
             {
                 <img src="@Image" height="100" width="100"/>
             }

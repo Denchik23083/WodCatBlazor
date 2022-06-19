@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
+using WodCatClone.Logic.ActionsService.HallsService;
 using WodCatClone.Logic.ActionsService.WorkoutsService;
 using WodCatClone.Logic.UserService;
 using WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent;
@@ -17,6 +18,8 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
 
         [Inject] public IResultWorkoutsService ResultWorkoutsService { get; set; }
 
+        [Inject] public IHallsService HallsService { get; set; }
+
         [Inject] public NavigationManager NavigationManager { get; set; }
 
         public Workouts Workout { get; set; }
@@ -26,6 +29,8 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
         public string Image { get; set; }
 
         public bool IsLogin { get; set; }
+
+        public Halls Hall { get; set; }
 
         public EditDeleteResult EditDeleteResult { get; set; }
 
@@ -37,7 +42,11 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
         {
             IsLogin = UserService.IsLoginUser();
             Workout = WorkoutsService.GetWorkout(WorkoutId);
-            Image = WorkoutsService.GetImage(Workout.EmblemHallId);
+            Hall = HallsService.GetHall(Workout.HallId);
+            if (Hall is not null)
+            {
+                Image = HallsService.GetImage(Hall.EmblemHallId);
+            }
             WorkoutsExercises = WorkoutsService.GetAllWorkoutsExercises(WorkoutId);
         }
 
@@ -51,7 +60,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
 
         public void OnCancelEditStart() => StartWorkout.Hide(); 
 
-        public void Start() => StartWorkout.Show(); 
+        public void Start() => StartWorkout.Show();
 
         public void OnDelete()
         {

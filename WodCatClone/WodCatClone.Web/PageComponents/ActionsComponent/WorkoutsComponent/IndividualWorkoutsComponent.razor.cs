@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
+using WodCatClone.Logic.ActionsService.HallsService;
 using WodCatClone.Logic.ActionsService.WorkoutsService;
 
 namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
@@ -15,13 +16,17 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         [Inject] public IWorkoutsService WorkoutsService { get; set; }
 
+        [Inject] public IHallsService HallsService { get; set; }
+
         public IEnumerable<WorkoutsExercises> WorkoutsExercises { get; set; }
         
         public string[] WorkoutsCategory { get; set; }
 
         public string Image { get; set; }
 
-        public string _url = string.Empty;
+        public Halls Hall { get; set; }
+
+        public string Url = string.Empty;
 
         public int Value { get; set; }
 
@@ -30,7 +35,11 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
         protected override void OnInitialized()
         {
             Value = 0;
-            Image = WorkoutsService.GetImage(Workouts.EmblemHallId);
+            Hall = HallsService.GetHall(Workouts.HallId);
+            if (Hall is not null)
+            {
+                Image = HallsService.GetImage(Hall.EmblemHallId);
+            }
             WorkoutsCategory = Workouts.Category.Split(",");
             ResultWorkoutsCount = ResultWorkoutsService.GetCountResultWorkouts(Workouts.Id);
             WorkoutsExercises = WorkoutsService.GetAllWorkoutsExercises(Workouts.Id);
@@ -39,7 +48,8 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
         protected override void OnParametersSet()
         {
             Value = 0;
-            Image = WorkoutsService.GetImage(Workouts.EmblemHallId);
+            Hall = HallsService.GetHall(Workouts.HallId);
+            Image = HallsService.GetImage(Hall.EmblemHallId);
             WorkoutsCategory = Workouts.Category.Split(",");
             ResultWorkoutsCount = ResultWorkoutsService.GetCountResultWorkouts(Workouts.Id);
             WorkoutsExercises = WorkoutsService.GetAllWorkoutsExercises(Workouts.Id);
@@ -47,8 +57,8 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         public void Id()
         {
-            _url = $"workouts/{Workouts.Id}";
-            NavigationManager.NavigateTo(_url);
+            Url = $"workouts/{Workouts.Id}";
+            NavigationManager.NavigateTo(Url);
         }
     }
 }

@@ -49,9 +49,10 @@ namespace WodCatClone.Web.PageComponents.MainComponent
                 var hall = HallsService.GetHall(Program.HallId);
                 ProgramImage = HallsService.GetImage(hall.EmblemHallId);
             }
-            if (Workout is not null)
+            if (Workout is not null && Workout.HallId is not null)
             {
-                WorkoutImage = WorkoutsService.GetImage(Workout.EmblemHallId);
+                var hall = HallsService.GetHall(Workout.HallId);
+                WorkoutImage = HallsService.GetImage(hall.EmblemHallId);
             }
             if (Exercise is not null)
             {

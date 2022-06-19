@@ -320,7 +320,7 @@ namespace WodCatClone.Db
                     Inventory = "Нет",
                     Minutes = "23",
                     Seconds = "20",
-                    EmblemHallId = 1
+                    HallId = 1
                 },
                 new Workouts
                 {
@@ -334,7 +334,7 @@ namespace WodCatClone.Db
                     Inventory = "Скакалка,Ящик для прыжков,Тренажер GHD",
                     Minutes = "50",
                     Seconds = "30",
-                    EmblemHallId = 5
+                    HallId = 4
                 },
                 new Workouts
                 {
@@ -348,7 +348,7 @@ namespace WodCatClone.Db
                     Inventory = "Ящик для прыжков",
                     Minutes = "24",
                     Seconds = "00",
-                    EmblemHallId = 1
+                    HallId = 1
                 });
 
             modelBuilder.Entity<Programs>().ToTable("Programs").HasData(

@@ -45,20 +45,6 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void GetImageTest()
-        {
-            var context = new TestsWodCatCloneDbContext();
-            var id = 3;
-            var image = "img/EmblemHalls/Olimp.png";
-
-            var workoutEmblem = context.HallEmblem.FirstOrDefault(b => b.Id == id);
-            Assert.NotNull(workoutEmblem);
-
-            Assert.Equal(id, workoutEmblem.Id);
-            Assert.Equal(image, workoutEmblem.Image);
-        }
-
-        [Fact]
         public void GetAllResultWorkoutsTest()
         {
             var context = new TestsWodCatCloneDbContext();

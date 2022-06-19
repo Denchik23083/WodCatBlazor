@@ -16,19 +16,19 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
 
         public int Value { get; set; }
 
-        string _url = string.Empty;
+        public string Url = string.Empty;
 
         protected override void OnInitialized()
         {
             Value = 0;
-            _url = $"articles/{Article.Id}";
+            Url = $"articles/{Article.Id}";
             Image = ArticlesService.GetImage(Article.ArticlesEmblemId);
             ArticleType = Article.Type.Split(",");
         }
         protected override void OnParametersSet()
         {
             Value = 0;
-            _url = $"articles/{Article.Id}";
+            Url = $"articles/{Article.Id}";
             Image = ArticlesService.GetImage(Article.ArticlesEmblemId);
             ArticleType = Article.Type.Split(",");
         }

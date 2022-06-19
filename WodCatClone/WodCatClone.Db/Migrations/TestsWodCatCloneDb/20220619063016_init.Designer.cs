@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WodCatClone.Db;
 
-namespace WodCatClone.Db.Migrations
+namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
 {
-    [DbContext(typeof(WodCatCloneContext))]
-    [Migration("20220618111326_init")]
+    [DbContext(typeof(TestsWodCatCloneDbContext))]
+    [Migration("20220619063016_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -412,9 +412,6 @@ namespace WodCatClone.Db.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CountUser")
-                        .HasColumnType("int");
-
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -453,7 +450,6 @@ namespace WodCatClone.Db.Migrations
                         new
                         {
                             Id = 1,
-                            CountUser = 0,
                             Description = "DOG – первый фитнес клуб Киева, который получил официальную CrossFit сертификацию. Высокие стандарты обслуживания, качества оборудования и подхода к тренировкам обязательны для получения сертификации.Титулованный тренерский состав и профессиональное оборудование сделают ваши занятия более эффективными и помогут выйти на новый уровень физической подготовки.Главные тренера клубов ДОГ - Валентин Литвинчук и Леонид Леус - настоящие профессионалы которые стоят у истоков развития Кроссфита в Украине Более 50 различных & nb...",
                             EmblemHallId = 1,
                             Location = "Днепровская набережная, 14К",
@@ -464,7 +460,6 @@ namespace WodCatClone.Db.Migrations
                         new
                         {
                             Id = 2,
-                            CountUser = 0,
                             EmblemHallId = 2,
                             Location = "пр. Тракторостроителей 57б",
                             Name = "M4",
@@ -475,7 +470,6 @@ namespace WodCatClone.Db.Migrations
                         new
                         {
                             Id = 3,
-                            CountUser = 0,
                             Description = "Самая крупная сеть клубов в Западной Украине. 5 специализированных залов со всем необходимым оборудованием в городе Льва. Площадь залов составляет от 400 до 2500кв.м. Залы условно поделены на зоны от кардио до тяжёлой атлетики и кроссфит зон. Качественная система вентиляции и кондиционирования делает занятия ещё эффективней. Общая сауна для отдыха.Квалифицированные тренера, которые помогут даже в скретчинге и диетологии. Олимп рекомендует Василий Вирастюк.",
                             EmblemHallId = 3,
                             Name = "Олимп",
@@ -486,7 +480,6 @@ namespace WodCatClone.Db.Migrations
                         new
                         {
                             Id = 4,
-                            CountUser = 0,
                             Description = "Первая сеть кроссфит-залов в Киеве - 4 зала в разных районах города и локации для бесплатных тренировок. Самый большой из них - площадью в 1200 кв.м. Сертифицированные тренера.Физическая реабилитация после травм.Команда Banda Crossfit принимает участие в благотворительном забеге Wings for Life World Run.Клуб проводит все украинские турниры по кроссфиту Banda Arena Challenge.Скретчинг, настольный теннис для отдыха.Школа тренеров, семинары, собственная лаборатория Banda Lab.Множество мероприятий и партнёров.",
                             EmblemHallId = 5,
                             Location = "Новопечерский переулок, 5",
@@ -498,7 +491,6 @@ namespace WodCatClone.Db.Migrations
                         new
                         {
                             Id = 5,
-                            CountUser = 0,
                             Description = "Blas (CrossFit — BLaS CA! BLaS = Body Like a Stone) Crossfit Area, Днепр. Целый спортивный комплекс на берегу Днепра - 300 кв.м. Единственный аффилированный зал в городе.Персональные тренировки по всем направлениям, в том числе Crossfit Kids.Отличная команда тренеров.Профессиональное оборудование Rogue(3 тонны железа), кроссфит - рама, 2 Air Bikes, 10 гребных тренажёров Concept.Массажный кабинет, фитнес - бар с самыми лучшими коктейлями, детская комната, если негде оставить ребенка.",
                             EmblemHallId = 4,
                             Location = "улица Набережная Победы, 62",
@@ -702,7 +694,7 @@ namespace WodCatClone.Db.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("EmblemHallId")
+                    b.Property<int?>("HallId")
                         .HasColumnType("int");
 
                     b.Property<string>("Inventory")
@@ -735,7 +727,7 @@ namespace WodCatClone.Db.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EmblemHallId");
+                    b.HasIndex("HallId");
 
                     b.ToTable("Workouts");
 
@@ -745,7 +737,7 @@ namespace WodCatClone.Db.Migrations
                             Id = 1,
                             Category = "Singlet,Bodyweight,For-Time",
                             Complexity = "Легкий",
-                            EmblemHallId = 1,
+                            HallId = 1,
                             Inventory = "Нет",
                             Minutes = "23",
                             Modality = "G",
@@ -759,7 +751,7 @@ namespace WodCatClone.Db.Migrations
                             Id = 2,
                             Category = "Couplet,Bodyweight,For-Time",
                             Complexity = "Сложный",
-                            EmblemHallId = 5,
+                            HallId = 4,
                             Inventory = "Скакалка,Ящик для прыжков,Тренажер GHD",
                             Minutes = "50",
                             Modality = "GM",
@@ -773,7 +765,7 @@ namespace WodCatClone.Db.Migrations
                             Id = 3,
                             Category = "Couplet,Bodyweight,Rower,ForTime",
                             Complexity = "Нормальный",
-                            EmblemHallId = 1,
+                            HallId = 1,
                             Inventory = "Ящик для прыжков",
                             Minutes = "24",
                             Modality = "GM",
@@ -1035,11 +1027,13 @@ namespace WodCatClone.Db.Migrations
                             Country = "Ukraine",
                             Email = "deniskudravov228@gmail.com",
                             GenderId = 1,
+                            HallId = 2,
                             Height = "185",
                             Name = "Денис",
                             NickName = "SoEasyBlef",
                             Password = "0000",
                             Points = 185,
+                            ProgramsId = 2,
                             Surname = "Кудрявов",
                             Town = "Херсон",
                             Weight = "70"
@@ -1232,11 +1226,11 @@ namespace WodCatClone.Db.Migrations
 
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Workouts", b =>
                 {
-                    b.HasOne("WodCatClone.Db.Entities.Actions.HallEmblem", "EmblemHall")
+                    b.HasOne("WodCatClone.Db.Entities.Actions.Halls", "Halls")
                         .WithMany()
-                        .HasForeignKey("EmblemHallId");
+                        .HasForeignKey("HallId");
 
-                    b.Navigation("EmblemHall");
+                    b.Navigation("Halls");
                 });
 
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.WorkoutsExercises", b =>

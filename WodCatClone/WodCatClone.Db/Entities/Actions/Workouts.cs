@@ -24,9 +24,9 @@ namespace WodCatClone.Db.Entities.Actions
 
         public string Seconds { get; set; }
 
-        public int? EmblemHallId { get; set; }
+        public int? HallId { get; set; }
 
-        public HallEmblem EmblemHall { get; set; }
+        public Halls Halls { get; set; }
 
         public List<ProgramsWorkouts> ProgramsWorkouts { get; set; }
 

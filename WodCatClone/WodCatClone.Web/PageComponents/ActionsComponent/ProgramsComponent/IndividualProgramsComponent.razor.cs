@@ -12,7 +12,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
 
         [Inject] public NavigationManager NavigationManager { get; set; }
 
-        string _url = string.Empty;
+        public string Url = string.Empty;
 
         public Halls Hall { get; set; }
 
@@ -20,7 +20,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
 
         protected override void OnInitialized()
         {
-            _url = $"programs/{Programs.Id}";
+            Url = $"programs/{Programs.Id}";
             if (Programs.HallId is not null)
             {
                 Hall = HallsService.GetHall(Programs.HallId);
@@ -30,7 +30,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
 
         protected override void OnParametersSet()
         {
-            _url = $"programs/{Programs.Id}";
+            Url = $"programs/{Programs.Id}";
             if (Programs.HallId is not null)
             {
                 Hall = HallsService.GetHall(Programs.HallId);

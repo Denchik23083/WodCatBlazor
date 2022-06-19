@@ -7,11 +7,11 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ExercisesComponent
     {
         [Parameter] public Exercises Exercises { get; set; }
 
-        string _url = string.Empty;
+        public string Url = string.Empty;
 
         protected override void OnInitialized()
         {
-            _url = $"exercises/{Exercises.Id}";
+            Url = $"exercises/{Exercises.Id}";
         }
     }
 }

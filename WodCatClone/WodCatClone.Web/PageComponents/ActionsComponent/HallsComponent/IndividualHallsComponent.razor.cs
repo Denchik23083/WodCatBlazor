@@ -16,14 +16,14 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
 
         public int Value { get; set; }
 
-        public string _url = string.Empty;
+        public string Url = string.Empty;
 
         public int Athletes { get; set; }
 
         protected override void OnInitialized()
         {
             Value = 0;
-            _url = $"gymboxs/{Hall.Id}";
+            Url = $"gymboxs/{Hall.Id}";
             Image = HallsService.GetImage(Hall.EmblemHallId);
             HallType = Hall.Type.Split(",");
             Athletes = HallsService.Athlete(Hall.Id);
@@ -32,7 +32,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
         protected override void OnParametersSet()
         {
             Value = 0;
-            _url = $"gymboxs/{Hall.Id}";
+            Url = $"gymboxs/{Hall.Id}";
             Image = HallsService.GetImage(Hall.EmblemHallId);
             HallType = Hall.Type.Split(",");
             Athletes = HallsService.Athlete(Hall.Id);

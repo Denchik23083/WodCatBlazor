@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
+namespace WodCatClone.Db.Migrations
 {
     public partial class init : Migration
     {
@@ -103,61 +103,6 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                 });
 
             migrationBuilder.CreateTable(
-                name: "Workouts",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Rating = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Category = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Complexity = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Movement = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Modality = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Inventory = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Minutes = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Seconds = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EmblemHallId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Workouts", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Workouts_HallEmblem_EmblemHallId",
-                        column: x => x.EmblemHallId,
-                        principalTable: "HallEmblem",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "WorkoutsExercises",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CountRepeats = table.Column<int>(type: "int", nullable: true),
-                    WorkoutsId = table.Column<int>(type: "int", nullable: false),
-                    ExercisesId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_WorkoutsExercises", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_WorkoutsExercises_Exercises_ExercisesId",
-                        column: x => x.ExercisesId,
-                        principalTable: "Exercises",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_WorkoutsExercises_Workouts_WorkoutsId",
-                        column: x => x.WorkoutsId,
-                        principalTable: "Workouts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Articles",
                 columns: table => new
                 {
@@ -178,6 +123,27 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                         name: "FK_Articles_ArticlesEmblem_ArticlesEmblemId",
                         column: x => x.ArticlesEmblemId,
                         principalTable: "ArticlesEmblem",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "WorkoutsExercises",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CountRepeats = table.Column<int>(type: "int", nullable: true),
+                    WorkoutsId = table.Column<int>(type: "int", nullable: false),
+                    ExercisesId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WorkoutsExercises", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_WorkoutsExercises_Exercises_ExercisesId",
+                        column: x => x.ExercisesId,
+                        principalTable: "Exercises",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -227,7 +193,6 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                     Location = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Rating = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CountUser = table.Column<int>(type: "int", nullable: false),
                     EmblemHallId = table.Column<int>(type: "int", nullable: true),
                     UserId = table.Column<int>(type: "int", nullable: true)
                 },
@@ -246,6 +211,86 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                         principalTable: "User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Programs",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Rating = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Aim = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CountUser = table.Column<int>(type: "int", nullable: false),
+                    HallId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Programs", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Programs_Halls_HallId",
+                        column: x => x.HallId,
+                        principalTable: "Halls",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Workouts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Rating = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Category = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Complexity = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Movement = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Modality = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Inventory = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Minutes = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Seconds = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HallId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Workouts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Workouts_Halls_HallId",
+                        column: x => x.HallId,
+                        principalTable: "Halls",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProgramsWorkouts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProgramsId = table.Column<int>(type: "int", nullable: false),
+                    WorkoutsId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProgramsWorkouts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ProgramsWorkouts_Programs_ProgramsId",
+                        column: x => x.ProgramsId,
+                        principalTable: "Programs",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ProgramsWorkouts_Workouts_WorkoutsId",
+                        column: x => x.WorkoutsId,
+                        principalTable: "Workouts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -276,58 +321,6 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                     table.ForeignKey(
                         name: "FK_ResultWorkouts_Workouts_WorkoutId",
                         column: x => x.WorkoutId,
-                        principalTable: "Workouts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Programs",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Rating = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Aim = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CountUser = table.Column<int>(type: "int", nullable: false),
-                    HallId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Programs", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Programs_Halls_HallId",
-                        column: x => x.HallId,
-                        principalTable: "Halls",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ProgramsWorkouts",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ProgramsId = table.Column<int>(type: "int", nullable: false),
-                    WorkoutsId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProgramsWorkouts", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ProgramsWorkouts_Programs_ProgramsId",
-                        column: x => x.ProgramsId,
-                        principalTable: "Programs",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ProgramsWorkouts_Workouts_WorkoutsId",
-                        column: x => x.WorkoutsId,
                         principalTable: "Workouts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -417,14 +410,14 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
 
             migrationBuilder.InsertData(
                 table: "Halls",
-                columns: new[] { "Id", "CountUser", "Description", "EmblemHallId", "Location", "Name", "Rating", "Town", "Type", "UserId" },
+                columns: new[] { "Id", "Description", "EmblemHallId", "Location", "Name", "Rating", "Town", "Type", "UserId" },
                 values: new object[,]
                 {
-                    { 4, 0, "Первая сеть кроссфит-залов в Киеве - 4 зала в разных районах города и локации для бесплатных тренировок. Самый большой из них - площадью в 1200 кв.м. Сертифицированные тренера.Физическая реабилитация после травм.Команда Banda Crossfit принимает участие в благотворительном забеге Wings for Life World Run.Клуб проводит все украинские турниры по кроссфиту Banda Arena Challenge.Скретчинг, настольный теннис для отдыха.Школа тренеров, семинары, собственная лаборатория Banda Lab.Множество мероприятий и партнёров.", 5, "Новопечерский переулок, 5", "Crossfit Banda", "5.0", "Киев", "Affiliate Crossfit,Fitness,Gym,Weightlifting,Yoga", null },
-                    { 5, 0, "Blas (CrossFit — BLaS CA! BLaS = Body Like a Stone) Crossfit Area, Днепр. Целый спортивный комплекс на берегу Днепра - 300 кв.м. Единственный аффилированный зал в городе.Персональные тренировки по всем направлениям, в том числе Crossfit Kids.Отличная команда тренеров.Профессиональное оборудование Rogue(3 тонны железа), кроссфит - рама, 2 Air Bikes, 10 гребных тренажёров Concept.Массажный кабинет, фитнес - бар с самыми лучшими коктейлями, детская комната, если негде оставить ребенка.", 4, "улица Набережная Победы, 62", "BLaS CrossFit Area", null, "Днепр", "Affiliate Crossfit,Fitness,Gym", null },
-                    { 2, 0, null, 2, "пр. Тракторостроителей 57б", "M4", "10.0", "Харьков", "Crossfit (not Aff.)", null },
-                    { 3, 0, "Самая крупная сеть клубов в Западной Украине. 5 специализированных залов со всем необходимым оборудованием в городе Льва. Площадь залов составляет от 400 до 2500кв.м. Залы условно поделены на зоны от кардио до тяжёлой атлетики и кроссфит зон. Качественная система вентиляции и кондиционирования делает занятия ещё эффективней. Общая сауна для отдыха.Квалифицированные тренера, которые помогут даже в скретчинге и диетологии. Олимп рекомендует Василий Вирастюк.", 3, null, "Олимп", "10.0", "Львов", "Crossfit (not Aff.),Fitness,Gym,Yoga", null },
-                    { 1, 0, "DOG – первый фитнес клуб Киева, который получил официальную CrossFit сертификацию. Высокие стандарты обслуживания, качества оборудования и подхода к тренировкам обязательны для получения сертификации.Титулованный тренерский состав и профессиональное оборудование сделают ваши занятия более эффективными и помогут выйти на новый уровень физической подготовки.Главные тренера клубов ДОГ - Валентин Литвинчук и Леонид Леус - настоящие профессионалы которые стоят у истоков развития Кроссфита в Украине Более 50 различных & nb...", 1, "Днепровская набережная, 14К", "DOG & GRAND CROSSFIT", null, "Киев", "Affiliate Crossfit,Boxing,Fitness,Gym,MMA,Yoga", null }
+                    { 4, "Первая сеть кроссфит-залов в Киеве - 4 зала в разных районах города и локации для бесплатных тренировок. Самый большой из них - площадью в 1200 кв.м. Сертифицированные тренера.Физическая реабилитация после травм.Команда Banda Crossfit принимает участие в благотворительном забеге Wings for Life World Run.Клуб проводит все украинские турниры по кроссфиту Banda Arena Challenge.Скретчинг, настольный теннис для отдыха.Школа тренеров, семинары, собственная лаборатория Banda Lab.Множество мероприятий и партнёров.", 5, "Новопечерский переулок, 5", "Crossfit Banda", "5.0", "Киев", "Affiliate Crossfit,Fitness,Gym,Weightlifting,Yoga", null },
+                    { 3, "Самая крупная сеть клубов в Западной Украине. 5 специализированных залов со всем необходимым оборудованием в городе Льва. Площадь залов составляет от 400 до 2500кв.м. Залы условно поделены на зоны от кардио до тяжёлой атлетики и кроссфит зон. Качественная система вентиляции и кондиционирования делает занятия ещё эффективней. Общая сауна для отдыха.Квалифицированные тренера, которые помогут даже в скретчинге и диетологии. Олимп рекомендует Василий Вирастюк.", 3, null, "Олимп", "10.0", "Львов", "Crossfit (not Aff.),Fitness,Gym,Yoga", null },
+                    { 5, "Blas (CrossFit — BLaS CA! BLaS = Body Like a Stone) Crossfit Area, Днепр. Целый спортивный комплекс на берегу Днепра - 300 кв.м. Единственный аффилированный зал в городе.Персональные тренировки по всем направлениям, в том числе Crossfit Kids.Отличная команда тренеров.Профессиональное оборудование Rogue(3 тонны железа), кроссфит - рама, 2 Air Bikes, 10 гребных тренажёров Concept.Массажный кабинет, фитнес - бар с самыми лучшими коктейлями, детская комната, если негде оставить ребенка.", 4, "улица Набережная Победы, 62", "BLaS CrossFit Area", null, "Днепр", "Affiliate Crossfit,Fitness,Gym", null },
+                    { 1, "DOG – первый фитнес клуб Киева, который получил официальную CrossFit сертификацию. Высокие стандарты обслуживания, качества оборудования и подхода к тренировкам обязательны для получения сертификации.Титулованный тренерский состав и профессиональное оборудование сделают ваши занятия более эффективными и помогут выйти на новый уровень физической подготовки.Главные тренера клубов ДОГ - Валентин Литвинчук и Леонид Леус - настоящие профессионалы которые стоят у истоков развития Кроссфита в Украине Более 50 различных & nb...", 1, "Днепровская набережная, 14К", "DOG & GRAND CROSSFIT", null, "Киев", "Affiliate Crossfit,Boxing,Fitness,Gym,MMA,Yoga", null },
+                    { 2, null, 2, "пр. Тракторостроителей 57б", "M4", "10.0", "Харьков", "Crossfit (not Aff.)", null }
                 });
 
             migrationBuilder.InsertData(
@@ -446,16 +439,6 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                 values: new object[] { 1, "I am a developer C#", new DateTime(2003, 8, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ukraine", "deniskudravov228@gmail.com", 1, null, "185", "Денис", "SoEasyBlef", "0000", 185, null, "Кудрявов", "Херсон", "70" });
 
             migrationBuilder.InsertData(
-                table: "Workouts",
-                columns: new[] { "Id", "Category", "Complexity", "EmblemHallId", "Inventory", "Minutes", "Modality", "Movement", "Name", "Rating", "Seconds" },
-                values: new object[,]
-                {
-                    { 1, "Singlet,Bodyweight,For-Time", "Легкий", 1, "Нет", "23", "G", "Бёрпи", "100 Burpees", "7.0", "20" },
-                    { 2, "Couplet,Bodyweight,For-Time", "Сложный", 5, "Скакалка,Ящик для прыжков,Тренажер GHD", "50", "GM", "Отжимание", "1000", "8.5", "30" },
-                    { 3, "Couplet,Bodyweight,Rower,ForTime", "Нормальный", 1, "Ящик для прыжков", "24", "GM", "Взятия на грудь", "Titan wod", "10.0", "00" }
-                });
-
-            migrationBuilder.InsertData(
                 table: "Programs",
                 columns: new[] { "Id", "Aim", "CountUser", "Description", "HallId", "Image", "Name", "Rating", "Type" },
                 values: new object[,]
@@ -465,12 +448,26 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                 });
 
             migrationBuilder.InsertData(
+                table: "Workouts",
+                columns: new[] { "Id", "Category", "Complexity", "HallId", "Inventory", "Minutes", "Modality", "Movement", "Name", "Rating", "Seconds" },
+                values: new object[,]
+                {
+                    { 1, "Singlet,Bodyweight,For-Time", "Легкий", 1, "Нет", "23", "G", "Бёрпи", "100 Burpees", "7.0", "20" },
+                    { 3, "Couplet,Bodyweight,Rower,ForTime", "Нормальный", 1, "Ящик для прыжков", "24", "GM", "Взятия на грудь", "Titan wod", "10.0", "00" },
+                    { 2, "Couplet,Bodyweight,For-Time", "Сложный", 4, "Скакалка,Ящик для прыжков,Тренажер GHD", "50", "GM", "Отжимание", "1000", "8.5", "30" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "ProgramsWorkouts",
                 columns: new[] { "Id", "ProgramsId", "WorkoutsId" },
                 values: new object[,]
                 {
+                    { 1, 1, 1 },
                     { 4, 2, 1 },
-                    { 5, 2, 3 }
+                    { 3, 1, 3 },
+                    { 5, 2, 3 },
+                    { 2, 1, 2 },
+                    { 6, 3, 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -484,26 +481,15 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                     { 7, 100, 7, 2 },
                     { 6, 100, 6, 2 },
                     { 5, 100, 5, 2 },
+                    { 2, 100, 2, 2 },
                     { 3, 100, 3, 2 },
                     { 11, 100, 11, 2 },
-                    { 2, 100, 2, 2 },
                     { 15, 50, 11, 3 },
                     { 14, 50, 7, 3 },
                     { 13, null, 1, 3 },
                     { 1, 100, 4, 1 },
                     { 4, 100, 5, 2 },
                     { 12, 100, 12, 2 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "ProgramsWorkouts",
-                columns: new[] { "Id", "ProgramsId", "WorkoutsId" },
-                values: new object[,]
-                {
-                    { 1, 1, 1 },
-                    { 2, 1, 2 },
-                    { 3, 1, 3 },
-                    { 6, 3, 2 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -572,9 +558,9 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                 column: "ProgramsId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Workouts_EmblemHallId",
+                name: "IX_Workouts_HallId",
                 table: "Workouts",
-                column: "EmblemHallId");
+                column: "HallId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_WorkoutsExercises_ExercisesId",
@@ -593,6 +579,14 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                 principalTable: "User",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_WorkoutsExercises_Workouts_WorkoutsId",
+                table: "WorkoutsExercises",
+                column: "WorkoutsId",
+                principalTable: "Workouts",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_User_Halls_HallId",

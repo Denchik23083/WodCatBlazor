@@ -10,7 +10,5 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService
         IEnumerable<WorkoutsExercises> GetAllWorkoutsExercises(int id);
 
         Workouts GetWorkout(int workoutId);
-
-        string GetImage(int? imageId);
     }
 }

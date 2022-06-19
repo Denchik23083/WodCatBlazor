@@ -31,7 +31,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
 
         public bool IsShow { get; set; } = false;
 
-        public string _image = "None";
+        public string Image = "None";
 
         public int Value { get; set; }
 
@@ -114,7 +114,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
             HallTypes.Add(new() { Content = item, Value = item });
         }
 
-        public void Image(ChangeEventArgs e)
+        public void SelectedImage(ChangeEventArgs e)
         {
             var selected = e.Value?.ToString();
 
@@ -126,7 +126,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
 
             var hallEmblem = HallEmblem.FirstOrDefault(b => b.Image == selected);
 
-            _image = selected;
+            Image = selected;
 
             if (hallEmblem is not null)
             {

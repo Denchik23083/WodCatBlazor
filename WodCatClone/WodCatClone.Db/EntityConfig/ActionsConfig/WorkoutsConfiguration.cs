@@ -19,9 +19,9 @@ namespace WodCatClone.Db.EntityConfig.ActionsConfig
             builder.Property(_ => _.Minutes).IsRequired();
             builder.Property(_ => _.Seconds).IsRequired();
 
-            builder.HasOne(_ => _.EmblemHall)
+            builder.HasOne(_ => _.Halls)
                 .WithMany()
-                .HasForeignKey(_ => _.EmblemHallId);
+                .HasForeignKey(_ => _.HallId);
         }
     }
 }
