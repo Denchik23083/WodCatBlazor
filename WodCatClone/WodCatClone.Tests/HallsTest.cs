@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using WodCatClone.Db;
 using WodCatClone.Db.Entities.Actions;
@@ -14,22 +13,24 @@ namespace WodCatClone.Tests
         public void GetAllHallsTest()
         {
             var context = new TestsWodCatCloneDbContext();
+            var expectedHalls = 5;
 
             var halls = context.Halls;
             Assert.NotNull(halls);
 
-            Assert.Equal(5, halls.Count());
+            Assert.Equal(expectedHalls, halls.Count());
         }
 
         [Fact]
         public void GetAllHallEmblemTest()
         {
             var context = new TestsWodCatCloneDbContext();
-
+            var expectedHallEmblem = 5;
+            
             var hallEmblem = context.HallEmblem;
             Assert.NotNull(hallEmblem);
 
-            Assert.Equal(5, hallEmblem.Count());
+            Assert.Equal(expectedHallEmblem, hallEmblem.Count());
         }
 
         [Fact]
@@ -37,14 +38,16 @@ namespace WodCatClone.Tests
         {
             var context = new TestsWodCatCloneDbContext();
             var id = 2;
+            var countUser = 0;
+
+            var countUsers = context.Users.Where(b => b.HallId == id);
+            Assert.NotNull(countUsers);
 
             var hall = context.Halls.FirstOrDefault(b => b.Id == id);
             Assert.NotNull(hall);
+            Assert.Equal(id, hall.Id);
 
-            var users = context.Users.Where(b => b.HallId == id);
-            Assert.NotNull(users);
-
-            Assert.Equal(1, users.Count());
+            Assert.Equal(countUser, countUsers.Count());
         }
 
         [Fact]
@@ -75,23 +78,6 @@ namespace WodCatClone.Tests
             
             Assert.Equal(id, hallEmblem.Id);
             Assert.Equal(image, hallEmblem.Image);
-        }
-
-        [Fact]
-        public void AthleteTest()
-        {
-            var context = new TestsWodCatCloneDbContext();
-            var id = 2;
-            var countUser = 1;
-
-            var countUsers = context.Users.Where(b => b.HallId == id);
-            Assert.NotNull(countUsers);
-
-            var hall = context.Halls.FirstOrDefault(b => b.Id == id);
-            Assert.NotNull(hall);
-            Assert.Equal(id, hall.Id);
-
-            Assert.Equal(countUser, countUsers.Count());
         }
 
         [Fact]
@@ -214,7 +200,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void RemoveArticleTest()
+        public void RemoveHallTest()
         {
             var context = new TestsWodCatCloneDbContext();
 

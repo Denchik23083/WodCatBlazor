@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WodCatClone.Db;
 
-namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
+namespace WodCatClone.Db.Migrations.WodCatClone
 {
-    [DbContext(typeof(TestsWodCatCloneDbContext))]
-    [Migration("20220619063016_init")]
+    [DbContext(typeof(WodCatCloneContext))]
+    [Migration("20220619071251_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1027,13 +1027,11 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                             Country = "Ukraine",
                             Email = "deniskudravov228@gmail.com",
                             GenderId = 1,
-                            HallId = 2,
                             Height = "185",
                             Name = "Денис",
                             NickName = "SoEasyBlef",
                             Password = "0000",
                             Points = 185,
-                            ProgramsId = 2,
                             Surname = "Кудрявов",
                             Town = "Херсон",
                             Weight = "70"

@@ -541,9 +541,7 @@ namespace WodCatClone.Db
                     Height = "185",
                     Weight = "70",
                     AboutMe = "I am a developer C#",
-                    GenderId = 1,
-                    HallId = null,
-                    ProgramsId = null
+                    GenderId = 1
                 });
 
             modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);

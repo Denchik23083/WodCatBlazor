@@ -18,16 +18,6 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService
             return _repository.GetAllResultWorkouts(id);
         }
 
-        public ResultWorkouts GetResultWorkouts(int id)
-        {
-            return _repository.GetResultWorkouts(id);
-        }
-
-        public int GetCountResultWorkouts(int id)
-        {
-            return _repository.GetCountResultWorkouts(id);
-        }
-
         public bool AddResultWorkouts(ResultWorkouts resultWorkouts)
         {
             resultWorkouts.UserId = AuthService.AuthService.User.Id;

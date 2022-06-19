@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.HallsService;
@@ -41,7 +42,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
                 Image = HallsService.GetImage(Hall.EmblemHallId);
             }
             WorkoutsCategory = Workouts.Category.Split(",");
-            ResultWorkoutsCount = ResultWorkoutsService.GetCountResultWorkouts(Workouts.Id);
+            ResultWorkoutsCount = ResultWorkoutsService.GetAllResultWorkouts(Workouts.Id).Count();
             WorkoutsExercises = WorkoutsService.GetAllWorkoutsExercises(Workouts.Id);
         }
 
@@ -51,7 +52,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
             Hall = HallsService.GetHall(Workouts.HallId);
             Image = HallsService.GetImage(Hall.EmblemHallId);
             WorkoutsCategory = Workouts.Category.Split(",");
-            ResultWorkoutsCount = ResultWorkoutsService.GetCountResultWorkouts(Workouts.Id);
+            ResultWorkoutsCount = ResultWorkoutsService.GetAllResultWorkouts(Workouts.Id).Count();
             WorkoutsExercises = WorkoutsService.GetAllWorkoutsExercises(Workouts.Id);
         }
 

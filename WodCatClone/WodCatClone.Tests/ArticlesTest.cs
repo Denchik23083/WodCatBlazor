@@ -12,22 +12,24 @@ namespace WodCatClone.Tests
         public void GetAllArticlesTest()
         {
             var context = new TestsWodCatCloneDbContext();
+            var expectedArticles = 5;
 
             var articles = context.Articles;
             Assert.NotNull(articles);
 
-            Assert.Equal(5, articles.Count());
+            Assert.Equal(expectedArticles, articles.Count());
         }
 
         [Fact]
         public void GetAllArticlesEmblemTest()
         {
             var context = new TestsWodCatCloneDbContext();
+            var expectedArticlesEmblem = 5;
 
             var articlesEmblem = context.ArticlesEmblem;
             Assert.NotNull(articlesEmblem);
 
-            Assert.Equal(5, articlesEmblem.Count());
+            Assert.Equal(expectedArticlesEmblem, articlesEmblem.Count());
         }
 
         [Fact]

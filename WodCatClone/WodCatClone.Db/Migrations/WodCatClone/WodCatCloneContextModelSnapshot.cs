@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WodCatClone.Db;
 
-namespace WodCatClone.Db.Migrations
+namespace WodCatClone.Db.Migrations.WodCatClone
 {
     [DbContext(typeof(WodCatCloneContext))]
     partial class WodCatCloneContextModelSnapshot : ModelSnapshot

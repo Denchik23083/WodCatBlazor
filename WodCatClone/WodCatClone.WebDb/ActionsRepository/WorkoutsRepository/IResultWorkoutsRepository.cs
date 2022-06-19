@@ -7,10 +7,6 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
     {
         IEnumerable<ResultWorkouts> GetAllResultWorkouts(int id);
 
-        ResultWorkouts GetResultWorkouts(int id);
-
-        int GetCountResultWorkouts(int id);
-
         bool AddResultWorkouts(ResultWorkouts resultWorkouts);
 
         bool EditResultWorkouts(ResultWorkouts resultWorkouts, int id);

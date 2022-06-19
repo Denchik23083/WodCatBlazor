@@ -9,16 +9,17 @@ namespace WodCatClone.Tests
     public class AuthUserTest
     {
         public static bool IsLoginUser;
-        public static User User;
 
         [Fact]
         public void LoginTest()
         {
             var context = new TestsWodCatCloneDbContext();
-            HelperLoginFunction(context);
+            
+            var user = HelperUserLogin(context);
+            HelperIsLoginFunction(context);
 
+            Assert.NotNull(user);
             Assert.True(IsLoginUser);
-            Assert.NotNull(User);
         }
 
         [Fact]
@@ -53,6 +54,8 @@ namespace WodCatClone.Tests
                 }
             }
 
+            var all = context.Users;
+
             var registeredUser = context.Users.FirstOrDefault(l => l.Email == registerUser.Email &&
                                                                    l.Password == registerUser.Password);
             Assert.NotNull(registeredUser);
@@ -69,10 +72,8 @@ namespace WodCatClone.Tests
         [Fact]
         public void LogoutTest()
         {
-            User = null;
             IsLoginUser = false;
 
-            Assert.Null(User);
             Assert.False(IsLoginUser);
         }
 
@@ -80,18 +81,20 @@ namespace WodCatClone.Tests
         public void GetAllUsersTest()
         {
             var context = new TestsWodCatCloneDbContext();
+            var expectedUsers = 1;
 
             var users = context.Users;
             Assert.NotNull(users);
 
-            Assert.Equal(1, users.Count());
+            Assert.Equal(expectedUsers, users.Count());
         }
 
         [Fact]
         public void IsLoginUserTest()
         {
             var context = new TestsWodCatCloneDbContext();
-            HelperLoginFunction(context);
+
+            HelperIsLoginFunction(context);
 
             Assert.True(IsLoginUser);
         }
@@ -100,11 +103,9 @@ namespace WodCatClone.Tests
         public void GetUserTest()
         {
             var context = new TestsWodCatCloneDbContext();
-            HelperLoginFunction(context);
 
             var user = HelperUserLogin(context);
 
-            Assert.NotNull(User);
             Assert.NotNull(user);
         }
 
@@ -112,7 +113,6 @@ namespace WodCatClone.Tests
         public void GetGenderTest()
         {
             var context = new TestsWodCatCloneDbContext();
-            HelperLoginFunction(context);
 
             var loginUser = HelperUserLogin(context);
 
@@ -135,10 +135,10 @@ namespace WodCatClone.Tests
                 Surname = "de Santa",
                 Birthday = new DateTime(2013, 09, 17),
                 NickName = "GTA5",
-                Email = "foo@gmail.com",
+                Email = "foo2@gmail.com",
                 Password = "0000",
                 Country = "Ukraine",
-                HallId = 1,
+                GenderId = 1,
             };
 
             context.Users.Add(newUser);
@@ -150,9 +150,9 @@ namespace WodCatClone.Tests
                 Surname = "de Santa2",
                 Birthday = new DateTime(2013, 09, 17),
                 NickName = "GTA52",
-                Email = "foo@gmail.com",
+                Email = "foo2@gmail.com",
                 Password = "0000",
-                HallId = 1,
+                GenderId = 1,
             };
 
             var testUserEdit = context.Users.FirstOrDefault(l => l.Email == newUser.Email &&
@@ -205,9 +205,9 @@ namespace WodCatClone.Tests
                 Birthday = new DateTime(2013, 09, 17),
                 NickName = "GTA5",
                 Country = "Ukraine",
-                Email = "foo@gmail.com",
+                Email = "foo3@gmail.com",
                 Password = "0000",
-                HallId = 1,
+                GenderId = 1,
             };
 
             context.Users.Add(newUser);
@@ -216,7 +216,7 @@ namespace WodCatClone.Tests
             var newAuth = new User
             {
                 NickName = "GTA52",
-                Email = "foo@gmail.com2",
+                Email = "foo3@gmail.com",
                 Password = "0000",
             };
 
@@ -255,9 +255,9 @@ namespace WodCatClone.Tests
                 Country = "Ukraine",
                 Birthday = new DateTime(2013, 09, 17),
                 NickName = "GTA5",
-                Email = "foo@gmail.com",
+                Email = "foo4@gmail.com",
                 Password = "0000",
-                HallId = 1,
+                GenderId = 1,
             };
 
             context.Users.Add(newUser);
@@ -278,38 +278,89 @@ namespace WodCatClone.Tests
         [Fact]
         public void JoinTest()
         {
-            var newHallId = 2;
-
             var context = new TestsWodCatCloneDbContext();
-            HelperLoginFunction(context);
-            User.HallId = newHallId;
 
-            var dbUser = HelperUserLogin(context);
-            dbUser.HallId = newHallId;
+            var newUser = new User
+            {
+                Name = "Michael",
+                Surname = "de Santa",
+                Birthday = new DateTime(2013, 09, 17),
+                NickName = "GTA5",
+                Country = "Ukraine",
+                Email = "foo5@gmail.com",
+                Password = "0000",
+                GenderId = 1,
+            };
+
+            context.Users.Add(newUser);
             context.SaveChanges();
 
-            Assert.NotNull(dbUser);
-            Assert.Equal(newHallId, User.HallId);
-            Assert.Equal(newHallId, dbUser.HallId);
+            var testUserEdit = context.Users.FirstOrDefault(l => l.Email == newUser.Email &&
+                                                                 l.Password == newUser.Password);
+            Assert.NotNull(testUserEdit);
+
+            var newHallId = 2;
+            testUserEdit.HallId = newHallId;
+
+            context.SaveChanges();
+
+            var testUserAfterEdit = context.Users.FirstOrDefault(l => l.Email == testUserEdit.Email &&
+                                                                 l.Password == testUserEdit.Password);
+            Assert.NotNull(testUserAfterEdit);
+
+            Assert.Equal(newHallId, testUserAfterEdit.HallId);
+
+            context.Users.Remove(testUserAfterEdit);
+            context.SaveChanges();
+
+            var testUserAfterRemove = context.Users.FirstOrDefault(l => l.Email == testUserEdit.Email &&
+                                                                      l.Password == testUserEdit.Password);
+            Assert.Null(testUserAfterRemove);
         }
 
         [Fact]
         public void ExitTest()
         {
             var context = new TestsWodCatCloneDbContext();
-            HelperLoginFunction(context);
-            User.HallId = null;
 
-            var dbUser = HelperUserLogin(context);
-            dbUser.HallId = null;
+            var newUser = new User
+            {
+                Name = "Michael2",
+                Surname = "de Santa",
+                Birthday = new DateTime(2013, 09, 17),
+                NickName = "GTA5",
+                Country = "Ukraine",
+                Email = "foo6@gmail.com",
+                Password = "0000",
+                GenderId = 1,
+            };
+
+            context.Users.Add(newUser);
             context.SaveChanges();
 
-            Assert.NotNull(dbUser);
-            Assert.Null(User.HallId);
-            Assert.Null(dbUser.HallId);
+            var testUserEdit = context.Users.FirstOrDefault(l => l.Email == newUser.Email &&
+                                                                 l.Password == newUser.Password);
+            Assert.NotNull(testUserEdit);
+            
+            testUserEdit.HallId = null;
+
+            context.SaveChanges();
+
+            var testUserAfterEdit = context.Users.FirstOrDefault(l => l.Email == testUserEdit.Email &&
+                                                                      l.Password == testUserEdit.Password);
+            Assert.NotNull(testUserAfterEdit);
+
+            Assert.Null(testUserAfterEdit.HallId);
+
+            context.Users.Remove(testUserAfterEdit);
+            context.SaveChanges();
+
+            var testUserAfterRemove = context.Users.FirstOrDefault(l => l.Email == testUserAfterEdit.Email &&
+                                                                        l.Password == testUserAfterEdit.Password);
+            Assert.Null(testUserAfterRemove);
         }
 
-        private void HelperLoginFunction(TestsWodCatCloneDbContext context)
+        private void HelperIsLoginFunction(TestsWodCatCloneDbContext context)
         {
             var login = new Login
             {
@@ -320,16 +371,7 @@ namespace WodCatClone.Tests
             var user = context.Users.FirstOrDefault(l => l.Email == login.Email &&
                                                          l.Password == login.Password);
 
-            if (user is null)
-            {
-                IsLoginUser = false;
-                User = null;
-            }
-            else
-            {
-                IsLoginUser = true;
-                User = user;
-            }
+            IsLoginUser = user is not null;
         }
 
         private User HelperUserLogin(TestsWodCatCloneDbContext context)

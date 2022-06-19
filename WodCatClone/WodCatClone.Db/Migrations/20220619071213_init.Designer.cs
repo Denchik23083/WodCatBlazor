@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WodCatClone.Db;
 
-namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
+namespace WodCatClone.Db.Migrations
 {
     [DbContext(typeof(TestsWodCatCloneDbContext))]
-    partial class TestsWodCatCloneDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220619071213_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1025,13 +1027,11 @@ namespace WodCatClone.Db.Migrations.TestsWodCatCloneDb
                             Country = "Ukraine",
                             Email = "deniskudravov228@gmail.com",
                             GenderId = 1,
-                            HallId = 2,
                             Height = "185",
                             Name = "Денис",
                             NickName = "SoEasyBlef",
                             Password = "0000",
                             Points = 185,
-                            ProgramsId = 2,
                             Surname = "Кудрявов",
                             Town = "Херсон",
                             Weight = "70"

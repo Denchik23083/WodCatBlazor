@@ -10,11 +10,12 @@ namespace WodCatClone.Tests
         public void GetAllExercisesTest()
         {
             var context = new TestsWodCatCloneDbContext();
+            var expectedExercises = 12;
 
             var exercises = context.Exercises;
 
             Assert.NotNull(exercises);
-            Assert.Equal(12, exercises.Count());
+            Assert.Equal(expectedExercises, exercises.Count());
         }
 
         [Fact]

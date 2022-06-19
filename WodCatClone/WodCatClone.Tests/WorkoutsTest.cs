@@ -13,11 +13,12 @@ namespace WodCatClone.Tests
         public void GetAllWorkoutsTest()
         {
             var context = new TestsWodCatCloneDbContext();
+            var expectedWorkouts = 3;
 
             var workouts = context.Workouts;
             Assert.NotNull(workouts);
 
-            Assert.Equal(3, workouts.Count());
+            Assert.Equal(expectedWorkouts, workouts.Count());
         }
 
         [Fact]
@@ -25,11 +26,12 @@ namespace WodCatClone.Tests
         {
             var context = new TestsWodCatCloneDbContext();
             var id = 2;
+            var expectedWorkoutsExercises = 11;
 
             var workoutsExercises = context.WorkoutsExercises.Where(b => b.WorkoutsId == id);
             Assert.NotNull(workoutsExercises);
 
-            Assert.Equal(11, workoutsExercises.Count());
+            Assert.Equal(expectedWorkoutsExercises, workoutsExercises.Count());
         }
 
         [Fact]
@@ -48,21 +50,12 @@ namespace WodCatClone.Tests
         public void GetAllResultWorkoutsTest()
         {
             var context = new TestsWodCatCloneDbContext();
+            var expectedResultWorkouts = 0;
 
             var resultWorkouts = context.ResultWorkouts;
             Assert.NotNull(resultWorkouts);
 
-            Assert.Equal(0, resultWorkouts.Count());
-        }
-
-        [Fact]
-        public void GetCountResultWorkoutsTest()
-        {
-            var context = new TestsWodCatCloneDbContext();
-            var id = 2;
-
-            var resultWorkouts = context.ResultWorkouts.Count(b => b.WorkoutId == id);
-            Assert.Equal(0, resultWorkouts);
+            Assert.Equal(expectedResultWorkouts, resultWorkouts.Count());
         }
 
         [Fact]
