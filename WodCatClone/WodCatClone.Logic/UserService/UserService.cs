@@ -68,19 +68,5 @@ namespace WodCatClone.Logic.UserService
         {
             return _repository.UpdateAuth(updateUser, id);
         }
-
-        public void Join(int hallId)
-        {
-            AuthService.AuthService.User.HallId = hallId;
-
-            _repository.Join(hallId);
-        }
-
-        public void Exit(int hallId)
-        {
-            AuthService.AuthService.User.HallId = null;
-
-            _repository.Exit(hallId);
-        }
     }
 }

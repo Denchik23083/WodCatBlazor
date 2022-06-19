@@ -76,14 +76,24 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 
         public void Join()
         {
-            UserService.Join(Hall.Id);
-            Athletes = HallsService.Athlete(Hall.Id);
+            var result = HallsService.JoinHall(Hall.Id, User);
+
+            if (result)
+            {
+                Athletes = HallsService.Athlete(Hall.Id);
+                NavigationManager.NavigateTo($"/gymboxs/{HallId}");
+            }
         }
         
         public void Exit()
         {
-            UserService.Exit(Hall.Id);
-            Athletes = HallsService.Athlete(Hall.Id);
+            var result = HallsService.ExitHall(Hall.Id, User);
+
+            if (result)
+            {
+                Athletes = HallsService.Athlete(Hall.Id);
+                NavigationManager.NavigateTo($"/gymboxs/{HallId}");
+            }
         }
 
         public void DisplayWorkout()

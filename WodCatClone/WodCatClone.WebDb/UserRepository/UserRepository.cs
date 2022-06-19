@@ -115,23 +115,5 @@ namespace WodCatClone.WebDb.UserRepository
 
             return true;
         }
-
-        public void Join(int hallId)
-        {
-            var user = _context.Users.FirstOrDefault(b => b.Id == User.Id);
-
-            user!.HallId = hallId;
-
-            _context.SaveChanges();
-        }
-        
-        public void Exit(int hallId)
-        {
-            var user = _context.Users.FirstOrDefault(b => b.Id == User.Id);
-
-            user!.HallId = null;
-
-            _context.SaveChanges();
-        }
     }
 }

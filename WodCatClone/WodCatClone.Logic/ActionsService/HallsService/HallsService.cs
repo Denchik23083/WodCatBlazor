@@ -71,6 +71,20 @@ namespace WodCatClone.Logic.ActionsService.HallsService
             return _repository.RemoveHall(hallId);
         }
 
+        public bool JoinHall(int hallId, User user)
+        {
+            AuthService.AuthService.User.HallId = hallId;
+
+            return _repository.JoinHall(hallId, user);
+        }
+
+        public bool ExitHall(int hallId, User user)
+        {
+            AuthService.AuthService.User.HallId = null;
+
+            return _repository.ExitHall(hallId, user);
+        }
+
         public int Athlete(int hallId)
         {
             var users = _userRepository.GetAllUsers();

@@ -24,6 +24,10 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
 
         bool RemoveHall(int hallId);
 
+        bool JoinHall(int hallId, User user);
+
+        bool ExitHall(int hallId, User user);
+
         int Athlete(IEnumerable<User> users, int hallId);
     }
 }

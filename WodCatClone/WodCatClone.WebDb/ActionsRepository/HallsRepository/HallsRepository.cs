@@ -119,6 +119,38 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
             return true;
         }
 
+        public bool JoinHall(int hallId, User user)
+        {
+            var loginUser = _context.Users.FirstOrDefault(b => b.Id == user.Id);
+
+            if (loginUser is null)
+            {
+                return false;
+            }
+
+            loginUser.HallId = hallId;
+
+            _context.SaveChanges();
+
+            return true;
+        }
+
+        public bool ExitHall(int hallId, User user)
+        {
+            var loginUser = _context.Users.FirstOrDefault(b => b.Id == user.Id);
+
+            if (loginUser is null)
+            {
+                return false;
+            }
+
+            loginUser.HallId = null;
+
+            _context.SaveChanges();
+
+            return true;
+        }
+
         public int Athlete(IEnumerable<User> users, int hallId)
         {
             var hallUsers = users.Count(b => b.HallId == hallId);
