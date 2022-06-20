@@ -19,7 +19,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
 
         [Parameter] public int ArticleId { get; set; }
 
-        public IEnumerable<ArticlesEmblem> ArticlesEmblem { get; set; }
+        public IEnumerable<ArticleEmblem> ArticleEmblem { get; set; }
 
         public Articles Article = new();
 
@@ -50,7 +50,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
 
         protected override void OnInitialized()
         {
-            ArticlesEmblem = ArticlesService.GetAllArticlesEmblem();
+            ArticleEmblem = ArticlesService.GetAllArticleEmblem();
         }
 
         public void AddArticleType(string selected)
@@ -103,13 +103,13 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
         {
             var selected = e.Value?.ToString();
 
-            var articlesEmblem = ArticlesEmblem.FirstOrDefault(b => b.Image == selected);
+            var articleEmblem = ArticleEmblem.FirstOrDefault(b => b.Image == selected);
 
             Image = selected;
 
-            if (articlesEmblem is not null)
+            if (articleEmblem is not null)
             {
-                Article.ArticlesEmblemId = articlesEmblem.Id;
+                Article.ArticleEmblemId = articleEmblem.Id;
                 IsImage = true;
             }
 

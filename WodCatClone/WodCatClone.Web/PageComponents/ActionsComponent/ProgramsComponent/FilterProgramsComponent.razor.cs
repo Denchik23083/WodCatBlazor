@@ -2,7 +2,6 @@
 using System.Linq;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
-using WodCatClone.Logic.ActionsService.ExercisesService;
 using WodCatClone.Logic.ActionsService.ProgramsService;
 using WodCatClone.Web.Helpers;
 
@@ -29,6 +28,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
             new() { Content = "На силу", Filter = "На силу" },
             new() { Content = "Набор мышечной массы", Filter = "Набор мышечной массы" },
             new() { Content = "Fitness", Filter = "Fitness" },
+            new() { Content = "Performance", Filter = "Performance" },
         };
 
         void Filter()
@@ -39,7 +39,6 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
             {
                 Programs = Programs.Where(b => b.Type.Equals(_filterType)).ToList();
             }
-
             if (_filterAim != "None")
             {
                 Programs = Programs.Where(b => b.Aim.Equals(_filterAim)).ToList();

@@ -24,12 +24,12 @@ namespace WodCatClone.Db
                 new Gender { Id = 1, Name = "Мужской", Image = "img/man.png" },
                 new Gender { Id = 2, Name = "Женский", Image = "img/woman.png" });
 
-            modelBuilder.Entity<ArticlesEmblem>().ToTable("ArticlesEmblem").HasData(
-                new ArticlesEmblem { Id = 1, Name = "Buildhome", Image = "img/EmblemArticles/buildhome.png" },
-                new ArticlesEmblem { Id = 2, Name = "Functional", Image = "img/EmblemArticles/Functional.png" },
-                new ArticlesEmblem { Id = 3, Name = "OvercomeDoubt", Image = "img/EmblemArticles/OvercomeDoubt.png" },
-                new ArticlesEmblem { Id = 4, Name = "TwoMen", Image = "img/EmblemArticles/TwoMen.png" },
-                new ArticlesEmblem { Id = 5, Name = "Provides", Image = "img/EmblemArticles/provides.png" });
+            modelBuilder.Entity<ArticleEmblem>().ToTable("ArticleEmblem").HasData(
+                new ArticleEmblem { Id = 1, Name = "Buildhome", Image = "img/EmblemArticles/buildhome.png" },
+                new ArticleEmblem { Id = 2, Name = "Functional", Image = "img/EmblemArticles/Functional.png" },
+                new ArticleEmblem { Id = 3, Name = "OvercomeDoubt", Image = "img/EmblemArticles/OvercomeDoubt.png" },
+                new ArticleEmblem { Id = 4, Name = "TwoMen", Image = "img/EmblemArticles/TwoMen.png" },
+                new ArticleEmblem { Id = 5, Name = "Provides", Image = "img/EmblemArticles/provides.png" });
 
             modelBuilder.Entity<HallEmblem>().ToTable("HallEmblem").HasData(
                 new HallEmblem { Id = 1, Name = "Dog", Image = "img/EmblemHalls/Dog.png" },
@@ -37,6 +37,13 @@ namespace WodCatClone.Db
                 new HallEmblem { Id = 3, Name = "Olimp", Image = "img/EmblemHalls/Olimp.png" },
                 new HallEmblem { Id = 4, Name = "BlasArea", Image = "img/EmblemHalls/BlasArea.png" },
                 new HallEmblem { Id = 5, Name = "Banda", Image = "img/EmblemHalls/Banda.png" });
+
+            modelBuilder.Entity<ProgramEmblem>().ToTable("ProgramEmblem").HasData(
+                new ProgramEmblem { Id = 1, Name = "BallMan", Image = "img/EmblemPrograms/BallMan.png" },
+                new ProgramEmblem { Id = 2, Name = "GymMan", Image = "img/EmblemPrograms/GymMan.png" },
+                new ProgramEmblem { Id = 3, Name = "Men", Image = "img/EmblemPrograms/Men.png" },
+                new ProgramEmblem { Id = 4, Name = "NRC", Image = "img/EmblemPrograms/NRC.png" },
+                new ProgramEmblem { Id = 5, Name = "Wod", Image = "img/EmblemPrograms/Wod.png" });
 
             modelBuilder.Entity<Question>().ToTable("Question").HasData(
                 new Question { Id = 1, Name = "Как добавить результат о тренировке?", AnswerId = 1 },
@@ -57,7 +64,7 @@ namespace WodCatClone.Db
                     + "Barbell – This is the most important piece of equipment you will have in your arsenal.Training trends come and go, but old school barbell strength training is timeless and extremely effective. Master these 3 movements and you will have 80 % of what you need for strength training to serve your needs for decades: Back Squat, Deadlift, Overhead Press.Grow from there into Power Cleans, Front Squats, and Thrusters.And if you discover a passion for barbell training, you’ll likely find yourself diving into the technique work required for Overhead Squats, Cleans, and Snatch.You get what you pay for, so invest in a quality bar.Check out Rogue’s Ohio Bar as a high quality starter and consider upgrade options from there only if you get very serious about Olympic Lifting.For women or anyone with smaller hands, consider a 25mm version, and for kids, newbie and rehab use, check out this option.I only wanted one barbell for our small training space at home, so I opted for the 15kg Bella Bar, which works perfectly for either of us.Super Saver Option: buy a used bar from a CrossFit gym that is going out of business or when a college or fitness center upgrades equipment.Don’t forget collars – You can get the Rogue Fitness HG collars, Rogue OSU, or a pair of good old spring collars.Squat Stand or Rack – There are many different variation for this important piece of equipment.Rogue has created some very innovative designs recently.I love their Monster Lite Fold Back Racks.If I had the right space for this, it’s exactly what I’d buy.If space is no concern and you want to lift heavy with maximum safety options, then have a look at a Power Rack.The first piece of equipment I bought for my first gym location was a Power Rack R - 3.For my home gym, I wanted flexibility and the option to carry the stands outside, so I opted for the S-4 model.It’s super stable and handles everything I throw at it.Super Saver Option: My very first squat stands were a pair of cheap construction stands from the local home improvement store.They weren’t elegant and not especially stable, but they did the job until I could afford stable, safer stands."
                     + "Bumper Plates – Invest in bumper plates and you won’t regret it for home use, especially if you get more into Olympic weightlifting movements. Buy the max weight you’ll realistically need and add weight if and when the time comes. I have 120kg / 265lbs of weights, as I don’t expect to ever need more than that for home use and don’t want extra plates taking up space.My favorite bumpers are Rogue HG.If you go cheap on bumpers, they won’t last and you’ll regret it.Super Saver Option: Same as with barbells: going out of business sales, upgrading equipment, etc.Kettlebells: There is some much you can do with power and strength training, as well as conditioning, with kettlebells. That’s what puts them on the must - have list.I recommend starting light, in the 12kg / 25lb range and then working your way up. My go-to kettlebell is a 53lb / 24KG Rogue Competition model. I have only 3 kettlebells in my home gym: 12kg(25lb), 16kg(35lb), and 24kg(55lb).My advice is to buy high quality kettlebells.These are heavy devices and not easy to get rid of.My first few kettlebells have terrible handles and I regret buying them.Super Saver Option: Same as with barbells and bumper plates. You may more easily find cheap used dumbbells, so start there if no cheap kettlebell options exist in your area.Important Items NOT on the Must Have ListI left off some important training equipment intentionally, as a tight budget means making tough choices. For example, a Bench is on the Nice - to - Have list.You can do floor press instead of bench press and standing overhead press instead of a seated press and wait until you’ve go the cash for a bench. Same goes for pull - ups(you can do pull - ups from a barbell placed on your squat stands).Nice - to - Have EquipmentThis list is where I’d spend hard - earned money once the must-haves are in your house.Sandbag: This is a great all - around training tool. It is simple and effective.You can buy them in all sizes and designs these days. If you opt to buy one, make sure the quality is high.I’ve seen too many sandbags bust open in real - world training.Get a good one or make one yourself that will last."
                     + "Super Saver Option: Here’s a How - to guide on making your own and some suggested sandbag workouts.Bench: simple is good.Simple and strong: even better. I recommend the Rogue Bolt Together Utility Bench. In addition to bench press and seated overhead press, you can also use a bench for core work and box step - ups(if you don’t have a plyo box).Super Saver Option: Pick up a used bench or build a very basic DIY bench yourself.Rings: If I had to choose rings over a pull - up rig, I’d choose rings any day.You can hang rings from the ceiling, from trees and other features outside, and from a barbell placed on your squat stands or rack. You can do most of the fundamental TRX movements with rings, as well as pull - ups and dips. I love classic wooden gymnastics rings. I drilled into the thick concrete ceiling of my balcony to mount my rings. Sure, get a TRX too, but make sure you’ve got rings in the gym first.Pull - up Rig: If you’ve got a place for it, then go for it.Use bands to scale the movement so that you can perform it with proper form while building strength.You can mount a pull - up bar on the wall or ceiling, use a portable system that you can hang from various things or go with a doorway option.Jump Rope: Simple, portable, great for metabolic conditioning (try 5 rounds of 90sec rope skipping + 10 burpees + 10 sit - ups for a great little workout).I have a collection of ropes for different workout types, including a custom RX, a Rogue SR - 3, and a Rogue Heavy Rope.AbMat: Lots of improvements since the first generation of these great little pieces of equipment.I have a first gen AbMat, as well as a new Wise Crack — which I’ve tested on Annie and highly endorse if you’ve ever dealt with a case of CrossFit sit - up butt rub!",
-                    ArticlesEmblemId = 1
+                    ArticleEmblemId = 1
                 },
                 new Articles
                 {
@@ -70,7 +77,7 @@ namespace WodCatClone.Db
                     + "The deadlift should be a staple for not only increasing performance but also overall resiliency.Almost every job in any tactical field(e.g., police, fire, military) requires stabilization of the trunk while expressing large amounts of force through the lower extremities. There are few exercises that will activate trunk muscles like the deadlift because it requires the entire body to be engaged for proper completion. The deadlift requires the upper and lower extremities to move or stabilize the bar, which engages a large number of motor units and muscles fibers simultaneously.There are a few key pointers that advanced coaches and lifters can use in order to achieve excellent results while reducing the risk of injury and promoting safe motor patterns.The remainder of this article will present four of the most important tips for deadlifting from an anecdotal base to not only increase performance, but also to decrease injury rates in tactical populations.TIP 1 | Head Posture: The Head Needs To Be Looking Slightly UpwardThere has been a lot of debate with this topic, but keeping the head looking slightly upward allows the shoulders to stay back and the spine to stay in a more erect, and neutral, position.Half of the battle with performing near - maximal deadlifts and doing it safely is keeping the back as neutral as possible with the head in a more upright position, which keeps the hips and leg extensors working at the same time.Often if the head falls forward or the eyes drift downward while performing the lift, it can cause the weight to be distributed over the leg extensors and reduce the involvement of the hips and posterior chain.It has been debated that a “head up” position can cause cervical spine issues, but research is currently lacking to warrant such concern. Hundreds, if not thousands, of powerlifters have lifted this way for many years, and cervical spine injury has not become an epidemic in this population, or been at a high enough prevalence to cause concern.A more vertical, and neutral, back position allows for increased hip drive, which can be better utilized with the head looking slightly upward.From experience, often a slightly upward head angle results in better deadlift form.TIP 2 | Lat Activation: The Lats Need to Engage First"
                     + "This allows the bar path to be as close to the legs as possible.By contracting the lats first, the bar stays closer to the lower extremities and gives the hips and legs more leverage to perform the task.The further the bar is away from the legs, the more the lower back has to activate to perform the lift.A great deadlift should leave marks on the shins.This indicates that the bar was as close to the lower extremities as possible, and the bar weight was kept as close as possible to the lifter’s center of mass.This activation of the lats can create a posture that is advantageous to lifting large loads safely by creating tension on the bar prior to initiating the lift.Advanced lifters may actually try to bend the bar with the lats while the barbell is on the ground, to ensure the bar stays close to the body.This preliminary activation of the lats also reduces the tendency for the shoulders to drop, keeping the thoracic and lumbar spine more vertical and less likely to round.TIP 3 | Knee Motion Cues: Regardless of Position(Sumo, Conventional, or Some Variation) Always Try to Push the Knees ApartPushing the knees apart throughout the deadlift can help the glutes remain active during the lift.When first learning, most people will tend to use all quads, hamstrings, and spinal erectors to pull the weight up off the ground.By driving the knees apart, the glute medius will be triggered to stabilize the pelvis and help the posterior chain to maximize hip extension.This is crucial with not only coaching, but also lifting larger loads(i.e., 80 % of one repetition maximum[1RM] or higher).This key coaching cue can allow the athlete to lift more weight by including more muscle groups throughout the entire lift.Another helpful tip is to try to spread the floor with the feet.This lateral pressure can force the knees outward and ensure a strong supportive base from which to lift.TIP 4 | Positional Weakness: Train Your Weakest PositionMany times when an athlete first starts to deadlift, one position feels more natural or stronger(usually conventional) than others. An athlete will tend to gravitate towards this stronger position naturally.However, it can be very helpful to focus on the position that feels weaker and more awkward for long - term improvement.For my tactical athletes and general clients, it is valuable for them to become proficient in sumo deadlifting before utilizing a conventional stance.There are a few reasons for this:"
                     + "It teaches the lifter to use the hips primarily, which can reduce the risk of excessive lumber flexion under load.Hip strength and mobility are crucial in general performance.One of the main indicators of future lower back problems and / or health is hip mobility. Completing sumo deadlifts correctly can aid in developing strong hips, as well as improving mobility.From experience, sumo deadlifts can actually help one learn to pull conventional deadlifts correctly, by first addressing hip mobility and learning how to maximally activate the glutes.This allows the lifter to take some pressure off the lower back and place it on the glutes.The sumo deadlift seems to be able to withstand more volume in a training block or cycle than deadlifting with a conventional stance.A logical reason for this is that the sumo stance utilizes less lower back musculature and more of the glutes.Since the glutes are larger, and more powerful, they can handle the increased training volume when compared to the lower back.From experience, the sumo deadlift can be used more frequently and with higher resistances for longer periods of time than the conventional deadlift(assuming the lifter is healthy).Hopefully this article has provided a few key tips on how to perform the deadlift more efficiently and safely.Some helpful coaching cues, like keeping the head slightly up, activating the lats, and pushing the knees out can assist a tactical athlete in executing the deadlift while increasing strength over time.",
-                    ArticlesEmblemId = 5
+                    ArticleEmblemId = 5
                 },
                 new Articles
                 {
@@ -81,7 +88,7 @@ namespace WodCatClone.Db
                     FullDescription = "Functional fitness (using functional movements) is among the most widely spread buzzwords in the gym industry today, but for logical reason. Functional fitness focuses on body training and preparing your body to handle real life scenarios.The difference between ordinary gym and functional fitness seems minor to many people but it’s actually huge. Functional fitness builds your body capability for carrying out real life activities in real time, unlike ordinary gymming where you just lift a specific weight in an idealized position, sometimes even formed by a gym machine. There’s a shift of focus from traditional and obsolete ways of body strengthening fitness to novel and more effective ways of achieving functional fitness and CrossFit is surely one of the great options available. Being fit is not the only objective of CrossFit, rather being healthy, strong and lean are the ultimate goals.CrossFit as a leading training system of athletes is known for designing and delivering the most comprehensive and high yielding fitness programs around, catering to all age groups and ability levels. With CrossFit, you will find a lot of true success stories and amazing transformations people have gone through. Functional Movement: Making the muscles work together Traditional weight training isolates muscle groups together but it doesn’t train some of the isolated groups with the others.The key to a successful functional exercise lies in integration, focusing all the muscles to work together instead of isolating them to function independently.Here’s an example of what you might consider a functional exercise: Consider a bent - over row; not the type of row you usually carry out on a seated machine, rather one that you do while leaning over a bench, having weight in one hand with arm hanging straight down, and then pulling the weight up to the extent your elbow points towards the ceiling, ending with your upper arm being parallel to the ground. This is the kind of exercise that builds your back, arms, and shoulder muscles, and due to its nature, it would really work for the entire body.Some of the foundation movements of CrossFit include air squats, front squats, shoulder press, deadlift, press push, push jerk etc."
                     + "CrossFit has designed its workouts on similar ideas that are comprised of functional movements, which also keep on changing.These include pulling, pushing, running, lifting and squatting. Many of these functional movements are executed at a high intensity.Instead of using machines like treadmills etc, CrossFit has equipped itself with kettlebells, pull - up bars, barbells and spacious open space for carrying out running, jumping, squatting, lifting, climbing and throwing.All this is tied together to move your body in the way it should. The CrossFit community has built its exercise methodology on the foundations of weight lifting, gymnastics and endurance / speed / agility - the fundamental components of functional fitness.Body balance & control Most of the people are not even able to control their body weight.They can’t even do a one legged squat without falling over. You can try it now. Can you? As stated by one of the trainers at CrossFit, your first step should be to train your body regarding balancing and controlling its own weight.CrossFit aims to enhance the physical competence of an individual in ten general physical skills. These are defined by CrossFit as:– Cardiovascular / respiratory endurance: It’s the ability of the body to store, process and transmit oxygen.– Stamina: It’s the ability of the body to store, process, transmit and consume energy.– Strength: It’s the ability of a body muscular unit, or group of muscular units, to gain force.– Flexibility: It’s the ability of the body to have maximum motion range at a particular joint.– Power: It’s the ability of a muscular unit, or group of units, to release maximum force in the least time.– Speed: It’s the ability of body to decrease the time cycle of a repeated movement to the least level.– Coordination: It’s the ability of the body to join different movements patterns into a single movement– Agility: It’s the body’s ability to reduce transition time among different movement patterns to least degree.– Balance: It’s the ability to regulate the position of the body’s centre of gravity relative to its support base.– Accuracy: It’s the ability to regulate the movement in a specific direction or at required intensity."
                     + "CrossFit 6221 is more than an excellent centre for functional fitness training.Apart from this incredible program, specialty classes including endurance, mobility and power lifting are also provided to complement your functional fitness and enhance the overall value you are getting.In order to increase the awareness level of people and the community at large regarding the benefits of functional fitness, CrossFit 6221 also conducts special seminars and community events, bringing the people together from different backgrounds to avail strength for facing real life situations.",
-                    ArticlesEmblemId = 2
+                    ArticleEmblemId = 2
                 },
                 new Articles
                 {
@@ -91,7 +98,7 @@ namespace WodCatClone.Db
                     Rating = "10.0",
                     Description = "5 простых способов преодолеть сомнения Рядом с целями и мечтами к нам приходят наши «друзья»: сомнения,ужасы и неуверенность в себе.Как заставить себя поверить в собственные силы ? Как не допускать ошибок и двигаться вперед.",
                     FullDescription = "Человеческий мозг всегда ждет подвоха и фокусируется на негативе. Ему значительно проще запомнить твои провалы, чем успехи. Именно поэтому ему необходимо периодически напоминать о том, что вообще за спиной у тебя есть неплохие результаты. Сомневаются в себе все. Даже суперзвезда гольфа Тайгер Вуд признается, что перед важными соревнованиями чувствует неуверенность в себе. Но у него есть секретный прием: «Каждый раз перед важным ударом я делаю глубокий вдох и говорю себе:« Я делал это уже тысячу раз ». Это помогает мне вспомнить, что у меня получалось всегда - а значит, получится и сейчас ». Еще один хороший способ - это действовать очень быстро, чтобы сомнения не успели появиться. Так работает Стивен Кинг, он говорит: «Когда меня одолевают сомнения, мне помогает такая штука: я сажусь и начинаю писать максимально быстро, как только могу. Я записываю все подряд, не раздумывая над тем, хорошо получается или плохо. Так мне удается сохранить первоначальный энтузиазм и одновременно уйти от сомнений в себе » Если ты готовишься к какой-то глобальной события - например выступления с презентацией проекту, - тебе нужно максимально снизить внутреннюю важность этого события. Самый простой способ сделать это - вспомнить, что ты классный не только в работе, но и в других сферах. Ты должен убедить себя, что на этой презентации свет клином не сошелся и не произойдет ничего страшного. Часто хороший сон помогает справиться с неуверенностью в себе. Генеральный директор канадской студии по производству анимационных фильмов Amberwood Entertainment Шелдон Уайзмен говорит: «Когда я начинаю сомневаться в себе, я стараюсь быстрее лечь спать. Для меня сомнения - это, в первую очередь, отсутствие энергии на активные действия. Когда ничего не делаешь, начинаешь сомневаться. Так что лучший способ стать увереннее - лечь спать. Когда просыпаешься утром свеженький, ты готов сделать что угодно!",
-                    ArticlesEmblemId = 3
+                    ArticleEmblemId = 3
                 },
                 new Articles
                 {
@@ -102,7 +109,7 @@ namespace WodCatClone.Db
                     Description = "How do U.S. Marines stack up when it comes to conquering the Navy SEALs fitness test?",
                     FullDescription = "How do U.S. Marines stack up when it comes to conquering the Navy SEALs fitness test? Armando Nava Jr. (a.k.a NavaTheBeast) served in the U.S.Marines for four years before taking to YouTube to vlog about life after the military.While he’s not training with SWAT teams and teaching powerlifters how to crush the brutal Marine Corps.physical fitness test, Nava can be found demonstrating the extensive lessons he learned from the Marines while putting his body through hell. In a recent video, Nava brought his friend and fellow veteran, Marcus Perez in front of the camera to see if they could both take on the famously grueling U.S.Navy SEALs Physical Fitness Test(PFT). Nava's version of the test wasn't exactly what you'd have to take on if you were trying to be a SEAL yourself—the standard test calls for a 500 yard swim in 12 minutes, 30 seconds, 50 pushups in 2 minutes, at least 50 curlups (situps) in 2 minutes, at least 10 pullups in 2 minutes, and a 1.5 mile run in at least 10 minutes and 30 seconds. Nava and Perez flip the order and do the run first, then skip the curlups entirely. Since they're not planning to enlist, we'll cut them some slack. The first portion of the test is a 1.5 mile run, which Nava knocks out in 10 minutes and eight seconds—about 6:39 per mile. Perez’ time is considerably slower but finishes in just under 17 minutes. “I haven’t run in a minute,” says an out of breath Nava, but this is a good start.” With Marcus running in the background, Nava reminds his audience to use his video for inspiration as what he’s doing is “easy to watch, but hard to do.” Next up: pushups.Navy SEALs need to do at least 98 reps to qualify for the Optimum distinction; Nava and Perez are aiming for 100.The guys hammer away at the 100 - pushup goal, sweating through the pain as Nava narrates. “The only way you’re gonna get better is by putting yourself through that pain and that suffering, because that’s what’s going to mold you and that’s what’s going to make you a stronger individual.” "
                     + "Seventy pushups in, Nava is unable to continue and taps out of the challenge, while Marcus just makes it to 100.As the guys rise from the floor, physically shaking, they head inside to handle the next portion of the fitness test: pullups. Nava and Marcus only have to make it to 15 to meet the Optimum requirement, but they aim for 20.After each hitting the target reps, Marcus and Nava head out to conquer the very last challenge: a 500 - meter swim. “We pushing through this pain,” says Nava as he prepares to swim 10 laps, “and so should you.Let’s go finish this test.” The guys absolutely go beast - mode during the final swim, clocking in at eight minutes and five seconds. “I’m sore and hungry,” says Marcus, “I’m just glad I attempted it.” As the video wraps, Nava once again tells viewers to not only watch his videos but go out and actually do what he’s doing yourself. After a 1.5 mile run, pushups, pullups, and a swim, Nava showcases the physical toll the body goes through to make the cut for the elite branches of the military.",
-                    ArticlesEmblemId = 4
+                    ArticleEmblemId = 4
                 });
 
             modelBuilder.Entity<Exercises>().ToTable("Exercises").HasData(
@@ -402,16 +409,17 @@ namespace WodCatClone.Db
                     Description = "Программа тренировок состоит из 38 комплексов с большим преобладанием коротких силовых тренировок и полным отсутствием кардио нагрузки. План тренировок подойдет, если ваша цель - увеличение силы и прирост мышечной масса в ущерб выносливости. План тренировок комбинирует в себе силовые тренировки и короткие “тяжелые” комплексы кроссфит, преобладают базовые упражнения с большими весами на малое кол-во повторов, что является основным условием развития силы и набора массы (мышечной массы) В данной программе встречаются технически сложные тяжелоатлетические упражнения, поэтому обязательно пр...",
                     Type = "Кроссфит",
                     Aim = "Набор мышечной массы",
-                    HallId = 1
+                    HallId = 1,
+                    ProgramsEmblemId = 3
                 },
                 new Programs
                 {
                     Id = 2,
                     Name = "Plan for the amateur",
                     Description = "План, для аматоров CrossFit План для тренировок в зале с использованием упражнений на силу и выносливость, состоящая в основном из аэробных упражнений, гимнастики (упражнения с весом собственного тела) и тяжёлой атлетики, для людей которые имеют слабую или среднюю базовую подготовку, с целью поддержания и увеличиния физической формы. Если твой уровень выше чем этот то тебе на этот план------> CoachMarchenko",
-                    Image = "img/wod.png",
                     Type = "Тяжелая атлетика",
-                    Aim = "На силу"
+                    Aim = "На силу",
+                    ProgramsEmblemId = 5
                 },
                 new Programs
                 {
@@ -420,7 +428,27 @@ namespace WodCatClone.Db
                     Description = "Программа тренировок идеально подойдет для новичков. Большая часть плана состоит из гимнастических тренировок со своим весом и не требует вспомогательных предметов для выполнения. Сами же упражнения очень просты и наверняка давно вам знакомы, поэтому вы можете не обладать специальными знаниями, чтобы заниматься по данному плану. С этой программой вам не нужно обязательно быть в зале во время тренировки, вы можете выполнять тренировки в любом удобном месте.",
                     Type = "Кроссфит",
                     Aim = "Fitness",
-                    HallId = 2
+                    HallId = 2,
+                    ProgramsEmblemId = 1
+                },
+                new Programs
+                {
+                    Id = 4,
+                    Name = "Вводной план тренировок для новичков в Кроссфите",
+                    Description = "План тренировки рассчитан на людей решивших начать тренировки по системе Кроссфит. Тренировочный план сбалансированный, используются только базовые и упрощенные упражнения. Но если Вы не имеете опыта выполнения данных упражнений, обязательно выполнение данного плана под руководством сертифицированного тренера",
+                    Type = "Кроссфит",
+                    Aim = "Fitness",
+                    HallId = 3,
+                    Rating = "10.0",
+                    ProgramsEmblemId = 2
+                },
+                new Programs
+                {
+                    Id = 5,
+                    Name = "NRC 21.1 Prep",
+                    Type = "Фитнесс",
+                    Aim = "Performance",
+                    ProgramsEmblemId = 4
                 });
 
             modelBuilder.Entity<ProgramsWorkouts>().ToTable("ProgramsWorkouts").HasData(
@@ -459,6 +487,42 @@ namespace WodCatClone.Db
                     Id = 6,
                     ProgramsId = 3,
                     WorkoutsId = 2
+                },
+                new ProgramsWorkouts
+                {
+                    Id = 7,
+                    ProgramsId = 3,
+                    WorkoutsId = 5
+                },
+                new ProgramsWorkouts
+                {
+                    Id = 8,
+                    ProgramsId = 4,
+                    WorkoutsId = 2
+                },
+                new ProgramsWorkouts
+                {
+                    Id = 9,
+                    ProgramsId = 4,
+                    WorkoutsId = 3
+                },
+                new ProgramsWorkouts
+                {
+                    Id = 10,
+                    ProgramsId = 4,
+                    WorkoutsId = 4
+                },
+                new ProgramsWorkouts
+                {
+                    Id = 11,
+                    ProgramsId = 5,
+                    WorkoutsId = 1
+                },
+                new ProgramsWorkouts
+                {
+                    Id = 12,
+                    ProgramsId = 5,
+                    WorkoutsId = 5
                 });
 
             modelBuilder.Entity<WorkoutsExercises>().ToTable("WorkoutsExercises").HasData(
@@ -676,6 +740,8 @@ namespace WodCatClone.Db
 
         public DbSet<Programs> Programs { get; set; }
 
+        public DbSet<ProgramEmblem> ProgramEmblem { get; set; }
+        
         public DbSet<Workouts> Workouts { get; set; }
 
         public DbSet<Exercises> Exercises { get; set; }
@@ -688,7 +754,7 @@ namespace WodCatClone.Db
 
         public DbSet<Articles> Articles { get; set; }
 
-        public DbSet<ArticlesEmblem> ArticlesEmblem { get; set; }
+        public DbSet<ArticleEmblem> ArticleEmblem { get; set; }
 
         public DbSet<Gender> Gender { get; set; }
 

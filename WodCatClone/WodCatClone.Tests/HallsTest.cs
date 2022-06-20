@@ -38,16 +38,16 @@ namespace WodCatClone.Tests
         {
             var context = new TestsWodCatCloneContext();
             var id = 2;
-            var countUser = 0;
-
-            var countUsers = context.Users.Where(b => b.HallId == id);
-            Assert.NotNull(countUsers);
+            var expectedUser = 0;
 
             var hall = context.Halls.FirstOrDefault(b => b.Id == id);
             Assert.NotNull(hall);
             Assert.Equal(id, hall.Id);
 
-            Assert.Equal(countUser, countUsers.Count());
+            var users = context.Users.Where(b => b.HallId == id);
+            Assert.NotNull(users);
+
+            Assert.Equal(expectedUser, users.Count());
         }
 
         [Fact]

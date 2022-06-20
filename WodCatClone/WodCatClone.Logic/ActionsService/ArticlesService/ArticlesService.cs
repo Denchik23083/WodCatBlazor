@@ -18,9 +18,9 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
             return _repository.GetAllArticles();
         }
 
-        public IEnumerable<ArticlesEmblem> GetAllArticlesEmblem()
+        public IEnumerable<ArticleEmblem> GetAllArticleEmblem()
         {
-            return _repository.GetAllArticlesEmblem();
+            return _repository.GetAllArticleEmblem();
         }
 
         public Articles GetArticle(int id)
@@ -28,7 +28,7 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
             return _repository.GetArticle(id);
         }
 
-        public string GetImage(int articleId)
+        public string GetImage(int? articleId)
         {
             var article = _repository.GetImage(articleId);
 

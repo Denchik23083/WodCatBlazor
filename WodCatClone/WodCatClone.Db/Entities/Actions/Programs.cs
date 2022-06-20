@@ -12,13 +12,13 @@ namespace WodCatClone.Db.Entities.Actions
 
         public string Description { get; set; }
 
-        public string Image { get; set; }
-
         public string Type { get; set; }
 
         public string Aim { get; set; }
 
-        public int CountUser { get; set; }
+        public int? ProgramsEmblemId { get; set; }
+
+        public ProgramEmblem ProgramEmblem { get; set; }
 
         public int? HallId { get; set; }
 

@@ -7,11 +7,11 @@ namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
     {
         IEnumerable<Articles> GetAllArticles();
 
-        IEnumerable<ArticlesEmblem> GetAllArticlesEmblem();
+        IEnumerable<ArticleEmblem> GetAllArticleEmblem();
 
         Articles GetArticle(int id);
 
-        ArticlesEmblem GetImage(int articleId);
+        ArticleEmblem GetImage(int? articleId);
 
         bool AddArticle(Articles article);
 

@@ -27,12 +27,17 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
 
         public IEnumerable<User> GetAllProgramsUsers(int id)
         {
-            return _context.Users.Where(b => b.ProgramsId == id);
+            return _context.Users.Where(b => b.ProgramId == id);
         }
 
         public Programs GetProgram(int id)
         {
             return _context.Programs.FirstOrDefault(b => b.Id == id);
+        }
+
+        public ProgramEmblem GetImage(int? programsEmblemId)
+        {
+            return _context.ProgramEmblem.FirstOrDefault(b => b.Id == programsEmblemId);
         }
 
         public bool BeginProgram(int id, User user)
@@ -44,7 +49,7 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
                 return false;
             }
 
-            loginUser.ProgramsId = id;
+            loginUser.ProgramId = id;
 
             _context.SaveChanges();
 
@@ -60,11 +65,18 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
                 return false;
             }
 
-            loginUser.ProgramsId = null;
+            loginUser.ProgramId = null;
 
             _context.SaveChanges();
 
             return true;
+        }
+
+        public int Subscribers(IEnumerable<User> users, int programId)
+        {
+            var programUsers = users.Count(b => b.ProgramId == programId);
+
+            return programUsers;
         }
     }
 }

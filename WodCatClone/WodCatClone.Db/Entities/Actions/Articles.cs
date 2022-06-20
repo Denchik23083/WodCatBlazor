@@ -16,9 +16,9 @@ namespace WodCatClone.Db.Entities.Actions
 
         public string Rating { get; set; }
 
-        public int ArticlesEmblemId { get; set; }
+        public int? ArticleEmblemId { get; set; }
 
-        public ArticlesEmblem ArticleEmblem { get; set; }
+        public ArticleEmblem ArticleEmblem { get; set; }
 
         public int? UserId { get; set; }
 

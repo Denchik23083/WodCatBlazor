@@ -1,6 +1,6 @@
 ﻿namespace WodCatClone.Db.Entities.Actions
 {
-    public class ArticlesEmblem
+    public class ArticleEmblem
     {
         public int Id { get; set; }
 

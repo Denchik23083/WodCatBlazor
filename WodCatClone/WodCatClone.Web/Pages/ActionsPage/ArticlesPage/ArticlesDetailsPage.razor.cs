@@ -28,7 +28,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.ArticlesPage
         protected override void OnInitialized()
         {
             Article = ArticlesService.GetArticle(ArticleId);
-            Image = ArticlesService.GetImage(Article.ArticlesEmblemId);
+            Image = ArticlesService.GetImage(Article.ArticleEmblemId);
             User = UserService.GetUser();
         }
 

@@ -7,11 +7,11 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
     {
         IEnumerable<Articles> GetAllArticles();
 
-        IEnumerable<ArticlesEmblem> GetAllArticlesEmblem();
+        IEnumerable<ArticleEmblem> GetAllArticleEmblem();
 
         Articles GetArticle(int id);
 
-        string GetImage(int articleId);
+        string GetImage(int? articleId);
 
         bool AddArticle(Articles article);
 

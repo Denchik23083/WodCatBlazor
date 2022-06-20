@@ -13,7 +13,7 @@ namespace WodCatClone.Tests
         public void GetAllWorkoutsTest()
         {
             var context = new TestsWodCatCloneContext();
-            var expectedWorkouts = 3;
+            var expectedWorkouts = 7;
 
             var workouts = context.Workouts;
             Assert.NotNull(workouts);

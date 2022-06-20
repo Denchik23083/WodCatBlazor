@@ -4,9 +4,9 @@ using WodCatClone.Db.Entities.Actions;
 
 namespace WodCatClone.Db.EntityConfig.ActionsConfig
 {
-    public class ArticlesEmblemConfiguration : IEntityTypeConfiguration<ArticlesEmblem>
+    public class ArticleEmblemConfiguration : IEntityTypeConfiguration<ArticleEmblem>
     {
-        public void Configure(EntityTypeBuilder<ArticlesEmblem> builder)
+        public void Configure(EntityTypeBuilder<ArticleEmblem> builder)
         {
             builder.HasKey(_ => _.Id);
 

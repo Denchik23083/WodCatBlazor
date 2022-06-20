@@ -21,15 +21,15 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void GetAllArticlesEmblemTest()
+        public void GetAllArticleEmblemTest()
         {
             var context = new TestsWodCatCloneContext();
-            var expectedArticlesEmblem = 5;
+            var expectedArticleEmblem = 5;
 
-            var articlesEmblem = context.ArticlesEmblem;
-            Assert.NotNull(articlesEmblem);
+            var articleEmblem = context.ArticleEmblem;
+            Assert.NotNull(articleEmblem);
 
-            Assert.Equal(expectedArticlesEmblem, articlesEmblem.Count());
+            Assert.Equal(expectedArticleEmblem, articleEmblem.Count());
         }
 
         [Fact]
@@ -51,7 +51,7 @@ namespace WodCatClone.Tests
             var id = 2;
             var image = "img/EmblemArticles/Functional.png";
 
-            var articleEmblem = context.ArticlesEmblem.FirstOrDefault(b => b.Id == id);
+            var articleEmblem = context.ArticleEmblem.FirstOrDefault(b => b.Id == id);
             Assert.NotNull(articleEmblem);
 
             Assert.Equal(id, articleEmblem.Id);
@@ -70,7 +70,7 @@ namespace WodCatClone.Tests
             var newArticle = new Articles
             {
                 Name = "Test",
-                ArticlesEmblemId = 2,
+                ArticleEmblemId = 2,
                 Description = "TestDescription",
                 FullDescription = "TestFullDescription",
                 Rating = "9.5",
@@ -115,7 +115,7 @@ namespace WodCatClone.Tests
             var newArticle = new Articles
             {
                 Name = "Test",
-                ArticlesEmblemId = 2,
+                ArticleEmblemId = 2,
                 Description = "TestDescription",
                 FullDescription = "TestFullDescription",
                 Rating = "9.5",
@@ -129,7 +129,7 @@ namespace WodCatClone.Tests
             var editArticle = new Articles
             {
                 Name = "Test2",
-                ArticlesEmblemId = 2,
+                ArticleEmblemId = 2,
                 Description = "TestDescription2",
                 FullDescription = "TestFullDescription2",
                 Rating = "8.5",
@@ -143,7 +143,7 @@ namespace WodCatClone.Tests
             Assert.NotNull(articleToUpdate);
 
             articleToUpdate.Name = editArticle.Name;
-            articleToUpdate.ArticlesEmblemId = editArticle.ArticlesEmblemId;
+            articleToUpdate.ArticleEmblemId = editArticle.ArticleEmblemId;
             articleToUpdate.Description = editArticle.Description;
             articleToUpdate.FullDescription = editArticle.FullDescription;
             articleToUpdate.Rating = editArticle.Rating;
@@ -184,7 +184,7 @@ namespace WodCatClone.Tests
             var newArticle = new Articles
             {
                 Name = "Test",
-                ArticlesEmblemId = 2,
+                ArticleEmblemId = 2,
                 Description = "TestDescription",
                 FullDescription = "TestFullDescription",
                 Rating = "9.5",

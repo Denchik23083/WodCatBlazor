@@ -38,23 +38,13 @@ namespace WodCatClone.Tests
                 ConfirmPassword = "0000",
                 GenderId = 1,
             };
-            
-            var allUsers = context.Users;
+
             var registerUser = UserMap(register);
 
             registerUser.Country = "Ukraine";
 
-            if (register.Password == register.ConfirmPassword)
-            {
-                if (!allUsers.Any(b => b.Email == registerUser.Email) &&
-                    !allUsers.Any(b => b.NickName == registerUser.NickName))
-                {
-                    context.Users.Add(registerUser);
-                    context.SaveChanges();
-                }
-            }
-
-            var all = context.Users;
+            context.Users.Add(registerUser);
+            context.SaveChanges();
 
             var registeredUser = context.Users.FirstOrDefault(l => l.Email == registerUser.Email &&
                                                                    l.Password == registerUser.Password);

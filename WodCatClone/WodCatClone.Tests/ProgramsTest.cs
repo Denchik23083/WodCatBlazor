@@ -12,12 +12,24 @@ namespace WodCatClone.Tests
         public void GetAllProgramsTest()
         {
             var context = new TestsWodCatCloneContext();
-            var expectedPrograms = 3;
+            var expectedPrograms = 5;
 
             var programs = context.Programs;
             
             Assert.NotNull(programs);
             Assert.Equal(expectedPrograms, programs.Count());
+        }
+
+        [Fact]
+        public void GetAllProgramsEmblemTest()
+        {
+            var context = new TestsWodCatCloneContext();
+            var expectedProgramsEmblem = 5;
+
+            var programsEmblem = context.ProgramEmblem;
+            Assert.NotNull(programsEmblem);
+
+            Assert.Equal(expectedProgramsEmblem, programsEmblem.Count());
         }
 
         [Fact]
@@ -48,8 +60,9 @@ namespace WodCatClone.Tests
 
             var program = context.Programs.FirstOrDefault(p => p.Id == id);
             Assert.NotNull(program);
+            Assert.Equal(id, program.Id);
 
-            var users = context.Users.Where(b => b.ProgramsId == program.Id);
+            var users = context.Users.Where(b => b.ProgramId == program.Id);
             Assert.NotNull(users);
 
             Assert.Equal(expectedUsers, users.Count());
@@ -92,7 +105,7 @@ namespace WodCatClone.Tests
             Assert.NotNull(testUserEdit);
 
             var newProgramId = 2;
-            testUserEdit.ProgramsId = newProgramId;
+            testUserEdit.ProgramId = newProgramId;
 
             context.SaveChanges();
 
@@ -100,7 +113,7 @@ namespace WodCatClone.Tests
                                                                       l.Password == testUserEdit.Password);
             Assert.NotNull(testUserAfterEdit);
 
-            Assert.Equal(newProgramId, testUserAfterEdit.ProgramsId);
+            Assert.Equal(newProgramId, testUserAfterEdit.ProgramId);
 
             context.Users.Remove(testUserAfterEdit);
             context.SaveChanges();
@@ -134,7 +147,7 @@ namespace WodCatClone.Tests
                                                                  l.Password == newUser.Password);
             Assert.NotNull(testUserEdit);
 
-            testUserEdit.ProgramsId = null;
+            testUserEdit.ProgramId = null;
 
             context.SaveChanges();
 
@@ -142,7 +155,7 @@ namespace WodCatClone.Tests
                                                                       l.Password == testUserEdit.Password);
             Assert.NotNull(testUserAfterEdit);
 
-            Assert.Null(testUserAfterEdit.ProgramsId);
+            Assert.Null(testUserAfterEdit.ProgramId);
 
             context.Users.Remove(testUserAfterEdit);
             context.SaveChanges();

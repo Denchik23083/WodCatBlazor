@@ -39,7 +39,7 @@ namespace WodCatClone.Db.Entities.Auth
 
         public Halls Halls { get; set; }
 
-        public int? ProgramsId { get; set; }
+        public int? ProgramId { get; set; }
 
         public Programs Programs { get; set; }
     }

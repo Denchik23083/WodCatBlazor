@@ -14,8 +14,12 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
 
         Programs GetProgram(int id);
 
+        ProgramEmblem GetImage(int? programsEmblemId);
+
         bool BeginProgram(int id, User user);
 
         bool StopProgram(int id, User user);
+
+        int Subscribers(IEnumerable<User> users, int programId);
     }
 }

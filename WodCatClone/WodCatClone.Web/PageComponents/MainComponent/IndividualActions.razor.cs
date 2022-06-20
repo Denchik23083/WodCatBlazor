@@ -1,12 +1,10 @@
 ﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
-using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.ActionsService.ArticlesService;
 using WodCatClone.Logic.ActionsService.ExercisesService;
 using WodCatClone.Logic.ActionsService.HallsService;
 using WodCatClone.Logic.ActionsService.ProgramsService;
 using WodCatClone.Logic.ActionsService.WorkoutsService;
-using WodCatClone.Logic.UserService;
 
 namespace WodCatClone.Web.PageComponents.MainComponent
 {
@@ -44,10 +42,9 @@ namespace WodCatClone.Web.PageComponents.MainComponent
 
         protected override void OnInitialized()
         {
-            if (Program is not null && Program.HallId is not null)
+            if (Program is not null && Program.ProgramsEmblemId is not null)
             {
-                var hall = HallsService.GetHall(Program.HallId);
-                ProgramImage = HallsService.GetImage(hall.EmblemHallId);
+                ProgramImage = ProgramsService.GetImage(Program.ProgramsEmblemId);
             }
             if (Workout is not null && Workout.HallId is not null)
             {
@@ -62,9 +59,9 @@ namespace WodCatClone.Web.PageComponents.MainComponent
             {
                 HallImage = HallsService.GetImage(Hall.EmblemHallId);
             }
-            if (Article is not null)
+            if (Article is not null && Article.ArticleEmblemId is not null)
             {
-                ArticleImage = ArticlesService.GetImage(Article.ArticlesEmblemId);
+                ArticleImage = ArticlesService.GetImage(Article.ArticleEmblemId);
             }
         }
     }

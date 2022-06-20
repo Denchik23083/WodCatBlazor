@@ -19,9 +19,9 @@ namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
             return _context.Articles;
         }
 
-        public IEnumerable<ArticlesEmblem> GetAllArticlesEmblem()
+        public IEnumerable<ArticleEmblem> GetAllArticleEmblem()
         {
-            return _context.ArticlesEmblem;
+            return _context.ArticleEmblem;
         }
 
         public Articles GetArticle(int id)
@@ -29,9 +29,9 @@ namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
             return _context.Articles.FirstOrDefault(b => b.Id == id);
         }
 
-        public ArticlesEmblem GetImage(int articleId)
+        public ArticleEmblem GetImage(int? articleId)
         {
-            return _context.ArticlesEmblem.FirstOrDefault(b => b.Id == articleId);
+            return _context.ArticleEmblem.FirstOrDefault(b => b.Id == articleId);
         }
 
         public bool AddArticle(Articles article)
@@ -73,7 +73,7 @@ namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
 
             articleToEdit.Name = article.Name;
             articleToEdit.Type = article.Type;
-            articleToEdit.ArticlesEmblemId = article.ArticlesEmblemId;
+            articleToEdit.ArticleEmblemId = article.ArticleEmblemId;
             articleToEdit.Rating = article.Rating;
             articleToEdit.Description = article.Description;
             articleToEdit.FullDescription = article.FullDescription;

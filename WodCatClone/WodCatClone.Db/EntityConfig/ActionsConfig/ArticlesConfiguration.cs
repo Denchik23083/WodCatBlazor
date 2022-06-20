@@ -18,7 +18,7 @@ namespace WodCatClone.Db.EntityConfig.ActionsConfig
 
             builder.HasOne(_ => _.ArticleEmblem)
                 .WithMany()
-                .HasForeignKey(b => b.ArticlesEmblemId);
+                .HasForeignKey(b => b.ArticleEmblemId);
 
             builder.HasOne(_ => _.User)
                 .WithMany()

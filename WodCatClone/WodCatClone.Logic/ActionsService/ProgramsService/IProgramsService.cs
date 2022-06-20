@@ -14,8 +14,12 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
 
         Programs GetProgram(int id);
 
+        string GetImage(int? programsEmblemId);
+
         bool BeginProgram(int id, User user);
 
         bool StopProgram(int id, User user);
+
+        int Subscribers(int programId);
     }
 }

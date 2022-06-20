@@ -22,14 +22,20 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
         {
             Value = 0;
             Url = $"articles/{Article.Id}";
-            Image = ArticlesService.GetImage(Article.ArticlesEmblemId);
+            if (Article.ArticleEmblemId is not null)
+            {
+                Image = ArticlesService.GetImage(Article.ArticleEmblemId);
+            }
             ArticleType = Article.Type.Split(",");
         }
         protected override void OnParametersSet()
         {
             Value = 0;
             Url = $"articles/{Article.Id}";
-            Image = ArticlesService.GetImage(Article.ArticlesEmblemId);
+            if (Article.ArticleEmblemId is not null)
+            {
+                Image = ArticlesService.GetImage(Article.ArticleEmblemId);
+            }
             ArticleType = Article.Type.Split(",");
         }
     }
