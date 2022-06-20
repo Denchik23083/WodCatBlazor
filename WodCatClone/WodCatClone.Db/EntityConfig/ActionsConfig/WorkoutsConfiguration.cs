@@ -13,9 +13,7 @@ namespace WodCatClone.Db.EntityConfig.ActionsConfig
             builder.Property(x => x.Rating).IsRequired();
             builder.Property(x => x.Category).IsRequired();
             builder.Property(x => x.Complexity).IsRequired();
-            builder.Property(x => x.Movement).IsRequired();
             builder.Property(x => x.Modality).IsRequired();
-            builder.Property(x => x.Inventory).IsRequired();
             builder.Property(_ => _.Minutes).IsRequired();
             builder.Property(_ => _.Seconds).IsRequired();
 

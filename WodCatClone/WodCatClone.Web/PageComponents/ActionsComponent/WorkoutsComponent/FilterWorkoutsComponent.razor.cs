@@ -27,9 +27,8 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
         private string _filterName = string.Empty;
         private string _filterCategory = "None";
         private string _filterModality = "None";
-        private string _filterMovement = "None";
         private string _filterComplexity = "None";
-        private string _filterInventory = "None";
+        private string _filterTime = string.Empty;
 
         public List<FilterWorkouts> FilterCategory = new()
         {
@@ -37,7 +36,11 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
             new() { Content = "Bodyweight", Filter = "Bodyweight" },
             new() { Content = "For-Time", Filter = "For-Time" },
             new() { Content = "Rower", Filter = "Rower" },
+            new() { Content = "Kettlebell", Filter = "Kettlebell" },
             new() { Content = "Couplet", Filter = "Couplet" },
+            new() { Content = "Endurance", Filter = "Endurance" },
+            new() { Content = "AMRAP", Filter = "AMRAP" },
+            new() { Content = "Triplet", Filter = "Triplet" },
         };
 
         public List<FilterWorkouts> FilterModality = new()
@@ -45,13 +48,9 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
             new() { Content = "G", Filter = "G" },
             new() { Content = "GM", Filter = "GM" },
             new() { Content = "M", Filter = "M" },
-        };
-
-        public List<FilterWorkouts> FilterMovement = new()
-        {
-            new() { Content = "Бёрпи", Filter = "Бёрпи" },
-            new() { Content = "Отжимание", Filter = "Отжимание" },
-            new() { Content = "Взятия на грудь", Filter = "Взятия на грудь" },
+            new() { Content = "WM", Filter = "WM" },
+            new() { Content = "WGM", Filter = "WGM" },
+            new() { Content = "WG", Filter = "WG" },
         };
         
         public List<FilterWorkouts> FilterComplexity = new()
@@ -59,13 +58,6 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
             new() { Content = "Легкий", Filter = "Легкий" },
             new() { Content = "Нормальный", Filter = "Нормальный" },
             new() { Content = "Сложный", Filter = "Сложный" },
-        };
-
-        public List<FilterWorkouts> FilterInventory = new()
-        {
-            new() { Content = "Нет", Filter = "Нет" },
-            new() { Content = "Скакалка", Filter = "Скакалка" },
-            new() { Content = "Ящик для прыжков", Filter = "Ящик для прыжков" },
         };
 
         void Filter()
@@ -84,17 +76,13 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
             {
                 Workouts = Workouts.Where(b => b.Modality.Equals(_filterModality)).ToList();
             }
-            if (_filterMovement != "None")
-            {
-                Workouts = Workouts.Where(b => b.Movement.Contains(_filterMovement)).ToList();
-            }
             if (_filterComplexity != "None")
             {
                 Workouts = Workouts.Where(b => b.Complexity.Equals(_filterComplexity)).ToList();
             }
-            if (_filterInventory != "None")
+            if (!string.IsNullOrWhiteSpace(_filterTime))
             {
-                Workouts = Workouts.Where(b => b.Inventory.Equals(_filterInventory)).ToList();
+                Workouts = Workouts.Where(b => b.Minutes.ToLower().Contains(_filterTime.ToLower())).ToList();
             }
         }
 
@@ -103,9 +91,8 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
             _filterName = string.Empty;
             _filterCategory = "None";
             _filterModality = "None";
-            _filterMovement = "None";
             _filterComplexity = "None";
-            _filterInventory = "None";
+            _filterTime = string.Empty;
 
             Filter();
         }

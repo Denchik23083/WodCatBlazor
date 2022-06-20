@@ -55,7 +55,7 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
                 return false;
             }
 
-            hall.UserId = user!.Id;
+            hall.UserId = user.Id;
 
             _context.Halls.Add(hall);
             user.Points += 50;

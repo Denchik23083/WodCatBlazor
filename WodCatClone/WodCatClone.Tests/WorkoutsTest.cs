@@ -12,7 +12,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void GetAllWorkoutsTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
             var expectedWorkouts = 3;
 
             var workouts = context.Workouts;
@@ -24,7 +24,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void GetAllWorkoutsExercisesTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
             var id = 2;
             var expectedWorkoutsExercises = 11;
 
@@ -37,7 +37,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void GetWorkoutTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
             var id = 2;
 
             var workout = context.Workouts.FirstOrDefault(b => b.Id == id);
@@ -49,7 +49,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void GetAllResultWorkoutsTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
             var expectedResultWorkouts = 0;
 
             var resultWorkouts = context.ResultWorkouts;
@@ -61,7 +61,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void AddResultWorkoutTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
 
             var user = HelperUserLogin(context);
             var userPoint = user.Points;
@@ -108,7 +108,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void UpdateHallTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
 
             var user = HelperUserLogin(context);
             var userPoint = user.Points;
@@ -184,7 +184,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void RemoveArticleTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
 
             var user = HelperUserLogin(context);
             Assert.NotNull(user);
@@ -221,7 +221,7 @@ namespace WodCatClone.Tests
             Assert.Null(resultWorkoutAfterRemove);
         }
 
-        private User HelperUserLogin(TestsWodCatCloneDbContext context)
+        private User HelperUserLogin(TestsWodCatCloneContext context)
         {
             var login = new Login
             {

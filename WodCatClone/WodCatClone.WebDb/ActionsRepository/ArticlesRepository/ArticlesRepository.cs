@@ -45,8 +45,8 @@ namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
             }
 
             article.UserId = user.Id;
-            _context.Articles.Add(article);
 
+            _context.Articles.Add(article);
             user.Points += 50;
 
             _context.SaveChanges();

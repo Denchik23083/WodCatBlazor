@@ -6,11 +6,11 @@ using WodCatClone.Db.Entities.CallBack;
 
 namespace WodCatClone.Db
 {
-    public class TestsWodCatCloneDbContext : DbContext
+    public class TestsWodCatCloneContext : DbContext
     {
-        public TestsWodCatCloneDbContext() { }
+        public TestsWodCatCloneContext() { }
 
-        public TestsWodCatCloneDbContext(DbContextOptions<TestsWodCatCloneDbContext> options) : base(options) { }
+        public TestsWodCatCloneContext(DbContextOptions<TestsWodCatCloneContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -317,9 +317,7 @@ namespace WodCatClone.Db
                     Rating = "7.0",
                     Category = "Singlet,Bodyweight,For-Time",
                     Complexity = "Легкий",
-                    Movement = "Бёрпи",
                     Modality = "G",
-                    Inventory = "Нет",
                     Minutes = "23",
                     Seconds = "20",
                     HallId = 1
@@ -331,9 +329,7 @@ namespace WodCatClone.Db
                     Rating = "8.5",
                     Category = "Couplet,Bodyweight,For-Time",
                     Complexity = "Сложный",
-                    Movement = "Отжимание",
                     Modality = "GM",
-                    Inventory = "Скакалка,Ящик для прыжков,Тренажер GHD",
                     Minutes = "50",
                     Seconds = "30",
                     HallId = 4
@@ -345,9 +341,7 @@ namespace WodCatClone.Db
                     Rating = "10.0",
                     Category = "Couplet,Bodyweight,Rower,ForTime",
                     Complexity = "Нормальный",
-                    Movement = "Взятия на грудь",
                     Modality = "GM",
-                    Inventory = "Ящик для прыжков",
                     Minutes = "24",
                     Seconds = "00",
                     HallId = 1
@@ -427,84 +421,84 @@ namespace WodCatClone.Db
                     Id = 1,
                     WorkoutsId = 1,
                     ExercisesId = 4,
-                    CountRepeats = 100
+                    Work = "100"
                 },
                 new WorkoutsExercises
                 {
                     Id = 2,
                     WorkoutsId = 2,
                     ExercisesId = 2,
-                    CountRepeats = 100
+                    Work = "100"
                 },
                 new WorkoutsExercises
                 {
                     Id = 3,
                     WorkoutsId = 2,
                     ExercisesId = 3,
-                    CountRepeats = 100
+                    Work = "100"
                 },
                 new WorkoutsExercises
                 {
                     Id = 4,
                     WorkoutsId = 2,
                     ExercisesId = 5,
-                    CountRepeats = 100
+                    Work = "100"
                 },
                 new WorkoutsExercises
                 {
                     Id = 5,
                     WorkoutsId = 2,
                     ExercisesId = 5,
-                    CountRepeats = 100
+                    Work = "100"
                 },
                 new WorkoutsExercises
                 {
                     Id = 6,
                     WorkoutsId = 2,
                     ExercisesId = 6,
-                    CountRepeats = 100
+                    Work = "100"
                 },
                 new WorkoutsExercises
                 {
                     Id = 7,
                     WorkoutsId = 2,
                     ExercisesId = 7,
-                    CountRepeats = 100
+                    Work = "100"
                 },
                 new WorkoutsExercises
                 {
                     Id = 8,
                     WorkoutsId = 2,
                     ExercisesId = 8,
-                    CountRepeats = 100
+                    Work = "100"
                 },
                 new WorkoutsExercises
                 {
                     Id = 9,
                     WorkoutsId = 2,
                     ExercisesId = 9,
-                    CountRepeats = 100
+                    Work = "100"
                 },
                 new WorkoutsExercises
                 {
                     Id = 10,
                     WorkoutsId = 2,
                     ExercisesId = 10,
-                    CountRepeats = 100
+                    Work = "100"
                 },
                 new WorkoutsExercises
                 {
                     Id = 11,
                     WorkoutsId = 2,
                     ExercisesId = 11,
-                    CountRepeats = 100
+                    Work = "100"
                 },
                 new WorkoutsExercises
                 {
                     Id = 12,
                     WorkoutsId = 2,
                     ExercisesId = 12,
-                    CountRepeats = 100
+                    Work = "100"
                 },
                 new WorkoutsExercises
                 {
@@ -517,14 +511,14 @@ namespace WodCatClone.Db
                     Id = 14,
                     WorkoutsId = 3,
                     ExercisesId = 7,
-                    CountRepeats = 50
+                    Work = "50"
                 },
                 new WorkoutsExercises
                 {
                     Id = 15,
                     WorkoutsId = 3,
                     ExercisesId = 11,
-                    CountRepeats = 50
+                    Work = "50"
                 });
 
             modelBuilder.Entity<User>().ToTable("User").HasData(

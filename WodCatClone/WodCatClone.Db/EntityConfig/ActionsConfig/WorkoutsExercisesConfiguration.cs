@@ -10,7 +10,7 @@ namespace WodCatClone.Db.EntityConfig.ActionsConfig
         {
             builder.HasKey(_ => _.Id);
 
-            builder.Property(_ => _.CountRepeats);
+            builder.Property(_ => _.Work);
 
             builder.HasOne(_ => _.Workouts)
                 .WithMany(_ => _.WorkoutsExercises)

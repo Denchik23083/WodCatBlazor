@@ -64,7 +64,7 @@ namespace WodCatClone.Web
                 options.UseSqlServer(connectionString);
             });
 
-            services.AddDbContext<TestsWodCatCloneDbContext>(options =>
+            services.AddDbContext<TestsWodCatCloneContext>(options =>
             {
                 var connectionString = Configuration.GetConnectionString("TestsWodCatCloneDb");
 
@@ -114,7 +114,7 @@ namespace WodCatClone.Web
             var scopeFactory = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>();
 
             using var scope = scopeFactory.CreateScope();
-            var context = scope.ServiceProvider.GetService<TestsWodCatCloneDbContext>();
+            var context = scope.ServiceProvider.GetService<TestsWodCatCloneContext>();
 
             context!.Database.EnsureCreated();
         }

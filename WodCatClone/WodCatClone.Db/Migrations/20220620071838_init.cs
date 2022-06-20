@@ -133,7 +133,7 @@ namespace WodCatClone.Db.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CountRepeats = table.Column<int>(type: "int", nullable: true),
+                    Work = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     WorkoutsId = table.Column<int>(type: "int", nullable: false),
                     ExercisesId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -249,9 +249,7 @@ namespace WodCatClone.Db.Migrations
                     Rating = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Category = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Complexity = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Movement = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Modality = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Inventory = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Minutes = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Seconds = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     HallId = table.Column<int>(type: "int", nullable: true)
@@ -449,12 +447,13 @@ namespace WodCatClone.Db.Migrations
 
             migrationBuilder.InsertData(
                 table: "Workouts",
-                columns: new[] { "Id", "Category", "Complexity", "HallId", "Inventory", "Minutes", "Modality", "Movement", "Name", "Rating", "Seconds" },
+                columns: new[] { "Id", "Category", "Complexity", "HallId", "Minutes", "Modality", "Name", "Rating", "Seconds" },
                 values: new object[,]
                 {
-                    { 1, "Singlet,Bodyweight,For-Time", "Легкий", 1, "Нет", "23", "G", "Бёрпи", "100 Burpees", "7.0", "20" },
-                    { 3, "Couplet,Bodyweight,Rower,ForTime", "Нормальный", 1, "Ящик для прыжков", "24", "GM", "Взятия на грудь", "Titan wod", "10.0", "00" },
-                    { 2, "Couplet,Bodyweight,For-Time", "Сложный", 4, "Скакалка,Ящик для прыжков,Тренажер GHD", "50", "GM", "Отжимание", "1000", "8.5", "30" }
+                    { 1, "Singlet,Bodyweight,For-Time", "Легкий", 1, "23", "G", "100 Burpees", "7.0", "20" },
+                    { 3, "Couplet,Bodyweight,Rower,ForTime", "Нормальный", 1, "24", "GM", "Titan wod", "10.0", "00" },
+                    { 4, "Couplet,ForTime,Kettlebell", "Нормальный", 2, "16", "WM", "Вместе Навсегда", "8.0", "25" },
+                    { 2, "Couplet,Bodyweight,For-Time", "Сложный", 4, "50", "GM", "1000", "8.5", "30" }
                 });
 
             migrationBuilder.InsertData(
@@ -463,33 +462,34 @@ namespace WodCatClone.Db.Migrations
                 values: new object[,]
                 {
                     { 1, 1, 1 },
-                    { 4, 2, 1 },
-                    { 3, 1, 3 },
-                    { 5, 2, 3 },
                     { 2, 1, 2 },
-                    { 6, 3, 2 }
+                    { 5, 2, 3 },
+                    { 6, 3, 2 },
+                    { 4, 2, 1 },
+                    { 3, 1, 3 }
                 });
 
             migrationBuilder.InsertData(
                 table: "WorkoutsExercises",
-                columns: new[] { "Id", "CountRepeats", "ExercisesId", "WorkoutsId" },
+                columns: new[] { "Id", "ExercisesId", "Work", "WorkoutsId" },
                 values: new object[,]
                 {
-                    { 10, 100, 10, 2 },
-                    { 9, 100, 9, 2 },
-                    { 8, 100, 8, 2 },
-                    { 7, 100, 7, 2 },
-                    { 6, 100, 6, 2 },
-                    { 5, 100, 5, 2 },
-                    { 2, 100, 2, 2 },
-                    { 3, 100, 3, 2 },
-                    { 11, 100, 11, 2 },
-                    { 15, 50, 11, 3 },
-                    { 14, 50, 7, 3 },
-                    { 13, null, 1, 3 },
-                    { 1, 100, 4, 1 },
-                    { 4, 100, 5, 2 },
-                    { 12, 100, 12, 2 }
+                    { 1, 4, "100", 1 },
+                    { 10, 10, "100", 2 },
+                    { 9, 9, "100", 2 },
+                    { 8, 8, "100", 2 },
+                    { 7, 7, "100", 2 },
+                    { 6, 6, "100", 2 },
+                    { 5, 5, "100", 2 },
+                    { 3, 3, "100", 2 },
+                    { 2, 2, "100", 2 },
+                    { 11, 11, "100", 2 },
+                    { 16, 1, "300 meters", 4 },
+                    { 15, 11, "50", 3 },
+                    { 14, 7, "50", 3 },
+                    { 13, 1, null, 3 },
+                    { 4, 5, "100", 2 },
+                    { 12, 12, "100", 2 }
                 });
 
             migrationBuilder.CreateIndex(

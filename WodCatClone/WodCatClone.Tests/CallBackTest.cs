@@ -9,7 +9,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void GetAllQuestionsTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
             
             var expectedQuestions = 6;
             var questions = context.Question;
@@ -21,7 +21,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void GetAnswerTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
 
             var id = 1;
             var answer = context.Answer.FirstOrDefault(b => b.Id == id);

@@ -13,7 +13,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void LoginTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
             
             var user = HelperUserLogin(context);
             HelperIsLoginFunction(context);
@@ -25,7 +25,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void RegisterTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
 
             var register = new Register
             {
@@ -80,7 +80,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void GetAllUsersTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
             var expectedUsers = 1;
 
             var users = context.Users;
@@ -92,7 +92,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void IsLoginUserTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
 
             HelperIsLoginFunction(context);
 
@@ -102,7 +102,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void GetUserTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
 
             var user = HelperUserLogin(context);
 
@@ -112,7 +112,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void GetGenderTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
 
             var loginUser = HelperUserLogin(context);
 
@@ -125,7 +125,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void UpdateTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
 
             var genreName = "Мужской";
 
@@ -196,7 +196,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void UpdateAuthTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
             
             var newUser = new User
             {
@@ -246,7 +246,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void RemoveTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
 
             var newUser = new User
             {
@@ -275,7 +275,7 @@ namespace WodCatClone.Tests
             Assert.Null(testUserRemoved);
         }
 
-        private void HelperIsLoginFunction(TestsWodCatCloneDbContext context)
+        private void HelperIsLoginFunction(TestsWodCatCloneContext context)
         {
             var login = new Login
             {
@@ -289,7 +289,7 @@ namespace WodCatClone.Tests
             IsLoginUser = user is not null;
         }
 
-        private User HelperUserLogin(TestsWodCatCloneDbContext context)
+        private User HelperUserLogin(TestsWodCatCloneContext context)
         {
             var login = new Login
             {

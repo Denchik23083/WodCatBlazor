@@ -12,7 +12,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void GetAllHallsTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
             var expectedHalls = 5;
 
             var halls = context.Halls;
@@ -24,7 +24,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void GetAllHallEmblemTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
             var expectedHallEmblem = 5;
             
             var hallEmblem = context.HallEmblem;
@@ -36,7 +36,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void GetAllHallsUsersTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
             var id = 2;
             var countUser = 0;
 
@@ -53,7 +53,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void GetHallTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
             var id = 2;
 
             var hall = context.Halls.FirstOrDefault(b => b.Id == id);
@@ -69,7 +69,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void GetImageTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
             var id = 3;
             var image = "img/EmblemHalls/Olimp.png";
 
@@ -83,7 +83,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void AddHallTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
 
             var user = HelperUserLogin(context);
             var userPoint = user.Points;
@@ -129,7 +129,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void UpdateHallTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
 
             var user = HelperUserLogin(context);
             var userPoint = user.Points;
@@ -202,7 +202,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void RemoveHallTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
 
             var user = HelperUserLogin(context);
             Assert.NotNull(user);
@@ -241,7 +241,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void JoinTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
 
             var newUser = new User
             {
@@ -284,7 +284,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void ExitTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
 
             var newUser = new User
             {
@@ -323,7 +323,7 @@ namespace WodCatClone.Tests
             Assert.Null(testUserAfterRemove);
         }
 
-        private User HelperUserLogin(TestsWodCatCloneDbContext context)
+        private User HelperUserLogin(TestsWodCatCloneContext context)
         {
             var login = new Login
             {

@@ -14,11 +14,7 @@ namespace WodCatClone.Db.Entities.Actions
 
         public string Complexity { get; set; }
 
-        public string Movement { get; set; }
-
         public string Modality { get; set; }
-
-        public string Inventory { get; set; }
         
         public string Minutes { get; set; }
 

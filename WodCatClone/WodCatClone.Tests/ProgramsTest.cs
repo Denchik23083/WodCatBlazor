@@ -11,7 +11,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void GetAllProgramsTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
             var expectedPrograms = 3;
 
             var programs = context.Programs;
@@ -23,7 +23,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void GetAllProgramsWorkoutsTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
             var id = 2;
             var expectedProgramsWorkouts = 2;
 
@@ -42,7 +42,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void GetAllProgramsUsersTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
             var id = 2;
             var expectedUsers = 0;
 
@@ -58,7 +58,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void GetProgramTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
             var id = 1;
 
             var program = context.Programs.FirstOrDefault(b => b.Id == id);
@@ -70,7 +70,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void BeginProgramTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
 
             var newUser = new User
             {
@@ -113,7 +113,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void StopProgramTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
 
             var newUser = new User
             {

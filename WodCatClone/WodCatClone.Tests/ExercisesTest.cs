@@ -9,7 +9,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void GetAllExercisesTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
             var expectedExercises = 12;
 
             var exercises = context.Exercises;
@@ -21,7 +21,7 @@ namespace WodCatClone.Tests
         [Fact]
         public void GetExerciseTest()
         {
-            var context = new TestsWodCatCloneDbContext();
+            var context = new TestsWodCatCloneContext();
 
             var id = 2;
             var exercise = context.Exercises.FirstOrDefault(b => b.Id == id);

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WodCatClone.Db;
 
 namespace WodCatClone.Db.Migrations
 {
-    [DbContext(typeof(TestsWodCatCloneDbContext))]
-    partial class TestsWodCatCloneDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(WodCatCloneContext))]
+    [Migration("20220620071838_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -695,19 +697,11 @@ namespace WodCatClone.Db.Migrations
                     b.Property<int?>("HallId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Inventory")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Minutes")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Modality")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Movement")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -736,10 +730,8 @@ namespace WodCatClone.Db.Migrations
                             Category = "Singlet,Bodyweight,For-Time",
                             Complexity = "Легкий",
                             HallId = 1,
-                            Inventory = "Нет",
                             Minutes = "23",
                             Modality = "G",
-                            Movement = "Бёрпи",
                             Name = "100 Burpees",
                             Rating = "7.0",
                             Seconds = "20"
@@ -750,10 +742,8 @@ namespace WodCatClone.Db.Migrations
                             Category = "Couplet,Bodyweight,For-Time",
                             Complexity = "Сложный",
                             HallId = 4,
-                            Inventory = "Скакалка,Ящик для прыжков,Тренажер GHD",
                             Minutes = "50",
                             Modality = "GM",
-                            Movement = "Отжимание",
                             Name = "1000",
                             Rating = "8.5",
                             Seconds = "30"
@@ -764,13 +754,23 @@ namespace WodCatClone.Db.Migrations
                             Category = "Couplet,Bodyweight,Rower,ForTime",
                             Complexity = "Нормальный",
                             HallId = 1,
-                            Inventory = "Ящик для прыжков",
                             Minutes = "24",
                             Modality = "GM",
-                            Movement = "Взятия на грудь",
                             Name = "Titan wod",
                             Rating = "10.0",
                             Seconds = "00"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Category = "Couplet,ForTime,Kettlebell",
+                            Complexity = "Нормальный",
+                            HallId = 2,
+                            Minutes = "16",
+                            Modality = "WM",
+                            Name = "Вместе Навсегда",
+                            Rating = "8.0",
+                            Seconds = "25"
                         });
                 });
 
@@ -781,11 +781,11 @@ namespace WodCatClone.Db.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CountRepeats")
-                        .HasColumnType("int");
-
                     b.Property<int>("ExercisesId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Work")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("WorkoutsId")
                         .HasColumnType("int");
@@ -802,85 +802,85 @@ namespace WodCatClone.Db.Migrations
                         new
                         {
                             Id = 1,
-                            CountRepeats = 100,
                             ExercisesId = 4,
+                            Work = "100",
                             WorkoutsId = 1
                         },
                         new
                         {
                             Id = 2,
-                            CountRepeats = 100,
                             ExercisesId = 2,
+                            Work = "100",
                             WorkoutsId = 2
                         },
                         new
                         {
                             Id = 3,
-                            CountRepeats = 100,
                             ExercisesId = 3,
+                            Work = "100",
                             WorkoutsId = 2
                         },
                         new
                         {
                             Id = 4,
-                            CountRepeats = 100,
                             ExercisesId = 5,
+                            Work = "100",
                             WorkoutsId = 2
                         },
                         new
                         {
                             Id = 5,
-                            CountRepeats = 100,
                             ExercisesId = 5,
+                            Work = "100",
                             WorkoutsId = 2
                         },
                         new
                         {
                             Id = 6,
-                            CountRepeats = 100,
                             ExercisesId = 6,
+                            Work = "100",
                             WorkoutsId = 2
                         },
                         new
                         {
                             Id = 7,
-                            CountRepeats = 100,
                             ExercisesId = 7,
+                            Work = "100",
                             WorkoutsId = 2
                         },
                         new
                         {
                             Id = 8,
-                            CountRepeats = 100,
                             ExercisesId = 8,
+                            Work = "100",
                             WorkoutsId = 2
                         },
                         new
                         {
                             Id = 9,
-                            CountRepeats = 100,
                             ExercisesId = 9,
+                            Work = "100",
                             WorkoutsId = 2
                         },
                         new
                         {
                             Id = 10,
-                            CountRepeats = 100,
                             ExercisesId = 10,
+                            Work = "100",
                             WorkoutsId = 2
                         },
                         new
                         {
                             Id = 11,
-                            CountRepeats = 100,
                             ExercisesId = 11,
+                            Work = "100",
                             WorkoutsId = 2
                         },
                         new
                         {
                             Id = 12,
-                            CountRepeats = 100,
                             ExercisesId = 12,
+                            Work = "100",
                             WorkoutsId = 2
                         },
                         new
@@ -892,16 +892,23 @@ namespace WodCatClone.Db.Migrations
                         new
                         {
                             Id = 14,
-                            CountRepeats = 50,
                             ExercisesId = 7,
+                            Work = "50",
                             WorkoutsId = 3
                         },
                         new
                         {
                             Id = 15,
-                            CountRepeats = 50,
                             ExercisesId = 11,
+                            Work = "50",
                             WorkoutsId = 3
+                        },
+                        new
+                        {
+                            Id = 16,
+                            ExercisesId = 1,
+                            Work = "300 meters",
+                            WorkoutsId = 4
                         });
                 });
 

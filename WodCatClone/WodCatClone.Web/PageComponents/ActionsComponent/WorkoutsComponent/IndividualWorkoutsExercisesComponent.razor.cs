@@ -18,11 +18,11 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         public Exercises Exercises { get; set; }
 
-        public int? CountRepeats { get; set; }
+        public string Work { get; set; }
 
         protected override void OnInitialized()
         {
-            CountRepeats = WorkoutsExercises.CountRepeats;
+            Work = WorkoutsExercises.Work;
             Exercises = ExercisesService.GetExercise(WorkoutsExercises.ExercisesId);
         }
     }

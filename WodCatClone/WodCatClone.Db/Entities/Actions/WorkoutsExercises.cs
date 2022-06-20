@@ -4,7 +4,7 @@
     {
         public int Id { get; set; }
 
-        public int? CountRepeats { get; set; }
+        public string Work { get; set; }
 
         public int WorkoutsId { get; set; }
 
