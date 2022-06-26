@@ -20,6 +20,10 @@ namespace WodCatClone.Db.EntityConfig.ActionsConfig
             builder.Property(_ => _.EndDate);
             builder.Property(_ => _.RegisterDate);
 
+            builder.HasOne(_ => _.EventEmblem)
+                .WithMany()
+                .HasForeignKey(_ => _.EventsEmblemId);
+
             builder.HasOne(_ => _.Halls)
                 .WithMany()
                 .HasForeignKey(_ => _.HallId);

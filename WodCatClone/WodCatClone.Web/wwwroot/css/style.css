@@ -125,11 +125,20 @@ a {cursor: pointer;}
     text-decoration: none;
 }
 .actionsSlash { margin: 0 10px 0 10px; }
-.exercises, .exercisesId, .workouts, .workoutsId, .halls, .programs, .articles {
+.exercises, .exercisesId, .workouts, .workoutsId, .halls, .programs, .articles, .events {
     background-color: #424242;
     width: 100%;
     border-radius: 5px;
     color: #bdc1c6;
+}
+.events {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 400px;
+    background-size: 100%;
+    padding: 0;
+    z-index: 2;
 }
 .exercisesId {height: 100%;}
 .workoutsId {height: 100%;}

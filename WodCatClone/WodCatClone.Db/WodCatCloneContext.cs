@@ -45,6 +45,13 @@ namespace WodCatClone.Db
                 new ProgramEmblem { Id = 4, Name = "NRC", Image = "img/EmblemPrograms/NRC.png" },
                 new ProgramEmblem { Id = 5, Name = "Wod", Image = "img/EmblemPrograms/Wod.png" });
 
+            modelBuilder.Entity<EventEmblem>().ToTable("EventEmblem").HasData(
+                new EventEmblem { Id = 1, Name = "Fon", Image = "img/EmblemEvents/fon.jpg" },
+                new EventEmblem { Id = 2, Name = "Idi", Image = "img/EmblemEvents/idi.jpg" },
+                new EventEmblem { Id = 3, Name = "Lime", Image = "img/EmblemEvents/lime.jpg" },
+                new EventEmblem { Id = 4, Name = "Run", Image = "img/EmblemEvents/run.jpg" },
+                new EventEmblem { Id = 5, Name = "Sport", Image = "img/EmblemEvents/sport.jpg" });
+
             modelBuilder.Entity<Question>().ToTable("Question").HasData(
                 new Question { Id = 1, Name = "Как добавить результат о тренировке?", AnswerId = 1 },
                 new Question { Id = 2, Name = "Как получить баллы?", AnswerId = 3 },
@@ -464,7 +471,8 @@ namespace WodCatClone.Db
                     StartDate = new DateTime(2022, 06, 26, 12, 30, 00),
                     EndDate = new DateTime(2022, 06, 26, 15, 00, 00),
                     RegisterDate = new DateTime(2022, 06, 24, 12, 00, 00),
-                    HallId = 1
+                    HallId = 1,
+                    EventsEmblemId = 2
                 });
 
             modelBuilder.Entity<ProgramsWorkouts>().ToTable("ProgramsWorkouts").HasData(
@@ -764,6 +772,8 @@ namespace WodCatClone.Db
 
         public DbSet<Events> Events { get; set; }
 
+        public DbSet<EventEmblem> EventEmblem { get; set; }
+        
         public DbSet<ResultWorkouts> ResultWorkouts { get; set; }
 
         public DbSet<Halls> Halls { get; set; }

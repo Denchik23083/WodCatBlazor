@@ -81,6 +81,20 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
+        public void GetImageTest()
+        {
+            var context = new TestsWodCatCloneContext();
+            var id = 3;
+            var image = "img/EmblemPrograms/Men.png";
+
+            var programEmblem = context.ProgramEmblem.FirstOrDefault(b => b.Id == id);
+            Assert.NotNull(programEmblem);
+
+            Assert.Equal(id, programEmblem.Id);
+            Assert.Equal(image, programEmblem.Image);
+        }
+
+        [Fact]
         public void BeginProgramTest()
         {
             var context = new TestsWodCatCloneContext();

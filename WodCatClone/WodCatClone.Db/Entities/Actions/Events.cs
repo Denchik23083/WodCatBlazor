@@ -24,6 +24,10 @@ namespace WodCatClone.Db.Entities.Actions
 
         public DateTime RegisterDate { get; set; }
 
+        public int EventsEmblemId { get; set; }
+
+        public EventEmblem EventEmblem { get; set; }
+
         public int? HallId { get; set; }
 
         public Halls Halls { get; set; }

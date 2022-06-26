@@ -6,6 +6,6 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 {
     public partial class FilterEventsComponent
     {
-        [Parameter] public IEnumerable<Events> ListOfItems { get; set; }
+        [Parameter] public IEnumerable<Events> Events { get; set; }
     }
 }
