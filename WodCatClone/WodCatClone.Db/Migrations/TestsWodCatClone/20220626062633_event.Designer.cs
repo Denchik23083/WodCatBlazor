@@ -10,8 +10,8 @@ using WodCatClone.Db;
 namespace WodCatClone.Db.Migrations.TestsWodCatClone
 {
     [DbContext(typeof(TestsWodCatCloneContext))]
-    [Migration("20220620122509_init")]
-    partial class init
+    [Migration("20220626062633_event")]
+    partial class @event
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -161,6 +161,52 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                             Rating = "9.0",
                             Type = "Кроссфит,Лёгкая атлетика"
                         });
+                });
+
+            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Events", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("HallId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Location")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("RegisterDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Town")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TypeEvent")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TypeSport")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HallId");
+
+                    b.ToTable("Events");
                 });
 
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Exercises", b =>
@@ -1374,6 +1420,15 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                     b.Navigation("ArticleEmblem");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Events", b =>
+                {
+                    b.HasOne("WodCatClone.Db.Entities.Actions.Halls", "Halls")
+                        .WithMany()
+                        .HasForeignKey("HallId");
+
+                    b.Navigation("Halls");
                 });
 
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Halls", b =>

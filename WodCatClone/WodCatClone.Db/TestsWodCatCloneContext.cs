@@ -453,6 +453,22 @@ namespace WodCatClone.Db
                     ProgramsEmblemId = 4
                 });
 
+            modelBuilder.Entity<Events>().ToTable("Events").HasData(
+                new Events
+                {
+                    Id = 1,
+                    Name = "TONUS 2022 help UA",
+                    TypeEvent = "Соревнования",
+                    TypeSport = "Кроссфит",
+                    Description = "К ТОНУС Стадион СЛАВУТИЧ АРЕНА Категории : SCALED, RX (ELITE), MASTERS 1 день 3 завдання Стартовый взнос - 500 грн Запись на участие В DIRECT!!! Для тихого, что из-за различных причин, не возможно прийняти участів в змаганнях, ми пропонуємо ОНЛАЙН ФОРМАТ. БЕЗ ВИДЕО! БЕЗ НАШЕГО СУДДІВСТВА ! ВСЕ НА НАШИЙ ДОВІРІ та ВАШІЙ ПОРЯДНОСТІ ! УМОВИ : Рестрация - 300 грн Категории - RX (ЭЛИТА) SCALED MASTERS 35 - 39, 40 - 44, 45+ 3 ( три комплекса) за один день Анонс 24.06 в п'ятницю ввечері о 17:00 Вконання 25.06 - субота . Отправить результаты до 17:00 субботы 25.06. Оголошення результатов у понедельника 27.06 Для записи напишите в DIRECT: Прізвище, им'я Місто, клуб Категорію",
+                    Town = "Запорожье",
+                    Location = "улица Лобановского, 21",
+                    StartDate = new DateTime(2022, 06, 26, 12, 30, 00),
+                    EndDate = new DateTime(2022, 06, 26, 15, 00, 00),
+                    RegisterDate = new DateTime(2022, 06, 24, 12, 00, 00),
+                    HallId = 1
+                });
+
             modelBuilder.Entity<ProgramsWorkouts>().ToTable("ProgramsWorkouts").HasData(
                 new ProgramsWorkouts
                 {
@@ -754,6 +770,8 @@ namespace WodCatClone.Db
         public DbSet<Workouts> Workouts { get; set; }
 
         public DbSet<Exercises> Exercises { get; set; }
+
+        public DbSet<Events> Events { get; set; }
 
         public DbSet<ResultWorkouts> ResultWorkouts { get; set; }
 

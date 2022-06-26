@@ -161,6 +161,52 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                         });
                 });
 
+            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Events", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("HallId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Location")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("RegisterDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Town")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TypeEvent")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TypeSport")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HallId");
+
+                    b.ToTable("Events");
+                });
+
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Exercises", b =>
                 {
                     b.Property<int>("Id")
@@ -1372,6 +1418,15 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                     b.Navigation("ArticleEmblem");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Events", b =>
+                {
+                    b.HasOne("WodCatClone.Db.Entities.Actions.Halls", "Halls")
+                        .WithMany()
+                        .HasForeignKey("HallId");
+
+                    b.Navigation("Halls");
                 });
 
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Halls", b =>

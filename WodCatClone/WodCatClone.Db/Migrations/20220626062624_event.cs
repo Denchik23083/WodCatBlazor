@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace WodCatClone.Db.Migrations.TestsWodCatClone
+namespace WodCatClone.Db.Migrations
 {
-    public partial class init : Migration
+    public partial class @event : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -223,6 +223,34 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                         name: "FK_Halls_User_UserId",
                         column: x => x.UserId,
                         principalTable: "User",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Events",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Town = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TypeEvent = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TypeSport = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Location = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    RegisterDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    HallId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Events", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Events_Halls_HallId",
+                        column: x => x.HallId,
+                        principalTable: "Halls",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -472,6 +500,11 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                 values: new object[] { 1, "I am a developer C#", new DateTime(2003, 8, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ukraine", "deniskudravov228@gmail.com", 1, null, "185", "Денис", "SoEasyBlef", "0000", 185, null, "Кудрявов", "Херсон", "70" });
 
             migrationBuilder.InsertData(
+                table: "Events",
+                columns: new[] { "Id", "Description", "EndDate", "HallId", "Location", "Name", "RegisterDate", "StartDate", "Town", "TypeEvent", "TypeSport" },
+                values: new object[] { 1, "К ТОНУС Стадион СЛАВУТИЧ АРЕНА Категории : SCALED, RX (ELITE), MASTERS 1 день 3 завдання Стартовый взнос - 500 грн Запись на участие В DIRECT!!! Для тихого, что из-за различных причин, не возможно прийняти участів в змаганнях, ми пропонуємо ОНЛАЙН ФОРМАТ. БЕЗ ВИДЕО! БЕЗ НАШЕГО СУДДІВСТВА ! ВСЕ НА НАШИЙ ДОВІРІ та ВАШІЙ ПОРЯДНОСТІ ! УМОВИ : Рестрация - 300 грн Категории - RX (ЭЛИТА) SCALED MASTERS 35 - 39, 40 - 44, 45+ 3 ( три комплекса) за один день Анонс 24.06 в п'ятницю ввечері о 17:00 Вконання 25.06 - субота . Отправить результаты до 17:00 субботы 25.06. Оголошення результатов у понедельника 27.06 Для записи напишите в DIRECT: Прізвище, им'я Місто, клуб Категорію", new DateTime(2022, 6, 26, 15, 0, 0, 0, DateTimeKind.Unspecified), 1, "улица Лобановского, 21", "TONUS 2022 help UA", new DateTime(2022, 6, 24, 12, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 6, 26, 12, 30, 0, 0, DateTimeKind.Unspecified), "Запорожье", "Соревнования", "Кроссфит" });
+
+            migrationBuilder.InsertData(
                 table: "Programs",
                 columns: new[] { "Id", "Aim", "Description", "HallId", "Name", "ProgramsEmblemId", "Rating", "Type" },
                 values: new object[,]
@@ -556,6 +589,11 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                 name: "IX_Articles_UserId",
                 table: "Articles",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Events_HallId",
+                table: "Events",
+                column: "HallId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Halls_EmblemHallId",
@@ -673,6 +711,9 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
 
             migrationBuilder.DropTable(
                 name: "Articles");
+
+            migrationBuilder.DropTable(
+                name: "Events");
 
             migrationBuilder.DropTable(
                 name: "ProgramsWorkouts");

@@ -1,16 +1,6 @@
-﻿@if (!ListOfItems.Any())
-{
-    <div class="row text-center">
-        <div class="col">
-            <img src="https://cdn.akamai.steamstatic.com/steam/apps/1534200/header.jpg?t=1616065824" height="500"/>
-        </div>
-    </div>
-}
-else
-{
-    <div class="row p-3">
-        <table class="table table-borderless">
-            <thead>
+﻿<div class="row p-3">
+    <table class="table table-borderless">
+        <thead>
             <tr class="tableheader">
                 <th scope="col">Участник</th>
                 <th scope="col">Город</th>
@@ -18,12 +8,11 @@ else
                 <th scope="col">Уровень квалификации</th>
                 <th scope="col">Итоговое место</th>
             </tr>
-            </thead>    
-            @foreach (var item in ListOfItems)
-            {
-                <IndividualRatingsComponent User="item" Position="Position"/>
-                Position++;
-            }
-        </table>
-    </div>
-}
+        </thead>
+        @foreach (var item in ListOfItems)
+        {
+            <IndividualRatingsComponent User="item" Position="Position"/>
+            Position++;
+        }
+    </table>
+</div>

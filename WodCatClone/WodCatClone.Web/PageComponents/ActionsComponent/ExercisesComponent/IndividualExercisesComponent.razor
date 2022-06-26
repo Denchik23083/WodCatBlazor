@@ -1,20 +1,20 @@
 ﻿<div class="exercises m-3">
     <div class="row ml-1 mt-3 mr-1 mb-3">
         <div class="col">
-            <a class="Name" href="@Url">@Exercises.Name</a>
-            <span class="cub">@Exercises.Modality</span>
+            <a class="Name" href="@Url">@Exercise.Name</a>
+            <span class="cub">@Exercise.Modality</span>
         </div>
     </div>
 
     <div class="row ml-1 mt-3 mr-1 mb-3">
         <div class="col-6">
-            @Exercises.Description
+            @Exercise.Description
         </div>
         <div class="col-6">
             <iframe
                 width="600"
                 height="300"
-                src="@Exercises.Image"
+                src="@Exercise.Image"
                 frameborder="0"
                 allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture"
                 allowfullscreen>
@@ -24,15 +24,15 @@
 
     <div class="row  ml-1 mt-3 mr-1 mb-3">
         <div class="col-4 text-left">
-            <span>Сложность: @Exercises.Complexity</span>
+            <span>Сложность: @Exercise.Complexity</span>
         </div>
 
         <div class="col-4 text-center">
-            <span>Движения: @Exercises.Movement</span>
+            <span>Движения: @Exercise.Movement</span>
         </div>
 
         <div class="col-4 text-right">
-            <span>Инвентарь: @Exercises.Inventory</span>
+            <span>Инвентарь: @Exercise.Inventory</span>
         </div>
     </div>
 </div>

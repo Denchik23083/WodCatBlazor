@@ -7,7 +7,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
 {
     public partial class IndividualProgramsComponent
     {
-        [Parameter] public Programs Programs { get; set; }
+        [Parameter] public Programs Program { get; set; }
 
         [Inject] public IHallsService HallsService { get; set; }
 
@@ -27,34 +27,34 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
 
         protected override void OnInitialized()
         {
-            Url = $"programs/{Programs.Id}";
-            if (Programs.HallId is not null)
+            Url = $"programs/{Program.Id}";
+            if (Program.HallId is not null)
             {
-                Hall = HallsService.GetHall(Programs.HallId);
+                Hall = HallsService.GetHall(Program.HallId);
                 HallEmblem = HallsService.GetImage(Hall.EmblemHallId);
             }
-            if (Programs.ProgramsEmblemId is not null)
+            if (Program.ProgramsEmblemId is not null)
             {
-                Image = ProgramsService.GetImage(Programs.ProgramsEmblemId);
+                Image = ProgramsService.GetImage(Program.ProgramsEmblemId);
             }
 
-            Subscribers = ProgramsService.Subscribers(Programs.Id);
+            Subscribers = ProgramsService.Subscribers(Program.Id);
         }
 
         protected override void OnParametersSet()
         {
-            Url = $"programs/{Programs.Id}";
-            if (Programs.HallId is not null)
+            Url = $"programs/{Program.Id}";
+            if (Program.HallId is not null)
             {
-                Hall = HallsService.GetHall(Programs.HallId);
+                Hall = HallsService.GetHall(Program.HallId);
                 HallEmblem = HallsService.GetImage(Hall.EmblemHallId);
             }
-            if (Programs.ProgramsEmblemId is not null)
+            if (Program.ProgramsEmblemId is not null)
             {
-                Image = ProgramsService.GetImage(Programs.ProgramsEmblemId);
+                Image = ProgramsService.GetImage(Program.ProgramsEmblemId);
             }
 
-            Subscribers = ProgramsService.Subscribers(Programs.Id);
+            Subscribers = ProgramsService.Subscribers(Program.Id);
         }
 
         public void LinkHall(int id) => NavigationManager.NavigateTo($"/gymboxs/{id}");

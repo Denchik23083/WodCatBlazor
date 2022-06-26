@@ -1,10 +1,10 @@
 ﻿<div class="programs m-3">
     <div class="row ml-1 mt-3 mr-1 mb-3">
         <div class="col">
-            <a class="Name bold" href="@Url">@Programs.Name</a>
-            @if (Programs.Rating is not null)
+            <a class="Name bold" href="@Url">@Program.Name</a>
+            @if (Program.Rating is not null)
             {
-                <span class="greenCub">@Programs.Rating / 10</span>
+                <span class="greenCub">@Program.Rating / 10</span>
             }
         </div>
     </div>
@@ -16,9 +16,9 @@
             }
         </div>
         <div class="col-7 text-light">
-            @if (Programs.Description is not null)
+            @if (Program.Description is not null)
             {
-                @Programs.Description
+                @Program.Description
             }
         </div>
         @if (Hall is not null)
@@ -34,7 +34,7 @@
     </div>
     <div class="row ml-1 mt-3 mr-1 mb-3">
         <div class="col-4">
-            @Programs.Type | @Programs.Aim
+            @Program.Type | @Program.Aim
         </div>
         <div class="col-4 text-center">
             <i class="fa-solid fa-user" style="font-size: 20px;"></i>

@@ -1,9 +1,9 @@
 ﻿<div class="workouts m-3 p-2" @onclick="Id">
     <div class="row ml-1 mt-3 mr-1 mb-3">
         <div class="col">
-            <a class="Name" href="@Url"><span class="bold">@Workouts.Name</span></a>
-            <span class="cub">@Workouts.Modality</span>
-            <span class="greenCub">@Workouts.Rating / 10</span>
+            <a class="Name" href="@Url"><span class="bold">@Workout.Name</span></a>
+            <span class="cub">@Workout.Modality</span>
+            <span class="greenCub">@Workout.Rating / 10</span>
         </div>
     </div>
 
@@ -38,7 +38,7 @@
         <div class="col-4 text-center">
             <span class="exercisesInWorkouts">
                 <i class="fa-regular fa-clock"></i>&nbsp;
-                @Workouts.Minutes<span>m</span>:@Workouts.Seconds<span>s</span>
+                @Workout.Minutes<span>m</span>:@Workout.Seconds<span>s</span>
             </span>
             &nbsp;&nbsp;&nbsp;
             <span class="exercisesInWorkouts">
@@ -46,7 +46,7 @@
             </span>
         </div>
         <div class="col-4 text-right">
-            <span>Сложность: @Workouts.Complexity</span>
+            <span>Сложность: @Workout.Complexity</span>
         </div>
     </div>
 </div>

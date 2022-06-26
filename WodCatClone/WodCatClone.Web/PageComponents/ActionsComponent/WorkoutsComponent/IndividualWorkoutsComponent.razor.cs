@@ -9,7 +9,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 {
     public partial class IndividualWorkoutsComponent
     {
-        [Parameter] public Workouts Workouts { get; set; }
+        [Parameter] public Workouts Workout { get; set; }
 
         [Inject] public NavigationManager NavigationManager { get; set; }
 
@@ -36,29 +36,29 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
         protected override void OnInitialized()
         {
             Value = 0;
-            Hall = HallsService.GetHall(Workouts.HallId);
+            Hall = HallsService.GetHall(Workout.HallId);
             if (Hall is not null)
             {
                 Image = HallsService.GetImage(Hall.EmblemHallId);
             }
-            WorkoutsCategory = Workouts.Category.Split(",");
-            ResultWorkoutsCount = ResultWorkoutsService.GetAllResultWorkouts(Workouts.Id).Count();
-            WorkoutsExercises = WorkoutsService.GetAllWorkoutsExercises(Workouts.Id);
+            WorkoutsCategory = Workout.Category.Split(",");
+            ResultWorkoutsCount = ResultWorkoutsService.GetAllResultWorkouts(Workout.Id).Count();
+            WorkoutsExercises = WorkoutsService.GetAllWorkoutsExercises(Workout.Id);
         }
 
         protected override void OnParametersSet()
         {
             Value = 0;
-            Hall = HallsService.GetHall(Workouts.HallId);
+            Hall = HallsService.GetHall(Workout.HallId);
             Image = HallsService.GetImage(Hall.EmblemHallId);
-            WorkoutsCategory = Workouts.Category.Split(",");
-            ResultWorkoutsCount = ResultWorkoutsService.GetAllResultWorkouts(Workouts.Id).Count();
-            WorkoutsExercises = WorkoutsService.GetAllWorkoutsExercises(Workouts.Id);
+            WorkoutsCategory = Workout.Category.Split(",");
+            ResultWorkoutsCount = ResultWorkoutsService.GetAllResultWorkouts(Workout.Id).Count();
+            WorkoutsExercises = WorkoutsService.GetAllWorkoutsExercises(Workout.Id);
         }
 
         public void Id()
         {
-            Url = $"workouts/{Workouts.Id}";
+            Url = $"workouts/{Workout.Id}";
             NavigationManager.NavigateTo(Url);
         }
     }

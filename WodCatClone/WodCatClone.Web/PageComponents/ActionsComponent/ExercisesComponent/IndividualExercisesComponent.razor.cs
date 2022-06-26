@@ -5,13 +5,13 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ExercisesComponent
 {
     public partial class IndividualExercisesComponent
     {
-        [Parameter] public Exercises Exercises { get; set; }
+        [Parameter] public Exercises Exercise { get; set; }
 
         public string Url = string.Empty;
 
         protected override void OnInitialized()
         {
-            Url = $"exercises/{Exercises.Id}";
+            Url = $"exercises/{Exercise.Id}";
         }
     }
 }

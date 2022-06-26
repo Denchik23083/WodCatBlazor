@@ -147,34 +147,41 @@ using WodCatClone.Web.PageComponents.ActionsComponent.ExercisesComponent;
 #nullable disable
 #nullable restore
 #line 20 "C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\_Imports.razor"
-using WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent;
+using WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 21 "C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\_Imports.razor"
-using WodCatClone.Web.PageComponents.ActionsComponent.RatingsComponent;
+using WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 22 "C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\_Imports.razor"
-using WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent;
+using WodCatClone.Web.PageComponents.ActionsComponent.RatingsComponent;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 23 "C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\_Imports.razor"
-using WodCatClone.Web.PageComponents.ProfileComponent;
+using WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 24 "C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\_Imports.razor"
+using WodCatClone.Web.PageComponents.ProfileComponent;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 25 "C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\_Imports.razor"
 using WodCatClone.Web.PageComponents.MainComponent;
 
 #line default
