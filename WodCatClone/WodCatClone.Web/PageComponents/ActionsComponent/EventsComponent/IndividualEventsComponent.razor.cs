@@ -37,6 +37,16 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             MonthEndName = GetMonth(Event.EndDate.Month);
         }
 
+        protected override void OnParametersSet()
+        {
+            Url = $"events/{Event.Id}";
+            Image = EventsService.GetImage(Event.EventsEmblemId);
+            DayStartName = Event.StartDate.Day;
+            DayEndName = Event.EndDate.Day;
+            MonthStartName = GetMonth(Event.StartDate.Month);
+            MonthEndName = GetMonth(Event.EndDate.Month);
+        }
+
         public string Url { get; set; }
 
         public string Image { get; set; }

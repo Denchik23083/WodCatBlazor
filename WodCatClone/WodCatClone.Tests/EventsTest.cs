@@ -19,6 +19,18 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
+        public void GetEventTest()
+        {
+            var context = new TestsWodCatCloneContext();
+            var id = 1;
+
+            var getEvent = context.Events.FirstOrDefault(b => b.Id == id);
+            Assert.NotNull(getEvent);
+
+            Assert.Equal(id, getEvent.Id);
+        }
+
+        [Fact]
         public void GetImageTest()
         {
             var context = new TestsWodCatCloneContext();

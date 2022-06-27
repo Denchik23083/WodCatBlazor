@@ -3,11 +3,25 @@
 <HeaderComponent />
 
 <div class="wrapper">
-    <div class="row">
-        <div class="col text-left text-light pages mb-2">
-            <a href="/" class="link">WODCAT</a> &rarr; Мероприятия и Соревнования
+    @if (IsLoginUser)
+    {
+        <div class="row">
+            <div class="col-6 text-left text-light pages mb-2">
+                <a href="/" class="link">WODCAT</a> &rarr; Мероприятия и Соревнования
+            </div>
+            <div class="col-6 text-right pages mb-2">
+                <button class="btn text-white createHall" @onclick="Add">Создать новое</button>
+            </div>
         </div>
-    </div>
+    }
+    else
+    {
+        <div class="row">
+            <div class="col text-left text-light pages mb-2">
+                <a href="/" class="link">WODCAT</a> &rarr; Мероприятия и Соревнования
+            </div>
+        </div>
+    }
     <EventsInfo />
     <FilterEventsComponent Events="Events"/>
 </div>

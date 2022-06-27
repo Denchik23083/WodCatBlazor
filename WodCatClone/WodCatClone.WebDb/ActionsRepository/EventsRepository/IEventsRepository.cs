@@ -7,6 +7,8 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
     {
         IEnumerable<Events> GetAllEvents();
 
+        Events GetEvent(int eventId);
+
         EventEmblem GetImage(int id);
     }
 }

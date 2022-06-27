@@ -1,4 +1,49 @@
 ﻿<div class="row">
+    <div class="col-2 pr-1">
+        <select class="d-inline filterHalls pt-2 pb-2" @bind="_filterTown">
+            <option value="None">Город</option>
+            @foreach (var item in FilterTown)
+            {
+                <option value="@item.Filter">@item.Content</option>
+            }
+        </select>
+    </div>
+    <div class="col-2 pr-1">
+        <select class="d-inline filterHalls pt-2 pb-2" @bind="_filterTypeEvent">
+            <option value="None">Тип события</option>
+            @foreach (var item in FilterTypeEvent)
+            {
+                <option value="@item.Filter">@item.Content</option>
+            }
+        </select>
+    </div>
+    <div class="col-2 pr-1">
+        <select class="d-inline filterHalls pt-2 pb-2" @bind="_filterTypeSport">
+            <option value="None">Вид спорта</option>
+            @foreach (var item in FilterTypeSport)
+            {
+                <option value="@item.Filter">@item.Content</option>
+            }
+        </select>
+    </div>
+    <div class="col-3 pr-1">
+        <button
+            type="button"
+            class="btn btn-primary form-control mb-2"
+            @onclick="Filter">
+            Search
+        </button>
+    </div>
+    <div class="col-3">
+        <button
+            type="button"
+            class="btn btn-danger form-control mb-2"
+            @onclick="Reset">
+            Reset
+        </button>
+    </div>
+</div>
+<div class="row">
     @foreach (var item in Events)
     {
         <IndividualEventsComponent Event="item" />

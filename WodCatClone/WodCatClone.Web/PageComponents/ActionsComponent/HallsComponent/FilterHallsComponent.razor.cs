@@ -27,13 +27,14 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
             new() { Content = "Днепр", Filter = "Днепр" },
             new() { Content = "Хмельницкий", Filter = "Хмельницкий" },
             new() { Content = "Кривой Рог", Filter = "Кривой Рог" },
+            new() { Content = "Запорожье", Filter = "Запорожье" },
             new() { Content = "Львов", Filter = "Львов" },
         };
 
         public List<FilterHalls> FilterType = new()
         {
             new() { Content = "Crossfit (not Aff.)", Filter = "Crossfit (not Aff.)" },
-            new() { Content = "Affiliate Crossfit", Filter = "Affiliate Crossfit," },
+            new() { Content = "Affiliate Crossfit", Filter = "Affiliate Crossfit" },
             new() { Content = "Gym", Filter = "Gym" },
             new() { Content = "Boxing", Filter = "Boxing" },
             new() { Content = "Fitness", Filter = "Fitness" },

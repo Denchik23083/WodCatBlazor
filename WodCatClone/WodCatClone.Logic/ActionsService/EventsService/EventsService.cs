@@ -18,6 +18,11 @@ namespace WodCatClone.Logic.ActionsService.EventsService
             return _repository.GetAllEvents();
         }
 
+        public Events GetEvent(int eventId)
+        {
+            return _repository.GetEvent(eventId);
+        }
+
         public string GetImage(int id)
         {
             var eventEmblem = _repository.GetImage(id);

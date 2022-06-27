@@ -8,15 +8,15 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 {
     public partial class HallsPage
     {
-        public IEnumerable<Halls> Halls { get; set; }
-
-        public bool IsLoginUser { get; set; }  
-
         [Inject] public IHallsService HallsService { get; set; }
 
         [Inject] public IUserService UserService { get; set; }
 
         [Inject] public NavigationManager NavigationManager { get; set; }
+
+        public IEnumerable<Halls> Halls { get; set; }
+
+        public bool IsLoginUser { get; set; }
 
         protected override void OnInitialized()
         {

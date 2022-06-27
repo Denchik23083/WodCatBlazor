@@ -1,26 +1,15 @@
-﻿@if (!ListOfItems.Any())
-{
-    <div class="row text-center">
-        <div class="col">
-            <img src="https://cdn.akamai.steamstatic.com/steam/apps/1534200/header.jpg?t=1616065824" height="500"/>
-        </div>
-    </div>
-}
-else
-{
-    <div class="row p-3">
-        <table class="table table-borderless">
-            <thead>
-            <tr class="tableheader">
-                <th scope="col">Участник</th>
-                <th scope="col">Город</th>
-                <th scope="col">Уровень квалификации</th>
-            </tr>
-            </thead>    
-            @foreach (var item in ListOfItems)
-            {
-                <IndividualHallsUsersComponent User="item"/>
-            }
-        </table>
-    </div>
-}
+﻿<div class="row p-3">
+    <table class="table table-borderless">
+        <thead>
+        <tr class="tableheader">
+            <th scope="col">Участник</th>
+            <th scope="col">Город</th>
+            <th scope="col">Уровень квалификации</th>
+        </tr>
+        </thead>    
+        @foreach (var item in ListOfItems)
+        {
+            <IndividualHallsUsersComponent User="item"/>
+        }
+    </table>
+</div>

@@ -294,6 +294,9 @@ C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\ne
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\RazorDeclaration\PageComponents\ActionsComponent\ArticlesComponent\FilterArticlesComponent.razor.g.cs
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\RazorDeclaration\PageComponents\ActionsComponent\ArticlesComponent\IndividualArticlesComponent.razor.g.cs
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\RazorDeclaration\PageComponents\ActionsComponent\ArticlesComponent\ListArticlesComponent.razor.g.cs
+C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\RazorDeclaration\PageComponents\ActionsComponent\EventsComponent\EventsInfo.razor.g.cs
+C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\RazorDeclaration\PageComponents\ActionsComponent\EventsComponent\FilterEventsComponent.razor.g.cs
+C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\RazorDeclaration\PageComponents\ActionsComponent\EventsComponent\IndividualEventsComponent.razor.g.cs
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\RazorDeclaration\PageComponents\ActionsComponent\ExercisesComponent\ExercisesInfo.razor.g.cs
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\RazorDeclaration\PageComponents\ActionsComponent\ExercisesComponent\FilterExercisesComponent.razor.g.cs
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\RazorDeclaration\PageComponents\ActionsComponent\ExercisesComponent\IndividualExercisesComponent.razor.g.cs
@@ -338,6 +341,9 @@ C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\ne
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\RazorDeclaration\Pages\ActionsPage\ArticlesPage\ArticlesDetailsPage.razor.g.cs
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\RazorDeclaration\Pages\ActionsPage\ArticlesPage\ArticlesPage.razor.g.cs
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\RazorDeclaration\Pages\ActionsPage\ArticlesPage\EditArticlePage.razor.g.cs
+C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\RazorDeclaration\Pages\ActionsPage\EventsPage\AddEventPage.razor.g.cs
+C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\RazorDeclaration\Pages\ActionsPage\EventsPage\EventsDetailsPage.razor.g.cs
+C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\RazorDeclaration\Pages\ActionsPage\EventsPage\EventsPage.razor.g.cs
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\RazorDeclaration\Pages\ActionsPage\ExercisesPage\ExercisesDetailsPage.razor.g.cs
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\RazorDeclaration\Pages\ActionsPage\ExercisesPage\ExercisesPage.razor.g.cs
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\RazorDeclaration\Pages\ActionsPage\HallsPage\AddHallPage.razor.g.cs
@@ -371,6 +377,9 @@ C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\ne
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\PageComponents\ActionsComponent\ArticlesComponent\FilterArticlesComponent.razor.g.cs
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\PageComponents\ActionsComponent\ArticlesComponent\IndividualArticlesComponent.razor.g.cs
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\PageComponents\ActionsComponent\ArticlesComponent\ListArticlesComponent.razor.g.cs
+C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\PageComponents\ActionsComponent\EventsComponent\EventsInfo.razor.g.cs
+C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\PageComponents\ActionsComponent\EventsComponent\FilterEventsComponent.razor.g.cs
+C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\PageComponents\ActionsComponent\EventsComponent\IndividualEventsComponent.razor.g.cs
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\PageComponents\ActionsComponent\ExercisesComponent\ExercisesInfo.razor.g.cs
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\PageComponents\ActionsComponent\ExercisesComponent\FilterExercisesComponent.razor.g.cs
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\PageComponents\ActionsComponent\ExercisesComponent\IndividualExercisesComponent.razor.g.cs
@@ -415,6 +424,9 @@ C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\ne
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\Pages\ActionsPage\ArticlesPage\ArticlesDetailsPage.razor.g.cs
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\Pages\ActionsPage\ArticlesPage\ArticlesPage.razor.g.cs
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\Pages\ActionsPage\ArticlesPage\EditArticlePage.razor.g.cs
+C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\Pages\ActionsPage\EventsPage\AddEventPage.razor.g.cs
+C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\Pages\ActionsPage\EventsPage\EventsDetailsPage.razor.g.cs
+C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\Pages\ActionsPage\EventsPage\EventsPage.razor.g.cs
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\Pages\ActionsPage\ExercisesPage\ExercisesDetailsPage.razor.g.cs
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\Pages\ActionsPage\ExercisesPage\ExercisesPage.razor.g.cs
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\Pages\ActionsPage\HallsPage\AddHallPage.razor.g.cs
@@ -455,11 +467,3 @@ C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\ne
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\WodCatClone.Web.pdb
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\WodCatClone.Web.genruntimeconfig.cache
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\ref\WodCatClone.Web.dll
-C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\RazorDeclaration\Pages\ActionsPage\EventsPage\EventsPage.razor.g.cs
-C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\Pages\ActionsPage\EventsPage\EventsPage.razor.g.cs
-C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\RazorDeclaration\PageComponents\ActionsComponent\EventsComponent\EventsInfo.razor.g.cs
-C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\PageComponents\ActionsComponent\EventsComponent\EventsInfo.razor.g.cs
-C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\RazorDeclaration\PageComponents\ActionsComponent\EventsComponent\FilterEventsComponent.razor.g.cs
-C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\PageComponents\ActionsComponent\EventsComponent\FilterEventsComponent.razor.g.cs
-C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\RazorDeclaration\PageComponents\ActionsComponent\EventsComponent\IndividualEventsComponent.razor.g.cs
-C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\PageComponents\ActionsComponent\EventsComponent\IndividualEventsComponent.razor.g.cs

@@ -7,6 +7,8 @@ namespace WodCatClone.Logic.ActionsService.EventsService
     {
         IEnumerable<Events> GetAllEvents();
 
+        Events GetEvent(int eventId);
+
         string GetImage(int id);
     }
 }
