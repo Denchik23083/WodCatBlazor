@@ -1,10 +1,18 @@
 ﻿<div class="row">
-    <div class="col mb-2">
-        <button class="filterArticles mr-1" @onclick="Reset">All</button>
-        @foreach (var item in ArticleType)
-        {
-            <button class="filterArticles mr-1" @onclick="() => Filter(item)">@item</button>
-        }
+    <div class="col filterWorkouts mb-2">
+        <a @onclick="() => IsVisible = !IsVisible">Открыть фильтры поиска</a>
     </div>
 </div>
+@if (IsVisible)
+{
+    <div class="row">
+        <div class="col mb-2">
+            <button class="filterArticles mr-1" @onclick="Reset">All</button>
+            @foreach (var item in ArticleType)
+            {
+                <button class="filterArticles mr-1" @onclick="() => Filter(item)">@item</button>
+            }
+        </div>
+    </div>
+}
 <ListArticlesComponent ListOfItems="Articles"/>

@@ -19,6 +19,23 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
+        public void GetAllEventsUsers()
+        {
+            var context = new TestsWodCatCloneContext();
+            var id = 2;
+            var expectedUser = 0;
+
+            var getEvent = context.Halls.FirstOrDefault(b => b.Id == id);
+            Assert.NotNull(getEvent);
+            Assert.Equal(id, getEvent.Id);
+
+            var users = context.Users.Where(b => b.EventId == id);
+            Assert.NotNull(users);
+
+            Assert.Equal(expectedUser, users.Count());
+        }
+
+        [Fact]
         public void GetEventTest()
         {
             var context = new TestsWodCatCloneContext();

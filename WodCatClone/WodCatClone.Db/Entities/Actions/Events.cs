@@ -1,4 +1,5 @@
 ﻿using System;
+using WodCatClone.Db.Entities.Auth;
 
 namespace WodCatClone.Db.Entities.Actions
 {
@@ -22,8 +23,6 @@ namespace WodCatClone.Db.Entities.Actions
 
         public DateTime EndDate { get; set; }
 
-        public DateTime RegisterDate { get; set; }
-
         public int EventsEmblemId { get; set; }
 
         public EventEmblem EventEmblem { get; set; }
@@ -31,5 +30,9 @@ namespace WodCatClone.Db.Entities.Actions
         public int? HallId { get; set; }
 
         public Halls Halls { get; set; }
+
+        public int? UserId { get; set; }
+
+        public User User { get; set; }
     }
 }

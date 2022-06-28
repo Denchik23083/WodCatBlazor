@@ -1,0 +1,15 @@
+﻿<div class="row p-3">
+    <table class="table table-borderless">
+        <thead>
+        <tr class="tableheader">
+            <th scope="col">Участник</th>
+            <th scope="col">Город</th>
+            <th scope="col">Уровень квалификации</th>
+        </tr>
+        </thead>    
+        @foreach (var item in ListOfItems)
+        {
+            <IndividualEventsUsersComponent User="item"/>
+        }
+    </table>
+</div>

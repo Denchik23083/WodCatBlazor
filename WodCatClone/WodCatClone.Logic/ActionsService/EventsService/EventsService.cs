@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using WodCatClone.Db.Entities.Actions;
+using WodCatClone.Db.Entities.Auth;
 using WodCatClone.WebDb.ActionsRepository.EventsRepository;
 
 namespace WodCatClone.Logic.ActionsService.EventsService
@@ -16,6 +17,11 @@ namespace WodCatClone.Logic.ActionsService.EventsService
         public IEnumerable<Events> GetAllEvents()
         {
             return _repository.GetAllEvents();
+        }
+
+        public IEnumerable<User> GetAllEventsUsers(int id)
+        {
+            return _repository.GetAllEventsUsers(id);
         }
 
         public Events GetEvent(int eventId)

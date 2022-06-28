@@ -10,7 +10,7 @@
     HallId="HallId"/>
 
 <div class="row">
-    <div class="col visualContainerId">
+    <div class="col visualContainerHall">
         <div class="row" style="margin: 0 250px;">
             <div class="col-6 text-left text-light pages p-0 mb-3">
                 <a href="/" class="link">WODCAT</a> &rarr; 
@@ -21,8 +21,17 @@
                 @if (User.Id == Hall.UserId)
                 {
                     <div class="col-6 text-right text-light pages mb-3">
-                        <button class="btn btn-primary text-white" @onclick="Edit" style="font-weight: bold;">Редактировать</button>
-                        <button class="btn btn-danger text-white" @onclick="OnShow" style="font-weight: bold;">Удалить</button>
+                        <button 
+                            class="btn btn-primary text-white"
+                            style="font-weight: bold;" 
+                            @onclick="Edit">Редактировать
+                        </button>
+                        <button
+                            class="btn btn-danger text-white"
+                            style="font-weight: bold;"
+                            @onclick="OnShow">
+                            Удалить
+                        </button>
                     </div>
                 }
             }
@@ -103,15 +112,15 @@
     <div class="col p-3 footerHall @Top">
         <div class="row">
             <div class="col text-center">
-                <span class="programslink" @onclick="DisplayWorkout">О НАС</span>&nbsp;
+                <span class="programslink" @onclick="DisplayWorkout">О НАС</span>
                 <span class="programslink" @onclick="DisplayUser">АТЛЕТОВ</span>
             </div>
         </div>
-        @if (DisplayLocation && !DisplayUsers)
+        @if (DisplayLocation)
         {
             <AboutHallComponent Hall="Hall" Athletes="Athletes"/>
         }
-        else if (!DisplayLocation && DisplayUsers)
+        else if (DisplayUsers)
         {
             <ListHallsUsersComponent ListOfItems="Users"/>
         }

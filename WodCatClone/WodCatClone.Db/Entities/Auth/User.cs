@@ -42,5 +42,9 @@ namespace WodCatClone.Db.Entities.Auth
         public int? ProgramId { get; set; }
 
         public Programs Programs { get; set; }
+
+        public int? EventId { get; set; }
+
+        public Events Events { get; set; }
     }
 }

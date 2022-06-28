@@ -239,9 +239,6 @@ namespace WodCatClone.Db.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("RegisterDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
@@ -255,11 +252,16 @@ namespace WodCatClone.Db.Migrations
                     b.Property<string>("TypeSport")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("EventsEmblemId");
 
                     b.HasIndex("HallId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Events");
 
@@ -273,11 +275,11 @@ namespace WodCatClone.Db.Migrations
                             HallId = 1,
                             Location = "улица Лобановского, 21",
                             Name = "TONUS 2022 help UA",
-                            RegisterDate = new DateTime(2022, 6, 24, 12, 0, 0, 0, DateTimeKind.Unspecified),
                             StartDate = new DateTime(2022, 6, 26, 12, 30, 0, 0, DateTimeKind.Unspecified),
                             Town = "Запорожье",
                             TypeEvent = "Соревнования",
-                            TypeSport = "Кроссфит"
+                            TypeSport = "Кроссфит",
+                            UserId = 1
                         });
                 });
 
@@ -1298,6 +1300,9 @@ namespace WodCatClone.Db.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
+                    b.Property<int?>("EventId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("GenderId")
                         .HasColumnType("int");
 
@@ -1343,6 +1348,8 @@ namespace WodCatClone.Db.Migrations
                         .HasColumnType("nvarchar(255)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("EventId");
 
                     b.HasIndex("GenderId");
 
@@ -1506,9 +1513,15 @@ namespace WodCatClone.Db.Migrations
                         .WithMany()
                         .HasForeignKey("HallId");
 
+                    b.HasOne("WodCatClone.Db.Entities.Auth.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
                     b.Navigation("EventEmblem");
 
                     b.Navigation("Halls");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Halls", b =>
@@ -1607,6 +1620,10 @@ namespace WodCatClone.Db.Migrations
 
             modelBuilder.Entity("WodCatClone.Db.Entities.Auth.User", b =>
                 {
+                    b.HasOne("WodCatClone.Db.Entities.Actions.Events", "Events")
+                        .WithMany()
+                        .HasForeignKey("EventId");
+
                     b.HasOne("WodCatClone.Db.Entities.Auth.Gender", "Gender")
                         .WithMany()
                         .HasForeignKey("GenderId");
@@ -1618,6 +1635,8 @@ namespace WodCatClone.Db.Migrations
                     b.HasOne("WodCatClone.Db.Entities.Actions.Programs", "Programs")
                         .WithMany()
                         .HasForeignKey("ProgramId");
+
+                    b.Navigation("Events");
 
                     b.Navigation("Gender");
 

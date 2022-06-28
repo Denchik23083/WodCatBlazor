@@ -21,8 +21,17 @@
             @if (User.Id == Article.UserId)
             {
                 <div class="col-6 text-right text-light pages mb-3">
-                    <button class="btn btn-primary text-white" @onclick="Edit" style="font-weight: bold;">Редактировать</button>
-                    <button class="btn btn-danger text-white" @onclick="OnShow" style="font-weight: bold;">Удалить</button>
+                    <button 
+                        class="btn btn-primary text-white"
+                        style="font-weight: bold;" 
+                        @onclick="Edit">Редактировать
+                    </button>
+                    <button
+                        class="btn btn-danger text-white"
+                        style="font-weight: bold;"
+                        @onclick="OnShow">
+                        Удалить
+                    </button>
                 </div>
             }
         }

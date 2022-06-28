@@ -2,10 +2,125 @@
 
 <HeaderComponent />
 
-<div class="wrapperId">
-    <div class="row">
-        <div class="col">
-            <h5 class="text-white">Details address.</h5>
+<ConfirmRemoveEvent
+    @ref="ConfirmRemoveEvent"
+    OnCancel="OnCancel" 
+    OnShow="OnShow"
+    Event="Event"
+    EventId="EventId"/>
+
+<div class="row">
+    <div class="col visualContainerEvent" style="background-image: url(/@Image);">
+        <div class="row" style="margin: 0 250px;">
+            <div class="col-6 text-left text-light pages p-0 mb-3">
+                <a href="/" class="link">WODCAT</a> &rarr; 
+                <a href="/events" class="link">Мероприятия и Соревнования</a> &rarr; @Event.Name
+            </div>
+            @if (User is not null)
+            {
+                @if (User.Id == Event.UserId)
+                {
+                    <div class="col-6 text-right text-light pages mb-3">
+                        <button 
+                            class="btn btn-primary text-white"
+                            style="font-weight: bold;" 
+                            @onclick="Edit">Редактировать
+                        </button>
+                        <button
+                            class="btn btn-danger text-white"
+                            style="font-weight: bold;"
+                            @onclick="OnShow">
+                            Удалить
+                        </button>
+                    </div>
+                }
+            }
         </div>
+        <div class="EventId">
+            <div class="row mb-3">
+                <div class="col-4">
+                    <img src="@HallEmblem" style="background: white; width: 200px; height: 200px;" alt=""/>
+                </div>
+                <div class="col-8">
+                    <div class="row">
+                        <div class="col">
+                            <h1 class="h1Id">@Event.Name</h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <img src="img/Ukraine.png" style="width: 30px; height: 20px;" class="mr-2"/>
+                            <strong style="color: #333333;">Украина, @Event.Town</strong>
+                        </div>
+                    </div>
+                    @if (Hall is not null && HallEmblem is not null)
+                    {
+                        <div class="row">
+                            <div class="col mb-2">
+                                <img src="@HallEmblem" width="75" height="75"/>
+                                <a href="/gymboxs/@Hall.Id" class="link">@Hall.Name</a>
+                            </div>
+                        </div>
+                    }
+                    <div class="row">
+                        <div class="col">
+                            <strong style="color: #333333;">Начало: @StartDate @StartTime</strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <strong style="color: #333333;">Завершение: @EndDate @EndTime</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col p-3 mb-3">
+                    <strong style="color: #333333;">@Event.TypeEvent @Event.TypeSport</strong>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col p-3 mb-3">
+                    @Time
+                </div>
+            </div>
+            @*@if (IsLoginUser)
+            {
+                @if (User!.HallId != Hall.Id)
+                {
+                    <div class="row mb-3">
+                        <div class="col">
+                            <button class="joinHall" @onclick="Join">Присоединиться</button>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="row mb-3">
+                        <div class="col">
+                            <button class="exitHall" @onclick="Exit">Выйти</button>
+                        </div>
+                    </div>
+                }
+            }*@
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col p-3 footerEvent @Top">
+        <div class="row">
+            <div class="col text-center">
+                <span class="programslink" @onclick="DisplayEvents">О СОБЫТИИ</span>
+                <span class="programslink" @onclick="DisplayUsers">УЧАСТНИКОВ</span>
+            </div>
+        </div>
+        @if (DisplayEvent)
+        {
+            <AboutEventComponent Event="Event"/>
+        }
+        else if (DisplayUser)
+        {
+            <ListEventsUsersComponent ListOfItems="Users"/>
+        }
     </div>
 </div>

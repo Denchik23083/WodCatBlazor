@@ -371,8 +371,12 @@ a {cursor: pointer;}
     min-width: 300px;
     background-size: 100%;
 }
-
-.visualContainer, .visualContainerId, .visualContainerProfile, .loginContainer, .visualContainerArticle {
+.visualContainer,
+.visualContainerHall,
+.visualContainerProfile,
+.loginContainer,
+.visualContainerArticle,
+.visualContainerEvent {
     justify-content: center;
     background-size: 100%;
     position: absolute;
@@ -387,7 +391,7 @@ a {cursor: pointer;}
     background-image: url("/img/addgym-bg.jpg");
     min-height: 300px;
 }
-.visualContainerId {
+.visualContainerHall {
     background-image: url("/img/gym_cover_def.jpg");
     min-height: 600px;
 }
@@ -398,6 +402,9 @@ a {cursor: pointer;}
 .visualContainerArticle {
     background-image: url("/img/addarticle-bg.jpg");
     min-height: 300px;
+}
+.visualContainerEvent {
+    min-height: 600px;
 }
 .loginContainer {
     min-height: 400px;
@@ -432,7 +439,7 @@ a {cursor: pointer;}
     left: 50%;
     margin-left: -200px;
 }
-.footerHall {
+.footerHall, .footerEvent {
     background-color: #424242;
     justify-content: center;
     background-size: 100%;
@@ -454,11 +461,18 @@ a {cursor: pointer;}
     text-align: center;
     margin-top: 75px;
 }
-.HallId, .ProfileId {
+.HallId, .ProfileId, .EventId {
     color: #e8eaed;
     text-align: center;
     background-color: #dededee6;
     margin: 15px 300px;
+    border-radius: 5px;
+    padding: 30px;
+}
+.footerDescription {
+    color: #e8eaed;
+    text-align: left;
+    margin: 15px 100px;
     border-radius: 5px;
     padding: 30px;
 }

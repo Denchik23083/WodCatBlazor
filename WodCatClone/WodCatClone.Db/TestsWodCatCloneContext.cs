@@ -472,9 +472,9 @@ namespace WodCatClone.Db
                     Location = "улица Лобановского, 21",
                     StartDate = new DateTime(2022, 06, 26, 12, 30, 00),
                     EndDate = new DateTime(2022, 06, 26, 15, 00, 00),
-                    RegisterDate = new DateTime(2022, 06, 24, 12, 00, 00),
                     HallId = 1,
-                    EventsEmblemId = 2
+                    EventsEmblemId = 2,
+                    UserId = 1
                 });
 
             modelBuilder.Entity<ProgramsWorkouts>().ToTable("ProgramsWorkouts").HasData(
@@ -750,7 +750,7 @@ namespace WodCatClone.Db
                     Height = "185",
                     Weight = "70",
                     AboutMe = "I am a developer C#",
-                    GenderId = 1
+                    GenderId = 1,
                 });
 
             modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);

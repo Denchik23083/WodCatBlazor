@@ -2,6 +2,7 @@
 using System.Linq;
 using WodCatClone.Db;
 using WodCatClone.Db.Entities.Actions;
+using WodCatClone.Db.Entities.Auth;
 
 namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
 {
@@ -17,6 +18,11 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
         public IEnumerable<Events> GetAllEvents()
         {
             return _context.Events;
+        }
+
+        public IEnumerable<User> GetAllEventsUsers(int id)
+        {
+            return _context.Users.Where(b => b.EventId == id);
         }
 
         public Events GetEvent(int eventId)

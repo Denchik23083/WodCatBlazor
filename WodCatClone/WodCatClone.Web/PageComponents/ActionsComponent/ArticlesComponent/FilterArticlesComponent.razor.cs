@@ -25,6 +25,8 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
             "Тяжелая атлетика"
         };
 
+        public bool IsVisible { get; set; }
+
         public void Filter(string type)
         {
             Articles = ArticlesService.GetAllArticles();

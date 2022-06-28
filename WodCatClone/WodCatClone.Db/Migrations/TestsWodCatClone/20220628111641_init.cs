@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace WodCatClone.Db.Migrations
+namespace WodCatClone.Db.Migrations.TestsWodCatClone
 {
     public partial class init : Migration
     {
@@ -169,9 +169,9 @@ namespace WodCatClone.Db.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    RegisterDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EventsEmblemId = table.Column<int>(type: "int", nullable: false),
-                    HallId = table.Column<int>(type: "int", nullable: true)
+                    HallId = table.Column<int>(type: "int", nullable: true),
+                    UserId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -180,27 +180,6 @@ namespace WodCatClone.Db.Migrations
                         name: "FK_Events_EventEmblem_EventsEmblemId",
                         column: x => x.EventsEmblemId,
                         principalTable: "EventEmblem",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "WorkoutsExercises",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Work = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    WorkoutsId = table.Column<int>(type: "int", nullable: false),
-                    ExercisesId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_WorkoutsExercises", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_WorkoutsExercises_Exercises_ExercisesId",
-                        column: x => x.ExercisesId,
-                        principalTable: "Exercises",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -225,11 +204,18 @@ namespace WodCatClone.Db.Migrations
                     AboutMe = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     GenderId = table.Column<int>(type: "int", nullable: true),
                     HallId = table.Column<int>(type: "int", nullable: true),
-                    ProgramId = table.Column<int>(type: "int", nullable: true)
+                    ProgramId = table.Column<int>(type: "int", nullable: true),
+                    EventId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_User", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_User_Events_EventId",
+                        column: x => x.EventId,
+                        principalTable: "Events",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_User_Gender_GenderId",
                         column: x => x.GenderId,
@@ -386,6 +372,33 @@ namespace WodCatClone.Db.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "WorkoutsExercises",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Work = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    WorkoutsId = table.Column<int>(type: "int", nullable: false),
+                    ExercisesId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WorkoutsExercises", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_WorkoutsExercises_Exercises_ExercisesId",
+                        column: x => x.ExercisesId,
+                        principalTable: "Exercises",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_WorkoutsExercises_Workouts_WorkoutsId",
+                        column: x => x.WorkoutsId,
+                        principalTable: "Workouts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "Answer",
                 columns: new[] { "Id", "Name" },
@@ -523,13 +536,13 @@ namespace WodCatClone.Db.Migrations
 
             migrationBuilder.InsertData(
                 table: "User",
-                columns: new[] { "Id", "AboutMe", "Birthday", "Country", "Email", "GenderId", "HallId", "Height", "Name", "NickName", "Password", "Points", "ProgramId", "Surname", "Town", "Weight" },
-                values: new object[] { 1, "I am a developer C#", new DateTime(2003, 8, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ukraine", "deniskudravov228@gmail.com", 1, null, "185", "Денис", "SoEasyBlef", "0000", 185, null, "Кудрявов", "Херсон", "70" });
+                columns: new[] { "Id", "AboutMe", "Birthday", "Country", "Email", "EventId", "GenderId", "HallId", "Height", "Name", "NickName", "Password", "Points", "ProgramId", "Surname", "Town", "Weight" },
+                values: new object[] { 1, "I am a developer C#", new DateTime(2003, 8, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ukraine", "deniskudravov228@gmail.com", null, 1, null, "185", "Денис", "SoEasyBlef", "0000", 185, null, "Кудрявов", "Херсон", "70" });
 
             migrationBuilder.InsertData(
                 table: "Events",
-                columns: new[] { "Id", "Description", "EndDate", "EventsEmblemId", "HallId", "Location", "Name", "RegisterDate", "StartDate", "Town", "TypeEvent", "TypeSport" },
-                values: new object[] { 1, "К ТОНУС Стадион СЛАВУТИЧ АРЕНА Категории : SCALED, RX (ELITE), MASTERS 1 день 3 завдання Стартовый взнос - 500 грн Запись на участие В DIRECT!!! Для тихого, что из-за различных причин, не возможно прийняти участів в змаганнях, ми пропонуємо ОНЛАЙН ФОРМАТ. БЕЗ ВИДЕО! БЕЗ НАШЕГО СУДДІВСТВА ! ВСЕ НА НАШИЙ ДОВІРІ та ВАШІЙ ПОРЯДНОСТІ ! УМОВИ : Рестрация - 300 грн Категории - RX (ЭЛИТА) SCALED MASTERS 35 - 39, 40 - 44, 45+ 3 ( три комплекса) за один день Анонс 24.06 в п'ятницю ввечері о 17:00 Вконання 25.06 - субота . Отправить результаты до 17:00 субботы 25.06. Оголошення результатов у понедельника 27.06 Для записи напишите в DIRECT: Прізвище, им'я Місто, клуб Категорію", new DateTime(2022, 6, 26, 15, 0, 0, 0, DateTimeKind.Unspecified), 2, 1, "улица Лобановского, 21", "TONUS 2022 help UA", new DateTime(2022, 6, 24, 12, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 6, 26, 12, 30, 0, 0, DateTimeKind.Unspecified), "Запорожье", "Соревнования", "Кроссфит" });
+                columns: new[] { "Id", "Description", "EndDate", "EventsEmblemId", "HallId", "Location", "Name", "StartDate", "Town", "TypeEvent", "TypeSport", "UserId" },
+                values: new object[] { 1, "К ТОНУС Стадион СЛАВУТИЧ АРЕНА Категории : SCALED, RX (ELITE), MASTERS 1 день 3 завдання Стартовый взнос - 500 грн Запись на участие В DIRECT!!! Для тихого, что из-за различных причин, не возможно прийняти участів в змаганнях, ми пропонуємо ОНЛАЙН ФОРМАТ. БЕЗ ВИДЕО! БЕЗ НАШЕГО СУДДІВСТВА ! ВСЕ НА НАШИЙ ДОВІРІ та ВАШІЙ ПОРЯДНОСТІ ! УМОВИ : Рестрация - 300 грн Категории - RX (ЭЛИТА) SCALED MASTERS 35 - 39, 40 - 44, 45+ 3 ( три комплекса) за один день Анонс 24.06 в п'ятницю ввечері о 17:00 Вконання 25.06 - субота . Отправить результаты до 17:00 субботы 25.06. Оголошення результатов у понедельника 27.06 Для записи напишите в DIRECT: Прізвище, им'я Місто, клуб Категорію", new DateTime(2022, 6, 26, 15, 0, 0, 0, DateTimeKind.Unspecified), 2, 1, "улица Лобановского, 21", "TONUS 2022 help UA", new DateTime(2022, 6, 26, 12, 30, 0, 0, DateTimeKind.Unspecified), "Запорожье", "Соревнования", "Кроссфит", 1 });
 
             migrationBuilder.InsertData(
                 table: "Programs",
@@ -628,6 +641,11 @@ namespace WodCatClone.Db.Migrations
                 column: "HallId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Events_UserId",
+                table: "Events",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Halls_EmblemHallId",
                 table: "Halls",
                 column: "EmblemHallId");
@@ -671,6 +689,11 @@ namespace WodCatClone.Db.Migrations
                 name: "IX_ResultWorkouts_WorkoutId",
                 table: "ResultWorkouts",
                 column: "WorkoutId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_User_EventId",
+                table: "User",
+                column: "EventId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_User_GenderId",
@@ -719,12 +742,12 @@ namespace WodCatClone.Db.Migrations
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_WorkoutsExercises_Workouts_WorkoutsId",
-                table: "WorkoutsExercises",
-                column: "WorkoutsId",
-                principalTable: "Workouts",
+                name: "FK_Events_User_UserId",
+                table: "Events",
+                column: "UserId",
+                principalTable: "User",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_User_Halls_HallId",
@@ -746,14 +769,15 @@ namespace WodCatClone.Db.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
+                name: "FK_Events_User_UserId",
+                table: "Events");
+
+            migrationBuilder.DropForeignKey(
                 name: "FK_Halls_User_UserId",
                 table: "Halls");
 
             migrationBuilder.DropTable(
                 name: "Articles");
-
-            migrationBuilder.DropTable(
-                name: "Events");
 
             migrationBuilder.DropTable(
                 name: "ProgramsWorkouts");
@@ -771,9 +795,6 @@ namespace WodCatClone.Db.Migrations
                 name: "ArticleEmblem");
 
             migrationBuilder.DropTable(
-                name: "EventEmblem");
-
-            migrationBuilder.DropTable(
                 name: "Answer");
 
             migrationBuilder.DropTable(
@@ -786,10 +807,16 @@ namespace WodCatClone.Db.Migrations
                 name: "User");
 
             migrationBuilder.DropTable(
+                name: "Events");
+
+            migrationBuilder.DropTable(
                 name: "Gender");
 
             migrationBuilder.DropTable(
                 name: "Programs");
+
+            migrationBuilder.DropTable(
+                name: "EventEmblem");
 
             migrationBuilder.DropTable(
                 name: "Halls");
