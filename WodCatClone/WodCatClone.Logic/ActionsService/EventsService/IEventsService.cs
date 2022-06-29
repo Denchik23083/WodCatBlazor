@@ -10,8 +10,12 @@ namespace WodCatClone.Logic.ActionsService.EventsService
 
         IEnumerable<User> GetAllEventsUsers(int id);
 
+        IEnumerable<EventEmblem> GetAllEventEmblem();
+
         Events GetEvent(int eventId);
 
         string GetImage(int id);
+
+        bool AddEvent(Events @event);
     }
 }

@@ -107,8 +107,9 @@ namespace WodCatClone.Tests
             var addNewHall = context.Halls.FirstOrDefault(b => b.Name == newHall.Name
             && b.Description == newHall.Description && b.Town == newHall.Town && b.Rating == newHall.Rating 
             && b.Location == newHall.Location && b.Type == newHall.Type);
-
             Assert.NotNull(addNewHall);
+
+            Assert.Equal(addNewHall.UserId, user.Id);
 
             context.Halls.Remove(addNewHall);
             context.SaveChanges();
@@ -116,7 +117,6 @@ namespace WodCatClone.Tests
             var hallAfterRemove = context.Halls.FirstOrDefault(b => b.Name == newHall.Name
             && b.Description == newHall.Description && b.Town == newHall.Town && b.Rating == newHall.Rating
             && b.Location == newHall.Location && b.Type == newHall.Type);
-
             Assert.Null(hallAfterRemove);
 
             userPoint += 50;
@@ -164,8 +164,9 @@ namespace WodCatClone.Tests
             var hallToUpdate = context.Halls.FirstOrDefault(b => b.Name == newHall.Name
             && b.Description == newHall.Description && b.Town == newHall.Town && b.Rating == newHall.Rating
             && b.Location == newHall.Location && b.Type == newHall.Type);
-
             Assert.NotNull(hallToUpdate);
+
+            Assert.Equal(hallToUpdate.UserId, user.Id);
 
             hallToUpdate.Name = editHall.Name;
             hallToUpdate.Description = editHall.Description;
@@ -225,8 +226,9 @@ namespace WodCatClone.Tests
             var hallToRemove = context.Halls.FirstOrDefault(b => b.Name == newHall.Name
             && b.Description == newHall.Description && b.Town == newHall.Town && b.Rating == newHall.Rating
             && b.Location == newHall.Location && b.Type == newHall.Type);
-
             Assert.NotNull(hallToRemove);
+
+            Assert.Equal(hallToRemove.UserId, user.Id);
 
             context.Halls.Remove(hallToRemove);
             context.SaveChanges();

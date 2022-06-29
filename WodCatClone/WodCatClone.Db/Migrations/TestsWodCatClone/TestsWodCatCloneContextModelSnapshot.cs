@@ -85,7 +85,6 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FullDescription")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -96,7 +95,6 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Type")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("UserId")

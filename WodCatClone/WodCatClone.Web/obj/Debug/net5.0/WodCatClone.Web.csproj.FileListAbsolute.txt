@@ -475,3 +475,5 @@ C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\ne
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\PageComponents\ActionsComponent\EventsComponent\ListEventsUsersComponent.razor.g.cs
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\RazorDeclaration\PageComponents\ActionsComponent\EventsComponent\IndividualEventsUsersComponent.razor.g.cs
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\PageComponents\ActionsComponent\EventsComponent\IndividualEventsUsersComponent.razor.g.cs
+C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\RazorDeclaration\PageComponents\ActionsComponent\EventsComponent\AddEditEventComponent.razor.g.cs
+C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\obj\Debug\net5.0\Razor\PageComponents\ActionsComponent\EventsComponent\AddEditEventComponent.razor.g.cs

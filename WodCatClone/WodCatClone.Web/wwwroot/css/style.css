@@ -1,7 +1,9 @@
-﻿.editModalContent, 
-.EditDeleteContent, 
-.StartDialogContent, 
-.formAddHall {background-color: #424242;}
+﻿.editModalContent,
+.EditDeleteContent,
+.StartDialogContent,
+.formAddEditHall, 
+.formAddEditArticle, 
+.formAddEditEvent {background-color: #424242;}
 .StartDialog {
     max-width: 100%;
     margin: 0;
@@ -176,7 +178,7 @@ a {cursor: pointer;}
     padding: 0.3em 0.7em 0.3em;
 }
 .greenCub {background-color: #4caf50;}
-.wrapper, .wrapperId, .wrapperHalls, .wrapperArticles {
+.wrapper, .wrapperId, .wrapperHalls, .wrapperArticles, .wrapperEvents {
     background-color: #202124;
     min-height: 100vh;
     position: absolute;
@@ -195,7 +197,7 @@ a {cursor: pointer;}
     padding-left: 150px;
     padding-right: 150px;
 }
-.wrapperHalls, .wrapperArticles {
+.wrapperHalls, .wrapperArticles, .wrapperEvents {
     top: 395px;
     padding-left: 150px;
     padding-right: 150px;
@@ -272,7 +274,10 @@ a {cursor: pointer;}
 .full { color: #bdc1c6;}
 .home { cursor: pointer;}
 .bold{ font-weight: bolder;}
-.exercisesInWorkouts, .mainInfoAboutHall {color: white;}
+.exercisesInWorkouts,
+.mainInfoAboutHall,
+.mainInfoAboutArticle,
+.mainInfoAboutEvent {color: white;}
 .filterWorkouts {color: #bdc1c6;}
 .filterWorkouts:hover {
     color: #8ab4f8;
@@ -371,11 +376,13 @@ a {cursor: pointer;}
     min-width: 300px;
     background-size: 100%;
 }
-.visualContainer,
+.visualContainerAddEditHall,
+.visualContainerEditProfile,
 .visualContainerHall,
 .visualContainerProfile,
 .loginContainer,
 .visualContainerArticle,
+.visualContainerAddEditEvent,
 .visualContainerEvent {
     justify-content: center;
     background-size: 100%;
@@ -387,8 +394,16 @@ a {cursor: pointer;}
     padding: 0;
     top: 95px;
 }
-.visualContainer {
+.visualContainerAddEditHall {
     background-image: url("/img/addgym-bg.jpg");
+    min-height: 300px;
+}
+.visualContainerAddEditEvent {
+    background-image: url("/img/addevent-bg.jpg");
+    min-height: 300px;
+}
+.visualContainerEditProfile {
+    background-image: url("/img/editProfile.jpg");
     min-height: 300px;
 }
 .visualContainerHall {

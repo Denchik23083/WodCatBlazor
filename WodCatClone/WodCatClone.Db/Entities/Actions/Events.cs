@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using WodCatClone.Db.Entities.Auth;
 
 namespace WodCatClone.Db.Entities.Actions
@@ -7,8 +8,10 @@ namespace WodCatClone.Db.Entities.Actions
     {
         public int Id { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
+        [Required]
         public string Town { get; set; }
 
         public string TypeEvent { get; set; }
@@ -19,8 +22,10 @@ namespace WodCatClone.Db.Entities.Actions
 
         public string Description { get; set; }
 
+        [Required]
         public DateTime StartDate { get; set; }
 
+        [Required]
         public DateTime EndDate { get; set; }
 
         public int EventsEmblemId { get; set; }

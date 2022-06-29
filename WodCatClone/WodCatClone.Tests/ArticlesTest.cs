@@ -84,8 +84,9 @@ namespace WodCatClone.Tests
             var addedNewArticle = context.Articles.FirstOrDefault(b => b.Name == newArticle.Name
             && b.Description == newArticle.Description && b.FullDescription == newArticle.FullDescription
             && b.Rating == newArticle.Rating && b.Type == newArticle.Type);
-            
             Assert.NotNull(addedNewArticle);
+
+            Assert.Equal(addedNewArticle.UserId, user.Id);
 
             context.Articles.Remove(addedNewArticle);
             context.SaveChanges();
@@ -93,7 +94,6 @@ namespace WodCatClone.Tests
             var articleAfterRemove = context.Articles.FirstOrDefault(b => b.Name == newArticle.Name
             && b.Description == newArticle.Description && b.FullDescription == newArticle.FullDescription
             && b.Rating == newArticle.Rating && b.Type == newArticle.Type);
-
             Assert.Null(articleAfterRemove);
 
             userPoint += 50;
@@ -139,8 +139,9 @@ namespace WodCatClone.Tests
             var articleToUpdate = context.Articles.FirstOrDefault(b => b.Name == newArticle.Name
             && b.Description == newArticle.Description && b.FullDescription == newArticle.FullDescription
             && b.Rating == newArticle.Rating && b.Type == newArticle.Type);
-
             Assert.NotNull(articleToUpdate);
+
+            Assert.Equal(articleToUpdate.UserId, user.Id);
 
             articleToUpdate.Name = editArticle.Name;
             articleToUpdate.ArticleEmblemId = editArticle.ArticleEmblemId;
@@ -198,8 +199,9 @@ namespace WodCatClone.Tests
             var articleToRemove = context.Articles.FirstOrDefault(b => b.Name == newArticle.Name 
             && b.Description == newArticle.Description && b.FullDescription == newArticle.FullDescription
             && b.Rating == newArticle.Rating && b.Type == newArticle.Type);
-
             Assert.NotNull(articleToRemove);
+
+            Assert.Equal(articleToRemove.UserId, user.Id);
 
             context.Articles.Remove(articleToRemove);
             context.SaveChanges();

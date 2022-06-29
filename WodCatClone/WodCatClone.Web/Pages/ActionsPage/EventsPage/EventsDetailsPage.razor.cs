@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
@@ -53,8 +51,6 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
 
         public string Top = "notLoginTop";
 
-        public string Time { get; set; }
-
         protected override void OnInitialized()
         {
             Event = EventsService.GetEvent(EventId);
@@ -70,13 +66,6 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
             HallEmblem = HallsService.GetImage(Hall.EmblemHallId);
 
             if (IsLoginUser) Top = "loginTop";
-
-            do
-            {
-                var time = Event.StartDate - DateTime.Now;
-
-                Time = time.ToString("g");
-            } while (Event.StartDate < DateTime.Now);
         }
 
         protected override void OnParametersSet()

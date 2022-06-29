@@ -25,9 +25,9 @@ namespace WodCatClone.Tests
             var id = 2;
             var expectedUser = 0;
 
-            var getEvent = context.Halls.FirstOrDefault(b => b.Id == id);
-            Assert.NotNull(getEvent);
-            Assert.Equal(id, getEvent.Id);
+            var @event = context.Halls.FirstOrDefault(b => b.Id == id);
+            Assert.NotNull(@event);
+            Assert.Equal(id, @event.Id);
 
             var users = context.Users.Where(b => b.EventId == id);
             Assert.NotNull(users);
@@ -41,10 +41,10 @@ namespace WodCatClone.Tests
             var context = new TestsWodCatCloneContext();
             var id = 1;
 
-            var getEvent = context.Events.FirstOrDefault(b => b.Id == id);
-            Assert.NotNull(getEvent);
+            var @event = context.Events.FirstOrDefault(b => b.Id == id);
+            Assert.NotNull(@event);
 
-            Assert.Equal(id, getEvent.Id);
+            Assert.Equal(id, @event.Id);
         }
 
         [Fact]

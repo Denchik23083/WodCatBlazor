@@ -25,6 +25,11 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
             return _context.Users.Where(b => b.EventId == id);
         }
 
+        public IEnumerable<EventEmblem> GetAllEventEmblem()
+        {
+            return _context.EventEmblem;
+        }
+
         public Events GetEvent(int eventId)
         {
             return _context.Events.FirstOrDefault(b => b.Id == eventId);
@@ -33,6 +38,26 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
         public EventEmblem GetImage(int id)
         {
             return _context.EventEmblem.FirstOrDefault(b => b.Id == id);
+        }
+
+        public bool AddEvent(Events @event)
+        {
+            var loginUser = UserRepository.UserRepository.User;
+            var user = _context.Users.FirstOrDefault(b => b.Id == loginUser.Id);
+
+            if (user is null)
+            {
+                return false;
+            }
+
+            @event.UserId = user.Id;
+
+            _context.Events.Add(@event);
+            user.Points += 100;
+
+            _context.SaveChanges();
+
+            return true;
         }
     }
 }

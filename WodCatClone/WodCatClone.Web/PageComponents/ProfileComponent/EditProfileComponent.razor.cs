@@ -47,6 +47,7 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
             new() { Content = "Днепр", Filter = "Днепр" },
             new() { Content = "Хмельницкий", Filter = "Хмельницкий" },
             new() { Content = "Кривой Рог", Filter = "Кривой Рог" },
+            new() { Content = "Запорожье", Filter = "Запорожье" },
             new() { Content = "Львов", Filter = "Львов" },
         };
 

@@ -85,7 +85,6 @@ namespace WodCatClone.Db.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FullDescription")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -96,7 +95,6 @@ namespace WodCatClone.Db.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Type")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("UserId")
@@ -270,12 +268,12 @@ namespace WodCatClone.Db.Migrations
                         {
                             Id = 1,
                             Description = "К ТОНУС Стадион СЛАВУТИЧ АРЕНА Категории : SCALED, RX (ELITE), MASTERS 1 день 3 завдання Стартовый взнос - 500 грн Запись на участие В DIRECT!!! Для тихого, что из-за различных причин, не возможно прийняти участів в змаганнях, ми пропонуємо ОНЛАЙН ФОРМАТ. БЕЗ ВИДЕО! БЕЗ НАШЕГО СУДДІВСТВА ! ВСЕ НА НАШИЙ ДОВІРІ та ВАШІЙ ПОРЯДНОСТІ ! УМОВИ : Рестрация - 300 грн Категории - RX (ЭЛИТА) SCALED MASTERS 35 - 39, 40 - 44, 45+ 3 ( три комплекса) за один день Анонс 24.06 в п'ятницю ввечері о 17:00 Вконання 25.06 - субота . Отправить результаты до 17:00 субботы 25.06. Оголошення результатов у понедельника 27.06 Для записи напишите в DIRECT: Прізвище, им'я Місто, клуб Категорію",
-                            EndDate = new DateTime(2022, 6, 26, 15, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndDate = new DateTime(2022, 6, 30, 15, 0, 0, 0, DateTimeKind.Unspecified),
                             EventsEmblemId = 2,
                             HallId = 1,
                             Location = "улица Лобановского, 21",
                             Name = "TONUS 2022 help UA",
-                            StartDate = new DateTime(2022, 6, 26, 12, 30, 0, 0, DateTimeKind.Unspecified),
+                            StartDate = new DateTime(2022, 6, 29, 12, 30, 0, 0, DateTimeKind.Unspecified),
                             Town = "Запорожье",
                             TypeEvent = "Соревнования",
                             TypeSport = "Кроссфит",

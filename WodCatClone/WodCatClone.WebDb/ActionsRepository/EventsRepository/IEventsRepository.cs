@@ -10,8 +10,12 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
 
         IEnumerable<User> GetAllEventsUsers(int id);
 
+        IEnumerable<EventEmblem> GetAllEventEmblem();
+
         Events GetEvent(int eventId);
 
         EventEmblem GetImage(int id);
+
+        bool AddEvent(Events @event);
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace WodCatClone.Db.Migrations.TestsWodCatClone
+namespace WodCatClone.Db.Migrations
 {
     public partial class init : Migration
     {
@@ -138,8 +138,8 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FullDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FullDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Rating = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ArticleEmblemId = table.Column<int>(type: "int", nullable: true),
                     UserId = table.Column<int>(type: "int", nullable: true)
@@ -542,7 +542,7 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
             migrationBuilder.InsertData(
                 table: "Events",
                 columns: new[] { "Id", "Description", "EndDate", "EventsEmblemId", "HallId", "Location", "Name", "StartDate", "Town", "TypeEvent", "TypeSport", "UserId" },
-                values: new object[] { 1, "К ТОНУС Стадион СЛАВУТИЧ АРЕНА Категории : SCALED, RX (ELITE), MASTERS 1 день 3 завдання Стартовый взнос - 500 грн Запись на участие В DIRECT!!! Для тихого, что из-за различных причин, не возможно прийняти участів в змаганнях, ми пропонуємо ОНЛАЙН ФОРМАТ. БЕЗ ВИДЕО! БЕЗ НАШЕГО СУДДІВСТВА ! ВСЕ НА НАШИЙ ДОВІРІ та ВАШІЙ ПОРЯДНОСТІ ! УМОВИ : Рестрация - 300 грн Категории - RX (ЭЛИТА) SCALED MASTERS 35 - 39, 40 - 44, 45+ 3 ( три комплекса) за один день Анонс 24.06 в п'ятницю ввечері о 17:00 Вконання 25.06 - субота . Отправить результаты до 17:00 субботы 25.06. Оголошення результатов у понедельника 27.06 Для записи напишите в DIRECT: Прізвище, им'я Місто, клуб Категорію", new DateTime(2022, 6, 26, 15, 0, 0, 0, DateTimeKind.Unspecified), 2, 1, "улица Лобановского, 21", "TONUS 2022 help UA", new DateTime(2022, 6, 26, 12, 30, 0, 0, DateTimeKind.Unspecified), "Запорожье", "Соревнования", "Кроссфит", 1 });
+                values: new object[] { 1, "К ТОНУС Стадион СЛАВУТИЧ АРЕНА Категории : SCALED, RX (ELITE), MASTERS 1 день 3 завдання Стартовый взнос - 500 грн Запись на участие В DIRECT!!! Для тихого, что из-за различных причин, не возможно прийняти участів в змаганнях, ми пропонуємо ОНЛАЙН ФОРМАТ. БЕЗ ВИДЕО! БЕЗ НАШЕГО СУДДІВСТВА ! ВСЕ НА НАШИЙ ДОВІРІ та ВАШІЙ ПОРЯДНОСТІ ! УМОВИ : Рестрация - 300 грн Категории - RX (ЭЛИТА) SCALED MASTERS 35 - 39, 40 - 44, 45+ 3 ( три комплекса) за один день Анонс 24.06 в п'ятницю ввечері о 17:00 Вконання 25.06 - субота . Отправить результаты до 17:00 субботы 25.06. Оголошення результатов у понедельника 27.06 Для записи напишите в DIRECT: Прізвище, им'я Місто, клуб Категорію", new DateTime(2022, 6, 30, 15, 0, 0, 0, DateTimeKind.Unspecified), 2, 1, "улица Лобановского, 21", "TONUS 2022 help UA", new DateTime(2022, 6, 29, 12, 30, 0, 0, DateTimeKind.Unspecified), "Запорожье", "Соревнования", "Кроссфит", 1 });
 
             migrationBuilder.InsertData(
                 table: "Programs",

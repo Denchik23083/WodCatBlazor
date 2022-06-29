@@ -2,10 +2,17 @@
 
 <HeaderComponent />
 
-<div class="wrapperId">
-    <div class="row">
-        <div class="col">
-            <h5 class="text-white">Add address.</h5>
+<div class="row">
+    <div class="col visualContainerAddEditEvent">
+        <button class="gymList" @onclick="BackToEventsList">Все соревнования</button>
+        <div class="AddHall">
+            <h1 class="h1Add">Добавить мероприятие</h1>
+            <h3 class="h3Add">Здесь вы можете добавить информацию о вашем событии</h3>
         </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col wrapperEvents">
+        <AddEditEventComponent Add="true" Edit="false"/>
     </div>
 </div>

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Components;
+using Microsoft.Extensions.Logging;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.ArticlesService;
 using WodCatClone.Web.Helpers;

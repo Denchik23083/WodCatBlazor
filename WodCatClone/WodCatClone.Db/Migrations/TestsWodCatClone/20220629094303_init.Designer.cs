@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WodCatClone.Db;
 
-namespace WodCatClone.Db.Migrations
+namespace WodCatClone.Db.Migrations.TestsWodCatClone
 {
-    [DbContext(typeof(WodCatCloneContext))]
-    [Migration("20220628111602_init")]
+    [DbContext(typeof(TestsWodCatCloneContext))]
+    [Migration("20220629094303_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -87,7 +87,6 @@ namespace WodCatClone.Db.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FullDescription")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -98,7 +97,6 @@ namespace WodCatClone.Db.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Type")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("UserId")
