@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using WodCatClone.Db.Entities.Auth;
 
@@ -39,5 +40,7 @@ namespace WodCatClone.Db.Entities.Actions
         public int? UserId { get; set; }
 
         public User User { get; set; }
+
+        public List<EventsExercises> EventsExercises { get; set; }
     }
 }

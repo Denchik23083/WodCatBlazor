@@ -281,6 +281,48 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                         });
                 });
 
+            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.EventsExercises", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("EventsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ExercisesId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EventsId");
+
+                    b.HasIndex("ExercisesId");
+
+                    b.ToTable("EventsExercises");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            EventsId = 1,
+                            ExercisesId = 3
+                        },
+                        new
+                        {
+                            Id = 2,
+                            EventsId = 1,
+                            ExercisesId = 7
+                        },
+                        new
+                        {
+                            Id = 3,
+                            EventsId = 1,
+                            ExercisesId = 11
+                        });
+                });
+
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Exercises", b =>
                 {
                     b.Property<int>("Id")
@@ -1522,6 +1564,25 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.EventsExercises", b =>
+                {
+                    b.HasOne("WodCatClone.Db.Entities.Actions.Events", "Events")
+                        .WithMany("EventsExercises")
+                        .HasForeignKey("EventsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WodCatClone.Db.Entities.Actions.Exercises", "Exercises")
+                        .WithMany("EventsExercises")
+                        .HasForeignKey("ExercisesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Events");
+
+                    b.Navigation("Exercises");
+                });
+
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Halls", b =>
                 {
                     b.HasOne("WodCatClone.Db.Entities.Actions.HallEmblem", "EmblemHall")
@@ -1654,8 +1715,15 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                     b.Navigation("Answer");
                 });
 
+            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Events", b =>
+                {
+                    b.Navigation("EventsExercises");
+                });
+
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Exercises", b =>
                 {
+                    b.Navigation("EventsExercises");
+
                     b.Navigation("WorkoutsExercises");
                 });
 

@@ -27,9 +27,9 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         public void Remove()
         {
-            //var result = EventsService.RemoveEvent(HallId);
+            var result = EventsService.RemoveEvent(EventId);
 
-            //NavigationManager.NavigateTo(result ? "/events" : $"/events/{EventId}");
+            NavigationManager.NavigateTo(result ? "/events" : $"/events/{EventId}");
         }
     }
 }

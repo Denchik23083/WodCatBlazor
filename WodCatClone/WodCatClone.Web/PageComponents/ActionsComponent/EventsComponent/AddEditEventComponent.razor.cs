@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.EventsService;
+using WodCatClone.Logic.ActionsService.ExercisesService;
 using WodCatClone.Logic.ActionsService.HallsService;
 using WodCatClone.Web.Helpers;
 
@@ -13,6 +14,8 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
         [Inject] public IEventsService EventsService { get; set; }
 
         [Inject] public IHallsService HallsService { get; set; }
+
+        [Inject] public IExercisesService ExercisesService { get; set; }
 
         [Inject] public NavigationManager NavigationManager { get; set; }
 
@@ -32,6 +35,8 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         public bool IsDisplaySubmitButton { get; set; } = false;
 
+        public bool IsShow { get; set; } = false;
+        
         public bool IsImage { get; set; } = false;
 
         public bool IsHallImage { get; set; } = false;
@@ -43,6 +48,12 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
         public string HallImage = "None";
 
         public int Value { get; set; }
+
+        public List<EventsExercises> EventsExercises = new();
+
+        public List<Exercises> SelectedExercises = new();
+
+        public List<Exercises> Exercises { get; set; }
 
         public List<FilterEvents> Town = new()
         {
@@ -87,23 +98,62 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             EventEmblem = EventsService.GetAllEventEmblem();
             Halls = HallsService.GetAllHalls();
             HallEmblem = HallsService.GetAllHallEmblem();
+            Exercises = ExercisesService.GetAllExercises().ToList();
+        }
+
+        protected override void OnParametersSet()
+        {
+            EventEmblem = EventsService.GetAllEventEmblem();
+            Halls = HallsService.GetAllHalls();
+            HallEmblem = HallsService.GetAllHallEmblem();
+            Exercises = ExercisesService.GetAllExercises().ToList();
         }
 
         public void Submit()
         {
             if (Add)
             {
-                var result = EventsService.AddEvent(Event);
+                var result = EventsService.AddEvent(Event, EventsExercises);
 
                 NavigationManager.NavigateTo(result ? "/events" : "/events/add");
             }
 
             if (Edit)
             {
-                //var result = EventsService.EditEvent(Event, EventId);
+                var result = EventsService.EditEvent(Event, EventsExercises, EventId);
 
-                //NavigationManager.NavigateTo(result ? $"/events/{EventId}" : $"/events/{Event}/edit");
+                NavigationManager.NavigateTo(result ? $"/events/{EventId}" : $"/events/{Event}/edit");
             }
+        }
+
+        public void AddExercises(int id)
+        {
+            var eventsExercises = new EventsExercises
+            {
+                EventsId = EventId,
+                ExercisesId = id
+            };
+
+            EventsExercises.Add(eventsExercises);
+
+            var exercises = ExercisesService.GetExercise(id);
+
+            SelectedExercises.Add(exercises);
+
+            Exercises.Remove(exercises);
+        }
+
+        public void RemoveExercises(int id)
+        {
+            var eventsExercises = EventsExercises.FirstOrDefault(b => b.ExercisesId == id);
+
+            EventsExercises.Remove(eventsExercises);
+
+            var exercises = ExercisesService.GetExercise(id);
+
+            SelectedExercises.Remove(exercises);
+
+            Exercises.Add(exercises);
         }
 
         public void SelectedImage(ChangeEventArgs e)

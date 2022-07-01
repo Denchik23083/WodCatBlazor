@@ -1,0 +1,18 @@
+﻿@page "/events/{EventId:int}/edit"
+
+<HeaderComponent />
+
+<div class="row">
+    <div class="col visualContainerAddEditEvent">
+        <button class="gymList" @onclick="BackToEventsList">Все соревнования</button>
+        <div class="AddHall">
+            <h1 class="h1Add">Редактировать мероприятие</h1>
+            <h3 class="h3Add">Здесь вы можете изменить информацию о вашем событии</h3>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col wrapperEvents">
+        <AddEditEventComponent Add="false" Edit="true" EventId="EventId"/>
+    </div>
+</div>
