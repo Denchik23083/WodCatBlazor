@@ -18,6 +18,7 @@ namespace WodCatClone.Db.EntityConfig.ActionsConfig
             builder.Property(_ => _.Description);
             builder.Property(_ => _.StartDate);
             builder.Property(_ => _.EndDate);
+            builder.Property(_ => _.RegisterDate);
 
             builder.HasOne(_ => _.EventEmblem)
                 .WithMany()
@@ -26,6 +27,10 @@ namespace WodCatClone.Db.EntityConfig.ActionsConfig
             builder.HasOne(_ => _.Halls)
                 .WithMany()
                 .HasForeignKey(_ => _.HallId);
+
+            builder.HasOne(_ => _.Workouts)
+                .WithMany()
+                .HasForeignKey(_ => _.WorkoutId);
 
             builder.HasOne(_ => _.User)
                 .WithMany()

@@ -23,7 +23,5 @@ namespace WodCatClone.Db.Entities.Actions
         public string Image { get; set; }
 
         public List<WorkoutsExercises> WorkoutsExercises { get; set; }
-
-        public List<EventsExercises> EventsExercises { get; set; }
     }
 }

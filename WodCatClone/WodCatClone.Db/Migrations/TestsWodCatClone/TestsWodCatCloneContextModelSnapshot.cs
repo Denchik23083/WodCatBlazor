@@ -237,6 +237,9 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("RegisterDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
@@ -253,6 +256,9 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                     b.Property<int?>("UserId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("WorkoutId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("EventsEmblemId");
@@ -260,6 +266,8 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                     b.HasIndex("HallId");
 
                     b.HasIndex("UserId");
+
+                    b.HasIndex("WorkoutId");
 
                     b.ToTable("Events");
 
@@ -273,53 +281,13 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                             HallId = 1,
                             Location = "улица Лобановского, 21",
                             Name = "TONUS 2022 help UA",
+                            RegisterDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             StartDate = new DateTime(2022, 6, 26, 12, 30, 0, 0, DateTimeKind.Unspecified),
                             Town = "Запорожье",
                             TypeEvent = "Соревнования",
                             TypeSport = "Кроссфит",
-                            UserId = 1
-                        });
-                });
-
-            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.EventsExercises", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("EventsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ExercisesId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EventsId");
-
-                    b.HasIndex("ExercisesId");
-
-                    b.ToTable("EventsExercises");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            EventsId = 1,
-                            ExercisesId = 3
-                        },
-                        new
-                        {
-                            Id = 2,
-                            EventsId = 1,
-                            ExercisesId = 7
-                        },
-                        new
-                        {
-                            Id = 3,
-                            EventsId = 1,
-                            ExercisesId = 11
+                            UserId = 1,
+                            WorkoutId = 3
                         });
                 });
 
@@ -1557,30 +1525,17 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                         .WithMany()
                         .HasForeignKey("UserId");
 
+                    b.HasOne("WodCatClone.Db.Entities.Actions.Workouts", "Workouts")
+                        .WithMany()
+                        .HasForeignKey("WorkoutId");
+
                     b.Navigation("EventEmblem");
 
                     b.Navigation("Halls");
 
                     b.Navigation("User");
-                });
 
-            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.EventsExercises", b =>
-                {
-                    b.HasOne("WodCatClone.Db.Entities.Actions.Events", "Events")
-                        .WithMany("EventsExercises")
-                        .HasForeignKey("EventsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("WodCatClone.Db.Entities.Actions.Exercises", "Exercises")
-                        .WithMany("EventsExercises")
-                        .HasForeignKey("ExercisesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Events");
-
-                    b.Navigation("Exercises");
+                    b.Navigation("Workouts");
                 });
 
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Halls", b =>
@@ -1715,15 +1670,8 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                     b.Navigation("Answer");
                 });
 
-            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Events", b =>
-                {
-                    b.Navigation("EventsExercises");
-                });
-
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Exercises", b =>
                 {
-                    b.Navigation("EventsExercises");
-
                     b.Navigation("WorkoutsExercises");
                 });
 

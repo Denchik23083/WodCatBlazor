@@ -72,6 +72,11 @@
                             <strong style="color: #333333;">Завершение: @EndDate @EndTime</strong>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col">
+                            <strong style="color: #333333;">Регистрация до: @RegisterDate @RegisterTime</strong>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -110,12 +115,17 @@
         <div class="row">
             <div class="col text-center">
                 <span class="programslink" @onclick="DisplayEvents">О СОБЫТИИ</span>
+                <span class="programslink" @onclick="DisplayEventsWorkoutsExercises">ЗАДАНИЕ</span>
                 <span class="programslink" @onclick="DisplayUsers">УЧАСТНИКОВ</span>
             </div>
         </div>
         @if (DisplayEvent)
         {
             <AboutEventComponent Event="Event"/>
+        }
+        else if (DisplayEventWorkoutExercise)
+        {
+            <IndividualWorkoutsComponent Workout="Workout" />
         }
         else if (DisplayUser)
         {

@@ -41,14 +41,14 @@ namespace WodCatClone.Logic.ActionsService.EventsService
             return eventEmblem.Image;
         }
 
-        public bool AddEvent(Events @event, List<EventsExercises> newEventsExercises)
+        public bool AddEvent(Events @event)
         {
-            return _repository.AddEvent(@event, newEventsExercises);
+            return _repository.AddEvent(@event);
         }
 
-        public bool EditEvent(Events @event, List<EventsExercises> newEventsExercises, int eventId)
+        public bool EditEvent(Events @event, int eventId)
         {
-            return _repository.EditEvent(@event, newEventsExercises, eventId);
+            return _repository.EditEvent(@event, eventId);
         }
 
         public bool RemoveEvent(int eventId)

@@ -1,4 +1,4 @@
-﻿<div class="workouts m-3 p-2" @onclick="Id">
+﻿<div class="workouts mb-3 p-2" @onclick="Id">
     <div class="row ml-1 mt-3 mr-1 mb-3">
         <div class="col">
             <a class="Name" href="@Url"><span class="bold">@Workout.Name</span></a>
@@ -6,7 +6,6 @@
             <span class="greenCub">@Workout.Rating / 10</span>
         </div>
     </div>
-
     <div class="row ml-1 mt-3 mr-1 mb-3">
         <div class="col-6">
             <span class="exercisesInWorkouts">На время:</span><br/>
@@ -22,7 +21,6 @@
             }
         </div>
     </div>
-
     <div class="row ml-1 mt-3 mr-1 mb-3">
         <div class="col-4 text-left">
             @foreach (var item in WorkoutsCategory)

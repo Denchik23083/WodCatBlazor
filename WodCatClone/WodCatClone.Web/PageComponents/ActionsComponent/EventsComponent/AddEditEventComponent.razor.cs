@@ -5,6 +5,7 @@ using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.EventsService;
 using WodCatClone.Logic.ActionsService.ExercisesService;
 using WodCatClone.Logic.ActionsService.HallsService;
+using WodCatClone.Logic.ActionsService.WorkoutsService;
 using WodCatClone.Web.Helpers;
 
 namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
@@ -15,7 +16,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         [Inject] public IHallsService HallsService { get; set; }
 
-        [Inject] public IExercisesService ExercisesService { get; set; }
+        [Inject] public IWorkoutsService WorkoutsService { get; set; }
 
         [Inject] public NavigationManager NavigationManager { get; set; }
 
@@ -31,15 +32,19 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         public IEnumerable<HallEmblem> HallEmblem { get; set; }
 
+        public IEnumerable<Workouts> Workouts { get; set; }
+
         public Events Event = new();
 
-        public bool IsDisplaySubmitButton { get; set; } = false;
+        public Workouts Workout { get; set; }
 
-        public bool IsShow { get; set; } = false;
+        public bool IsDisplaySubmitButton { get; set; } = false;
         
         public bool IsImage { get; set; } = false;
 
         public bool IsHallImage { get; set; } = false;
+
+        public bool IsWorkoutImage { get; set; } = false;
 
         public bool IsTown { get; set; } = false;
 
@@ -47,13 +52,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         public string HallImage = "None";
 
-        public int Value { get; set; }
-
-        public List<EventsExercises> EventsExercises = new();
-
-        public List<Exercises> SelectedExercises = new();
-
-        public List<Exercises> Exercises { get; set; }
+        public string WorkoutImage = "None";
 
         public List<FilterEvents> Town = new()
         {
@@ -98,7 +97,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             EventEmblem = EventsService.GetAllEventEmblem();
             Halls = HallsService.GetAllHalls();
             HallEmblem = HallsService.GetAllHallEmblem();
-            Exercises = ExercisesService.GetAllExercises().ToList();
+            Workouts = WorkoutsService.GetAllWorkouts();
         }
 
         protected override void OnParametersSet()
@@ -106,54 +105,23 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             EventEmblem = EventsService.GetAllEventEmblem();
             Halls = HallsService.GetAllHalls();
             HallEmblem = HallsService.GetAllHallEmblem();
-            Exercises = ExercisesService.GetAllExercises().ToList();
+            Workouts = WorkoutsService.GetAllWorkouts();
         }
 
         public void Submit()
         {
             if (Add)
             {
-                var result = EventsService.AddEvent(Event, EventsExercises);
+                var result = EventsService.AddEvent(Event);
 
                 NavigationManager.NavigateTo(result ? "/events" : "/events/add");
             }
-
             if (Edit)
             {
-                var result = EventsService.EditEvent(Event, EventsExercises, EventId);
+                var result = EventsService.EditEvent(Event, EventId);
 
                 NavigationManager.NavigateTo(result ? $"/events/{EventId}" : $"/events/{Event}/edit");
             }
-        }
-
-        public void AddExercises(int id)
-        {
-            var eventsExercises = new EventsExercises
-            {
-                EventsId = EventId,
-                ExercisesId = id
-            };
-
-            EventsExercises.Add(eventsExercises);
-
-            var exercises = ExercisesService.GetExercise(id);
-
-            SelectedExercises.Add(exercises);
-
-            Exercises.Remove(exercises);
-        }
-
-        public void RemoveExercises(int id)
-        {
-            var eventsExercises = EventsExercises.FirstOrDefault(b => b.ExercisesId == id);
-
-            EventsExercises.Remove(eventsExercises);
-
-            var exercises = ExercisesService.GetExercise(id);
-
-            SelectedExercises.Remove(exercises);
-
-            Exercises.Add(exercises);
         }
 
         public void SelectedImage(ChangeEventArgs e)
@@ -176,7 +144,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
                 IsImage = true;
             }
 
-            if (IsTown && IsImage && IsHallImage)
+            if (IsTown && IsImage && IsHallImage && IsWorkoutImage)
             {
                 IsDisplaySubmitButton = true;
             }
@@ -203,7 +171,34 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
                 IsHallImage = true;
             }
 
-            if (IsTown && IsImage && IsHallImage)
+            if (IsTown && IsImage && IsHallImage && IsWorkoutImage)
+            {
+                IsDisplaySubmitButton = true;
+            }
+        }
+
+        public void SelectedWorkoutImage(ChangeEventArgs e)
+        {
+            var id = int.Parse(e.Value!.ToString()!);
+            var selected = e.Value?.ToString();
+
+            if (selected == "None")
+            {
+                IsDisplaySubmitButton = false;
+                IsWorkoutImage = false;
+            }
+
+            var workout = WorkoutsService.GetWorkout(id);
+            
+            if (workout is not null)
+            {
+                Workout = workout;
+                WorkoutImage = workout.Name;
+                Event.WorkoutId = workout.Id;
+                IsWorkoutImage = true;
+            }
+
+            if (IsTown && IsImage && IsHallImage && IsWorkoutImage)
             {
                 IsDisplaySubmitButton = true;
             }
@@ -224,7 +219,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
                 Event.Town = selected;
             }
 
-            if (IsTown && IsImage && IsHallImage)
+            if (IsTown && IsImage && IsHallImage && IsWorkoutImage)
             {
                 IsDisplaySubmitButton = true;
             }

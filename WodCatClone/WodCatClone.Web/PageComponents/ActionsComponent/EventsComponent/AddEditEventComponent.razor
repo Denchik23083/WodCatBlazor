@@ -50,6 +50,28 @@
                     }                    
                 </div>
             </div>
+            <div class="row">
+                <div class="col mb-2">
+                    <h5 style="color: white;">Выберите задание</h5>
+                    <select class="select form-control" @onchange="SelectedWorkoutImage">
+                        <option value="None">Тренировка</option>
+                        @foreach (var item in Workouts)
+                        {
+                            <option value="@item.Id">
+                                @item.Name
+                            </option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-2">
+                    @if (WorkoutImage is not "None")
+                    {
+                        <IndividualWorkoutsComponent Workout="Workout"/>
+                    }                    
+                </div>
+            </div>
         </div>
         <div class="col-6">
             <EditForm Model="Event" OnValidSubmit="Submit">
@@ -112,43 +134,6 @@
                 </div>
                 <div class="row">
                     <div class="col mb-2">
-                        <div class="selectedFormResult" @onclick="() => IsShow = !IsShow">Упражнения</div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        @if (IsShow)
-                        {
-                            @if (Exercises.Count is not 0)
-                            {
-                                <div class="selected mb-2">
-                                    @foreach (var item in Exercises)
-                                    {
-                                        <span class="item mb-2" @onclick="() => AddExercises(item.Id)">@item.Name</span><br/>
-                                    }
-                                </div>
-                            }
-                            else
-                            {
-                                IsShow = false;
-                            }
-                        }
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col mb-2">
-                        @foreach (var item in SelectedExercises)
-                        {
-                            <span class="foo">@item.Name
-                                <button class="selectedTypeClose p-0 mr-3" @onclick="() => RemoveExercises(item.Id)" type="button">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </span>
-                        }
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col mb-2">
                         <textarea 
                                 placeholder="Описание" 
                                 class="textarea" 
@@ -171,6 +156,15 @@
                             @bind-Value="Event.EndDate"
                             class="selectedFormResult mb-2 mr-2"
                             placeholder="Завершение" 
+                            type="date"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-2">
+                        <InputDate
+                            @bind-Value="Event.RegisterDate"
+                            class="selectedFormResult mb-2 mr-2"
+                            placeholder="Регестрация до" 
                             type="date"/>
                     </div>
                 </div>

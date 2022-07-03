@@ -27,5 +27,10 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService
         {
             return _repository.GetWorkout(workoutId);
         }
+
+        public Workouts GetWorkout(int? workoutId)
+        {
+            return _repository.GetWorkout(workoutId);
+        }
     }
 }

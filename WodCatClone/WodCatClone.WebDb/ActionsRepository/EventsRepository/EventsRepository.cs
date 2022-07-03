@@ -40,7 +40,7 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
             return _context.EventEmblem.FirstOrDefault(b => b.Id == id);
         }
 
-        public bool AddEvent(Events @event, List<EventsExercises> newEventsExercises)
+        public bool AddEvent(Events @event)
         {
             var loginUser = UserRepository.UserRepository.User;
             var user = _context.Users.FirstOrDefault(b => b.Id == loginUser.Id);
@@ -60,32 +60,6 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
             }
 
             _context.Events.Add(@event);
-            
-            _context.SaveChanges();
-
-            var newEvent = _context.Events.FirstOrDefault(b => b.Name == @event.Name);
-
-            if (newEvent is null)
-            {
-                return false;
-            }
-
-            var eventsExercises = _context.EventsExercises.Where(b => b.EventsId == newEvent.Id);
-
-            foreach (var item in eventsExercises)
-            {
-                _context.EventsExercises.Remove(item);
-            }
-
-            _context.SaveChanges();
-
-            foreach (var item in newEventsExercises)
-            {
-                item.EventsId = newEvent.Id;
-                _context.EventsExercises.Add(item);
-            }
-
-            _context.SaveChanges();
 
             user.Points += 100;
             _context.SaveChanges();
@@ -93,7 +67,7 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
             return true;
         }
 
-        public bool EditEvent(Events @event, List<EventsExercises> newEventsExercises, int eventId)
+        public bool EditEvent(Events @event, int eventId)
         {
             var loginUser = UserRepository.UserRepository.User;
             var user = _context.Users.FirstOrDefault(b => b.Id == loginUser.Id);
@@ -120,25 +94,6 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
             eventToEdit.EventsEmblemId = @event.EventsEmblemId;
             eventToEdit.HallId = @event.HallId;
 
-            _context.SaveChanges();
-
-            var eventsExercises = _context.EventsExercises.Where(b => b.EventsId == eventId);
-
-            foreach (var item in eventsExercises)
-            {
-                _context.EventsExercises.Remove(item);
-            }
-
-            _context.SaveChanges();
-
-            foreach (var item in newEventsExercises)
-            {
-                item.EventsId = eventId;
-                _context.EventsExercises.Add(item);
-            }
-
-            _context.SaveChanges();
-
             user.Points += 50;
             _context.SaveChanges();
 
@@ -155,15 +110,6 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
             }
 
             _context.Events.Remove(eventToRemove);
-            _context.SaveChanges();
-
-            var eventsExercises = _context.EventsExercises.Where(b => b.EventsId == eventId);
-
-            foreach (var item in eventsExercises)
-            {
-                _context.EventsExercises.Remove(item);
-            }
-
             _context.SaveChanges();
 
             return true;

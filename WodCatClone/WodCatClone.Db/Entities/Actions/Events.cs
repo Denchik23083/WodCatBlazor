@@ -29,6 +29,9 @@ namespace WodCatClone.Db.Entities.Actions
         [Required]
         public DateTime EndDate { get; set; }
 
+        [Required]
+        public DateTime RegisterDate { get; set; }
+
         public int EventsEmblemId { get; set; }
 
         public EventEmblem EventEmblem { get; set; }
@@ -37,10 +40,12 @@ namespace WodCatClone.Db.Entities.Actions
 
         public Halls Halls { get; set; }
 
+        public int? WorkoutId { get; set; }
+
+        public Workouts Workouts { get; set; }
+
         public int? UserId { get; set; }
 
         public User User { get; set; }
-
-        public List<EventsExercises> EventsExercises { get; set; }
     }
 }

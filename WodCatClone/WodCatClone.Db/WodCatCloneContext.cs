@@ -468,31 +468,13 @@ namespace WodCatClone.Db
                     Description = "К ТОНУС Стадион СЛАВУТИЧ АРЕНА Категории : SCALED, RX (ELITE), MASTERS 1 день 3 завдання Стартовый взнос - 500 грн Запись на участие В DIRECT!!! Для тихого, что из-за различных причин, не возможно прийняти участів в змаганнях, ми пропонуємо ОНЛАЙН ФОРМАТ. БЕЗ ВИДЕО! БЕЗ НАШЕГО СУДДІВСТВА ! ВСЕ НА НАШИЙ ДОВІРІ та ВАШІЙ ПОРЯДНОСТІ ! УМОВИ : Рестрация - 300 грн Категории - RX (ЭЛИТА) SCALED MASTERS 35 - 39, 40 - 44, 45+ 3 ( три комплекса) за один день Анонс 24.06 в п'ятницю ввечері о 17:00 Вконання 25.06 - субота . Отправить результаты до 17:00 субботы 25.06. Оголошення результатов у понедельника 27.06 Для записи напишите в DIRECT: Прізвище, им'я Місто, клуб Категорію",
                     Town = "Запорожье",
                     Location = "улица Лобановского, 21",
+                    RegisterDate = new DateTime(2022, 06, 27, 10, 00, 00),
                     StartDate = new DateTime(2022, 06, 29, 12, 30, 00),
                     EndDate = new DateTime(2022, 06, 30, 15, 00, 00),
                     HallId = 1,
                     EventsEmblemId = 2,
-                    UserId = 1
-                });
-
-            modelBuilder.Entity<EventsExercises>().ToTable("EventsExercises").HasData(
-                new EventsExercises
-                {
-                    Id = 1,
-                    EventsId = 1,
-                    ExercisesId = 3
-                },
-                new EventsExercises
-                {
-                    Id = 2,
-                    EventsId = 1,
-                    ExercisesId = 7
-                },
-                new EventsExercises
-                {
-                    Id = 3,
-                    EventsId = 1,
-                    ExercisesId = 11
+                    UserId = 1,
+                    WorkoutId = 3
                 });
 
             modelBuilder.Entity<ProgramsWorkouts>().ToTable("ProgramsWorkouts").HasData(
@@ -791,8 +773,6 @@ namespace WodCatClone.Db
         public DbSet<Exercises> Exercises { get; set; }
 
         public DbSet<Events> Events { get; set; }
-
-        public DbSet<EventsExercises> EventsExercises { get; set; }
 
         public DbSet<EventEmblem> EventEmblem { get; set; }
         
