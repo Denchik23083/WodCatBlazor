@@ -152,23 +152,28 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         public void SelectedHallImage(ChangeEventArgs e)
         {
-            var id = int.Parse(e.Value!.ToString()!);
             var selected = e.Value?.ToString();
 
             if (selected == "None")
             {
                 IsDisplaySubmitButton = false;
                 IsHallImage = false;
+                HallImage = selected;
             }
 
-            var hall = HallsService.GetHall(id);
-            var eventHallEmblem = HallEmblem.FirstOrDefault(b => b.Id == hall.EmblemHallId);
-
-            if (eventHallEmblem is not null)
+            if (selected != "None")
             {
-                HallImage = eventHallEmblem.Image;
-                Event.HallId = hall.Id;
-                IsHallImage = true;
+                var id = int.Parse(e.Value!.ToString()!);
+
+                var hall = HallsService.GetHall(id);
+                var eventHallEmblem = HallEmblem.FirstOrDefault(b => b.Id == hall.EmblemHallId);
+
+                if (eventHallEmblem is not null)
+                {
+                    HallImage = eventHallEmblem.Image;
+                    Event.HallId = hall.Id;
+                    IsHallImage = true;
+                }
             }
 
             if (IsTown && IsImage && IsHallImage && IsWorkoutImage)
@@ -179,23 +184,28 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         public void SelectedWorkoutImage(ChangeEventArgs e)
         {
-            var id = int.Parse(e.Value!.ToString()!);
             var selected = e.Value?.ToString();
 
             if (selected == "None")
             {
                 IsDisplaySubmitButton = false;
                 IsWorkoutImage = false;
+                Workout = null;
             }
 
-            var workout = WorkoutsService.GetWorkout(id);
-            
-            if (workout is not null)
+            if (selected != "None")
             {
-                Workout = workout;
-                WorkoutImage = workout.Name;
-                Event.WorkoutId = workout.Id;
-                IsWorkoutImage = true;
+                var id = int.Parse(e.Value!.ToString()!);
+
+                var workout = WorkoutsService.GetWorkout(id);
+
+                if (workout is not null)
+                {
+                    Workout = workout;
+                    WorkoutImage = workout.Name;
+                    Event.WorkoutId = workout.Id;
+                    IsWorkoutImage = true;
+                }
             }
 
             if (IsTown && IsImage && IsHallImage && IsWorkoutImage)

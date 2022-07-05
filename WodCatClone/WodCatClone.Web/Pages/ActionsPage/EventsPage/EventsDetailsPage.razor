@@ -84,34 +84,52 @@
                     <strong style="color: #333333;">@Event.TypeEvent @Event.TypeSport</strong>
                 </div>
             </div>
-            <div class="row">
-                <div class="col p-3 mb-3">
-                </div>
-            </div>
-            @*@if (IsLoginUser)
+            @if (IsLoginUser)
             {
-                @if (User!.HallId != Hall.Id)
+                @if (User!.EventId != Event.Id)
                 {
-                    <div class="row mb-3">
-                        <div class="col">
-                            <button class="joinHall" @onclick="Join">Присоединиться</button>
+                    @if (DateTime.Now < Event.RegisterDate)
+                    {
+                        <div class="row mb-3">
+                            <div class="col">
+                                <button class="joinHall" @onclick="Join">Регистрироваться</button>
+                            </div>
                         </div>
-                    </div>
+                    }
+                    else
+                    {
+                        <div class="row mb-3">
+                            <div class="col">
+                                <button class="joinHall">Регистрация окончена</button>
+                            </div>
+                        </div>
+                    }
                 }
                 else
                 {
-                    <div class="row mb-3">
-                        <div class="col">
-                            <button class="exitHall" @onclick="Exit">Выйти</button>
+                    @if (DateTime.Now < Event.StartDate)
+                    {
+                        <div class="row mb-3">
+                            <div class="col">
+                                <button class="exitHall" @onclick="Exit">Выйти</button>
+                            </div>
                         </div>
-                    </div>
+                    }
+                    else
+                    {
+                        <div class="row mb-3">
+                            <div class="col">
+                                <button class="exitHall">Мероприятие началось</button>
+                            </div>
+                        </div>
+                    }
                 }
-            }*@
+            }
         </div>
     </div>
 </div>
 <div class="row">
-    <div class="col p-3 footerEvent @Top">
+    <div class="col p-3 footerEvent" style="top: 695px;">
         <div class="row">
             <div class="col text-center">
                 <span class="programslink" @onclick="DisplayEvents">О СОБЫТИИ</span>

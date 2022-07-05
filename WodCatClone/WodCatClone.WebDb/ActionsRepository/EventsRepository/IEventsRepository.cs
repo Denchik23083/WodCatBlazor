@@ -21,5 +21,11 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
         bool EditEvent(Events @event, int eventId);
         
         bool RemoveEvent(int eventId);
+
+        bool AutoRemoveEvent(int eventId);
+
+        bool JoinEvent(int eventId, User user);
+
+        bool ExitEvent(int eventId, User user);
     }
 }

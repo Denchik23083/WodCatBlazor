@@ -281,7 +281,7 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                             HallId = 1,
                             Location = "улица Лобановского, 21",
                             Name = "TONUS 2022 help UA",
-                            RegisterDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RegisterDate = new DateTime(2022, 6, 27, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             StartDate = new DateTime(2022, 6, 26, 12, 30, 0, 0, DateTimeKind.Unspecified),
                             Town = "Запорожье",
                             TypeEvent = "Соревнования",

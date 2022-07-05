@@ -7,7 +7,6 @@ using WodCatClone.Logic.ActionsService.HallsService;
 using WodCatClone.Logic.ActionsService.WorkoutsService;
 using WodCatClone.Logic.UserService;
 using WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent;
-using WodCatClone.WebDb.ActionsRepository.WorkoutsRepository;
 
 namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
 {
@@ -61,8 +60,6 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
 
         public bool IsLoginUser { get; set; }
 
-        public string Top = "notLoginTop";
-
         protected override void OnInitialized()
         {
             Event = EventsService.GetEvent(EventId);
@@ -79,8 +76,6 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
             Hall = HallsService.GetHall(Event.HallId);
             HallEmblem = HallsService.GetImage(Hall.EmblemHallId);
             Workout = WorkoutsService.GetWorkout(Event.WorkoutId);
-
-            if (IsLoginUser) Top = "loginTop";
         }
 
         protected override void OnParametersSet()
@@ -99,8 +94,6 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
             Hall = HallsService.GetHall(Event.HallId);
             HallEmblem = HallsService.GetImage(Hall.EmblemHallId);
             Workout = WorkoutsService.GetWorkout(Event.WorkoutId);
-
-            if (IsLoginUser) Top = "loginTop";
         }
 
         public void Edit() => NavigationManager.NavigateTo($"/events/{EventId}/edit");
@@ -128,6 +121,26 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
             DisplayEvent = false;
             DisplayUser = false;
             DisplayEventWorkoutExercise = true;
+        }
+
+        public void Join()
+        {
+            var result = EventsService.JoinEvent(Event.Id, User);
+
+            if (result)
+            {
+                NavigationManager.NavigateTo($"/events/{EventId}");
+            }
+        }
+
+        public void Exit()
+        {
+            var result = EventsService.ExitEvent(Event.Id, User);
+
+            if (result)
+            {
+                NavigationManager.NavigateTo($"/events/{EventId}");
+            }
         }
     }
 }

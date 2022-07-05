@@ -470,7 +470,7 @@ namespace WodCatClone.Db
                     Location = "улица Лобановского, 21",
                     RegisterDate = new DateTime(2022, 06, 27, 10, 00, 00),
                     StartDate = new DateTime(2022, 06, 29, 12, 30, 00),
-                    EndDate = new DateTime(2022, 06, 30, 15, 00, 00),
+                    EndDate = new DateTime(2022, 09, 30, 15, 00, 00),
                     HallId = 1,
                     EventsEmblemId = 2,
                     UserId = 1,

@@ -55,5 +55,24 @@ namespace WodCatClone.Logic.ActionsService.EventsService
         {
             return _repository.RemoveEvent(eventId);
         }
+
+        public bool AutoRemoveEvent(int eventId)
+        {
+            return _repository.AutoRemoveEvent(eventId);
+        }
+
+        public bool JoinEvent(int eventId, User user)
+        {
+            AuthService.AuthService.User.EventId = eventId;
+
+            return _repository.JoinEvent(eventId, user);
+        }
+
+        public bool ExitEvent(int eventId, User user)
+        {
+            AuthService.AuthService.User.EventId = null;
+
+            return _repository.ExitEvent(eventId, user);
+        }
     }
 }

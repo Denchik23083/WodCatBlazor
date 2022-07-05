@@ -66,7 +66,7 @@
             </div>
             <div class="row">
                 <div class="col mb-2">
-                    @if (WorkoutImage is not "None")
+                    @if (WorkoutImage is not "None" && Workout is not null)
                     {
                         <IndividualWorkoutsComponent Workout="Workout"/>
                     }                    
@@ -143,11 +143,20 @@
                 </div>
                 <div class="row">
                     <div class="col mb-2">
+                        <span style="color: lightgrey;">Начало</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-2">
                         <InputDate
                             @bind-Value="Event.StartDate"
                             class="selectedFormResult mb-2 mr-2"
-                            placeholder="Начало" 
                             type="date"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-2">
+                        <span style="color: lightgrey;">Завершение</span>
                     </div>
                 </div>
                 <div class="row">
@@ -155,8 +164,12 @@
                         <InputDate
                             @bind-Value="Event.EndDate"
                             class="selectedFormResult mb-2 mr-2"
-                            placeholder="Завершение" 
                             type="date"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-2">
+                        <span style="color: lightgrey;">Регестрация до</span>
                     </div>
                 </div>
                 <div class="row">
@@ -164,7 +177,6 @@
                         <InputDate
                             @bind-Value="Event.RegisterDate"
                             class="selectedFormResult mb-2 mr-2"
-                            placeholder="Регестрация до" 
                             type="date"/>
                     </div>
                 </div>

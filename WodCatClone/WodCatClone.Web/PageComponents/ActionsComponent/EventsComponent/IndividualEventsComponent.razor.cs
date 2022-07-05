@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.EventsService;
@@ -11,8 +12,20 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         [Inject] public IEventsService EventsService { get; set; }
 
+        [Inject] public NavigationManager NavigationManager { get; set; }
+
         protected override void OnInitialized()
         {
+            if (Event.EndDate < DateTime.Now)
+            {
+                var result = EventsService.AutoRemoveEvent(Event.Id);
+
+                if (result)
+                {
+                    NavigationManager.NavigateTo("/events");
+                }
+            }
+
             Url = $"events/{Event.Id}";
             Image = EventsService.GetImage(Event.EventsEmblemId);
             EndDate = Event.StartDate.ToString("dd MMMM");
@@ -21,6 +34,16 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         protected override void OnParametersSet()
         {
+            if (Event.EndDate < DateTime.Now)
+            {
+                var result = EventsService.AutoRemoveEvent(Event.Id);
+
+                if (result)
+                {
+                    NavigationManager.NavigateTo("/events");
+                }
+            }
+
             Url = $"events/{Event.Id}";
             Image = EventsService.GetImage(Event.EventsEmblemId);
             EndDate = Event.StartDate.ToString("dd MMMM", CultureInfo.InvariantCulture);

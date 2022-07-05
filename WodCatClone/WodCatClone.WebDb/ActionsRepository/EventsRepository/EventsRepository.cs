@@ -114,5 +114,59 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
 
             return true;
         }
+
+        public bool AutoRemoveEvent(int eventId)
+        {
+            var allUsers = _context.Users;
+
+            foreach (var allUser in allUsers)
+            {
+                allUser.EventId = null;
+            }
+
+            var eventToRemove = _context.Events.FirstOrDefault(b => b.Id == eventId);
+
+            if (eventToRemove is null)
+            {
+                return false;
+            }
+
+            _context.Events.Remove(eventToRemove);
+            _context.SaveChanges();
+
+            return true;
+        }
+
+        public bool JoinEvent(int eventId, User user)
+        {
+            var loginUser = _context.Users.FirstOrDefault(b => b.Id == user.Id);
+
+            if (loginUser is null)
+            {
+                return false;
+            }
+
+            loginUser.EventId = eventId;
+
+            _context.SaveChanges();
+
+            return true;
+        }
+
+        public bool ExitEvent(int eventId, User user)
+        {
+            var loginUser = _context.Users.FirstOrDefault(b => b.Id == user.Id);
+
+            if (loginUser is null)
+            {
+                return false;
+            }
+
+            loginUser.EventId = null;
+
+            _context.SaveChanges();
+
+            return true;
+        }
     }
 }
