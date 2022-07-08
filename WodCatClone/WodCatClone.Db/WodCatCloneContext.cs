@@ -751,6 +751,23 @@ namespace WodCatClone.Db
                     Weight = "70",
                     AboutMe = "I am a developer C#",
                     GenderId = 1
+                },
+                new User
+                {
+                    Id = 2,
+                    Name = "Наташа",
+                    Surname = "Возникова",
+                    NickName = "Nat25",
+                    Email = "nata@gmail.com",
+                    Password = "0000",
+                    Country = "Ukraine",
+                    Town = "Херсон",
+                    Points = 45,
+                    Birthday = new DateTime(2000, 08, 29),
+                    Height = "175",
+                    Weight = "55",
+                    AboutMe = "Test Nata",
+                    GenderId = 2
                 });
 
             modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);

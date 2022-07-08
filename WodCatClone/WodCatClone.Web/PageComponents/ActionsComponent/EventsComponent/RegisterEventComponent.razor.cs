@@ -87,7 +87,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
             if (result)
             {
-                NavigationManager.NavigateTo($"/events/{EventId}");
+                NavigationManager.NavigateTo($"/events/{EventId}", true);
             }
         }
 
@@ -97,7 +97,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
             if (result)
             {
-                NavigationManager.NavigateTo($"/events/{EventId}");
+                NavigationManager.NavigateTo($"/events/{EventId}", true);
             }
         }
     }

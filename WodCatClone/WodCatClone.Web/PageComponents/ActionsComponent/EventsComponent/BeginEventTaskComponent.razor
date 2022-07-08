@@ -12,7 +12,9 @@
                 <ListEventsWorkoutsExercisesComponent ListOfItems="WorkoutsExercises"/>
             </div>
         </div>
-        
-        <input type="time" @bind=""/>
+        <form>
+            <input type="time" @bind-value="Time" step="2"/>
+            <button type="submit" @onclick="SubmitTime">Сохранить</button>
+        </form>
     </div>
 </div>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using WodCatClone.Db.Entities.Actions;
 
 namespace WodCatClone.Db.Entities.Auth
@@ -46,5 +47,7 @@ namespace WodCatClone.Db.Entities.Auth
         public int? EventId { get; set; }
 
         public Events Events { get; set; }
+
+        public List<EventTimeUser> EventTimeUsers { get; set; }
     }
 }

@@ -211,6 +211,31 @@ namespace WodCatClone.Db.Migrations
                         });
                 });
 
+            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.EventTimeUser", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("EventsId")
+                        .HasColumnType("int");
+
+                    b.Property<TimeSpan>("Time")
+                        .HasColumnType("time");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EventsId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("EventTimeUser");
+                });
+
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Events", b =>
                 {
                     b.Property<int>("Id")
@@ -276,24 +301,7 @@ namespace WodCatClone.Db.Migrations
                         {
                             Id = 1,
                             Description = "К ТОНУС Стадион СЛАВУТИЧ АРЕНА Категории : SCALED, RX (ELITE), MASTERS 1 день 3 завдання Стартовый взнос - 500 грн Запись на участие В DIRECT!!! Для тихого, что из-за различных причин, не возможно прийняти участів в змаганнях, ми пропонуємо ОНЛАЙН ФОРМАТ. БЕЗ ВИДЕО! БЕЗ НАШЕГО СУДДІВСТВА ! ВСЕ НА НАШИЙ ДОВІРІ та ВАШІЙ ПОРЯДНОСТІ ! УМОВИ : Рестрация - 300 грн Категории - RX (ЭЛИТА) SCALED MASTERS 35 - 39, 40 - 44, 45+ 3 ( три комплекса) за один день Анонс 24.06 в п'ятницю ввечері о 17:00 Вконання 25.06 - субота . Отправить результаты до 17:00 субботы 25.06. Оголошення результатов у понедельника 27.06 Для записи напишите в DIRECT: Прізвище, им'я Місто, клуб Категорію",
-                            EndDate = new DateTime(2022, 6, 30, 15, 0, 0, 0, DateTimeKind.Unspecified),
-                            EventsEmblemId = 2,
-                            HallId = 1,
-                            Location = "улица Лобановского, 21",
-                            Name = "TONUS 2022 help UA",
-                            RegisterDate = new DateTime(2022, 6, 27, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            StartDate = new DateTime(2022, 6, 29, 12, 30, 0, 0, DateTimeKind.Unspecified),
-                            Town = "Запорожье",
-                            TypeEvent = "Соревнования",
-                            TypeSport = "Кроссфит",
-                            UserId = 1,
-                            WorkoutId = 3
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "К ТОНУС Стадион СЛАВУТИЧ АРЕНА Категории : SCALED, RX (ELITE), MASTERS 1 день 3 завдання Стартовый взнос - 500 грн Запись на участие В DIRECT!!! Для тихого, что из-за различных причин, не возможно прийняти участів в змаганнях, ми пропонуємо ОНЛАЙН ФОРМАТ. БЕЗ ВИДЕО! БЕЗ НАШЕГО СУДДІВСТВА ! ВСЕ НА НАШИЙ ДОВІРІ та ВАШІЙ ПОРЯДНОСТІ ! УМОВИ : Рестрация - 300 грн Категории - RX (ЭЛИТА) SCALED MASTERS 35 - 39, 40 - 44, 45+ 3 ( три комплекса) за один день Анонс 24.06 в п'ятницю ввечері о 17:00 Вконання 25.06 - субота . Отправить результаты до 17:00 субботы 25.06. Оголошення результатов у понедельника 27.06 Для записи напишите в DIRECT: Прізвище, им'я Місто, клуб Категорію",
-                            EndDate = new DateTime(2022, 8, 30, 15, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndDate = new DateTime(2022, 9, 30, 15, 0, 0, 0, DateTimeKind.Unspecified),
                             EventsEmblemId = 2,
                             HallId = 1,
                             Location = "улица Лобановского, 21",
@@ -1401,6 +1409,23 @@ namespace WodCatClone.Db.Migrations
                             Surname = "Кудрявов",
                             Town = "Херсон",
                             Weight = "70"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AboutMe = "Test Nata",
+                            Birthday = new DateTime(2000, 8, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Country = "Ukraine",
+                            Email = "nata@gmail.com",
+                            GenderId = 2,
+                            Height = "175",
+                            Name = "Наташа",
+                            NickName = "Nat25",
+                            Password = "0000",
+                            Points = 45,
+                            Surname = "Возникова",
+                            Town = "Херсон",
+                            Weight = "55"
                         });
                 });
 
@@ -1522,6 +1547,25 @@ namespace WodCatClone.Db.Migrations
                         .HasForeignKey("UserId");
 
                     b.Navigation("ArticleEmblem");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.EventTimeUser", b =>
+                {
+                    b.HasOne("WodCatClone.Db.Entities.Actions.Events", "Events")
+                        .WithMany("EventTimeUsers")
+                        .HasForeignKey("EventsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WodCatClone.Db.Entities.Auth.User", "User")
+                        .WithMany("EventTimeUsers")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Events");
 
                     b.Navigation("User");
                 });
@@ -1687,6 +1731,11 @@ namespace WodCatClone.Db.Migrations
                     b.Navigation("Answer");
                 });
 
+            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Events", b =>
+                {
+                    b.Navigation("EventTimeUsers");
+                });
+
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Exercises", b =>
                 {
                     b.Navigation("WorkoutsExercises");
@@ -1702,6 +1751,11 @@ namespace WodCatClone.Db.Migrations
                     b.Navigation("ProgramsWorkouts");
 
                     b.Navigation("WorkoutsExercises");
+                });
+
+            modelBuilder.Entity("WodCatClone.Db.Entities.Auth.User", b =>
+                {
+                    b.Navigation("EventTimeUsers");
                 });
 #pragma warning restore 612, 618
         }

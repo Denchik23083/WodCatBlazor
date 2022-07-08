@@ -211,6 +211,31 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                         });
                 });
 
+            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.EventTimeUser", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("EventsId")
+                        .HasColumnType("int");
+
+                    b.Property<TimeSpan>("Time")
+                        .HasColumnType("time");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EventsId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("EventTimeUser");
+                });
+
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Events", b =>
                 {
                     b.Property<int>("Id")
@@ -1509,6 +1534,25 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.EventTimeUser", b =>
+                {
+                    b.HasOne("WodCatClone.Db.Entities.Actions.Events", "Events")
+                        .WithMany("EventTimeUsers")
+                        .HasForeignKey("EventsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WodCatClone.Db.Entities.Auth.User", "User")
+                        .WithMany("EventTimeUsers")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Events");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Events", b =>
                 {
                     b.HasOne("WodCatClone.Db.Entities.Actions.EventEmblem", "EventEmblem")
@@ -1670,6 +1714,11 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                     b.Navigation("Answer");
                 });
 
+            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Events", b =>
+                {
+                    b.Navigation("EventTimeUsers");
+                });
+
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Exercises", b =>
                 {
                     b.Navigation("WorkoutsExercises");
@@ -1685,6 +1734,11 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                     b.Navigation("ProgramsWorkouts");
 
                     b.Navigation("WorkoutsExercises");
+                });
+
+            modelBuilder.Entity("WodCatClone.Db.Entities.Auth.User", b =>
+                {
+                    b.Navigation("EventTimeUsers");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,6 +1,7 @@
 ﻿@page "/events/{EventId:int}"
 
 <HeaderComponent />
+
 @if (IsLoginUser)
 {
     @if (User.EventId == Event.Id)
@@ -9,6 +10,10 @@
         {
             <BeginEventTaskComponent Event="Event"/>
         }
+    }
+    else
+    {
+        <RegisterEventComponent Event="Event" EventId="EventId"/>
     }
 }
 else
