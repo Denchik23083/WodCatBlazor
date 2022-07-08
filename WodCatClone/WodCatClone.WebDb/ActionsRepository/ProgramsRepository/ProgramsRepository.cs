@@ -35,6 +35,11 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
             return _context.Programs.FirstOrDefault(b => b.Id == id);
         }
 
+        public Programs GetProgram(int? id)
+        {
+            return _context.Programs.FirstOrDefault(b => b.Id == id);
+        }
+
         public ProgramEmblem GetImage(int? programsEmblemId)
         {
             return _context.ProgramEmblem.FirstOrDefault(b => b.Id == programsEmblemId);

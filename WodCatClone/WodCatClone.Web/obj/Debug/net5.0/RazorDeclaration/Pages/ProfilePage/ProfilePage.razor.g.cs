@@ -187,6 +187,13 @@ using WodCatClone.Web.PageComponents.MainComponent;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 2 "C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Web\Pages\ProfilePage\ProfilePage.razor"
+using WodCatClone.Db.EntityConfig.ActionsConfig;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/profile/{NickName}")]
     public partial class ProfilePage : Microsoft.AspNetCore.Components.ComponentBase
     {

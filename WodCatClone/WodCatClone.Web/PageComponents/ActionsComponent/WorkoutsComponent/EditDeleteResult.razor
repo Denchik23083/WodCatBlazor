@@ -50,20 +50,20 @@
                         </button>
                     </div>
                     <div class="modal-body" style="border: 0; color: #bdc1c6;">
-                        <EditForm Model="@_editResultWorkout">
+                        <EditForm Model="@EditResultWorkout">
                             <div class="row">
                                 <div class="col-6">
                                     <i class="fa-solid fa-stopwatch" style="font-size: 25px;"></i>
                                     <span class="mr-2" style="font-size: 20px;">Время</span>
                                     <InputText
-                                        @bind-Value="_editResultWorkout.Minutes"
+                                        @bind-Value="EditResultWorkout.Minutes"
                                         class="formResult mb-2 mr-2"
                                         id="minutes"
                                         type="number"
                                         min="0" max="60"
                                         placeholder="min"/>
                                     <InputText
-                                        @bind-Value="_editResultWorkout.Seconds"
+                                        @bind-Value="EditResultWorkout.Seconds"
                                         class="formResult mb-2 mr-2"
                                         id="seconds"
                                         type="number"
@@ -109,13 +109,13 @@
                                 <div class="col-6">
                                     <span class="mr-2" style="font-size: 20px;">Повторений</span>
                                     <InputNumber
-                                        @bind-Value="_editResultWorkout.Repeat"
+                                        @bind-Value="EditResultWorkout.Repeat"
                                         class="formResult mb-2 mr-2"
                                         id="repeat"
                                         type="number"
                                         min="0"/>
                                     <InputDate
-                                        @bind-Value="_editResultWorkout.PublishDate"
+                                        @bind-Value="EditResultWorkout.PublishDate"
                                         class="formResult mb-2 mr-2"
                                         id="publishDate"
                                         type="date"/>
@@ -160,7 +160,7 @@
                                     <textarea 
                                         placeholder="Напишите комментарий к результату" 
                                         class="textarea" 
-                                        @bind="_editResultWorkout.Comment">
+                                        @bind="EditResultWorkout.Comment">
                                         
                                     </textarea>
                                 </div>

@@ -1,4 +1,5 @@
 ﻿@page "/profile/{NickName}"
+@using WodCatClone.Db.EntityConfig.ActionsConfig
 
 <HeaderComponent />
 
@@ -50,6 +51,15 @@
                             <div class="col mb-2 text-left">
                                 <img src="@HallEmblem" width="75" height="75"/>
                                 <a href="/gymboxs/@Hall.Id" class="link">@Hall.Name</a>
+                            </div>
+                        </div>
+                    }
+                    @if (Program is not null && ProgramEmblem is not null)
+                    {
+                        <div class="row">
+                            <div class="col mb-2 text-left">
+                                <img src="@ProgramEmblem" width="75" height="75"/>
+                                <a href="/programs/@Program.Id" class="link">@Program.Name</a>
                             </div>
                         </div>
                     }

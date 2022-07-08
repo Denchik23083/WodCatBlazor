@@ -1,0 +1,18 @@
+﻿<div class="row">
+    <div class="col visualContainerEvent" style="background-image: url(/@Image);">
+        <div class="row m-3">
+            <div class="col text-center">
+                <a class="Name" href="/workouts/@Workout.Id"><span class="bold">@Workout.Name</span></a><br/>
+                <span style="color: white; font-size: 1.5rem;">На время:</span><br/>
+                <span style="color: white; font-size: 1.5rem;">@Workout.Minutes:@Workout.Seconds</span>
+            </div>
+        </div>
+        <div class="row m-3">
+            <div class="col">
+                <ListEventsWorkoutsExercisesComponent ListOfItems="WorkoutsExercises"/>
+            </div>
+        </div>
+        
+        <input type="time" @bind=""/>
+    </div>
+</div>

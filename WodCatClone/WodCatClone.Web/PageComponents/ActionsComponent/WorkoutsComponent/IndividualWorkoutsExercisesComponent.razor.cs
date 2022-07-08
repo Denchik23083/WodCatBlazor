@@ -14,16 +14,14 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         [Inject] public IExercisesService ExercisesService { get; set; }
 
-        [Inject] public NavigationManager NavigationManager { get; set; }
-
-        public Exercises Exercises { get; set; }
+        public Exercises Exercise { get; set; }
 
         public string Work { get; set; }
 
         protected override void OnInitialized()
         {
             Work = WorkoutsExercises.Work;
-            Exercises = ExercisesService.GetExercise(WorkoutsExercises.ExercisesId);
+            Exercise = ExercisesService.GetExercise(WorkoutsExercises.ExercisesId);
         }
     }
 }

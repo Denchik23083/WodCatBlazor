@@ -81,7 +81,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
             var id = GetAllResultWorkouts.ResultWorkoutId;
 
             EditDeleteResult.FillData();
-            var resultWorkout = EditDeleteResult._editResultWorkout;
+            var resultWorkout = EditDeleteResult.EditResultWorkout;
 
             var result = ResultWorkoutsService.EditResultWorkouts(resultWorkout, id);
 

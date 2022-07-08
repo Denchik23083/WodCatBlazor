@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.ActionsService.HallsService;
+using WodCatClone.Logic.ActionsService.ProgramsService;
 using WodCatClone.Logic.UserService;
 
 namespace WodCatClone.Web.Pages.ProfilePage
@@ -14,6 +15,8 @@ namespace WodCatClone.Web.Pages.ProfilePage
         [Inject] public IUserService UserService { get; set; }
 
         [Inject] public IHallsService HallsService { get; set; }
+
+        [Inject] public IProgramsService ProgramsService { get; set; }
 
         [Inject] public NavigationManager NavigationManager { get; set; }
 
@@ -29,7 +32,11 @@ namespace WodCatClone.Web.Pages.ProfilePage
 
         public Halls Hall { get; set; }
 
+        public Programs Program { get; set; }
+
         public string HallEmblem { get; set; }
+
+        public string ProgramEmblem { get; set; }
 
         public int Age { get; set; }
 
@@ -53,6 +60,12 @@ namespace WodCatClone.Web.Pages.ProfilePage
             {
                 Hall = HallsService.GetHall(User.HallId);
                 HallEmblem = HallsService.GetImage(Hall.EmblemHallId);
+            }
+
+            if (User.ProgramId is not null)
+            {
+                Program = ProgramsService.GetProgram(User.ProgramId);
+                ProgramEmblem = ProgramsService.GetImage(Program.ProgramsEmblemId);
             }
 
             if (UserEnter is not null)

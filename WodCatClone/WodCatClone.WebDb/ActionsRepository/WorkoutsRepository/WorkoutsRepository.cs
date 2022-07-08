@@ -24,6 +24,11 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
             return _context.WorkoutsExercises.Where(b => b.WorkoutsId == id);
         }
 
+        public IEnumerable<WorkoutsExercises> GetAllWorkoutsExercises(int? id)
+        {
+            return _context.WorkoutsExercises.Where(b => b.WorkoutsId == id);
+        }
+
         public Workouts GetWorkout(int workoutId)
         {
             return _context.Workouts.FirstOrDefault(x => x.Id == workoutId);

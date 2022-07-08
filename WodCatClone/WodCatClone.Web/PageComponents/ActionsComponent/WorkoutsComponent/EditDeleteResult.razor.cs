@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
+using WodCatClone.Logic.ActionsService.WorkoutsService;
 using WodCatClone.Logic.UserService;
 
 namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
@@ -21,9 +22,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         public bool DisplayEditResult { get; set; } = true;
 
-        public ResultWorkouts _editResultWorkout = new();
-
-        public ResultWorkouts Result { get; set; }
+        public ResultWorkouts EditResultWorkout = new();
 
         public void Show() => DisplayEditDeleteResult = true;
 
@@ -50,19 +49,19 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
             ResultFascinationStars();
             ResultLoadStars();
 
-            _editResultWorkout.Minutes ??= "0";
-            _editResultWorkout.Seconds ??= "0";
-            _editResultWorkout.Comment ??= "";
+            EditResultWorkout.Minutes ??= "0";
+            EditResultWorkout.Seconds ??= "0";
+            EditResultWorkout.Comment ??= "";
 
-            var minutes = int.Parse(_editResultWorkout.Minutes);
-            var seconds = int.Parse(_editResultWorkout.Seconds);
+            var minutes = int.Parse(EditResultWorkout.Minutes);
+            var seconds = int.Parse(EditResultWorkout.Seconds);
 
-            if (minutes < 10) _editResultWorkout.Minutes = $"0{minutes}";
+            if (minutes < 10) EditResultWorkout.Minutes = $"0{minutes}";
 
-            if (seconds < 10) _editResultWorkout.Seconds = $"0{seconds}";
+            if (seconds < 10) EditResultWorkout.Seconds = $"0{seconds}";
 
-            _editResultWorkout.Fascination = ResultFascination;
-            _editResultWorkout.Load = ResultLoad;
+            EditResultWorkout.Fascination = ResultFascination;
+            EditResultWorkout.Load = ResultLoad;
         }
 
         private void ResultFascinationStars()
