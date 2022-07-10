@@ -25,6 +25,13 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
             return _context.Users.Where(b => b.EventId == id);
         }
 
+        public IEnumerable<EventTimeUser> GetAllEventTimeUsers(int eventId)
+        {
+            return _context.EventTimeUser
+                .Where(b => b.EventsId == eventId)
+                .OrderByDescending(b => b.Time).Take(3);
+        }
+
         public IEnumerable<EventEmblem> GetAllEventEmblem()
         {
             return _context.EventEmblem;
@@ -38,6 +45,11 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
         public EventEmblem GetImage(int id)
         {
             return _context.EventEmblem.FirstOrDefault(b => b.Id == id);
+        }
+
+        public EventTimeUser GetEventTimeUser(int eventId, int userId)
+        {
+            return _context.EventTimeUser.FirstOrDefault(b => b.EventsId == eventId && b.UserId == userId);
         }
 
         public bool AddEvent(Events @event)
@@ -123,6 +135,22 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
             {
                 allUser.EventId = null;
             }
+            
+            var allUsersTime = _context.EventTimeUser.OrderByDescending(b => b.Time).Take(3);
+
+            var points = 200;
+
+            foreach (var item in allUsersTime)
+            {
+                var user = _context.Users.FirstOrDefault(b => b.Id == item.Id);
+                
+                if (user is not null)
+                {
+                    user.Points += points;
+                }
+
+                points /= 2;
+            }
 
             var eventToRemove = _context.Events.FirstOrDefault(b => b.Id == eventId);
 
@@ -164,6 +192,14 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
 
             loginUser.EventId = null;
 
+            _context.SaveChanges();
+
+            return true;
+        }
+
+        public bool AddEventTimeUser(EventTimeUser eventTimeUser)
+        {
+            _context.EventTimeUser.Add(eventTimeUser);
             _context.SaveChanges();
 
             return true;

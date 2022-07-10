@@ -10,9 +10,13 @@ namespace WodCatClone.Logic.ActionsService.EventsService
 
         IEnumerable<User> GetAllEventsUsers(int id);
 
+        IEnumerable<EventTimeUser> GetAllEventTimeUsers(int eventId);
+
         IEnumerable<EventEmblem> GetAllEventEmblem();
 
         Events GetEvent(int eventId);
+
+        EventTimeUser GetEventTimeUser(int eventId, int userId);
 
         string GetImage(int id);
 
@@ -27,5 +31,7 @@ namespace WodCatClone.Logic.ActionsService.EventsService
         bool JoinEvent(int eventId, User user);
 
         bool ExitEvent(int eventId, User user);
+
+        bool AddEventTimeUser(EventTimeUser eventTimeUser);
     }
 }

@@ -24,11 +24,15 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
 
         public IEnumerable<User> Users { get; set; }
 
+        public IEnumerable<EventTimeUser> EventTimeUsers { get; set; }
+
         public bool DisplayEvent { get; set; } = true;
 
         public bool DisplayEventWorkoutExercise { get; set; }
 
         public bool DisplayUser { get; set; }
+
+        public bool DisplayAward { get; set; }
 
         public bool IsLoginUser { get; set; }
 
@@ -40,6 +44,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
             Users = EventsService.GetAllEventsUsers(EventId);
             Workout = WorkoutsService.GetWorkout(Event.WorkoutId);
             User = UserService.GetUser();
+            EventTimeUsers = EventsService.GetAllEventTimeUsers(EventId);
             IsLoginUser = UserService.IsLoginUser();
         }
 
@@ -49,6 +54,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
             Users = EventsService.GetAllEventsUsers(EventId);
             Workout = WorkoutsService.GetWorkout(Event.WorkoutId);
             User = UserService.GetUser();
+            EventTimeUsers = EventsService.GetAllEventTimeUsers(EventId);
             IsLoginUser = UserService.IsLoginUser();
         }
 
@@ -57,6 +63,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
             DisplayEvent = true;
             DisplayUser = false;
             DisplayEventWorkoutExercise = false;
+            DisplayAward = false;
         }
 
         public void DisplayUsers()
@@ -64,6 +71,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
             DisplayEvent = false;
             DisplayUser = true;
             DisplayEventWorkoutExercise = false;
+            DisplayAward = false;
         }
 
         public void DisplayEventsWorkoutsExercises()
@@ -71,6 +79,15 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
             DisplayEvent = false;
             DisplayUser = false;
             DisplayEventWorkoutExercise = true;
+            DisplayAward = false;
+        }
+
+        public void DisplayAwards()
+        {
+            DisplayEvent = false;
+            DisplayUser = false;
+            DisplayEventWorkoutExercise = false;
+            DisplayAward = true;
         }
     }
 }

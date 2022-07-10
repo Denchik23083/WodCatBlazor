@@ -24,6 +24,11 @@ namespace WodCatClone.Logic.ActionsService.EventsService
             return _repository.GetAllEventsUsers(id);
         }
 
+        public IEnumerable<EventTimeUser> GetAllEventTimeUsers(int eventId)
+        {
+            return _repository.GetAllEventTimeUsers(eventId);
+        }
+
         public IEnumerable<EventEmblem> GetAllEventEmblem()
         {
             return _repository.GetAllEventEmblem();
@@ -32,6 +37,11 @@ namespace WodCatClone.Logic.ActionsService.EventsService
         public Events GetEvent(int eventId)
         {
             return _repository.GetEvent(eventId);
+        }
+
+        public EventTimeUser GetEventTimeUser(int eventId, int userId)
+        {
+            return _repository.GetEventTimeUser(eventId, userId);
         }
 
         public string GetImage(int id)
@@ -73,6 +83,11 @@ namespace WodCatClone.Logic.ActionsService.EventsService
             AuthService.AuthService.User.EventId = null;
 
             return _repository.ExitEvent(eventId, user);
+        }
+
+        public bool AddEventTimeUser(EventTimeUser eventTimeUser)
+        {
+            return _repository.AddEventTimeUser(eventTimeUser);
         }
     }
 }

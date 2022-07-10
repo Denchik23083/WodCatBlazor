@@ -10,11 +10,15 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
 
         IEnumerable<User> GetAllEventsUsers(int id);
 
+        IEnumerable<EventTimeUser> GetAllEventTimeUsers(int eventId);
+
         IEnumerable<EventEmblem> GetAllEventEmblem();
 
         Events GetEvent(int eventId);
 
         EventEmblem GetImage(int id);
+
+        EventTimeUser GetEventTimeUser(int eventId, int userId);
 
         bool AddEvent(Events @event);
 
@@ -27,5 +31,7 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
         bool JoinEvent(int eventId, User user);
 
         bool ExitEvent(int eventId, User user);
+
+        bool AddEventTimeUser(EventTimeUser eventTimeUser);
     }
 }

@@ -19,6 +19,8 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         [Inject] public IUserService UserService { get; set; }
 
+        [Inject] public NavigationManager NavigationManager { get; set; }
+
         public IEnumerable<WorkoutsExercises> WorkoutsExercises { get; set; }
 
         public string Image { get; set; }
@@ -29,7 +31,9 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         public DateTime Time { get; set; }
 
-        public EventTimeUser EventTimeUser = new();
+        public EventTimeUser EventTimeUser { get; set; }
+
+        public EventTimeUser AddEventTimeUser = new();
 
         protected override void OnInitialized()
         {
@@ -37,15 +41,21 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             WorkoutsExercises = WorkoutsService.GetAllWorkoutsExercises(Event.WorkoutId);
             Workout = WorkoutsService.GetWorkout(Event.WorkoutId);
             User = UserService.GetUser();
+            EventTimeUser = EventsService.GetEventTimeUser(Event.Id, User.Id);
         }
 
         public void SubmitTime()
         {
-            EventTimeUser.Time = new TimeSpan(Time.Hour, Time.Minute, Time.Second);
-            EventTimeUser.UserId = User.Id;
-            EventTimeUser.EventsId = Event.Id;
+            AddEventTimeUser.Time = new TimeSpan(Time.Hour, Time.Minute, Time.Second);
+            AddEventTimeUser.UserId = User.Id;
+            AddEventTimeUser.EventsId = Event.Id;
 
+            var result = EventsService.AddEventTimeUser(AddEventTimeUser);
 
+            if (result)
+            {
+                NavigationManager.NavigateTo($"/events/{Event.Id}", true);
+            }
         }
     }
 }

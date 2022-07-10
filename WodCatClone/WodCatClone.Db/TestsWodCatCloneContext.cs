@@ -479,6 +479,15 @@ namespace WodCatClone.Db
                     WorkoutId = 3
                 });
 
+            modelBuilder.Entity<EventTimeUser>().ToTable("EventTimeUser").HasData(
+                new EventTimeUser
+                {
+                    Id = 1,
+                    Time = new TimeSpan(00, 37, 50),
+                    EventsId = 1,
+                    UserId = 1
+                });
+
             modelBuilder.Entity<ProgramsWorkouts>().ToTable("ProgramsWorkouts").HasData(
                 new ProgramsWorkouts
                 {
@@ -782,6 +791,8 @@ namespace WodCatClone.Db
         public DbSet<Exercises> Exercises { get; set; }
 
         public DbSet<Events> Events { get; set; }
+
+        public DbSet<EventTimeUser> EventTimeUser { get; set; }
 
         public DbSet<EventEmblem> EventEmblem { get; set; }
 

@@ -19,7 +19,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void GetAllEventsUsers()
+        public void GetAllEventsUsersTest()
         {
             var context = new TestsWodCatCloneContext();
             var id = 2;
@@ -33,6 +33,18 @@ namespace WodCatClone.Tests
             Assert.NotNull(users);
 
             Assert.Equal(expectedUser, users.Count());
+        }
+
+        [Fact]
+        public void GetAllEventsEmblemTest()
+        {
+            var context = new TestsWodCatCloneContext();
+            var expectedEventEmblem = 5;
+
+            var eventEmblem = context.EventEmblem;
+            Assert.NotNull(eventEmblem);
+
+            Assert.Equal(expectedEventEmblem, eventEmblem.Count());
         }
 
         [Fact]
@@ -59,6 +71,20 @@ namespace WodCatClone.Tests
 
             Assert.Equal(id, eventEmblem.Id);
             Assert.Equal(image, eventEmblem.Image);
+        }
+
+        [Fact]
+        public void GetEventTimeUser()
+        {
+            var context = new TestsWodCatCloneContext();
+            var eventId = 1;
+            var userId = 1;
+            
+            var eventTimeUser = context.EventTimeUser.FirstOrDefault(b => b.EventsId == eventId && b.UserId == userId);
+            Assert.NotNull(eventTimeUser);
+
+            Assert.Equal(eventId, eventTimeUser.EventsId);
+            Assert.Equal(userId, eventTimeUser.UserId);
         }
     }
 }

@@ -10,6 +10,10 @@
         {
             <BeginEventTaskComponent Event="Event"/>
         }
+        else
+        {
+            <RegisterEventComponent Event="Event" EventId="EventId"/>
+        }
     }
     else
     {
@@ -28,6 +32,7 @@ else
                 <span class="programslink" @onclick="DisplayEvents">О СОБЫТИИ</span>
                 <span class="programslink" @onclick="DisplayEventsWorkoutsExercises">ЗАДАНИЕ</span>
                 <span class="programslink" @onclick="DisplayUsers">УЧАСТНИКОВ</span>
+                <span class="programslink" @onclick="DisplayAwards">НАГРАДЫ</span>
             </div>
         </div>
         @if (DisplayEvent)
@@ -40,7 +45,11 @@ else
         }
         else if (DisplayUser)
         {
-            <ListEventsUsersComponent ListOfItems="Users"/>
+            <ListEventsUsersComponent ListOfItems="Users" EventId="EventId"/>
+        }
+        else if (DisplayAward)
+        {
+            <AwardsComponent ListOfItems="EventTimeUsers" EventId="EventId"/>
         }
     </div>
 </div>

@@ -1,0 +1,32 @@
+﻿<div class="row p-3">
+    <table class="table table-borderless">
+        <thead>
+        <tr class="tableheader">
+            <th scope="col">Место</th>
+            <th scope="col">Участник</th>
+            <th scope="col">Время</th>
+            <th scope="col">Награда</th>
+        </tr>
+        </thead>
+        @foreach (var item in ListOfItems)
+        {
+            if (Places < 3)
+            {
+                Places++;
+
+                <TableAwardComponent 
+                    Place="Places"
+                    EventTimeUser="item" 
+                    EventId="EventId"
+                    Points="Points"/>
+
+                Points /= 2;
+            }
+        }
+        
+        @*@foreach (var item in ListOfItems)
+        {
+            <IndividualEventsUsersComponent User="item" EventId="EventId"/>
+        }*@
+    </table>
+</div>

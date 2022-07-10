@@ -12,9 +12,27 @@
                 <ListEventsWorkoutsExercisesComponent ListOfItems="WorkoutsExercises"/>
             </div>
         </div>
-        <form>
-            <input type="time" @bind-value="Time" step="2"/>
-            <button type="submit" @onclick="SubmitTime">Сохранить</button>
-        </form>
+        @if (EventTimeUser is null)
+        {
+            <div class="row m-3">
+                <div class="col text-center">
+                    <form>
+                        <input type="time" @bind-value="Time" step="2"/>
+                        <button type="submit" @onclick="SubmitTime">Сохранить</button>
+                    </form>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="row m-3">
+                <div class="col text-center">
+                    <span style="color: white; font-size: 1.5rem;">Ваше время:</span><br/>
+                    <span style="color: white; font-size: 1.5rem;">
+                        @EventTimeUser.Time.ToString("g")
+                    </span>
+                </div>
+            </div>
+        }
     </div>
 </div>

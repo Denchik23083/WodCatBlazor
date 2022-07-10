@@ -7,5 +7,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
     public partial class ListEventsUsersComponent
     {
         [Parameter] public IEnumerable<User> ListOfItems { get; set; }
+
+        [Parameter] public int EventId { get; set; }
     }
 }
