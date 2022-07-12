@@ -114,6 +114,13 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
 
         public bool RemoveEvent(int eventId)
         {
+            var allUsers = _context.Users;
+
+            foreach (var allUser in allUsers)
+            {
+                allUser.EventId = null;
+            }
+
             var eventToRemove = _context.Events.FirstOrDefault(b => b.Id == eventId);
 
             if (eventToRemove is null)
@@ -135,7 +142,7 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
             {
                 allUser.EventId = null;
             }
-            
+
             var allUsersTime = _context.EventTimeUser.OrderByDescending(b => b.Time).Take(3);
 
             var points = 200;
