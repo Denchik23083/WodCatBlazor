@@ -1,5 +1,6 @@
 ﻿@page "/profile/{NickName}"
 @using WodCatClone.Db.EntityConfig.ActionsConfig
+@using System.Net.NetworkInformation
 
 <HeaderComponent />
 
@@ -27,13 +28,16 @@
                     }
                 </div>
                 <div class="col-6">
-                    <div class="row">
-                        <div class="col mb-2 text-left">
-                            <h2 style="font-size: 30px; font-weight: 700; margin: 10px 0; color: #161521;">
-                                @User.Name @User.Surname
-                            </h2>
+                    @if (User.Name is not null && User.Surname is not null)
+                    {
+                        <div class="row">
+                            <div class="col mb-2 text-left">
+                                <h2 style="font-size: 30px; font-weight: 700; margin: 10px 0; color: #161521;">
+                                    @User.Name @User.Surname
+                                </h2>
+                            </div>
                         </div>
-                    </div>
+                    }
                     <div class="row">
                         <div class="col mb-2 text-left">
                             <span style="color: #161521;">@Age&nbsp;лет</span>

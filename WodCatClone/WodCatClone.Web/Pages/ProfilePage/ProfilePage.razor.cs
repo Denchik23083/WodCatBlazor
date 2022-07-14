@@ -44,36 +44,43 @@ namespace WodCatClone.Web.Pages.ProfilePage
         {
             User = UserService.GetUser(NickName);
 
-            var today = DateTime.Today;
-            Age = (today - User.Birthday).Days / 365;
-
-            UserEnter = UserService.GetUser();
-
-            IsLoginUser = UserService.IsLoginUser();
-            
-            if (User.GenderId is not null)
+            if (User is not null)
             {
-                Image = UserService.GetGender(User.GenderId).Image;
-            }
+                var today = DateTime.Today;
+                Age = (today - User.Birthday).Days / 365;
 
-            if (User.HallId is not null)
-            {
-                Hall = HallsService.GetHall(User.HallId);
-                HallEmblem = HallsService.GetImage(Hall.EmblemHallId);
-            }
+                UserEnter = UserService.GetUser();
 
-            if (User.ProgramId is not null)
-            {
-                Program = ProgramsService.GetProgram(User.ProgramId);
-                ProgramEmblem = ProgramsService.GetImage(Program.ProgramsEmblemId);
-            }
+                IsLoginUser = UserService.IsLoginUser();
 
-            if (UserEnter is not null)
-            {
-                if (User.NickName == UserEnter.NickName)
+                if (User.GenderId is not null)
                 {
-                    IsEnterUser = true;
+                    Image = UserService.GetGender(User.GenderId).Image;
                 }
+
+                if (User.HallId is not null)
+                {
+                    Hall = HallsService.GetHall(User.HallId);
+                    HallEmblem = HallsService.GetImage(Hall.EmblemHallId);
+                }
+
+                if (User.ProgramId is not null)
+                {
+                    Program = ProgramsService.GetProgram(User.ProgramId);
+                    ProgramEmblem = ProgramsService.GetImage(Program.ProgramsEmblemId);
+                }
+
+                if (UserEnter is not null)
+                {
+                    if (User.NickName == UserEnter.NickName)
+                    {
+                        IsEnterUser = true;
+                    }
+                }
+            }
+            else
+            {
+                NavigationManager.NavigateTo("/");
             }
         }
 

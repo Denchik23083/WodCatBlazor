@@ -9,7 +9,9 @@
                 <h1 style="color: white; font-size: 35px;">Регистрация</h1>
                 @if (!IsNext)
                 {
-                    <EditForm Model="@_mainRegister" OnSubmit="@MainRegister">
+                    <EditForm Model="@_mainRegister" OnValidSubmit="@MainRegister">
+                        <DataAnnotationsValidator />
+                        <ValidationSummary />
                         <InputText
                             id="nickname"
                             @bind-Value="_mainRegister.NickName"
@@ -57,29 +59,29 @@
                             @bind-Value="_mainRegister.Birthday"
                             class="mb-3 formLogin"
                             placeholder="Birthday"/>
-                        
+
                         <div class="custom-control custom-checkbox mb-2">
-                            <input 
-                                type="checkbox" 
-                                class="custom-control-input" 
-                                id="man" 
-                                @bind="Man" 
+                            <input
+                                type="checkbox"
+                                class="custom-control-input"
+                                id="man"
+                                @bind="Man"
                                 @onclick="() => { Man = true; Woman = false; }"/>
-                            <label 
-                                class="custom-control-label" 
+                            <label
+                                class="custom-control-label"
                                 for="man"
                                 style="color: lightgrey">Мужчина</label>
                         </div>
                         <div class="custom-control custom-checkbox mb-2">
-                            <input 
-                                type="checkbox" 
-                                class="custom-control-input" 
-                                id="woman" 
-                                @bind="Woman" 
+                            <input
+                                type="checkbox"
+                                class="custom-control-input"
+                                id="woman"
+                                @bind="Woman"
                                 @onclick="() => { Man = false; Woman = true; }"/>
-                            <label 
-                                class="custom-control-label" 
-                                for="woman" 
+                            <label
+                                class="custom-control-label"
+                                for="woman"
                                 style="color: lightgrey">Женщина</label>
                         </div>
 
@@ -91,7 +93,7 @@
                         {
                             <button class="mb-2 authButton" type="submit" disabled="disabled">Регистрация</button>
                         }
-                        
+
 
                     </EditForm>
                 }

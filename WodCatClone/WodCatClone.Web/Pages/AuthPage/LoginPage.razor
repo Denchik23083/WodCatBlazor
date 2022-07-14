@@ -7,7 +7,9 @@
         <div class="col loginContainer">
             <div class="login">
                 <h1 style="color: white; font-size: 35px;">Войти</h1>
-                <EditForm Model="@_login" OnSubmit="@Login">
+                <EditForm Model="@_login" OnValidSubmit="@Login">
+                    <DataAnnotationsValidator />
+                    <ValidationSummary />
                     <InputText
                         id="email"
                         @bind-Value="_login.Email"

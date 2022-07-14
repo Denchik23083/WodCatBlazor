@@ -21,6 +21,8 @@ namespace WodCatClone.Logic.UserService
 
         bool EditUserHall(User user, int id);
 
+        bool EditUserProgram(User user, int id);
+
         bool Update(User updateUser, int id, Gender gender);
 
         bool UpdateAuth(User updateUser, int id);

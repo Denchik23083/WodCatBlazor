@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.ActionsService.HallsService;
+using WodCatClone.Logic.ActionsService.ProgramsService;
 using WodCatClone.Logic.UserService;
 using WodCatClone.Web.Helpers;
 
@@ -18,15 +19,23 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
 
         [Inject] public IHallsService HallsService { get; set; }
 
+        [Inject] public IProgramsService ProgramsService { get; set; }
+
         public User EditUser { get; set; }
 
         public Register AuthUser { get; set; }
 
         public Halls UserHall { get; set; }
 
+        public Programs UserProgram { get; set; }
+
         public IEnumerable<Halls> Halls { get; set; }
 
+        public IEnumerable<Programs> Programs { get; set; }
+
         public string HallImage { get; set; }
+
+        public string ProgramImage { get; set; }
 
         public string Image { get; set; }
 
@@ -34,7 +43,9 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
         
         public bool Woman { get; set; }
 
-        public bool IsShow { get; set; } = false;
+        public bool IsShowHall { get; set; } = false;
+
+        public bool IsShowProgram { get; set; } = false;
 
         public List<FilterHalls> Town = new()
         {
@@ -58,6 +69,13 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
             if (UserHall is not null)
             {
                 HallImage = HallsService.GetImage(UserHall.EmblemHallId);
+            }
+
+            UserProgram = ProgramsService.GetProgram(User.ProgramId);
+            Programs = ProgramsService.GetAllPrograms();
+            if (UserProgram is not null)
+            {
+                ProgramImage = ProgramsService.GetImage(UserProgram.ProgramsEmblemId);
             }
 
             EditUser = User;

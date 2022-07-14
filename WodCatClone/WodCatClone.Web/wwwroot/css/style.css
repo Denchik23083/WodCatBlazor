@@ -188,7 +188,7 @@ a {cursor: pointer;}
 }
 .newWrapper {
     background-color: #202124;
-    min-height: 100vh;
+    min-height: 150vh;
     position: absolute;
     left: 0;
     right: 0;

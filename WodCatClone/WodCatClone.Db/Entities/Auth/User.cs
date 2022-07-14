@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using WodCatClone.Db.Entities.Actions;
 
 namespace WodCatClone.Db.Entities.Auth
@@ -8,16 +9,22 @@ namespace WodCatClone.Db.Entities.Auth
     {
         public int Id { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
+        [Required]
         public string Surname { get; set; }
 
+        [Required]
         public string NickName { get; set; }
 
+        [Required]
         public string Email { get; set; }
 
+        [Required]
         public string Password { get; set; }
 
+        [Required]
         public string Country { get; set; }
 
         public string Town { get; set; }
