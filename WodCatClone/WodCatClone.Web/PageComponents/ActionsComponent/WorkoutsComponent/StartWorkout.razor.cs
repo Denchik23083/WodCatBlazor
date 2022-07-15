@@ -18,11 +18,9 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         private static Timer _timer = new(1000);
 
-        private string _seconds = "00";
-        private string _minutes = "00";
-
         public bool IsShowStart = true;
-        public bool IsMinutesDone = false;
+
+        public TimeSpan Time { get; set; }
 
         public void Show() => DisplayStartWorkout = true;
 
@@ -37,47 +35,14 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         public void CountDownTimer(Object source, ElapsedEventArgs e)
         {
-            var minutesInWorkout = Workout.Time.Minutes;
-            var secondsInWorkout = Workout.Time.Seconds;
-            var seconds = int.Parse(_seconds);
-            var minutes = int.Parse(_minutes);
-
-            if (seconds == 60)
+            if (Time < Workout.Time)
             {
-                seconds = 0;
-                _seconds = $"0{seconds}";
-
-                if (minutes != minutesInWorkout)
-                {
-                    minutes++;
-                    _minutes = minutes < 10 ? $"0{minutes}" : $"{minutes}";
-                    IsMinutesDone = true;
-                }
-            }
-
-            if (!IsMinutesDone)
-            {
-                if (seconds < 60)
-                {
-                    seconds++;
-                    _seconds = seconds < 10 ? $"0{seconds}" : $"{seconds}";
-                }
-                else
-                {
-                    _timer.Stop();
-                }
+                Time = Time.Add(new TimeSpan(00, 00, 01));
+                
             }
             else
             {
-                if (seconds < secondsInWorkout)
-                {
-                    seconds++;
-                    _seconds = seconds < 10 ? $"0{seconds}" : $"{seconds}";
-                }
-                else
-                {
-                    _timer.Stop();
-                }
+                _timer.Stop();
             }
 
             InvokeAsync(StateHasChanged);
@@ -90,8 +55,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
         public void Reset()
         {
             _timer.Stop();
-            _seconds = "00";
-            _minutes = "00";
+            Time = new TimeSpan();
         }
     }
 }

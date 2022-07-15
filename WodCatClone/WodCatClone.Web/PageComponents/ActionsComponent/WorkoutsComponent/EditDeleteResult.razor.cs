@@ -60,6 +60,32 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
             EditResultWorkout.Load = ResultLoad;
         }
 
+        public void ResetAll()
+        {
+            ResetFascinationLoadStars();
+
+            EditResultWorkout.Fascination = 0;
+            EditResultWorkout.Load = 0;
+            EditResultWorkout.Repeat = 0;
+            EditResultWorkout.PublishDate = new DateTime();
+            EditResultWorkout.Comment = string.Empty;
+            Time = new DateTime();
+        }
+
+        public void ResetFascinationLoadStars()
+        {
+            _oneFascination = false;
+            _twoFascination = false;
+            _threeFascination = false;
+            _fourFascination = false;
+            _fiveFascination = false;
+            _oneLoad = false;
+            _twoLoad = false;
+            _threeLoad = false;
+            _fourLoad = false;
+            _fiveLoad = false;
+        }
+
         private void ResultFascinationStars()
         {
             if (_oneFascination) ResultFascination = 1;

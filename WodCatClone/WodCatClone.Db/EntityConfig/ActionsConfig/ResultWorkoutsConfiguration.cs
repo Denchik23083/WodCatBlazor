@@ -9,8 +9,8 @@ namespace WodCatClone.Db.EntityConfig.ActionsConfig
         public void Configure(EntityTypeBuilder<ResultWorkouts> builder)
         {
             builder.HasKey(_ => _.Id);
-            
-            builder.Property(_ => _.Time).IsRequired();
+
+            builder.Property(_ => _.Time);
             builder.Property(_ => _.Comment);
             builder.Property(_ => _.Repeat).IsRequired();
             builder.Property(_ => _.Fascination).IsRequired();
