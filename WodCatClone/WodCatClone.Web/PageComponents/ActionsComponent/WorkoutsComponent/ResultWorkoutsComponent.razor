@@ -11,20 +11,7 @@
                 <div class="col-6">
                     <i class="fa-solid fa-stopwatch" style="font-size: 25px;"></i>
                     <span class="mr-2" style="font-size: 20px;">Время</span>
-                    <InputText
-                        @bind-Value="_resultWorkouts.Minutes"
-                        class="formResult mb-2 mr-2"
-                        id="minutes"
-                        type="number"
-                        min="0" max="60"
-                        placeholder="min"/>
-                    <InputText
-                        @bind-Value="_resultWorkouts.Seconds"
-                        class="formResult mb-2 mr-2"
-                        id="seconds"
-                        type="number"
-                        min="0" max="60"
-                        placeholder="sec"/>
+                    <input type="time" @bind-value="Time" style="background-color: #bdc1c6;" step="2"/>
                 </div>
                 <div class="col-6">
                     <div class="row">

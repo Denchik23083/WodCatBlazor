@@ -7,9 +7,7 @@ namespace WodCatClone.Db.Entities.Actions
     {
         public int Id { get; set; }
 
-        public string Minutes { get; set; }
-
-        public string Seconds { get; set; }
+        public TimeSpan Time { get; set; }
 
         public string Comment { get; set; }
 

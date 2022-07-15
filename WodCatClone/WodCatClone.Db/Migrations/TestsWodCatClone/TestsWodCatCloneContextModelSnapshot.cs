@@ -917,19 +917,14 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                     b.Property<int>("Load")
                         .HasColumnType("int");
 
-                    b.Property<string>("Minutes")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("PublishDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Repeat")
                         .HasColumnType("int");
 
-                    b.Property<string>("Seconds")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<TimeSpan>("Time")
+                        .HasColumnType("time");
 
                     b.Property<int?>("UserId")
                         .HasColumnType("int");
@@ -964,10 +959,6 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                     b.Property<int?>("HallId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Minutes")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Modality")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -977,10 +968,6 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Rating")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Seconds")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -1000,12 +987,10 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                             Category = "Singlet,Bodyweight,For-Time",
                             Complexity = "Легкий",
                             HallId = 1,
-                            Minutes = "23",
                             Modality = "G",
                             Name = "100 Burpees",
                             Rating = "7.0",
-                            Seconds = "20",
-                            Time = new TimeSpan(0, 0, 0, 0, 0)
+                            Time = new TimeSpan(0, 0, 23, 20, 0)
                         },
                         new
                         {
@@ -1013,12 +998,10 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                             Category = "Couplet,Bodyweight,For-Time",
                             Complexity = "Сложный",
                             HallId = 4,
-                            Minutes = "50",
                             Modality = "GM",
                             Name = "1000",
                             Rating = "8.5",
-                            Seconds = "30",
-                            Time = new TimeSpan(0, 0, 0, 0, 0)
+                            Time = new TimeSpan(0, 0, 50, 30, 0)
                         },
                         new
                         {
@@ -1026,12 +1009,10 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                             Category = "Couplet,Bodyweight,ForTime,Rower",
                             Complexity = "Нормальный",
                             HallId = 1,
-                            Minutes = "24",
                             Modality = "GM",
                             Name = "Titan wod",
                             Rating = "10.0",
-                            Seconds = "00",
-                            Time = new TimeSpan(0, 0, 0, 0, 0)
+                            Time = new TimeSpan(0, 0, 24, 0, 0)
                         },
                         new
                         {
@@ -1039,12 +1020,10 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                             Category = "Couplet,ForTime,Kettlebell",
                             Complexity = "Нормальный",
                             HallId = 2,
-                            Minutes = "16",
                             Modality = "WM",
                             Name = "Вместе Навсегда",
                             Rating = "8.0",
-                            Seconds = "25",
-                            Time = new TimeSpan(0, 0, 0, 0, 0)
+                            Time = new TimeSpan(0, 0, 16, 25, 0)
                         },
                         new
                         {
@@ -1052,12 +1031,10 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                             Category = "Endurance,Singlet,AMRAP",
                             Complexity = "Легкий",
                             HallId = 4,
-                            Minutes = "05",
                             Modality = "M",
                             Name = "Jumping300",
                             Rating = "6.5",
-                            Seconds = "00",
-                            Time = new TimeSpan(0, 0, 0, 0, 0)
+                            Time = new TimeSpan(0, 0, 5, 0, 0)
                         },
                         new
                         {
@@ -1065,12 +1042,10 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                             Category = "Triplet,For-Time",
                             Complexity = "Нормальный",
                             HallId = 3,
-                            Minutes = "19",
                             Modality = "WGM",
                             Name = "Siberian Bears",
                             Rating = "7.5",
-                            Seconds = "00",
-                            Time = new TimeSpan(0, 0, 0, 0, 0)
+                            Time = new TimeSpan(0, 0, 19, 0, 0)
                         },
                         new
                         {
@@ -1078,12 +1053,10 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                             Category = "Couplet,For-Time",
                             Complexity = "Легкий",
                             HallId = 5,
-                            Minutes = "29",
                             Modality = "WG",
                             Name = "08022014",
                             Rating = "8.0",
-                            Seconds = "06",
-                            Time = new TimeSpan(0, 0, 0, 0, 0)
+                            Time = new TimeSpan(0, 0, 29, 6, 0)
                         });
                 });
 

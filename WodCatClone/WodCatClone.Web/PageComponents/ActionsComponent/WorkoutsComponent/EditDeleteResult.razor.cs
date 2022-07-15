@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using System;
+using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.ActionsService.WorkoutsService;
@@ -39,6 +40,8 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         public User User { get; set; }
 
+        public DateTime Time { get; set; }
+
         protected override void OnInitialized()
         {
             User = UserService.GetUser();
@@ -49,17 +52,10 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
             ResultFascinationStars();
             ResultLoadStars();
 
-            EditResultWorkout.Minutes ??= "0";
-            EditResultWorkout.Seconds ??= "0";
+            EditResultWorkout.Time = new TimeSpan(Time.Hour, Time.Minute, Time.Second);
+
             EditResultWorkout.Comment ??= "";
-
-            var minutes = int.Parse(EditResultWorkout.Minutes);
-            var seconds = int.Parse(EditResultWorkout.Seconds);
-
-            if (minutes < 10) EditResultWorkout.Minutes = $"0{minutes}";
-
-            if (seconds < 10) EditResultWorkout.Seconds = $"0{seconds}";
-
+            
             EditResultWorkout.Fascination = ResultFascination;
             EditResultWorkout.Load = ResultLoad;
         }

@@ -13,6 +13,8 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         [Inject] public NavigationManager NavigationManager { get; set; }
 
+        public DateTime Time { get; set; }
+
         private ResultWorkouts _resultWorkouts = new();
 
         public void Result()
@@ -42,11 +44,10 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
             _resultWorkouts.Fascination = 0;
             _resultWorkouts.Load = 0;
-            _resultWorkouts.Minutes = "0";
-            _resultWorkouts.Seconds = "0";
             _resultWorkouts.Repeat = 0;
             _resultWorkouts.PublishDate = new DateTime();
             _resultWorkouts.Comment = string.Empty;
+            Time = new DateTime();
         }
 
         public void ResetFascinationLoadStars()
@@ -68,16 +69,9 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
             ResultFascinationStars();
             ResultLoadStars();
 
-            _resultWorkouts.Minutes ??= "0";
-            _resultWorkouts.Seconds ??= "0";
+            _resultWorkouts.Time = new TimeSpan(Time.Hour, Time.Minute, Time.Second);
+
             _resultWorkouts.Comment ??= "";
-
-            var minutes = int.Parse(_resultWorkouts.Minutes);
-            var seconds = int.Parse(_resultWorkouts.Seconds);
-
-            if (minutes < 10) _resultWorkouts.Minutes = $"0{minutes}";
-
-            if (seconds < 10) _resultWorkouts.Seconds = $"0{seconds}";
 
             _resultWorkouts.Fascination = ResultFascination;
             _resultWorkouts.Load = ResultLoad;

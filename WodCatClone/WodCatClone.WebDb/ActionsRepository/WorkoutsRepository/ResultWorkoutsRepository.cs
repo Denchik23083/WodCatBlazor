@@ -58,8 +58,7 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
             resultWorkoutEdit.Comment = resultWorkouts.Comment;
             resultWorkoutEdit.Fascination = resultWorkouts.Fascination;
             resultWorkoutEdit.Load = resultWorkouts.Load;
-            resultWorkoutEdit.Minutes = resultWorkouts.Minutes;
-            resultWorkoutEdit.Seconds = resultWorkouts.Seconds;
+            resultWorkoutEdit.Time = resultWorkouts.Time;
             resultWorkoutEdit.Repeat = resultWorkouts.Repeat;
             resultWorkoutEdit.PublishDate = resultWorkouts.PublishDate;
 

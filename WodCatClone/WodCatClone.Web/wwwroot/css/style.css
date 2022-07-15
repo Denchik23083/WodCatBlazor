@@ -345,7 +345,7 @@ a {cursor: pointer;}
     border: 1px solid lightgrey;
     padding: 5px;
 }
-.formResult, .selectedFormResult {
+.formResult, .selectedFormResult, .formResultTime {
     color: lightgrey;
     cursor: pointer;
     border: 0;
@@ -354,7 +354,8 @@ a {cursor: pointer;}
     width: 150px;
 }
 .formResult {width: 150px;}
-.formResult::placeholder, .foo, .selectedFormResult::placeholder {color: lightgrey;}
+.formResultTime {width: 100px;}
+.formResult::placeholder, .foo, .selectedFormResult::placeholder, .formResultTime::placeholder {color: lightgrey;}
 .selectedFormResult {width: 100%;}
 .addResult {color: white;}
 .textarea {

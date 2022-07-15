@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WodCatClone.Db;
 
-namespace WodCatClone.Db.Migrations
+namespace WodCatClone.Db.Migrations.TestsWodCatClone
 {
-    [DbContext(typeof(WodCatCloneContext))]
-    [Migration("20220714131750_init")]
+    [DbContext(typeof(TestsWodCatCloneContext))]
+    [Migration("20220715124138_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -236,6 +236,15 @@ namespace WodCatClone.Db.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("EventTimeUser");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            EventsId = 1,
+                            Time = new TimeSpan(0, 0, 37, 50, 0),
+                            UserId = 1
+                        });
                 });
 
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Events", b =>
@@ -303,13 +312,13 @@ namespace WodCatClone.Db.Migrations
                         {
                             Id = 1,
                             Description = "К ТОНУС Стадион СЛАВУТИЧ АРЕНА Категории : SCALED, RX (ELITE), MASTERS 1 день 3 завдання Стартовый взнос - 500 грн Запись на участие В DIRECT!!! Для тихого, что из-за различных причин, не возможно прийняти участів в змаганнях, ми пропонуємо ОНЛАЙН ФОРМАТ. БЕЗ ВИДЕО! БЕЗ НАШЕГО СУДДІВСТВА ! ВСЕ НА НАШИЙ ДОВІРІ та ВАШІЙ ПОРЯДНОСТІ ! УМОВИ : Рестрация - 300 грн Категории - RX (ЭЛИТА) SCALED MASTERS 35 - 39, 40 - 44, 45+ 3 ( три комплекса) за один день Анонс 24.06 в п'ятницю ввечері о 17:00 Вконання 25.06 - субота . Отправить результаты до 17:00 субботы 25.06. Оголошення результатов у понедельника 27.06 Для записи напишите в DIRECT: Прізвище, им'я Місто, клуб Категорію",
-                            EndDate = new DateTime(2022, 9, 30, 15, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndDate = new DateTime(2022, 6, 26, 15, 0, 0, 0, DateTimeKind.Unspecified),
                             EventsEmblemId = 2,
                             HallId = 1,
                             Location = "улица Лобановского, 21",
                             Name = "TONUS 2022 help UA",
                             RegisterDate = new DateTime(2022, 6, 27, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            StartDate = new DateTime(2022, 6, 29, 12, 30, 0, 0, DateTimeKind.Unspecified),
+                            StartDate = new DateTime(2022, 6, 26, 12, 30, 0, 0, DateTimeKind.Unspecified),
                             Town = "Запорожье",
                             TypeEvent = "Соревнования",
                             TypeSport = "Кроссфит",
@@ -910,19 +919,14 @@ namespace WodCatClone.Db.Migrations
                     b.Property<int>("Load")
                         .HasColumnType("int");
 
-                    b.Property<string>("Minutes")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("PublishDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Repeat")
                         .HasColumnType("int");
 
-                    b.Property<string>("Seconds")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<TimeSpan>("Time")
+                        .HasColumnType("time");
 
                     b.Property<int?>("UserId")
                         .HasColumnType("int");
@@ -957,10 +961,6 @@ namespace WodCatClone.Db.Migrations
                     b.Property<int?>("HallId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Minutes")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Modality")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -970,10 +970,6 @@ namespace WodCatClone.Db.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Rating")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Seconds")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -993,11 +989,9 @@ namespace WodCatClone.Db.Migrations
                             Category = "Singlet,Bodyweight,For-Time",
                             Complexity = "Легкий",
                             HallId = 1,
-                            Minutes = "23",
                             Modality = "G",
                             Name = "100 Burpees",
                             Rating = "7.0",
-                            Seconds = "20",
                             Time = new TimeSpan(0, 0, 23, 20, 0)
                         },
                         new
@@ -1006,11 +1000,9 @@ namespace WodCatClone.Db.Migrations
                             Category = "Couplet,Bodyweight,For-Time",
                             Complexity = "Сложный",
                             HallId = 4,
-                            Minutes = "50",
                             Modality = "GM",
                             Name = "1000",
                             Rating = "8.5",
-                            Seconds = "30",
                             Time = new TimeSpan(0, 0, 50, 30, 0)
                         },
                         new
@@ -1019,11 +1011,9 @@ namespace WodCatClone.Db.Migrations
                             Category = "Couplet,Bodyweight,ForTime,Rower",
                             Complexity = "Нормальный",
                             HallId = 1,
-                            Minutes = "24",
                             Modality = "GM",
                             Name = "Titan wod",
                             Rating = "10.0",
-                            Seconds = "00",
                             Time = new TimeSpan(0, 0, 24, 0, 0)
                         },
                         new
@@ -1032,11 +1022,9 @@ namespace WodCatClone.Db.Migrations
                             Category = "Couplet,ForTime,Kettlebell",
                             Complexity = "Нормальный",
                             HallId = 2,
-                            Minutes = "16",
                             Modality = "WM",
                             Name = "Вместе Навсегда",
                             Rating = "8.0",
-                            Seconds = "25",
                             Time = new TimeSpan(0, 0, 16, 25, 0)
                         },
                         new
@@ -1045,11 +1033,9 @@ namespace WodCatClone.Db.Migrations
                             Category = "Endurance,Singlet,AMRAP",
                             Complexity = "Легкий",
                             HallId = 4,
-                            Minutes = "05",
                             Modality = "M",
                             Name = "Jumping300",
                             Rating = "6.5",
-                            Seconds = "00",
                             Time = new TimeSpan(0, 0, 5, 0, 0)
                         },
                         new
@@ -1058,11 +1044,9 @@ namespace WodCatClone.Db.Migrations
                             Category = "Triplet,For-Time",
                             Complexity = "Нормальный",
                             HallId = 3,
-                            Minutes = "19",
                             Modality = "WGM",
                             Name = "Siberian Bears",
                             Rating = "7.5",
-                            Seconds = "00",
                             Time = new TimeSpan(0, 0, 19, 0, 0)
                         },
                         new
@@ -1071,11 +1055,9 @@ namespace WodCatClone.Db.Migrations
                             Category = "Couplet,For-Time",
                             Complexity = "Легкий",
                             HallId = 5,
-                            Minutes = "29",
                             Modality = "WG",
                             Name = "08022014",
                             Rating = "8.0",
-                            Seconds = "06",
                             Time = new TimeSpan(0, 0, 29, 6, 0)
                         });
                 });
@@ -1423,23 +1405,6 @@ namespace WodCatClone.Db.Migrations
                             Surname = "Кудрявов",
                             Town = "Херсон",
                             Weight = "70"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AboutMe = "Test Nata",
-                            Birthday = new DateTime(2000, 8, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Country = "Ukraine",
-                            Email = "nata@gmail.com",
-                            GenderId = 2,
-                            Height = "175",
-                            Name = "Наташа",
-                            NickName = "Nat25",
-                            Password = "0000",
-                            Points = 45,
-                            Surname = "Возникова",
-                            Town = "Херсон",
-                            Weight = "55"
                         });
                 });
 

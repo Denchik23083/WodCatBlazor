@@ -69,8 +69,7 @@ namespace WodCatClone.Tests
 
             var newResultWorkout = new ResultWorkouts
             {
-                Minutes = "20",
-                Seconds = "30",
+                Time = new TimeSpan(00, 20, 30),
                 Comment = "TestComment",
                 Repeat = 200,
                 Fascination = 5,
@@ -83,8 +82,8 @@ namespace WodCatClone.Tests
             context.ResultWorkouts.Add(newResultWorkout);
             context.SaveChanges();
 
-            var addNewResultWorkout = context.ResultWorkouts.FirstOrDefault(b => b.Minutes == newResultWorkout.Minutes && b.Seconds == newResultWorkout.Seconds
-            && b.Comment == newResultWorkout.Comment && b.Repeat == newResultWorkout.Repeat && b.Fascination == newResultWorkout.Fascination && b.Load == newResultWorkout.Load
+            var addNewResultWorkout = context.ResultWorkouts.FirstOrDefault(b => b.Time == newResultWorkout.Time && b.Comment == newResultWorkout.Comment 
+            && b.Repeat == newResultWorkout.Repeat && b.Fascination == newResultWorkout.Fascination && b.Load == newResultWorkout.Load
             && b.PublishDate == newResultWorkout.PublishDate && b.WorkoutId == newResultWorkout.WorkoutId);
 
             Assert.NotNull(addNewResultWorkout);
@@ -92,8 +91,8 @@ namespace WodCatClone.Tests
             context.ResultWorkouts.Remove(addNewResultWorkout);
             context.SaveChanges();
 
-            var resultWorkoutAfterRemove = context.ResultWorkouts.FirstOrDefault(b => b.Minutes == newResultWorkout.Minutes && b.Seconds == newResultWorkout.Seconds
-            && b.Comment == newResultWorkout.Comment && b.Repeat == newResultWorkout.Repeat && b.Fascination == newResultWorkout.Fascination && b.Load == newResultWorkout.Load
+            var resultWorkoutAfterRemove = context.ResultWorkouts.FirstOrDefault(b => b.Time == newResultWorkout.Time && b.Comment == newResultWorkout.Comment
+            && b.Repeat == newResultWorkout.Repeat && b.Fascination == newResultWorkout.Fascination && b.Load == newResultWorkout.Load
             && b.PublishDate == newResultWorkout.PublishDate && b.WorkoutId == newResultWorkout.WorkoutId);
 
             Assert.Null(resultWorkoutAfterRemove);
@@ -116,8 +115,7 @@ namespace WodCatClone.Tests
 
             var newResultWorkout = new ResultWorkouts
             {
-                Minutes = "20",
-                Seconds = "30",
+                Time = new TimeSpan(00, 20, 30),
                 Comment = "TestComment",
                 Repeat = 200,
                 Fascination = 5,
@@ -132,8 +130,7 @@ namespace WodCatClone.Tests
 
             var editResultWorkout = new ResultWorkouts
             {
-                Minutes = "30",
-                Seconds = "20",
+                Time = new TimeSpan(00, 30, 20),
                 Comment = "TestComment2",
                 Repeat = 100,
                 Fascination = 4,
@@ -143,14 +140,13 @@ namespace WodCatClone.Tests
                 UserId = user.Id
             };
 
-            var resultWorkoutToUpdate = context.ResultWorkouts.FirstOrDefault(b => b.Minutes == newResultWorkout.Minutes && b.Seconds == newResultWorkout.Seconds
-            && b.Comment == newResultWorkout.Comment && b.Repeat == newResultWorkout.Repeat && b.Fascination == newResultWorkout.Fascination && b.Load == newResultWorkout.Load
+            var resultWorkoutToUpdate = context.ResultWorkouts.FirstOrDefault(b => b.Time == newResultWorkout.Time && b.Comment == newResultWorkout.Comment 
+            && b.Repeat == newResultWorkout.Repeat && b.Fascination == newResultWorkout.Fascination && b.Load == newResultWorkout.Load
             && b.PublishDate == newResultWorkout.PublishDate && b.WorkoutId == newResultWorkout.WorkoutId);
 
             Assert.NotNull(resultWorkoutToUpdate);
 
-            resultWorkoutToUpdate.Minutes = editResultWorkout.Minutes;
-            resultWorkoutToUpdate.Seconds = editResultWorkout.Seconds;
+            resultWorkoutToUpdate.Time = editResultWorkout.Time;
             resultWorkoutToUpdate.Comment = editResultWorkout.Comment;
             resultWorkoutToUpdate.Repeat = editResultWorkout.Repeat;
             resultWorkoutToUpdate.Fascination = editResultWorkout.Fascination;
@@ -159,8 +155,8 @@ namespace WodCatClone.Tests
 
             context.SaveChanges();
 
-            var resultWorkoutAfterUpdate = context.ResultWorkouts.FirstOrDefault(b => b.Minutes == newResultWorkout.Minutes && b.Seconds == newResultWorkout.Seconds
-            && b.Comment == newResultWorkout.Comment && b.Repeat == newResultWorkout.Repeat && b.Fascination == newResultWorkout.Fascination && b.Load == newResultWorkout.Load
+            var resultWorkoutAfterUpdate = context.ResultWorkouts.FirstOrDefault(b => b.Time == newResultWorkout.Time && b.Comment == newResultWorkout.Comment 
+            && b.Repeat == newResultWorkout.Repeat && b.Fascination == newResultWorkout.Fascination && b.Load == newResultWorkout.Load
             && b.PublishDate == newResultWorkout.PublishDate && b.WorkoutId == newResultWorkout.WorkoutId);
 
             Assert.NotNull(resultWorkoutAfterUpdate);
@@ -168,8 +164,8 @@ namespace WodCatClone.Tests
             context.ResultWorkouts.Remove(resultWorkoutAfterUpdate);
             context.SaveChanges();
 
-            var resultWorkoutAfterUpdateRemove = context.ResultWorkouts.FirstOrDefault(b => b.Minutes == newResultWorkout.Minutes && b.Seconds == newResultWorkout.Seconds
-            && b.Comment == newResultWorkout.Comment && b.Repeat == newResultWorkout.Repeat && b.Fascination == newResultWorkout.Fascination && b.Load == newResultWorkout.Load
+            var resultWorkoutAfterUpdateRemove = context.ResultWorkouts.FirstOrDefault(b => b.Time == newResultWorkout.Time && b.Comment == newResultWorkout.Comment 
+            && b.Repeat == newResultWorkout.Repeat && b.Fascination == newResultWorkout.Fascination && b.Load == newResultWorkout.Load
             && b.PublishDate == newResultWorkout.PublishDate && b.WorkoutId == newResultWorkout.WorkoutId);
             
             Assert.Null(resultWorkoutAfterUpdateRemove);
@@ -191,8 +187,7 @@ namespace WodCatClone.Tests
 
             var newResultWorkout = new ResultWorkouts
             {
-                Minutes = "20",
-                Seconds = "30",
+                Time = new TimeSpan(00, 20, 30),
                 Comment = "TestComment",
                 Repeat = 200,
                 Fascination = 5,
@@ -205,8 +200,8 @@ namespace WodCatClone.Tests
             context.ResultWorkouts.Add(newResultWorkout);
             context.SaveChanges();
 
-            var resultWorkoutToRemove = context.ResultWorkouts.FirstOrDefault(b => b.Minutes == newResultWorkout.Minutes && b.Seconds == newResultWorkout.Seconds
-            && b.Comment == newResultWorkout.Comment && b.Repeat == newResultWorkout.Repeat && b.Fascination == newResultWorkout.Fascination && b.Load == newResultWorkout.Load
+            var resultWorkoutToRemove = context.ResultWorkouts.FirstOrDefault(b => b.Time == newResultWorkout.Time && b.Comment == newResultWorkout.Comment 
+            && b.Repeat == newResultWorkout.Repeat && b.Fascination == newResultWorkout.Fascination && b.Load == newResultWorkout.Load
             && b.PublishDate == newResultWorkout.PublishDate && b.WorkoutId == newResultWorkout.WorkoutId);
             
             Assert.NotNull(resultWorkoutToRemove);
@@ -214,8 +209,8 @@ namespace WodCatClone.Tests
             context.ResultWorkouts.Remove(resultWorkoutToRemove);
             context.SaveChanges();
 
-            var resultWorkoutAfterRemove = context.ResultWorkouts.FirstOrDefault(b => b.Minutes == newResultWorkout.Minutes && b.Seconds == newResultWorkout.Seconds
-            && b.Comment == newResultWorkout.Comment && b.Repeat == newResultWorkout.Repeat && b.Fascination == newResultWorkout.Fascination && b.Load == newResultWorkout.Load
+            var resultWorkoutAfterRemove = context.ResultWorkouts.FirstOrDefault(b => b.Time == newResultWorkout.Time && b.Comment == newResultWorkout.Comment 
+            && b.Repeat == newResultWorkout.Repeat && b.Fascination == newResultWorkout.Fascination && b.Load == newResultWorkout.Load
             && b.PublishDate == newResultWorkout.PublishDate && b.WorkoutId == newResultWorkout.WorkoutId);
             
             Assert.Null(resultWorkoutAfterRemove);

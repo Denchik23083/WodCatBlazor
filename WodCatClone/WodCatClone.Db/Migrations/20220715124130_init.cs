@@ -322,8 +322,6 @@ namespace WodCatClone.Db.Migrations
                     Complexity = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Modality = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Time = table.Column<TimeSpan>(type: "time", nullable: false),
-                    Minutes = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Seconds = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     HallId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -369,8 +367,7 @@ namespace WodCatClone.Db.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Minutes = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Seconds = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Time = table.Column<TimeSpan>(type: "time", nullable: false),
                     Comment = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Repeat = table.Column<int>(type: "int", nullable: false),
                     Fascination = table.Column<int>(type: "int", nullable: false),
@@ -579,16 +576,16 @@ namespace WodCatClone.Db.Migrations
 
             migrationBuilder.InsertData(
                 table: "Workouts",
-                columns: new[] { "Id", "Category", "Complexity", "HallId", "Minutes", "Modality", "Name", "Rating", "Seconds", "Time" },
+                columns: new[] { "Id", "Category", "Complexity", "HallId", "Modality", "Name", "Rating", "Time" },
                 values: new object[,]
                 {
-                    { 1, "Singlet,Bodyweight,For-Time", "Легкий", 1, "23", "G", "100 Burpees", "7.0", "20", new TimeSpan(0, 0, 23, 20, 0) },
-                    { 3, "Couplet,Bodyweight,ForTime,Rower", "Нормальный", 1, "24", "GM", "Titan wod", "10.0", "00", new TimeSpan(0, 0, 24, 0, 0) },
-                    { 4, "Couplet,ForTime,Kettlebell", "Нормальный", 2, "16", "WM", "Вместе Навсегда", "8.0", "25", new TimeSpan(0, 0, 16, 25, 0) },
-                    { 6, "Triplet,For-Time", "Нормальный", 3, "19", "WGM", "Siberian Bears", "7.5", "00", new TimeSpan(0, 0, 19, 0, 0) },
-                    { 7, "Couplet,For-Time", "Легкий", 5, "29", "WG", "08022014", "8.0", "06", new TimeSpan(0, 0, 29, 6, 0) },
-                    { 2, "Couplet,Bodyweight,For-Time", "Сложный", 4, "50", "GM", "1000", "8.5", "30", new TimeSpan(0, 0, 50, 30, 0) },
-                    { 5, "Endurance,Singlet,AMRAP", "Легкий", 4, "05", "M", "Jumping300", "6.5", "00", new TimeSpan(0, 0, 5, 0, 0) }
+                    { 1, "Singlet,Bodyweight,For-Time", "Легкий", 1, "G", "100 Burpees", "7.0", new TimeSpan(0, 0, 23, 20, 0) },
+                    { 3, "Couplet,Bodyweight,ForTime,Rower", "Нормальный", 1, "GM", "Titan wod", "10.0", new TimeSpan(0, 0, 24, 0, 0) },
+                    { 4, "Couplet,ForTime,Kettlebell", "Нормальный", 2, "WM", "Вместе Навсегда", "8.0", new TimeSpan(0, 0, 16, 25, 0) },
+                    { 6, "Triplet,For-Time", "Нормальный", 3, "WGM", "Siberian Bears", "7.5", new TimeSpan(0, 0, 19, 0, 0) },
+                    { 7, "Couplet,For-Time", "Легкий", 5, "WG", "08022014", "8.0", new TimeSpan(0, 0, 29, 6, 0) },
+                    { 2, "Couplet,Bodyweight,For-Time", "Сложный", 4, "GM", "1000", "8.5", new TimeSpan(0, 0, 50, 30, 0) },
+                    { 5, "Endurance,Singlet,AMRAP", "Легкий", 4, "M", "Jumping300", "6.5", new TimeSpan(0, 0, 5, 0, 0) }
                 });
 
             migrationBuilder.InsertData(
