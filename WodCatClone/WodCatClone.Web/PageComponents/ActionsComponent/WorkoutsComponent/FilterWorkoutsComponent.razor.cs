@@ -28,7 +28,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
         private string _filterCategory = "None";
         private string _filterModality = "None";
         private string _filterComplexity = "None";
-        private string _filterTime = string.Empty;
+        private int _filterTime = 0;
 
         public List<FilterWorkouts> FilterCategory = new()
         {
@@ -80,9 +80,9 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
             {
                 Workouts = Workouts.Where(b => b.Complexity.Equals(_filterComplexity)).ToList();
             }
-            if (!string.IsNullOrWhiteSpace(_filterTime))
+            if (_filterTime != 0)
             {
-                Workouts = Workouts.Where(b => b.Minutes.ToLower().Contains(_filterTime.ToLower())).ToList();
+                Workouts = Workouts.Where(b => b.Time.Minutes.Equals(_filterTime)).ToList();
             }
         }
 
@@ -92,7 +92,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
             _filterCategory = "None";
             _filterModality = "None";
             _filterComplexity = "None";
-            _filterTime = string.Empty;
+            _filterTime = 0;
 
             Filter();
         }

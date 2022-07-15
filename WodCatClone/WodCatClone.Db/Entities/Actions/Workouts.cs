@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace WodCatClone.Db.Entities.Actions
 {
@@ -16,9 +17,7 @@ namespace WodCatClone.Db.Entities.Actions
 
         public string Modality { get; set; }
         
-        public string Minutes { get; set; }
-
-        public string Seconds { get; set; }
+        public TimeSpan Time { get; set; }
 
         public int? HallId { get; set; }
 

@@ -234,6 +234,15 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                     b.HasIndex("UserId");
 
                     b.ToTable("EventTimeUser");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            EventsId = 1,
+                            Time = new TimeSpan(0, 0, 37, 50, 0),
+                            UserId = 1
+                        });
                 });
 
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Events", b =>
@@ -975,6 +984,9 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<TimeSpan>("Time")
+                        .HasColumnType("time");
+
                     b.HasKey("Id");
 
                     b.HasIndex("HallId");
@@ -992,7 +1004,8 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                             Modality = "G",
                             Name = "100 Burpees",
                             Rating = "7.0",
-                            Seconds = "20"
+                            Seconds = "20",
+                            Time = new TimeSpan(0, 0, 0, 0, 0)
                         },
                         new
                         {
@@ -1004,7 +1017,8 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                             Modality = "GM",
                             Name = "1000",
                             Rating = "8.5",
-                            Seconds = "30"
+                            Seconds = "30",
+                            Time = new TimeSpan(0, 0, 0, 0, 0)
                         },
                         new
                         {
@@ -1016,7 +1030,8 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                             Modality = "GM",
                             Name = "Titan wod",
                             Rating = "10.0",
-                            Seconds = "00"
+                            Seconds = "00",
+                            Time = new TimeSpan(0, 0, 0, 0, 0)
                         },
                         new
                         {
@@ -1028,7 +1043,8 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                             Modality = "WM",
                             Name = "Вместе Навсегда",
                             Rating = "8.0",
-                            Seconds = "25"
+                            Seconds = "25",
+                            Time = new TimeSpan(0, 0, 0, 0, 0)
                         },
                         new
                         {
@@ -1040,7 +1056,8 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                             Modality = "M",
                             Name = "Jumping300",
                             Rating = "6.5",
-                            Seconds = "00"
+                            Seconds = "00",
+                            Time = new TimeSpan(0, 0, 0, 0, 0)
                         },
                         new
                         {
@@ -1052,7 +1069,8 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                             Modality = "WGM",
                             Name = "Siberian Bears",
                             Rating = "7.5",
-                            Seconds = "00"
+                            Seconds = "00",
+                            Time = new TimeSpan(0, 0, 0, 0, 0)
                         },
                         new
                         {
@@ -1064,7 +1082,8 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                             Modality = "WG",
                             Name = "08022014",
                             Rating = "8.0",
-                            Seconds = "06"
+                            Seconds = "06",
+                            Time = new TimeSpan(0, 0, 0, 0, 0)
                         });
                 });
 
@@ -1352,6 +1371,7 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                         .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("NickName")
+                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
@@ -1369,6 +1389,7 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                         .HasColumnType("int");
 
                     b.Property<string>("Surname")
+                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 

@@ -1,20 +1,28 @@
 ﻿<div class="row filterWorkoutsBlock" style="visibility: @Visible">
     <div class="filterWorkoutsComponent">
         <div class="row">
+            <label 
+                for="name" 
+                class="form-control mr-5 ml-4 mb-0"
+                style="background: #403e3e;border-color: #403e3e; color: lightgrey;">Название тренеровки</label>
             <input 
                 type="text" 
-                class="form-control m-4 mr-5 selectWorkout ml-2"
-                placeholder="Название тренеровки"
+                class="form-control mb-4 mr-5 selectWorkout ml-4"
+                id="name"
                 @bind-value="_filterName"
                 @bind-value:event="oninput"/>
         </div>
         <div class="row">
+            <label 
+                for="category" 
+                class="form-control mr-5 ml-4 mb-0"
+                style="background: #403e3e;border-color: #403e3e; color: lightgrey;">Категория</label>
             <select
-                class="selectWorkout form-control ml-2 m-4 mr-5"
+                class="selectWorkout form-control ml-4 mb-4 mr-5"
                 style="background: #403e3e; color: lightgrey;"
+                id="category"
                 @bind="_filterCategory">
-
-                <option value="None">Категория</option>
+                <option value="None">None</option>
                 @foreach (var item in FilterCategory)
                 {
                     <option value="@item.Filter">@item.Content</option>
@@ -22,12 +30,16 @@
             </select>
         </div>
         <div class="row">
+            <label 
+                for="modality" 
+                class="form-control mr-5 ml-4 mb-0"
+                style="background: #403e3e;border-color: #403e3e; color: lightgrey;">Модальность</label>
             <select
-                class="selectWorkout form-control ml-2 m-4 mr-5"
+                class="selectWorkout form-control ml-4 mb-4 mr-5"
                 style="background: #403e3e; color: lightgrey;"
+                id="modality"
                 @bind="_filterModality">
-
-                <option value="None">Модальность</option>
+                <option value="None">None</option>
                 @foreach (var item in FilterModality)
                 {
                     <option value="@item.Filter">@item.Content</option>
@@ -35,11 +47,16 @@
             </select>
         </div>
         <div class="row">
+            <label 
+                for="complexity" 
+                class="form-control mr-5 ml-4 mb-0"
+                style="background: #403e3e;border-color: #403e3e; color: lightgrey;">Сложность</label>
             <select
-                class="selectWorkout form-control ml-2 m-4 mr-5"
+                class="selectWorkout form-control ml-4 mb-4 mr-5"
                 style="background: #403e3e; color: lightgrey;"
+                id="complexity"
                 @bind="_filterComplexity">
-                <option value="None">Сложность</option>
+                <option value="None">None</option>
                 @foreach (var item in FilterComplexity)
                 {
                     <option value="@item.Filter">@item.Content</option>
@@ -47,10 +64,15 @@
             </select>
         </div>
         <div class="row">
-            <input 
-                type="text" 
-                class="form-control m-4 mr-5 selectWorkout ml-2"
-                placeholder="Продолжительность"
+            <label 
+                for="time" 
+                class="form-control mr-5 ml-4 mb-0"
+                style="background: #403e3e;border-color: #403e3e; color: lightgrey;">Время тренировки</label>
+            <input
+                type="number"
+                class="form-control mb-4 mr-5 selectWorkout ml-4"
+                id="time"
+                min="0"
                 @bind-value="_filterTime"
                 @bind-value:event="oninput"/>
         </div>

@@ -14,8 +14,7 @@
             <div class="modal-content StartDialogContent">
                 <div class="modal-header" style="border: 0;">
                     <h5 class="modal-title timerInfo">
-                        На время: @Workout.Minutes<span>m</span>
-                        : @Workout.Seconds<span>s</span>
+                        На время: @Workout.Time
                     </h5>
                     <button class="close" @onclick="OnCancel" type="button">
                         <span aria-hidden="true">&times;</span>
@@ -33,7 +32,7 @@
                     </div>
                 </div>
                 <div class="modal-body text-center" style="border: 0;">
-                    <h1 class="time">@_minutes : @_seconds</h1><br/>
+                    <h1 class="time">@_minutes : @_seconds </h1><br/>
                     
                     @if (IsShowStart)
                     {

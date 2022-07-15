@@ -330,8 +330,7 @@ namespace WodCatClone.Db
                     Category = "Singlet,Bodyweight,For-Time",
                     Complexity = "Легкий",
                     Modality = "G",
-                    Minutes = "23",
-                    Seconds = "20",
+                    Time = new TimeSpan(00, 23, 20),
                     HallId = 1
                 },
                 new Workouts
@@ -342,8 +341,7 @@ namespace WodCatClone.Db
                     Category = "Couplet,Bodyweight,For-Time",
                     Complexity = "Сложный",
                     Modality = "GM",
-                    Minutes = "50",
-                    Seconds = "30",
+                    Time = new TimeSpan(00, 50, 30),
                     HallId = 4
                 },
                 new Workouts
@@ -354,8 +352,7 @@ namespace WodCatClone.Db
                     Category = "Couplet,Bodyweight,ForTime,Rower",
                     Complexity = "Нормальный",
                     Modality = "GM",
-                    Minutes = "24",
-                    Seconds = "00",
+                    Time = new TimeSpan(00, 24, 00),
                     HallId = 1
                 },
                 new Workouts
@@ -366,8 +363,7 @@ namespace WodCatClone.Db
                     Category = "Couplet,ForTime,Kettlebell",
                     Complexity = "Нормальный",
                     Modality = "WM",
-                    Minutes = "16",
-                    Seconds = "25",
+                    Time = new TimeSpan(00, 16, 25),
                     HallId = 2
                 },
                 new Workouts
@@ -378,8 +374,7 @@ namespace WodCatClone.Db
                     Category = "Endurance,Singlet,AMRAP",
                     Complexity = "Легкий",
                     Modality = "M",
-                    Minutes = "05",
-                    Seconds = "00",
+                    Time = new TimeSpan(00, 05, 00),
                     HallId = 4
                 },
                 new Workouts
@@ -390,8 +385,7 @@ namespace WodCatClone.Db
                     Category = "Triplet,For-Time",
                     Complexity = "Нормальный",
                     Modality = "WGM",
-                    Minutes = "19",
-                    Seconds = "00",
+                    Time = new TimeSpan(00, 19, 00),
                     HallId = 3
                 },
                 new Workouts
@@ -402,8 +396,7 @@ namespace WodCatClone.Db
                     Category = "Couplet,For-Time",
                     Complexity = "Легкий",
                     Modality = "WG",
-                    Minutes = "29",
-                    Seconds = "06",
+                    Time = new TimeSpan(00, 29, 06),
                     HallId = 5
                 });
 

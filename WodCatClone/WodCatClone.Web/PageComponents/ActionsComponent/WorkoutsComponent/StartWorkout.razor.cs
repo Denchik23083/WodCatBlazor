@@ -37,8 +37,8 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         public void CountDownTimer(Object source, ElapsedEventArgs e)
         {
-            var minutesInWorkout = int.Parse(Workout.Minutes);
-            var secondsInWorkout = int.Parse(Workout.Seconds);
+            var minutesInWorkout = Workout.Time.Minutes;
+            var secondsInWorkout = Workout.Time.Seconds;
             var seconds = int.Parse(_seconds);
             var minutes = int.Parse(_minutes);
 
