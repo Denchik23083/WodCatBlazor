@@ -25,9 +25,16 @@ namespace WodCatClone.Web.Pages.ProfilePage
             User = UserService.GetUser(NickName);
             UserEnter = UserService.GetUser();
 
-            if (!IsLoginUser || User.NickName != UserEnter.NickName)
+            if (User is null || UserEnter is null)
             {
                 NavigationManager.NavigateTo("/");
+            }
+            else
+            {
+                if (!IsLoginUser || User.NickName != UserEnter.NickName)
+                {
+                    NavigationManager.NavigateTo("/");
+                }
             }
         }
 

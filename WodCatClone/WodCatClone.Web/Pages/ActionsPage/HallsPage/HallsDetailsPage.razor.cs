@@ -45,27 +45,41 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
         protected override void OnInitialized()
         {
             Hall = HallsService.GetHall(HallId);
-            Image = HallsService.GetImage(Hall.EmblemHallId);
-            Type = Hall.Type.Split(",");
-            IsLoginUser = UserService.IsLoginUser();
-            User = UserService.GetUser();
-            Users = HallsService.GetAllHallsUsers(HallId);
-            Athletes = HallsService.Athlete(Hall.Id);
+            if (Hall is null)
+            {
+                NavigationManager.NavigateTo("/gymboxs");
+            }
+            else
+            {
+                Image = HallsService.GetImage(Hall.EmblemHallId);
+                Type = Hall.Type.Split(",");
+                IsLoginUser = UserService.IsLoginUser();
+                User = UserService.GetUser();
+                Users = HallsService.GetAllHallsUsers(HallId);
+                Athletes = HallsService.Athlete(Hall.Id);
 
-            if (IsLoginUser) Top = "loginTop";
+                if (IsLoginUser) Top = "loginTop";
+            }
         }
 
         protected override void OnParametersSet()
         {
             Hall = HallsService.GetHall(HallId);
-            Image = HallsService.GetImage(Hall.EmblemHallId);
-            Type = Hall.Type.Split(",");
-            IsLoginUser = UserService.IsLoginUser();
-            User = UserService.GetUser();
-            Users = HallsService.GetAllHallsUsers(HallId);
-            Athletes = HallsService.Athlete(Hall.Id);
+            if (Hall is null)
+            {
+                NavigationManager.NavigateTo("/gymboxs");
+            }
+            else
+            {
+                Image = HallsService.GetImage(Hall.EmblemHallId);
+                Type = Hall.Type.Split(",");
+                IsLoginUser = UserService.IsLoginUser();
+                User = UserService.GetUser();
+                Users = HallsService.GetAllHallsUsers(HallId);
+                Athletes = HallsService.Athlete(Hall.Id);
 
-            if (IsLoginUser) Top = "loginTop";
+                if (IsLoginUser) Top = "loginTop";
+            }
         }
 
         public void Edit() => NavigationManager.NavigateTo($"/gymboxs/{HallId}/edit");

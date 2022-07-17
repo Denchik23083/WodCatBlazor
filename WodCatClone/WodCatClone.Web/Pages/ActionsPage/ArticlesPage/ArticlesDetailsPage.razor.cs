@@ -28,8 +28,15 @@ namespace WodCatClone.Web.Pages.ActionsPage.ArticlesPage
         protected override void OnInitialized()
         {
             Article = ArticlesService.GetArticle(ArticleId);
-            Image = ArticlesService.GetImage(Article.ArticleEmblemId);
-            User = UserService.GetUser();
+            if (Article is null)
+            {
+                NavigationManager.NavigateTo("/articles");
+            }
+            else
+            {
+                Image = ArticlesService.GetImage(Article.ArticleEmblemId);
+                User = UserService.GetUser();
+            }
         }
 
         public void Edit() => NavigationManager.NavigateTo($"/articles/{ArticleId}/edit");

@@ -36,10 +36,13 @@ namespace WodCatClone.Logic.ActionsService.HallsService
         public Halls GetHall(int hallId)
         {
             var hall = _repository.GetHall(hallId);
-
-            hall.Type = hall.Type.Trim().Replace("\r", string.Empty);
-            hall.Type = hall.Type.Trim().Replace("\n", string.Empty);
-            hall.Type = hall.Type.Replace(Environment.NewLine, string.Empty);
+            
+            if (hall is not null)
+            {
+                hall.Type = hall.Type.Trim().Replace("\r", string.Empty);
+                hall.Type = hall.Type.Trim().Replace("\n", string.Empty);
+                hall.Type = hall.Type.Replace(Environment.NewLine, string.Empty);
+            }
 
             return hall;
         }

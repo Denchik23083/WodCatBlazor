@@ -18,6 +18,8 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
 
         [Inject] public IUserService UserService { get; set; }
 
+        [Inject] public NavigationManager NavigationManager { get; set; }
+
         public Events Event { get; set; }
 
         public Workouts Workout { get; set; }
@@ -41,21 +43,35 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
         protected override void OnInitialized()
         {
             Event = EventsService.GetEvent(EventId);
-            Users = EventsService.GetAllEventsUsers(EventId);
-            Workout = WorkoutsService.GetWorkout(Event.WorkoutId);
-            User = UserService.GetUser();
-            EventTimeUsers = EventsService.GetAllEventTimeUsers(EventId);
-            IsLoginUser = UserService.IsLoginUser();
+            if (Event is null)
+            {
+                NavigationManager.NavigateTo("/events");
+            }
+            else
+            {
+                Users = EventsService.GetAllEventsUsers(EventId);
+                Workout = WorkoutsService.GetWorkout(Event.WorkoutId);
+                User = UserService.GetUser();
+                EventTimeUsers = EventsService.GetAllEventTimeUsers(EventId);
+                IsLoginUser = UserService.IsLoginUser();
+            }
         }
 
         protected override void OnParametersSet()
         {
             Event = EventsService.GetEvent(EventId);
-            Users = EventsService.GetAllEventsUsers(EventId);
-            Workout = WorkoutsService.GetWorkout(Event.WorkoutId);
-            User = UserService.GetUser();
-            EventTimeUsers = EventsService.GetAllEventTimeUsers(EventId);
-            IsLoginUser = UserService.IsLoginUser();
+            if (Event is null)
+            {
+                NavigationManager.NavigateTo("/events");
+            }
+            else
+            {
+                Users = EventsService.GetAllEventsUsers(EventId);
+                Workout = WorkoutsService.GetWorkout(Event.WorkoutId);
+                User = UserService.GetUser();
+                EventTimeUsers = EventsService.GetAllEventTimeUsers(EventId);
+                IsLoginUser = UserService.IsLoginUser();
+            }
         }
 
         public void DisplayEvents()

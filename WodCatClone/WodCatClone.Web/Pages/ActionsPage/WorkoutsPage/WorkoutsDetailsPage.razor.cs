@@ -29,7 +29,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
 
         public string Image { get; set; }
 
-        public bool IsLogin { get; set; }
+        public bool IsLoginUser { get; set; }
 
         public Halls Hall { get; set; }
 
@@ -41,14 +41,21 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
 
         protected override void OnInitialized()
         {
-            IsLogin = UserService.IsLoginUser();
             Workout = WorkoutsService.GetWorkout(WorkoutId);
-            Hall = HallsService.GetHall(Workout.HallId);
-            if (Hall is not null)
+            if (Workout is null)
             {
-                Image = HallsService.GetImage(Hall.EmblemHallId);
+                NavigationManager.NavigateTo("/workouts");
             }
-            WorkoutsExercises = WorkoutsService.GetAllWorkoutsExercises(WorkoutId);
+            else
+            {
+                IsLoginUser = UserService.IsLoginUser();
+                Hall = HallsService.GetHall(Workout.HallId);
+                if (Hall is not null)
+                {
+                    Image = HallsService.GetImage(Hall.EmblemHallId);
+                }
+                WorkoutsExercises = WorkoutsService.GetAllWorkoutsExercises(WorkoutId);
+            }
         }
 
         public void Login() => NavigationManager.NavigateTo("/login"); 

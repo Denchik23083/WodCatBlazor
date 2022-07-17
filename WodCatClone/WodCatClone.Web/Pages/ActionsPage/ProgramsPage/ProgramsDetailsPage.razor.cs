@@ -34,10 +34,17 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
         protected override void OnInitialized()
         {
             Program = ProgramsService.GetProgram(ProgramId);
-            IsLoginUser = UserService.IsLoginUser();
-            ProgramsWorkouts = ProgramsService.GetAllProgramsWorkouts(ProgramId);
-            Users = ProgramsService.GetAllProgramsUsers(ProgramId);
-            User = UserService.GetUser();
+            if (Program is null)
+            {
+                NavigationManager.NavigateTo("/programs");
+            }
+            else
+            {
+                IsLoginUser = UserService.IsLoginUser();
+                ProgramsWorkouts = ProgramsService.GetAllProgramsWorkouts(ProgramId);
+                Users = ProgramsService.GetAllProgramsUsers(ProgramId);
+                User = UserService.GetUser();
+            }
         }
 
         public void BeginProgram()

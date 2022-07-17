@@ -15,7 +15,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
         {
             IsLoginUser = UserService.IsLoginUser();
 
-            if(!IsLoginUser)
+            if (!IsLoginUser)
             {
                 NavigationManager.NavigateTo("/login");
             }

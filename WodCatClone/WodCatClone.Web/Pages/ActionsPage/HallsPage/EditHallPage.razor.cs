@@ -25,17 +25,24 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
         protected override void OnInitialized()
         {
             Hall = HallsService.GetHall(HallId);
-            IsLoginUser = UserService.IsLoginUser();
-            User = UserService.GetUser();
-
-            if (!IsLoginUser)
-            {
-                NavigationManager.NavigateTo("/login");
-            }
-
-            if (User.Id != Hall.UserId)
+            if (Hall is null)
             {
                 NavigationManager.NavigateTo("/gymboxs");
+            }
+            else
+            {
+                IsLoginUser = UserService.IsLoginUser();
+                User = UserService.GetUser();
+
+                if (!IsLoginUser)
+                {
+                    NavigationManager.NavigateTo("/login");
+                }
+
+                if (User.Id != Hall.UserId)
+                {
+                    NavigationManager.NavigateTo("/gymboxs");
+                }
             }
         }
 

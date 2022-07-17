@@ -25,17 +25,24 @@ namespace WodCatClone.Web.Pages.ActionsPage.ArticlesPage
         protected override void OnInitialized()
         {
             Article = ArticlesService.GetArticle(ArticleId);
-            IsLoginUser = UserService.IsLoginUser();
-            User = UserService.GetUser();
-            
-            if (!IsLoginUser)
-            {
-                NavigationManager.NavigateTo("/login");
-            }
-
-            if (User.Id != Article.UserId)
+            if (Article is null)
             {
                 NavigationManager.NavigateTo("/articles");
+            }
+            else
+            {
+                IsLoginUser = UserService.IsLoginUser();
+                User = UserService.GetUser();
+
+                if (!IsLoginUser)
+                {
+                    NavigationManager.NavigateTo("/login");
+                }
+
+                if (User.Id != Article.UserId)
+                {
+                    NavigationManager.NavigateTo("/articles");
+                }
             }
         }
 
