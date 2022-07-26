@@ -81,6 +81,20 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
+        public void GetProgramTimeUserTest()
+        {
+            var context = new TestsWodCatCloneContext();
+            var programId = 1;
+            var userId = 1;
+
+            var programTimeUserTest = context.ProgramTimeUser.FirstOrDefault(b => b.ProgramsId == programId && b.UserId == userId);
+            Assert.NotNull(programTimeUserTest);
+
+            Assert.Equal(programId, programTimeUserTest.ProgramsId);
+            Assert.Equal(userId, programTimeUserTest.UserId);
+        }
+
+        [Fact]
         public void GetImageTest()
         {
             var context = new TestsWodCatCloneContext();

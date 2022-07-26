@@ -25,5 +25,7 @@ namespace WodCatClone.Db.Entities.Actions
         public Halls Halls { get; set; }
 
         public List<ProgramsWorkouts> ProgramsWorkouts { get; set; }
+
+        public List<ProgramTimeUser> ProgramTimeUsers { get; set; }
     }
 }

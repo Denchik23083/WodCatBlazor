@@ -32,6 +32,11 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
             return _repository.GetAllProgramsUsers(id);
         }
 
+        public ProgramTimeUser GetProgramTimeUser(int programId, User user)
+        {
+            return _repository.GetProgramTimeUser(programId, user);
+        }
+
         public Programs GetProgram(int id)
         {
             return _repository.GetProgram(id);
@@ -56,11 +61,11 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
             return _repository.BeginProgram(id, user);
         }
 
-        public bool StopProgram(int id, User user)
+        public bool StopProgram(int id, User user, bool isFinish)
         {
             AuthService.AuthService.User.ProgramId = null;
 
-            return _repository.StopProgram(id, user);
+            return _repository.StopProgram(id, user, isFinish);
         }
 
         public int Subscribers(int programId)

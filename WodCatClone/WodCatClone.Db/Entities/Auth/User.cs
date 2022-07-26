@@ -56,5 +56,7 @@ namespace WodCatClone.Db.Entities.Auth
         public Events Events { get; set; }
 
         public List<EventTimeUser> EventTimeUsers { get; set; }
+
+        public List<ProgramTimeUser> ProgramTimeUsers { get; set; }
     }
 }

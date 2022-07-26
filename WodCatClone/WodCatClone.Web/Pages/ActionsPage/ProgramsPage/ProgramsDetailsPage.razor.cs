@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
@@ -19,13 +21,19 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
 
         public Programs Program { get; set; }
 
+        public ProgramsWorkouts ProgramWorkout { get; set; }
+        
         public User User { get; set; }
 
         public bool IsLoginUser { get; set; }
 
         public bool DisplayWorkouts { get; set; } = true;
 
+        public bool DisplayDayWorkouts { get; set; }
+
         public bool DisplayUsers { get; set; }
+
+        public int Day { get; set; }
 
         public IEnumerable<ProgramsWorkouts> ProgramsWorkouts { get; set; }
 
@@ -34,16 +42,73 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
         protected override void OnInitialized()
         {
             Program = ProgramsService.GetProgram(ProgramId);
+            IsLoginUser = UserService.IsLoginUser();
+            User = UserService.GetUser();
+            Users = ProgramsService.GetAllProgramsUsers(ProgramId);
+            ProgramsWorkouts = ProgramsService.GetAllProgramsWorkouts(ProgramId);
+
             if (Program is null)
             {
                 NavigationManager.NavigateTo("/programs");
             }
             else
             {
-                IsLoginUser = UserService.IsLoginUser();
-                ProgramsWorkouts = ProgramsService.GetAllProgramsWorkouts(ProgramId);
-                Users = ProgramsService.GetAllProgramsUsers(ProgramId);
-                User = UserService.GetUser();
+                if (User is not null)
+                {
+                    ProgramsWorkouts = ProgramsService.GetAllProgramsWorkouts(ProgramId);
+                    if (User.ProgramId == ProgramId)
+                    {
+                        var programTimeUser = ProgramsService.GetProgramTimeUser(ProgramId, User);
+                        var day = DateTime.Now - programTimeUser.BeginProgramDate;
+                        Day = day.Days;
+                        var programsWorkouts = ProgramsService.GetAllProgramsWorkouts(ProgramId);
+                        ProgramWorkout = programsWorkouts.ElementAtOrDefault(Day);
+                    }
+                    else
+                    {
+                        ProgramsWorkouts = ProgramsService.GetAllProgramsWorkouts(ProgramId);
+                    }
+                }
+                else
+                {
+                    ProgramsWorkouts = ProgramsService.GetAllProgramsWorkouts(ProgramId);
+                }
+            }
+        }
+
+        protected override void OnAfterRender(bool firstRender)
+        {
+            Program = ProgramsService.GetProgram(ProgramId);
+            IsLoginUser = UserService.IsLoginUser();
+            User = UserService.GetUser();
+            Users = ProgramsService.GetAllProgramsUsers(ProgramId);
+            ProgramsWorkouts = ProgramsService.GetAllProgramsWorkouts(ProgramId);
+
+            if (Program is null)
+            {
+                NavigationManager.NavigateTo("/programs");
+            }
+            else
+            {
+                if (User is not null)
+                {
+                    if (User.ProgramId == ProgramId)
+                    {
+                        var programTimeUser = ProgramsService.GetProgramTimeUser(ProgramId, User);
+                        var day = DateTime.Now - programTimeUser.BeginProgramDate;
+                        Day = day.Days;
+                        var programsWorkouts = ProgramsService.GetAllProgramsWorkouts(ProgramId);
+                        ProgramWorkout = programsWorkouts.ElementAtOrDefault(Day);
+                    }
+                    else
+                    {
+                        ProgramsWorkouts = ProgramsService.GetAllProgramsWorkouts(ProgramId);
+                    }
+                }
+                else
+                {
+                    ProgramsWorkouts = ProgramsService.GetAllProgramsWorkouts(ProgramId);
+                }
             }
         }
 
@@ -59,7 +124,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
 
         public void StopProgram()
         {
-            var result = ProgramsService.StopProgram(ProgramId, User);
+            var result = ProgramsService.StopProgram(ProgramId, User, false);
 
             if (result)
             {
@@ -70,12 +135,21 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
         public void DisplayWorkout()
         {
             DisplayWorkouts = true;
+            DisplayDayWorkouts = false;
+            DisplayUsers = false;
+        }
+
+        public void DisplayDayWorkout()
+        {
+            DisplayWorkouts = false;
+            DisplayDayWorkouts = true;
             DisplayUsers = false;
         }
 
         public void DisplayUser()
         {
             DisplayWorkouts = false;
+            DisplayDayWorkouts = false;
             DisplayUsers = true;
         }
     }

@@ -1,0 +1,23 @@
+﻿@if (IsEndOrNot)
+{
+    <div class="work p-2">
+        <div class="row">
+            <div class="col text-center mb-2 text-light">
+                <h1>Вы закончили программу</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-center">
+                <button class="btn btn-primary" @onclick="FinishProgram">Получить награду</button>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col text-center text-light">
+            <h1>Тебе нужно войти!</h1>
+        </div>
+    </div>
+}

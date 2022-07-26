@@ -79,46 +79,7 @@ namespace WodCatClone.Tests
             Assert.Equal(id, hallEmblem.Id);
             Assert.Equal(image, hallEmblem.Image);
         }
-
-        [Fact]
-        public void GetAthleteTest()
-        {
-            var context = new TestsWodCatCloneContext();
-            var hallId = 1;
-            var expected = 1;
-
-            var newUser = new User
-            {
-                Name = "Michael",
-                Surname = "de Santa",
-                Birthday = new DateTime(2013, 09, 17),
-                NickName = "GTA5",
-                Email = "foo15@gmail.com",
-                Password = "0000",
-                Country = "Ukraine",
-                GenderId = 1,
-                HallId = hallId
-            };
-
-            context.Users.Add(newUser);
-            context.SaveChanges();
-
-            var hallUsers = context.Users.Count(b => b.HallId == hallId);
-
-            Assert.Equal(expected, hallUsers);
-
-            var registeredUser = context.Users.FirstOrDefault(l => l.Email == newUser.Email &&
-                                                                   l.Password == newUser.Password);
-            Assert.NotNull(registeredUser);
-
-            context.Users.Remove(registeredUser);
-            context.SaveChanges();
-
-            var registeredAfterUser = context.Users.FirstOrDefault(l => l.Email == registeredUser.Email &&
-                                                                   l.Password == registeredUser.Password);
-            Assert.Null(registeredAfterUser);
-        }
-
+        
         [Fact]
         public void AddHallTest()
         {

@@ -44,7 +44,7 @@
                         type="button"
                         class="btn btn-danger mb-2 mt-2"
                         @onclick="StopProgram">
-                        Отписаться
+                        Остановить тренировки по данной программе
                     </button>
                 </div>
             </div>
@@ -54,12 +54,34 @@
         <div class="row">
             <div class="col text-center">
                 <span class="programslink" @onclick="DisplayWorkout">ТРЕНИРОВКИ</span>
+                <span class="programslink" @onclick="DisplayDayWorkout">ПРОГРЕСС</span>
                 <span class="programslink" @onclick="DisplayUser">ПОДПИСЧИКИ</span>
             </div>
         </div>
         @if (DisplayWorkouts)
         {
             <ListProgramsWorkoutsComponent ListOfItems="ProgramsWorkouts"/>
+        }
+        @if (DisplayDayWorkouts)
+        {
+            if (User is not null)
+            {
+                if (User.ProgramId == Program.Id)
+                {
+                    if (Day <= ProgramsWorkouts.Count() - 1)
+                    {
+                        <DayProgramsWorkoutsComponent ProgramsWorkouts="ProgramWorkout"/>
+                    }
+                    else
+                    {
+                        <FinishesDayProgramsWorkoutsComponent IsEndOrNot="true" ProgramId="ProgramId"/>
+                    }
+                }
+            }
+            else
+            {
+                <FinishesDayProgramsWorkoutsComponent IsEndOrNot="false" ProgramId="ProgramId"/>
+            }
         }
         else if (DisplayUsers)
         {

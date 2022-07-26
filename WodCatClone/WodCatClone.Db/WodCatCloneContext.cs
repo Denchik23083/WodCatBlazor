@@ -769,6 +769,8 @@ namespace WodCatClone.Db
 
         public DbSet<EventTimeUser> EventTimeUser { get; set; }
 
+        public DbSet<ProgramTimeUser> ProgramTimeUser { get; set; }
+
         public DbSet<ResultWorkouts> ResultWorkouts { get; set; }
 
         public DbSet<Halls> Halls { get; set; }

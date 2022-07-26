@@ -12,6 +12,8 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
 
         IEnumerable<User> GetAllProgramsUsers(int id);
 
+        ProgramTimeUser GetProgramTimeUser(int programId, User user);
+
         Programs GetProgram(int id);
 
         Programs GetProgram(int? id);
@@ -20,7 +22,7 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
 
         bool BeginProgram(int id, User user);
 
-        bool StopProgram(int id, User user);
+        bool StopProgram(int id, User user, bool isFinish);
 
         int Subscribers(IEnumerable<User> users, int programId);
     }
