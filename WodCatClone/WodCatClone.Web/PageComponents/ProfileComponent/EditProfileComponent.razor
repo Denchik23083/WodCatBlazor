@@ -38,35 +38,6 @@
                     }
                 </div>
             </div>
-            <div class="row">
-                <div class="col mb-2">
-                    <h5 style="color: white;">Выберите программу</h5>
-                    @if (UserHall is not null)
-                    {
-                        <div class="selectedFormResult" @onclick="() => IsShowProgram = !IsShowProgram">
-                            <img src="@ProgramImage" width="75" height="75"/>
-                            @UserProgram.Name
-                        </div>
-                    }
-                    else
-                    {
-                        <div class="selectedFormResult" @onclick="() => IsShowProgram = !IsShowProgram">Программа</div>
-                    }
-                </div>
-            </div>
-            <div class="row">
-                <div class="col mb-2">
-                    @if (IsShowProgram)
-                    {
-                        <div class="selected mb-2">
-                            @foreach (var item in Programs)
-                            {
-                                <IndividualProfileHallProgramComponent Program="item"/>
-                            }
-                        </div>
-                    }
-                </div>
-            </div>
         </div>
         <div class="col-6">
             <div class="row">

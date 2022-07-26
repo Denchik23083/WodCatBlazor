@@ -7,12 +7,3 @@
         </div>
     </div>
 }
-@if (ProgramImage is not null)
-{
-    <div class="row">
-        <div class="col" @onclick="() => EditUserProgram(Program.Id)">
-            <img src="@ProgramImage" width="75" height="75"/>
-            <span class="link">@Program.Name</span>
-        </div>
-    </div>
-}

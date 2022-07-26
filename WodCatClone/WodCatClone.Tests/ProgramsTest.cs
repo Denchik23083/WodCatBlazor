@@ -56,7 +56,7 @@ namespace WodCatClone.Tests
         {
             var context = new TestsWodCatCloneContext();
             var id = 2;
-            var expectedUsers = 0;
+            var expectedUsers = 1;
 
             var program = context.Programs.FirstOrDefault(p => p.Id == id);
             Assert.NotNull(program);
