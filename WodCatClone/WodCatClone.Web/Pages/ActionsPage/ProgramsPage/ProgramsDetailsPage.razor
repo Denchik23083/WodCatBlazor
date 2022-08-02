@@ -68,7 +68,7 @@
             {
                 if (User.ProgramId == Program.Id)
                 {
-                    if (Day <= ProgramsWorkouts.Count() - 1)
+                    if (Day < ProgramsWorkouts.Count())
                     {
                         <DayProgramsWorkoutsComponent ProgramsWorkouts="ProgramWorkout"/>
                     }
