@@ -20,6 +20,14 @@ namespace WodCatClone.Db
                 new Answer { Id = 5, Name = "Только те, которые создал?" },
                 new Answer { Id = 6, Name = "Зайти на тренировку и нажать старт и еще раз старт" });
 
+            modelBuilder.Entity<Question>().ToTable("Question").HasData(
+                new Question { Id = 1, Name = "Как добавить результат о тренировке?", AnswerId = 1 },
+                new Question { Id = 2, Name = "Как получить баллы?", AnswerId = 3 },
+                new Question { Id = 3, Name = "Как присоединиться к залу?", AnswerId = 2 },
+                new Question { Id = 4, Name = "Как поднятся в рейтинге игроков?", AnswerId = 4 },
+                new Question { Id = 5, Name = "Какие залы можно редактировать и удалять?", AnswerId = 5 },
+                new Question { Id = 6, Name = "Как начать тренировку?", AnswerId = 6 });
+
             modelBuilder.Entity<Gender>().ToTable("Gender").HasData(
                 new Gender { Id = 1, Name = "Мужской", Image = "img/man.png" },
                 new Gender { Id = 2, Name = "Женский", Image = "img/woman.png" });
@@ -51,14 +59,6 @@ namespace WodCatClone.Db
                 new EventEmblem { Id = 3, Name = "Lime", Image = "img/EmblemEvents/lime.jpg" },
                 new EventEmblem { Id = 4, Name = "Run", Image = "img/EmblemEvents/run.jpg" },
                 new EventEmblem { Id = 5, Name = "Sport", Image = "img/EmblemEvents/sport.jpg" });
-
-            modelBuilder.Entity<Question>().ToTable("Question").HasData(
-                new Question { Id = 1, Name = "Как добавить результат о тренировке?", AnswerId = 1 },
-                new Question { Id = 2, Name = "Как получить баллы?", AnswerId = 3 },
-                new Question { Id = 3, Name = "Как присоединиться к залу?", AnswerId = 2 },
-                new Question { Id = 4, Name = "Как поднятся в рейтинге игроков?", AnswerId = 4 },
-                new Question { Id = 5, Name = "Какие залы можно редактировать и удалять?", AnswerId = 5 },
-                new Question { Id = 6, Name = "Как начать тренировку?", AnswerId = 6 });
 
             modelBuilder.Entity<Articles>().ToTable("Articles").HasData(
                 new Articles

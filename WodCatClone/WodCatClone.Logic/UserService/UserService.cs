@@ -55,16 +55,9 @@ namespace WodCatClone.Logic.UserService
             return _repository.EditUserHall(user, id);
         }
 
-        public bool EditUserProgram(User user, int id)
+        public bool Update(User updateUser, int id, string genderName)
         {
-            AuthService.AuthService.User.ProgramId = id;
-
-            return _repository.EditUserProgram(user, id);
-        }
-
-        public bool Update(User updateUser, int id, Gender gender)
-        {
-            var genre = _repository.GetGender(gender.Name);
+            var genre = _repository.GetGender(genderName);
 
             updateUser.GenderId = genre.Id;
 

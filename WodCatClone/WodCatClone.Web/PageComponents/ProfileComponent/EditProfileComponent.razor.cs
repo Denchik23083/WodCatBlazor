@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.ActionsService.HallsService;
-using WodCatClone.Logic.ActionsService.ProgramsService;
 using WodCatClone.Logic.UserService;
 using WodCatClone.Web.Helpers;
 
@@ -20,9 +19,7 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
         [Inject] public IHallsService HallsService { get; set; }
 
         public User EditUser { get; set; }
-
-        public Register AuthUser { get; set; }
-
+        
         public Halls UserHall { get; set; }
 
         public IEnumerable<Halls> Halls { get; set; }
@@ -36,6 +33,10 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
         public bool Woman { get; set; }
 
         public bool IsShowHall { get; set; } = false;
+
+        public bool IsDisplayProfile { get; set; } = true;
+
+        public bool IsDisplayAuth { get; set; }
 
         public List<FilterHalls> Town = new()
         {
@@ -62,7 +63,6 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
             }
 
             EditUser = User;
-            AuthUser = Map(User);
 
             if (User.GenderId is not null)
             {
@@ -91,42 +91,47 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
             {
                 HallImage = HallsService.GetImage(UserHall.EmblemHallId);
             }
+
+            EditUser = User;
+
+            if (User.GenderId is not null)
+            {
+                Image = UserService.GetGender(User.GenderId).Image;
+            }
+
+            var gender = UserService.GetGender(User.GenderId);
+
+            if (gender.Name == "Мужской")
+            {
+                Man = true;
+                Woman = false;
+            }
+            if (gender.Name == "Женский")
+            {
+                Man = false;
+                Woman = true;
+            }
         }
 
         public void Submit()
         {
-            var gender = UserService.GetGender(User.GenderId);
+            var genderName = string.Empty;
 
             if (Man && !Woman)
             {
-                gender.Name = "Мужской";
+                genderName = "Мужской";
             }
 
             if (Woman && !Man)
             {
-                gender.Name = "Женский";
+                genderName = "Женский";
             }
 
-            var result = UserService.Update(EditUser, User.Id, gender);
+            var result = UserService.Update(EditUser, User.Id, genderName);
 
             if (result)
             {
                 NavigationManager.NavigateTo($"/profile/{User.NickName}");
-            }
-        }
-
-        public void Auth()
-        {
-            if (AuthUser.Password == AuthUser.ConfirmPassword)
-            {
-                var result = UserService.UpdateAuth(Map(AuthUser), User.Id);
-
-                if (result)
-                {
-                    var user = UserService.GetUser();
-
-                    NavigationManager.NavigateTo($"/profile/{user.NickName}");
-                }
             }
         }
 
@@ -137,24 +142,16 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
             User.Town = selected;
         }
 
-        private Register Map(User model)
+        public void DisplayProfile()
         {
-            return new Register
-            {
-                NickName = model.NickName,
-                Email = model.Email,
-                Password = model.Password
-            };
+            IsDisplayProfile = true;
+            IsDisplayAuth = false;
         }
 
-        private User Map(Register model)
+        public void DisplayAuth()
         {
-            return new User
-            {
-                NickName = model.NickName,
-                Email = model.Email,
-                Password = model.Password
-            };
+            IsDisplayProfile = false;
+            IsDisplayAuth = true;
         }
     }
 }
