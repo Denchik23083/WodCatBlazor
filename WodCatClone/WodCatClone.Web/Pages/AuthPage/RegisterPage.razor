@@ -7,96 +7,82 @@
         <div class="col loginContainer">
             <div class="login">
                 <h1 style="color: white; font-size: 35px;">Регистрация</h1>
-                @if (!IsNext)
-                {
-                    <EditForm Model="@_mainRegister" OnValidSubmit="@MainRegister">
-                        <DataAnnotationsValidator />
-                        <ValidationSummary />
-                        <InputText
-                            id="nickname"
-                            @bind-Value="_mainRegister.NickName"
-                            class="mb-3 formLogin"
-                            placeholder="Ник"/>
-                        <InputText
-                            id="email"
-                            @bind-Value="_mainRegister.Email"
-                            class="mb-3 formLogin"
-                            placeholder="E-mail"/>
-                        <InputText
-                            id="password"
-                            type="password"
-                            @bind-Value="_mainRegister.Password"
-                            class="mb-3 formLogin"
-                            style="width: 100%; height: 40px; padding-left: 20px;"
-                            placeholder="Пароль"/>
-                        <InputText
-                            id="confirmPassword"
-                            type="password"
-                            @bind-Value="_mainRegister.ConfirmPassword"
-                            class="mb-3 formLogin"
-                            style="width: 100%; height: 40px; padding-left: 20px;"
-                            placeholder="Подтвердить Пароль"/>
+                <EditForm Model="@MainRegister" OnValidSubmit="@Register">
+                    <DataAnnotationsValidator />
+                    <ValidationSummary />
+                    <InputText
+                        id="name"
+                        @bind-Value="MainRegister.Name"
+                        class="mb-3 formLogin"
+                        placeholder="Имя"/>
+                    <InputText
+                        id="surname"
+                        @bind-Value="MainRegister.Surname"
+                        class="mb-3 formLogin"
+                        placeholder="Фимилия"/>
+                    <InputText
+                        id="nickname"
+                        @bind-Value="MainRegister.NickName"
+                        class="mb-3 formLogin"
+                        placeholder="Ник"/>
+                    <InputText
+                        id="email"
+                        @bind-Value="MainRegister.Email"
+                        class="mb-3 formLogin"
+                        placeholder="E-mail"/>
+                    <InputText
+                        id="password"
+                        type="password"
+                        @bind-Value="MainRegister.Password"
+                        class="mb-3 formLogin"
+                        style="width: 100%; height: 40px; padding-left: 20px;"
+                        placeholder="Пароль"/>
+                    <InputText
+                        id="confirmPassword"
+                        type="password"
+                        @bind-Value="MainRegister.ConfirmPassword"
+                        class="mb-3 formLogin"
+                        style="width: 100%; height: 40px; padding-left: 20px;"
+                        placeholder="Подтвердить Пароль"/>
+                    <InputDate
+                        id="birthday"
+                        @bind-Value="MainRegister.Birthday"
+                        class="mb-3 formLogin"
+                        placeholder="Birthday"/>
+                    <div class="custom-control custom-checkbox mb-2">
+                        <input
+                            type="checkbox"
+                            class="custom-control-input"
+                            id="man"
+                            @bind="Man"
+                            @onclick="() => { Man = true; Woman = false; }"/>
+                        <label
+                            class="custom-control-label"
+                            for="man"
+                            style="color: lightgrey">Мужчина</label>
+                    </div>
+                    <div class="custom-control custom-checkbox mb-2">
+                        <input
+                            type="checkbox"
+                            class="custom-control-input"
+                            id="woman"
+                            @bind="Woman"
+                            @onclick="() => { Man = false; Woman = true; }"/>
+                        <label
+                            class="custom-control-label"
+                            for="woman"
+                            style="color: lightgrey">Женщина</label>
+                    </div>
 
+                    @if (Man || Woman)
+                    {
                         <button class="mb-2 authButton" type="submit">Регистрация</button>
-
-                    </EditForm>
-                }
-                else
-                {
-                    <EditForm Model="@_mainRegister" OnSubmit="@Register">
-                        <InputText
-                            id="name"
-                            @bind-Value="_mainRegister.Name"
-                            class="mb-3 formLogin"
-                            placeholder="Имя"/>
-                        <InputText
-                            id="surname"
-                            @bind-Value="_mainRegister.Surname"
-                            class="mb-3 formLogin"
-                            placeholder="Фимилия"/>
-                        <InputDate
-                            id="birthday"
-                            @bind-Value="_mainRegister.Birthday"
-                            class="mb-3 formLogin"
-                            placeholder="Birthday"/>
-
-                        <div class="custom-control custom-checkbox mb-2">
-                            <input
-                                type="checkbox"
-                                class="custom-control-input"
-                                id="man"
-                                @bind="Man"
-                                @onclick="() => { Man = true; Woman = false; }"/>
-                            <label
-                                class="custom-control-label"
-                                for="man"
-                                style="color: lightgrey">Мужчина</label>
-                        </div>
-                        <div class="custom-control custom-checkbox mb-2">
-                            <input
-                                type="checkbox"
-                                class="custom-control-input"
-                                id="woman"
-                                @bind="Woman"
-                                @onclick="() => { Man = false; Woman = true; }"/>
-                            <label
-                                class="custom-control-label"
-                                for="woman"
-                                style="color: lightgrey">Женщина</label>
-                        </div>
-
-                        @if (Man || Woman)
-                        {
-                            <button class="mb-2 authButton" type="submit">Регистрация</button>
-                        }
-                        else
-                        {
-                            <button class="mb-2 authButton" type="submit" disabled="disabled">Регистрация</button>
-                        }
-
-
-                    </EditForm>
-                }
+                    }
+                    else
+                    {
+                        <button class="mb-2 authButton" type="submit" disabled="disabled">Регистрация</button>
+                    }
+                </EditForm>
                 <p style="color: #bdc1c6;">Уже есть аккаунт? &nbsp;
                     <a href="/login" class="mainLink">Войти</a>
                 </p>

@@ -6,20 +6,25 @@ namespace WodCatClone.Web.Pages.AuthPage
 {
     public partial class LoginPage
     {
-        [Inject] private IAuthService Service { get; set; }
+        [Inject] private IAuthService AuthService { get; set; }
 
-        [Inject] private NavigationManager Manager { get; set; }
+        [Inject] private NavigationManager NavigationManager { get; set; }
 
-        private Login _login = new();
+        public Login MainLogin = new();
 
-        private bool _isLogin;
+        public bool IsFallLogin { get; set; }
 
         public void Login()
         {
-            _isLogin = Service.Login(_login);
-            if (_isLogin)
+            var result = AuthService.Login(MainLogin);
+            if (result)
             {
-                Manager.NavigateTo("/");
+                IsFallLogin = false;
+                NavigationManager.NavigateTo("/");
+            }
+            else
+            {
+                IsFallLogin = true;
             }
         }
     }
