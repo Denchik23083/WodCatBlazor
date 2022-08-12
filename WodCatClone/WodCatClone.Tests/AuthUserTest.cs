@@ -11,7 +11,7 @@ namespace WodCatClone.Tests
         public static bool IsLoginUser;
 
         [Fact]
-        public void GetAllUsersTest()
+        public void Get_All_Users()
         {
             var context = new TestsWodCatCloneContext();
             var expectedUsers = 1;
@@ -23,7 +23,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void LoginTest()
+        public void Login()
         {
             var context = new TestsWodCatCloneContext();
             
@@ -35,7 +35,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void RegisterTest()
+        public void Register()
         {
             var context = new TestsWodCatCloneContext();
 
@@ -72,7 +72,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void LogoutTest()
+        public void Logout()
         {
             IsLoginUser = false;
 
@@ -80,7 +80,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void IsLoginUserTest()
+        public void Is_Login_User()
         {
             var context = new TestsWodCatCloneContext();
 
@@ -90,7 +90,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void GetUserTest()
+        public void Get_User()
         {
             var context = new TestsWodCatCloneContext();
 
@@ -100,7 +100,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void GetGenderTest()
+        public void Get_Gender()
         {
             var context = new TestsWodCatCloneContext();
 
@@ -113,7 +113,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void UpdateTest()
+        public void Update_User()
         {
             var context = new TestsWodCatCloneContext();
 
@@ -184,7 +184,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void UpdateAuthTest()
+        public void Update_Auth()
         {
             var context = new TestsWodCatCloneContext();
             
@@ -234,7 +234,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void RemoveTest()
+        public void Remove_User()
         {
             var context = new TestsWodCatCloneContext();
 

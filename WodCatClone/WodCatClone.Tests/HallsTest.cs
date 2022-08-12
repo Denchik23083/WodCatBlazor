@@ -10,7 +10,7 @@ namespace WodCatClone.Tests
     public class HallsTest
     {
         [Fact]
-        public void GetAllHallsTest()
+        public void Get_All_Halls()
         {
             var context = new TestsWodCatCloneContext();
             var expectedHalls = 5;
@@ -22,7 +22,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void GetAllHallEmblemTest()
+        public void Get_All_HallEmblem()
         {
             var context = new TestsWodCatCloneContext();
             var expectedHallEmblem = 5;
@@ -34,7 +34,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void GetAllHallsUsersTest()
+        public void Get_All_Halls_Users()
         {
             var context = new TestsWodCatCloneContext();
             var id = 2;
@@ -51,7 +51,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void GetHallTest()
+        public void Get_Hall()
         {
             var context = new TestsWodCatCloneContext();
             var id = 2;
@@ -67,7 +67,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void GetImageTest()
+        public void Get_Image()
         {
             var context = new TestsWodCatCloneContext();
             var id = 3;
@@ -81,7 +81,7 @@ namespace WodCatClone.Tests
         }
         
         [Fact]
-        public void AddHallTest()
+        public void Add_Hall()
         {
             var context = new TestsWodCatCloneContext();
 
@@ -127,7 +127,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void UpdateHallTest()
+        public void Update_Hall()
         {
             var context = new TestsWodCatCloneContext();
 
@@ -201,7 +201,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void RemoveHallTest()
+        public void Remove_Hall()
         {
             var context = new TestsWodCatCloneContext();
 
@@ -241,7 +241,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void JoinTest()
+        public void Join()
         {
             var context = new TestsWodCatCloneContext();
 
@@ -284,7 +284,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void ExitTest()
+        public void Exit()
         {
             var context = new TestsWodCatCloneContext();
 

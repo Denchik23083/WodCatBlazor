@@ -10,7 +10,7 @@ namespace WodCatClone.Tests
     public class EventsTest
     {
         [Fact]
-        public void GetAllEventsTest()
+        public void Get_All_Events()
         {
             var context = new TestsWodCatCloneContext();
             var expected = 1;
@@ -22,7 +22,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void GetAllEventsUsersTest()
+        public void Get_All_Events_Users()
         {
             var context = new TestsWodCatCloneContext();
             var id = 1;
@@ -39,7 +39,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void GetAllEventTimeUsersTest()
+        public void Get_All_EventTimeUsers()
         {
             var context = new TestsWodCatCloneContext();
             var id = 1;
@@ -52,7 +52,7 @@ namespace WodCatClone.Tests
         }
         
         [Fact]
-        public void GetAllEventsEmblemTest()
+        public void Get_All_EventEmblem()
         {
             var context = new TestsWodCatCloneContext();
             var expectedEventEmblem = 5;
@@ -64,7 +64,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void GetEventTest()
+        public void Get_Event()
         {
             var context = new TestsWodCatCloneContext();
             var id = 1;
@@ -76,7 +76,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void GetImageTest()
+        public void Get_Image()
         {
             var context = new TestsWodCatCloneContext();
             var id = 3;
@@ -90,7 +90,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void GetEventTimeUserTest()
+        public void Get_EventTimeUser()
         {
             var context = new TestsWodCatCloneContext();
             var eventId = 1;
@@ -104,7 +104,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void AddEventTimeUserTest()
+        public void Add_EventTimeUser()
         {
             var context = new TestsWodCatCloneContext();
 
@@ -167,7 +167,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void AddEventTest()
+        public void Add_Event()
         {
             var context = new TestsWodCatCloneContext();
 
@@ -216,7 +216,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void EditEventTest()
+        public void Edit_Event()
         {
             var context = new TestsWodCatCloneContext();
 
@@ -303,7 +303,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void RemoveEventTest()
+        public void Remove_Event()
         {
             var context = new TestsWodCatCloneContext();
 
@@ -345,7 +345,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void JoinTest()
+        public void Join()
         {
             var context = new TestsWodCatCloneContext();
 
@@ -388,7 +388,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void ExitTest()
+        public void Exit()
         {
             var context = new TestsWodCatCloneContext();
 

@@ -7,7 +7,7 @@ namespace WodCatClone.Tests
     public class CallBackTest
     {
         [Fact]
-        public void GetAllQuestionsTest()
+        public void Get_All_Questions()
         {
             var context = new TestsWodCatCloneContext();
             
@@ -19,7 +19,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void GetAnswerTest()
+        public void Get_Answer()
         {
             var context = new TestsWodCatCloneContext();
 

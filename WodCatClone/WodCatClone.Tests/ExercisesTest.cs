@@ -7,7 +7,7 @@ namespace WodCatClone.Tests
     public class ExercisesTest
     {
         [Fact]
-        public void GetAllExercisesTest()
+        public void Get_All_Exercises()
         {
             var context = new TestsWodCatCloneContext();
             var expectedExercises = 12;
@@ -19,7 +19,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void GetExerciseTest()
+        public void Get_Exercise()
         {
             var context = new TestsWodCatCloneContext();
 

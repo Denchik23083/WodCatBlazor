@@ -10,7 +10,7 @@ namespace WodCatClone.Tests
     public class WorkoutsTest
     {
         [Fact]
-        public void GetAllWorkoutsTest()
+        public void Get_All_Workouts()
         {
             var context = new TestsWodCatCloneContext();
             var expectedWorkouts = 7;
@@ -22,7 +22,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void GetAllWorkoutsExercisesTest()
+        public void Get_All_WorkoutsExercises()
         {
             var context = new TestsWodCatCloneContext();
             var id = 2;
@@ -35,7 +35,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void GetWorkoutTest()
+        public void Get_Workout()
         {
             var context = new TestsWodCatCloneContext();
             var id = 2;
@@ -47,7 +47,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void GetAllResultWorkoutsTest()
+        public void Get_All_ResultWorkouts()
         {
             var context = new TestsWodCatCloneContext();
             var expectedResultWorkouts = 0;
@@ -59,7 +59,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void AddResultWorkoutTest()
+        public void Add_ResultWorkout()
         {
             var context = new TestsWodCatCloneContext();
 
@@ -105,7 +105,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void UpdateHallTest()
+        public void Update_ResultWorkout()
         {
             var context = new TestsWodCatCloneContext();
 
@@ -178,7 +178,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void RemoveArticleTest()
+        public void Remove_ResultWorkout()
         {
             var context = new TestsWodCatCloneContext();
 

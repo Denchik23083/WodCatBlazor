@@ -9,7 +9,7 @@ namespace WodCatClone.Tests
     public class ProgramsTest
     {
         [Fact]
-        public void GetAllProgramsTest()
+        public void Get_All_Programs()
         {
             var context = new TestsWodCatCloneContext();
             var expectedPrograms = 5;
@@ -21,7 +21,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void GetAllProgramsEmblemTest()
+        public void Get_All_ProgramEmblem()
         {
             var context = new TestsWodCatCloneContext();
             var expectedProgramsEmblem = 5;
@@ -33,7 +33,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void GetAllProgramsWorkoutsTest()
+        public void Get_All_ProgramsWorkouts()
         {
             var context = new TestsWodCatCloneContext();
             var id = 2;
@@ -52,7 +52,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void GetAllProgramsUsersTest()
+        public void Get_All_Programs_Users()
         {
             var context = new TestsWodCatCloneContext();
             var id = 2;
@@ -69,7 +69,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void GetProgramTest()
+        public void Get_Program()
         {
             var context = new TestsWodCatCloneContext();
             var id = 1;
@@ -81,7 +81,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void GetProgramTimeUserTest()
+        public void Get_ProgramTimeUser()
         {
             var context = new TestsWodCatCloneContext();
             var programId = 1;
@@ -95,7 +95,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void GetImageTest()
+        public void Get_Image()
         {
             var context = new TestsWodCatCloneContext();
             var id = 3;
@@ -109,7 +109,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void BeginProgramTest()
+        public void Begin_Program()
         {
             var context = new TestsWodCatCloneContext();
 
@@ -152,7 +152,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void StopProgramTest()
+        public void Stop_Program()
         {
             var context = new TestsWodCatCloneContext();
 

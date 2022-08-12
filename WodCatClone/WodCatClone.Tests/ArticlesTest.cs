@@ -9,7 +9,7 @@ namespace WodCatClone.Tests
     public class ArticlesTest
     {
         [Fact]
-        public void GetAllArticlesTest()
+        public void Get_All_Articles()
         {
             var context = new TestsWodCatCloneContext();
             var expectedArticles = 5;
@@ -21,7 +21,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void GetAllArticleEmblemTest()
+        public void Get_All_ArticleEmblem()
         {
             var context = new TestsWodCatCloneContext();
             var expectedArticleEmblem = 5;
@@ -33,7 +33,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void GetArticleTest()
+        public void Get_Article()
         {
             var context = new TestsWodCatCloneContext();
             var id = 1; 
@@ -45,7 +45,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void GetImageTest()
+        public void Get_Image()
         {
             var context = new TestsWodCatCloneContext();
             var id = 2;
@@ -59,7 +59,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void AddArticleTest()
+        public void Add_Article()
         {
             var context = new TestsWodCatCloneContext();
             
@@ -104,7 +104,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void UpdateArticleTest()
+        public void Update_Article()
         {
             var context = new TestsWodCatCloneContext();
 
@@ -175,7 +175,7 @@ namespace WodCatClone.Tests
         }
 
         [Fact]
-        public void RemoveArticleTest()
+        public void Remove_Article()
         {
             var context = new TestsWodCatCloneContext();
 
