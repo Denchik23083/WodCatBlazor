@@ -14,7 +14,7 @@ namespace WodCatClone.Db.Entities.Actions
 
         [Required]
         public string Town { get; set; }
-
+        
         public string Location { get; set; }
 
         public string Description { get; set; }

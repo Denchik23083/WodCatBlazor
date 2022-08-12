@@ -52,13 +52,17 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
             else
             {
                 Image = HallsService.GetImage(Hall.EmblemHallId);
-                Type = Hall.Type.Split(",");
                 IsLoginUser = UserService.IsLoginUser();
+                if (IsLoginUser) Top = "loginTop";
+
+                if (Hall.Type is not null)
+                {
+                    Type = Hall.Type.Split(",");
+                }
+
                 User = UserService.GetUser();
                 Users = HallsService.GetAllHallsUsers(HallId);
                 Athletes = HallsService.Athlete(Hall.Id);
-
-                if (IsLoginUser) Top = "loginTop";
             }
         }
 
@@ -72,13 +76,17 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
             else
             {
                 Image = HallsService.GetImage(Hall.EmblemHallId);
-                Type = Hall.Type.Split(",");
                 IsLoginUser = UserService.IsLoginUser();
+                if (IsLoginUser) Top = "loginTop";
+
+                if (Hall.Type is not null)
+                {
+                    Type = Hall.Type.Split(",");
+                }
+
                 User = UserService.GetUser();
                 Users = HallsService.GetAllHallsUsers(HallId);
                 Athletes = HallsService.Athlete(Hall.Id);
-
-                if (IsLoginUser) Top = "loginTop";
             }
         }
 

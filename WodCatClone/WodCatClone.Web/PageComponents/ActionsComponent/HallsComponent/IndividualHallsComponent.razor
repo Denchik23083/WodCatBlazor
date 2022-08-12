@@ -20,19 +20,22 @@
                     }
                 </div>
             </div>
-            <div class="row">
-                <div class="col mb-2">
-                    @foreach (var item in HallType)
-                    {
-                        <span>@item</span>
-                        @if (Value < HallType.Length - 1)
+            @if (HallType is not null)
+            {
+                <div class="row">
+                    <div class="col mb-2">
+                        @foreach (var item in HallType)
                         {
-                            <span>&nbsp;|&nbsp;</span>
-                            Value++;
+                            <span>@item</span>
+                            @if (Value < HallType.Length - 1)
+                            {
+                                <span>&nbsp;|&nbsp;</span>
+                                Value++;
+                            }
                         }
-                    }
+                    </div>
                 </div>
-            </div>
+            }
             @if (Hall.Description is not null)
             {
                 <div class="row">

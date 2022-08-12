@@ -25,7 +25,10 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
             Value = 0;
             Url = $"gymboxs/{Hall.Id}";
             Image = HallsService.GetImage(Hall.EmblemHallId);
-            HallType = Hall.Type.Split(",");
+            if (Hall.Type is not null)
+            {
+                HallType = Hall.Type.Split(",");
+            }
             Athletes = HallsService.Athlete(Hall.Id);
         }
 
@@ -34,7 +37,10 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
             Value = 0;
             Url = $"gymboxs/{Hall.Id}";
             Image = HallsService.GetImage(Hall.EmblemHallId);
-            HallType = Hall.Type.Split(",");
+            if (Hall.Type is not null)
+            {
+                HallType = Hall.Type.Split(",");
+            }
             Athletes = HallsService.Athlete(Hall.Id);
         }
     }

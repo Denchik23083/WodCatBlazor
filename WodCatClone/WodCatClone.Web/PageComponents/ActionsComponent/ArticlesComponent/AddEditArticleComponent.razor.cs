@@ -47,6 +47,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
             new() { Content = "Гиревой спорт", Value = "Гиревой спорт" },
             new() { Content = "Тяжелая атлетика", Value = "Тяжелая атлетика" },
         };
+
         public List<ArticleRating> ArticleRating = new()
         {
             new() { Content = "0.5", Value = "0.5" },

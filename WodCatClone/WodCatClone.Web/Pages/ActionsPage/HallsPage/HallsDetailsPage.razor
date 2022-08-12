@@ -65,9 +65,12 @@
             </div>
             <div class="row">
                 <div class="col p-3 mb-3" style="font-size: 20px;line-height: 21px;font-weight: 500;">
-                    @foreach (var item in Type)
+                    @if (Type is not null)
                     {
-                        <span style="color: grey;">@item&nbsp;</span>
+                        @foreach (var item in Type)
+                        {
+                            <span style="color: grey;">@item&nbsp;</span>
+                        }
                     }
                 </div>
             </div>

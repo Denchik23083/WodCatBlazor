@@ -59,10 +59,6 @@ namespace WodCatClone.Tests
             var hall = context.Halls.FirstOrDefault(b => b.Id == id);
             Assert.NotNull(hall);
 
-            hall.Type = hall.Type.Trim().Replace("\r", string.Empty);
-            hall.Type = hall.Type.Trim().Replace("\n", string.Empty);
-            hall.Type = hall.Type.Replace(Environment.NewLine, string.Empty);
-
             Assert.Equal(id, hall.Id);
         }
 

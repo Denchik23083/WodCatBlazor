@@ -101,10 +101,15 @@
                 </div>
                 <div class="row">
                     <div class="col mb-2">
-                        <InputText
-                            @bind-Value="Hall.Rating"
-                            class="selectedFormResult mb-2"
-                            placeholder="Рейтинг от 1 до 10"/>
+                        <select class="selectedFormResult mb-2" @bind="Hall.Rating">
+                            <option value="None">Рейтинг</option>
+                            @foreach (var item in HallRating)
+                            {
+                                <option value="@item.Value">
+                                    @item.Content
+                                </option>
+                            }
+                        </select>
                     </div>
                 </div>
                 <div class="row">
