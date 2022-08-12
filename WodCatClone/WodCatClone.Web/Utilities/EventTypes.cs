@@ -1,6 +1,6 @@
-﻿namespace WodCatClone.Web.Helpers
+﻿namespace WodCatClone.Web.Utilities
 {
-    public class ArticleTypes
+    public class EventTypes
     {
         public string Content { get; set; }
 

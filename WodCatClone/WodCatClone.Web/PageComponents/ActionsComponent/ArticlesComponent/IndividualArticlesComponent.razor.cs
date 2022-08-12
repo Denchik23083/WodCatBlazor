@@ -26,7 +26,10 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
             {
                 Image = ArticlesService.GetImage(Article.ArticleEmblemId);
             }
-            ArticleType = Article.Type.Split(",");
+            if (Article.Type is not null)
+            {
+                ArticleType = Article.Type.Split(",");
+            }
         }
         protected override void OnParametersSet()
         {
@@ -36,7 +39,10 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
             {
                 Image = ArticlesService.GetImage(Article.ArticleEmblemId);
             }
-            ArticleType = Article.Type.Split(",");
+            if (Article.Type is not null)
+            {
+                ArticleType = Article.Type.Split(",");
+            }
         }
     }
 }

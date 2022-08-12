@@ -1,4 +1,4 @@
-﻿namespace WodCatClone.Web.Helpers
+﻿namespace WodCatClone.Web.Utilities
 {
     public class FilterPrograms
     {

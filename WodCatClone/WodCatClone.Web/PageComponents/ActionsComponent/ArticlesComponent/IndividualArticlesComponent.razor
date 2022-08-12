@@ -20,17 +20,20 @@
             @Article.Description
         </div>
     </div>
-    <div class="row p-3">
-        <div class="col">
-            @foreach (var item in ArticleType)
-            {
-                <span class="articlesType">@item</span>
-                @if (Value < ArticleType.Length - 1)
+    @if (ArticleType is not null)
+    {
+        <div class="row p-3">
+            <div class="col">
+                @foreach (var item in ArticleType)
                 {
-                    <span class="articlesType">&nbsp;|&nbsp;</span>
-                    Value++;
+                    <span class="articlesType">@item</span>
+                    @if (Value < ArticleType.Length - 1)
+                    {
+                        <span class="articlesType">&nbsp;|&nbsp;</span>
+                        Value++;
+                    }
                 }
-            }
+            </div>
         </div>
-    </div>
+    }
 </div>

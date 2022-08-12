@@ -4,7 +4,7 @@ using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.ActionsService.HallsService;
 using WodCatClone.Logic.UserService;
-using WodCatClone.Web.Helpers;
+using WodCatClone.Web.Utilities;
 
 namespace WodCatClone.Web.PageComponents.ProfileComponent
 {

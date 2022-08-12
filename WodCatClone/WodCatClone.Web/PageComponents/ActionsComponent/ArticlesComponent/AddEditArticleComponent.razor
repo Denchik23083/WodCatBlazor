@@ -80,10 +80,15 @@
                 </div>
                 <div class="row">
                     <div class="col mb-2">
-                        <InputText
-                            @bind-Value="Article.Rating"
-                            class="selectedFormResult mb-2"
-                            placeholder="Рейтинг от 1 до 10"/>
+                        <select class="selectedFormResult mb-2" @bind="Article.Rating">
+                            <option value="None">Рейтинг</option>
+                            @foreach (var item in ArticleRating)
+                            {
+                                <option value="@item.Value">
+                                    @item.Content
+                                </option>
+                            }
+                        </select>
                     </div>
                 </div>
                 <div class="row">

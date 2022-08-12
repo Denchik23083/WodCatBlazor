@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Components;
-using WodCatClone.Web.Helpers;
+using WodCatClone.Web.Utilities;
 
 namespace WodCatClone.Web.PageComponents.HeaderComponent
 {

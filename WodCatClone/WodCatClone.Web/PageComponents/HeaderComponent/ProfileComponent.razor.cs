@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.UserService;
-using WodCatClone.Web.Helpers;
+using WodCatClone.Web.Utilities;
 
 namespace WodCatClone.Web.PageComponents.HeaderComponent
 {

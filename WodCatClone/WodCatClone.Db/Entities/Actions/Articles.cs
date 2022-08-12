@@ -10,8 +10,10 @@ namespace WodCatClone.Db.Entities.Actions
         [Required]
         public string Name { get; set; }
 
+        [Required]
         public string Description { get; set; }
 
+        [Required]
         public string FullDescription { get; set; }
         
         public string Type { get; set; }

@@ -3,7 +3,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.ProgramsService;
-using WodCatClone.Web.Helpers;
+using WodCatClone.Web.Utilities;
 
 namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
 {
