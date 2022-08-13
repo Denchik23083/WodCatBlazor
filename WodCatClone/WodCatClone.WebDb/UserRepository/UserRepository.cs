@@ -23,8 +23,14 @@ namespace WodCatClone.WebDb.UserRepository
         public User GetUser(User user)
         {
             User = user;
-            
-            return User;
+
+            if (User is null)
+            {
+                return User;
+            }
+
+            var getUser = _context.Users.FirstOrDefault(b => b.Id == User.Id);
+            return getUser;
         }
 
         public User GetUser(int? id)
