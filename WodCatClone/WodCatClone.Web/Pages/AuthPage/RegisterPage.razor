@@ -73,8 +73,21 @@
                             for="woman"
                             style="color: lightgrey">Женщина</label>
                     </div>
+                    <div class="row">
+                        <div class="col mb-2">
+                            <select class="selectedFormResult mb-2" @onchange="TownValue">
+                                <option value="None">Город</option>
+                                @foreach (var item in Town)
+                                {
+                                    <option value="@item.Value">
+                                        @item.Content
+                                    </option>
+                                }
+                            </select>
+                        </div>
+                    </div>
 
-                    @if (Man || Woman)
+                    @if (Man || Woman && IsDisplaySubmitButton)
                     {
                         <button class="mb-2 authButton" type="submit">Регистрация</button>
                     }

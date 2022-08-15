@@ -50,7 +50,8 @@ namespace WodCatClone.WebDb.AuthRepository
                 Email = model.Email,
                 Password = model.Password,
                 Birthday = model.Birthday,
-                GenderId = model.GenderId
+                GenderId = model.GenderId,
+                Town = model.Town
             };
         }
     }

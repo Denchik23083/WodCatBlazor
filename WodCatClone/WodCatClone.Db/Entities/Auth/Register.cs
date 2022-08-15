@@ -28,5 +28,8 @@ namespace WodCatClone.Db.Entities.Auth
 
         [Required]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        public string Town { get; set; }
     }
 }
