@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
@@ -48,6 +49,8 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
         public bool IsTown { get; set; } = false;
 
         public bool IsFallEvent { get; set; }
+
+        public bool IsFallNow { get; set; }
 
         public string Image = "None";
 
@@ -113,32 +116,44 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
         {
             if (Add)
             {
-                if (Event.RegisterDate < Event.StartDate && Event.StartDate < Event.EndDate)
+                if (Event.RegisterDate > DateTime.Now && Event.StartDate > DateTime.Now && Event.EndDate > DateTime.Now)
                 {
-                    IsFallEvent = false;
-
-                    var result = EventsService.AddEvent(Event);
-
-                    NavigationManager.NavigateTo(result ? "/events" : "/events/add");
+                    IsFallNow = false;
+                    if (Event.RegisterDate < Event.StartDate && Event.StartDate < Event.EndDate)
+                    {
+                        IsFallEvent = false;
+                        var result = EventsService.AddEvent(Event);
+                        NavigationManager.NavigateTo(result ? "/events" : "/events/add");
+                    }
+                    else
+                    {
+                        IsFallEvent = true;
+                    }
                 }
                 else
                 {
-                    IsFallEvent = true;
+                    IsFallNow = true;
                 }
             }
             if (Edit)
             {
-                if (Event.RegisterDate < Event.StartDate && Event.StartDate < Event.EndDate)
+                if (Event.RegisterDate > DateTime.Now && Event.StartDate > DateTime.Now && Event.EndDate > DateTime.Now)
                 {
-                    IsFallEvent = false;
-
-                    var result = EventsService.EditEvent(Event, EventId);
-
-                    NavigationManager.NavigateTo(result ? $"/events/{EventId}" : $"/events/{Event}/edit");
+                    IsFallNow = false;
+                    if (Event.RegisterDate < Event.StartDate && Event.StartDate < Event.EndDate)
+                    {
+                        IsFallEvent = false;
+                        var result = EventsService.EditEvent(Event, EventId);
+                        NavigationManager.NavigateTo(result ? $"/events/{EventId}" : $"/events/{Event}/edit");
+                    }
+                    else
+                    {
+                        IsFallEvent = true;
+                    }
                 }
                 else
                 {
-                    IsFallEvent = true;
+                    IsFallNow = true;
                 }
             }
         }

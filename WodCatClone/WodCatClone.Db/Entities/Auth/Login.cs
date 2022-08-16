@@ -7,6 +7,7 @@ namespace WodCatClone.Db.Entities.Auth
         public int Id { get; set; }
 
         [Required]
+        [EmailAddress(ErrorMessage = "Email format is not right")]
         public string Email { get; set; }
 
         [Required]
