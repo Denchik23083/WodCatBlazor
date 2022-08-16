@@ -47,6 +47,8 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         public bool IsTown { get; set; } = false;
 
+        public bool IsFallEvent { get; set; }
+
         public string Image = "None";
 
         public string HallImage = "None";
@@ -111,15 +113,33 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
         {
             if (Add)
             {
-                var result = EventsService.AddEvent(Event);
+                if (Event.RegisterDate < Event.StartDate && Event.StartDate < Event.EndDate)
+                {
+                    IsFallEvent = false;
 
-                NavigationManager.NavigateTo(result ? "/events" : "/events/add");
+                    var result = EventsService.AddEvent(Event);
+
+                    NavigationManager.NavigateTo(result ? "/events" : "/events/add");
+                }
+                else
+                {
+                    IsFallEvent = true;
+                }
             }
             if (Edit)
             {
-                var result = EventsService.EditEvent(Event, EventId);
+                if (Event.RegisterDate < Event.StartDate && Event.StartDate < Event.EndDate)
+                {
+                    IsFallEvent = false;
 
-                NavigationManager.NavigateTo(result ? $"/events/{EventId}" : $"/events/{Event}/edit");
+                    var result = EventsService.EditEvent(Event, EventId);
+
+                    NavigationManager.NavigateTo(result ? $"/events/{EventId}" : $"/events/{Event}/edit");
+                }
+                else
+                {
+                    IsFallEvent = true;
+                }
             }
         }
 

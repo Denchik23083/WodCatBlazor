@@ -77,6 +77,17 @@
             <EditForm Model="Event" OnValidSubmit="Submit">
                 <DataAnnotationsValidator />
                 <ValidationSummary />
+                @if (IsFallEvent)
+                {
+                    <div class="row">
+                        <div class="col mb-2">
+                            <div class="text-danger">
+                                Register Date later than Start Date
+                                or Start Date later than End date
+                            </div>
+                        </div>
+                    </div>
+                }
                 <div class="row">
                     <div class="col mb-2">
                         <InputText
