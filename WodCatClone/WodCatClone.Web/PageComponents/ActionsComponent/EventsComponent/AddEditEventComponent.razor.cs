@@ -58,6 +58,12 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         public string WorkoutImage = "None";
 
+        public DateTime StartTime { get; set; }
+
+        public DateTime EndTime { get; set; }
+
+        public DateTime RegisterTime { get; set; }
+
         public List<FilterEvents> Town = new()
         {
             new() { Content = "Херсон", Filter = "Херсон" },
@@ -116,6 +122,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
         {
             if (Add)
             {
+                FillTimeDate();
                 if (Event.RegisterDate > DateTime.Now && Event.StartDate > DateTime.Now && Event.EndDate > DateTime.Now)
                 {
                     IsFallNow = false;
@@ -137,6 +144,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             }
             if (Edit)
             {
+                FillTimeDate();
                 if (Event.RegisterDate > DateTime.Now && Event.StartDate > DateTime.Now && Event.EndDate > DateTime.Now)
                 {
                     IsFallNow = false;
@@ -156,6 +164,16 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
                     IsFallNow = true;
                 }
             }
+        }
+
+        public void FillTimeDate()
+        {
+            var startTime = new TimeSpan(StartTime.Hour, StartTime.Minute, StartTime.Second);
+            Event.StartDate = Event.StartDate.Add(startTime);
+            var endTime = new TimeSpan(EndTime.Hour, EndTime.Minute, EndTime.Second);
+            Event.EndDate = Event.EndDate.Add(endTime);
+            var registerTime = new TimeSpan(RegisterTime.Hour, RegisterTime.Minute, RegisterTime.Second);
+            Event.RegisterDate = Event.RegisterDate.Add(registerTime);
         }
 
         public void SelectedImage(ChangeEventArgs e)

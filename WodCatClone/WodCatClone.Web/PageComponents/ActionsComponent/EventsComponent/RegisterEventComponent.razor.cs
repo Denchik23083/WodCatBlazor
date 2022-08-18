@@ -50,9 +50,9 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             StartDate = Event.StartDate.ToString("dd MMMM yyyy");
             EndDate = Event.EndDate.ToString("dd MMMM yyyy");
             RegisterDate = Event.RegisterDate.ToString("dd MMMM yyyy");
-            StartTime = Event.StartDate.ToString("t");
-            EndTime = Event.EndDate.ToString("t");
-            RegisterTime = Event.RegisterDate.ToString("t");
+            StartTime = Event.StartDate.ToString("T");
+            EndTime = Event.EndDate.ToString("T");
+            RegisterTime = Event.RegisterDate.ToString("T");
             Image = EventsService.GetImage(Event.EventsEmblemId);
             Hall = HallsService.GetHall(Event.HallId);
             HallEmblem = HallsService.GetImage(Hall.EmblemHallId);
@@ -65,9 +65,9 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             StartDate = Event.StartDate.ToString("dd MMMM yyyy");
             EndDate = Event.EndDate.ToString("dd MMMM yyyy");
             RegisterDate = Event.RegisterDate.ToString("dd MMMM yyyy");
-            StartTime = Event.StartDate.ToString("t");
-            EndTime = Event.EndDate.ToString("t");
-            RegisterTime = Event.RegisterDate.ToString("t");
+            StartTime = Event.StartDate.ToString("T");
+            EndTime = Event.EndDate.ToString("T");
+            RegisterTime = Event.RegisterDate.ToString("T");
             Image = EventsService.GetImage(Event.EventsEmblemId);
             Hall = HallsService.GetHall(Event.HallId);
             HallEmblem = HallsService.GetImage(Hall.EmblemHallId);
