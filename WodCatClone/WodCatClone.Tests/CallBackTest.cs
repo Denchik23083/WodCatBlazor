@@ -11,7 +11,7 @@ namespace WodCatClone.Tests
         {
             var context = new TestsWodCatCloneContext();
             
-            var expectedQuestions = 6;
+            var expectedQuestions = 10;
             var questions = context.Question;
             
             Assert.NotNull(questions);

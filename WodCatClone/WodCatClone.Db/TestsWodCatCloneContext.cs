@@ -15,12 +15,28 @@ namespace WodCatClone.Db
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Answer>().ToTable("Answer").HasData(
-                new Answer { Id = 1, Name = "Зарегестрироваться" },
+                new Answer { Id = 1, Name = "Зарегестрироваться и заполнить форму" },
                 new Answer { Id = 2, Name = "Зайти в залы и присоединиться" },
-                new Answer { Id = 3, Name = "Баллы дают за создание нового зала и добовление результата о тренировке" },
-                new Answer { Id = 4, Name = "Заробатывать баллы" },
+                new Answer { Id = 3, Name = "Баллы дают за создание нового зала, новой статьи, добавление результата о тренировке, за прохождении программы и мероприятия" },
+                new Answer { Id = 4, Name = "Зарабатывать баллы" },
                 new Answer { Id = 5, Name = "Только те, которые создал?" },
-                new Answer { Id = 6, Name = "Зайти на тренировку и нажать старт и еще раз старт" });
+                new Answer { Id = 6, Name = "Зайти на тренировку и нажать старт и еще раз старт" },
+                new Answer { Id = 7, Name = "Да" },
+                new Answer { Id = 8, Name = "Каждый день будет переключатся на следуйщюю тренировку, пока тренировки в этой программе не закончатся. После вам добавят 50 очков" },
+                new Answer { Id = 9, Name = "Нет" },
+                new Answer { Id = 10, Name = "Регестрируйтеся на мероприятие, потом проходите задание и вводите ваше время. Лучшие 3 участрика получат баллы" });
+
+            modelBuilder.Entity<Question>().ToTable("Question").HasData(
+                new Question { Id = 1, Name = "Как добавить результат о тренировке?", AnswerId = 1 },
+                new Question { Id = 2, Name = "Как получить баллы?", AnswerId = 3 },
+                new Question { Id = 3, Name = "Как присоединиться к залу?", AnswerId = 2 },
+                new Question { Id = 4, Name = "Как поднятся в рейтинге игроков?", AnswerId = 4 },
+                new Question { Id = 5, Name = "Какие залы можно редактировать и удалять?", AnswerId = 5 },
+                new Question { Id = 6, Name = "Как начать тренировку?", AnswerId = 6 },
+                new Question { Id = 7, Name = "Можно ли редактировать или удалить результат тренировки?", AnswerId = 7 },
+                new Question { Id = 8, Name = "Зачем нужна программа тренировок?", AnswerId = 8 },
+                new Question { Id = 9, Name = "Можно ли редактировать или удалить программу тренировок, тренировку или упражнения?", AnswerId = 9 },
+                new Question { Id = 10, Name = "Как получить быллы за мероприятие?", AnswerId = 10 });
 
             modelBuilder.Entity<Gender>().ToTable("Gender").HasData(
                 new Gender { Id = 1, Name = "Мужской", Image = "img/man.png" },
@@ -53,14 +69,6 @@ namespace WodCatClone.Db
                 new EventEmblem { Id = 3, Name = "Lime", Image = "img/EmblemEvents/lime.jpg" },
                 new EventEmblem { Id = 4, Name = "Run", Image = "img/EmblemEvents/run.jpg" },
                 new EventEmblem { Id = 5, Name = "Sport", Image = "img/EmblemEvents/sport.jpg" });
-
-            modelBuilder.Entity<Question>().ToTable("Question").HasData(
-                new Question { Id = 1, Name = "Как добавить результат о тренировке?", AnswerId = 1 },
-                new Question { Id = 2, Name = "Как получить баллы?", AnswerId = 3 },
-                new Question { Id = 3, Name = "Как присоединиться к залу?", AnswerId = 2 },
-                new Question { Id = 4, Name = "Как поднятся в рейтинге игроков?", AnswerId = 4 },
-                new Question { Id = 5, Name = "Какие залы можно редактировать и удалять?", AnswerId = 5 },
-                new Question { Id = 6, Name = "Как начать тренировку?", AnswerId = 6 });
 
             modelBuilder.Entity<Articles>().ToTable("Articles").HasData(
                 new Articles
@@ -764,6 +772,8 @@ namespace WodCatClone.Db
                     Weight = "70",
                     AboutMe = "I am a developer C#",
                     GenderId = 1,
+                    ProgramId = 2,
+                    HallId = 2
                 });
 
             modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
