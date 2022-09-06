@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.CallBack;
 using WodCatClone.Logic.CallBackService;
@@ -13,14 +14,14 @@ namespace WodCatClone.Web.Pages.MorePage
 
         public Answer Answer { get; set; }
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
-            Questions = CallBackService.GetAllQuestions();
+            Questions = await CallBackService.GetAllQuestions();
         }
 
-        public void GetAnswer(int id)
+        public async Task GetAnswer(int id)
         {
-            Answer = CallBackService.GetAnswer(id);
+            Answer = await CallBackService.GetAnswer(id);
         }
     }
 }
