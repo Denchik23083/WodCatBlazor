@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.AuthService;
 
@@ -14,9 +15,9 @@ namespace WodCatClone.Web.Pages.AuthPage
 
         public bool IsFallLogin { get; set; }
 
-        public void Login()
+        public async Task Login()
         {
-            var result = AuthService.Login(MainLogin);
+            var result = await AuthService.Login(MainLogin);
             if (result)
             {
                 IsFallLogin = false;

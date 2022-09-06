@@ -1,4 +1,5 @@
-﻿using WodCatClone.Db.Entities.Auth;
+﻿using System.Threading.Tasks;
+using WodCatClone.Db.Entities.Auth;
 using WodCatClone.WebDb.AuthRepository;
 
 namespace WodCatClone.Logic.AuthService
@@ -14,9 +15,9 @@ namespace WodCatClone.Logic.AuthService
             _repository = repository;
         }
 
-        public bool Login(Login login)
+        public async Task<bool> Login(Login login)
         {
-            var user = _repository.Login(login);
+            var user = await _repository.Login(login);
 
             if (user is null)
             {
@@ -29,9 +30,9 @@ namespace WodCatClone.Logic.AuthService
             return true;
         }
 
-        public bool Register(Register register)
+        public async Task<bool> Register(Register register)
         {
-            return _repository.Register(register);
+            return await _repository.Register(register);
         }
 
         public bool Logout()

@@ -1,4 +1,6 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using WodCatClone.Db;
 using WodCatClone.Db.Entities.Auth;
 
@@ -13,17 +15,17 @@ namespace WodCatClone.WebDb.AuthRepository
             _context = context;
         }
 
-        public User Login(Login login)
+        public async Task<User> Login(Login login)
         {
-            var user = _context.Users.FirstOrDefault(l => l.Email == login.Email &&
+            var user = await _context.Users.FirstOrDefaultAsync(l => l.Email == login.Email &&
                                                           l.Password == login.Password);
 
             return user;
         }
 
-        public bool Register(Register register)
+        public async Task<bool> Register(Register register)
         {
-            var allUsers = _context.Users;
+            var allUsers = await _context.Users.ToListAsync();
             var registerUser = Map(register);
 
             if (allUsers.Any(b => b.Email == registerUser.Email) 
@@ -34,8 +36,8 @@ namespace WodCatClone.WebDb.AuthRepository
 
             registerUser.Country = "Ukraine";
 
-            _context.Users.Add(registerUser);
-            _context.SaveChanges();
+            await _context.Users.AddAsync(registerUser);
+            await _context.SaveChangesAsync();
 
             return true;
         }
