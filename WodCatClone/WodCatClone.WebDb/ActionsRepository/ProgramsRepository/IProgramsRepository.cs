@@ -24,6 +24,6 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
 
         bool StopProgram(int id, User user, bool isFinish);
 
-        int Subscribers(IEnumerable<User> users, int programId);
+        int Subscribers(int programId);
     }
 }

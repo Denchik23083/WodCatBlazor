@@ -28,6 +28,6 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
 
         bool ExitHall(int hallId, User user);
 
-        int Athlete(IEnumerable<User> users, int hallId);
+        int Athlete(int hallId);
     }
 }

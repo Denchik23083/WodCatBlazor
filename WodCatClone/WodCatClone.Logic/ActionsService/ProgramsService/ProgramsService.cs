@@ -9,12 +9,10 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
     public class ProgramsService : IProgramsService
     {
         private readonly IProgramsRepository _repository;
-        private readonly IUserRepository _userRepository;
 
-        public ProgramsService(IProgramsRepository repository, IUserRepository userRepository)
+        public ProgramsService(IProgramsRepository repository)
         {
             _repository = repository;
-            _userRepository = userRepository;
         }
 
         public IEnumerable<Programs> GetAllPrograms()
@@ -49,9 +47,7 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
 
         public string GetImage(int? programsEmblemId)
         {
-            var program = _repository.GetImage(programsEmblemId);
-
-            return program.Image;
+            return _repository.GetImage(programsEmblemId)?.Image;
         }
 
         public bool BeginProgram(int id, User user)
@@ -70,8 +66,7 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
 
         public int Subscribers(int programId)
         {
-            var users = _userRepository.GetAllUsers();
-            return _repository.Subscribers(users, programId);
+            return _repository.Subscribers(programId);
         }
     }
 }

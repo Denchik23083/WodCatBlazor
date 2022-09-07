@@ -10,12 +10,10 @@ namespace WodCatClone.Logic.ActionsService.HallsService
     public class HallsService : IHallsService
     {
         private readonly IHallsRepository _repository;
-        private readonly IUserRepository _userRepository;
 
-        public HallsService(IHallsRepository repository, IUserRepository userRepository)
+        public HallsService(IHallsRepository repository)
         {
             _repository = repository;
-            _userRepository = userRepository;
         }
 
         public IEnumerable<Halls> GetAllHalls()
@@ -35,9 +33,7 @@ namespace WodCatClone.Logic.ActionsService.HallsService
 
         public Halls GetHall(int hallId)
         {
-            var hall = _repository.GetHall(hallId);
-
-            return hall;
+            return _repository.GetHall(hallId);
         }
 
         public Halls GetHall(int? hallId)
@@ -47,9 +43,7 @@ namespace WodCatClone.Logic.ActionsService.HallsService
 
         public string GetImage(int? imageId)
         {
-            var hallEmblem = _repository.GetImage(imageId);
-
-            return hallEmblem?.Image;
+            return _repository.GetImage(imageId)?.Image;
         }
 
         public bool AddHall(Halls hall)
@@ -83,8 +77,7 @@ namespace WodCatClone.Logic.ActionsService.HallsService
 
         public int Athlete(int hallId)
         {
-            var users = _userRepository.GetAllUsers();
-            return _repository.Athlete(users, hallId);
+            return _repository.Athlete(hallId);
         }
     }
 }

@@ -30,9 +30,7 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
 
         public string GetImage(int? articleId)
         {
-            var article = _repository.GetImage(articleId);
-
-            return article.Image;
+            return _repository.GetImage(articleId).Image;
         }
 
         public bool AddArticle(Articles article)
