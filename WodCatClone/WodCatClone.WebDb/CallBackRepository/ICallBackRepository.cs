@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using WodCatClone.Db.Entities.CallBack;
 
 namespace WodCatClone.WebDb.CallBackRepository
 {
     public interface ICallBackRepository
     {
-        IEnumerable<Question> GetAllQuestions();
+        Task<IEnumerable<Question>> GetAllQuestions();
 
-        Answer GetAnswer(int id);
+        Task<Answer> GetAnswer(int id);
     }
 }

@@ -1,12 +1,13 @@
-﻿using WodCatClone.Db.Entities.Auth;
+﻿using System.Threading.Tasks;
+using WodCatClone.Db.Entities.Auth;
 
 namespace WodCatClone.Logic.AuthService
 {
     public interface IAuthService
     {
-        bool Login(Login login);
+        Task<bool> Login(Login login);
 
-        bool Register(Register register);
+        Task<bool> Register(Register register);
 
         bool Logout();
     }
