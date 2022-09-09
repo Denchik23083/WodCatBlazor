@@ -13,16 +13,13 @@
             <h1 class="text-light" style="font-size: 30px;">Ответы на вопросы</h1>
         </div>
     </div>
-    @if (Questions is not null)
+    @foreach (var item in Questions)
     {
-        @foreach (var item in Questions)
-        {
-            <div class="row">
-                <div class="col question mr-3 ml-3" @onclick="() => GetAnswer(item.AnswerId)">
-                    @item.Name
-                </div>
+        <div class="row">
+            <div class="col question mr-3 ml-3" @onclick="() => GetAnswer(item.AnswerId)">
+                @item.Name
             </div>
-        }
+        </div>
     }
     @if (Answer is not null)
     {

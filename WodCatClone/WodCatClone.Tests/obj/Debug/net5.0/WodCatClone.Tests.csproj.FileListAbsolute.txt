@@ -1,19 +1,10 @@
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Tests\bin\Debug\net5.0\CoverletSourceRootsMapping
-<<<<<<< HEAD
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Tests\bin\Debug\net5.0\testhost.exe
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Tests\bin\Debug\net5.0\testhost.dll
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Tests\bin\Debug\net5.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Tests\bin\Debug\net5.0\xunit.runner.reporters.netcoreapp10.dll
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Tests\bin\Debug\net5.0\xunit.runner.utility.netcoreapp10.dll
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Tests\bin\Debug\net5.0\Microsoft.TestPlatform.PlatformAbstractions.dll
-=======
-C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Tests\bin\Debug\net5.0\testhost.dll
-C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Tests\bin\Debug\net5.0\testhost.exe
-C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Tests\bin\Debug\net5.0\Microsoft.TestPlatform.PlatformAbstractions.dll
-C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Tests\bin\Debug\net5.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll
-C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Tests\bin\Debug\net5.0\xunit.runner.reporters.netcoreapp10.dll
-C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Tests\bin\Debug\net5.0\xunit.runner.utility.netcoreapp10.dll
->>>>>>> main
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Tests\bin\Debug\net5.0\WodCatClone.Tests.deps.json
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Tests\bin\Debug\net5.0\WodCatClone.Tests.runtimeconfig.json
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Tests\bin\Debug\net5.0\WodCatClone.Tests.runtimeconfig.dev.json

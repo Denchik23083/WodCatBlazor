@@ -10,7 +10,7 @@ using WodCatClone.Db;
 namespace WodCatClone.Db.Migrations
 {
     [DbContext(typeof(WodCatCloneContext))]
-    [Migration("20220909112410_init")]
+    [Migration("20220909114457_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

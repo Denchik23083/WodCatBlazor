@@ -151,9 +151,11 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
             return true;
         }
 
-        public int Athlete(int hallId)
+        public int Athlete(IEnumerable<User> users, int hallId)
         {
-            return _context.Users.Count(b => b.HallId == hallId);
+            var hallUsers = users.Count(b => b.HallId == hallId);
+
+            return hallUsers;
         }
     }
 }

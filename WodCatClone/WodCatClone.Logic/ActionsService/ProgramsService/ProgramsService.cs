@@ -2,16 +2,19 @@
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.WebDb.ActionsRepository.ProgramsRepository;
+using WodCatClone.WebDb.UserRepository;
 
 namespace WodCatClone.Logic.ActionsService.ProgramsService
 {
     public class ProgramsService : IProgramsService
     {
         private readonly IProgramsRepository _repository;
+        private readonly IUserRepository _userRepository;
 
-        public ProgramsService(IProgramsRepository repository)
+        public ProgramsService(IProgramsRepository repository, IUserRepository userRepository)
         {
             _repository = repository;
+            _userRepository = userRepository;
         }
 
         public IEnumerable<Programs> GetAllPrograms()
@@ -46,7 +49,9 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
 
         public string GetImage(int? programsEmblemId)
         {
-            return _repository.GetImage(programsEmblemId)?.Image;
+            var program = _repository.GetImage(programsEmblemId);
+
+            return program.Image;
         }
 
         public bool BeginProgram(int id, User user)
@@ -65,7 +70,8 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
 
         public int Subscribers(int programId)
         {
-            return _repository.Subscribers(programId);
+            var users = _userRepository.GetAllUsers();
+            return _repository.Subscribers(users, programId);
         }
     }
 }

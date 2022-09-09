@@ -112,9 +112,11 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
             return true;
         }
 
-        public int Subscribers(int programId)
+        public int Subscribers(IEnumerable<User> users, int programId)
         {
-            return _context.Users.Count(b => b.ProgramId == programId);
+            var programUsers = users.Count(b => b.ProgramId == programId);
+
+            return programUsers;
         }
     }
 }

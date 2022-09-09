@@ -10,7 +10,7 @@ using WodCatClone.Db;
 namespace WodCatClone.Db.Migrations.TestsWodCatClone
 {
     [DbContext(typeof(TestsWodCatCloneContext))]
-    [Migration("20220909112440_init")]
+    [Migration("20220909114505_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -746,7 +746,7 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                         new
                         {
                             Id = 1,
-                            BeginProgramDate = new DateTime(2022, 9, 9, 14, 24, 39, 447, DateTimeKind.Local).AddTicks(408),
+                            BeginProgramDate = new DateTime(2022, 9, 9, 14, 45, 4, 855, DateTimeKind.Local).AddTicks(6752),
                             ProgramsId = 1,
                             UserId = 1
                         });

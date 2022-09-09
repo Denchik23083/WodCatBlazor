@@ -46,7 +46,9 @@ namespace WodCatClone.Logic.ActionsService.EventsService
 
         public string GetImage(int id)
         {
-            return _repository.GetImage(id).Image;
+            var eventEmblem = _repository.GetImage(id);
+
+            return eventEmblem.Image;
         }
 
         public bool AddEvent(Events @event)

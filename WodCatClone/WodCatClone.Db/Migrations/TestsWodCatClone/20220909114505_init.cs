@@ -635,7 +635,7 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
             migrationBuilder.InsertData(
                 table: "ProgramTimeUser",
                 columns: new[] { "Id", "BeginProgramDate", "ProgramsId", "UserId" },
-                values: new object[] { 1, new DateTime(2022, 9, 9, 14, 24, 39, 447, DateTimeKind.Local).AddTicks(408), 1, 1 });
+                values: new object[] { 1, new DateTime(2022, 9, 9, 14, 45, 4, 855, DateTimeKind.Local).AddTicks(6752), 1, 1 });
 
             migrationBuilder.InsertData(
                 table: "ProgramsWorkouts",

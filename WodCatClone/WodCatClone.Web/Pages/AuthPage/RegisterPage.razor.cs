@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.AuthService;
@@ -43,7 +42,7 @@ namespace WodCatClone.Web.Pages.AuthPage
             new() { Content = "Львов", Value = "Львов" },
         };
 
-        public async Task Register()
+        public void Register()
         {
             if (MainRegister.Password == MainRegister.ConfirmPassword)
             {
@@ -59,7 +58,7 @@ namespace WodCatClone.Web.Pages.AuthPage
                 var gender = UserService.GetGender(Gender);
                 MainRegister.GenderId = gender.Id;
 
-                var result = await AuthService.Register(MainRegister);
+                var result = AuthService.Register(MainRegister);
                 if (result)
                 {
                     NavigationManager.NavigateTo("/login");

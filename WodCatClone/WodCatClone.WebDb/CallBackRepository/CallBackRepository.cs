@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using WodCatClone.Db;
 using WodCatClone.Db.Entities.CallBack;
 
@@ -16,14 +14,14 @@ namespace WodCatClone.WebDb.CallBackRepository
             _context = context;
         }
 
-        public async Task<IEnumerable<Question>> GetAllQuestions()
+        public IEnumerable<Question> GetAllQuestions()
         {
-            return await _context.Question.ToListAsync();
+            return _context.Question;
         }
 
-        public async Task<Answer> GetAnswer(int id)
+        public Answer GetAnswer(int id)
         {
-            return await _context.Answer.FirstOrDefaultAsync(b => b.Id == id);
+            return _context.Answer.FirstOrDefault(b => b.Id == id);
         }
     }
 }
