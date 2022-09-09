@@ -1,17 +1,18 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using WodCatClone.Db.Entities.Actions;
 
 namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
 {
     public interface IArticlesRepository
     {
-        IEnumerable<Articles> GetAllArticles();
+        Task<IEnumerable<Articles>> GetAllArticles();
 
         IEnumerable<ArticleEmblem> GetAllArticleEmblem();
 
         Articles GetArticle(int id);
 
-        ArticleEmblem GetImage(int? articleId);
+        Task<ArticleEmblem> GetImage(int? articleId);
 
         bool AddArticle(Articles article);
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.ArticlesService;
 
@@ -18,26 +19,26 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
 
         public string Url = string.Empty;
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
             Value = 0;
             Url = $"articles/{Article.Id}";
             if (Article.ArticleEmblemId is not null)
             {
-                Image = ArticlesService.GetImage(Article.ArticleEmblemId);
+                Image = await ArticlesService.GetImage(Article.ArticleEmblemId);
             }
             if (Article.Type is not null)
             {
                 ArticleType = Article.Type.Split(",");
             }
         }
-        protected override void OnParametersSet()
+        protected override async Task OnParametersSetAsync()
         {
             Value = 0;
             Url = $"articles/{Article.Id}";
             if (Article.ArticleEmblemId is not null)
             {
-                Image = ArticlesService.GetImage(Article.ArticleEmblemId);
+                Image = await ArticlesService.GetImage(Article.ArticleEmblemId);
             }
             if (Article.Type is not null)
             {

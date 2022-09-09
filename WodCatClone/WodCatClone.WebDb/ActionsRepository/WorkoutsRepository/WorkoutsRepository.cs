@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using WodCatClone.Db;
 using WodCatClone.Db.Entities.Actions;
 
@@ -14,9 +16,9 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
             _context = context;
         }
 
-        public IEnumerable<Workouts> GetAllWorkouts()
+        public async Task<IEnumerable<Workouts>> GetAllWorkouts()
         {
-            return _context.Workouts;
+            return await _context.Workouts.ToListAsync();
         }
 
         public IEnumerable<WorkoutsExercises> GetAllWorkoutsExercises(int id)

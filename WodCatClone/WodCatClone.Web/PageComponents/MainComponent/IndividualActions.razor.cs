@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.ArticlesService;
 using WodCatClone.Logic.ActionsService.ExercisesService;
@@ -40,28 +41,29 @@ namespace WodCatClone.Web.PageComponents.MainComponent
 
         public string ArticleImage { get; set; }
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
             if (Program is not null && Program.ProgramsEmblemId is not null)
             {
-                ProgramImage = ProgramsService.GetImage(Program.ProgramsEmblemId);
+                ProgramImage = await ProgramsService.GetImage(Program.ProgramsEmblemId);
             }
             if (Workout is not null && Workout.HallId is not null)
             {
-                var hall = HallsService.GetHall(Workout.HallId);
-                WorkoutImage = HallsService.GetImage(hall.EmblemHallId);
+                var hall = await HallsService.GetHall(Workout.HallId);
+                WorkoutImage = await HallsService.GetImage(hall.EmblemHallId);
             }
             if (Exercise is not null)
             {
-                ExerciseImage = ExercisesService.GetExercise(Exercise.Id).Image;
+                var exercise = await ExercisesService.GetExercise(Exercise.Id);
+                ExerciseImage = exercise.Image;
             }
             if (Hall is not null)
             {
-                HallImage = HallsService.GetImage(Hall.EmblemHallId);
+                HallImage = await HallsService.GetImage(Hall.EmblemHallId);
             }
             if (Article is not null && Article.ArticleEmblemId is not null)
             {
-                ArticleImage = ArticlesService.GetImage(Article.ArticleEmblemId);
+                ArticleImage = await ArticlesService.GetImage(Article.ArticleEmblemId);
             }
         }
     }

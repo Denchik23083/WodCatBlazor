@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.WebDb.ActionsRepository.ProgramsRepository;
@@ -17,9 +18,9 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
             _userRepository = userRepository;
         }
 
-        public IEnumerable<Programs> GetAllPrograms()
+        public async Task<IEnumerable<Programs>> GetAllPrograms()
         {
-            return _repository.GetAllPrograms();
+            return await _repository.GetAllPrograms();
         }
 
         public IEnumerable<ProgramsWorkouts> GetAllProgramsWorkouts(int id)
@@ -47,9 +48,9 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
             return _repository.GetProgram(id);
         }
 
-        public string GetImage(int? programsEmblemId)
+        public async Task<string> GetImage(int? programsEmblemId)
         {
-            var program = _repository.GetImage(programsEmblemId);
+            var program = await _repository.GetImage(programsEmblemId);
 
             return program.Image;
         }

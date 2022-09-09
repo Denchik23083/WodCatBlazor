@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.EventsService;
@@ -102,20 +103,20 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             new() { Content = "Тяжелая атлетика", Filter = "Тяжелая атлетика" },
         };
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
             EventEmblem = EventsService.GetAllEventEmblem();
-            Halls = HallsService.GetAllHalls();
+            Halls = await HallsService.GetAllHalls();
             HallEmblem = HallsService.GetAllHallEmblem();
-            Workouts = WorkoutsService.GetAllWorkouts();
+            Workouts = await WorkoutsService.GetAllWorkouts();
         }
 
-        protected override void OnParametersSet()
+        protected override async Task OnParametersSetAsync()
         {
             EventEmblem = EventsService.GetAllEventEmblem();
-            Halls = HallsService.GetAllHalls();
+            Halls = await HallsService.GetAllHalls();
             HallEmblem = HallsService.GetAllHallEmblem();
-            Workouts = WorkoutsService.GetAllWorkouts();
+            Workouts = await WorkoutsService.GetAllWorkouts();
         }
 
         public void Submit()

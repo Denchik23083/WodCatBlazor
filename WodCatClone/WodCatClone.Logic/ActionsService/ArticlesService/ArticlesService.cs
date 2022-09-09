@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.WebDb.ActionsRepository.ArticlesRepository;
 
@@ -13,9 +14,9 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
             _repository = repository;
         }
 
-        public IEnumerable<Articles> GetAllArticles()
+        public async Task<IEnumerable<Articles>> GetAllArticles()
         {
-            return _repository.GetAllArticles();
+            return await _repository.GetAllArticles();
         }
 
         public IEnumerable<ArticleEmblem> GetAllArticleEmblem()
@@ -28,9 +29,9 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
             return _repository.GetArticle(id);
         }
 
-        public string GetImage(int? articleId)
+        public async Task<string> GetImage(int? articleId)
         {
-            var article = _repository.GetImage(articleId);
+            var article = await _repository.GetImage(articleId);
 
             return article.Image;
         }

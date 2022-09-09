@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using WodCatClone.Db;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
@@ -16,9 +18,9 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
             _context = context;
         }
 
-        public IEnumerable<Programs> GetAllPrograms()
+        public async Task<IEnumerable<Programs>> GetAllPrograms()
         {
-            return _context.Programs;
+            return await _context.Programs.ToListAsync();
         }
 
         public IEnumerable<ProgramsWorkouts> GetAllProgramsWorkouts(int id)
@@ -46,9 +48,9 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
             return _context.Programs.FirstOrDefault(b => b.Id == id);
         }
 
-        public ProgramEmblem GetImage(int? programsEmblemId)
+        public async Task<ProgramEmblem> GetImage(int? programsEmblemId)
         {
-            return _context.ProgramEmblem.FirstOrDefault(b => b.Id == programsEmblemId);
+            return await _context.ProgramEmblem.FirstOrDefaultAsync(b => b.Id == programsEmblemId);
         }
 
         public bool BeginProgram(int id, User user)

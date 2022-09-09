@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.ArticlesService;
@@ -31,13 +32,13 @@ namespace WodCatClone.Web.Pages.MainPage
 
         public IEnumerable<Articles> Articles { get; set; }
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
-            Programs = ProgramsService.GetAllPrograms();
-            Workouts = WorkoutsService.GetAllWorkouts();
-            Exercises = ExercisesService.GetAllExercises();
-            Halls = HallsService.GetAllHalls();
-            Articles = ArticlesService.GetAllArticles();
+            Programs = await ProgramsService.GetAllPrograms();
+            Workouts = await WorkoutsService.GetAllWorkouts();
+            Exercises = await ExercisesService.GetAllExercises();
+            Halls = await HallsService.GetAllHalls();
+            Articles = await ArticlesService.GetAllArticles();
         }
     }
 }

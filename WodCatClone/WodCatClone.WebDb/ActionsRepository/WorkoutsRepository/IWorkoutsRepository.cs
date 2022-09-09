@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using WodCatClone.Db.Entities.Actions;
 
 namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
 {
     public interface IWorkoutsRepository
     {
-        IEnumerable<Workouts> GetAllWorkouts();
+        Task<IEnumerable<Workouts>> GetAllWorkouts();
 
         IEnumerable<WorkoutsExercises> GetAllWorkoutsExercises(int id);
 

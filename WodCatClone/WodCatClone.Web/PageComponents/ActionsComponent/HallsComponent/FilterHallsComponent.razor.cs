@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.HallsService;
@@ -43,9 +44,9 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
             new() { Content = "Yoga", Filter = "Yoga" },
         };
 
-        public void Filter()
+        public async Task Filter()
         {
-            Halls = HallsService.GetAllHalls();
+            Halls = await HallsService.GetAllHalls();
 
             if (_filterTown != "None")
             {
@@ -57,12 +58,12 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
             }
         }
 
-        public void Reset()
+        public async Task Reset()
         {
             _filterTown = "None";
             _filterType = "None";
 
-            Filter();
+            await Filter();
         }
     }
 }

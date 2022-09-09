@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.HallsService;
@@ -33,24 +34,24 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         public int ResultWorkoutsCount { get; set; }
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
             Value = 0;
-            Hall = HallsService.GetHall(Workout.HallId);
+            Hall = await HallsService.GetHall(Workout.HallId);
             if (Hall is not null)
             {
-                Image = HallsService.GetImage(Hall.EmblemHallId);
+                Image = await HallsService.GetImage(Hall.EmblemHallId).ConfigureAwait(false);
             }
             WorkoutsCategory = Workout.Category.Split(",");
             ResultWorkoutsCount = ResultWorkoutsService.GetAllResultWorkouts(Workout.Id).Count();
             WorkoutsExercises = WorkoutsService.GetAllWorkoutsExercises(Workout.Id);
         }
 
-        protected override void OnParametersSet()
+        protected override async Task OnParametersSetAsync()
         {
             Value = 0;
-            Hall = HallsService.GetHall(Workout.HallId);
-            Image = HallsService.GetImage(Hall.EmblemHallId);
+            Hall = await HallsService.GetHall(Workout.HallId);
+            Image = await HallsService.GetImage(Hall.EmblemHallId);
             WorkoutsCategory = Workout.Category.Split(",");
             ResultWorkoutsCount = ResultWorkoutsService.GetAllResultWorkouts(Workout.Id).Count();
             WorkoutsExercises = WorkoutsService.GetAllWorkoutsExercises(Workout.Id);

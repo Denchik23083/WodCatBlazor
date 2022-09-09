@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using WodCatClone.Db;
 using WodCatClone.Db.Entities.Actions;
 
@@ -14,9 +16,9 @@ namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
             _context = context;
         }
 
-        public IEnumerable<Articles> GetAllArticles()
+        public async Task<IEnumerable<Articles>> GetAllArticles()
         {
-            return _context.Articles;
+            return await _context.Articles.ToListAsync();
         }
 
         public IEnumerable<ArticleEmblem> GetAllArticleEmblem()
@@ -29,9 +31,9 @@ namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
             return _context.Articles.FirstOrDefault(b => b.Id == id);
         }
 
-        public ArticleEmblem GetImage(int? articleId)
+        public async Task<ArticleEmblem> GetImage(int? articleId)
         {
-            return _context.ArticleEmblem.FirstOrDefault(b => b.Id == articleId);
+            return await _context.ArticleEmblem.FirstOrDefaultAsync(b => b.Id == articleId);
         }
 
         public bool AddArticle(Articles article)

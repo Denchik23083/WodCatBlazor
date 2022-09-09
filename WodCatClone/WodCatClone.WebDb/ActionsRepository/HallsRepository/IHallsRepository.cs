@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 
@@ -6,7 +7,7 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
 {
     public interface IHallsRepository
     {
-        IEnumerable<Halls> GetAllHalls();
+        Task<IEnumerable<Halls>> GetAllHalls();
 
         IEnumerable<HallEmblem> GetAllHallEmblem();
 
@@ -14,9 +15,9 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
 
         Halls GetHall(int hallId);
 
-        Halls GetHall(int? userHallId);
+        Task<Halls> GetHall(int? userHallId);
 
-        HallEmblem GetImage(int? imageId);
+        Task<HallEmblem> GetImage(int? imageId);
 
         bool AddHall(Halls hall);
 

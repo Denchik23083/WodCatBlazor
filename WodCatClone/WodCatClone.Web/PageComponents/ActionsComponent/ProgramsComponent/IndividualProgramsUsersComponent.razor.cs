@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.ActionsService.HallsService;
 using WodCatClone.Logic.UserService;
@@ -17,12 +18,12 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
 
         public string GenderImage { get; set; }
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
-            var hall  = HallsService.GetHall(User.HallId);
+            var hall  = await HallsService.GetHall(User.HallId);
             if (hall is not null)
             {
-                Image = HallsService.GetImage(hall.EmblemHallId);
+                Image = await HallsService.GetImage(hall.EmblemHallId);
             }
 
             if (User.GenderId is not null)

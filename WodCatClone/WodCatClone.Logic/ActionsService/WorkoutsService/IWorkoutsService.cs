@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using WodCatClone.Db.Entities.Actions;
 
 namespace WodCatClone.Logic.ActionsService.WorkoutsService
 {
     public interface IWorkoutsService
     {
-        IEnumerable<Workouts> GetAllWorkouts();
+        Task<IEnumerable<Workouts>> GetAllWorkouts();
 
         IEnumerable<WorkoutsExercises> GetAllWorkoutsExercises(int id);
 

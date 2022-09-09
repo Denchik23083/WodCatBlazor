@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.WebDb.ActionsRepository.HallsRepository;
@@ -18,9 +19,9 @@ namespace WodCatClone.Logic.ActionsService.HallsService
             _userRepository = userRepository;
         }
 
-        public IEnumerable<Halls> GetAllHalls()
+        public async Task<IEnumerable<Halls>> GetAllHalls()
         {
-            return _repository.GetAllHalls();
+            return await _repository.GetAllHalls();
         }
 
         public IEnumerable<HallEmblem> GetAllHallEmblem()
@@ -40,14 +41,14 @@ namespace WodCatClone.Logic.ActionsService.HallsService
             return hall;
         }
 
-        public Halls GetHall(int? hallId)
+        public async Task<Halls> GetHall(int? hallId)
         {
-            return _repository.GetHall(hallId);
+            return await _repository.GetHall(hallId);
         }
 
-        public string GetImage(int? imageId)
+        public async Task<string> GetImage(int? imageId)
         {
-            var hallEmblem = _repository.GetImage(imageId);
+            var hallEmblem = await _repository.GetImage(imageId);
 
             return hallEmblem?.Image;
         }

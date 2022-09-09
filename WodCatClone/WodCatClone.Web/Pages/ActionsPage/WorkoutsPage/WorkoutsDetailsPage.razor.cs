@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.HallsService;
@@ -39,7 +40,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
 
         public StartWorkout StartWorkout { get; set; }
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
             Workout = WorkoutsService.GetWorkout(WorkoutId);
             if (Workout is null)
@@ -49,10 +50,10 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
             else
             {
                 IsLoginUser = UserService.IsLoginUser();
-                Hall = HallsService.GetHall(Workout.HallId);
+                Hall = await HallsService.GetHall(Workout.HallId);
                 if (Hall is not null)
                 {
-                    Image = HallsService.GetImage(Hall.EmblemHallId);
+                    Image = await HallsService.GetImage(Hall.EmblemHallId);
                 }
                 WorkoutsExercises = WorkoutsService.GetAllWorkoutsExercises(WorkoutId);
             }

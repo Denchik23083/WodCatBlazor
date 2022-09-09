@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using WodCatClone.Db;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
@@ -15,9 +17,9 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
             _context = context;
         }
 
-        public IEnumerable<Halls> GetAllHalls()
+        public async Task<IEnumerable<Halls>> GetAllHalls()
         {
-            return _context.Halls;
+            return await _context.Halls.ToListAsync();
         }
 
         public IEnumerable<HallEmblem> GetAllHallEmblem()
@@ -35,14 +37,14 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
             return _context.Halls.FirstOrDefault(b => b.Id == hallId);
         }
 
-        public Halls GetHall(int? userHallId)
+        public async Task<Halls> GetHall(int? userHallId)
         {
-            return _context.Halls.FirstOrDefault(b => b.Id == userHallId);
+            return await _context.Halls.FirstOrDefaultAsync(b => b.Id == userHallId);
         }
 
-        public HallEmblem GetImage(int? imageId)
+        public async Task<HallEmblem> GetImage(int? imageId)
         {
-            return _context.HallEmblem.FirstOrDefault(b => b.Id == imageId);
+            return await _context.HallEmblem.FirstOrDefaultAsync(b => b.Id == imageId);
         }
 
         public bool AddHall(Halls hall)

@@ -1,17 +1,18 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using WodCatClone.Db.Entities.Actions;
 
 namespace WodCatClone.Logic.ActionsService.ArticlesService
 {
     public interface IArticlesService
     {
-        IEnumerable<Articles> GetAllArticles();
+        Task<IEnumerable<Articles>> GetAllArticles();
 
         IEnumerable<ArticleEmblem> GetAllArticleEmblem();
 
         Articles GetArticle(int id);
 
-        string GetImage(int? articleId);
+        Task<string> GetImage(int? articleId);
 
         bool AddArticle(Articles article);
 

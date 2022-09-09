@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.HallsService;
 using WodCatClone.Logic.ActionsService.ProgramsService;
@@ -25,33 +26,33 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
 
         public int Subscribers { get; set; }
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
             Url = $"programs/{Program.Id}";
             if (Program.HallId is not null)
             {
-                Hall = HallsService.GetHall(Program.HallId);
-                HallEmblem = HallsService.GetImage(Hall.EmblemHallId);
+                Hall = await HallsService.GetHall(Program.HallId);
+                HallEmblem = await HallsService.GetImage(Hall.EmblemHallId);
             }
             if (Program.ProgramsEmblemId is not null)
             {
-                Image = ProgramsService.GetImage(Program.ProgramsEmblemId);
+                Image = await ProgramsService.GetImage(Program.ProgramsEmblemId);
             }
 
             Subscribers = ProgramsService.Subscribers(Program.Id);
         }
 
-        protected override void OnParametersSet()
+        protected override async Task OnParametersSetAsync()
         {
             Url = $"programs/{Program.Id}";
             if (Program.HallId is not null)
             {
-                Hall = HallsService.GetHall(Program.HallId);
-                HallEmblem = HallsService.GetImage(Hall.EmblemHallId);
+                Hall = await HallsService.GetHall(Program.HallId);
+                HallEmblem = await HallsService.GetImage(Hall.EmblemHallId);
             }
             if (Program.ProgramsEmblemId is not null)
             {
-                Image = ProgramsService.GetImage(Program.ProgramsEmblemId);
+                Image = await ProgramsService.GetImage(Program.ProgramsEmblemId);
             }
 
             Subscribers = ProgramsService.Subscribers(Program.Id);

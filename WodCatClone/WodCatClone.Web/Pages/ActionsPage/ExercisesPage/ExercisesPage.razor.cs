@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.ExercisesService;
@@ -11,9 +12,9 @@ namespace WodCatClone.Web.Pages.ActionsPage.ExercisesPage
 
         private IEnumerable<Exercises> Exercises { get; set; }
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
-            Exercises = ExercisesService.GetAllExercises();
+            Exercises = await ExercisesService.GetAllExercises();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.ActionsService.HallsService;
@@ -20,21 +21,21 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
 
         public User User { get; set; }
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
             User = UserService.GetUser();
             if (Hall is not null)
             {
-                HallImage = HallsService.GetImage(Hall.EmblemHallId);
+                HallImage = await HallsService.GetImage(Hall.EmblemHallId);
             }
         }
 
-        protected override void OnParametersSet()
+        protected override async Task OnParametersSetAsync()
         {
             User = UserService.GetUser();
             if (Hall is not null)
             {
-                HallImage = HallsService.GetImage(Hall.EmblemHallId);
+                HallImage = await HallsService.GetImage(Hall.EmblemHallId);
             }
         }
 
