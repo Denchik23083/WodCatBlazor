@@ -11,11 +11,14 @@
                     <h5 style="color: white;">Выберите логотип</h5>
                     <select class="select form-control" @onchange="SelectedImage">
                         <option value="None">Эмблема</option>
-                        @foreach (var item in ArticleEmblem)
+                        @if (ArticleEmblem is not null)
                         {
-                            <option value="@item.Image">
-                                @item.Name
-                            </option>
+                            @foreach (var item in ArticleEmblem)
+                            {
+                                <option value="@item.Image">
+                                    @item.Name
+                                </option>
+                            }
                         }
                     </select>
                 </div>

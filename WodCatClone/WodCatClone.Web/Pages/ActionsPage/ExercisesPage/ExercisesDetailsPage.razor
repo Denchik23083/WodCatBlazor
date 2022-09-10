@@ -2,51 +2,54 @@
 
 <HeaderComponent />
 
-<div class="wrapperId">
-    <div class="row mb-2">
-        <div class="col text-left text-light pages">
-            <a href="/" class="link">WODCAT</a>&nbsp;&rarr;&nbsp;
-            <a href="/exercises" class="link">Упражнения</a>&nbsp;&rarr;&nbsp;
-            @Exercise.Name
-        </div>
-    </div>
-    <div class="row mb-2">
-        <div class="col">
-            <span class="NameId">@Exercise.Name</span>
-            <span class="cubId">@Exercise.Modality</span>
-            <span class="greenCub">@Exercise.Name</span>
-        </div>
-    </div>
-    <div class="row mb-2">
-        <div class="col-6">
-            <div class="exercisesId p-2">
-                <span>Сложность: @Exercise.Complexity</span><br/><br/>
-                <span>@Exercise.Description</span><br/><br/>
-                <span>Инвентарь: @Exercise.Inventory</span>
+@if (Exercise is not null)
+{
+    <div class="wrapperId">
+        <div class="row mb-2">
+            <div class="col text-left text-light pages">
+                <a href="/" class="link">WODCAT</a>&nbsp;&rarr;&nbsp;
+                <a href="/exercises" class="link">Упражнения</a>&nbsp;&rarr;&nbsp;
+                @Exercise.Name
             </div>
         </div>
-        <div class="col-6">
-            <div class="text-center exercisesId p-2">
-                <iframe
-                    width="600"
-                    height="300"
-                    src="@Exercise.Image"
-                    frameborder="0"
-                    allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture"
-                    allowfullscreen>
-                </iframe>
+        <div class="row mb-2">
+            <div class="col">
+                <span class="NameId">@Exercise.Name</span>
+                <span class="cubId">@Exercise.Modality</span>
+                <span class="greenCub">@Exercise.Name</span>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-6">
+                <div class="exercisesId p-2">
+                    <span>Сложность: @Exercise.Complexity</span><br/><br/>
+                    <span>@Exercise.Description</span><br/><br/>
+                    <span>Инвентарь: @Exercise.Inventory</span>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="text-center exercisesId p-2">
+                    <iframe
+                        width="600"
+                        height="300"
+                        src="@Exercise.Image"
+                        frameborder="0"
+                        allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h2 class="NameId">Описание</h2>
+                <hr class="hr"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p class="full">@Exercise.FullDescription</p>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
-            <h2 class="NameId">Описание</h2>
-            <hr class="hr"/>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <p class="full">@Exercise.FullDescription</p>
-        </div>
-    </div>
-</div>
+}

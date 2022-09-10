@@ -1,17 +1,20 @@
-﻿@if (!ListOfItems.Any())
+﻿@if (ListOfItems is not null)
 {
-    <div class="row text-center">
-        <div class="col">
-            <img src="https://cdn.akamai.steamstatic.com/steam/apps/1534200/header.jpg?t=1616065824" height="500"/>
+    @if (!ListOfItems.Any())
+    {
+        <div class="row text-center">
+            <div class="col">
+                <img src="https://cdn.akamai.steamstatic.com/steam/apps/1534200/header.jpg?t=1616065824" height="500"/>
+            </div>
         </div>
-    </div>
-}
-else
-{
-    <div class="row p-3">
-        @foreach (var item in ListOfItems)
-        {
-            <IndividualExercisesComponent Exercise="item" />
-        }
-    </div>
+    }
+    else
+    {
+        <div class="row p-3">
+            @foreach (var item in ListOfItems)
+            {
+                <IndividualExercisesComponent Exercise="item"/>
+            }
+        </div>
+    }
 }

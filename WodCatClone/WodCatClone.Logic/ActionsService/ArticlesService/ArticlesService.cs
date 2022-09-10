@@ -19,14 +19,14 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
             return await _repository.GetAllArticles();
         }
 
-        public IEnumerable<ArticleEmblem> GetAllArticleEmblem()
+        public async Task<IEnumerable<ArticleEmblem>> GetAllArticleEmblem()
         {
-            return _repository.GetAllArticleEmblem();
+            return await _repository.GetAllArticleEmblem();
         }
 
-        public Articles GetArticle(int id)
+        public async Task<Articles> GetArticle(int id)
         {
-            return _repository.GetArticle(id);
+            return await _repository.GetArticle(id);
         }
 
         public async Task<string> GetImage(int? articleId)
@@ -36,19 +36,19 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
             return article.Image;
         }
 
-        public bool AddArticle(Articles article)
+        public async Task<bool> AddArticle(Articles article)
         {
-            return _repository.AddArticle(article);
+            return await _repository.AddArticle(article);
         }
 
-        public bool EditArticle(Articles article, int id)
+        public async Task<bool> EditArticle(Articles article, int id)
         {
-            return _repository.EditArticle(article, id);
+            return await _repository.EditArticle(article, id);
         }
 
-        public bool RemoveArticle(int id)
+        public async Task<bool> RemoveArticle(int id)
         {
-            return _repository.RemoveArticle(id);
+            return await _repository.RemoveArticle(id);
         }
     }
 }
