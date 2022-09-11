@@ -1,11 +1,14 @@
-﻿@foreach (var item in ListOfItems)
+﻿@if (ListOfItems is not null)
 {
-    <div class="row">
-        <div class="col">
-            <IndividualWorkoutsExercisesComponent 
-                WorkoutsExercises="item" 
-                IsLink="IsLink"
-                Color="@Color"/>
+    @foreach (var item in ListOfItems)
+    {
+        <div class="row">
+            <div class="col">
+                <IndividualWorkoutsExercisesComponent 
+                    WorkoutsExercises="item" 
+                    IsLink="IsLink"
+                    Color="@Color"/>
+            </div>
         </div>
-    </div>
+    }
 }

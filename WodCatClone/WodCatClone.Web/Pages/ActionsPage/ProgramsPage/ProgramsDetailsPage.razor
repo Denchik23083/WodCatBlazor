@@ -2,90 +2,93 @@
 
 <HeaderComponent />
 
-<div class="wrapperId">
-    <div class="row mb-2">
-        <div class="col text-left text-light pages">
-            <a href="/" class="link">WODCAT</a>&nbsp;&rarr;&nbsp;
-            <a href="/programs" class="link">Программы тренировок</a>&nbsp;&rarr;&nbsp;
-            @Program.Name
-        </div>
-    </div>
-    <div class="row mb-2">
-        <div class="col">
-            <span class="NameId">@Program.Name</span>
-            <span class="cubId">@Program.Type</span>
-            <span class="greenCub">@Program.Aim</span>
-            @if (Program.Rating is not null)
-            {
-                <span class="greenCub">@Program.Rating / 10</span>
-            }
-        </div>
-    </div>
-    @if (IsLoginUser)
-    {
-        @if (User!.ProgramId != Program.Id)
-        {
-            <div class="row">
-                <div class="col text-center">
-                    <button
-                        type="button"
-                        class="btn btn-primary mb-2 mt-2"
-                        @onclick="BeginProgram">
-                        Начать тренировки по данной программе
-                    </button>
-                </div>
-            </div>
-        }
-        else
-        {
-            <div class="row">
-                <div class="col text-center">
-                    <button
-                        type="button"
-                        class="btn btn-danger mb-2 mt-2"
-                        @onclick="StopProgram">
-                        Остановить тренировки по данной программе
-                    </button>
-                </div>
-            </div>
-        }
-    }
-    <div class="p-3" style="background-color: #424242; border-radius: 5px;">
-        <div class="row">
-            <div class="col text-center">
-                <span class="programslink" @onclick="DisplayWorkout">ТРЕНИРОВКИ</span>
-                <span class="programslink" @onclick="DisplayDayWorkout">ПРОГРЕСС</span>
-                <span class="programslink" @onclick="DisplayUser">ПОДПИСЧИКИ</span>
+@if (Program is not null)
+{
+    <div class="wrapperId">
+        <div class="row mb-2">
+            <div class="col text-left text-light pages">
+                <a href="/" class="link">WODCAT</a>&nbsp;&rarr;&nbsp;
+                <a href="/programs" class="link">Программы тренировок</a>&nbsp;&rarr;&nbsp;
+                @Program.Name
             </div>
         </div>
-        @if (DisplayWorkouts)
-        {
-            <ListProgramsWorkoutsComponent ListOfItems="ProgramsWorkouts"/>
-        }
-        @if (DisplayDayWorkouts)
-        {
-            if (User is not null)
-            {
-                if (User.ProgramId == Program.Id)
+        <div class="row mb-2">
+            <div class="col">
+                <span class="NameId">@Program.Name</span>
+                <span class="cubId">@Program.Type</span>
+                <span class="greenCub">@Program.Aim</span>
+                @if (Program.Rating is not null)
                 {
-                    if (Day < ProgramsWorkouts.Count())
-                    {
-                        <DayProgramsWorkoutsComponent ProgramsWorkouts="ProgramWorkout"/>
-                    }
-                    else
-                    {
-                        <FinishesDayProgramsWorkoutsComponent IsEndOrNot="true" ProgramId="ProgramId"/>
-                    }
+                    <span class="greenCub">@Program.Rating / 10</span>
                 }
+            </div>
+        </div>
+        @if (IsLoginUser)
+        {
+            @if (User!.ProgramId != Program.Id)
+            {
+                <div class="row">
+                    <div class="col text-center">
+                        <button
+                            type="button"
+                            class="btn btn-primary mb-2 mt-2"
+                            @onclick="BeginProgram">
+                            Начать тренировки по данной программе
+                        </button>
+                    </div>
+                </div>
             }
             else
             {
-                <FinishesDayProgramsWorkoutsComponent IsEndOrNot="false" ProgramId="ProgramId"/>
+                <div class="row">
+                    <div class="col text-center">
+                        <button
+                            type="button"
+                            class="btn btn-danger mb-2 mt-2"
+                            @onclick="StopProgram">
+                            Остановить тренировки по данной программе
+                        </button>
+                    </div>
+                </div>
             }
         }
-        else if (DisplayUsers)
-        {
-            <ListProgramsUsersComponent ListOfItems="Users"/>
-        }
+        <div class="p-3" style="background-color: #424242; border-radius: 5px;">
+            <div class="row">
+                <div class="col text-center">
+                    <span class="programslink" @onclick="DisplayWorkout">ТРЕНИРОВКИ</span>
+                    <span class="programslink" @onclick="DisplayDayWorkout">ПРОГРЕСС</span>
+                    <span class="programslink" @onclick="DisplayUser">ПОДПИСЧИКИ</span>
+                </div>
+            </div>
+            @if (DisplayWorkouts)
+            {
+                <ListProgramsWorkoutsComponent ListOfItems="ProgramsWorkouts"/>
+            }
+            @if (DisplayDayWorkouts)
+            {
+                if (User is not null)
+                {
+                    if (User.ProgramId == Program.Id)
+                    {
+                        if (Day < ProgramsWorkouts.Count())
+                        {
+                            <DayProgramsWorkoutsComponent ProgramsWorkouts="ProgramWorkout"/>
+                        }
+                        else
+                        {
+                            <FinishesDayProgramsWorkoutsComponent IsEndOrNot="true" ProgramId="ProgramId"/>
+                        }
+                    }
+                }
+                else
+                {
+                    <FinishesDayProgramsWorkoutsComponent IsEndOrNot="false" ProgramId="ProgramId"/>
+                }
+            }
+            else if (DisplayUsers)
+            {
+                <ListProgramsUsersComponent ListOfItems="Users"/>
+            }
+        </div>
     </div>
-</div>
+}

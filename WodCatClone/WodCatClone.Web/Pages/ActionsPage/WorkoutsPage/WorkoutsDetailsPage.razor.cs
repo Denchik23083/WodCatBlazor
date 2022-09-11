@@ -42,7 +42,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
 
         protected override async Task OnInitializedAsync()
         {
-            Workout = WorkoutsService.GetWorkout(WorkoutId);
+            Workout = await WorkoutsService.GetWorkout(WorkoutId);
             if (Workout is null)
             {
                 NavigationManager.NavigateTo("/workouts");
@@ -55,7 +55,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
                 {
                     Image = await HallsService.GetImage(Hall.EmblemHallId);
                 }
-                WorkoutsExercises = WorkoutsService.GetAllWorkoutsExercises(WorkoutId);
+                WorkoutsExercises = await WorkoutsService.GetAllWorkoutsExercises(WorkoutId);
             }
         }
 
@@ -71,11 +71,11 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
 
         public void Start() => StartWorkout.Show();
 
-        public void OnDelete()
+        public async Task OnDelete()
         {
             var id = GetAllResultWorkouts.ResultWorkoutId;
 
-            var result = ResultWorkoutsService.DeleteResultWorkouts(id);
+            var result = await ResultWorkoutsService.DeleteResultWorkouts(id);
 
             if (result)
             {
@@ -85,14 +85,14 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
             }
         }
 
-        public void OnEdit()
+        public async Task OnEdit()
         {
             var id = GetAllResultWorkouts.ResultWorkoutId;
 
             EditDeleteResult.FillData();
             var resultWorkout = EditDeleteResult.EditResultWorkout;
 
-            var result = ResultWorkoutsService.EditResultWorkouts(resultWorkout, id);
+            var result = await ResultWorkoutsService.EditResultWorkouts(resultWorkout, id);
 
             if (result)
             {

@@ -56,7 +56,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             RegisterTime = Event.RegisterDate.ToString("T");
             Image = EventsService.GetImage(Event.EventsEmblemId);
             Hall = await HallsService.GetHall(Event.HallId);
-            HallEmblem = await HallsService.GetImage(Hall.EmblemHallId).ConfigureAwait(false);
+            HallEmblem = await HallsService.GetImage(Hall.EmblemHallId);
             User = UserService.GetUser();
             IsLoginUser = UserService.IsLoginUser();
         }

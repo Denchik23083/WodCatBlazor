@@ -1,16 +1,17 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using WodCatClone.Db.Entities.Actions;
 
 namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
 {
     public interface IResultWorkoutsRepository
     {
-        IEnumerable<ResultWorkouts> GetAllResultWorkouts(int id);
+        Task<IEnumerable<ResultWorkouts>> GetAllResultWorkouts(int id);
 
-        bool AddResultWorkouts(ResultWorkouts resultWorkouts);
+        Task<bool> AddResultWorkouts(ResultWorkouts resultWorkouts);
 
-        bool EditResultWorkouts(ResultWorkouts resultWorkouts, int id);
+        Task<bool> EditResultWorkouts(ResultWorkouts resultWorkouts, int id);
 
-        bool DeleteResultWorkouts(int resultWorkoutsId);
+        Task<bool> DeleteResultWorkouts(int resultWorkoutsId);
     }
 }

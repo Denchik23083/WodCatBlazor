@@ -39,7 +39,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
                 Image = await ProgramsService.GetImage(Program.ProgramsEmblemId);
             }
 
-            Subscribers = ProgramsService.Subscribers(Program.Id);
+            Subscribers = await ProgramsService.Subscribers(Program.Id);
         }
 
         protected override async Task OnParametersSetAsync()
@@ -55,7 +55,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
                 Image = await ProgramsService.GetImage(Program.ProgramsEmblemId);
             }
 
-            Subscribers = ProgramsService.Subscribers(Program.Id);
+            Subscribers = await ProgramsService.Subscribers(Program.Id);
         }
 
         public void LinkHall(int id) => NavigationManager.NavigateTo($"/gymboxs/{id}");

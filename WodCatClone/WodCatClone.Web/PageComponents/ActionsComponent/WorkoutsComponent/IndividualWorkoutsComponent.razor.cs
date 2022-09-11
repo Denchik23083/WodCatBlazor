@@ -30,31 +30,32 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         public string Url = string.Empty;
 
-        public int Value { get; set; }
-
         public int ResultWorkoutsCount { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
-            Value = 0;
             Hall = await HallsService.GetHall(Workout.HallId);
             if (Hall is not null)
             {
-                Image = await HallsService.GetImage(Hall.EmblemHallId).ConfigureAwait(false);
+                Image = await HallsService.GetImage(Hall.EmblemHallId);
             }
             WorkoutsCategory = Workout.Category.Split(",");
-            ResultWorkoutsCount = ResultWorkoutsService.GetAllResultWorkouts(Workout.Id).Count();
-            WorkoutsExercises = WorkoutsService.GetAllWorkoutsExercises(Workout.Id);
+            WorkoutsExercises = await WorkoutsService.GetAllWorkoutsExercises(Workout.Id);
+            var resultWorkouts = await ResultWorkoutsService.GetAllResultWorkouts(Workout.Id);
+            ResultWorkoutsCount = resultWorkouts.Count();
         }
 
         protected override async Task OnParametersSetAsync()
         {
-            Value = 0;
             Hall = await HallsService.GetHall(Workout.HallId);
-            Image = await HallsService.GetImage(Hall.EmblemHallId);
+            if (Hall is not null)
+            {
+                Image = await HallsService.GetImage(Hall.EmblemHallId);
+            }
             WorkoutsCategory = Workout.Category.Split(",");
-            ResultWorkoutsCount = ResultWorkoutsService.GetAllResultWorkouts(Workout.Id).Count();
-            WorkoutsExercises = WorkoutsService.GetAllWorkoutsExercises(Workout.Id);
+            WorkoutsExercises = await WorkoutsService.GetAllWorkoutsExercises(Workout.Id);
+            var resultWorkouts = await ResultWorkoutsService.GetAllResultWorkouts(Workout.Id);
+            ResultWorkoutsCount = resultWorkouts.Count();
         }
 
         public void Id()

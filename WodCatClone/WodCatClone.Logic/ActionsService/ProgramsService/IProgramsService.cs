@@ -25,6 +25,6 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
 
         bool StopProgram(int id, User user, bool isFinish);
 
-        int Subscribers(int programId);
+        Task<int> Subscribers(int programId);
     }
 }

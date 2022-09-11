@@ -8,11 +8,11 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
     {
         Task<IEnumerable<Workouts>> GetAllWorkouts();
 
-        IEnumerable<WorkoutsExercises> GetAllWorkoutsExercises(int id);
+        Task<IEnumerable<WorkoutsExercises>> GetAllWorkoutsExercises(int id);
 
         IEnumerable<WorkoutsExercises> GetAllWorkoutsExercises(int? id);
 
-        Workouts GetWorkout(int workoutId);
+        Task<Workouts> GetWorkout(int workoutId);
 
         Workouts GetWorkout(int? workoutId);
     }

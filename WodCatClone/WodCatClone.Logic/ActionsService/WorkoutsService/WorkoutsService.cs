@@ -19,9 +19,9 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService
             return await _repository.GetAllWorkouts();
         }
 
-        public IEnumerable<WorkoutsExercises> GetAllWorkoutsExercises(int id)
+        public async Task<IEnumerable<WorkoutsExercises>> GetAllWorkoutsExercises(int id)
         {
-            return _repository.GetAllWorkoutsExercises(id);
+            return await _repository.GetAllWorkoutsExercises(id);
         }
 
         public IEnumerable<WorkoutsExercises> GetAllWorkoutsExercises(int? id)
@@ -29,9 +29,9 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService
             return _repository.GetAllWorkoutsExercises(id);
         }
 
-        public Workouts GetWorkout(int workoutId)
+        public async Task<Workouts> GetWorkout(int workoutId)
         {
-            return _repository.GetWorkout(workoutId);
+            return await _repository.GetWorkout(workoutId);
         }
 
         public Workouts GetWorkout(int? workoutId)

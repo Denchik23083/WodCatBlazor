@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.WorkoutsService;
@@ -15,10 +16,10 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
 
         public Workouts Workout { get; set; }
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
-            Workout = WorkoutsService.GetWorkout(ProgramsWorkouts.WorkoutsId);
-            WorkoutsExercises = WorkoutsService.GetAllWorkoutsExercises(ProgramsWorkouts.WorkoutsId);
+            Workout = await WorkoutsService.GetWorkout(ProgramsWorkouts.WorkoutsId);
+            WorkoutsExercises = await WorkoutsService.GetAllWorkoutsExercises(ProgramsWorkouts.WorkoutsId);
         }
     }
 }

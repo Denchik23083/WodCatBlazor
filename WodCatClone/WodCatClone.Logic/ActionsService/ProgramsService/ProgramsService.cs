@@ -10,12 +10,10 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
     public class ProgramsService : IProgramsService
     {
         private readonly IProgramsRepository _repository;
-        private readonly IUserRepository _userRepository;
 
-        public ProgramsService(IProgramsRepository repository, IUserRepository userRepository)
+        public ProgramsService(IProgramsRepository repository)
         {
             _repository = repository;
-            _userRepository = userRepository;
         }
 
         public async Task<IEnumerable<Programs>> GetAllPrograms()
@@ -69,10 +67,9 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
             return _repository.StopProgram(id, user, isFinish);
         }
 
-        public int Subscribers(int programId)
+        public async Task<int> Subscribers(int programId)
         {
-            var users = _userRepository.GetAllUsers();
-            return _repository.Subscribers(users, programId);
+            return await _repository.Subscribers(programId);
         }
     }
 }

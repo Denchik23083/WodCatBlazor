@@ -21,9 +21,11 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
             return await _context.Workouts.ToListAsync();
         }
 
-        public IEnumerable<WorkoutsExercises> GetAllWorkoutsExercises(int id)
+        public async Task<IEnumerable<WorkoutsExercises>> GetAllWorkoutsExercises(int id)
         {
-            return _context.WorkoutsExercises.Where(b => b.WorkoutsId == id);
+            return await _context.WorkoutsExercises
+                .Where(b => b.WorkoutsId == id)
+                .ToListAsync();
         }
 
         public IEnumerable<WorkoutsExercises> GetAllWorkoutsExercises(int? id)
@@ -31,9 +33,9 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
             return _context.WorkoutsExercises.Where(b => b.WorkoutsId == id);
         }
 
-        public Workouts GetWorkout(int workoutId)
+        public async Task<Workouts> GetWorkout(int workoutId)
         {
-            return _context.Workouts.FirstOrDefault(x => x.Id == workoutId);
+            return await _context.Workouts.FirstOrDefaultAsync(x => x.Id == workoutId);
         }
 
         public Workouts GetWorkout(int? workoutId)
