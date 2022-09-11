@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using WodCatClone.Db;
 using WodCatClone.Db.Entities.Actions;
 
@@ -16,16 +14,14 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
             _context = context;
         }
 
-        public async Task<IEnumerable<Workouts>> GetAllWorkouts()
+        public IEnumerable<Workouts> GetAllWorkouts()
         {
-            return await _context.Workouts.ToListAsync();
+            return _context.Workouts;
         }
 
-        public async Task<IEnumerable<WorkoutsExercises>> GetAllWorkoutsExercises(int id)
+        public IEnumerable<WorkoutsExercises> GetAllWorkoutsExercises(int id)
         {
-            return await _context.WorkoutsExercises
-                .Where(b => b.WorkoutsId == id)
-                .ToListAsync();
+            return _context.WorkoutsExercises.Where(b => b.WorkoutsId == id);
         }
 
         public IEnumerable<WorkoutsExercises> GetAllWorkoutsExercises(int? id)
@@ -33,9 +29,9 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
             return _context.WorkoutsExercises.Where(b => b.WorkoutsId == id);
         }
 
-        public async Task<Workouts> GetWorkout(int workoutId)
+        public Workouts GetWorkout(int workoutId)
         {
-            return await _context.Workouts.FirstOrDefaultAsync(x => x.Id == workoutId);
+            return _context.Workouts.FirstOrDefault(x => x.Id == workoutId);
         }
 
         public Workouts GetWorkout(int? workoutId)

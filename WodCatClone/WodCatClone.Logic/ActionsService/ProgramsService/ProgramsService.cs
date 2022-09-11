@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.WebDb.ActionsRepository.ProgramsRepository;
@@ -16,9 +15,9 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
             _repository = repository;
         }
 
-        public async Task<IEnumerable<Programs>> GetAllPrograms()
+        public IEnumerable<Programs> GetAllPrograms()
         {
-            return await _repository.GetAllPrograms();
+            return _repository.GetAllPrograms();
         }
 
         public IEnumerable<ProgramsWorkouts> GetAllProgramsWorkouts(int id)
@@ -46,11 +45,9 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
             return _repository.GetProgram(id);
         }
 
-        public async Task<string> GetImage(int? programsEmblemId)
+        public string GetImage(int? programsEmblemId)
         {
-            var program = await _repository.GetImage(programsEmblemId);
-
-            return program.Image;
+            return _repository.GetImage(programsEmblemId)?.Image;
         }
 
         public bool BeginProgram(int id, User user)
@@ -67,9 +64,9 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
             return _repository.StopProgram(id, user, isFinish);
         }
 
-        public async Task<int> Subscribers(int programId)
+        public int Subscribers(int programId)
         {
-            return await _repository.Subscribers(programId);
+            return _repository.Subscribers(programId);
         }
     }
 }

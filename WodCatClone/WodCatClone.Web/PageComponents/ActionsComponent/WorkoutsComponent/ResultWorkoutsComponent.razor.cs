@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.WorkoutsService;
@@ -18,11 +17,11 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         private ResultWorkouts _resultWorkouts = new();
 
-        public async Task Result()
+        public void Result()
         {
             FillData();
 
-            var result = await ResultWorkoutsService.AddResultWorkouts(_resultWorkouts);
+            var result = ResultWorkoutsService.AddResultWorkouts(_resultWorkouts);
 
             if (result)
             {

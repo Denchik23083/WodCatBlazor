@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.WebDb.ActionsRepository.HallsRepository;
@@ -11,17 +10,15 @@ namespace WodCatClone.Logic.ActionsService.HallsService
     public class HallsService : IHallsService
     {
         private readonly IHallsRepository _repository;
-        private readonly IUserRepository _userRepository;
 
-        public HallsService(IHallsRepository repository, IUserRepository userRepository)
+        public HallsService(IHallsRepository repository)
         {
             _repository = repository;
-            _userRepository = userRepository;
         }
 
-        public async Task<IEnumerable<Halls>> GetAllHalls()
+        public IEnumerable<Halls> GetAllHalls()
         {
-            return await _repository.GetAllHalls();
+            return _repository.GetAllHalls();
         }
 
         public IEnumerable<HallEmblem> GetAllHallEmblem()
@@ -36,21 +33,17 @@ namespace WodCatClone.Logic.ActionsService.HallsService
 
         public Halls GetHall(int hallId)
         {
-            var hall = _repository.GetHall(hallId);
-
-            return hall;
+            return _repository.GetHall(hallId);
         }
 
-        public async Task<Halls> GetHall(int? hallId)
+        public Halls GetHall(int? hallId)
         {
-            return await _repository.GetHall(hallId);
+            return _repository.GetHall(hallId);
         }
 
-        public async Task<string> GetImage(int? imageId)
+        public string GetImage(int? imageId)
         {
-            var hallEmblem = await _repository.GetImage(imageId);
-
-            return hallEmblem?.Image;
+            return _repository.GetImage(imageId)?.Image;
         }
 
         public bool AddHall(Halls hall)
@@ -84,8 +77,7 @@ namespace WodCatClone.Logic.ActionsService.HallsService
 
         public int Athlete(int hallId)
         {
-            var users = _userRepository.GetAllUsers();
-            return _repository.Athlete(users, hallId);
+            return _repository.Athlete(hallId);
         }
     }
 }

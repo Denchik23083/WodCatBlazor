@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.WebDb.ActionsRepository.ArticlesRepository;
 
@@ -14,41 +13,39 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
             _repository = repository;
         }
 
-        public async Task<IEnumerable<Articles>> GetAllArticles()
+        public IEnumerable<Articles> GetAllArticles()
         {
-            return await _repository.GetAllArticles();
+            return _repository.GetAllArticles();
         }
 
-        public async Task<IEnumerable<ArticleEmblem>> GetAllArticleEmblem()
+        public IEnumerable<ArticleEmblem> GetAllArticleEmblem()
         {
-            return await _repository.GetAllArticleEmblem();
+            return _repository.GetAllArticleEmblem();
         }
 
-        public async Task<Articles> GetArticle(int id)
+        public Articles GetArticle(int id)
         {
-            return await _repository.GetArticle(id);
+            return _repository.GetArticle(id);
         }
 
-        public async Task<string> GetImage(int? articleId)
+        public string GetImage(int? articleId)
         {
-            var article = await _repository.GetImage(articleId);
-
-            return article.Image;
+            return _repository.GetImage(articleId).Image;
         }
 
-        public async Task<bool> AddArticle(Articles article)
+        public bool AddArticle(Articles article)
         {
-            return await _repository.AddArticle(article);
+            return _repository.AddArticle(article);
         }
 
-        public async Task<bool> EditArticle(Articles article, int id)
+        public bool EditArticle(Articles article, int id)
         {
-            return await _repository.EditArticle(article, id);
+            return _repository.EditArticle(article, id);
         }
 
-        public async Task<bool> RemoveArticle(int id)
+        public bool RemoveArticle(int id)
         {
-            return await _repository.RemoveArticle(id);
+            return _repository.RemoveArticle(id);
         }
     }
 }

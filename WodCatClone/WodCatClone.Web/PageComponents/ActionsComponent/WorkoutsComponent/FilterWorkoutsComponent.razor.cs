@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.WorkoutsService;
@@ -61,9 +60,9 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
             new() { Content = "Сложный", Filter = "Сложный" },
         };
 
-        public async Task Filter()
+        void Filter()
         {
-            Workouts = await WorkoutsService.GetAllWorkouts();
+            Workouts = WorkoutsService.GetAllWorkouts();
 
             if (!string.IsNullOrWhiteSpace(_filterName))
             {
@@ -87,7 +86,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
             }
         }
 
-        public async Task Reset()
+        void Reset()
         {
             _filterName = string.Empty;
             _filterCategory = "None";
@@ -95,7 +94,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
             _filterComplexity = "None";
             _filterTime = 0;
 
-            await Filter();
+            Filter();
         }
     }
 }

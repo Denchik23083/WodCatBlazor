@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.EventsService;
@@ -103,20 +102,20 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             new() { Content = "Тяжелая атлетика", Filter = "Тяжелая атлетика" },
         };
 
-        protected override async Task OnInitializedAsync()
+        protected override void OnInitialized()
         {
             EventEmblem = EventsService.GetAllEventEmblem();
-            Halls = await HallsService.GetAllHalls();
+            Halls = HallsService.GetAllHalls();
             HallEmblem = HallsService.GetAllHallEmblem();
-            Workouts = await WorkoutsService.GetAllWorkouts();
+            Workouts = WorkoutsService.GetAllWorkouts();
         }
 
-        protected override async Task OnParametersSetAsync()
+        protected override void OnParametersSet()
         {
             EventEmblem = EventsService.GetAllEventEmblem();
-            Halls = await HallsService.GetAllHalls();
+            Halls = HallsService.GetAllHalls();
             HallEmblem = HallsService.GetAllHallEmblem();
-            Workouts = await WorkoutsService.GetAllWorkouts();
+            Workouts = WorkoutsService.GetAllWorkouts();
         }
 
         public void Submit()
@@ -235,7 +234,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             }
         }
 
-        public async Task SelectedWorkoutImage(ChangeEventArgs e)
+        public void SelectedWorkoutImage(ChangeEventArgs e)
         {
             var selected = e.Value?.ToString();
 
@@ -250,7 +249,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             {
                 var id = int.Parse(e.Value!.ToString()!);
 
-                var workout = await WorkoutsService.GetWorkout(id);
+                var workout = WorkoutsService.GetWorkout(id);
 
                 if (workout is not null)
                 {

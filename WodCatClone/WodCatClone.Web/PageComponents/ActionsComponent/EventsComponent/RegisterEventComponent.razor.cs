@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.ActionsService.EventsService;
@@ -46,7 +45,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         public ConfirmRemoveEvent ConfirmRemoveEvent { get; set; }
 
-        protected override async Task OnInitializedAsync()
+        protected override void OnInitialized()
         {
             StartDate = Event.StartDate.ToString("dd MMMM yyyy");
             EndDate = Event.EndDate.ToString("dd MMMM yyyy");
@@ -55,13 +54,13 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             EndTime = Event.EndDate.ToString("T");
             RegisterTime = Event.RegisterDate.ToString("T");
             Image = EventsService.GetImage(Event.EventsEmblemId);
-            Hall = await HallsService.GetHall(Event.HallId);
-            HallEmblem = await HallsService.GetImage(Hall.EmblemHallId);
+            Hall = HallsService.GetHall(Event.HallId);
+            HallEmblem = HallsService.GetImage(Hall.EmblemHallId);
             User = UserService.GetUser();
             IsLoginUser = UserService.IsLoginUser();
         }
 
-        protected override async Task OnParametersSetAsync()
+        protected override void OnParametersSet()
         {
             StartDate = Event.StartDate.ToString("dd MMMM yyyy");
             EndDate = Event.EndDate.ToString("dd MMMM yyyy");
@@ -70,8 +69,8 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             EndTime = Event.EndDate.ToString("T");
             RegisterTime = Event.RegisterDate.ToString("T");
             Image = EventsService.GetImage(Event.EventsEmblemId);
-            Hall = await HallsService.GetHall(Event.HallId);
-            HallEmblem = await HallsService.GetImage(Hall.EmblemHallId);
+            Hall = HallsService.GetHall(Event.HallId);
+            HallEmblem = HallsService.GetImage(Hall.EmblemHallId);
             User = UserService.GetUser();
             IsLoginUser = UserService.IsLoginUser();
         }

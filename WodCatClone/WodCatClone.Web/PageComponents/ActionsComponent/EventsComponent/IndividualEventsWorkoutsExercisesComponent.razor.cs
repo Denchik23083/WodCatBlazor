@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.ExercisesService;
 
@@ -19,10 +18,10 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         public string Height = "200";
 
-        protected override async Task OnInitializedAsync()
+        protected override void OnInitialized()
         {
             Work = WorkoutsExercises.Work;
-            Exercise = await ExercisesService.GetExercise(WorkoutsExercises.ExercisesId);
+            Exercise = ExercisesService.GetExercise(WorkoutsExercises.ExercisesId);
         }
     }
 }

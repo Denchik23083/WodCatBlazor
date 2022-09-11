@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.ProgramsService;
@@ -32,9 +31,9 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
             new() { Content = "Performance", Filter = "Performance" },
         };
 
-        public async Task Filter()
+        void Filter()
         {
-            Programs = await ProgramsService.GetAllPrograms();
+            Programs = ProgramsService.GetAllPrograms();
 
             if (_filterType != "None")
             {
@@ -46,12 +45,12 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
             }
         }
 
-        public async Task Reset()
+        void Reset()
         {
             _filterType = "None";
             _filterAim = "None";
 
-            await Filter();
+            Filter();
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
@@ -54,13 +53,13 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
             new() { Content = "Львов", Filter = "Львов" },
         };
 
-        protected override async Task OnInitializedAsync()
+        protected override void OnInitialized()
         {
-            UserHall = await HallsService.GetHall(User.HallId);
-            Halls = await HallsService.GetAllHalls();
+            UserHall = HallsService.GetHall(User.HallId);
+            Halls = HallsService.GetAllHalls();
             if (UserHall is not null)
             {
-                HallImage = await HallsService.GetImage(UserHall.EmblemHallId);
+                HallImage = HallsService.GetImage(UserHall.EmblemHallId);
             }
 
             EditUser = User;
@@ -84,13 +83,13 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
             }
         }
 
-        protected override async Task OnParametersSetAsync()
+        protected override void OnParametersSet()
         {
-            UserHall = await HallsService.GetHall(User.HallId);
-            Halls = await HallsService.GetAllHalls();
+            UserHall = HallsService.GetHall(User.HallId);
+            Halls = HallsService.GetAllHalls();
             if (UserHall is not null)
             {
-                HallImage = await HallsService.GetImage(UserHall.EmblemHallId);
+                HallImage = HallsService.GetImage(UserHall.EmblemHallId);
             }
 
             EditUser = User;

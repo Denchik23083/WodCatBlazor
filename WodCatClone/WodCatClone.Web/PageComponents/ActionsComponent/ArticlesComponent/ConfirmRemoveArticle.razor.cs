@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.ArticlesService;
 
@@ -25,9 +24,9 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
 
         public void Hide() => DisplayRemoveArticle = false;
 
-        public async Task Remove()
+        public void Remove()
         {
-            var result = await ArticlesService.RemoveArticle(ArticleId);
+            var result = ArticlesService.RemoveArticle(ArticleId);
 
             NavigationManager.NavigateTo(result ? "/articles" : $"/articles/{ArticleId}");
         }

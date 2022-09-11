@@ -37,26 +37,26 @@ namespace WodCatClone.Web
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IAuthService, AuthService>();
-            services.AddTransient<IAuthRepository, AuthRepository>();
-            services.AddTransient<IUserService, UserService>();
-            services.AddTransient<IUserRepository, UserRepository>();
-            services.AddTransient<IProgramsService, ProgramsService>();
-            services.AddTransient<IProgramsRepository, ProgramsRepository>();
-            services.AddTransient<IExercisesService, ExercisesService>();
-            services.AddTransient<IExercisesRepository, ExercisesRepository>();
-            services.AddTransient<IWorkoutsService, WorkoutsService>();
-            services.AddTransient<IWorkoutsRepository, WorkoutsRepository>();
-            services.AddTransient<IEventsService, EventsService>();
-            services.AddTransient<IEventsRepository, EventsRepository>();
-            services.AddTransient<IResultWorkoutsService, ResultWorkoutsService>();
-            services.AddTransient<IResultWorkoutsRepository, ResultWorkoutsRepository>();
-            services.AddTransient<IHallsService, HallsService>();
-            services.AddTransient<IHallsRepository, HallsRepository>();
-            services.AddTransient<IArticlesService, ArticlesService>();
-            services.AddTransient<IArticlesRepository, ArticlesRepository>();
-            services.AddTransient<ICallBackService, CallBackService>();
-            services.AddTransient<ICallBackRepository, CallBackRepository>();
+            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IProgramsService, ProgramsService>();
+            services.AddScoped<IProgramsRepository, ProgramsRepository>();
+            services.AddScoped<IExercisesService, ExercisesService>();
+            services.AddScoped<IExercisesRepository, ExercisesRepository>();
+            services.AddScoped<IWorkoutsService, WorkoutsService>();
+            services.AddScoped<IWorkoutsRepository, WorkoutsRepository>();
+            services.AddScoped<IEventsService, EventsService>();
+            services.AddScoped<IEventsRepository, EventsRepository>();
+            services.AddScoped<IResultWorkoutsService, ResultWorkoutsService>();
+            services.AddScoped<IResultWorkoutsRepository, ResultWorkoutsRepository>();
+            services.AddScoped<IHallsService, HallsService>();
+            services.AddScoped<IHallsRepository, HallsRepository>();
+            services.AddScoped<IArticlesService, ArticlesService>();
+            services.AddScoped<IArticlesRepository, ArticlesRepository>();
+            services.AddScoped<ICallBackService, CallBackService>();
+            services.AddScoped<ICallBackRepository, CallBackRepository>();
 
             services.AddRazorPages();
             services.AddServerSideBlazor();
@@ -66,7 +66,7 @@ namespace WodCatClone.Web
                 var connectionString = Configuration.GetConnectionString("WodCatClone");
 
                 options.UseSqlServer(connectionString);
-            }, ServiceLifetime.Transient);
+            });
 
             services.AddDbContext<TestsWodCatCloneContext>(options =>
             {

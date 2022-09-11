@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using WodCatClone.Db;
 using WodCatClone.Db.Entities.Actions;
 
@@ -16,38 +14,36 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
             _context = context;
         }
 
-        public async Task<IEnumerable<ResultWorkouts>> GetAllResultWorkouts(int id)
+        public IEnumerable<ResultWorkouts> GetAllResultWorkouts(int id)
         {
-            return await _context.ResultWorkouts
-                .Where(b => b.WorkoutId == id)
-                .ToListAsync();
+            return _context.ResultWorkouts.Where(b => b.WorkoutId == id);
         }
 
-        public async Task<bool> AddResultWorkouts(ResultWorkouts resultWorkouts)
+        public bool AddResultWorkouts(ResultWorkouts resultWorkouts)
         {
+            _context.ResultWorkouts.Add(resultWorkouts);
+
             var loginUser = UserRepository.UserRepository.User;
-            var user = await _context.Users.FirstOrDefaultAsync(b => b.Id == loginUser.Id);
+            var user = _context.Users.FirstOrDefault(b => b.Id == loginUser.Id);
 
             if (user is null)
             {
                 return false;
             }
 
-            await _context.ResultWorkouts.AddAsync(resultWorkouts);
-
             user.Points += 10;
 
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
 
             return true;
         }
 
-        public async Task<bool> EditResultWorkouts(ResultWorkouts resultWorkouts, int id)
+        public bool EditResultWorkouts(ResultWorkouts resultWorkouts, int id)
         {
-            var resultWorkoutEdit = await _context.ResultWorkouts.FirstOrDefaultAsync(b => b.Id == id);
+            var resultWorkoutEdit = _context.ResultWorkouts.FirstOrDefault(b => b.Id == id);
 
             var loginUser = UserRepository.UserRepository.User;
-            var user = await _context.Users.FirstOrDefaultAsync(b => b.Id == loginUser.Id);
+            var user = _context.Users.FirstOrDefault(b => b.Id == loginUser.Id);
 
             if (user is null)
             {
@@ -68,14 +64,14 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
 
             user.Points += 5;
 
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
 
             return true;
         }
 
-        public async Task<bool> DeleteResultWorkouts(int resultWorkoutsId)
+        public bool DeleteResultWorkouts(int resultWorkoutsId)
         {
-            var resultWorkoutRemove = await _context.ResultWorkouts.FirstOrDefaultAsync(b => b.Id == resultWorkoutsId);
+            var resultWorkoutRemove = _context.ResultWorkouts.FirstOrDefault(b => b.Id == resultWorkoutsId);
 
             if (resultWorkoutRemove is null)
             {
@@ -83,7 +79,7 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
             }
 
             _context.ResultWorkouts.Remove(resultWorkoutRemove);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
 
             return true;
         }

@@ -29,7 +29,8 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
         {
             return _context.EventTimeUser
                 .Where(b => b.EventsId == eventId)
-                .OrderByDescending(b => b.Time).Take(3);
+                .OrderByDescending(b => b.Time)
+                .Take(3);
         }
 
         public IEnumerable<EventEmblem> GetAllEventEmblem()

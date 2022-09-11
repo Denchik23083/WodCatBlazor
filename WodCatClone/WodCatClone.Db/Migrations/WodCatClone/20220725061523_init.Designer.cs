@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WodCatClone.Db;
 
-namespace WodCatClone.Db.Migrations
+namespace WodCatClone.Db.Migrations.WodCatClone
 {
     [DbContext(typeof(WodCatCloneContext))]
-    [Migration("20220909114457_init")]
+    [Migration("20220725061523_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -18,7 +18,7 @@ namespace WodCatClone.Db.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.17")
+                .HasAnnotation("ProductVersion", "5.0.14")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.ArticleEmblem", b =>
@@ -84,11 +84,9 @@ namespace WodCatClone.Db.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FullDescription")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -1443,7 +1441,7 @@ namespace WodCatClone.Db.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "Зарегистрироваться и заполнить форму"
+                            Name = "Зарегестрироваться"
                         },
                         new
                         {
@@ -1453,42 +1451,22 @@ namespace WodCatClone.Db.Migrations
                         new
                         {
                             Id = 3,
-                            Name = "Баллы дают за создание нового зала, новой статьи, добавление результата о тренировке, за прохождении программы и мероприятия"
+                            Name = "Баллы дают за создание нового зала и добовление результата о тренировке"
                         },
                         new
                         {
                             Id = 4,
-                            Name = "Зарабатывать баллы"
+                            Name = "Заробатывать баллы"
                         },
                         new
                         {
                             Id = 5,
-                            Name = "Только те, которые создал"
+                            Name = "Только те, которые создал?"
                         },
                         new
                         {
                             Id = 6,
                             Name = "Зайти на тренировку и нажать старт и еще раз старт"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Name = "Да"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Name = "Каждый день будет переключаться на следующую тренировку, пока тренировки в этой программе не закончатся. После вам добавят 50 очков"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Name = "Нет"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Name = "Регистрируйтесь на мероприятие, потом проходите задание и вводите ваше время. Лучшие 3 участника получат баллы"
                         });
                 });
 
@@ -1548,30 +1526,6 @@ namespace WodCatClone.Db.Migrations
                             Id = 6,
                             AnswerId = 6,
                             Name = "Как начать тренировку?"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            AnswerId = 7,
-                            Name = "Можно ли редактировать или удалить результат тренировки?"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            AnswerId = 8,
-                            Name = "Зачем нужна программа тренировок?"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            AnswerId = 9,
-                            Name = "Можно ли редактировать или удалить программу тренировок, тренировку или упражнения?"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            AnswerId = 10,
-                            Name = "Как получить баллы за мероприятие?"
                         });
                 });
 

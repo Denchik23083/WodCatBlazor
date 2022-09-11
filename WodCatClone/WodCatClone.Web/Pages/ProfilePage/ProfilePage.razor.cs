@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
@@ -41,7 +40,7 @@ namespace WodCatClone.Web.Pages.ProfilePage
 
         public int Age { get; set; }
 
-        protected override async Task OnInitializedAsync()
+        protected override void OnInitialized()
         {
             User = UserService.GetUser(NickName);
 
@@ -60,14 +59,14 @@ namespace WodCatClone.Web.Pages.ProfilePage
 
                 if (User.HallId is not null)
                 {
-                    Hall = await HallsService.GetHall(User.HallId);
-                    HallEmblem = await HallsService.GetImage(Hall.EmblemHallId);
+                    Hall = HallsService.GetHall(User.HallId);
+                    HallEmblem = HallsService.GetImage(Hall.EmblemHallId);
                 }
 
                 if (User.ProgramId is not null)
                 {
                     Program = ProgramsService.GetProgram(User.ProgramId);
-                    ProgramEmblem = await ProgramsService.GetImage(Program.ProgramsEmblemId);
+                    ProgramEmblem = ProgramsService.GetImage(Program.ProgramsEmblemId);
                 }
 
                 if (UserEnter is not null)

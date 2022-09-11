@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.ActionsService.ArticlesService;
@@ -26,16 +25,16 @@ namespace WodCatClone.Web.Pages.ActionsPage.ArticlesPage
 
         public ConfirmRemoveArticle ConfirmRemoveArticle { get; set; }
 
-        protected override async Task OnInitializedAsync()
+        protected override void OnInitialized()
         {
-            Article = await ArticlesService.GetArticle(ArticleId);
+            Article = ArticlesService.GetArticle(ArticleId);
             if (Article is null)
             {
                 NavigationManager.NavigateTo("/articles");
             }
             else
             {
-                Image = await ArticlesService.GetImage(Article.ArticleEmblemId);
+                Image = ArticlesService.GetImage(Article.ArticleEmblemId);
                 User = UserService.GetUser();
             }
         }

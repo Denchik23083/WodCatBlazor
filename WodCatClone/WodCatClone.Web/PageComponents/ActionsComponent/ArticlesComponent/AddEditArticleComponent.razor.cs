@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.ArticlesService;
@@ -22,6 +21,8 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
 
         public IEnumerable<ArticleEmblem> ArticleEmblem { get; set; }
 
+        public Articles Article = new();
+
         public bool IsDisplaySubmitButton { get; set; } = false;
 
         public bool IsImage { get; set; } = false;
@@ -31,8 +32,6 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
         public string Image = "None";
 
         public int Value { get; set; }
-
-        public Articles Article = new();
 
         public List<string> SelectedType = new();
 
@@ -73,12 +72,21 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
             new() { Content = "10.0", Value = "10.0" }
         };
 
-        protected override async Task OnInitializedAsync()
+        protected override void OnInitialized()
         {
-            ArticleEmblem = await ArticlesService.GetAllArticleEmblem();
+            ArticleEmblem = ArticlesService.GetAllArticleEmblem();
         }
 
-        public async Task Submit()
+        public void AddArticleType(string selected)
+        {
+            SelectedType.Add(selected);
+
+            var item = ArticleTypes.FirstOrDefault(b => b.Value == selected);
+
+            ArticleTypes.Remove(item);
+        }
+
+        public void Submit()
         {
             foreach (var item in SelectedType)
             {
@@ -95,26 +103,17 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
 
             if (Add)
             {
-                var result = await ArticlesService.AddArticle(Article);
+                var result = ArticlesService.AddArticle(Article);
 
                 NavigationManager.NavigateTo(result ? "/articles" : "/articles/add");
             }
 
             if (Edit)
             {
-                var result = await ArticlesService.EditArticle(Article, ArticleId);
+                var result = ArticlesService.EditArticle(Article, ArticleId);
 
                 NavigationManager.NavigateTo(result ? $"/articles/{ArticleId}" : $"/articles/{ArticleId}/edit");
             }
-        }
-
-        public void AddArticleType(string selected)
-        {
-            SelectedType.Add(selected);
-
-            var item = ArticleTypes.FirstOrDefault(b => b.Value == selected);
-
-            ArticleTypes.Remove(item);
         }
 
         public void RemoveSelectedType(string item)

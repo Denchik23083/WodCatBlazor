@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.HallsService;
@@ -30,32 +29,31 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         public string Url = string.Empty;
 
+        public int Value { get; set; }
+
         public int ResultWorkoutsCount { get; set; }
 
-        protected override async Task OnInitializedAsync()
+        protected override void OnInitialized()
         {
-            Hall = await HallsService.GetHall(Workout.HallId);
+            Value = 0;
+            Hall = HallsService.GetHall(Workout.HallId);
             if (Hall is not null)
             {
-                Image = await HallsService.GetImage(Hall.EmblemHallId);
+                Image = HallsService.GetImage(Hall.EmblemHallId);
             }
             WorkoutsCategory = Workout.Category.Split(",");
-            WorkoutsExercises = await WorkoutsService.GetAllWorkoutsExercises(Workout.Id);
-            var resultWorkouts = await ResultWorkoutsService.GetAllResultWorkouts(Workout.Id);
-            ResultWorkoutsCount = resultWorkouts.Count();
+            ResultWorkoutsCount = ResultWorkoutsService.GetAllResultWorkouts(Workout.Id).Count();
+            WorkoutsExercises = WorkoutsService.GetAllWorkoutsExercises(Workout.Id);
         }
 
-        protected override async Task OnParametersSetAsync()
+        protected override void OnParametersSet()
         {
-            Hall = await HallsService.GetHall(Workout.HallId);
-            if (Hall is not null)
-            {
-                Image = await HallsService.GetImage(Hall.EmblemHallId);
-            }
+            Value = 0;
+            Hall = HallsService.GetHall(Workout.HallId);
+            Image = HallsService.GetImage(Hall.EmblemHallId);
             WorkoutsCategory = Workout.Category.Split(",");
-            WorkoutsExercises = await WorkoutsService.GetAllWorkoutsExercises(Workout.Id);
-            var resultWorkouts = await ResultWorkoutsService.GetAllResultWorkouts(Workout.Id);
-            ResultWorkoutsCount = resultWorkouts.Count();
+            ResultWorkoutsCount = ResultWorkoutsService.GetAllResultWorkouts(Workout.Id).Count();
+            WorkoutsExercises = WorkoutsService.GetAllWorkoutsExercises(Workout.Id);
         }
 
         public void Id()

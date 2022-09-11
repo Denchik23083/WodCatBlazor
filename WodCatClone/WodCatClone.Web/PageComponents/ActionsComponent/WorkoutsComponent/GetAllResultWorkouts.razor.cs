@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
@@ -24,9 +23,9 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         public User User { get; set; }
 
-        protected override async Task OnInitializedAsync()
+        protected override void OnInitialized()
         {
-            ResultWorkouts = await ResultWorkoutsService.GetAllResultWorkouts(WorkoutId);
+            ResultWorkouts = ResultWorkoutsService.GetAllResultWorkouts(WorkoutId);
             User = UserService.GetUser();
         }
 

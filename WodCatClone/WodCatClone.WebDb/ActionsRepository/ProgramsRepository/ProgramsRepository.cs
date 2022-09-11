@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using WodCatClone.Db;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
@@ -18,9 +16,9 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
             _context = context;
         }
 
-        public async Task<IEnumerable<Programs>> GetAllPrograms()
+        public IEnumerable<Programs> GetAllPrograms()
         {
-            return await _context.Programs.ToListAsync();
+            return _context.Programs;
         }
 
         public IEnumerable<ProgramsWorkouts> GetAllProgramsWorkouts(int id)
@@ -48,9 +46,9 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
             return _context.Programs.FirstOrDefault(b => b.Id == id);
         }
 
-        public async Task<ProgramEmblem> GetImage(int? programsEmblemId)
+        public ProgramEmblem GetImage(int? programsEmblemId)
         {
-            return await _context.ProgramEmblem.FirstOrDefaultAsync(b => b.Id == programsEmblemId);
+            return _context.ProgramEmblem.FirstOrDefault(b => b.Id == programsEmblemId);
         }
 
         public bool BeginProgram(int id, User user)
@@ -114,11 +112,9 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
             return true;
         }
 
-        public async Task<int> Subscribers(int programId)
+        public int Subscribers(int programId)
         {
-            var users = await _context.Users.ToListAsync();
-
-            return users.Count(b => b.ProgramId == programId);
+            return _context.Users.Count(b => b.ProgramId == programId);
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.HallsService;
 
@@ -21,11 +20,11 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
 
         public int Athletes { get; set; }
 
-        protected override async Task OnInitializedAsync()
+        protected override void OnInitialized()
         {
             Value = 0;
             Url = $"gymboxs/{Hall.Id}";
-            Image = await HallsService.GetImage(Hall.EmblemHallId);
+            Image = HallsService.GetImage(Hall.EmblemHallId);
             if (Hall.Type is not null)
             {
                 HallType = Hall.Type.Split(",");
@@ -33,11 +32,11 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
             Athletes = HallsService.Athlete(Hall.Id);
         }
 
-        protected override async Task OnParametersSetAsync()
+        protected override void OnParametersSet()
         {
             Value = 0;
             Url = $"gymboxs/{Hall.Id}";
-            Image = await HallsService.GetImage(Hall.EmblemHallId);
+            Image = HallsService.GetImage(Hall.EmblemHallId);
             if (Hall.Type is not null)
             {
                 HallType = Hall.Type.Split(",");

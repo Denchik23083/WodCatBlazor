@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
@@ -43,7 +42,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 
         public string Top = "notLoginTop";
 
-        protected override async Task OnInitializedAsync()
+        protected override void OnInitialized()
         {
             Hall = HallsService.GetHall(HallId);
             if (Hall is null)
@@ -52,7 +51,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
             }
             else
             {
-                Image = await HallsService.GetImage(Hall.EmblemHallId);
+                Image = HallsService.GetImage(Hall.EmblemHallId);
                 IsLoginUser = UserService.IsLoginUser();
                 if (IsLoginUser) Top = "loginTop";
 
@@ -67,7 +66,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
             }
         }
 
-        protected override async Task OnParametersSetAsync()
+        protected override void OnParametersSet()
         {
             Hall = HallsService.GetHall(HallId);
             if (Hall is null)
@@ -76,7 +75,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
             }
             else
             {
-                Image = await HallsService.GetImage(Hall.EmblemHallId);
+                Image = HallsService.GetImage(Hall.EmblemHallId);
                 IsLoginUser = UserService.IsLoginUser();
                 if (IsLoginUser) Top = "loginTop";
 

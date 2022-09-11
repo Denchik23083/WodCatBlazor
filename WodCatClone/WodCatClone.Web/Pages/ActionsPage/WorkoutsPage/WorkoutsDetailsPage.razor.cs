@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.HallsService;
@@ -40,9 +39,9 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
 
         public StartWorkout StartWorkout { get; set; }
 
-        protected override async Task OnInitializedAsync()
+        protected override void OnInitialized()
         {
-            Workout = await WorkoutsService.GetWorkout(WorkoutId);
+            Workout = WorkoutsService.GetWorkout(WorkoutId);
             if (Workout is null)
             {
                 NavigationManager.NavigateTo("/workouts");
@@ -50,12 +49,12 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
             else
             {
                 IsLoginUser = UserService.IsLoginUser();
-                Hall = await HallsService.GetHall(Workout.HallId);
+                Hall = HallsService.GetHall(Workout.HallId);
                 if (Hall is not null)
                 {
-                    Image = await HallsService.GetImage(Hall.EmblemHallId);
+                    Image = HallsService.GetImage(Hall.EmblemHallId);
                 }
-                WorkoutsExercises = await WorkoutsService.GetAllWorkoutsExercises(WorkoutId);
+                WorkoutsExercises = WorkoutsService.GetAllWorkoutsExercises(WorkoutId);
             }
         }
 
@@ -71,11 +70,11 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
 
         public void Start() => StartWorkout.Show();
 
-        public async Task OnDelete()
+        public void OnDelete()
         {
             var id = GetAllResultWorkouts.ResultWorkoutId;
 
-            var result = await ResultWorkoutsService.DeleteResultWorkouts(id);
+            var result = ResultWorkoutsService.DeleteResultWorkouts(id);
 
             if (result)
             {
@@ -85,14 +84,14 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
             }
         }
 
-        public async Task OnEdit()
+        public void OnEdit()
         {
             var id = GetAllResultWorkouts.ResultWorkoutId;
 
             EditDeleteResult.FillData();
             var resultWorkout = EditDeleteResult.EditResultWorkout;
 
-            var result = await ResultWorkoutsService.EditResultWorkouts(resultWorkout, id);
+            var result = ResultWorkoutsService.EditResultWorkouts(resultWorkout, id);
 
             if (result)
             {

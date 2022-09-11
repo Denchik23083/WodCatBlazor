@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using WodCatClone.Db;
 using WodCatClone.Db.Entities.Actions;
 
@@ -16,14 +14,14 @@ namespace WodCatClone.WebDb.ActionsRepository.ExercisesRepository
             _context = context;
         }
 
-        public async Task<IEnumerable<Exercises>> GetAllExercises()
+        public IEnumerable<Exercises> GetAllExercises()
         {
-            return await _context.Exercises.ToListAsync();
+            return _context.Exercises;
         }
 
-        public async Task<Exercises> GetExercise(int exerciseId)
+        public Exercises GetExercise(int exerciseId)
         {
-            return await _context.Exercises.FirstOrDefaultAsync(x => x.Id == exerciseId);
+            return _context.Exercises.FirstOrDefault(x => x.Id == exerciseId);
         }
     }
 }

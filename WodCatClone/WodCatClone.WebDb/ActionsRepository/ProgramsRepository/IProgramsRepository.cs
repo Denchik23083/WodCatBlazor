@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 
@@ -7,7 +6,7 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
 {
     public interface IProgramsRepository
     {
-        Task<IEnumerable<Programs>> GetAllPrograms();
+        IEnumerable<Programs> GetAllPrograms();
 
         IEnumerable<ProgramsWorkouts> GetAllProgramsWorkouts(int id);
 
@@ -19,12 +18,12 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
 
         Programs GetProgram(int? id);
 
-        Task<ProgramEmblem> GetImage(int? programsEmblemId);
+        ProgramEmblem GetImage(int? programsEmblemId);
 
         bool BeginProgram(int id, User user);
 
         bool StopProgram(int id, User user, bool isFinish);
 
-        Task<int> Subscribers(int programId);
+        int Subscribers(int programId);
     }
 }

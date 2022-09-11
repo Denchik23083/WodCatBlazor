@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.WebDb.ActionsRepository.WorkoutsRepository;
 
@@ -14,14 +13,14 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService
             _repository = repository;
         }
 
-        public async Task<IEnumerable<Workouts>> GetAllWorkouts()
+        public IEnumerable<Workouts> GetAllWorkouts()
         {
-            return await _repository.GetAllWorkouts();
+            return _repository.GetAllWorkouts();
         }
 
-        public async Task<IEnumerable<WorkoutsExercises>> GetAllWorkoutsExercises(int id)
+        public IEnumerable<WorkoutsExercises> GetAllWorkoutsExercises(int id)
         {
-            return await _repository.GetAllWorkoutsExercises(id);
+            return _repository.GetAllWorkoutsExercises(id);
         }
 
         public IEnumerable<WorkoutsExercises> GetAllWorkoutsExercises(int? id)
@@ -29,9 +28,9 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService
             return _repository.GetAllWorkoutsExercises(id);
         }
 
-        public async Task<Workouts> GetWorkout(int workoutId)
+        public Workouts GetWorkout(int workoutId)
         {
-            return await _repository.GetWorkout(workoutId);
+            return _repository.GetWorkout(workoutId);
         }
 
         public Workouts GetWorkout(int? workoutId)

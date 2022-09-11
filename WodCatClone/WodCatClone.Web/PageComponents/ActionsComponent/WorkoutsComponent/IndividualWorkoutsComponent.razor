@@ -23,14 +23,15 @@
     </div>
     <div class="row ml-1 mt-3 mr-1 mb-3">
         <div class="col-4 text-left">
-            @if (WorkoutsCategory is not null)
+            @foreach (var item in WorkoutsCategory)
             {
-                @foreach (var item in WorkoutsCategory)
+                <span>@item</span>
+                @if (Value < WorkoutsCategory.Length - 1)
                 {
-                    <span>@item&nbsp;</span>
+                    <span>&nbsp;|&nbsp;</span>
+                    Value++;
                 }
             }
-            
         </div>
         <div class="col-4 text-center">
             <span class="exercisesInWorkouts">

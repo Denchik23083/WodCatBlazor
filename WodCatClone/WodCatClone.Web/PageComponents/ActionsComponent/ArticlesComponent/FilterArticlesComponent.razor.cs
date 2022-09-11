@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.ArticlesService;
@@ -28,16 +27,16 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
 
         public bool IsVisible { get; set; }
 
-        public async Task Filter(string type)
+        public void Filter(string type)
         {
-            Articles = await ArticlesService.GetAllArticles();
+            Articles = ArticlesService.GetAllArticles();
 
             Articles = Articles.Where(b => b.Type.Contains(type)).ToList();
         }
 
-        public async Task Reset()
+        public void Reset()
         {
-            Articles = await ArticlesService.GetAllArticles();
+            Articles = ArticlesService.GetAllArticles();
         }
     }
 }

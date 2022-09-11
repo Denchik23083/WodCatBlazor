@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using WodCatClone.Db;
 using WodCatClone.Db.Entities.Actions;
 
@@ -16,30 +14,30 @@ namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
             _context = context;
         }
 
-        public async Task<IEnumerable<Articles>> GetAllArticles()
+        public IEnumerable<Articles> GetAllArticles()
         {
-            return await _context.Articles.ToListAsync();
+            return _context.Articles;
         }
 
-        public async Task<IEnumerable<ArticleEmblem>> GetAllArticleEmblem()
+        public IEnumerable<ArticleEmblem> GetAllArticleEmblem()
         {
-            return await _context.ArticleEmblem.ToListAsync();
+            return _context.ArticleEmblem;
         }
 
-        public async Task<Articles> GetArticle(int id)
+        public Articles GetArticle(int id)
         {
-            return await _context.Articles.FirstOrDefaultAsync(b => b.Id == id);
+            return _context.Articles.FirstOrDefault(b => b.Id == id);
         }
 
-        public async Task<ArticleEmblem> GetImage(int? articleId)
+        public ArticleEmblem GetImage(int? articleId)
         {
-            return await _context.ArticleEmblem.FirstOrDefaultAsync(b => b.Id == articleId);
+            return _context.ArticleEmblem.FirstOrDefault(b => b.Id == articleId);
         }
 
-        public async Task<bool> AddArticle(Articles article)
+        public bool AddArticle(Articles article)
         {
             var loginUser = UserRepository.UserRepository.User;
-            var user = await _context.Users.FirstOrDefaultAsync(b => b.Id == loginUser.Id);
+            var user = _context.Users.FirstOrDefault(b => b.Id == loginUser.Id);
 
             if (user is null)
             {
@@ -48,25 +46,25 @@ namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
 
             article.UserId = user.Id;
 
-            await _context.Articles.AddAsync(article);
+            _context.Articles.Add(article);
             user.Points += 50;
 
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
 
             return true;
         }
 
-        public async Task<bool> EditArticle(Articles article, int id)
+        public bool EditArticle(Articles article, int id)
         {
             var loginUser = UserRepository.UserRepository.User;
-            var user = await _context.Users.FirstOrDefaultAsync(b => b.Id == loginUser.Id);
+            var user = _context.Users.FirstOrDefault(b => b.Id == loginUser.Id);
 
             if (user is null)
             {
                 return false;
             }
 
-            var articleToEdit= await _context.Articles.FirstOrDefaultAsync(b => b.Id == id);
+            var articleToEdit = _context.Articles.FirstOrDefault(b => b.Id == id);
 
             if (articleToEdit is null)
             {
@@ -82,14 +80,14 @@ namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
 
             user.Points += 25;
 
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
 
             return true;
         }
 
-        public async Task<bool> RemoveArticle(int id)
+        public bool RemoveArticle(int id)
         {
-            var articleToRemove = await _context.Articles.FirstOrDefaultAsync(b => b.Id == id);
+            var articleToRemove = _context.Articles.FirstOrDefault(b => b.Id == id);
 
             if (articleToRemove is null)
             {
@@ -98,7 +96,7 @@ namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
 
             _context.Articles.Remove(articleToRemove);
 
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
 
             return true;
         }

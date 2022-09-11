@@ -24,12 +24,9 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        @if (Programs is not null)
+                        @foreach (var item in Programs)
                         {
-                            @foreach (var item in Programs)
-                            {
-                                <IndividualActions Program="item"/>
-                            }
+                            <IndividualActions Program="item"/>
                         }
                     </div>
                 </div>
@@ -48,12 +45,9 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        @if (Workouts is not null)
+                        @foreach (var item in Workouts)
                         {
-                            @foreach (var item in Workouts)
-                            {
-                                <IndividualActions Workout="item"/>
-                            }
+                            <IndividualActions Workout="item"/>
                         }
                     </div>
                 </div>
@@ -74,12 +68,9 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        @if (Exercises is not null)
+                        @foreach (var item in Exercises)
                         {
-                            @foreach (var item in Exercises)
-                            {
-                                <IndividualActions Exercise="item"/>
-                            }
+                            <IndividualActions Exercise="item"/>
                         }
                     </div>
                 </div>
@@ -100,12 +91,9 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        @if (Halls is not null)
+                        @foreach (var item in Halls)
                         {
-                            @foreach (var item in Halls)
-                            {
-                                <IndividualActions Hall="item"/>
-                            }
+                            <IndividualActions Hall="item"/>
                         }
                     </div>
                 </div>
@@ -124,12 +112,9 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        @if (Articles is not null)
+                        @foreach (var item in Articles)
                         {
-                            @foreach (var item in Articles)
-                            {
-                                <IndividualActions Article="item"/>
-                            }
+                            <IndividualActions Article="item"/>
                         }
                     </div>
                 </div>

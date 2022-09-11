@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using WodCatClone.Db.Entities.CallBack;
 using WodCatClone.WebDb.CallBackRepository;
 
@@ -14,14 +13,14 @@ namespace WodCatClone.Logic.CallBackService
             _repository = repository;
         }
 
-        public async Task<IEnumerable<Question>> GetAllQuestions()
+        public IEnumerable<Question> GetAllQuestions()
         {
-            return await _repository.GetAllQuestions();
+            return _repository.GetAllQuestions();
         }
 
-        public async Task<Answer> GetAnswer(int id)
+        public Answer GetAnswer(int id)
         {
-            return await _repository.GetAnswer(id);
+            return _repository.GetAnswer(id);
         }
     }
 }

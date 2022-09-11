@@ -9,136 +9,133 @@
     Article="Article"
     ArticleId="ArticleId"/>
 
-@if (Article is not null)
-{
-    <div class="wrapperId">
-        <div class="row mb-2">
-            <div class="col text-left text-light pages">
-                <a href="/" class="link">WODCAT</a>&nbsp;&rarr;&nbsp;
-                <a href="/articles" class="link">Статьи</a>&nbsp;&rarr;&nbsp;
-                @Article.Name
-            </div>
-            @if (User is not null)
+<div class="wrapperId">
+    <div class="row mb-2">
+        <div class="col text-left text-light pages">
+            <a href="/" class="link">WODCAT</a>&nbsp;&rarr;&nbsp;
+            <a href="/articles" class="link">Статьи</a>&nbsp;&rarr;&nbsp;
+            @Article.Name
+        </div>
+        @if (User is not null)
+        {
+            @if (User.Id == Article.UserId)
             {
-                @if (User.Id == Article.UserId)
+                <div class="col-6 text-right text-light pages mb-3">
+                    <button 
+                        class="btn btn-primary text-white"
+                        style="font-weight: bold;" 
+                        @onclick="Edit">Редактировать
+                    </button>
+                    <button
+                        class="btn btn-danger text-white"
+                        style="font-weight: bold;"
+                        @onclick="OnShow">
+                        Удалить
+                    </button>
+                </div>
+            }
+        }
+    </div>
+    <div class="row mb-2">
+        <div class="col">
+            <span class="NameId">@Article.Name</span>
+            @if (Article.Type is not null)
+            {
+                @foreach (var item in Article.Type.Split(","))
                 {
-                    <div class="col-6 text-right text-light pages">
-                        <button
-                            class="btn btn-primary text-white"
-                            style="font-weight: bold;"
-                            @onclick="Edit">Редактировать
-                        </button>
-                        <button
-                            class="btn btn-danger text-white"
-                            style="font-weight: bold;"
-                            @onclick="OnShow">
-                            Удалить
-                        </button>
-                    </div>
+                    <span class="cubId">@item</span>
                 }
             }
         </div>
+    </div>
+    @if (Image is not null)
+    {
         <div class="row mb-2">
-            <div class="col">
-                <span class="NameId">@Article.Name</span>
-                @if (Article.Type is not null)
-                {
-                    @foreach (var item in Article.Type.Split(","))
+            <div class="col-5">
+                <div class="exercisesId p-3">
+                    @if (Article.Rating is null)
                     {
-                        <span class="cubId">@item</span>
+                        @Article.Description
                     }
-                }
+                    else
+                    {
+                        <div class="row mb-2">
+                            <div class="col">
+                                @Article.Description
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                @Article.Rating / 10
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="exercisesId p-3">
+                    <img src="@Image" style="width: 100%; height: auto;"/>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="exercisesId p-3">
+                    <span style="color: blue">7 причин, почему нужно заниматься CrossFit
+                        The Role of Skeletal Muscle Insulin Resistance in the Pathogenesis of the Metabolic Syndrome
+                        How do U.S. Marines stack up when it comes to conquering the Navy SEALs fitness test?</span>
+                </div>
             </div>
         </div>
-        @if (Image is not null)
-        {
-            <div class="row mb-2">
-                <div class="col-5">
-                    <div class="exercisesId p-3">
-                        @if (Article.Rating is null)
+    }
+    else
+    {
+        <div class="row mb-2">
+            <div class="col-6">
+                <div class="exercisesId p-3">
+                    @if (Article.Rating is null)
+                    {
+                        @if (Article.Description is not null)
                         {
                             @Article.Description
                         }
-                        else
-                        {
-                            <div class="row mb-2">
-                                <div class="col">
+                    }
+                    else
+                    {
+                        <div class="row mb-2">
+                            <div class="col">
+                                @if (Article.Description is not null)
+                                {
                                     @Article.Description
-                                </div>
+                                }
                             </div>
-                            <div class="row">
-                                <div class="col">
-                                    @Article.Rating / 10
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                @Article.Rating / 10
                             </div>
-                        }
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="exercisesId p-3">
-                        <img src="@Image" style="width: 100%; height: auto;"/>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="exercisesId p-3">
-                        <span style="color: blue">7 причин, почему нужно заниматься CrossFit
-                            The Role of Skeletal Muscle Insulin Resistance in the Pathogenesis of the Metabolic Syndrome
-                            How do U.S. Marines stack up when it comes to conquering the Navy SEALs fitness test?</span>
-                    </div>
+                        </div>
+                    }
                 </div>
             </div>
-        }
-        else
-        {
-            <div class="row mb-2">
-                <div class="col-6">
-                    <div class="exercisesId p-3">
-                        @if (Article.Rating is null)
-                        {
-                            @if (Article.Description is not null)
-                            {
-                                @Article.Description
-                            }
-                        }
-                        else
-                        {
-                            <div class="row mb-2">
-                                <div class="col">
-                                    @if (Article.Description is not null)
-                                    {
-                                        @Article.Description
-                                    }
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    @Article.Rating / 10
-                                </div>
-                            </div>
-                        }
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="exercisesId p-3">
-                        <span style="color: blue">7 причин, почему нужно заниматься CrossFit
-                            The Role of Skeletal Muscle Insulin Resistance in the Pathogenesis of the Metabolic Syndrome
-                            How do U.S. Marines stack up when it comes to conquering the Navy SEALs fitness test?</span>
-                    </div>
+            <div class="col-6">
+                <div class="exercisesId p-3">
+                    <span style="color: blue">7 причин, почему нужно заниматься CrossFit
+                        The Role of Skeletal Muscle Insulin Resistance in the Pathogenesis of the Metabolic Syndrome
+                        How do U.S. Marines stack up when it comes to conquering the Navy SEALs fitness test?</span>
                 </div>
             </div>
-        }
-        @if (Article.FullDescription is not null)
-        {
-            <div class="row">
-                <div class="col">
-                    <h2 class="NameId">Описание</h2>
-                </div>
+        </div>
+    }
+    @if (Article.FullDescription is not null)
+    {
+        <div class="row">
+            <div class="col">
+                <h2 class="NameId">Описание</h2>
             </div>
-            <div class="row">
-                <div class="col">
-                    <p class="full">@Article.FullDescription</p>
-                </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p class="full">@Article.FullDescription</p>
             </div>
-        }
-    </div>
-}
+        </div>
+    }
+</div>

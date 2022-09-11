@@ -1,15 +1,12 @@
-﻿@if (Exercise is not null)
+﻿@if (Work is not null)
 {
-    @if (Work is not null)
-    {
-        <span style="color: @Color">@Work&nbsp;</span>
-    }
-    @if (IsLink)
-    {
-        <a href="/exercises/@Exercise.Id" style="color: @Color">@Exercise.Name</a>
-    }
-    else
-    {
-        <span style="color: @Color">@Exercise.Name</span>
-    }
+    <span style="color: @Color">@Work&nbsp;</span>
+}
+@if (IsLink)
+{
+    <a href="/exercises/@Exercise.Id" style="color: @Color">@Exercise.Name</a>
+}
+else
+{
+    <span style="color: @Color">@Exercise.Name</span>
 }

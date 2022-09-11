@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.ArticlesService;
@@ -19,9 +18,9 @@ namespace WodCatClone.Web.Pages.ActionsPage.ArticlesPage
 
         public bool IsLoginUser { get; set; }
 
-        protected override async Task OnInitializedAsync()
+        protected override void OnInitialized()
         {
-            Articles = await ArticlesService.GetAllArticles();
+            Articles = ArticlesService.GetAllArticles();
 
             IsLoginUser = UserService.IsLoginUser();
         }

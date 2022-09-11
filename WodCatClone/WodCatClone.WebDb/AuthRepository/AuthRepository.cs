@@ -15,10 +15,8 @@ namespace WodCatClone.WebDb.AuthRepository
 
         public User Login(Login login)
         {
-            var user = _context.Users.FirstOrDefault(l => l.Email == login.Email &&
-                                                          l.Password == login.Password);
-
-            return user;
+            return _context.Users.FirstOrDefault(l => l.Email == login.Email &&
+                                                      l.Password == login.Password);
         }
 
         public bool Register(Register register)

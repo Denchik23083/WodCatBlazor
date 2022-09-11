@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.ExercisesService;
 
@@ -15,9 +14,9 @@ namespace WodCatClone.Web.Pages.ActionsPage.ExercisesPage
 
         public Exercises Exercise { get; set; }
 
-        protected override async Task OnInitializedAsync()
+        protected override void OnInitialized()
         {
-            Exercise = await ExercisesService.GetExercise(ExerciseId);
+            Exercise = ExercisesService.GetExercise(ExerciseId);
             if (Exercise is null)
             {
                 NavigationManager.NavigateTo("/exercises");

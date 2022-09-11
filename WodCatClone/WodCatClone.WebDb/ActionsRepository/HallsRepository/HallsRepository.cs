@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using WodCatClone.Db;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
@@ -17,9 +15,9 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
             _context = context;
         }
 
-        public async Task<IEnumerable<Halls>> GetAllHalls()
+        public IEnumerable<Halls> GetAllHalls()
         {
-            return await _context.Halls.ToListAsync();
+            return _context.Halls;
         }
 
         public IEnumerable<HallEmblem> GetAllHallEmblem()
@@ -37,14 +35,14 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
             return _context.Halls.FirstOrDefault(b => b.Id == hallId);
         }
 
-        public async Task<Halls> GetHall(int? userHallId)
+        public Halls GetHall(int? userHallId)
         {
-            return await _context.Halls.FirstOrDefaultAsync(b => b.Id == userHallId);
+            return _context.Halls.FirstOrDefault(b => b.Id == userHallId);
         }
 
-        public async Task<HallEmblem> GetImage(int? imageId)
+        public HallEmblem GetImage(int? imageId)
         {
-            return await _context.HallEmblem.FirstOrDefaultAsync(b => b.Id == imageId);
+            return _context.HallEmblem.FirstOrDefault(b => b.Id == imageId);
         }
 
         public bool AddHall(Halls hall)
@@ -153,11 +151,9 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
             return true;
         }
 
-        public int Athlete(IEnumerable<User> users, int hallId)
+        public int Athlete(int hallId)
         {
-            var hallUsers = users.Count(b => b.HallId == hallId);
-
-            return hallUsers;
+            return _context.Users.Count(b => b.HallId == hallId);
         }
     }
 }
