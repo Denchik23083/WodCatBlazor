@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WodCatClone.Db;
 
-namespace WodCatClone.Db.Migrations
+namespace WodCatClone.Db.Migrations.TestsWodCatClone
 {
     [DbContext(typeof(TestsWodCatCloneContext))]
     partial class TestsWodCatCloneContextModelSnapshot : ModelSnapshot
@@ -744,7 +744,7 @@ namespace WodCatClone.Db.Migrations
                         new
                         {
                             Id = 1,
-                            BeginProgramDate = new DateTime(2022, 9, 20, 11, 47, 28, 970, DateTimeKind.Local).AddTicks(6070),
+                            BeginProgramDate = new DateTime(2022, 9, 20, 13, 57, 59, 993, DateTimeKind.Local).AddTicks(6445),
                             ProgramsId = 1,
                             UserId = 1
                         });
@@ -1412,11 +1412,17 @@ namespace WodCatClone.Db.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Email")
+                        .IsUnique();
+
                     b.HasIndex("EventId");
 
                     b.HasIndex("GenderId");
 
                     b.HasIndex("HallId");
+
+                    b.HasIndex("NickName")
+                        .IsUnique();
 
                     b.HasIndex("ProgramId");
 

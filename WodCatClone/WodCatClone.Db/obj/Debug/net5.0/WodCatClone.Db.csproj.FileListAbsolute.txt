@@ -115,8 +115,6 @@ C:\Users\User\source\repos\BlazorFinal\WodCatClone\WodCatClone.Db\obj\Debug\net5
 C:\Users\User\source\repos\BlazorFinal\WodCatClone\WodCatClone.Db\obj\Debug\net5.0\WodCatClone.Db.csproj.AssemblyReference.cache
 C:\Users\User\source\repos\BlazorFinal\WodCatClone\WodCatClone.Db\obj\Debug\net5.0\refint\WodCatClone.Db.dll
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Db\bin\Debug\net5.0\WodCatClone.Db.deps.json
-C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Db\bin\Debug\net5.0\WodCatClone.Db.runtimeconfig.json
-C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Db\bin\Debug\net5.0\WodCatClone.Db.runtimeconfig.dev.json
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Db\bin\Debug\net5.0\WodCatClone.Db.dll
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Db\bin\Debug\net5.0\WodCatClone.Db.pdb
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Db\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.ApiExplorer.dll
@@ -170,5 +168,4 @@ C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Db\obj\Debug\net
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Db\obj\Debug\net5.0\WodCatClone.Db.dll
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Db\obj\Debug\net5.0\refint\WodCatClone.Db.dll
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Db\obj\Debug\net5.0\WodCatClone.Db.pdb
-C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Db\obj\Debug\net5.0\WodCatClone.Db.genruntimeconfig.cache
 C:\Users\User\source\repos\WodCatBlazor\WodCatClone\WodCatClone.Db\obj\Debug\net5.0\ref\WodCatClone.Db.dll

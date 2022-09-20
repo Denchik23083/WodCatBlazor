@@ -114,12 +114,10 @@ namespace WodCatClone.WebDb.UserRepository
 
             var allUsers = _context.Users;
 
-            if (allUsers.Any(b => b.Email == updateUser.Email) && userToUpdate.Email != updateUser.Email)
+            if (allUsers.Any(b => b.Email.Equals(updateUser.Email)
+                                  || b.NickName.Equals(updateUser.NickName)))
             {
-                if (allUsers.Any(b => b.NickName == updateUser.NickName) && userToUpdate.NickName != updateUser.NickName)
-                {
-                    return false;
-                }
+                return false;
             }
 
             userToUpdate.NickName = updateUser.NickName;

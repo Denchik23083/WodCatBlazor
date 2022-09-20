@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WodCatClone.Db;
 
-namespace WodCatClone.Db.Migrations.WodCatClone
+namespace WodCatClone.Db.Migrations
 {
     [DbContext(typeof(WodCatCloneContext))]
     partial class WodCatCloneContextModelSnapshot : ModelSnapshot
@@ -1375,11 +1375,17 @@ namespace WodCatClone.Db.Migrations.WodCatClone
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Email")
+                        .IsUnique();
+
                     b.HasIndex("EventId");
 
                     b.HasIndex("GenderId");
 
                     b.HasIndex("HallId");
+
+                    b.HasIndex("NickName")
+                        .IsUnique();
 
                     b.HasIndex("ProgramId");
 

@@ -26,6 +26,10 @@ namespace WodCatClone.Db.EntityConfig.AuthConfig
 
             builder.HasIndex(_ => new { _.Email, _.NickName }).IsUnique();
 
+            builder.HasIndex(_ => _.Email).IsUnique();
+
+            builder.HasIndex(_ => _.NickName).IsUnique();
+
             builder.HasOne(_ => _.Gender)
                 .WithMany()
                 .HasForeignKey(b => b.GenderId);

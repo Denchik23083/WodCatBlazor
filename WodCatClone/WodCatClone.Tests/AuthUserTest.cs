@@ -44,7 +44,7 @@ namespace WodCatClone.Tests
                 Name = "Michael",
                 Surname = "de Santa",
                 Birthday = new DateTime(2013, 09, 17),
-                NickName = "GTA5",
+                NickName = "GTA573461736176312736",
                 Email = "foo@gmail.com",
                 Password = "0000",
                 ConfirmPassword = "0000",
@@ -124,7 +124,7 @@ namespace WodCatClone.Tests
                 Name = "Michael",
                 Surname = "de Santa",
                 Birthday = new DateTime(2013, 09, 17),
-                NickName = "GTA5",
+                NickName = "GTA536127316273",
                 Email = "foo2@gmail.com",
                 Password = "0000",
                 Country = "Ukraine",
@@ -139,7 +139,7 @@ namespace WodCatClone.Tests
                 Name = "Michael2",
                 Surname = "de Santa2",
                 Birthday = new DateTime(2013, 09, 17),
-                NickName = "GTA52",
+                NickName = "GTA5237126371263",
                 Email = "foo2@gmail.com",
                 Password = "0000",
                 GenderId = 1,
@@ -193,7 +193,7 @@ namespace WodCatClone.Tests
                 Name = "Michael",
                 Surname = "de Santa",
                 Birthday = new DateTime(2013, 09, 17),
-                NickName = "GTA5",
+                NickName = "GTA537263189382",
                 Country = "Ukraine",
                 Email = "foo3@gmail.com",
                 Password = "0000",
@@ -205,7 +205,7 @@ namespace WodCatClone.Tests
 
             var newAuth = new User
             {
-                NickName = "GTA52",
+                NickName = "GTA52387283",
                 Email = "foo3@gmail.com",
                 Password = "0000",
             };
@@ -244,7 +244,7 @@ namespace WodCatClone.Tests
                 Surname = "de Santa",
                 Country = "Ukraine",
                 Birthday = new DateTime(2013, 09, 17),
-                NickName = "GTA5",
+                NickName = "GTA573874",
                 Email = "foo4@gmail.com",
                 Password = "0000",
                 GenderId = 1,

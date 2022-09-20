@@ -618,11 +618,6 @@ namespace WodCatClone.Db.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "User",
-                columns: new[] { "Id", "AboutMe", "Birthday", "Country", "Email", "EventId", "GenderId", "HallId", "Height", "Name", "NickName", "Password", "Points", "ProgramId", "Surname", "Town", "Weight" },
-                values: new object[] { 3, "I am a developer C#", new DateTime(2013, 9, 17, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ukraine", "trevor@gmail.com", null, 1, 2, "190", "Trevor", "GTA V", "0000", 185, 2, "Philips", "Херсон", "80" });
-
-            migrationBuilder.InsertData(
                 table: "Workouts",
                 columns: new[] { "Id", "Category", "Complexity", "HallId", "Modality", "Name", "Rating", "Time" },
                 values: new object[,]
@@ -637,32 +632,22 @@ namespace WodCatClone.Db.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Events",
-                columns: new[] { "Id", "Description", "EndDate", "EventsEmblemId", "HallId", "Location", "Name", "RegisterDate", "StartDate", "Town", "TypeEvent", "TypeSport", "UserId", "WorkoutId" },
-                values: new object[] { 1, "К ТОНУС Стадион СЛАВУТИЧ АРЕНА Категории : SCALED, RX (ELITE), MASTERS 1 день 3 завдання Стартовый взнос - 500 грн Запись на участие В DIRECT!!! Для тихого, что из-за различных причин, не возможно прийняти участів в змаганнях, ми пропонуємо ОНЛАЙН ФОРМАТ. БЕЗ ВИДЕО! БЕЗ НАШЕГО СУДДІВСТВА ! ВСЕ НА НАШИЙ ДОВІРІ та ВАШІЙ ПОРЯДНОСТІ ! УМОВИ : Рестрация - 300 грн Категории - RX (ЭЛИТА) SCALED MASTERS 35 - 39, 40 - 44, 45+ 3 ( три комплекса) за один день Анонс 24.06 в п'ятницю ввечері о 17:00 Вконання 25.06 - субота . Отправить результаты до 17:00 субботы 25.06. Оголошення результатов у понедельника 27.06 Для записи напишите в DIRECT: Прізвище, им'я Місто, клуб Категорію", new DateTime(2022, 6, 26, 15, 0, 0, 0, DateTimeKind.Unspecified), 2, 1, "улица Лобановского, 21", "TONUS 2022 help UA", new DateTime(2022, 6, 27, 10, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 6, 26, 12, 30, 0, 0, DateTimeKind.Unspecified), "Запорожье", "Соревнования", "Кроссфит", 1, 3 });
-
-            migrationBuilder.InsertData(
-                table: "ProgramTimeUser",
-                columns: new[] { "Id", "BeginProgramDate", "ProgramsId", "UserId" },
-                values: new object[] { 1, new DateTime(2022, 9, 20, 11, 47, 28, 970, DateTimeKind.Local).AddTicks(6070), 1, 1 });
-
-            migrationBuilder.InsertData(
                 table: "ProgramsWorkouts",
                 columns: new[] { "Id", "ProgramsId", "WorkoutsId" },
                 values: new object[,]
                 {
+                    { 1, 1, 1 },
                     { 8, 4, 2 },
                     { 12, 5, 5 },
                     { 10, 4, 4 },
                     { 9, 4, 3 },
                     { 2, 1, 2 },
                     { 6, 3, 2 },
-                    { 7, 3, 5 },
-                    { 1, 1, 1 },
+                    { 5, 2, 3 },
                     { 3, 1, 3 },
-                    { 4, 2, 1 },
+                    { 7, 3, 5 },
                     { 11, 5, 1 },
-                    { 5, 2, 3 }
+                    { 4, 2, 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -670,20 +655,20 @@ namespace WodCatClone.Db.Migrations
                 columns: new[] { "Id", "ExercisesId", "Work", "WorkoutsId" },
                 values: new object[,]
                 {
-                    { 2, 2, "100", 2 },
-                    { 3, 3, "100", 2 },
-                    { 4, 5, "100", 2 },
-                    { 12, 12, "100", 2 },
-                    { 6, 6, "100", 2 },
-                    { 7, 7, "100", 2 },
-                    { 9, 9, "100", 2 },
-                    { 10, 10, "100", 2 },
                     { 11, 11, "100", 2 },
-                    { 5, 5, "100", 2 },
+                    { 10, 10, "100", 2 },
+                    { 9, 9, "100", 2 },
                     { 8, 8, "100", 2 },
-                    { 23, 7, "20", 6 },
-                    { 25, 12, "10", 7 },
+                    { 6, 6, "100", 2 },
+                    { 5, 5, "100", 2 },
+                    { 4, 5, "100", 2 },
+                    { 3, 3, "100", 2 },
+                    { 2, 2, "100", 2 },
+                    { 12, 12, "100", 2 },
+                    { 7, 7, "100", 2 },
                     { 24, 8, "100", 6 },
+                    { 25, 12, "10", 7 },
+                    { 23, 7, "20", 6 },
                     { 22, 5, "10", 6 },
                     { 20, 7, "75", 4 },
                     { 19, 3, "75", 4 },
@@ -697,11 +682,6 @@ namespace WodCatClone.Db.Migrations
                     { 26, 9, "20", 7 },
                     { 21, 10, null, 5 }
                 });
-
-            migrationBuilder.InsertData(
-                table: "EventTimeUser",
-                columns: new[] { "Id", "EventsId", "Time", "UserId" },
-                values: new object[] { 1, 1, new TimeSpan(0, 0, 37, 50, 0), 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Articles_ArticleEmblemId",
@@ -799,6 +779,12 @@ namespace WodCatClone.Db.Migrations
                 column: "WorkoutId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_User_Email",
+                table: "User",
+                column: "Email",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_User_Email_NickName",
                 table: "User",
                 columns: new[] { "Email", "NickName" },
@@ -818,6 +804,12 @@ namespace WodCatClone.Db.Migrations
                 name: "IX_User_HallId",
                 table: "User",
                 column: "HallId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_User_NickName",
+                table: "User",
+                column: "NickName",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_User_ProgramId",

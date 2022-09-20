@@ -1,4 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using WodCatClone.Db;
 using WodCatClone.Db.Entities.Auth;
 
@@ -24,8 +28,8 @@ namespace WodCatClone.WebDb.AuthRepository
             var allUsers = _context.Users;
             var registerUser = Map(register);
 
-            if (allUsers.Any(b => b.Email == registerUser.Email) 
-                || allUsers.Any(b => b.NickName == registerUser.NickName))
+            if (allUsers.Any(b => b.Email.Equals(registerUser.Email)
+                                  || b.NickName.Equals(registerUser.NickName)))
             {
                 return false;
             }
