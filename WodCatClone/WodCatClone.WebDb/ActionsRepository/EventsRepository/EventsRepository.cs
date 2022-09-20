@@ -53,24 +53,9 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
             return _context.EventTimeUser.FirstOrDefault(b => b.EventsId == eventId && b.UserId == userId);
         }
 
-        public bool AddEvent(Events @event)
+        public bool AddEvent(Events @event, User user)
         {
-            var loginUser = UserRepository.UserRepository.User;
-            var user = _context.Users.FirstOrDefault(b => b.Id == loginUser.Id);
-
-            if (user is null)
-            {
-                return false;
-            }
-
             @event.UserId = user.Id;
-
-            var allEvent = _context.Events;
-
-            if (allEvent.Any(b => b.Name == @event.Name))
-            {
-                return false;
-            }
 
             _context.Events.Add(@event);
 
@@ -80,16 +65,8 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
             return true;
         }
 
-        public bool EditEvent(Events @event, int eventId)
+        public bool EditEvent(Events @event, int eventId, User user)
         {
-            var loginUser = UserRepository.UserRepository.User;
-            var user = _context.Users.FirstOrDefault(b => b.Id == loginUser.Id);
-
-            if (user is null)
-            {
-                return false;
-            }
-
             var eventToEdit = _context.Events.FirstOrDefault(b => b.Id == eventId);
 
             if (eventToEdit is null)

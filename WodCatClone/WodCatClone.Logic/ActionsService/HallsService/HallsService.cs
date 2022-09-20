@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.WebDb.ActionsRepository.HallsRepository;
@@ -10,10 +9,12 @@ namespace WodCatClone.Logic.ActionsService.HallsService
     public class HallsService : IHallsService
     {
         private readonly IHallsRepository _repository;
+        private readonly IUserRepository _userRepository;
 
-        public HallsService(IHallsRepository repository)
+        public HallsService(IHallsRepository repository, IUserRepository userRepository)
         {
             _repository = repository;
+            _userRepository = userRepository;
         }
 
         public IEnumerable<Halls> GetAllHalls()
@@ -48,12 +49,28 @@ namespace WodCatClone.Logic.ActionsService.HallsService
 
         public bool AddHall(Halls hall)
         {
-            return _repository.AddHall(hall);
+            var loginUser = AuthService.AuthService.User;
+            var user = _userRepository.GetUser(loginUser);
+
+            if (user is null)
+            {
+                return false;
+            }
+
+            return _repository.AddHall(hall, user);
         }
 
         public bool EditHall(Halls hall, int hallId)
         {
-            return _repository.EditHall(hall, hallId);
+            var loginUser = AuthService.AuthService.User;
+            var user = _userRepository.GetUser(loginUser);
+
+            if (user is null)
+            {
+                return false;
+            }
+
+            return _repository.EditHall(hall, hallId, user);
         }
 
         public bool RemoveHall(int hallId)

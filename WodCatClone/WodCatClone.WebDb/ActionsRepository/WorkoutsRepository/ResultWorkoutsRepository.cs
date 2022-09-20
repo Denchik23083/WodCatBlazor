@@ -2,6 +2,7 @@
 using System.Linq;
 using WodCatClone.Db;
 using WodCatClone.Db.Entities.Actions;
+using WodCatClone.Db.Entities.Auth;
 
 namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
 {
@@ -19,18 +20,10 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
             return _context.ResultWorkouts.Where(b => b.WorkoutId == id);
         }
 
-        public bool AddResultWorkouts(ResultWorkouts resultWorkouts)
+        public bool AddResultWorkouts(ResultWorkouts resultWorkouts, User user)
         {
             _context.ResultWorkouts.Add(resultWorkouts);
-
-            var loginUser = UserRepository.UserRepository.User;
-            var user = _context.Users.FirstOrDefault(b => b.Id == loginUser.Id);
-
-            if (user is null)
-            {
-                return false;
-            }
-
+            
             user.Points += 10;
 
             _context.SaveChanges();
@@ -38,18 +31,10 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
             return true;
         }
 
-        public bool EditResultWorkouts(ResultWorkouts resultWorkouts, int id)
+        public bool EditResultWorkouts(ResultWorkouts resultWorkouts, int id, User user)
         {
             var resultWorkoutEdit = _context.ResultWorkouts.FirstOrDefault(b => b.Id == id);
-
-            var loginUser = UserRepository.UserRepository.User;
-            var user = _context.Users.FirstOrDefault(b => b.Id == loginUser.Id);
-
-            if (user is null)
-            {
-                return false;
-            }
-
+            
             if (resultWorkoutEdit is null)
             {
                 return false;

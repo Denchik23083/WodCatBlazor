@@ -81,7 +81,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
         {
             SelectedType.Add(selected);
 
-            var item = ArticleTypes.FirstOrDefault(b => b.Value == selected);
+            var item = ArticleTypes.FirstOrDefault(b => b.Value.Equals(selected));
 
             ArticleTypes.Remove(item);
         }
@@ -127,7 +127,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
         {
             var selected = e.Value?.ToString();
 
-            var articleEmblem = ArticleEmblem.FirstOrDefault(b => b.Image == selected);
+            var articleEmblem = ArticleEmblem.FirstOrDefault(b => b.Image.Equals(selected));
 
             Image = selected;
 

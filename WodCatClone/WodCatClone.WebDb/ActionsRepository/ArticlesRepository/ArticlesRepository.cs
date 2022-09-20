@@ -2,6 +2,7 @@
 using System.Linq;
 using WodCatClone.Db;
 using WodCatClone.Db.Entities.Actions;
+using WodCatClone.Db.Entities.Auth;
 
 namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
 {
@@ -34,16 +35,8 @@ namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
             return _context.ArticleEmblem.FirstOrDefault(b => b.Id == articleId);
         }
 
-        public bool AddArticle(Articles article)
+        public bool AddArticle(Articles article, User user)
         {
-            var loginUser = UserRepository.UserRepository.User;
-            var user = _context.Users.FirstOrDefault(b => b.Id == loginUser.Id);
-
-            if (user is null)
-            {
-                return false;
-            }
-
             article.UserId = user.Id;
 
             _context.Articles.Add(article);
@@ -54,16 +47,8 @@ namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
             return true;
         }
 
-        public bool EditArticle(Articles article, int id)
+        public bool EditArticle(Articles article, int id, User user)
         {
-            var loginUser = UserRepository.UserRepository.User;
-            var user = _context.Users.FirstOrDefault(b => b.Id == loginUser.Id);
-
-            if (user is null)
-            {
-                return false;
-            }
-
             var articleToEdit = _context.Articles.FirstOrDefault(b => b.Id == id);
 
             if (articleToEdit is null)

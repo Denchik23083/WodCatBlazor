@@ -1,16 +1,19 @@
 ﻿using System.Collections.Generic;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.WebDb.ActionsRepository.ArticlesRepository;
+using WodCatClone.WebDb.UserRepository;
 
 namespace WodCatClone.Logic.ActionsService.ArticlesService
 {
     public class ArticlesService : IArticlesService
     {
         private readonly IArticlesRepository _repository;
+        private readonly IUserRepository _userRepository;
 
-        public ArticlesService(IArticlesRepository repository)
+        public ArticlesService(IArticlesRepository repository, IUserRepository userRepository)
         {
             _repository = repository;
+            _userRepository = userRepository;
         }
 
         public IEnumerable<Articles> GetAllArticles()
@@ -35,12 +38,28 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
 
         public bool AddArticle(Articles article)
         {
-            return _repository.AddArticle(article);
+            var loginUser = AuthService.AuthService.User;
+            var user = _userRepository.GetUser(loginUser);
+
+            if (user is null)
+            {
+                return false;
+            }
+
+            return _repository.AddArticle(article, user);
         }
 
         public bool EditArticle(Articles article, int id)
         {
-            return _repository.EditArticle(article, id);
+            var loginUser = AuthService.AuthService.User;
+            var user = _userRepository.GetUser(loginUser);
+
+            if (user is null)
+            {
+                return false;
+            }
+
+            return _repository.EditArticle(article, id, user);
         }
 
         public bool RemoveArticle(int id)

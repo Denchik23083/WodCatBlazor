@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using WodCatClone.Db.Entities.Auth;
 
@@ -23,6 +24,8 @@ namespace WodCatClone.Db.EntityConfig.AuthConfig
             builder.Property(_ => _.Height).HasMaxLength(255);
             builder.Property(_ => _.AboutMe);
 
+            builder.HasIndex(_ => new { _.Email, _.NickName }).IsUnique();
+
             builder.HasOne(_ => _.Gender)
                 .WithMany()
                 .HasForeignKey(b => b.GenderId);
@@ -38,6 +41,42 @@ namespace WodCatClone.Db.EntityConfig.AuthConfig
             builder.HasOne(_ => _.Events)
                 .WithMany()
                 .HasForeignKey(b => b.EventId);
+
+            builder.ToTable("User").HasData(
+                new User
+                {
+                    Id = 1,
+                    Name = "Денис",
+                    Surname = "Кудрявов",
+                    NickName = "SoEasyBlef",
+                    Email = "deniskudravov228@gmail.com",
+                    Password = "0000",
+                    Country = "Ukraine",
+                    Town = "Херсон",
+                    Points = 185,
+                    Birthday = new DateTime(2003, 08, 23),
+                    Height = "185",
+                    Weight = "70",
+                    AboutMe = "I am a developer C#",
+                    GenderId = 1
+                },
+                new User
+                {
+                    Id = 2,
+                    Name = "Наташа",
+                    Surname = "Возникова",
+                    NickName = "Nat25",
+                    Email = "nata@gmail.com",
+                    Password = "0000",
+                    Country = "Ukraine",
+                    Town = "Херсон",
+                    Points = 45,
+                    Birthday = new DateTime(2000, 08, 29),
+                    Height = "175",
+                    Weight = "55",
+                    AboutMe = "Test Nata",
+                    GenderId = 2
+                });
         }
     }
 }

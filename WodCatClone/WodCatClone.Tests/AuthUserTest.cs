@@ -14,7 +14,7 @@ namespace WodCatClone.Tests
         public void Get_All_Users()
         {
             var context = new TestsWodCatCloneContext();
-            var expectedUsers = 1;
+            var expectedUsers = 3;
 
             var users = context.Users;
             Assert.NotNull(users);

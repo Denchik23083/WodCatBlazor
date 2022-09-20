@@ -2,16 +2,19 @@
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.WebDb.ActionsRepository.EventsRepository;
+using WodCatClone.WebDb.UserRepository;
 
 namespace WodCatClone.Logic.ActionsService.EventsService
 {
     public class EventsService : IEventsService
     {
         private readonly IEventsRepository _repository;
+        private readonly IUserRepository _userRepository;
 
-        public EventsService(IEventsRepository repository)
+        public EventsService(IEventsRepository repository, IUserRepository userRepository)
         {
             _repository = repository;
+            _userRepository = userRepository;
         }
 
         public IEnumerable<Events> GetAllEvents()
@@ -51,12 +54,28 @@ namespace WodCatClone.Logic.ActionsService.EventsService
 
         public bool AddEvent(Events @event)
         {
-            return _repository.AddEvent(@event);
+            var loginUser = AuthService.AuthService.User;
+            var user = _userRepository.GetUser(loginUser);
+
+            if (user is null)
+            {
+                return false;
+            }
+
+            return _repository.AddEvent(@event, user);
         }
 
         public bool EditEvent(Events @event, int eventId)
         {
-            return _repository.EditEvent(@event, eventId);
+            var loginUser = AuthService.AuthService.User;
+            var user = _userRepository.GetUser(loginUser);
+
+            if (user is null)
+            {
+                return false;
+            }
+
+            return _repository.EditEvent(@event, eventId, user);
         }
 
         public bool RemoveEvent(int eventId)

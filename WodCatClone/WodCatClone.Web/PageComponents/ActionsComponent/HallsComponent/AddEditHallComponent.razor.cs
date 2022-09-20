@@ -97,7 +97,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
         {
             SelectedType.Add(selected);
 
-            var item = HallTypes.FirstOrDefault(b => b.Value == selected);
+            var item = HallTypes.FirstOrDefault(b => b.Value.Equals(selected));
 
             HallTypes.Remove(item);
         }
@@ -149,7 +149,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
                 IsImage = false;
             }
 
-            var hallEmblem = HallEmblem.FirstOrDefault(b => b.Image == selected);
+            var hallEmblem = HallEmblem.FirstOrDefault(b => b.Image.Equals(selected));
 
             Image = selected;
 

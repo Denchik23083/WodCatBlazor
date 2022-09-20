@@ -8,7 +8,6 @@ namespace WodCatClone.WebDb.UserRepository
     public class UserRepository : IUserRepository
     {
         private readonly WodCatCloneContext _context;
-        public static User User;
 
         public UserRepository(WodCatCloneContext context)
         {
@@ -22,14 +21,12 @@ namespace WodCatClone.WebDb.UserRepository
 
         public User GetUser(User user)
         {
-            User = user;
-
-            if (User is null)
+            if (user is null)
             {
-                return User;
+                return null;
             }
 
-            return _context.Users.FirstOrDefault(b => b.Id == User.Id);
+            return _context.Users.FirstOrDefault(b => b.Id == user.Id);
         }
 
         public User GetUser(int? id)
@@ -39,7 +36,7 @@ namespace WodCatClone.WebDb.UserRepository
 
         public User GetUser(string nickName)
         {
-            return _context.Users.FirstOrDefault(b => b.NickName == nickName);
+            return _context.Users.FirstOrDefault(b => b.NickName.Equals(nickName));
         }
 
         public Gender GetGender(int? id)
@@ -49,7 +46,7 @@ namespace WodCatClone.WebDb.UserRepository
 
         public Gender GetGender(string gender)
         {
-            return _context.Gender.FirstOrDefault(b => b.Name == gender);
+            return _context.Gender.FirstOrDefault(b => b.Name.Equals(gender));
         }
 
         public bool EditUserHall(User user, int id)
@@ -128,8 +125,6 @@ namespace WodCatClone.WebDb.UserRepository
             userToUpdate.NickName = updateUser.NickName;
             userToUpdate.Email = updateUser.Email;
             userToUpdate.Password = updateUser.Password;
-
-            User = userToUpdate;
 
             _context.SaveChanges();
 
