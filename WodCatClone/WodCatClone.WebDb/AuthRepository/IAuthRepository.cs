@@ -4,8 +4,8 @@ namespace WodCatClone.WebDb.AuthRepository
 {
     public interface IAuthRepository
     {
-        User Login(Login login);
+        User Login(User loginUser);
 
-        bool Register(Register register);
+        bool Register(User registerUser);
     }
 }

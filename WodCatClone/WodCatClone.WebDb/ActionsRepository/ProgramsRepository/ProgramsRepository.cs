@@ -62,7 +62,7 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
 
             loginUser.ProgramId = id;
 
-            var programTimeUser = _context.ProgramTimeUser.FirstOrDefault(b => b.UserId == user.Id);
+            var programTimeUser = _context.ProgramTimeUser.FirstOrDefault(b => b.ProgramsId == id && b.UserId == user.Id);
 
             if (programTimeUser is not null)
             {
@@ -82,7 +82,7 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
             return true;
         }
 
-        public bool StopProgram(int id, User user, bool isFinish)
+        public bool StopProgram(int id, User user)
         {
             var loginUser = _context.Users.FirstOrDefault(b => b.Id == user.Id);
 
@@ -101,12 +101,6 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
             }
 
             _context.ProgramTimeUser.Remove(programTimeUser);
-
-            if (isFinish)
-            {
-                loginUser.Points += 50;
-            }
-
             _context.SaveChanges();
 
             return true;

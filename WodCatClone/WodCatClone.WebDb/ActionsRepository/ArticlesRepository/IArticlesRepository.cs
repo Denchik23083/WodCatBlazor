@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using WodCatClone.Db.Entities.Actions;
-using WodCatClone.Db.Entities.Auth;
 
 namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
 {
@@ -14,9 +13,9 @@ namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
 
         ArticleEmblem GetImage(int? articleId);
 
-        bool AddArticle(Articles article, User user);
+        bool AddArticle(Articles article);
 
-        bool EditArticle(Articles article, int id, User user);
+        bool EditArticle(Articles article, int id);
 
         bool RemoveArticle(int id);
     }

@@ -20,9 +20,9 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
 
         EventTimeUser GetEventTimeUser(int eventId, int userId);
 
-        bool AddEvent(Events @event, User user);
+        bool AddEvent(Events @event);
 
-        bool EditEvent(Events @event, int eventId, User user);
+        bool EditEvent(Events @event, int eventId);
         
         bool RemoveEvent(int eventId);
 

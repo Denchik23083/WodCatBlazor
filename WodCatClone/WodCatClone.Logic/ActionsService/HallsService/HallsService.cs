@@ -57,7 +57,16 @@ namespace WodCatClone.Logic.ActionsService.HallsService
                 return false;
             }
 
-            return _repository.AddHall(hall, user);
+            hall.UserId = user.Id;
+
+            var result = _repository.AddHall(hall);
+
+            if (result)
+            {
+                user.Points += 50;
+            }
+
+            return result;
         }
 
         public bool EditHall(Halls hall, int hallId)
@@ -70,11 +79,25 @@ namespace WodCatClone.Logic.ActionsService.HallsService
                 return false;
             }
 
-            return _repository.EditHall(hall, hallId, user);
+            var result = _repository.EditHall(hall, hallId);
+
+            if (result)
+            {
+                user.Points += 25;
+            }
+
+            return result;
         }
 
         public bool RemoveHall(int hallId)
         {
+            var joinUserHall = _repository.GetAllHallsUsers(hallId);
+
+            foreach (var item in joinUserHall)
+            {
+                item.HallId = null;
+            }
+
             return _repository.RemoveHall(hallId);
         }
 

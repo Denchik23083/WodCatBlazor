@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq;
-using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
+﻿using System.Linq;
 using WodCatClone.Db;
 using WodCatClone.Db.Entities.Auth;
 
@@ -17,16 +13,15 @@ namespace WodCatClone.WebDb.AuthRepository
             _context = context;
         }
 
-        public User Login(Login login)
+        public User Login(User loginUser)
         {
-            return _context.Users.FirstOrDefault(l => l.Email == login.Email &&
-                                                      l.Password == login.Password);
+            return _context.Users.FirstOrDefault(l => l.Email == loginUser.Email &&
+                                                      l.Password == loginUser.Password);
         }
 
-        public bool Register(Register register)
+        public bool Register(User registerUser)
         {
             var allUsers = _context.Users;
-            var registerUser = Map(register);
 
             if (allUsers.Any(b => b.Email.Equals(registerUser.Email)
                                   || b.NickName.Equals(registerUser.NickName)))
@@ -34,27 +29,10 @@ namespace WodCatClone.WebDb.AuthRepository
                 return false;
             }
 
-            registerUser.Country = "Ukraine";
-
             _context.Users.Add(registerUser);
             _context.SaveChanges();
 
             return true;
-        }
-
-        private User Map(Register model)
-        {
-            return new User
-            {
-                Name = model.Name,
-                Surname = model.Surname,
-                NickName = model.NickName,
-                Email = model.Email,
-                Password = model.Password,
-                Birthday = model.Birthday,
-                GenderId = model.GenderId,
-                Town = model.Town
-            };
         }
     }
 }

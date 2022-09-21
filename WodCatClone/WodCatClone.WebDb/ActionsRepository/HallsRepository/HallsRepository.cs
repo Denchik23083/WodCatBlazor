@@ -45,19 +45,15 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
             return _context.HallEmblem.FirstOrDefault(b => b.Id == imageId);
         }
 
-        public bool AddHall(Halls hall, User user)
+        public bool AddHall(Halls hall)
         {
-            hall.UserId = user.Id;
-
             _context.Halls.Add(hall);
-            user.Points += 50;
-
             _context.SaveChanges();
 
             return true;
         }
 
-        public bool EditHall(Halls hall, int hallId, User user)
+        public bool EditHall(Halls hall, int hallId)
         {
             var hallToEdit = _context.Halls.FirstOrDefault(b => b.Id == hallId);
 
@@ -73,8 +69,6 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
             hallToEdit.Rating = hall.Rating;
             hallToEdit.Description = hall.Description;
             hallToEdit.EmblemHallId = hall.EmblemHallId;
-
-            user.Points += 25;
 
             _context.SaveChanges();
 
@@ -92,13 +86,6 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
 
             _context.Halls.Remove(hallToRemove);
             _context.SaveChanges();
-
-            var joinUserHall = _context.Users.Where(b => b.HallId == hallId);
-            foreach (var item in joinUserHall)
-            {
-                item.HallId = null;
-                _context.SaveChanges();
-            }
 
             return true;
         }

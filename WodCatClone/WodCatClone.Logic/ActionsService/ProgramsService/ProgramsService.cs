@@ -60,7 +60,12 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
         {
             AuthService.AuthService.User.ProgramId = null;
 
-            return _repository.StopProgram(id, user, isFinish);
+            if (isFinish)
+            {
+                user.Points += 50;
+            }
+
+            return _repository.StopProgram(id, user);
         }
 
         public int Subscribers(int programId)

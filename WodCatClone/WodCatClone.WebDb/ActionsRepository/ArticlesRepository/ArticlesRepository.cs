@@ -2,7 +2,6 @@
 using System.Linq;
 using WodCatClone.Db;
 using WodCatClone.Db.Entities.Actions;
-using WodCatClone.Db.Entities.Auth;
 
 namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
 {
@@ -35,19 +34,15 @@ namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
             return _context.ArticleEmblem.FirstOrDefault(b => b.Id == articleId);
         }
 
-        public bool AddArticle(Articles article, User user)
+        public bool AddArticle(Articles article)
         {
-            article.UserId = user.Id;
-
             _context.Articles.Add(article);
-            user.Points += 50;
-
             _context.SaveChanges();
 
             return true;
         }
 
-        public bool EditArticle(Articles article, int id, User user)
+        public bool EditArticle(Articles article, int id)
         {
             var articleToEdit = _context.Articles.FirstOrDefault(b => b.Id == id);
 
@@ -62,8 +57,6 @@ namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
             articleToEdit.Rating = article.Rating;
             articleToEdit.Description = article.Description;
             articleToEdit.FullDescription = article.FullDescription;
-
-            user.Points += 25;
 
             _context.SaveChanges();
 
@@ -80,7 +73,6 @@ namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
             }
 
             _context.Articles.Remove(articleToRemove);
-
             _context.SaveChanges();
 
             return true;

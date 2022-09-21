@@ -22,7 +22,7 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
 
         bool BeginProgram(int id, User user);
 
-        bool StopProgram(int id, User user, bool isFinish);
+        bool StopProgram(int id, User user);
 
         int Subscribers(int programId);
     }

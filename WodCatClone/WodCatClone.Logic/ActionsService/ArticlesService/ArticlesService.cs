@@ -46,7 +46,16 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
                 return false;
             }
 
-            return _repository.AddArticle(article, user);
+            article.UserId = user.Id;
+
+            var result = _repository.AddArticle(article);
+
+            if (result)
+            {
+                user.Points += 50;
+            }
+
+            return result;
         }
 
         public bool EditArticle(Articles article, int id)
@@ -59,7 +68,14 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
                 return false;
             }
 
-            return _repository.EditArticle(article, id, user);
+            var result = _repository.EditArticle(article, id);
+
+            if (result)
+            {
+                user.Points += 25;
+            }
+
+            return result;
         }
 
         public bool RemoveArticle(int id)

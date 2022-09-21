@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.WebDb.ActionsRepository.EventsRepository;
@@ -29,7 +30,9 @@ namespace WodCatClone.Logic.ActionsService.EventsService
 
         public IEnumerable<EventTimeUser> GetAllEventTimeUsers(int eventId)
         {
-            return _repository.GetAllEventTimeUsers(eventId);
+            return _repository.GetAllEventTimeUsers(eventId)
+                .OrderByDescending(b => b.Time)
+                .Take(3);
         }
 
         public IEnumerable<EventEmblem> GetAllEventEmblem()
@@ -62,7 +65,16 @@ namespace WodCatClone.Logic.ActionsService.EventsService
                 return false;
             }
 
-            return _repository.AddEvent(@event, user);
+            @event.UserId = user.Id;
+
+            var result = _repository.AddEvent(@event);
+
+            if (result)
+            {
+                user.Points += 100;
+            }
+
+            return result;
         }
 
         public bool EditEvent(Events @event, int eventId)
@@ -75,16 +87,55 @@ namespace WodCatClone.Logic.ActionsService.EventsService
                 return false;
             }
 
-            return _repository.EditEvent(@event, eventId, user);
+            var result = _repository.EditEvent(@event, eventId);
+
+            if (result)
+            {
+                user.Points += 50;
+            }
+
+            return result;
         }
 
         public bool RemoveEvent(int eventId)
         {
+            var allUsers = _userRepository.GetAllUsers();
+
+            foreach (var allUser in allUsers)
+            {
+                allUser.EventId = null;
+            }
+
             return _repository.RemoveEvent(eventId);
         }
 
         public bool AutoRemoveEvent(int eventId)
         {
+            var allUsers = _userRepository.GetAllUsers();
+
+            foreach (var allUser in allUsers)
+            {
+                allUser.EventId = null;
+            }
+
+            var allUsersTime = _repository.GetAllEventTimeUsers(eventId)
+                .OrderByDescending(b => b.Time)
+                .Take(3);
+
+            var points = 200;
+
+            foreach (var item in allUsersTime)
+            {
+                var user = _userRepository.GetUser(item.Id);
+
+                if (user is not null)
+                {
+                    user.Points += points;
+                }
+
+                points /= 2;
+            }
+
             return _repository.AutoRemoveEvent(eventId);
         }
 

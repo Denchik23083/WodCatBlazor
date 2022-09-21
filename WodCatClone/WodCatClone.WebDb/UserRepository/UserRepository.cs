@@ -16,7 +16,7 @@ namespace WodCatClone.WebDb.UserRepository
 
         public IEnumerable<User> GetAllUsers()
         {
-            return _context.Users.OrderBy(b => b.Points).Reverse();
+            return _context.Users;
         }
 
         public User GetUser(User user)
@@ -59,21 +59,6 @@ namespace WodCatClone.WebDb.UserRepository
             }
 
             loginUser.HallId = id;
-            _context.SaveChanges();
-
-            return true;
-        }
-
-        public bool EditUserProgram(User user, int id)
-        {
-            var loginUser = _context.Users.FirstOrDefault(b => b.Id == user.Id);
-
-            if (loginUser is null)
-            {
-                return false;
-            }
-
-            loginUser.ProgramId = id;
             _context.SaveChanges();
 
             return true;

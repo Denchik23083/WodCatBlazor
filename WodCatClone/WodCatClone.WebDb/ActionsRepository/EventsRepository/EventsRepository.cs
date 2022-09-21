@@ -27,10 +27,7 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
 
         public IEnumerable<EventTimeUser> GetAllEventTimeUsers(int eventId)
         {
-            return _context.EventTimeUser
-                .Where(b => b.EventsId == eventId)
-                .OrderByDescending(b => b.Time)
-                .Take(3);
+            return _context.EventTimeUser.Where(b => b.EventsId == eventId);
         }
 
         public IEnumerable<EventEmblem> GetAllEventEmblem()
@@ -53,19 +50,15 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
             return _context.EventTimeUser.FirstOrDefault(b => b.EventsId == eventId && b.UserId == userId);
         }
 
-        public bool AddEvent(Events @event, User user)
+        public bool AddEvent(Events @event)
         {
-            @event.UserId = user.Id;
-
             _context.Events.Add(@event);
-
-            user.Points += 100;
             _context.SaveChanges();
 
             return true;
         }
 
-        public bool EditEvent(Events @event, int eventId, User user)
+        public bool EditEvent(Events @event, int eventId)
         {
             var eventToEdit = _context.Events.FirstOrDefault(b => b.Id == eventId);
 
@@ -84,7 +77,6 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
             eventToEdit.EventsEmblemId = @event.EventsEmblemId;
             eventToEdit.HallId = @event.HallId;
 
-            user.Points += 50;
             _context.SaveChanges();
 
             return true;
@@ -92,13 +84,6 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
 
         public bool RemoveEvent(int eventId)
         {
-            var allUsers = _context.Users;
-
-            foreach (var allUser in allUsers)
-            {
-                allUser.EventId = null;
-            }
-
             var eventToRemove = _context.Events.FirstOrDefault(b => b.Id == eventId);
 
             if (eventToRemove is null)
@@ -114,29 +99,6 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
 
         public bool AutoRemoveEvent(int eventId)
         {
-            var allUsers = _context.Users;
-
-            foreach (var allUser in allUsers)
-            {
-                allUser.EventId = null;
-            }
-
-            var allUsersTime = _context.EventTimeUser.OrderByDescending(b => b.Time).Take(3);
-
-            var points = 200;
-
-            foreach (var item in allUsersTime)
-            {
-                var user = _context.Users.FirstOrDefault(b => b.Id == item.Id);
-                
-                if (user is not null)
-                {
-                    user.Points += points;
-                }
-
-                points /= 2;
-            }
-
             var eventToRemove = _context.Events.FirstOrDefault(b => b.Id == eventId);
 
             if (eventToRemove is null)

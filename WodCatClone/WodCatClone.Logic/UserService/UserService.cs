@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.WebDb.UserRepository;
 
@@ -15,7 +16,9 @@ namespace WodCatClone.Logic.UserService
 
         public IEnumerable<User> GetAllUsers()
         {
-            return _repository.GetAllUsers();
+            return _repository.GetAllUsers()
+                .OrderBy(b => b.Points)
+                .Reverse();
         }
 
         public bool IsLoginUser()

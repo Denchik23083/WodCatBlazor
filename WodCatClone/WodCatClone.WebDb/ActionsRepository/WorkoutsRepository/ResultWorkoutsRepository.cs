@@ -2,7 +2,6 @@
 using System.Linq;
 using WodCatClone.Db;
 using WodCatClone.Db.Entities.Actions;
-using WodCatClone.Db.Entities.Auth;
 
 namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
 {
@@ -20,18 +19,15 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
             return _context.ResultWorkouts.Where(b => b.WorkoutId == id);
         }
 
-        public bool AddResultWorkouts(ResultWorkouts resultWorkouts, User user)
+        public bool AddResultWorkouts(ResultWorkouts resultWorkouts)
         {
             _context.ResultWorkouts.Add(resultWorkouts);
-            
-            user.Points += 10;
-
             _context.SaveChanges();
 
             return true;
         }
 
-        public bool EditResultWorkouts(ResultWorkouts resultWorkouts, int id, User user)
+        public bool EditResultWorkouts(ResultWorkouts resultWorkouts, int id)
         {
             var resultWorkoutEdit = _context.ResultWorkouts.FirstOrDefault(b => b.Id == id);
             
@@ -46,8 +42,6 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
             resultWorkoutEdit.Time = resultWorkouts.Time;
             resultWorkoutEdit.Repeat = resultWorkouts.Repeat;
             resultWorkoutEdit.PublishDate = resultWorkouts.PublishDate;
-
-            user.Points += 5;
 
             _context.SaveChanges();
 

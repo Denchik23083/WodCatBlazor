@@ -16,7 +16,7 @@ namespace WodCatClone.Logic.AuthService
 
         public bool Login(Login login)
         {
-            var user = _repository.Login(login);
+            var user = _repository.Login(Map(login));
 
             if (user is null)
             {
@@ -31,7 +31,7 @@ namespace WodCatClone.Logic.AuthService
 
         public bool Register(Register register)
         {
-            return _repository.Register(register);
+            return _repository.Register(Map(register));
         }
 
         public bool Logout()
@@ -40,6 +40,30 @@ namespace WodCatClone.Logic.AuthService
             IsLoginUser = false;
 
             return true;
+        }
+
+        private User Map(Login model)
+        {
+            return new User
+            {
+                Email = model.Email,
+                Password = model.Password,
+            };
+        }
+
+        private User Map(Register model)
+        {
+            return new User
+            {
+                Name = model.Name,
+                Surname = model.Surname,
+                NickName = model.NickName,
+                Email = model.Email,
+                Password = model.Password,
+                Birthday = model.Birthday,
+                GenderId = model.GenderId,
+                Town = model.Town
+            };
         }
     }
 }
