@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using WodCatClone.Db.Entities.Actions;
+using WodCatClone.Db.Entities.Auth;
 
 namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
 {
@@ -7,10 +8,12 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
     {
         IEnumerable<ResultWorkouts> GetAllResultWorkouts(int id);
 
-        bool AddResultWorkouts(ResultWorkouts resultWorkouts);
+        ResultWorkouts GetResultWorkouts(int id);
 
-        bool EditResultWorkouts(ResultWorkouts resultWorkouts, int id);
+        bool AddResultWorkouts(ResultWorkouts resultWorkouts, User user);
 
-        bool DeleteResultWorkouts(int resultWorkoutsId);
+        bool EditResultWorkouts(ResultWorkouts resultWorkouts, ResultWorkouts resultWorkoutEdit, User user);
+
+        bool DeleteResultWorkouts(ResultWorkouts resultWorkoutRemove);
     }
 }

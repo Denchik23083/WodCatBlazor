@@ -46,16 +46,7 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
                 return false;
             }
 
-            article.UserId = user.Id;
-
-            var result = _repository.AddArticle(article);
-
-            if (result)
-            {
-                user.Points += 50;
-            }
-
-            return result;
+            return _repository.AddArticle(article, user);
         }
 
         public bool EditArticle(Articles article, int id)
@@ -68,19 +59,26 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
                 return false;
             }
 
-            var result = _repository.EditArticle(article, id);
+            var articleToEdit = _repository.GetArticle(id);
 
-            if (result)
+            if (articleToEdit is null)
             {
-                user.Points += 25;
+                return false;
             }
 
-            return result;
+            return _repository.EditArticle(article, articleToEdit, user);
         }
 
         public bool RemoveArticle(int id)
         {
-            return _repository.RemoveArticle(id);
+            var articleToRemove = _repository.GetArticle(id);
+
+            if (articleToRemove is null)
+            {
+                return false;
+            }
+
+            return _repository.RemoveArticle(articleToRemove);
         }
     }
 }

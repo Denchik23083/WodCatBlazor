@@ -65,16 +65,7 @@ namespace WodCatClone.Logic.ActionsService.EventsService
                 return false;
             }
 
-            @event.UserId = user.Id;
-
-            var result = _repository.AddEvent(@event);
-
-            if (result)
-            {
-                user.Points += 100;
-            }
-
-            return result;
+            return _repository.AddEvent(@event, user);
         }
 
         public bool EditEvent(Events @event, int eventId)
@@ -87,35 +78,39 @@ namespace WodCatClone.Logic.ActionsService.EventsService
                 return false;
             }
 
-            var result = _repository.EditEvent(@event, eventId);
+            var eventToEdit = _repository.GetEvent(eventId);
 
-            if (result)
+            if (eventToEdit is null)
             {
-                user.Points += 50;
+                return false;
             }
 
-            return result;
+            return _repository.EditEvent(@event, eventToEdit, user);
         }
 
         public bool RemoveEvent(int eventId)
         {
-            var allUsers = _userRepository.GetAllUsers();
+            var allUsers = _repository.GetAllEventsUsers(eventId);
 
-            foreach (var allUser in allUsers)
+            var eventToRemove = _repository.GetEvent(eventId);
+
+            if (eventToRemove is null)
             {
-                allUser.EventId = null;
+                return false;
             }
 
-            return _repository.RemoveEvent(eventId);
+            return _repository.RemoveEvent(allUsers, eventToRemove);
         }
 
         public bool AutoRemoveEvent(int eventId)
         {
-            var allUsers = _userRepository.GetAllUsers();
+            var allUsers = _repository.GetAllEventsUsers(eventId);
 
-            foreach (var allUser in allUsers)
+            var eventToRemove = _repository.GetEvent(eventId);
+
+            if (eventToRemove is null)
             {
-                allUser.EventId = null;
+                return false;
             }
 
             var allUsersTime = _repository.GetAllEventTimeUsers(eventId)
@@ -136,21 +131,31 @@ namespace WodCatClone.Logic.ActionsService.EventsService
                 points /= 2;
             }
 
-            return _repository.AutoRemoveEvent(eventId);
+            return _repository.AutoRemoveEvent(allUsers, eventToRemove);
         }
 
         public bool JoinEvent(int eventId, User user)
         {
-            AuthService.AuthService.User.EventId = eventId;
+            var loginUser = _userRepository.GetUser(user.Id);
 
-            return _repository.JoinEvent(eventId, user);
+            if (loginUser is null)
+            {
+                return false;
+            }
+
+            return _repository.JoinEvent(eventId, loginUser);
         }
 
         public bool ExitEvent(int eventId, User user)
         {
-            AuthService.AuthService.User.EventId = null;
+            var loginUser = _userRepository.GetUser(user.Id);
 
-            return _repository.ExitEvent(eventId, user);
+            if (loginUser is null)
+            {
+                return false;
+            }
+
+            return _repository.ExitEvent(eventId, loginUser);
         }
 
         public bool AddEventTimeUser(EventTimeUser eventTimeUser)

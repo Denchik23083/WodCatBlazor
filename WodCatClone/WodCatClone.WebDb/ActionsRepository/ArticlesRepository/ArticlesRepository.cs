@@ -2,6 +2,7 @@
 using System.Linq;
 using WodCatClone.Db;
 using WodCatClone.Db.Entities.Actions;
+using WodCatClone.Db.Entities.Auth;
 
 namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
 {
@@ -34,23 +35,21 @@ namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
             return _context.ArticleEmblem.FirstOrDefault(b => b.Id == articleId);
         }
 
-        public bool AddArticle(Articles article)
+        public bool AddArticle(Articles article, User user)
         {
+            article.UserId = user.Id;
+
             _context.Articles.Add(article);
+
+            user.Points += 50;
+
             _context.SaveChanges();
 
             return true;
         }
 
-        public bool EditArticle(Articles article, int id)
+        public bool EditArticle(Articles article, Articles articleToEdit, User user)
         {
-            var articleToEdit = _context.Articles.FirstOrDefault(b => b.Id == id);
-
-            if (articleToEdit is null)
-            {
-                return false;
-            }
-
             articleToEdit.Name = article.Name;
             articleToEdit.Type = article.Type;
             articleToEdit.ArticleEmblemId = article.ArticleEmblemId;
@@ -58,20 +57,15 @@ namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
             articleToEdit.Description = article.Description;
             articleToEdit.FullDescription = article.FullDescription;
 
+            user.Points += 25;
+
             _context.SaveChanges();
 
             return true;
         }
 
-        public bool RemoveArticle(int id)
+        public bool RemoveArticle(Articles articleToRemove)
         {
-            var articleToRemove = _context.Articles.FirstOrDefault(b => b.Id == id);
-
-            if (articleToRemove is null)
-            {
-                return false;
-            }
-
             _context.Articles.Remove(articleToRemove);
             _context.SaveChanges();
 

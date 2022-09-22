@@ -28,7 +28,14 @@ namespace WodCatClone.Logic.UserService
 
         public User GetUser()
         {
-            return _repository.GetUser(AuthService.AuthService.User);
+            var user = AuthService.AuthService.User;
+
+            if (user is null)
+            {
+                return null;
+            }
+
+            return _repository.GetUser(user);
         }
 
         public User GetUser(int? id)
@@ -53,23 +60,53 @@ namespace WodCatClone.Logic.UserService
 
         public bool EditUserHall(User user, int id)
         {
-            AuthService.AuthService.User.HallId = id;
+            var loginUser = _repository.GetUser(user.Id);
 
-            return _repository.EditUserHall(user, id);
+            if (loginUser is null)
+            {
+                return false;
+            }
+
+            return _repository.EditUserHall(loginUser, id);
         }
 
         public bool Update(User updateUser, int id, string genderName)
         {
             var genre = _repository.GetGender(genderName);
 
-            updateUser.GenderId = genre.Id;
+            if (genre is null)
+            {
+                return false;
+            }
 
-            return _repository.Update(updateUser, id);
+            var userToUpdate = _repository.GetUser(id);
+
+            if (userToUpdate is null)
+            {
+                return false;
+            }
+
+            return _repository.Update(updateUser, userToUpdate, genre);
         }
 
         public bool UpdateAuth(User updateUser, int id)
         {
-            return _repository.UpdateAuth(updateUser, id);
+            var userToUpdate = _repository.GetUser(id);
+
+            if (userToUpdate is null)
+            {
+                return false;
+            }
+
+            var allUsers = _repository.GetAllUsers();
+
+            if (allUsers.Any(b => b.Email.Equals(updateUser.Email)
+                                  || b.NickName.Equals(updateUser.NickName)))
+            {
+                return false;
+            }
+
+            return _repository.UpdateAuth(updateUser, userToUpdate);
         }
     }
 }

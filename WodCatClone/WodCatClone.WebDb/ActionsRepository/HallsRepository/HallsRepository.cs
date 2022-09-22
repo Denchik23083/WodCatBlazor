@@ -45,23 +45,21 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
             return _context.HallEmblem.FirstOrDefault(b => b.Id == imageId);
         }
 
-        public bool AddHall(Halls hall)
+        public bool AddHall(Halls hall, User user)
         {
+            hall.UserId = user.Id;
+
             _context.Halls.Add(hall);
+
+            user.Points += 50;
+
             _context.SaveChanges();
 
             return true;
         }
 
-        public bool EditHall(Halls hall, int hallId)
+        public bool EditHall(Halls hall, Halls hallToEdit, User user)
         {
-            var hallToEdit = _context.Halls.FirstOrDefault(b => b.Id == hallId);
-
-            if (hallToEdit is null)
-            {
-                return false;
-            }
-
             hallToEdit.Name = hall.Name;
             hallToEdit.Type = hall.Type;
             hallToEdit.Town = hall.Town;
@@ -70,18 +68,18 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
             hallToEdit.Description = hall.Description;
             hallToEdit.EmblemHallId = hall.EmblemHallId;
 
+            user.Points += 25;
+
             _context.SaveChanges();
 
             return true;
         }
 
-        public bool RemoveHall(int hallId)
+        public bool RemoveHall(IEnumerable<User> joinUserHall, Halls hallToRemove)
         {
-            var hallToRemove = _context.Halls.FirstOrDefault(b => b.Id == hallId);
-
-            if (hallToRemove is null)
+            foreach (var user in joinUserHall)
             {
-                return false;
+                user.HallId = null;
             }
 
             _context.Halls.Remove(hallToRemove);
@@ -90,15 +88,8 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
             return true;
         }
 
-        public bool JoinHall(int hallId, User user)
+        public bool JoinHall(int hallId, User loginUser)
         {
-            var loginUser = _context.Users.FirstOrDefault(b => b.Id == user.Id);
-
-            if (loginUser is null)
-            {
-                return false;
-            }
-
             loginUser.HallId = hallId;
 
             _context.SaveChanges();
@@ -106,15 +97,8 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
             return true;
         }
 
-        public bool ExitHall(int hallId, User user)
+        public bool ExitHall(int hallId, User loginUser)
         {
-            var loginUser = _context.Users.FirstOrDefault(b => b.Id == user.Id);
-
-            if (loginUser is null)
-            {
-                return false;
-            }
-
             loginUser.HallId = null;
 
             _context.SaveChanges();

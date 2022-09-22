@@ -20,9 +20,9 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
 
         ProgramEmblem GetImage(int? programsEmblemId);
 
-        bool BeginProgram(int id, User user);
+        bool BeginProgram(int id, User loginUser, ProgramTimeUser programTimeUser, ProgramTimeUser newProgramTimeUser);
 
-        bool StopProgram(int id, User user);
+        bool StopProgram(int id, User loginUser, ProgramTimeUser programTimeUser, bool isFinish);
 
         int Subscribers(int programId);
     }

@@ -21,14 +21,6 @@ namespace WodCatClone.WebDb.AuthRepository
 
         public bool Register(User registerUser)
         {
-            var allUsers = _context.Users;
-
-            if (allUsers.Any(b => b.Email.Equals(registerUser.Email)
-                                  || b.NickName.Equals(registerUser.NickName)))
-            {
-                return false;
-            }
-
             _context.Users.Add(registerUser);
             _context.SaveChanges();
 

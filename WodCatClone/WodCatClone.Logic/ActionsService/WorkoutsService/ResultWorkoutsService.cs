@@ -31,16 +31,7 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService
                 return false;
             }
 
-            resultWorkouts.UserId = user.Id;
-
-            var result = _repository.AddResultWorkouts(resultWorkouts);
-
-            if (result)
-            {
-                user.Points += 10;
-            }
-
-            return result;
+            return _repository.AddResultWorkouts(resultWorkouts, user);
         }
 
         public bool EditResultWorkouts(ResultWorkouts resultWorkouts, int id)
@@ -53,19 +44,26 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService
                 return false;
             }
 
-            var result = _repository.EditResultWorkouts(resultWorkouts, id);
+            var resultWorkoutEdit = _repository.GetResultWorkouts(id);
 
-            if (result)
+            if (resultWorkoutEdit is null)
             {
-                user.Points += 5;
+                return false;
             }
 
-            return result;
+            return _repository.EditResultWorkouts(resultWorkouts, resultWorkoutEdit, user);
         }
 
         public bool DeleteResultWorkouts(int id)
         {
-            return _repository.DeleteResultWorkouts(id);
+            var resultWorkoutRemove = _repository.GetResultWorkouts(id);
+
+            if (resultWorkoutRemove is null)
+            {
+                return false;
+            }
+
+            return _repository.DeleteResultWorkouts(resultWorkoutRemove);
         }
     }
 }

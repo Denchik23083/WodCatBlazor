@@ -51,30 +51,14 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
             return _context.ProgramEmblem.FirstOrDefault(b => b.Id == programsEmblemId);
         }
 
-        public bool BeginProgram(int id, User user)
+        public bool BeginProgram(int id, User loginUser, ProgramTimeUser programTimeUser, ProgramTimeUser newProgramTimeUser)
         {
-            var loginUser = _context.Users.FirstOrDefault(b => b.Id == user.Id);
-
-            if (loginUser is null)
-            {
-                return false;
-            }
-
             loginUser.ProgramId = id;
-
-            var programTimeUser = _context.ProgramTimeUser.FirstOrDefault(b => b.ProgramsId == id && b.UserId == user.Id);
 
             if (programTimeUser is not null)
             {
                 _context.ProgramTimeUser.Remove(programTimeUser);
             }
-
-            var newProgramTimeUser = new ProgramTimeUser
-            {
-                BeginProgramDate = DateTime.Now,
-                ProgramsId = id,
-                UserId = user.Id
-            };
 
             _context.ProgramTimeUser.Add(newProgramTimeUser);
             _context.SaveChanges();
@@ -82,22 +66,13 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
             return true;
         }
 
-        public bool StopProgram(int id, User user)
+        public bool StopProgram(int id, User loginUser, ProgramTimeUser programTimeUser, bool isFinish)
         {
-            var loginUser = _context.Users.FirstOrDefault(b => b.Id == user.Id);
-
-            if (loginUser is null)
-            {
-                return false;
-            }
-
             loginUser.ProgramId = null;
 
-            var programTimeUser = _context.ProgramTimeUser.FirstOrDefault(b => b.ProgramsId == id && b.UserId == user.Id);
-
-            if (programTimeUser is null)
+            if (isFinish)
             {
-                return false;
+                loginUser.Points += 50;
             }
 
             _context.ProgramTimeUser.Remove(programTimeUser);

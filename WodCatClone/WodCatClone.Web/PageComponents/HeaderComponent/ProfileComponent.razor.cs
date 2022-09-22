@@ -28,7 +28,19 @@ namespace WodCatClone.Web.PageComponents.HeaderComponent
                 Image = UserService.GetGender(User.GenderId).Image;
             }
         }
+
         protected override void OnParametersSet()
+        {
+            IsLoginUser = UserService.IsLoginUser();
+            User = UserService.GetUser();
+
+            if (User is not null && User.GenderId is not null)
+            {
+                Image = UserService.GetGender(User.GenderId).Image;
+            }
+        }
+
+        protected override void OnAfterRender(bool firstRender)
         {
             IsLoginUser = UserService.IsLoginUser();
             User = UserService.GetUser();

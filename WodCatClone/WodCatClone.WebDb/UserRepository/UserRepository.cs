@@ -21,11 +21,6 @@ namespace WodCatClone.WebDb.UserRepository
 
         public User GetUser(User user)
         {
-            if (user is null)
-            {
-                return null;
-            }
-
             return _context.Users.FirstOrDefault(b => b.Id == user.Id);
         }
 
@@ -49,62 +44,35 @@ namespace WodCatClone.WebDb.UserRepository
             return _context.Gender.FirstOrDefault(b => b.Name.Equals(gender));
         }
 
-        public bool EditUserHall(User user, int id)
+        public bool EditUserHall(User loginUser, int id)
         {
-            var loginUser = _context.Users.FirstOrDefault(b => b.Id == user.Id);
-
-            if (loginUser is null)
-            {
-                return false;
-            }
-
             loginUser.HallId = id;
-            _context.SaveChanges();
-
-            return true;
-        }
-
-        public bool Update(User editUser, int id)
-        {
-            var userToUpdate = _context.Users.FirstOrDefault(b => b.Id == id);
-
-            if (userToUpdate is null)
-            {
-                return false;
-            }
-
-            userToUpdate.Name = editUser.Name;
-            userToUpdate.Surname = editUser.Surname;
-            userToUpdate.Town = editUser.Town;
-            userToUpdate.HallId = editUser.HallId;
-            userToUpdate.GenderId = editUser.GenderId;
-            userToUpdate.Birthday = editUser.Birthday;
-            userToUpdate.Height = editUser.Height;
-            userToUpdate.Weight = editUser.Weight;
-            userToUpdate.AboutMe = editUser.AboutMe;
 
             _context.SaveChanges();
 
             return true;
         }
 
-        public bool UpdateAuth(User updateUser, int id)
+        public bool Update(User updateUser, User userToUpdate, Gender gender)
         {
-            var userToUpdate = _context.Users.FirstOrDefault(b => b.Id == id);
+            userToUpdate.Name = updateUser.Name;
+            userToUpdate.Surname = updateUser.Surname;
+            userToUpdate.Town = updateUser.Town;
+            userToUpdate.HallId = updateUser.HallId;
+            userToUpdate.GenderId = updateUser.GenderId;
+            userToUpdate.Birthday = updateUser.Birthday;
+            userToUpdate.Height = updateUser.Height;
+            userToUpdate.Weight = updateUser.Weight;
+            userToUpdate.AboutMe = updateUser.AboutMe;
+            userToUpdate.GenderId = gender.Id;
 
-            if (userToUpdate is null)
-            {
-                return false;
-            }
+            _context.SaveChanges();
 
-            var allUsers = _context.Users;
+            return true;
+        }
 
-            if (allUsers.Any(b => b.Email.Equals(updateUser.Email)
-                                  || b.NickName.Equals(updateUser.NickName)))
-            {
-                return false;
-            }
-
+        public bool UpdateAuth(User updateUser, User userToUpdate)
+        {
             userToUpdate.NickName = updateUser.NickName;
             userToUpdate.Email = updateUser.Email;
             userToUpdate.Password = updateUser.Password;

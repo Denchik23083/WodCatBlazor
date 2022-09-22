@@ -57,16 +57,7 @@ namespace WodCatClone.Logic.ActionsService.HallsService
                 return false;
             }
 
-            hall.UserId = user.Id;
-
-            var result = _repository.AddHall(hall);
-
-            if (result)
-            {
-                user.Points += 50;
-            }
-
-            return result;
+            return _repository.AddHall(hall, user);
         }
 
         public bool EditHall(Halls hall, int hallId)
@@ -79,38 +70,50 @@ namespace WodCatClone.Logic.ActionsService.HallsService
                 return false;
             }
 
-            var result = _repository.EditHall(hall, hallId);
+            var hallToEdit = _repository.GetHall(hallId);
 
-            if (result)
+            if (hallToEdit is null)
             {
-                user.Points += 25;
+                return false;
             }
 
-            return result;
+            return _repository.EditHall(hall, hallToEdit, user);
         }
 
         public bool RemoveHall(int hallId)
         {
             var joinUserHall = _repository.GetAllHallsUsers(hallId);
 
-            foreach (var item in joinUserHall)
+            var hallToRemove = _repository.GetHall(hallId);
+
+            if (hallToRemove is null)
             {
-                item.HallId = null;
+                return false;
             }
 
-            return _repository.RemoveHall(hallId);
+            return _repository.RemoveHall(joinUserHall, hallToRemove);
         }
 
         public bool JoinHall(int hallId, User user)
         {
-            AuthService.AuthService.User.HallId = hallId;
+            var loginUser = _userRepository.GetUser(user.Id);
 
-            return _repository.JoinHall(hallId, user);
+            if (loginUser is null)
+            {
+                return false;
+            }
+
+            return _repository.JoinHall(hallId, loginUser);
         }
 
         public bool ExitHall(int hallId, User user)
         {
-            AuthService.AuthService.User.HallId = null;
+            var loginUser = _userRepository.GetUser(user.Id);
+
+            if (loginUser is null)
+            {
+                return false;
+            }
 
             return _repository.ExitHall(hallId, user);
         }

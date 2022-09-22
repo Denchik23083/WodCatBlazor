@@ -50,23 +50,21 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
             return _context.EventTimeUser.FirstOrDefault(b => b.EventsId == eventId && b.UserId == userId);
         }
 
-        public bool AddEvent(Events @event)
+        public bool AddEvent(Events @event, User user)
         {
+            @event.UserId = user.Id;
+
             _context.Events.Add(@event);
+
+            user.Points += 100;
+
             _context.SaveChanges();
 
             return true;
         }
 
-        public bool EditEvent(Events @event, int eventId)
+        public bool EditEvent(Events @event, Events eventToEdit, User user)
         {
-            var eventToEdit = _context.Events.FirstOrDefault(b => b.Id == eventId);
-
-            if (eventToEdit is null)
-            {
-                return false;
-            }
-
             eventToEdit.Name = @event.Name;
             eventToEdit.Town = @event.Town;
             eventToEdit.TypeEvent = @event.TypeEvent;
@@ -77,18 +75,18 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
             eventToEdit.EventsEmblemId = @event.EventsEmblemId;
             eventToEdit.HallId = @event.HallId;
 
+            user.Points += 50;
+
             _context.SaveChanges();
 
             return true;
         }
 
-        public bool RemoveEvent(int eventId)
+        public bool RemoveEvent(IEnumerable<User> allUsers, Events eventToRemove)
         {
-            var eventToRemove = _context.Events.FirstOrDefault(b => b.Id == eventId);
-
-            if (eventToRemove is null)
+            foreach (var user in allUsers)
             {
-                return false;
+                user.EventId = null;
             }
 
             _context.Events.Remove(eventToRemove);
@@ -97,13 +95,11 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
             return true;
         }
 
-        public bool AutoRemoveEvent(int eventId)
+        public bool AutoRemoveEvent(IEnumerable<User> allUsers, Events eventToRemove)
         {
-            var eventToRemove = _context.Events.FirstOrDefault(b => b.Id == eventId);
-
-            if (eventToRemove is null)
+            foreach (var user in allUsers)
             {
-                return false;
+                user.EventId = null;
             }
 
             _context.Events.Remove(eventToRemove);
@@ -112,15 +108,8 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
             return true;
         }
 
-        public bool JoinEvent(int eventId, User user)
+        public bool JoinEvent(int eventId, User loginUser)
         {
-            var loginUser = _context.Users.FirstOrDefault(b => b.Id == user.Id);
-
-            if (loginUser is null)
-            {
-                return false;
-            }
-
             loginUser.EventId = eventId;
 
             _context.SaveChanges();
@@ -128,15 +117,8 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
             return true;
         }
 
-        public bool ExitEvent(int eventId, User user)
+        public bool ExitEvent(int eventId, User loginUser)
         {
-            var loginUser = _context.Users.FirstOrDefault(b => b.Id == user.Id);
-
-            if (loginUser is null)
-            {
-                return false;
-            }
-
             loginUser.EventId = null;
 
             _context.SaveChanges();
