@@ -60,7 +60,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
             new() { Content = "Сложный", Filter = "Сложный" },
         };
 
-        void Filter()
+        public void Filter()
         {
             Workouts = WorkoutsService.GetAllWorkouts();
 
@@ -86,7 +86,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
             }
         }
 
-        void Reset()
+        public void Reset()
         {
             _filterName = string.Empty;
             _filterCategory = "None";

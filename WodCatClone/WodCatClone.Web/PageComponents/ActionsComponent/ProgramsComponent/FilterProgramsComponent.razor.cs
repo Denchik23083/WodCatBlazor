@@ -31,7 +31,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
             new() { Content = "Performance", Filter = "Performance" },
         };
 
-        void Filter()
+        public void Filter()
         {
             Programs = ProgramsService.GetAllPrograms();
 
@@ -45,7 +45,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
             }
         }
 
-        void Reset()
+        public void Reset()
         {
             _filterType = "None";
             _filterAim = "None";

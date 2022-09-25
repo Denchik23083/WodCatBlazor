@@ -57,7 +57,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ExercisesComponent
             new() { Content = "Кроссфит стойка", Filter = "Кроссфит стойка" },
     };
 
-        void Filter()
+        public void Filter()
         {
             Exercises = ExercisesService.GetAllExercises();
 
@@ -79,7 +79,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ExercisesComponent
             }
         }
 
-        void Reset()
+        public void Reset()
         {
             _filterModality = "None";
             _filterMovement = "None";

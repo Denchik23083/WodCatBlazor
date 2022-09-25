@@ -117,21 +117,19 @@ namespace WodCatClone.Logic.ActionsService.EventsService
                 .OrderByDescending(b => b.Time)
                 .Take(3);
 
-            var points = 200;
+            var usersToList = new List<User>();
 
             foreach (var item in allUsersTime)
             {
-                var user = _userRepository.GetUser(item.Id);
+                var user = _userRepository.GetUser(item.UserId);
 
                 if (user is not null)
                 {
-                    user.Points += points;
+                    usersToList.Add(user);
                 }
-
-                points /= 2;
             }
 
-            return _repository.AutoRemoveEvent(allUsers, eventToRemove);
+            return _repository.AutoRemoveEvent(allUsers, usersToList, eventToRemove);
         }
 
         public bool JoinEvent(int eventId, User user)

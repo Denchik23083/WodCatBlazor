@@ -26,8 +26,8 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
 
         bool RemoveEvent(IEnumerable<User> allUsers, Events eventToRemove);
 
-        bool AutoRemoveEvent(IEnumerable<User> allUsers, Events eventToRemove);
-
+        bool AutoRemoveEvent(IEnumerable<User> allUsers, IEnumerable<User> usersToList, Events eventToRemove);
+        
         bool JoinEvent(int eventId, User user);
 
         bool ExitEvent(int eventId, User user);
