@@ -21,26 +21,21 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.RatingsComponent
 
         protected override void OnInitialized()
         {
-            var hall  = HallsService.GetHall(User.HallId);
-            if (hall is not null)
-            {
-                Image = HallsService.GetImage(hall.EmblemHallId);
-            }
-
-            if (User.GenderId is not null)
-            {
-                GenderImage = UserService.GetGender(User.GenderId).Image;
-            }
+            FillOverrideFunctions();
         }
 
         protected override void OnParametersSet()
+        {
+            FillOverrideFunctions();
+        }
+
+        private void FillOverrideFunctions()
         {
             var hall = HallsService.GetHall(User.HallId);
             if (hall is not null)
             {
                 Image = HallsService.GetImage(hall.EmblemHallId);
             }
-
             if (User.GenderId is not null)
             {
                 GenderImage = UserService.GetGender(User.GenderId).Image;

@@ -22,17 +22,15 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
 
         protected override void OnInitialized()
         {
-            Value = 0;
-            Url = $"gymboxs/{Hall.Id}";
-            Image = HallsService.GetImage(Hall.EmblemHallId);
-            if (Hall.Type is not null)
-            {
-                HallType = Hall.Type.Split(",");
-            }
-            Athletes = HallsService.Athlete(Hall.Id);
+            FillOverrideFunctions();
         }
 
         protected override void OnParametersSet()
+        {
+            FillOverrideFunctions();
+        }
+
+        private void FillOverrideFunctions()
         {
             Value = 0;
             Url = $"gymboxs/{Hall.Id}";

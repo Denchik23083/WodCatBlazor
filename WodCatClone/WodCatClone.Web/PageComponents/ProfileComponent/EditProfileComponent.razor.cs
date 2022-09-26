@@ -55,52 +55,29 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
 
         protected override void OnInitialized()
         {
-            UserHall = HallsService.GetHall(User.HallId);
-            Halls = HallsService.GetAllHalls();
-            if (UserHall is not null)
-            {
-                HallImage = HallsService.GetImage(UserHall.EmblemHallId);
-            }
-
-            EditUser = User;
-
-            if (User.GenderId is not null)
-            {
-                Image = UserService.GetGender(User.GenderId).Image;
-            }
-
-            var gender = UserService.GetGender(User.GenderId);
-
-            if (gender.Name == "Мужской")
-            {
-                Man = true;
-                Woman = false;
-            }
-            if (gender.Name == "Женский")
-            {
-                Man = false;
-                Woman = true;
-            }
+            FillOverrideFunctions();
         }
 
         protected override void OnParametersSet()
         {
+            FillOverrideFunctions();
+        }
+
+        private void FillOverrideFunctions()
+        {
+            EditUser = User;
             UserHall = HallsService.GetHall(User.HallId);
             Halls = HallsService.GetAllHalls();
             if (UserHall is not null)
             {
                 HallImage = HallsService.GetImage(UserHall.EmblemHallId);
             }
-
-            EditUser = User;
-
             if (User.GenderId is not null)
             {
                 Image = UserService.GetGender(User.GenderId).Image;
             }
 
             var gender = UserService.GetGender(User.GenderId);
-
             if (gender.Name == "Мужской")
             {
                 Man = true;

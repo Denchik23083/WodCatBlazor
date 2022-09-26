@@ -44,7 +44,7 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService
                 return false;
             }
 
-            var resultWorkoutEdit = _repository.GetResultWorkouts(id);
+            var resultWorkoutEdit = _repository.GetResultWorkout(id);
 
             if (resultWorkoutEdit is null)
             {
@@ -56,7 +56,7 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService
 
         public bool DeleteResultWorkouts(int id)
         {
-            var resultWorkoutRemove = _repository.GetResultWorkouts(id);
+            var resultWorkoutRemove = _repository.GetResultWorkout(id);
 
             if (resultWorkoutRemove is null)
             {

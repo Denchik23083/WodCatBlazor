@@ -35,18 +35,15 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         protected override void OnInitialized()
         {
-            Value = 0;
-            Hall = HallsService.GetHall(Workout.HallId);
-            if (Hall is not null)
-            {
-                Image = HallsService.GetImage(Hall.EmblemHallId);
-            }
-            WorkoutsCategory = Workout.Category.Split(",");
-            ResultWorkoutsCount = ResultWorkoutsService.GetAllResultWorkouts(Workout.Id).Count();
-            WorkoutsExercises = WorkoutsService.GetAllWorkoutsExercises(Workout.Id);
+            FillOverrideFunctions();
         }
 
         protected override void OnParametersSet()
+        {
+            FillOverrideFunctions();
+        }
+
+        private void FillOverrideFunctions()
         {
             Value = 0;
             Hall = HallsService.GetHall(Workout.HallId);

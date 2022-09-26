@@ -44,29 +44,15 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 
         protected override void OnInitialized()
         {
-            Hall = HallsService.GetHall(HallId);
-            if (Hall is null)
-            {
-                NavigationManager.NavigateTo("/gymboxs");
-            }
-            else
-            {
-                Image = HallsService.GetImage(Hall.EmblemHallId);
-                IsLoginUser = UserService.IsLoginUser();
-                if (IsLoginUser) Top = "loginTop";
-
-                if (Hall.Type is not null)
-                {
-                    Type = Hall.Type.Split(",");
-                }
-
-                User = UserService.GetUser();
-                Users = HallsService.GetAllHallsUsers(HallId);
-                Athletes = HallsService.Athlete(Hall.Id);
-            }
+            FillOverrideFunctions();
         }
 
         protected override void OnParametersSet()
+        {
+            FillOverrideFunctions();
+        }
+
+        private void FillOverrideFunctions()
         {
             Hall = HallsService.GetHall(HallId);
             if (Hall is null)

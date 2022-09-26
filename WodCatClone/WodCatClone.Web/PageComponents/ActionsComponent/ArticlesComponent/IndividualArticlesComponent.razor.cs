@@ -20,18 +20,15 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
 
         protected override void OnInitialized()
         {
-            Value = 0;
-            Url = $"articles/{Article.Id}";
-            if (Article.ArticleEmblemId is not null)
-            {
-                Image = ArticlesService.GetImage(Article.ArticleEmblemId);
-            }
-            if (Article.Type is not null)
-            {
-                ArticleType = Article.Type.Split(",");
-            }
+            FillOverrideFunctions();
         }
+
         protected override void OnParametersSet()
+        {
+            FillOverrideFunctions();
+        }
+
+        private void FillOverrideFunctions()
         {
             Value = 0;
             Url = $"articles/{Article.Id}";

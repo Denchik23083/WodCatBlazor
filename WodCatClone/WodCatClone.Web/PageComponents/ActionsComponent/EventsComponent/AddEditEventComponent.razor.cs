@@ -104,13 +104,15 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         protected override void OnInitialized()
         {
-            EventEmblem = EventsService.GetAllEventEmblem();
-            Halls = HallsService.GetAllHalls();
-            HallEmblem = HallsService.GetAllHallEmblem();
-            Workouts = WorkoutsService.GetAllWorkouts();
+            FillOverrideFunctions();
         }
 
         protected override void OnParametersSet()
+        {
+            FillOverrideFunctions();
+        }
+
+        private void FillOverrideFunctions()
         {
             EventEmblem = EventsService.GetAllEventEmblem();
             Halls = HallsService.GetAllHalls();

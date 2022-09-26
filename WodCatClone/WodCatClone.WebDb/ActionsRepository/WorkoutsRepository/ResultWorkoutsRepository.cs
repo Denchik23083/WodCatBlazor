@@ -20,7 +20,7 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
             return _context.ResultWorkouts.Where(b => b.WorkoutId == id);
         }
 
-        public ResultWorkouts GetResultWorkouts(int id)
+        public ResultWorkouts GetResultWorkout(int id)
         {
             return _context.ResultWorkouts.FirstOrDefault(b => b.WorkoutId == id);
         }

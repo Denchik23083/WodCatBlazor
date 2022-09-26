@@ -27,21 +27,15 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
 
         protected override void OnInitialized()
         {
-            Url = $"programs/{Program.Id}";
-            if (Program.HallId is not null)
-            {
-                Hall = HallsService.GetHall(Program.HallId);
-                HallEmblem = HallsService.GetImage(Hall.EmblemHallId);
-            }
-            if (Program.ProgramsEmblemId is not null)
-            {
-                Image = ProgramsService.GetImage(Program.ProgramsEmblemId);
-            }
-
-            Subscribers = ProgramsService.Subscribers(Program.Id);
+            FillOverrideFunctions();
         }
 
         protected override void OnParametersSet()
+        {
+            FillOverrideFunctions();
+        }
+
+        private void FillOverrideFunctions()
         {
             Url = $"programs/{Program.Id}";
             if (Program.HallId is not null)
@@ -53,7 +47,6 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
             {
                 Image = ProgramsService.GetImage(Program.ProgramsEmblemId);
             }
-
             Subscribers = ProgramsService.Subscribers(Program.Id);
         }
 

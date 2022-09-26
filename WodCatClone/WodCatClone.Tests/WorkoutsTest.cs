@@ -50,12 +50,24 @@ namespace WodCatClone.Tests
         public void Get_All_ResultWorkouts()
         {
             var context = new TestsWodCatCloneContext();
-            var expectedResultWorkouts = 0;
+            var expectedResultWorkouts = 1;
 
             var resultWorkouts = context.ResultWorkouts;
             Assert.NotNull(resultWorkouts);
 
             Assert.Equal(expectedResultWorkouts, resultWorkouts.Count());
+        }
+
+        [Fact]
+        public void Get_ResultWorkout()
+        {
+            var context = new TestsWodCatCloneContext();
+            var id = 1;
+
+            var resultWorkout = context.ResultWorkouts.FirstOrDefault(b => b.Id == id);
+            Assert.NotNull(resultWorkout);
+
+            Assert.Equal(id, resultWorkout.Id);
         }
 
         [Fact]

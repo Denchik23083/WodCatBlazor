@@ -11,18 +11,6 @@ namespace WodCatClone.Tests
         public static bool IsLoginUser;
 
         [Fact]
-        public void Get_All_Users()
-        {
-            var context = new TestsWodCatCloneContext();
-            var expectedUsers = 3;
-
-            var users = context.Users;
-            Assert.NotNull(users);
-
-            Assert.Equal(expectedUsers, users.Count());
-        }
-
-        [Fact]
         public void Login()
         {
             var context = new TestsWodCatCloneContext();

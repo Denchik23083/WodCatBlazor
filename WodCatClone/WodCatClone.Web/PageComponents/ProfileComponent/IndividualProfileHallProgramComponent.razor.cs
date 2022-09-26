@@ -22,14 +22,15 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
 
         protected override void OnInitialized()
         {
-            User = UserService.GetUser();
-            if (Hall is not null)
-            {
-                HallImage = HallsService.GetImage(Hall.EmblemHallId);
-            }
+            FillOverrideFunctions();
         }
 
         protected override void OnParametersSet()
+        {
+            FillOverrideFunctions();
+        }
+
+        private void FillOverrideFunctions()
         {
             User = UserService.GetUser();
             if (Hall is not null)

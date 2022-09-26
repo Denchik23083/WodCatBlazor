@@ -744,7 +744,7 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                         new
                         {
                             Id = 1,
-                            BeginProgramDate = new DateTime(2022, 9, 20, 13, 57, 59, 993, DateTimeKind.Local).AddTicks(6445),
+                            BeginProgramDate = new DateTime(2022, 9, 26, 12, 41, 38, 925, DateTimeKind.Local).AddTicks(5473),
                             ProgramsId = 1,
                             UserId = 1
                         });
@@ -975,6 +975,20 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                     b.HasIndex("WorkoutId");
 
                     b.ToTable("ResultWorkouts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Comment = "TestsComment",
+                            Fascination = 5,
+                            Load = 5,
+                            PublishDate = new DateTime(2000, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Repeat = 300,
+                            Time = new TimeSpan(0, 0, 30, 30, 0),
+                            UserId = 1,
+                            WorkoutId = 1
+                        });
                 });
 
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Workouts", b =>

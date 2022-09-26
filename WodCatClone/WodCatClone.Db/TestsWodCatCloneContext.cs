@@ -104,6 +104,20 @@ namespace WodCatClone.Db
                     UserId = 1
                 });
 
+            modelBuilder.Entity<ResultWorkouts>().ToTable("ResultWorkouts").HasData(
+                new ResultWorkouts
+                {
+                    Id = 1,
+                    Time = new TimeSpan(00, 30, 30),
+                    Comment = "TestsComment",
+                    Repeat = 300,
+                    Fascination = 5,
+                    Load = 5,
+                    PublishDate = new DateTime(2000, 12, 5),
+                    WorkoutId = 1,
+                    UserId = 1
+                });
+
             modelBuilder.Entity<User>().ToTable("User").HasData(
                 new User
                 {

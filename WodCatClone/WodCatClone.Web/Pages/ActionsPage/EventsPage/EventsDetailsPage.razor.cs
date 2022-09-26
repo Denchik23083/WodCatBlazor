@@ -42,22 +42,15 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
         
         protected override void OnInitialized()
         {
-            Event = EventsService.GetEvent(EventId);
-            if (Event is null)
-            {
-                NavigationManager.NavigateTo("/events");
-            }
-            else
-            {
-                Users = EventsService.GetAllEventsUsers(EventId);
-                Workout = WorkoutsService.GetWorkout(Event.WorkoutId);
-                User = UserService.GetUser();
-                EventTimeUsers = EventsService.GetAllEventTimeUsers(EventId);
-                IsLoginUser = UserService.IsLoginUser();
-            }
+            FillOverrideFunctions();
         }
 
         protected override void OnParametersSet()
+        {
+            FillOverrideFunctions();
+        }
+
+        private void FillOverrideFunctions()
         {
             Event = EventsService.GetEvent(EventId);
             if (Event is null)

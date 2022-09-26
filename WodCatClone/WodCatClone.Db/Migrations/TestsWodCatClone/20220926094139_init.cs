@@ -644,7 +644,7 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
             migrationBuilder.InsertData(
                 table: "ProgramTimeUser",
                 columns: new[] { "Id", "BeginProgramDate", "ProgramsId", "UserId" },
-                values: new object[] { 1, new DateTime(2022, 9, 20, 13, 57, 59, 993, DateTimeKind.Local).AddTicks(6445), 1, 1 });
+                values: new object[] { 1, new DateTime(2022, 9, 26, 12, 41, 38, 925, DateTimeKind.Local).AddTicks(5473), 1, 1 });
 
             migrationBuilder.InsertData(
                 table: "ProgramsWorkouts",
@@ -656,14 +656,19 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                     { 10, 4, 4 },
                     { 9, 4, 3 },
                     { 2, 1, 2 },
+                    { 5, 2, 3 },
                     { 6, 3, 2 },
-                    { 7, 3, 5 },
                     { 1, 1, 1 },
-                    { 3, 1, 3 },
+                    { 7, 3, 5 },
                     { 4, 2, 1 },
                     { 11, 5, 1 },
-                    { 5, 2, 3 }
+                    { 3, 1, 3 }
                 });
+
+            migrationBuilder.InsertData(
+                table: "ResultWorkouts",
+                columns: new[] { "Id", "Comment", "Fascination", "Load", "PublishDate", "Repeat", "Time", "UserId", "WorkoutId" },
+                values: new object[] { 1, "TestsComment", 5, 5, new DateTime(2000, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), 300, new TimeSpan(0, 0, 30, 30, 0), 1, 1 });
 
             migrationBuilder.InsertData(
                 table: "WorkoutsExercises",
@@ -676,11 +681,11 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                     { 12, 12, "100", 2 },
                     { 6, 6, "100", 2 },
                     { 7, 7, "100", 2 },
-                    { 9, 9, "100", 2 },
+                    { 8, 8, "100", 2 },
                     { 10, 10, "100", 2 },
                     { 11, 11, "100", 2 },
                     { 5, 5, "100", 2 },
-                    { 8, 8, "100", 2 },
+                    { 9, 9, "100", 2 },
                     { 23, 7, "20", 6 },
                     { 25, 12, "10", 7 },
                     { 24, 8, "100", 6 },

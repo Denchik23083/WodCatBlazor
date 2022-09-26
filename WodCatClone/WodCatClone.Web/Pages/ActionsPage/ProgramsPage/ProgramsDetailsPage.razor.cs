@@ -41,42 +41,20 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
 
         protected override void OnInitialized()
         {
-            Program = ProgramsService.GetProgram(ProgramId);
-            IsLoginUser = UserService.IsLoginUser();
-            User = UserService.GetUser();
-            Users = ProgramsService.GetAllProgramsUsers(ProgramId);
-            ProgramsWorkouts = ProgramsService.GetAllProgramsWorkouts(ProgramId);
+            FillOverrideFunctions();
+        }
 
-            if (Program is null)
-            {
-                NavigationManager.NavigateTo("/programs");
-            }
-            else
-            {
-                if (User is not null)
-                {
-                    ProgramsWorkouts = ProgramsService.GetAllProgramsWorkouts(ProgramId);
-                    if (User.ProgramId == ProgramId)
-                    {
-                        var programTimeUser = ProgramsService.GetProgramTimeUser(ProgramId, User);
-                        var day = DateTime.Now - programTimeUser.BeginProgramDate;
-                        Day = day.Days;
-                        var programsWorkouts = ProgramsService.GetAllProgramsWorkouts(ProgramId);
-                        ProgramWorkout = programsWorkouts.ElementAtOrDefault(Day);
-                    }
-                    else
-                    {
-                        ProgramsWorkouts = ProgramsService.GetAllProgramsWorkouts(ProgramId);
-                    }
-                }
-                else
-                {
-                    ProgramsWorkouts = ProgramsService.GetAllProgramsWorkouts(ProgramId);
-                }
-            }
+        protected override void OnParametersSet()
+        {
+            FillOverrideFunctions();
         }
 
         protected override void OnAfterRender(bool firstRender)
+        {
+            FillOverrideFunctions();
+        }
+
+        private void FillOverrideFunctions()
         {
             Program = ProgramsService.GetProgram(ProgramId);
             IsLoginUser = UserService.IsLoginUser();
@@ -92,11 +70,12 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
             {
                 if (User is not null)
                 {
+                    ProgramsWorkouts = ProgramsService.GetAllProgramsWorkouts(ProgramId);
                     if (User.ProgramId == ProgramId)
                     {
                         var programTimeUser = ProgramsService.GetProgramTimeUser(ProgramId, User);
                         var day = DateTime.Now - programTimeUser.BeginProgramDate;
-                        Day = day.Days;
+                        Day = day.Minutes;
                         var programsWorkouts = ProgramsService.GetAllProgramsWorkouts(ProgramId);
                         ProgramWorkout = programsWorkouts.ElementAtOrDefault(Day);
                     }

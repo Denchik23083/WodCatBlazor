@@ -47,20 +47,15 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         protected override void OnInitialized()
         {
-            StartDate = Event.StartDate.ToString("dd MMMM yyyy");
-            EndDate = Event.EndDate.ToString("dd MMMM yyyy");
-            RegisterDate = Event.RegisterDate.ToString("dd MMMM yyyy");
-            StartTime = Event.StartDate.ToString("T");
-            EndTime = Event.EndDate.ToString("T");
-            RegisterTime = Event.RegisterDate.ToString("T");
-            Image = EventsService.GetImage(Event.EventsEmblemId);
-            Hall = HallsService.GetHall(Event.HallId);
-            HallEmblem = HallsService.GetImage(Hall.EmblemHallId);
-            User = UserService.GetUser();
-            IsLoginUser = UserService.IsLoginUser();
+            FillOverrideFunctions();
         }
 
         protected override void OnParametersSet()
+        {
+            FillOverrideFunctions();
+        }
+
+        private void FillOverrideFunctions()
         {
             StartDate = Event.StartDate.ToString("dd MMMM yyyy");
             EndDate = Event.EndDate.ToString("dd MMMM yyyy");

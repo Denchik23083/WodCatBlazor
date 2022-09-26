@@ -14,25 +14,25 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         [Inject] public NavigationManager NavigationManager { get; set; }
 
+        public string Url { get; set; }
+
+        public string Image { get; set; }
+
+        public string StartDate { get; set; }
+
+        public string EndDate { get; set; }
+
         protected override void OnInitialized()
         {
-            if (Event.EndDate < DateTime.Now)
-            {
-                var result = EventsService.AutoRemoveEvent(Event.Id);
-
-                if (result)
-                {
-                    NavigationManager.NavigateTo("/events");
-                }
-            }
-
-            Url = $"events/{Event.Id}";
-            Image = EventsService.GetImage(Event.EventsEmblemId);
-            EndDate = Event.StartDate.ToString("dd MMMM");
-            StartDate = Event.EndDate.ToString("dd MMMM");
+            FillOverrideFunctions();
         }
 
         protected override void OnParametersSet()
+        {
+            FillOverrideFunctions();
+        }
+
+        private void FillOverrideFunctions()
         {
             if (Event.EndDate < DateTime.Now)
             {
@@ -49,13 +49,5 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             EndDate = Event.StartDate.ToString("dd MMMM", CultureInfo.InvariantCulture);
             StartDate = Event.EndDate.ToString("dd MMMM", CultureInfo.InvariantCulture);
         }
-
-        public string Url { get; set; }
-
-        public string Image { get; set; }
-
-        public string StartDate { get; set; }
-
-        public string EndDate { get; set; }
     }
 }
