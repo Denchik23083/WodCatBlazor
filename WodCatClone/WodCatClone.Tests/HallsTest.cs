@@ -329,10 +329,8 @@ namespace WodCatClone.Tests
                 Password = "0000"
             };
 
-            var user = context.Users.FirstOrDefault(l => l.Email == login.Email &&
-                                                         l.Password == login.Password);
-
-            return user;
+            return context.Users.FirstOrDefault(l => l.Email == login.Email &&
+                                                     l.Password == login.Password);
         }
     }
 }
