@@ -46,8 +46,8 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
             Url = $"events/{Event.Id}";
             Image = EventsService.GetImage(Event.EventsEmblemId);
-            EndDate = Event.StartDate.ToString("dd MMMM", CultureInfo.InvariantCulture);
-            StartDate = Event.EndDate.ToString("dd MMMM", CultureInfo.InvariantCulture);
+            StartDate = Event.StartDate.ToString("dd MMMM", CultureInfo.InvariantCulture);
+            EndDate = Event.EndDate.ToString("dd MMMM", CultureInfo.InvariantCulture);
         }
     }
 }

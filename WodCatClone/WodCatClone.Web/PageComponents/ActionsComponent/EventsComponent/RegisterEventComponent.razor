@@ -16,19 +16,22 @@
             {
                 @if (User.Id == Event.UserId)
                 {
-                    <div class="col-6 text-right text-light pages mb-3">
-                        <button 
-                            class="btn btn-primary text-white"
-                            style="font-weight: bold;" 
-                            @onclick="Edit">Редактировать
-                        </button>
-                        <button
-                            class="btn btn-danger text-white"
-                            style="font-weight: bold;"
-                            @onclick="OnShow">
-                            Удалить
-                        </button>
-                    </div>
+                    @if (DateTime.Now < Event.StartDate)
+                    {
+                        <div class="col-6 text-right text-light pages mb-3">
+                            <button 
+                                class="btn btn-primary text-white"
+                                style="font-weight: bold;" 
+                                @onclick="Edit">Редактировать
+                            </button>
+                            <button
+                                class="btn btn-danger text-white"
+                                style="font-weight: bold;"
+                                @onclick="OnShow">
+                                Удалить
+                            </button>
+                        </div>
+                    }
                 }
             }
         </div>

@@ -34,7 +34,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         public IEnumerable<Workouts> Workouts { get; set; }
 
-        public Events Event = new();
+        public Events Event { get; set; }
 
         public Workouts Workout { get; set; }
 
@@ -114,6 +114,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         private void FillOverrideFunctions()
         {
+            Event = EventsService.GetEvent(EventId);
             EventEmblem = EventsService.GetAllEventEmblem();
             Halls = HallsService.GetAllHalls();
             HallEmblem = HallsService.GetAllHallEmblem();
