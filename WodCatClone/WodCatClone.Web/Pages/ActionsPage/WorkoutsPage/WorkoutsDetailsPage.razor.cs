@@ -38,6 +38,8 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
 
         public StartWorkout StartWorkout { get; set; }
 
+        public int ResultWorkoutId { get; set; } = 0;
+
         protected override void OnInitialized()
         {
             Workout = WorkoutsService.GetWorkout(WorkoutId);
@@ -57,9 +59,13 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
             }
         }
 
-        public void Login() => NavigationManager.NavigateTo("/login"); 
+        public void Login() => NavigationManager.NavigateTo("/login");
 
-        public void IsDisplayDialog() => EditDeleteResult.Show();
+        public void IsDisplayDialog()
+        {
+            ResultWorkoutId = GetAllResultWorkouts.ResultWorkoutId;
+            EditDeleteResult.Show();
+        }
 
         public void OnCancel() => EditDeleteResult.Hide(); 
 

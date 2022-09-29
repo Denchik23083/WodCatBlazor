@@ -21,19 +21,15 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
 
         public IEnumerable<HallEmblem> HallEmblem { get; set; }
 
-        public Halls Hall = new();
-
-        public bool IsDisplaySubmitButton { get; set; } = false;
-
-        public bool IsImage { get; set; } = false;
-
-        public bool IsTown { get; set; } = false;
-
+        public Halls Hall { get; set; }
+        
         public bool IsShow { get; set; } = false;
 
-        public string Image = "None";
+        public string Image { get; set; }
 
         public int Value { get; set; }
+
+        public bool IsNotValid { get; set; } = false;
 
         public List<string> SelectedType = new();
 
@@ -90,16 +86,24 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
 
         protected override void OnInitialized()
         {
+            if (HallId == 0)
+            {
+                Hall = new();
+            }
+            else
+            {
+                Hall = HallsService.GetHall(HallId);
+                SelectedType = Hall.Type.Split(",").ToList();
+                foreach (var selectedType in SelectedType)
+                {
+                    var item = HallTypes.FirstOrDefault(b => b.Value.Equals(selectedType));
+                    HallTypes.Remove(item);
+                }
+
+                Image = HallsService.GetImage(Hall.EmblemHallId);
+            }
+            
             HallEmblem = HallsService.GetAllHallEmblem();
-        }
-
-        public void AddHallType(string selected)
-        {
-            SelectedType.Add(selected);
-
-            var item = HallTypes.FirstOrDefault(b => b.Value.Equals(selected));
-
-            HallTypes.Remove(item);
         }
 
         public void Submit()
@@ -117,19 +121,35 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
                 }
             }
 
-            if (Add)
+            if (Hall.EmblemHallId != 0 && Hall.Town != "None")
             {
-                var result = HallsService.AddHall(Hall);
+                if (Add)
+                {
+                    var result = HallsService.AddHall(Hall);
 
-                NavigationManager.NavigateTo(result ? "/gymboxs" : "/gymboxs/add");
+                    NavigationManager.NavigateTo(result ? "/gymboxs" : "/gymboxs/add");
+                }
+
+                if (Edit)
+                {
+                    var result = HallsService.EditHall(Hall, HallId);
+
+                    NavigationManager.NavigateTo(result ? $"/gymboxs/{HallId}" : $"/gymboxs/{HallId}/edit");
+                }
             }
-
-            if (Edit)
+            else
             {
-                var result = HallsService.EditHall(Hall, HallId);
-
-                NavigationManager.NavigateTo(result ? $"/gymboxs/{HallId}" : $"/gymboxs/{HallId}/edit");
+                IsNotValid = true;
             }
+        }
+
+        public void AddHallType(string selected)
+        {
+            SelectedType.Add(selected);
+
+            var item = HallTypes.FirstOrDefault(b => b.Value.Equals(selected));
+
+            HallTypes.Remove(item);
         }
 
         public void RemoveSelectedType(string item)
@@ -143,46 +163,13 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
         {
             var selected = e.Value?.ToString();
 
-            if (selected == "None")
-            {
-                IsDisplaySubmitButton = false;
-                IsImage = false;
-            }
-
-            var hallEmblem = HallEmblem.FirstOrDefault(b => b.Image.Equals(selected));
-
             Image = selected;
 
+            var hallEmblem = HallEmblem.FirstOrDefault(b => b.Image.Equals(selected));
+            
             if (hallEmblem is not null)
             {
                 Hall.EmblemHallId = hallEmblem.Id;
-                IsImage = true;
-            }
-
-            if (IsTown && IsImage)
-            {
-                IsDisplaySubmitButton = true;
-            }
-        }
-
-        public void TownValue(ChangeEventArgs e)
-        {
-            var selected = e.Value?.ToString();
-
-            if (selected == "None")
-            {
-                IsDisplaySubmitButton = false;
-                IsTown = false;
-            }
-            else
-            {
-                IsTown = true;
-                Hall.Town = selected;
-            }
-
-            if (IsTown && IsImage)
-            {
-                IsDisplaySubmitButton = true;
             }
         }
     }

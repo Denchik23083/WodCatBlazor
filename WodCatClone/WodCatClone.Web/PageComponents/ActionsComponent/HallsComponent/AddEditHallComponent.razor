@@ -80,7 +80,7 @@
                 </div>
                 <div class="row">
                     <div class="col mb-2">
-                        <select class="selectedFormResult mb-2" @onchange="TownValue">
+                        <select class="selectedFormResult mb-2" @bind="Hall.Town">
                             <option value="None">Город</option>
                             @foreach (var item in Town)
                             {
@@ -123,19 +123,9 @@
                 </div>
                 <div class="row">
                     <div class="col text-right">
-                        @if (!IsDisplaySubmitButton)
-                        {
-                            <button
-                                class="btn btn-primary"
-                                disabled="disabled"
-                                type="submit">Сохранить</button>
-                        }
-                        else
-                        {
-                            <button
-                                class="btn btn-primary"
-                                type="submit">Сохранить</button>
-                        }
+                        <button
+                            class="btn btn-primary"
+                            type="submit">Сохранить</button>
                     </div>
                 </div>
             </EditForm>
