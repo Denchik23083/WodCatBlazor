@@ -22,14 +22,14 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
         public IEnumerable<HallEmblem> HallEmblem { get; set; }
 
         public Halls Hall { get; set; }
-        
+
         public bool IsShow { get; set; } = false;
 
-        public string Image { get; set; }
+        public bool IsBadEmblem { get; set; } = false;
+
+        public string Image = "None";
 
         public int Value { get; set; }
-
-        public bool IsNotValid { get; set; } = false;
 
         public List<string> SelectedType = new();
 
@@ -88,7 +88,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
         {
             if (HallId == 0)
             {
-                Hall = new();
+                Hall = new Halls();
             }
             else
             {
@@ -102,34 +102,23 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
 
                 Image = HallsService.GetImage(Hall.EmblemHallId);
             }
-            
+
             HallEmblem = HallsService.GetAllHallEmblem();
         }
 
         public void Submit()
         {
-            foreach (var item in SelectedType)
-            {
-                if (Value == 0)
-                {
-                    Hall.Type = $"{item}";
-                    Value++;
-                }
-                else
-                {
-                    Hall.Type += $",{item}";
-                }
-            }
+            var isValid = Validation();
 
-            if (Hall.EmblemHallId != 0 && Hall.Town != "None")
+            if (isValid)
             {
+                ConvertSelectedTypes();
                 if (Add)
                 {
                     var result = HallsService.AddHall(Hall);
 
                     NavigationManager.NavigateTo(result ? "/gymboxs" : "/gymboxs/add");
                 }
-
                 if (Edit)
                 {
                     var result = HallsService.EditHall(Hall, HallId);
@@ -137,10 +126,21 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
                     NavigationManager.NavigateTo(result ? $"/gymboxs/{HallId}" : $"/gymboxs/{HallId}/edit");
                 }
             }
+        }
+
+        private bool Validation()
+        {
+            if (Image is not "None")
+            {
+                IsBadEmblem = false;
+            }
             else
             {
-                IsNotValid = true;
+                IsBadEmblem = true;
+                return false;
             }
+
+            return true;
         }
 
         public void AddHallType(string selected)
@@ -159,18 +159,31 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
             HallTypes.Add(new() { Content = item, Value = item });
         }
 
+        public void ConvertSelectedTypes()
+        {
+            foreach (var item in SelectedType)
+            {
+                if (Value == 0)
+                {
+                    Hall.Type = $"{item}";
+                    Value++;
+                }
+                else
+                {
+                    Hall.Type += $",{item}";
+                }
+            }
+        }
+
         public void SelectedImage(ChangeEventArgs e)
         {
             var selected = e.Value?.ToString();
 
             Image = selected;
-
-            var hallEmblem = HallEmblem.FirstOrDefault(b => b.Image.Equals(selected));
             
-            if (hallEmblem is not null)
-            {
-                Hall.EmblemHallId = hallEmblem.Id;
-            }
+            var hallEmblem = HallEmblem.FirstOrDefault(b => b.Image.Equals(selected));
+
+            Hall.EmblemHallId = hallEmblem?.Id;
         }
     }
 }

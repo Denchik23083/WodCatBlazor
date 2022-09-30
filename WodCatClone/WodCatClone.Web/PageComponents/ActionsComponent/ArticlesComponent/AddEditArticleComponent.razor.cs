@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.ArticlesService;
+using WodCatClone.Logic.ActionsService.HallsService;
 using WodCatClone.Web.Utilities;
 
 namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
@@ -21,13 +22,11 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
 
         public IEnumerable<ArticleEmblem> ArticleEmblem { get; set; }
 
-        public Articles Article = new();
-
-        public bool IsDisplaySubmitButton { get; set; } = false;
-
-        public bool IsImage { get; set; } = false;
+        public Articles Article { get; set; }
 
         public bool IsShow { get; set; } = false;
+
+        public bool IsBadEmblem { get; set; }
 
         public string Image = "None";
 
@@ -74,7 +73,61 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
 
         protected override void OnInitialized()
         {
+            if (ArticleId == 0)
+            {
+                Article = new Articles();
+            }
+            else
+            {
+                Article = ArticlesService.GetArticle(ArticleId);
+                SelectedType = Article.Type.Split(",").ToList();
+                foreach (var selectedType in SelectedType)
+                {
+                    var item = ArticleTypes.FirstOrDefault(b => b.Value.Equals(selectedType));
+                    ArticleTypes.Remove(item);
+                }
+
+                Image = ArticlesService.GetImage(Article.ArticleEmblemId);
+            }
+
             ArticleEmblem = ArticlesService.GetAllArticleEmblem();
+        }
+
+        public void Submit()
+        {
+            var isValid = Validation();
+
+            if (isValid)
+            {
+                ConvertSelectedTypes();
+                if (Add)
+                {
+                    var result = ArticlesService.AddArticle(Article);
+
+                    NavigationManager.NavigateTo(result ? "/articles" : "/articles/add");
+                }
+                if (Edit)
+                {
+                    var result = ArticlesService.EditArticle(Article, ArticleId);
+
+                    NavigationManager.NavigateTo(result ? $"/articles/{ArticleId}" : $"/articles/{ArticleId}/edit");
+                }
+            }
+        }
+
+        private bool Validation()
+        {
+            if (Image is not "None")
+            {
+                IsBadEmblem = false;
+            }
+            else
+            {
+                IsBadEmblem = true;
+                return false;
+            }
+
+            return true;
         }
 
         public void AddArticleType(string selected)
@@ -86,7 +139,14 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
             ArticleTypes.Remove(item);
         }
 
-        public void Submit()
+        public void RemoveSelectedType(string item)
+        {
+            SelectedType.Remove(item);
+
+            ArticleTypes.Add(new() { Content = item, Value = item });
+        }
+
+        public void ConvertSelectedTypes()
         {
             foreach (var item in SelectedType)
             {
@@ -100,47 +160,17 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
                     Article.Type += $",{item}";
                 }
             }
-
-            if (Add)
-            {
-                var result = ArticlesService.AddArticle(Article);
-
-                NavigationManager.NavigateTo(result ? "/articles" : "/articles/add");
-            }
-
-            if (Edit)
-            {
-                var result = ArticlesService.EditArticle(Article, ArticleId);
-
-                NavigationManager.NavigateTo(result ? $"/articles/{ArticleId}" : $"/articles/{ArticleId}/edit");
-            }
-        }
-
-        public void RemoveSelectedType(string item)
-        {
-            SelectedType.Remove(item);
-
-            ArticleTypes.Add(new() { Content = item, Value = item });
         }
 
         public void SelectedImage(ChangeEventArgs e)
         {
             var selected = e.Value?.ToString();
 
-            var articleEmblem = ArticleEmblem.FirstOrDefault(b => b.Image.Equals(selected));
-
             Image = selected;
 
-            if (articleEmblem is not null)
-            {
-                Article.ArticleEmblemId = articleEmblem.Id;
-                IsImage = true;
-            }
+            var articleEmblem = ArticleEmblem.FirstOrDefault(b => b.Image.Equals(selected));
 
-            if (IsImage)
-            {
-                IsDisplaySubmitButton = true;
-            }
+            Article.ArticleEmblemId = articleEmblem?.Id;
         }
     }
 }

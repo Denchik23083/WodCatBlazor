@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WodCatClone.Db.Migrations.TestsWodCatClone
 {
-    public partial class init : Migration
+    public partial class inin : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -644,7 +644,7 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
             migrationBuilder.InsertData(
                 table: "ProgramTimeUser",
                 columns: new[] { "Id", "BeginProgramDate", "ProgramsId", "UserId" },
-                values: new object[] { 1, new DateTime(2022, 9, 26, 12, 41, 38, 925, DateTimeKind.Local).AddTicks(5473), 1, 1 });
+                values: new object[] { 1, new DateTime(2022, 9, 30, 18, 54, 11, 601, DateTimeKind.Local).AddTicks(2853), 1, 1 });
 
             migrationBuilder.InsertData(
                 table: "ProgramsWorkouts",

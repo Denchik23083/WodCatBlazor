@@ -32,7 +32,8 @@ namespace WodCatClone.Logic.ActionsService.EventsService
         {
             return _repository.GetAllEventTimeUsers(eventId)
                 .OrderByDescending(b => b.Time)
-                .Take(3);
+                .Take(3)
+                .Reverse();
         }
 
         public IEnumerable<EventEmblem> GetAllEventEmblem()
@@ -115,7 +116,8 @@ namespace WodCatClone.Logic.ActionsService.EventsService
 
             var allUsersTime = _repository.GetAllEventTimeUsers(eventId)
                 .OrderByDescending(b => b.Time)
-                .Take(3);
+                .Take(3)
+                .Reverse();
 
             var usersToList = new List<User>();
 

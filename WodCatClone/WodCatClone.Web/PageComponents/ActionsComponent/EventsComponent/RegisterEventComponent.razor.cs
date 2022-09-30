@@ -27,12 +27,6 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         public string EndDate { get; set; }
 
-        public string RegisterTime { get; set; }
-
-        public string StartTime { get; set; }
-
-        public string EndTime { get; set; }
-
         public string Image { get; set; }
 
         public string HallEmblem { get; set; }
@@ -57,12 +51,9 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         private void FillOverrideFunctions()
         {
-            StartDate = Event.StartDate.ToString("dd MMMM yyyy");
-            EndDate = Event.EndDate.ToString("dd MMMM yyyy");
-            RegisterDate = Event.RegisterDate.ToString("dd MMMM yyyy");
-            StartTime = Event.StartDate.ToString("T");
-            EndTime = Event.EndDate.ToString("T");
-            RegisterTime = Event.RegisterDate.ToString("T");
+            StartDate = Event.StartDate.ToString("dd MMMM yyyy HH:mm:ss");
+            EndDate = Event.EndDate.ToString("dd MMMM yyyy HH:mm:ss");
+            RegisterDate = Event.RegisterDate.ToString("dd MMMM yyyy HH:mm:ss");
             Image = EventsService.GetImage(Event.EventsEmblemId);
             Hall = HallsService.GetHall(Event.HallId);
             HallEmblem = HallsService.GetImage(Hall.EmblemHallId);

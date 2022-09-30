@@ -32,6 +32,11 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             FillOverrideFunctions();
         }
 
+        protected override void OnAfterRender(bool firstRender)
+        {
+            FillOverrideFunctions();
+        }
+
         private void FillOverrideFunctions()
         {
             if (Event.EndDate < DateTime.Now)

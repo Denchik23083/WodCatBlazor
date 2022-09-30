@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WodCatClone.Db.Migrations
 {
-    public partial class init : Migration
+    public partial class inin : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -616,6 +616,11 @@ namespace WodCatClone.Db.Migrations
                     { 3, "Fitness", "Программа тренировок идеально подойдет для новичков. Большая часть плана состоит из гимнастических тренировок со своим весом и не требует вспомогательных предметов для выполнения. Сами же упражнения очень просты и наверняка давно вам знакомы, поэтому вы можете не обладать специальными знаниями, чтобы заниматься по данному плану. С этой программой вам не нужно обязательно быть в зале во время тренировки, вы можете выполнять тренировки в любом удобном месте.", 2, "Кроссфит программа тренировок дома без оборудования", 1, null, "Кроссфит" },
                     { 4, "Fitness", "План тренировки рассчитан на людей решивших начать тренировки по системе Кроссфит. Тренировочный план сбалансированный, используются только базовые и упрощенные упражнения. Но если Вы не имеете опыта выполнения данных упражнений, обязательно выполнение данного плана под руководством сертифицированного тренера", 3, "Вводной план тренировок для новичков в Кроссфите", 2, "10.0", "Кроссфит" }
                 });
+
+            migrationBuilder.InsertData(
+                table: "User",
+                columns: new[] { "Id", "AboutMe", "Birthday", "Country", "Email", "EventId", "GenderId", "HallId", "Height", "Name", "NickName", "Password", "Points", "ProgramId", "Surname", "Town", "Weight" },
+                values: new object[] { 3, "I am a developer C#", new DateTime(2013, 9, 17, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ukraine", "trevor@gmail.com", null, 1, 2, "190", "Trevor", "GTA V", "0000", 185, 2, "Philips", "Херсон", "80" });
 
             migrationBuilder.InsertData(
                 table: "Workouts",

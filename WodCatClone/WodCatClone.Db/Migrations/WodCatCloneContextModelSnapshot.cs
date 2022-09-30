@@ -1428,6 +1428,25 @@ namespace WodCatClone.Db.Migrations
                             Surname = "Возникова",
                             Town = "Херсон",
                             Weight = "55"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AboutMe = "I am a developer C#",
+                            Birthday = new DateTime(2013, 9, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Country = "Ukraine",
+                            Email = "trevor@gmail.com",
+                            GenderId = 1,
+                            HallId = 2,
+                            Height = "190",
+                            Name = "Trevor",
+                            NickName = "GTA V",
+                            Password = "0000",
+                            Points = 185,
+                            ProgramId = 2,
+                            Surname = "Philips",
+                            Town = "Херсон",
+                            Weight = "80"
                         });
                 });
 

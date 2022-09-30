@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using WodCatClone.Db;
 using WodCatClone.Db.Entities.Actions;
@@ -28,6 +29,7 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
         public bool AddResultWorkouts(ResultWorkouts resultWorkouts, User user)
         {
             resultWorkouts.UserId = user.Id;
+            resultWorkouts.PublishDate = DateTime.Now;
 
             _context.ResultWorkouts.Add(resultWorkouts);
 

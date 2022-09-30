@@ -16,9 +16,9 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
         [Inject] public IResultWorkoutsService ResultWorkoutsService { get; set; }
 
         [Inject] public IUserService UserService { get; set; }
-
+        
         public int ResultWorkoutId { get; set; }
-
+        
         public IEnumerable<ResultWorkouts> ResultWorkouts { get; set; }
 
         public User User { get; set; }

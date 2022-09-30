@@ -117,27 +117,6 @@ namespace WodCatClone.Db
                     WorkoutId = 1,
                     UserId = 1
                 });
-
-            modelBuilder.Entity<User>().ToTable("User").HasData(
-                new User
-                {
-                    Id = 3,
-                    Name = "Trevor",
-                    Surname = "Philips",
-                    NickName = "GTA V",
-                    Email = "trevor@gmail.com",
-                    Password = "0000",
-                    Country = "Ukraine",
-                    Town = "Херсон",
-                    Points = 185,
-                    Birthday = new DateTime(2013, 09, 17),
-                    Height = "190",
-                    Weight = "80",
-                    AboutMe = "I am a developer C#",
-                    GenderId = 1,
-                    ProgramId = 2,
-                    HallId = 2
-                });
         }
     }
 }

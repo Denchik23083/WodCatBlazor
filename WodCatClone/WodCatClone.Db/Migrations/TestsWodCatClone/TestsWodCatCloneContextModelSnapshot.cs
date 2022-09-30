@@ -744,7 +744,7 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                         new
                         {
                             Id = 1,
-                            BeginProgramDate = new DateTime(2022, 9, 26, 12, 41, 38, 925, DateTimeKind.Local).AddTicks(5473),
+                            BeginProgramDate = new DateTime(2022, 9, 30, 18, 54, 11, 601, DateTimeKind.Local).AddTicks(2853),
                             ProgramsId = 1,
                             UserId = 1
                         });
@@ -1448,25 +1448,6 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                     b.HasData(
                         new
                         {
-                            Id = 3,
-                            AboutMe = "I am a developer C#",
-                            Birthday = new DateTime(2013, 9, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Country = "Ukraine",
-                            Email = "trevor@gmail.com",
-                            GenderId = 1,
-                            HallId = 2,
-                            Height = "190",
-                            Name = "Trevor",
-                            NickName = "GTA V",
-                            Password = "0000",
-                            Points = 185,
-                            ProgramId = 2,
-                            Surname = "Philips",
-                            Town = "Херсон",
-                            Weight = "80"
-                        },
-                        new
-                        {
                             Id = 1,
                             AboutMe = "I am a developer C#",
                             Birthday = new DateTime(2003, 8, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1498,6 +1479,25 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                             Surname = "Возникова",
                             Town = "Херсон",
                             Weight = "55"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AboutMe = "I am a developer C#",
+                            Birthday = new DateTime(2013, 9, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Country = "Ukraine",
+                            Email = "trevor@gmail.com",
+                            GenderId = 1,
+                            HallId = 2,
+                            Height = "190",
+                            Name = "Trevor",
+                            NickName = "GTA V",
+                            Password = "0000",
+                            Points = 185,
+                            ProgramId = 2,
+                            Surname = "Philips",
+                            Town = "Херсон",
+                            Weight = "80"
                         });
                 });
 

@@ -6,7 +6,7 @@
 </div>
 <div class="row">
     <div class="col">
-        <EditForm Model="@_resultWorkouts" OnSubmit="@Result">
+        <EditForm Model="@ResultWorkouts" OnSubmit="@Result">
             <div class="row">
                 <div class="col-6">
                     <i class="fa-solid fa-stopwatch" style="font-size: 25px;"></i>
@@ -52,16 +52,11 @@
                 <div class="col-6">
                     <span class="mr-2" style="font-size: 20px;">Повторений</span>
                     <InputNumber
-                        @bind-Value="_resultWorkouts.Repeat"
+                        @bind-Value="ResultWorkouts.Repeat"
                         class="formResult mb-2 mr-2"
                         id="repeat"
                         type="number"
                         min="0"/>
-                    <InputDate
-                        @bind-Value="_resultWorkouts.PublishDate"
-                        class="formResult mb-2 mr-2"
-                        id="publishDate"
-                        type="date"/>
                 </div>
                 <div class="col-6">
                     <div class="row">
@@ -103,7 +98,7 @@
                     <textarea 
                         placeholder="Напишите комментарий к результату" 
                         class="textarea" 
-                        @bind="_resultWorkouts.Comment">
+                        @bind="ResultWorkouts.Comment">
                         
                     </textarea>
                 </div>

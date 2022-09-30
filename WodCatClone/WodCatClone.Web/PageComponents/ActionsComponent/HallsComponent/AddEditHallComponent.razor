@@ -3,11 +3,19 @@
         <div class="col">
             <h2 class="mainInfoAboutHall mb-3">Основная информация о клубе</h2>
         </div>
-    </div>    
+    </div>
     <div class="row">
         <div class="col-6">
             <div class="row">
                 <div class="col mb-2">
+                    @if (IsBadEmblem)
+                    {
+                        <div class="row">
+                            <div class="col">
+                                <div class="text-danger">Выберите правильный логотип</div>
+                            </div>
+                        </div>
+                    }
                     <h5 style="color: white;">Выберите логотип</h5>
                     <select class="select form-control" @onchange="SelectedImage">
                         <option value="None">Эмблема</option>
@@ -30,7 +38,7 @@
             </div>
         </div>
         <div class="col-6">
-            <EditForm Model="Hall" OnValidSubmit="Submit">
+            <EditForm Model="@Hall" OnValidSubmit="Submit">
                 <DataAnnotationsValidator />
                 <ValidationSummary />
                 <div class="row">
@@ -81,7 +89,7 @@
                 <div class="row">
                     <div class="col mb-2">
                         <select class="selectedFormResult mb-2" @bind="Hall.Town">
-                            <option value="None">Город</option>
+                            <option value="">Город</option>
                             @foreach (var item in Town)
                             {
                                 <option value="@item.Filter">
@@ -123,9 +131,9 @@
                 </div>
                 <div class="row">
                     <div class="col text-right">
-                        <button
-                            class="btn btn-primary"
-                            type="submit">Сохранить</button>
+                            <button
+                                class="btn btn-primary"
+                                type="submit">Сохранить</button>
                     </div>
                 </div>
             </EditForm>
