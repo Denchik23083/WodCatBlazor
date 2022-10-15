@@ -213,7 +213,7 @@ namespace WodCatClone.Tests
             Assert.Null(articleAfterRemove);
         }
 
-        private User HelperUserLogin(TestsWodCatCloneContext context)
+        private static User HelperUserLogin(TestsWodCatCloneContext context)
         {
             var login = new Login
             {

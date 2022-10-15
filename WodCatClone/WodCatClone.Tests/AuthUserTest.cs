@@ -8,7 +8,7 @@ namespace WodCatClone.Tests
 {
     public class AuthUserTest
     {
-        public static bool IsLoginUser;
+        private static bool _isLoginUser;
 
         [Fact]
         public void Login()
@@ -19,7 +19,7 @@ namespace WodCatClone.Tests
             HelperIsLoginFunction(context);
 
             Assert.NotNull(user);
-            Assert.True(IsLoginUser);
+            Assert.True(_isLoginUser);
         }
 
         [Fact]
@@ -62,9 +62,9 @@ namespace WodCatClone.Tests
         [Fact]
         public void Logout()
         {
-            IsLoginUser = false;
+            _isLoginUser = false;
 
-            Assert.False(IsLoginUser);
+            Assert.False(_isLoginUser);
         }
 
         [Fact]
@@ -74,7 +74,7 @@ namespace WodCatClone.Tests
 
             HelperIsLoginFunction(context);
 
-            Assert.True(IsLoginUser);
+            Assert.True(_isLoginUser);
         }
 
         [Fact]
@@ -253,7 +253,7 @@ namespace WodCatClone.Tests
             Assert.Null(testUserRemoved);
         }
 
-        private void HelperIsLoginFunction(TestsWodCatCloneContext context)
+        private static void HelperIsLoginFunction(TestsWodCatCloneContext context)
         {
             var login = new Login
             {
@@ -264,10 +264,10 @@ namespace WodCatClone.Tests
             var user = context.Users.FirstOrDefault(l => l.Email == login.Email &&
                                                          l.Password == login.Password);
 
-            IsLoginUser = user is not null;
+            _isLoginUser = user is not null;
         }
 
-        private User HelperUserLogin(TestsWodCatCloneContext context)
+        private static User HelperUserLogin(TestsWodCatCloneContext context)
         {
             var login = new Login
             {
@@ -279,7 +279,7 @@ namespace WodCatClone.Tests
                                                      l.Password == login.Password);
         }
 
-        private User UserMap(Register model)
+        private static User UserMap(Register model)
         {
             return new User
             {
