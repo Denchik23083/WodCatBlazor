@@ -21,6 +21,10 @@ namespace WodCatClone.Web.PageComponents.HeaderComponent
             new() { Content = "СТАТЬИ", Link = "/articles" }
         };
 
-        public void Home() => NavigationManager.NavigateTo("/");
+        public void Home()
+        {
+            Value = 0;
+            NavigationManager.NavigateTo("/");
+        }
     }
 }
