@@ -45,7 +45,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
                 if (result)
                 {
-                    NavigationManager.NavigateTo("/events");
+                    NavigationManager.NavigateTo("/events", true);
                 }
             }
 
