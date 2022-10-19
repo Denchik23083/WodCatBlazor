@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
@@ -53,9 +54,9 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
         private void FillOverrideFunctions()
         {
             Event = EventsService.GetEvent(EventId);
-            if (Event is null)
+            if (Event is null || Event.EndDate < DateTime.Now)
             {
-                NavigationManager.NavigateTo("/events");
+                NavigationManager.NavigateTo("/events", true);
             }
             else
             {
