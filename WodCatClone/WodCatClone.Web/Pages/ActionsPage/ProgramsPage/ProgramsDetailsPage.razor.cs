@@ -74,10 +74,10 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
                     if (User.ProgramId == ProgramId)
                     {
                         var programTimeUser = ProgramsService.GetProgramTimeUser(ProgramId, User);
-                        var day = DateTime.Now - programTimeUser.BeginProgramDate;
-                        Day = day.Minutes;
-                        var programsWorkouts = ProgramsService.GetAllProgramsWorkouts(ProgramId);
-                        ProgramWorkout = programsWorkouts.ElementAtOrDefault(Day);
+                        Day = (DateTime.Now - programTimeUser.BeginProgramDate).Days;
+                        ProgramWorkout = ProgramsService
+                            .GetAllProgramsWorkouts(ProgramId)
+                            .ElementAtOrDefault(Day);
                     }
                     else
                     {
