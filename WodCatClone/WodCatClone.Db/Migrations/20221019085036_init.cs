@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WodCatClone.Db.Migrations
 {
-    public partial class inin : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -603,7 +603,7 @@ namespace WodCatClone.Db.Migrations
                 columns: new[] { "Id", "AboutMe", "Birthday", "Country", "Email", "EventId", "GenderId", "HallId", "Height", "Name", "NickName", "Password", "Points", "ProgramId", "Surname", "Town", "Weight" },
                 values: new object[,]
                 {
-                    { 1, "I am a developer C#", new DateTime(2003, 8, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ukraine", "deniskudravov228@gmail.com", null, 1, null, "185", "Денис", "SoEasyBlef", "0000", 185, null, "Кудрявов", "Херсон", "70" },
+                    { 1, "I am a developer C#", new DateTime(2003, 8, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ukraine", "deniskudravov228@gmail.com", null, 1, null, "185", "Денис", "SoEasyBlef", "0000", 200, null, "Кудрявов", "Херсон", "70" },
                     { 2, "Test Nata", new DateTime(2000, 8, 29, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ukraine", "nata@gmail.com", null, 2, null, "175", "Наташа", "Nat25", "0000", 45, null, "Возникова", "Херсон", "55" }
                 });
 
@@ -620,7 +620,7 @@ namespace WodCatClone.Db.Migrations
             migrationBuilder.InsertData(
                 table: "User",
                 columns: new[] { "Id", "AboutMe", "Birthday", "Country", "Email", "EventId", "GenderId", "HallId", "Height", "Name", "NickName", "Password", "Points", "ProgramId", "Surname", "Town", "Weight" },
-                values: new object[] { 3, "I am a developer C#", new DateTime(2013, 9, 17, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ukraine", "trevor@gmail.com", null, 1, 2, "190", "Trevor", "GTA V", "0000", 185, 2, "Philips", "Херсон", "80" });
+                values: new object[] { 3, "I am crazy", new DateTime(2013, 9, 17, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ukraine", "trevor@gmail.com", null, 1, 2, "190", "Trevor", "GTA V", "0000", 180, 2, "Philips", "Херсон", "80" });
 
             migrationBuilder.InsertData(
                 table: "Workouts",

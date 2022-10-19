@@ -744,7 +744,7 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                         new
                         {
                             Id = 1,
-                            BeginProgramDate = new DateTime(2022, 9, 30, 18, 54, 11, 601, DateTimeKind.Local).AddTicks(2853),
+                            BeginProgramDate = new DateTime(2022, 10, 19, 11, 51, 23, 345, DateTimeKind.Local).AddTicks(9608),
                             ProgramsId = 1,
                             UserId = 1
                         });
@@ -1458,7 +1458,7 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                             Name = "Денис",
                             NickName = "SoEasyBlef",
                             Password = "0000",
-                            Points = 185,
+                            Points = 200,
                             Surname = "Кудрявов",
                             Town = "Херсон",
                             Weight = "70"
@@ -1483,7 +1483,7 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                         new
                         {
                             Id = 3,
-                            AboutMe = "I am a developer C#",
+                            AboutMe = "I am crazy",
                             Birthday = new DateTime(2013, 9, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Country = "Ukraine",
                             Email = "trevor@gmail.com",
@@ -1493,7 +1493,7 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                             Name = "Trevor",
                             NickName = "GTA V",
                             Password = "0000",
-                            Points = 185,
+                            Points = 180,
                             ProgramId = 2,
                             Surname = "Philips",
                             Town = "Херсон",

@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WodCatClone.Db;
 
-namespace WodCatClone.Db.Migrations
+namespace WodCatClone.Db.Migrations.TestsWodCatClone
 {
-    [DbContext(typeof(WodCatCloneContext))]
-    [Migration("20220930155403_inin")]
-    partial class inin
+    [DbContext(typeof(TestsWodCatCloneContext))]
+    [Migration("20221019085124_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -238,6 +238,15 @@ namespace WodCatClone.Db.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("EventTimeUser");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            EventsId = 1,
+                            Time = new TimeSpan(0, 0, 37, 50, 0),
+                            UserId = 1
+                        });
                 });
 
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Events", b =>
@@ -299,6 +308,25 @@ namespace WodCatClone.Db.Migrations
                     b.HasIndex("WorkoutId");
 
                     b.ToTable("Events");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "К ТОНУС Стадион СЛАВУТИЧ АРЕНА Категории : SCALED, RX (ELITE), MASTERS 1 день 3 завдання Стартовый взнос - 500 грн Запись на участие В DIRECT!!! Для тихого, что из-за различных причин, не возможно прийняти участів в змаганнях, ми пропонуємо ОНЛАЙН ФОРМАТ. БЕЗ ВИДЕО! БЕЗ НАШЕГО СУДДІВСТВА ! ВСЕ НА НАШИЙ ДОВІРІ та ВАШІЙ ПОРЯДНОСТІ ! УМОВИ : Рестрация - 300 грн Категории - RX (ЭЛИТА) SCALED MASTERS 35 - 39, 40 - 44, 45+ 3 ( три комплекса) за один день Анонс 24.06 в п'ятницю ввечері о 17:00 Вконання 25.06 - субота . Отправить результаты до 17:00 субботы 25.06. Оголошення результатов у понедельника 27.06 Для записи напишите в DIRECT: Прізвище, им'я Місто, клуб Категорію",
+                            EndDate = new DateTime(2022, 6, 26, 15, 0, 0, 0, DateTimeKind.Unspecified),
+                            EventsEmblemId = 2,
+                            HallId = 1,
+                            Location = "улица Лобановского, 21",
+                            Name = "TONUS 2022 help UA",
+                            RegisterDate = new DateTime(2022, 6, 27, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            StartDate = new DateTime(2022, 6, 26, 12, 30, 0, 0, DateTimeKind.Unspecified),
+                            Town = "Запорожье",
+                            TypeEvent = "Соревнования",
+                            TypeSport = "Кроссфит",
+                            UserId = 1,
+                            WorkoutId = 3
+                        });
                 });
 
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Exercises", b =>
@@ -713,6 +741,15 @@ namespace WodCatClone.Db.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("ProgramTimeUser");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BeginProgramDate = new DateTime(2022, 10, 19, 11, 51, 23, 345, DateTimeKind.Local).AddTicks(9608),
+                            ProgramsId = 1,
+                            UserId = 1
+                        });
                 });
 
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Programs", b =>
@@ -940,6 +977,20 @@ namespace WodCatClone.Db.Migrations
                     b.HasIndex("WorkoutId");
 
                     b.ToTable("ResultWorkouts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Comment = "TestsComment",
+                            Fascination = 5,
+                            Load = 5,
+                            PublishDate = new DateTime(2000, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Repeat = 300,
+                            Time = new TimeSpan(0, 0, 30, 30, 0),
+                            UserId = 1,
+                            WorkoutId = 1
+                        });
                 });
 
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Workouts", b =>
@@ -1409,7 +1460,7 @@ namespace WodCatClone.Db.Migrations
                             Name = "Денис",
                             NickName = "SoEasyBlef",
                             Password = "0000",
-                            Points = 185,
+                            Points = 200,
                             Surname = "Кудрявов",
                             Town = "Херсон",
                             Weight = "70"
@@ -1434,7 +1485,7 @@ namespace WodCatClone.Db.Migrations
                         new
                         {
                             Id = 3,
-                            AboutMe = "I am a developer C#",
+                            AboutMe = "I am crazy",
                             Birthday = new DateTime(2013, 9, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Country = "Ukraine",
                             Email = "trevor@gmail.com",
@@ -1444,7 +1495,7 @@ namespace WodCatClone.Db.Migrations
                             Name = "Trevor",
                             NickName = "GTA V",
                             Password = "0000",
-                            Points = 185,
+                            Points = 180,
                             ProgramId = 2,
                             Surname = "Philips",
                             Town = "Херсон",

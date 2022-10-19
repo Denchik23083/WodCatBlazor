@@ -1407,7 +1407,7 @@ namespace WodCatClone.Db.Migrations
                             Name = "Денис",
                             NickName = "SoEasyBlef",
                             Password = "0000",
-                            Points = 185,
+                            Points = 200,
                             Surname = "Кудрявов",
                             Town = "Херсон",
                             Weight = "70"
@@ -1432,7 +1432,7 @@ namespace WodCatClone.Db.Migrations
                         new
                         {
                             Id = 3,
-                            AboutMe = "I am a developer C#",
+                            AboutMe = "I am crazy",
                             Birthday = new DateTime(2013, 9, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Country = "Ukraine",
                             Email = "trevor@gmail.com",
@@ -1442,7 +1442,7 @@ namespace WodCatClone.Db.Migrations
                             Name = "Trevor",
                             NickName = "GTA V",
                             Password = "0000",
-                            Points = 185,
+                            Points = 180,
                             ProgramId = 2,
                             Surname = "Philips",
                             Town = "Херсон",
