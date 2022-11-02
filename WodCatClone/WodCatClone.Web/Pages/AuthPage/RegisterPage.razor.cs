@@ -16,15 +16,11 @@ namespace WodCatClone.Web.Pages.AuthPage
         [Inject] private NavigationManager NavigationManager { get; set; }
 
         public Register MainRegister = new();
-        
-        public bool IsTown { get; set; }
 
         public bool Man { get; set; } = true;
 
         public bool Woman { get; set; } = false;
-
-        public bool IsDisplaySubmitButton { get; set; } = false;
-
+        
         public string Gender { get; set; }
 
         public List<AuthTown> Town = new()
@@ -44,46 +40,25 @@ namespace WodCatClone.Web.Pages.AuthPage
 
         public void Register()
         {
-            if (MainRegister.Password == MainRegister.ConfirmPassword)
+            if (MainRegister.Password != MainRegister.ConfirmPassword) return;
+
+            if (Man)
             {
-                if (Man)
-                {
-                    Gender = "Мужской";
-                }
-                if (Woman)
-                {
-                    Gender = "Женский";
-                }
-
-                var gender = UserService.GetGender(Gender);
-                MainRegister.GenderId = gender.Id;
-
-                var result = AuthService.Register(MainRegister);
-                if (result)
-                {
-                    NavigationManager.NavigateTo("/login");
-                }
+                Gender = "Мужской";
             }
-        }
-
-        public void TownValue(ChangeEventArgs e)
-        {
-            var selected = e.Value?.ToString();
-
-            if (selected == "None")
+            if (Woman)
             {
-                IsDisplaySubmitButton = false;
-                IsTown = false;
-            }
-            else
-            {
-                IsTown = true;
-                MainRegister.Town = selected;
+                Gender = "Женский";
             }
 
-            if (IsTown)
+            var gender = UserService.GetGender(Gender);
+            MainRegister.GenderId = gender.Id;
+
+            var result = AuthService.Register(MainRegister);
+
+            if (result)
             {
-                IsDisplaySubmitButton = true;
+                NavigationManager.NavigateTo("/login");
             }
         }
     }

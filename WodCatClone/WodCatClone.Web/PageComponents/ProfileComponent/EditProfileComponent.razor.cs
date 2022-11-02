@@ -112,13 +112,6 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
             }
         }
 
-        public void TownValue(ChangeEventArgs e)
-        {
-            var selected = e.Value?.ToString();
-
-            User.Town = selected;
-        }
-
         public void DisplayProfile()
         {
             IsDisplayProfile = true;

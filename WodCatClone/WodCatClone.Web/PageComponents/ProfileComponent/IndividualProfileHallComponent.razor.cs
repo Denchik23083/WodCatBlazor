@@ -6,7 +6,7 @@ using WodCatClone.Logic.UserService;
 
 namespace WodCatClone.Web.PageComponents.ProfileComponent
 {
-    public partial class IndividualProfileHallProgramComponent
+    public partial class IndividualProfileHallComponent
     {
         [Parameter] public Halls Hall { get; set; }
 

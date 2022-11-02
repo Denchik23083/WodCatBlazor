@@ -45,6 +45,8 @@ namespace WodCatClone.Logic.AuthService
                 return false;
             }
 
+            registerUser.Country = "Ukraine";
+
             return _repository.Register(registerUser);
         }
 

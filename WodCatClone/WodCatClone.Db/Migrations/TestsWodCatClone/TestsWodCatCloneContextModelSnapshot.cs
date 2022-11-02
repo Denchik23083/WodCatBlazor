@@ -744,7 +744,7 @@ namespace WodCatClone.Db.Migrations.TestsWodCatClone
                         new
                         {
                             Id = 1,
-                            BeginProgramDate = new DateTime(2022, 10, 19, 11, 51, 23, 345, DateTimeKind.Local).AddTicks(9608),
+                            BeginProgramDate = new DateTime(2022, 11, 2, 15, 57, 9, 569, DateTimeKind.Local).AddTicks(4857),
                             ProgramsId = 1,
                             UserId = 1
                         });
