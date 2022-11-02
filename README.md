@@ -1,2 +1,2 @@
 # WodCatBlazor
-The thesis
+A diploma
