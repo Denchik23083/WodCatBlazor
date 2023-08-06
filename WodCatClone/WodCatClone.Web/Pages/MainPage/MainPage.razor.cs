@@ -5,7 +5,7 @@ using WodCatClone.Logic.ActionsService.ArticlesService;
 using WodCatClone.Logic.ActionsService.ExercisesService;
 using WodCatClone.Logic.ActionsService.HallsService;
 using WodCatClone.Logic.ActionsService.ProgramsService;
-using WodCatClone.Logic.ActionsService.WorkoutsService;
+using WodCatClone.Logic.ActionsService.WorkoutsService.WorkoutsService;
 
 namespace WodCatClone.Web.Pages.MainPage
 {

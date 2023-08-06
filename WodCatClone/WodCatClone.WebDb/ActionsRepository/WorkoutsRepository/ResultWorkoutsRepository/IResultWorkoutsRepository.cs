@@ -2,7 +2,7 @@
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 
-namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
+namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository.ResultWorkoutsRepository
 {
     public interface IResultWorkoutsRepository
     {

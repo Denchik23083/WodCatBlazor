@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Timers;
+﻿using System.Timers;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 
@@ -16,7 +14,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         public bool DisplayStartWorkout { get; set; }
 
-        private static Timer _timer = new(1000);
+        public static readonly System.Timers.Timer Timer = new(1000);
 
         public bool IsShowStart = true;
 
@@ -29,8 +27,8 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
         public void StartTimer()
         {
             IsShowStart = false;
-            _timer.Elapsed += CountDownTimer;
-            _timer.Start();
+            Timer.Elapsed += CountDownTimer;
+            Timer.Start();
         }
 
         public void CountDownTimer(Object source, ElapsedEventArgs e)
@@ -42,19 +40,19 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
             }
             else
             {
-                _timer.Stop();
+                Timer.Stop();
             }
 
             InvokeAsync(StateHasChanged);
         }
 
-        public void Stop() => _timer.Stop();
+        public void Stop() => Timer.Stop();
 
-        public void Continue() => _timer.Start();
+        public void Continue() => Timer.Start();
 
         public void Reset()
         {
-            _timer.Stop();
+            Timer.Stop();
             Time = new TimeSpan();
         }
     }

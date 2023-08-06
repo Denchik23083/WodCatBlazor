@@ -3,7 +3,7 @@ using System.Linq;
 using WodCatClone.Db;
 using WodCatClone.Db.Entities.Actions;
 
-namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
+namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository.WorkoutsRepository
 {
     public class WorkoutsRepository : IWorkoutsRepository
     {
