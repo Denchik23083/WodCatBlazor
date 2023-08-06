@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
-using WodCatClone.Logic.ActionsService.WorkoutsService;
+using WodCatClone.Logic.ActionsService.WorkoutsService.WorkoutsService;
 
 namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
 {

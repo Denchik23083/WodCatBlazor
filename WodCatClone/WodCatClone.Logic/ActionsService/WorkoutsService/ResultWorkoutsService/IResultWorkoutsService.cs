@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using WodCatClone.Db.Entities.Actions;
 
-namespace WodCatClone.Logic.ActionsService.WorkoutsService
+namespace WodCatClone.Logic.ActionsService.WorkoutsService.ResultWorkoutsService
 {
     public interface IResultWorkoutsService
     {

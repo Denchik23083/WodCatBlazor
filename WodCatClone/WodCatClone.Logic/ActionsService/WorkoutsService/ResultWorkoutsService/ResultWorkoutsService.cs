@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using WodCatClone.Db.Entities.Actions;
-using WodCatClone.WebDb.ActionsRepository.WorkoutsRepository;
+using WodCatClone.WebDb.ActionsRepository.WorkoutsRepository.ResultWorkoutsRepository;
 using WodCatClone.WebDb.UserRepository;
 
-namespace WodCatClone.Logic.ActionsService.WorkoutsService
+namespace WodCatClone.Logic.ActionsService.WorkoutsService.ResultWorkoutsService
 {
     public class ResultWorkoutsService : IResultWorkoutsService
     {

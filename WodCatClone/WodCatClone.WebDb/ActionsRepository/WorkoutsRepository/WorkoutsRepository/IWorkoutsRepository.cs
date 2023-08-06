@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using WodCatClone.Db.Entities.Actions;
 
-namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
+namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository.WorkoutsRepository
 {
     public interface IWorkoutsRepository
     {
