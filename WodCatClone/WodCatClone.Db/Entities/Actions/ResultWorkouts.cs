@@ -8,7 +8,7 @@ namespace WodCatClone.Db.Entities.Actions
 
         public TimeSpan Time { get; set; }
 
-        public string Comment { get; set; }
+        public string? Comment { get; set; }
 
         public int Repeat { get; set; }
 
@@ -20,10 +20,10 @@ namespace WodCatClone.Db.Entities.Actions
 
         public int WorkoutId { get; set; }
 
-        public Workouts Workouts { get; set; }
+        public Workouts? Workouts { get; set; }
 
         public int? UserId { get; set; }
 
-        public User User { get; set; }
+        public User? User { get; set; }
     }
 }

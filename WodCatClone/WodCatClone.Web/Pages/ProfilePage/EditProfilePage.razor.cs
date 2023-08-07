@@ -18,12 +18,12 @@ namespace WodCatClone.Web.Pages.ProfilePage
 
         public User UserEnter { get; set; }
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
             IsLoginUser = UserService.IsLoginUser();
 
             User = UserService.GetUser(NickName);
-            UserEnter = UserService.GetUser();
+            UserEnter = await UserService.GetUser();
 
             if (User is null || UserEnter is null)
             {

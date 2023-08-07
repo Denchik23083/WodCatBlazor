@@ -19,9 +19,9 @@ namespace WodCatClone.Logic.ActionsService.EventsService
 
         string GetImage(int id);
 
-        bool AddEvent(Events @event);
+        Task<bool> AddEvent(Events @event);
 
-        bool EditEvent(Events @event, int eventId);
+        Task<bool> EditEvent(Events @event, int eventId);
         
         bool RemoveEvent(int eventId);
 

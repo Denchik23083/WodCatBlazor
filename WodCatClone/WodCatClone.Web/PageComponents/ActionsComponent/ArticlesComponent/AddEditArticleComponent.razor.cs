@@ -93,7 +93,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
             ArticleEmblem = ArticlesService.GetAllArticleEmblem();
         }
 
-        public void Submit()
+        public async Task Submit()
         {
             var isValid = Validation();
 
@@ -102,13 +102,13 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
                 ConvertSelectedTypes();
                 if (Add)
                 {
-                    var result = ArticlesService.AddArticle(Article);
+                    var result = await ArticlesService.AddArticle(Article);
 
                     NavigationManager.NavigateTo(result ? "/articles" : "/articles/add");
                 }
                 if (Edit)
                 {
-                    var result = ArticlesService.EditArticle(Article, ArticleId);
+                    var result = await ArticlesService.EditArticle(Article, ArticleId);
 
                     NavigationManager.NavigateTo(result ? $"/articles/{ArticleId}" : $"/articles/{ArticleId}/edit");
                 }

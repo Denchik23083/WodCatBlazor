@@ -22,7 +22,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.ArticlesPage
 
         public Articles Article { get; set; }
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
             Article = ArticlesService.GetArticle(ArticleId);
             if (Article is null)
@@ -32,7 +32,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.ArticlesPage
             else
             {
                 IsLoginUser = UserService.IsLoginUser();
-                User = UserService.GetUser();
+                User = await UserService.GetUser();
 
                 if (!IsLoginUser)
                 {

@@ -8,39 +8,28 @@ namespace WodCatClone.Web.PageComponents.HeaderComponent
 {
     public partial class ProfileComponent
     {
-        [Inject] public NavigationManager NavigationManager { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; } = null!;
 
-        [Inject] public IUserService UserService { get; set; }
+        [Inject] public IUserService UserService { get; set; } = null!;
 
         public bool IsLoginUser { get; set; }
 
-        public User User { get; set; }
+        public User User { get; set; } = new() { Gender = new Gender {Image = ""} };
 
-        public string Image { get; set; }
-
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
-            FillOverrideFunctions();
+            await FillOverrideFunctions();
         }
 
-        protected override void OnParametersSet()
+        protected override async Task OnParametersSetAsync()
         {
-            FillOverrideFunctions();
+            await FillOverrideFunctions();
         }
 
-        protected override void OnAfterRender(bool firstRender)
-        {
-            FillOverrideFunctions();
-        }
-
-        private void FillOverrideFunctions()
+        private async Task FillOverrideFunctions()
         {
             IsLoginUser = UserService.IsLoginUser();
-            User = UserService.GetUser();
-            if (User is not null && User.GenderId is not null)
-            {
-                Image = UserService.GetGender(User.GenderId).Image;
-            }
+            User = await UserService.GetUser();
         }
 
         public void Auth() => NavigationManager.NavigateTo("/login");

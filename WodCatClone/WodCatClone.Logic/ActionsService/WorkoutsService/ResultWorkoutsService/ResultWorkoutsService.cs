@@ -20,10 +20,10 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService.ResultWorkoutsService
             return _repository.GetAllResultWorkouts(id);
         }
 
-        public bool AddResultWorkouts(ResultWorkouts resultWorkouts)
+        public async Task<bool> AddResultWorkouts(ResultWorkouts resultWorkouts)
         {
             var loginUser = AuthService.AuthService.User;
-            var user = _userRepository.GetUser(loginUser);
+            var user = await _userRepository.GetUser(loginUser);
 
             if (user is null)
             {
@@ -33,10 +33,10 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService.ResultWorkoutsService
             return _repository.AddResultWorkouts(resultWorkouts, user);
         }
 
-        public bool EditResultWorkouts(ResultWorkouts resultWorkouts, int id)
+        public async Task<bool> EditResultWorkouts(ResultWorkouts resultWorkouts, int id)
         {
             var loginUser = AuthService.AuthService.User;
-            var user = _userRepository.GetUser(loginUser);
+            var user = await _userRepository.GetUser(loginUser);
 
             if (user is null)
             {

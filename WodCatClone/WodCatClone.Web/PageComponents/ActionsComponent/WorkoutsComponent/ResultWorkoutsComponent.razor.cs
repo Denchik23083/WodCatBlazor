@@ -17,11 +17,11 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         public ResultWorkouts ResultWorkouts = new();
 
-        public void Result()
+        public async Task Result()
         {
             FillData();
 
-            var result = ResultWorkoutsService.AddResultWorkouts(ResultWorkouts);
+            var result = await ResultWorkoutsService.AddResultWorkouts(ResultWorkouts);
 
             if (result)
             {

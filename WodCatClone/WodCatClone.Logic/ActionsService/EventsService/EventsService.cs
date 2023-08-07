@@ -54,10 +54,10 @@ namespace WodCatClone.Logic.ActionsService.EventsService
             return _repository.GetImage(id).Image;
         }
 
-        public bool AddEvent(Events @event)
+        public async Task<bool> AddEvent(Events @event)
         {
             var loginUser = AuthService.AuthService.User;
-            var user = _userRepository.GetUser(loginUser);
+            var user = await _userRepository.GetUser(loginUser);
 
             if (user is null)
             {
@@ -67,10 +67,10 @@ namespace WodCatClone.Logic.ActionsService.EventsService
             return _repository.AddEvent(@event, user);
         }
 
-        public bool EditEvent(Events @event, int eventId)
+        public async Task<bool> EditEvent(Events @event, int eventId)
         {
             var loginUser = AuthService.AuthService.User;
-            var user = _userRepository.GetUser(loginUser);
+            var user = await _userRepository.GetUser(loginUser);
 
             if (user is null)
             {

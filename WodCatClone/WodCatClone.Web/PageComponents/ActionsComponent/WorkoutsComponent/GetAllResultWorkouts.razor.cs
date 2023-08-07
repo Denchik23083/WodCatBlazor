@@ -23,10 +23,10 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         public User User { get; set; }
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
             ResultWorkouts = ResultWorkoutsService.GetAllResultWorkouts(WorkoutId);
-            User = UserService.GetUser();
+            User = await UserService.GetUser();
         }
 
         public void PostId(int itemId)

@@ -46,10 +46,10 @@ namespace WodCatClone.Logic.ActionsService.HallsService
             return _repository.GetImage(imageId)?.Image;
         }
 
-        public bool AddHall(Halls hall)
+        public async Task<bool> AddHall(Halls hall)
         {
             var loginUser = AuthService.AuthService.User;
-            var user = _userRepository.GetUser(loginUser);
+            var user = await _userRepository.GetUser(loginUser);
 
             if (user is null)
             {
@@ -59,10 +59,10 @@ namespace WodCatClone.Logic.ActionsService.HallsService
             return _repository.AddHall(hall, user);
         }
 
-        public bool EditHall(Halls hall, int hallId)
+        public async Task<bool> EditHall(Halls hall, int hallId)
         {
             var loginUser = AuthService.AuthService.User;
-            var user = _userRepository.GetUser(loginUser);
+            var user = await _userRepository.GetUser(loginUser);
 
             if (user is null)
             {

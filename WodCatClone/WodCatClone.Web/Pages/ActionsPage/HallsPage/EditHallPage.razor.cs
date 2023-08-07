@@ -22,7 +22,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 
         public User User { get; set; }
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
             Hall = HallsService.GetHall(HallId);
             if (Hall is null)
@@ -32,7 +32,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
             else
             {
                 IsLoginUser = UserService.IsLoginUser();
-                User = UserService.GetUser();
+                User = await UserService.GetUser();
 
                 if (!IsLoginUser)
                 {

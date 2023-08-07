@@ -49,7 +49,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
             FillOverrideFunctions();
         }
 
-        private void FillOverrideFunctions()
+        private async Task FillOverrideFunctions()
         {
             Event = EventsService.GetEvent(EventId);
             if (Event is null || Event.EndDate < DateTime.Now)
@@ -60,7 +60,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
             {
                 Users = EventsService.GetAllEventsUsers(EventId);
                 Workout = WorkoutsService.GetWorkout(Event.WorkoutId);
-                User = UserService.GetUser();
+                User = await UserService.GetUser();
                 EventTimeUsers = EventsService.GetAllEventTimeUsers(EventId);
                 IsLoginUser = UserService.IsLoginUser();
             }

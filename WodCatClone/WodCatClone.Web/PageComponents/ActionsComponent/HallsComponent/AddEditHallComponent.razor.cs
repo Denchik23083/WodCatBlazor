@@ -106,7 +106,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
             HallEmblem = HallsService.GetAllHallEmblem();
         }
 
-        public void Submit()
+        public async Task Submit()
         {
             var isValid = Validation();
 
@@ -115,13 +115,13 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
                 ConvertSelectedTypes();
                 if (Add)
                 {
-                    var result = HallsService.AddHall(Hall);
+                    var result = await HallsService.AddHall(Hall);
 
                     NavigationManager.NavigateTo(result ? "/gymboxs" : "/gymboxs/add");
                 }
                 if (Edit)
                 {
-                    var result = HallsService.EditHall(Hall, HallId);
+                    var result = await HallsService.EditHall(Hall, HallId);
 
                     NavigationManager.NavigateTo(result ? $"/gymboxs/{HallId}" : $"/gymboxs/{HallId}/edit");
                 }

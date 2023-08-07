@@ -10,10 +10,10 @@ namespace WodCatClone.Db.Entities.Actions
 
         public int EventsId { get; set; }
 
-        public Events Events { get; set; }
+        public Events? Events { get; set; }
 
         public int UserId { get; set; }
 
-        public User User { get; set; }
+        public User? User { get; set; }
     }
 }
