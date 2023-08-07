@@ -35,12 +35,12 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         public EventTimeUser AddEventTimeUser = new();
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
             Image = EventsService.GetImage(Event.EventsEmblemId);
             WorkoutsExercises = WorkoutsService.GetAllWorkoutsExercises(Event.WorkoutId);
             Workout = WorkoutsService.GetWorkout(Event.WorkoutId);
-            User = UserService.GetUser();
+            User = await UserService.GetUser();
             EventTimeUser = EventsService.GetEventTimeUser(Event.Id, User.Id);
         }
 

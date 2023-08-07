@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using WodCatClone.Db.Entities.Actions;
+﻿using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 
 namespace WodCatClone.Logic.ActionsService.HallsService
@@ -18,9 +17,9 @@ namespace WodCatClone.Logic.ActionsService.HallsService
 
         string GetImage(int? imageId);
 
-        bool AddHall(Halls hall);
+        Task<bool> AddHall(Halls hall);
 
-        bool EditHall(Halls hall, int hallId);
+        Task<bool> EditHall(Halls hall, int hallId);
 
         bool RemoveHall(int hallId);
 

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using WodCatClone.Db.Entities.Auth;
+﻿using WodCatClone.Db.Entities.Auth;
 
 namespace WodCatClone.WebDb.UserRepository
 {
@@ -7,7 +6,7 @@ namespace WodCatClone.WebDb.UserRepository
     {
         IEnumerable<User> GetAllUsers();
 
-        User GetUser(User user);
+        Task<User> GetUser(User user);
 
         User GetUser(int? id);
 

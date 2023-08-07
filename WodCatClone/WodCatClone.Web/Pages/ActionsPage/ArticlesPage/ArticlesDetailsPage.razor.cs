@@ -25,7 +25,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.ArticlesPage
 
         public ConfirmRemoveArticle ConfirmRemoveArticle { get; set; }
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
             Article = ArticlesService.GetArticle(ArticleId);
             if (Article is null)
@@ -35,7 +35,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.ArticlesPage
             else
             {
                 Image = ArticlesService.GetImage(Article.ArticleEmblemId);
-                User = UserService.GetUser();
+                User = await UserService.GetUser();
             }
         }
 

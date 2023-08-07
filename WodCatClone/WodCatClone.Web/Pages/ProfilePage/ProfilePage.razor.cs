@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.ActionsService.HallsService;
@@ -40,7 +39,7 @@ namespace WodCatClone.Web.Pages.ProfilePage
 
         public int Age { get; set; }
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
             User = UserService.GetUser(NickName);
 
@@ -48,7 +47,7 @@ namespace WodCatClone.Web.Pages.ProfilePage
             {
                 Age = (DateTime.Today - User.Birthday).Days / 365;
 
-                UserEnter = UserService.GetUser();
+                UserEnter = await UserService.GetUser();
 
                 IsLoginUser = UserService.IsLoginUser();
 

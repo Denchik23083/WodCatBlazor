@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.EntityFrameworkCore;
 using WodCatClone.Db;
 using WodCatClone.Db.Entities.Auth;
 
@@ -19,9 +18,11 @@ namespace WodCatClone.WebDb.UserRepository
             return _context.Users;
         }
 
-        public User GetUser(User user)
+        public async Task<User> GetUser(User user)
         {
-            return _context.Users.FirstOrDefault(b => b.Id == user.Id);
+            return (await _context.Users
+                .Include(_ => _.Gender)
+                .FirstOrDefaultAsync(b => b.Id == user.Id))!;
         }
 
         public User GetUser(int? id)

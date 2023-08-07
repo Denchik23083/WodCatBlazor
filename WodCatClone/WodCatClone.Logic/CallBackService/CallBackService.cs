@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using WodCatClone.Db.Entities.CallBack;
+﻿using WodCatClone.Db.Entities.CallBack;
 using WodCatClone.WebDb.CallBackRepository;
 
 namespace WodCatClone.Logic.CallBackService

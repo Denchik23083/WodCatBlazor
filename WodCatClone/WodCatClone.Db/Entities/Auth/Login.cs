@@ -8,9 +8,9 @@ namespace WodCatClone.Db.Entities.Auth
 
         [Required]
         [EmailAddress(ErrorMessage = "Email format is not right")]
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
         [Required]
-        public string Password { get; set; }
+        public string? Password { get; set; }
     }
 }

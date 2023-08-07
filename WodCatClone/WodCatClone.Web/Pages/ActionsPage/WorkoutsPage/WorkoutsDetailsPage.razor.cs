@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.HallsService;
 using WodCatClone.Logic.ActionsService.WorkoutsService.ResultWorkoutsService;
@@ -90,14 +89,14 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
             }
         }
 
-        public void OnEdit()
+        public async Task OnEdit()
         {
             var id = GetAllResultWorkouts.ResultWorkoutId;
 
             EditDeleteResult.FillData();
             var resultWorkout = EditDeleteResult.EditResultWorkout;
 
-            var result = ResultWorkoutsService.EditResultWorkouts(resultWorkout, id);
+            var result = await ResultWorkoutsService.EditResultWorkouts(resultWorkout, id);
 
             if (result)
             {

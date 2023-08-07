@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using WodCatClone.Db.Entities.Actions;
+﻿using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 
 namespace WodCatClone.WebDb.ActionsRepository.HallsRepository

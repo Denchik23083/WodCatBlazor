@@ -1,4 +1,4 @@
-﻿using System.Linq;
+﻿using Microsoft.EntityFrameworkCore;
 using WodCatClone.Db;
 using WodCatClone.Db.Entities.Auth;
 
@@ -15,8 +15,10 @@ namespace WodCatClone.WebDb.AuthRepository
 
         public User Login(User loginUser)
         {
-            return _context.Users.FirstOrDefault(l => l.Email == loginUser.Email &&
-                                                      l.Password == loginUser.Password);
+            return _context.Users
+                .Include(_ => _.Gender)
+                .FirstOrDefault(l => l.Email == loginUser.Email &&
+                                     l.Password == loginUser.Password)!;
         }
 
         public bool Register(User registerUser)

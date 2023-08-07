@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using WodCatClone.Db.Entities.Actions;
+﻿using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 
 namespace WodCatClone.Logic.ActionsService.EventsService
@@ -20,9 +19,9 @@ namespace WodCatClone.Logic.ActionsService.EventsService
 
         string GetImage(int id);
 
-        bool AddEvent(Events @event);
+        Task<bool> AddEvent(Events @event);
 
-        bool EditEvent(Events @event, int eventId);
+        Task<bool> EditEvent(Events @event, int eventId);
         
         bool RemoveEvent(int eventId);
 

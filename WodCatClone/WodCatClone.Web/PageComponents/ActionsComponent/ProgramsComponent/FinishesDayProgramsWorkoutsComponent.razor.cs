@@ -19,9 +19,9 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
 
         public User User { get; set; }
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
-            User = UserService.GetUser();
+            User = await UserService.GetUser();
         }
 
         public void FinishProgram()

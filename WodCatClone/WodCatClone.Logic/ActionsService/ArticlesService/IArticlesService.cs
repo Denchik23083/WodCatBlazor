@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using WodCatClone.Db.Entities.Actions;
+﻿using WodCatClone.Db.Entities.Actions;
 
 namespace WodCatClone.Logic.ActionsService.ArticlesService
 {
@@ -13,9 +12,9 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
 
         string GetImage(int? articleId);
 
-        bool AddArticle(Articles article);
+        Task<bool> AddArticle(Articles article);
 
-        bool EditArticle(Articles article, int id);
+        Task<bool> EditArticle(Articles article, int id);
 
         bool RemoveArticle(int id);
     }

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using WodCatClone.Db.Entities.Auth;
+﻿using WodCatClone.Db.Entities.Auth;
 using WodCatClone.WebDb.UserRepository;
 
 namespace WodCatClone.Logic.UserService
@@ -26,7 +24,7 @@ namespace WodCatClone.Logic.UserService
             return AuthService.AuthService.IsLoginUser;
         }
 
-        public User GetUser()
+        public async Task<User> GetUser()
         {
             var user = AuthService.AuthService.User;
 
@@ -35,7 +33,7 @@ namespace WodCatClone.Logic.UserService
                 return null;
             }
 
-            return _repository.GetUser(user);
+            return await _repository.GetUser(user);
         }
 
         public User GetUser(int? id)

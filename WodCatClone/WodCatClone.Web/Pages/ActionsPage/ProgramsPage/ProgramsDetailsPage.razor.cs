@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.ActionsService.ProgramsService;
@@ -54,11 +51,11 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
             FillOverrideFunctions();
         }
 
-        private void FillOverrideFunctions()
+        private async Task FillOverrideFunctions()
         {
             Program = ProgramsService.GetProgram(ProgramId);
             IsLoginUser = UserService.IsLoginUser();
-            User = UserService.GetUser();
+            User = await UserService.GetUser();
             Users = ProgramsService.GetAllProgramsUsers(ProgramId);
             ProgramsWorkouts = ProgramsService.GetAllProgramsWorkouts(ProgramId);
 

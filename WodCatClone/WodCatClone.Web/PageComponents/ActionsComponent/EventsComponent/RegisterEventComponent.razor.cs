@@ -49,7 +49,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             FillOverrideFunctions();
         }
 
-        private void FillOverrideFunctions()
+        private async Task FillOverrideFunctions()
         {
             StartDate = Event.StartDate.ToString("dd MMMM yyyy HH:mm:ss");
             EndDate = Event.EndDate.ToString("dd MMMM yyyy HH:mm:ss");
@@ -57,7 +57,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             Image = EventsService.GetImage(Event.EventsEmblemId);
             Hall = HallsService.GetHall(Event.HallId);
             HallEmblem = HallsService.GetImage(Hall.EmblemHallId);
-            User = UserService.GetUser();
+            User = await UserService.GetUser();
             IsLoginUser = UserService.IsLoginUser();
         }
 

@@ -6,10 +6,10 @@
 
         public int ProgramsId { get; set; }
 
-        public Programs Programs { get; set; }
+        public Programs? Programs { get; set; }
 
         public int WorkoutsId { get; set; }
 
-        public Workouts Workouts { get; set; }
+        public Workouts? Workouts { get; set; }
     }
 }

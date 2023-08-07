@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using WodCatClone.Db.Entities.Auth;
+﻿using WodCatClone.Db.Entities.Auth;
 
 namespace WodCatClone.Logic.UserService
 {
@@ -9,7 +8,7 @@ namespace WodCatClone.Logic.UserService
 
         bool IsLoginUser();
 
-        User GetUser();
+        Task<User> GetUser();
 
         User GetUser(int? id);
 

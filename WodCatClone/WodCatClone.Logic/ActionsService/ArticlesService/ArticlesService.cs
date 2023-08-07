@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using WodCatClone.Db.Entities.Actions;
+﻿using WodCatClone.Db.Entities.Actions;
 using WodCatClone.WebDb.ActionsRepository.ArticlesRepository;
 using WodCatClone.WebDb.UserRepository;
 
@@ -36,10 +35,10 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
             return _repository.GetImage(articleId).Image;
         }
 
-        public bool AddArticle(Articles article)
+        public async Task<bool> AddArticle(Articles article)
         {
             var loginUser = AuthService.AuthService.User;
-            var user = _userRepository.GetUser(loginUser);
+            var user = await _userRepository.GetUser(loginUser);
 
             if (user is null)
             {
@@ -49,10 +48,10 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
             return _repository.AddArticle(article, user);
         }
 
-        public bool EditArticle(Articles article, int id)
+        public async Task<bool> EditArticle(Articles article, int id)
         {
             var loginUser = AuthService.AuthService.User;
-            var user = _userRepository.GetUser(loginUser);
+            var user = await _userRepository.GetUser(loginUser);
 
             if (user is null)
             {

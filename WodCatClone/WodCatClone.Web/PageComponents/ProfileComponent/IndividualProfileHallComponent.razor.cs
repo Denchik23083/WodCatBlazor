@@ -30,9 +30,9 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
             FillOverrideFunctions();
         }
 
-        private void FillOverrideFunctions()
+        private async Task FillOverrideFunctions()
         {
-            User = UserService.GetUser();
+            User = await UserService.GetUser();
             if (Hall is not null)
             {
                 HallImage = HallsService.GetImage(Hall.EmblemHallId);

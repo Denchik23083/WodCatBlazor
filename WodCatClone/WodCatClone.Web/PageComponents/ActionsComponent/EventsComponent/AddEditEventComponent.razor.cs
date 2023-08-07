@@ -118,7 +118,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             Workouts = WorkoutsService.GetAllWorkouts();
         }
 
-        public void Submit()
+        public async Task Submit()
         {
             var isValid = Validation();
 
@@ -126,12 +126,12 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             {
                 if (Add)
                 {
-                    var result = EventsService.AddEvent(Event);
+                    var result = await EventsService.AddEvent(Event);
                     NavigationManager.NavigateTo(result ? "/events" : "/events/add");
                 }
                 if (Edit)
                 {
-                    var result = EventsService.EditEvent(Event, EventId);
+                    var result = await EventsService.EditEvent(Event, EventId);
                     NavigationManager.NavigateTo(result ? $"/events/{EventId}" : $"/events/{Event}/edit");
                 }
             }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.ActionsService.EventsService;
@@ -51,7 +49,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
             FillOverrideFunctions();
         }
 
-        private void FillOverrideFunctions()
+        private async Task FillOverrideFunctions()
         {
             Event = EventsService.GetEvent(EventId);
             if (Event is null || Event.EndDate < DateTime.Now)
@@ -62,7 +60,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
             {
                 Users = EventsService.GetAllEventsUsers(EventId);
                 Workout = WorkoutsService.GetWorkout(Event.WorkoutId);
-                User = UserService.GetUser();
+                User = await UserService.GetUser();
                 EventTimeUsers = EventsService.GetAllEventTimeUsers(EventId);
                 IsLoginUser = UserService.IsLoginUser();
             }

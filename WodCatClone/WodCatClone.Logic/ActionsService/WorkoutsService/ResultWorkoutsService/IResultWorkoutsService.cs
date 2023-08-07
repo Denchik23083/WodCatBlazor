@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using WodCatClone.Db.Entities.Actions;
+﻿using WodCatClone.Db.Entities.Actions;
 
 namespace WodCatClone.Logic.ActionsService.WorkoutsService.ResultWorkoutsService
 {
@@ -7,9 +6,9 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService.ResultWorkoutsService
     {
         IEnumerable<ResultWorkouts> GetAllResultWorkouts(int id);
 
-        bool AddResultWorkouts(ResultWorkouts resultWorkouts);
+        Task<bool> AddResultWorkouts(ResultWorkouts resultWorkouts);
 
-        bool EditResultWorkouts(ResultWorkouts resultWorkouts, int id);
+        Task<bool> EditResultWorkouts(ResultWorkouts resultWorkouts, int id);
 
         bool DeleteResultWorkouts(int id);
     }
