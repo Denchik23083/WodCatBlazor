@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using WodCatClone.Db.Entities.Actions;
+﻿using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.WebDb.ActionsRepository.EventsRepository;
 using WodCatClone.WebDb.UserRepository;

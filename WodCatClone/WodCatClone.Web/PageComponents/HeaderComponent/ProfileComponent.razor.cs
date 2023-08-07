@@ -52,7 +52,7 @@ namespace WodCatClone.Web.PageComponents.HeaderComponent
             new() { Content = "Выйти", Link = "/logout" },
         };
 
-        string _link = string.Empty;
+        string? _link = string.Empty;
 
         void Route(ChangeEventArgs currentItem)
         {

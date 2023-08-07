@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 using Microsoft.EntityFrameworkCore;
 using WodCatClone.Db;
 using WodCatClone.Logic.ActionsService.ArticlesService;
@@ -10,6 +12,7 @@ using WodCatClone.Logic.ActionsService.WorkoutsService.WorkoutsService;
 using WodCatClone.Logic.AuthService;
 using WodCatClone.Logic.CallBackService;
 using WodCatClone.Logic.UserService;
+using WodCatClone.Web.Authentication;
 using WodCatClone.WebDb.ActionsRepository.ArticlesRepository;
 using WodCatClone.WebDb.ActionsRepository.EventsRepository;
 using WodCatClone.WebDb.ActionsRepository.ExercisesRepository;
@@ -22,6 +25,9 @@ using WodCatClone.WebDb.CallBackRepository;
 using WodCatClone.WebDb.UserRepository;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<ProtectedSessionStorage>();
+builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
@@ -71,6 +77,9 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.UseRouting();
 

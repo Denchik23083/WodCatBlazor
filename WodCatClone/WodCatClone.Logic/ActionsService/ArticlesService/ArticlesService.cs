@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using WodCatClone.Db.Entities.Actions;
+﻿using WodCatClone.Db.Entities.Actions;
 using WodCatClone.WebDb.ActionsRepository.ArticlesRepository;
 using WodCatClone.WebDb.UserRepository;
 

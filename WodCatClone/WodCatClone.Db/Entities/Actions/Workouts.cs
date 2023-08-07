@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace WodCatClone.Db.Entities.Actions
+﻿namespace WodCatClone.Db.Entities.Actions
 {
     public class Workouts
     {

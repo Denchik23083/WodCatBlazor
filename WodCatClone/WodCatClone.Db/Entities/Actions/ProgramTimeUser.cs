@@ -1,5 +1,4 @@
-﻿using System;
-using WodCatClone.Db.Entities.Auth;
+﻿using WodCatClone.Db.Entities.Auth;
 
 namespace WodCatClone.Db.Entities.Actions
 {

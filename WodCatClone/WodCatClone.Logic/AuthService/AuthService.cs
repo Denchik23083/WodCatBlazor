@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using WodCatClone.Db.Entities.Auth;
+﻿using WodCatClone.Db.Entities.Auth;
 using WodCatClone.WebDb.AuthRepository;
 using WodCatClone.WebDb.UserRepository;
 

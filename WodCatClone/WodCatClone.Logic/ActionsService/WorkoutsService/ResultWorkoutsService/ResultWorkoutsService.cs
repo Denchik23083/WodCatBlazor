@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using WodCatClone.Db.Entities.Actions;
+﻿using WodCatClone.Db.Entities.Actions;
 using WodCatClone.WebDb.ActionsRepository.WorkoutsRepository.ResultWorkoutsRepository;
 using WodCatClone.WebDb.UserRepository;
 

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using WodCatClone.Db.Entities.Auth;
+﻿using WodCatClone.Db.Entities.Auth;
 using WodCatClone.WebDb.UserRepository;
 
 namespace WodCatClone.Logic.UserService

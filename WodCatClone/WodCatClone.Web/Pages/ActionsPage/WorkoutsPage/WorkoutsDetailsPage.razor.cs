@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.HallsService;
 using WodCatClone.Logic.ActionsService.WorkoutsService.ResultWorkoutsService;
