@@ -13,6 +13,7 @@ using WodCatClone.Logic.AuthService;
 using WodCatClone.Logic.CallBackService;
 using WodCatClone.Logic.UserService;
 using WodCatClone.Web.Authentication;
+using WodCatClone.Web.Utilities.Mapper;
 using WodCatClone.WebDb.ActionsRepository.ArticlesRepository;
 using WodCatClone.WebDb.ActionsRepository.EventsRepository;
 using WodCatClone.WebDb.ActionsRepository.ExercisesRepository;
@@ -49,6 +50,8 @@ builder.Services.AddScoped<IArticlesService, ArticlesService>();
 builder.Services.AddScoped<IArticlesRepository, ArticlesRepository>();
 builder.Services.AddScoped<ICallBackService, CallBackService>();
 builder.Services.AddScoped<ICallBackRepository, CallBackRepository>();
+
+builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();

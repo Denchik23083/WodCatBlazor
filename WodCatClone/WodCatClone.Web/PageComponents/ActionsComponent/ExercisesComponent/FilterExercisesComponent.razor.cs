@@ -3,7 +3,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.ExercisesService;
-using WodCatClone.Web.Utilities;
+using WodCatClone.Web.Utilities.Types;
 
 namespace WodCatClone.Web.PageComponents.ActionsComponent.ExercisesComponent
 {

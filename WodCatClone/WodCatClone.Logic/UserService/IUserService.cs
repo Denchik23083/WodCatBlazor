@@ -8,7 +8,7 @@ namespace WodCatClone.Logic.UserService
 
         bool IsLoginUser();
 
-        Task<User> GetUser();
+        Task<User?> GetUser();
 
         User GetUser(int? id);
 

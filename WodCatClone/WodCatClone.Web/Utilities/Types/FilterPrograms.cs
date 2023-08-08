@@ -1,6 +1,6 @@
-﻿namespace WodCatClone.Web.Utilities
+﻿namespace WodCatClone.Web.Utilities.Types
 {
-    public class FilterHalls
+    public class FilterPrograms
     {
         public string Content { get; set; }
 

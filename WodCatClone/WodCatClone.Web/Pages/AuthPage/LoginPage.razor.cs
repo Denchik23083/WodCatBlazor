@@ -1,22 +1,29 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.AuthService;
+using WodCatClone.Web.Models;
 
 namespace WodCatClone.Web.Pages.AuthPage
 {
     public partial class LoginPage
     {
-        [Inject] private IAuthService AuthService { get; set; }
+        [Inject] public IAuthService AuthService { get; set; } = null!;
 
-        [Inject] private NavigationManager NavigationManager { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; } = null!;
 
-        public Login MainLogin = new();
+        [Inject] public IMapper Mapper { get; set; } = null!;
+
+        public LoginModel LoginModel = new();
 
         public bool IsFallLogin { get; set; }
 
-        public void Login()
+        public async Task Login()
         {
-            var result = AuthService.Login(MainLogin);
+            var mappedUser = Mapper.Map<User>(LoginModel);
+
+            var result = await AuthService.Login(mappedUser);
+
             if (result)
             {
                 IsFallLogin = false;

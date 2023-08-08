@@ -18,11 +18,11 @@ namespace WodCatClone.WebDb.UserRepository
             return _context.Users;
         }
 
-        public async Task<User> GetUser(User user)
+        public async Task<User?> GetUser(User user)
         {
-            return (await _context.Users
+            return await _context.Users
                 .Include(_ => _.Gender)
-                .FirstOrDefaultAsync(b => b.Id == user.Id))!;
+                .FirstOrDefaultAsync(b => b.Id == user!.Id);
         }
 
         public User GetUser(int? id)

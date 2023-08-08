@@ -9,7 +9,7 @@ namespace WodCatClone.Logic.AuthService
         private readonly IAuthRepository _repository;
         private readonly IUserRepository _userRepository;
         public static bool IsLoginUser;
-        public static User User;
+        public static User? User;
 
         public AuthService(IAuthRepository repository, IUserRepository userRepository)
         {
@@ -17,11 +17,10 @@ namespace WodCatClone.Logic.AuthService
             _userRepository = userRepository;
         }
 
-        public bool Login(Login login)
+        public async Task<bool> Login(User login)
         {
-            var loginUser = Map(login);
-            var user = _repository.Login(loginUser);
-
+            var user = await _repository.Login(login);
+            
             if (user is null)
             {
                 return false;
@@ -33,20 +32,19 @@ namespace WodCatClone.Logic.AuthService
             return true;
         }
 
-        public bool Register(Register register)
+        public async Task<bool> Register(User register)
         {
-            var registerUser = Map(register);
             var allUsers = _userRepository.GetAllUsers();
 
-            if (allUsers.Any(b => b.Email.Equals(registerUser.Email)
-                                  || b.NickName.Equals(registerUser.NickName)))
+            if (allUsers.Any(b => b.Email!.Equals(register.Email)
+                                  || b.NickName!.Equals(register.NickName)))
             {
                 return false;
             }
 
-            registerUser.Country = "Ukraine";
+            register.Country = "Ukraine";
 
-            return _repository.Register(registerUser);
+            return await _repository.Register(register);
         }
 
         public bool Logout()
@@ -55,30 +53,6 @@ namespace WodCatClone.Logic.AuthService
             IsLoginUser = false;
 
             return true;
-        }
-
-        private User Map(Login model)
-        {
-            return new User
-            {
-                Email = model.Email,
-                Password = model.Password,
-            };
-        }
-
-        private User Map(Register model)
-        {
-            return new User
-            {
-                Name = model.Name,
-                Surname = model.Surname,
-                NickName = model.NickName,
-                Email = model.Email,
-                Password = model.Password,
-                Birthday = model.Birthday,
-                GenderId = model.GenderId,
-                Town = model.Town
-            };
         }
     }
 }

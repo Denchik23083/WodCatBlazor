@@ -1,11 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WodCatClone.Db.Entities.Auth
+namespace WodCatClone.Web.Models
 {
-    public class Register
+    public class RegisterModel
     {
-        public int Id { get; set; }
-
         [Required]
         public string? Name { get; set; }
 

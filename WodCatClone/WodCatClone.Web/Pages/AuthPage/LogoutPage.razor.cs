@@ -5,9 +5,9 @@ namespace WodCatClone.Web.Pages.AuthPage
 {
     public partial class LogoutPage
     {
-        [Inject] public NavigationManager NavigationManager { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; } = null!;
 
-        [Inject] public IAuthService AuthService { get; set; }
+        [Inject] public IAuthService AuthService { get; set; } = null!;
 
         protected override void OnInitialized()
         {

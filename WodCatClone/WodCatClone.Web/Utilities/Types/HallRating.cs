@@ -1,6 +1,6 @@
-﻿namespace WodCatClone.Web.Utilities
+﻿namespace WodCatClone.Web.Utilities.Types
 {
-    public class AuthTown
+    public class HallRating
     {
         public string Content { get; set; }
 

@@ -6,7 +6,7 @@ namespace WodCatClone.WebDb.UserRepository
     {
         IEnumerable<User> GetAllUsers();
 
-        Task<User> GetUser(User user);
+        Task<User?> GetUser(User user);
 
         User GetUser(int? id);
 

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.UserService;
-using WodCatClone.Web.Utilities;
+using WodCatClone.Web.Utilities.Types;
 
 namespace WodCatClone.Web.PageComponents.HeaderComponent
 {
@@ -14,7 +14,7 @@ namespace WodCatClone.Web.PageComponents.HeaderComponent
 
         public bool IsLoginUser { get; set; }
 
-        public User User { get; set; } = new() { Gender = new Gender {Image = ""} };
+        public User? User { get; set; } = new() { Gender = new Gender {Image = ""} };
 
         protected override async Task OnInitializedAsync()
         {

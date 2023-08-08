@@ -1,20 +1,24 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.AuthService;
 using WodCatClone.Logic.UserService;
-using WodCatClone.Web.Utilities;
+using WodCatClone.Web.Models;
+using WodCatClone.Web.Utilities.Types;
 
 namespace WodCatClone.Web.Pages.AuthPage
 {
     public partial class RegisterPage
     {
-        [Inject] private IAuthService AuthService { get; set; }
+        [Inject] private IAuthService AuthService { get; set; } = null!;
 
-        [Inject] public IUserService UserService { get; set; }
+        [Inject] public IUserService UserService { get; set; } = null!;
 
-        [Inject] private NavigationManager NavigationManager { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; } = null!;
 
-        public Register MainRegister = new();
+        [Inject] public IMapper Mapper { get; set; } = null!;
+
+        public RegisterModel RegisterModel = new();
 
         public bool Man { get; set; } = true;
 
@@ -37,9 +41,9 @@ namespace WodCatClone.Web.Pages.AuthPage
             new() { Content = "Львов", Value = "Львов" },
         };
 
-        public void Register()
+        public async Task Register()
         {
-            if (MainRegister.Password != MainRegister.ConfirmPassword) return;
+            if (RegisterModel.Password != RegisterModel.ConfirmPassword) return;
 
             if (Man)
             {
@@ -51,9 +55,11 @@ namespace WodCatClone.Web.Pages.AuthPage
             }
 
             var gender = UserService.GetGender(Gender);
-            MainRegister.GenderId = gender.Id;
+            RegisterModel.GenderId = gender.Id;
 
-            var result = AuthService.Register(MainRegister);
+            var mappedUser = Mapper.Map<User>(RegisterModel);
+
+            var result = await AuthService.Register(mappedUser);
 
             if (result)
             {
