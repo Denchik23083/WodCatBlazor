@@ -6,7 +6,7 @@ using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.EventsService;
 using WodCatClone.Logic.ActionsService.HallsService;
 using WodCatClone.Logic.ActionsService.WorkoutsService.WorkoutsService;
-using WodCatClone.Web.Utilities;
+using WodCatClone.Web.Utilities.Types;
 
 namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 {

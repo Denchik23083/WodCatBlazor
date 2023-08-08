@@ -7,46 +7,46 @@
         <div class="col loginContainer">
             <div class="login">
                 <h1 style="color: white; font-size: 35px;">Регистрация</h1>
-                <EditForm Model="@MainRegister" OnValidSubmit="@Register">
+                <EditForm Model="@RegisterModel" OnValidSubmit="@Register">
                     <DataAnnotationsValidator />
                     <ValidationSummary />
                     <InputText
                         id="name"
-                        @bind-Value="MainRegister.Name"
+                        @bind-Value="RegisterModel.Name"
                         class="mb-3 formLogin"
                         placeholder="Имя"/>
                     <InputText
                         id="surname"
-                        @bind-Value="MainRegister.Surname"
+                        @bind-Value="RegisterModel.Surname"
                         class="mb-3 formLogin"
                         placeholder="Фимилия"/>
                     <InputText
                         id="nickname"
-                        @bind-Value="MainRegister.NickName"
+                        @bind-Value="RegisterModel.NickName"
                         class="mb-3 formLogin"
                         placeholder="Ник"/>
                     <InputText
                         id="email"
-                        @bind-Value="MainRegister.Email"
+                        @bind-Value="RegisterModel.Email"
                         class="mb-3 formLogin"
                         placeholder="E-mail"/>
                     <InputText
                         id="password"
                         type="password"
-                        @bind-Value="MainRegister.Password"
+                        @bind-Value="RegisterModel.Password"
                         class="mb-3 formLogin"
                         style="width: 100%; height: 40px; padding-left: 20px;"
                         placeholder="Пароль"/>
                     <InputText
                         id="confirmPassword"
                         type="password"
-                        @bind-Value="MainRegister.ConfirmPassword"
+                        @bind-Value="RegisterModel.ConfirmPassword"
                         class="mb-3 formLogin"
                         style="width: 100%; height: 40px; padding-left: 20px;"
                         placeholder="Подтвердить Пароль"/>
                     <InputDate
                         id="birthday"
-                        @bind-Value="MainRegister.Birthday"
+                        @bind-Value="RegisterModel.Birthday"
                         class="mb-3 formLogin"
                         placeholder="Birthday"/>
                     <div class="custom-control custom-checkbox mb-2">
@@ -75,7 +75,7 @@
                     </div>
                     <div class="row">
                         <div class="col mb-2">
-                            <select class="selectedFormResult mb-2" @bind="MainRegister.Town">
+                            <select class="selectedFormResult mb-2" @bind="RegisterModel.Town">
                                 <option value="">Город</option>
                                 @foreach (var item in Town)
                                 {

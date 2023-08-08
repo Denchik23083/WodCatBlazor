@@ -1,4 +1,5 @@
 ﻿using WodCatClone.Db.Entities.Actions;
+using WodCatClone.Db.Entities.Auth;
 using WodCatClone.WebDb.ActionsRepository.WorkoutsRepository.ResultWorkoutsRepository;
 using WodCatClone.WebDb.UserRepository;
 

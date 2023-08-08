@@ -2,6 +2,7 @@
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.AuthService;
 using WodCatClone.Logic.UserService;
+using WodCatClone.Web.Models;
 
 namespace WodCatClone.Web.PageComponents.ProfileComponent
 {
@@ -17,7 +18,7 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
 
         public string Image { get; set; }
 
-        public Register AuthUser { get; set; }
+        public RegisterModel AuthUser { get; set; }
 
         protected override void OnInitialized()
         {
@@ -47,7 +48,7 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
             }
         }
 
-        private User Map(Register model)
+        private User Map(RegisterModel model)
         {
             return new User
             {
@@ -57,9 +58,9 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
             };
         }
 
-        private Register Map(User model)
+        private RegisterModel Map(User model)
         {
-            return new Register
+            return new RegisterModel
             {
                 NickName = model.NickName,
                 Email = model.Email,

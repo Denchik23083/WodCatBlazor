@@ -1,11 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WodCatClone.Db.Entities.Auth
+namespace WodCatClone.Web.Models
 {
-    public class Login
+    public class LoginModel
     {
-        public int Id { get; set; }
-
         [Required]
         [EmailAddress(ErrorMessage = "Email format is not right")]
         public string? Email { get; set; }

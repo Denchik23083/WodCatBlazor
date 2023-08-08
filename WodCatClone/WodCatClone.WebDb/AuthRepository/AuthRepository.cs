@@ -13,18 +13,18 @@ namespace WodCatClone.WebDb.AuthRepository
             _context = context;
         }
 
-        public User Login(User loginUser)
+        public Task<User?> Login(User loginUser)
         {
             return _context.Users
                 .Include(_ => _.Gender)
-                .FirstOrDefault(l => l.Email == loginUser.Email &&
-                                     l.Password == loginUser.Password)!;
+                .FirstOrDefaultAsync(l => l.Email == loginUser.Email &&
+                                     l.Password == loginUser.Password);
         }
 
-        public bool Register(User registerUser)
+        public async Task<bool> Register(User registerUser)
         {
-            _context.Users.Add(registerUser);
-            _context.SaveChanges();
+            await _context.Users.AddAsync(registerUser);
+            await _context.SaveChangesAsync();
 
             return true;
         }
