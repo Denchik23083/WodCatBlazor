@@ -53,7 +53,7 @@ namespace WodCatClone.Web.PageComponents.MainComponent
             }
             if (Exercise is not null)
             {
-                ExerciseImage = ExercisesService.GetExercise(Exercise.Id).Image;
+                //ExerciseImage = ExercisesService.GetExercise(Exercise.Id).Image;
             }
             if (Hall is not null)
             {

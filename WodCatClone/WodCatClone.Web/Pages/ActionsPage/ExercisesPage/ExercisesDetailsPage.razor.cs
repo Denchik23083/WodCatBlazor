@@ -8,15 +8,16 @@ namespace WodCatClone.Web.Pages.ActionsPage.ExercisesPage
     {
         [Parameter] public int ExerciseId { get; set; }
 
-        [Inject] public IExercisesService ExercisesService { get; set; }
+        [Inject] public IExercisesService ExercisesService { get; set; } = null!;
 
-        [Inject] public NavigationManager NavigationManager { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; } = null!;
 
-        public Exercises Exercise { get; set; }
+        public Exercises? Exercise { get; set; } = new();
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
-            Exercise = ExercisesService.GetExercise(ExerciseId);
+            Exercise = await ExercisesService.GetExercise(ExerciseId);
+
             if (Exercise is null)
             {
                 NavigationManager.NavigateTo("/exercises");

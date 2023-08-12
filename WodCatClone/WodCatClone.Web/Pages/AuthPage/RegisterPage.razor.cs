@@ -24,7 +24,7 @@ namespace WodCatClone.Web.Pages.AuthPage
 
         public bool Woman { get; set; } = false;
         
-        public string Gender { get; set; }
+        public string Gender { get; set; } = null!;
 
         public List<AuthTown> Town = new()
         {

@@ -6,20 +6,20 @@ namespace WodCatClone.Web.Pages.MorePage
 {
     public partial class CallBackPage
     {
-        [Inject] public ICallBackService CallBackService { get; set; }
+        [Inject] public ICallBackService CallBackService { get; set; } = null!;
 
-        public IEnumerable<Question> Questions { get; set; }
+        public IEnumerable<Question> Questions { get; set; } = new List<Question>();
 
-        public Answer Answer { get; set; }
+        public Answer? Answer { get; set; } = new();
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
-            Questions = CallBackService.GetAllQuestions();
+            Questions = await CallBackService.GetAllQuestions();
         }
 
-        public void GetAnswer(int id)
+        public async Task GetAnswer(int id)
         {
-            Answer = CallBackService.GetAnswer(id);
+            Answer = await CallBackService.GetAnswer(id);
         }
     }
 }

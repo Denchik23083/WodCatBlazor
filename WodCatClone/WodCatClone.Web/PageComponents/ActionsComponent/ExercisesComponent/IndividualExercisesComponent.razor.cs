@@ -5,7 +5,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ExercisesComponent
 {
     public partial class IndividualExercisesComponent
     {
-        [Parameter] public Exercises Exercise { get; set; }
+        [Parameter] public Exercises Exercise { get; set; } = new();
 
         public string Url = string.Empty;
 

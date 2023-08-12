@@ -4,8 +4,8 @@ namespace WodCatClone.WebDb.CallBackRepository
 {
     public interface ICallBackRepository
     {
-        IEnumerable<Question> GetAllQuestions();
+        Task<IEnumerable<Question>> GetAllQuestions();
 
-        Answer GetAnswer(int id);
+        Task<Answer?> GetAnswer(int id);
     }
 }
