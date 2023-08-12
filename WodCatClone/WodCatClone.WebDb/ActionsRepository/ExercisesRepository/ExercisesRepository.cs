@@ -1,4 +1,5 @@
-﻿using WodCatClone.Db;
+﻿using Microsoft.EntityFrameworkCore;
+using WodCatClone.Db;
 using WodCatClone.Db.Entities.Actions;
 
 namespace WodCatClone.WebDb.ActionsRepository.ExercisesRepository
@@ -12,14 +13,14 @@ namespace WodCatClone.WebDb.ActionsRepository.ExercisesRepository
             _context = context;
         }
 
-        public IEnumerable<Exercises> GetAllExercises()
+        public async Task<IEnumerable<Exercises>> GetAllExercises()
         {
-            return _context.Exercises;
+            return await _context.Exercises.ToListAsync();
         }
 
-        public Exercises GetExercise(int exerciseId)
+        public async Task<Exercises?> GetExercise(int exerciseId)
         {
-            return _context.Exercises.FirstOrDefault(x => x.Id == exerciseId);
+            return await _context.Exercises.FirstOrDefaultAsync(x => x.Id == exerciseId);
         }
     }
 }

@@ -6,13 +6,13 @@ namespace WodCatClone.Web.Pages.ActionsPage.ExercisesPage
 {
     public partial class ExercisesPage
     {
-        [Inject] private IExercisesService ExercisesService { get; set; }
+        [Inject] public IExercisesService ExercisesService { get; set; } = null!;
 
-        private IEnumerable<Exercises> Exercises { get; set; }
+        public IEnumerable<Exercises> Exercises { get; set; } = new List<Exercises>();
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
-            Exercises = ExercisesService.GetAllExercises();
+            Exercises = await ExercisesService.GetAllExercises();
         }
     }
 }

@@ -12,14 +12,14 @@ namespace WodCatClone.Logic.ActionsService.ExercisesService
             _repository = repository;
         }
 
-        public IEnumerable<Exercises> GetAllExercises()
+        public async Task<IEnumerable<Exercises>> GetAllExercises()
         {
-            return _repository.GetAllExercises();
+            return await _repository.GetAllExercises();
         }
 
-        public Exercises GetExercise(int exerciseId)
+        public async Task<Exercises?> GetExercise(int exerciseId)
         {
-            return _repository.GetExercise(exerciseId);
+            return await _repository.GetExercise(exerciseId);
         }
     }
 }

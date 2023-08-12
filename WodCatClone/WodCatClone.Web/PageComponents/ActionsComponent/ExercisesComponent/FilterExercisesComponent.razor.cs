@@ -9,9 +9,9 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ExercisesComponent
 {
     public partial class FilterExercisesComponent
     {
-        [Parameter] public IEnumerable<Exercises> Exercises { get; set; }
+        [Parameter] public IEnumerable<Exercises> Exercises { get; set; } = new List<Exercises>();
 
-        [Inject] public IExercisesService ExercisesService { get; set; }
+        [Inject] public IExercisesService ExercisesService { get; set; } = null!;
 
         private string _filterModality = "None";
         private string _filterMovement = "None";
@@ -57,36 +57,36 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ExercisesComponent
             new() { Content = "Кроссфит стойка", Filter = "Кроссфит стойка" },
     };
 
-        public void Filter()
+        public async Task Filter()
         {
-            Exercises = ExercisesService.GetAllExercises();
+            Exercises = await ExercisesService.GetAllExercises();
 
             if (_filterModality != "None")
             {
-                Exercises = Exercises.Where(b => b.Modality.Equals(_filterModality)).ToList();
+                Exercises = Exercises.Where(b => b.Modality!.Equals(_filterModality)).ToList();
             }
             if (_filterMovement != "None")
             {
-                Exercises = Exercises.Where(b => b.Movement.Equals(_filterMovement)).ToList();
+                Exercises = Exercises.Where(b => b.Movement!.Equals(_filterMovement)).ToList();
             }
             if (_filterComplexity != "None")
             {
-                Exercises = Exercises.Where(b => b.Complexity.Equals(_filterComplexity)).ToList();
+                Exercises = Exercises.Where(b => b.Complexity!.Equals(_filterComplexity)).ToList();
             }
             if (_filterInventory != "None")
             {
-                Exercises = Exercises.Where(b => b.Inventory.Equals(_filterInventory)).ToList();
+                Exercises = Exercises.Where(b => b.Inventory!.Equals(_filterInventory)).ToList();
             }
         }
 
-        public void Reset()
+        public async Task Reset()
         {
             _filterModality = "None";
             _filterMovement = "None";
             _filterComplexity = "None";
             _filterInventory = "None";
 
-            Filter();
+            await Filter();
         }
     }
 }

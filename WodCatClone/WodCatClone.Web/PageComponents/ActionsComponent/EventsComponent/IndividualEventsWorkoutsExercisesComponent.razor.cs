@@ -21,7 +21,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
         protected override void OnInitialized()
         {
             Work = WorkoutsExercises.Work;
-            Exercise = ExercisesService.GetExercise(WorkoutsExercises.ExercisesId);
+            //Exercise = ExercisesService.GetExercise(WorkoutsExercises.ExercisesId);
         }
     }
 }
