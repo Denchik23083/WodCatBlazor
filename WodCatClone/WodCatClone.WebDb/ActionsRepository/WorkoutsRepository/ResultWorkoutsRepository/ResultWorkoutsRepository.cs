@@ -1,4 +1,5 @@
-﻿using WodCatClone.Db;
+﻿using Microsoft.EntityFrameworkCore;
+using WodCatClone.Db;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 
@@ -13,9 +14,11 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository.ResultWorkoutsR
             _context = context;
         }
 
-        public IEnumerable<ResultWorkouts> GetAllResultWorkouts(int id)
+        public async Task<IEnumerable<ResultWorkouts>> GetAllResultWorkouts(int id)
         {
-            return _context.ResultWorkouts.Where(b => b.WorkoutId == id);
+            return await _context.ResultWorkouts
+                .Where(b => b.WorkoutId == id)
+                .ToListAsync();
         }
 
         public ResultWorkouts GetResultWorkout(int id)

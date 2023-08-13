@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.HallsService;
 using WodCatClone.Logic.ActionsService.WorkoutsService.ResultWorkoutsService;
@@ -10,23 +8,23 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 {
     public partial class IndividualWorkoutsComponent
     {
-        [Parameter] public Workouts Workout { get; set; }
+        [Parameter] public Workouts Workout { get; set; } = new();
 
-        [Inject] public NavigationManager NavigationManager { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; } = null!;
 
-        [Inject] public IResultWorkoutsService ResultWorkoutsService { get; set; }
+        [Inject] public IResultWorkoutsService ResultWorkoutsService { get; set; } = null!;
 
-        [Inject] public IWorkoutsService WorkoutsService { get; set; }
+        [Inject] public IWorkoutsService WorkoutsService { get; set; } = null!;
 
-        [Inject] public IHallsService HallsService { get; set; }
+        [Inject] public IHallsService HallsService { get; set; } = null!;
 
-        public IEnumerable<WorkoutsExercises> WorkoutsExercises { get; set; }
+        public IEnumerable<WorkoutsExercises> WorkoutsExercises { get; set; } = new List<WorkoutsExercises>();
         
-        public string[] WorkoutsCategory { get; set; }
+        public string[]? WorkoutsCategory { get; set; }
 
-        public string Image { get; set; }
+        public string? Image { get; set; }
 
-        public Halls Hall { get; set; }
+        public Halls Hall { get; set; } = new();
 
         public string Url = string.Empty;
 
@@ -47,11 +45,10 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
         private void FillOverrideFunctions()
         {
             Value = 0;
-            Hall = HallsService.GetHall(Workout.HallId);
-            Image = HallsService.GetImage(Hall.EmblemHallId);
-            WorkoutsCategory = Workout.Category.Split(",");
-            ResultWorkoutsCount = ResultWorkoutsService.GetAllResultWorkouts(Workout.Id).Count();
-            WorkoutsExercises = WorkoutsService.GetAllWorkoutsExercises(Workout.Id);
+            Hall = Workout.Halls!;
+            WorkoutsCategory = Workout.Category!.Split(",");
+            ResultWorkoutsCount = Workout.ResultWorkouts!.Count();
+            WorkoutsExercises = Workout.WorkoutsExercises!;
         }
 
         public void Id()

@@ -46,11 +46,6 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
             FillOverrideFunctions();
         }
 
-        protected override void OnAfterRender(bool firstRender)
-        {
-            FillOverrideFunctions();
-        }
-
         private async Task FillOverrideFunctions()
         {
             Program = ProgramsService.GetProgram(ProgramId);

@@ -23,5 +23,7 @@
         public List<ProgramsWorkouts>? ProgramsWorkouts { get; set; }
 
         public List<WorkoutsExercises>? WorkoutsExercises { get; set; }
+
+        public List<ResultWorkouts>? ResultWorkouts { get; set; }
     }
 }

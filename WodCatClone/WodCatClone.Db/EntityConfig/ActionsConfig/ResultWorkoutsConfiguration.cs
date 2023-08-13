@@ -18,7 +18,7 @@ namespace WodCatClone.Db.EntityConfig.ActionsConfig
             builder.Property(_ => _.PublishDate).IsRequired();
 
             builder.HasOne(_ => _.Workouts)
-                .WithMany()
+                .WithMany(_ => _.ResultWorkouts)
                 .HasForeignKey(_ => _.WorkoutId);
 
             builder.HasOne(_ => _.User)

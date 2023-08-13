@@ -21,11 +21,11 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
         
         public IEnumerable<ResultWorkouts> ResultWorkouts { get; set; }
 
-        public User User { get; set; }
+        public User? User { get; set; } = new();
 
         protected override async Task OnInitializedAsync()
         {
-            ResultWorkouts = ResultWorkoutsService.GetAllResultWorkouts(WorkoutId);
+            ResultWorkouts = await ResultWorkoutsService.GetAllResultWorkouts(WorkoutId);
             User = await UserService.GetUser();
         }
 
