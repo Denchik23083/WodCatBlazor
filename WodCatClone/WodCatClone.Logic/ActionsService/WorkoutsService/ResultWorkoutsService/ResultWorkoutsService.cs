@@ -16,9 +16,9 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService.ResultWorkoutsService
             _userRepository = userRepository;
         }
 
-        public IEnumerable<ResultWorkouts> GetAllResultWorkouts(int id)
+        public async Task<IEnumerable<ResultWorkouts>> GetAllResultWorkouts(int id)
         {
-            return _repository.GetAllResultWorkouts(id);
+            return await _repository.GetAllResultWorkouts(id);
         }
 
         public async Task<bool> AddResultWorkouts(ResultWorkouts resultWorkouts)

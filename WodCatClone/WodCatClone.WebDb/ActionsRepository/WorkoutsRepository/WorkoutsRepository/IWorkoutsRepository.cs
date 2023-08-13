@@ -4,7 +4,7 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository.WorkoutsReposit
 {
     public interface IWorkoutsRepository
     {
-        IEnumerable<Workouts> GetAllWorkouts();
+        Task<IEnumerable<Workouts>> GetAllWorkouts();
 
         IEnumerable<WorkoutsExercises> GetAllWorkoutsExercises(int id);
 

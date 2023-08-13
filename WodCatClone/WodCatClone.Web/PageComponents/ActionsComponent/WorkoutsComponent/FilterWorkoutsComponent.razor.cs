@@ -9,9 +9,9 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 {
     public partial class FilterWorkoutsComponent
     {
-        [Parameter] public IEnumerable<Workouts> Workouts { get; set; }
+        [Parameter] public IEnumerable<Workouts> Workouts { get; set; } = new List<Workouts>();
 
-        [Inject] public IWorkoutsService WorkoutsService { get; set; }
+        [Inject] public IWorkoutsService WorkoutsService { get; set; } = null!;
 
         public bool IsVisible { get; set; }
 
@@ -60,25 +60,25 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
             new() { Content = "Сложный", Filter = "Сложный" },
         };
 
-        public void Filter()
+        public async Task Filter()
         {
-            Workouts = WorkoutsService.GetAllWorkouts();
+            Workouts = await WorkoutsService.GetAllWorkouts();
 
             if (!string.IsNullOrWhiteSpace(_filterName))
             {
-                Workouts = Workouts.Where(b => b.Name.ToLower().Contains(_filterName.ToLower())).ToList();
+                Workouts = Workouts.Where(b => b.Name!.ToLower().Contains(_filterName.ToLower())).ToList();
             }
             if (_filterCategory != "None")
             {
-                Workouts = Workouts.Where(o => o.Category.Contains(_filterCategory)).ToList();
+                Workouts = Workouts.Where(b => b.Category!.Contains(_filterCategory)).ToList();
             }
             if (_filterModality != "None")
             {
-                Workouts = Workouts.Where(b => b.Modality.Equals(_filterModality)).ToList();
+                Workouts = Workouts.Where(b => b.Modality!.Equals(_filterModality)).ToList();
             }
             if (_filterComplexity != "None")
             {
-                Workouts = Workouts.Where(b => b.Complexity.Equals(_filterComplexity)).ToList();
+                Workouts = Workouts.Where(b => b.Complexity!.Equals(_filterComplexity)).ToList();
             }
             if (_filterTime != 0)
             {
@@ -86,7 +86,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
             }
         }
 
-        public void Reset()
+        public async Task Reset()
         {
             _filterName = string.Empty;
             _filterCategory = "None";
@@ -94,7 +94,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
             _filterComplexity = "None";
             _filterTime = 0;
 
-            Filter();
+            await Filter();
         }
     }
 }

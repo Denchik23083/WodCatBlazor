@@ -1762,7 +1762,7 @@ namespace WodCatClone.Db.Migrations
                         .HasForeignKey("UserId");
 
                     b.HasOne("WodCatClone.Db.Entities.Actions.Workouts", "Workouts")
-                        .WithMany()
+                        .WithMany("ResultWorkouts")
                         .HasForeignKey("WorkoutId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1858,6 +1858,8 @@ namespace WodCatClone.Db.Migrations
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Workouts", b =>
                 {
                     b.Navigation("ProgramsWorkouts");
+
+                    b.Navigation("ResultWorkouts");
 
                     b.Navigation("WorkoutsExercises");
                 });

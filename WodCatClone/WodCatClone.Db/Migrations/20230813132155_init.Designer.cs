@@ -12,7 +12,7 @@ using WodCatClone.Db;
 namespace WodCatClone.Db.Migrations
 {
     [DbContext(typeof(WodCatCloneContext))]
-    [Migration("20230807115704_init")]
+    [Migration("20230813132155_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1764,7 +1764,7 @@ namespace WodCatClone.Db.Migrations
                         .HasForeignKey("UserId");
 
                     b.HasOne("WodCatClone.Db.Entities.Actions.Workouts", "Workouts")
-                        .WithMany()
+                        .WithMany("ResultWorkouts")
                         .HasForeignKey("WorkoutId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1860,6 +1860,8 @@ namespace WodCatClone.Db.Migrations
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Workouts", b =>
                 {
                     b.Navigation("ProgramsWorkouts");
+
+                    b.Navigation("ResultWorkouts");
 
                     b.Navigation("WorkoutsExercises");
                 });
