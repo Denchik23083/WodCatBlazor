@@ -12,11 +12,9 @@ namespace WodCatClone.Logic.UserService
             _repository = repository;
         }
 
-        public IEnumerable<User> GetAllUsers()
+        public async Task<IEnumerable<User>> GetAllUsers()
         {
-            return _repository.GetAllUsers()
-                .OrderBy(b => b.Points)
-                .Reverse();
+            return await _repository.GetAllUsers();
         }
 
         public bool IsLoginUser()
@@ -87,7 +85,7 @@ namespace WodCatClone.Logic.UserService
             return _repository.Update(updateUser, userToUpdate, genre);
         }
 
-        public bool UpdateAuth(User updateUser, int id)
+        public async Task<bool> UpdateAuth(User updateUser, int id)
         {
             var userToUpdate = _repository.GetUser(id);
 
@@ -96,7 +94,7 @@ namespace WodCatClone.Logic.UserService
                 return false;
             }
 
-            var allUsers = _repository.GetAllUsers();
+            var allUsers = await _repository.GetAllUsers();
 
             if (allUsers.Any(b => b.Email.Equals(updateUser.Email)
                                   || b.NickName.Equals(updateUser.NickName)))

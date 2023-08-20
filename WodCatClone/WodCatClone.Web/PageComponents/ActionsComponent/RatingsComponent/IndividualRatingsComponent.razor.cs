@@ -7,17 +7,13 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.RatingsComponent
 {
     public partial class IndividualRatingsComponent
     {
-        [Parameter] public User User { get; set; }
-
-        [Inject] public IHallsService HallsService { get; set; }
-
-        [Inject] public IUserService UserService { get; set; }
+        [Parameter] public User User { get; set; } = new();
 
         [Parameter] public int Position { get; set; }
 
-        public string Image { get; set; }
+        public string? Image { get; set; }
 
-        public string GenderImage { get; set; }
+        public string? GenderImage { get; set; }
 
         protected override void OnInitialized()
         {
@@ -31,15 +27,12 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.RatingsComponent
 
         private void FillOverrideFunctions()
         {
-            var hall = HallsService.GetHall(User.HallId);
-            if (hall is not null)
+            if (User.Halls is not null)
             {
-                Image = HallsService.GetImage(hall.EmblemHallId);
+                Image = User.Halls.EmblemHall!.Image;
             }
-            if (User.GenderId is not null)
-            {
-                GenderImage = UserService.GetGender(User.GenderId).Image;
-            }
+
+            GenderImage = User.Gender!.Image;
         }
     }
 }
