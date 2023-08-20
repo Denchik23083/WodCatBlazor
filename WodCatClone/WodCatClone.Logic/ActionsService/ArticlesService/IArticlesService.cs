@@ -4,7 +4,7 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
 {
     public interface IArticlesService
     {
-        IEnumerable<Articles> GetAllArticles();
+        Task<IEnumerable<Articles>> GetAllArticles();
 
         IEnumerable<ArticleEmblem> GetAllArticleEmblem();
 

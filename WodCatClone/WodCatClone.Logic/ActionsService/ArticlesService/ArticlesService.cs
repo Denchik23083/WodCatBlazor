@@ -16,9 +16,9 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
             _userRepository = userRepository;
         }
 
-        public IEnumerable<Articles> GetAllArticles()
+        public async Task<IEnumerable<Articles>> GetAllArticles()
         {
-            return _repository.GetAllArticles();
+            return await _repository.GetAllArticles();
         }
 
         public IEnumerable<ArticleEmblem> GetAllArticleEmblem()

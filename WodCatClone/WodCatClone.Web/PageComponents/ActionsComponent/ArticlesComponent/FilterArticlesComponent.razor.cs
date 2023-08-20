@@ -8,9 +8,9 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
 {
     public partial class FilterArticlesComponent
     {
-        [Parameter] public IEnumerable<Articles> Articles { get; set; }
+        [Parameter] public IEnumerable<Articles> Articles { get; set; } = new List<Articles>();
 
-        [Inject] public IArticlesService ArticlesService { get; set; }
+        [Inject] public IArticlesService ArticlesService { get; set; } = null!;
 
         public string[] ArticleType =
         {
@@ -27,16 +27,16 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
 
         public bool IsVisible { get; set; }
 
-        public void Filter(string type)
+        public async Task Filter(string type)
         {
-            Articles = ArticlesService.GetAllArticles();
+            Articles = await ArticlesService.GetAllArticles();
 
-            Articles = Articles.Where(b => b.Type.Contains(type)).ToList();
+            Articles = Articles.Where(b => b.Type!.Contains(type)).ToList();
         }
 
-        public void Reset()
+        public async Task Reset()
         {
-            Articles = ArticlesService.GetAllArticles();
+            Articles = await ArticlesService.GetAllArticles();
         }
     }
 }

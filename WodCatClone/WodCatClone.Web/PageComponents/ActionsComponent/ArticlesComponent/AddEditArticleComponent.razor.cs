@@ -115,7 +115,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
             }
         }
 
-        private bool Validation()
+        public bool Validation()
         {
             if (Image is not "None")
             {

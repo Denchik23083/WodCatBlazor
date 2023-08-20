@@ -1,4 +1,5 @@
-﻿using WodCatClone.Db;
+﻿using Microsoft.EntityFrameworkCore;
+using WodCatClone.Db;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 
@@ -13,9 +14,11 @@ namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
             _context = context;
         }
 
-        public IEnumerable<Articles> GetAllArticles()
+        public async Task<IEnumerable<Articles>> GetAllArticles()
         {
-            return _context.Articles;
+            return await _context.Articles
+                .Include(_ => _.ArticleEmblem)
+                .ToListAsync();
         }
 
         public IEnumerable<ArticleEmblem> GetAllArticleEmblem()
