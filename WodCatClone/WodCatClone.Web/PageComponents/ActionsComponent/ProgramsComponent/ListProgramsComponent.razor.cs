@@ -6,6 +6,6 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
 {
     public partial class ListProgramsComponent
     {
-        [Parameter] public IEnumerable<Programs> ListOfItems { get; set; }
+        [Parameter] public IEnumerable<Programs> ListOfItems { get; set; } = new List<Programs>();
     }
 }

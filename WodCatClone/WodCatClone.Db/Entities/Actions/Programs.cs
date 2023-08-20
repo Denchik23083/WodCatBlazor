@@ -1,4 +1,6 @@
-﻿namespace WodCatClone.Db.Entities.Actions
+﻿using WodCatClone.Db.Entities.Auth;
+
+namespace WodCatClone.Db.Entities.Actions
 {
     public class Programs
     {
@@ -21,6 +23,8 @@
         public int? HallId { get; set; }
 
         public Halls? Halls { get; set; }
+
+        public List<User>? Users { get; set; }
 
         public List<ProgramsWorkouts>? ProgramsWorkouts { get; set; }
 

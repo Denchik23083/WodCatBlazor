@@ -1,4 +1,5 @@
-﻿using WodCatClone.Db;
+﻿using Microsoft.EntityFrameworkCore;
+using WodCatClone.Db;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 
@@ -13,9 +14,18 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
             _context = context;
         }
 
-        public IEnumerable<Programs> GetAllPrograms()
+        public async Task<IEnumerable<Programs>> GetAllPrograms()
         {
-            return _context.Programs;
+            return await _context.Programs
+                .Include(_ => _.ProgramsWorkouts)!
+                .ThenInclude(_ => _.Workouts)
+                .ThenInclude(_ => _!.WorkoutsExercises)!
+                .ThenInclude(_ => _.Exercises)
+                .Include(_ => _.ProgramEmblem)
+                .Include(_ => _.Halls)
+                .ThenInclude(_ => _!.EmblemHall)
+                .Include(_ => _.Users)
+                .ToListAsync();
         }
 
         public IEnumerable<ProgramsWorkouts> GetAllProgramsWorkouts(int id)
@@ -76,11 +86,6 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
             _context.SaveChanges();
 
             return true;
-        }
-
-        public int Subscribers(int programId)
-        {
-            return _context.Users.Count(b => b.ProgramId == programId);
         }
     }
 }

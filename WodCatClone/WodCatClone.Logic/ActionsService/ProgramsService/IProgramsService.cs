@@ -5,7 +5,7 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
 {
     public interface IProgramsService
     {
-        IEnumerable<Programs> GetAllPrograms();
+        Task<IEnumerable<Programs>> GetAllPrograms();
 
         IEnumerable<ProgramsWorkouts> GetAllProgramsWorkouts(int id);
 
@@ -22,7 +22,5 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
         bool BeginProgram(int id, User user);
 
         bool StopProgram(int id, User user, bool isFinish);
-
-        int Subscribers(int programId);
     }
 }

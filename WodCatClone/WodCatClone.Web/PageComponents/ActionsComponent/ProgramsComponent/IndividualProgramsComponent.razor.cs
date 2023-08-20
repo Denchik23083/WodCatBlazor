@@ -1,27 +1,24 @@
 ﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
-using WodCatClone.Logic.ActionsService.HallsService;
 using WodCatClone.Logic.ActionsService.ProgramsService;
 
 namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
 {
     public partial class IndividualProgramsComponent
     {
-        [Parameter] public Programs Program { get; set; }
+        [Parameter] public Programs Program { get; set; } = new();
 
-        [Inject] public IHallsService HallsService { get; set; }
+        [Inject] public IProgramsService ProgramsService { get; set; } = null!;
 
-        [Inject] public IProgramsService ProgramsService { get; set; }
-
-        [Inject] public NavigationManager NavigationManager { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; } = null!;
 
         public string Url = string.Empty;
 
-        public Halls Hall { get; set; }
+        public Halls? Hall { get; set; }
 
-        public string HallEmblem { get; set; }
+        public string? HallImage { get; set; }
 
-        public string Image { get; set; }
+        public string? Image { get; set; }
 
         public int Subscribers { get; set; }
 
@@ -38,16 +35,13 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
         private void FillOverrideFunctions()
         {
             Url = $"programs/{Program.Id}";
-            if (Program.HallId is not null)
+            if (Program.Halls is not null)
             {
-                Hall = HallsService.GetHall(Program.HallId);
-                HallEmblem = HallsService.GetImage(Hall.EmblemHallId);
+                Hall = Program.Halls!;
+                HallImage = Program.Halls!.EmblemHall!.Image;
             }
-            if (Program.ProgramsEmblemId is not null)
-            {
-                Image = ProgramsService.GetImage(Program.ProgramsEmblemId);
-            }
-            Subscribers = ProgramsService.Subscribers(Program.Id);
+            Image = Program.ProgramEmblem!.Image!;
+            Subscribers = Program.Users!.Count;
         }
 
         public void LinkHall(int id) => NavigationManager.NavigateTo($"/gymboxs/{id}");
