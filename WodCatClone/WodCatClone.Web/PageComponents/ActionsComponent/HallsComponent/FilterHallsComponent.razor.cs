@@ -9,9 +9,9 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
 {
     public partial class FilterHallsComponent
     {
-        [Parameter] public IEnumerable<Halls> Halls { get; set; }
+        [Parameter] public IEnumerable<Halls> Halls { get; set; } = new List<Halls>();
 
-        [Inject] public IHallsService HallsService { get; set; }
+        [Inject] public IHallsService HallsService { get; set; } = null!;
 
         private string _filterTown = "None";
         private string _filterType = "None";
@@ -43,9 +43,9 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
             new() { Content = "Yoga", Filter = "Yoga" },
         };
 
-        public void Filter()
+        public async Task Filter()
         {
-            Halls = HallsService.GetAllHalls();
+            Halls = await HallsService.GetAllHalls();
 
             if (_filterTown != "None")
             {
@@ -57,12 +57,12 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
             }
         }
 
-        public void Reset()
+        public async Task Reset()
         {
             _filterTown = "None";
             _filterType = "None";
 
-            Filter();
+            await Filter();
         }
     }
 }

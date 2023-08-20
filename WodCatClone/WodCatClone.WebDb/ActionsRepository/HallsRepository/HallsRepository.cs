@@ -1,4 +1,5 @@
-﻿using WodCatClone.Db;
+﻿using Microsoft.EntityFrameworkCore;
+using WodCatClone.Db;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 
@@ -13,9 +14,12 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
             _context = context;
         }
 
-        public IEnumerable<Halls> GetAllHalls()
+        public async Task<IEnumerable<Halls>> GetAllHalls()
         {
-            return _context.Halls;
+            return await _context.Halls
+                .Include(_ => _.EmblemHall)
+                .Include(_ => _.Users)
+                .ToListAsync();
         }
 
         public IEnumerable<HallEmblem> GetAllHallEmblem()
