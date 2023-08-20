@@ -9,9 +9,9 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 {
     public partial class FilterEventsComponent
     {
-        [Parameter] public IEnumerable<Events> Events { get; set; }
+        [Parameter] public IEnumerable<Events> Events { get; set; } = new List<Events>();
 
-        [Inject] public IEventsService EventsService { get; set; }
+        [Inject] public IEventsService EventsService { get; set; } = null!;
 
         private string _filterTown = "None";
         private string _filterTypeEvent = "None";
@@ -55,31 +55,31 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             new() { Content = "Тяжелая атлетика", Filter = "Тяжелая атлетика" },
         };
 
-        public void Filter()
+        public async Task Filter()
         {
-            Events = EventsService.GetAllEvents();
+            Events = await EventsService.GetAllEvents();
 
             if (_filterTown != "None")
             {
-                Events = Events.Where(b => b.Town.Contains(_filterTown)).ToList();
+                Events = Events.Where(b => b.Town!.Contains(_filterTown)).ToList();
             }
             if (_filterTypeEvent != "None")
             {
-                Events = Events.Where(b => b.TypeEvent.Contains(_filterTypeEvent)).ToList();
+                Events = Events.Where(b => b.TypeEvent!.Contains(_filterTypeEvent)).ToList();
             }
             if (_filterTypeSport != "None")
             {
-                Events = Events.Where(b => b.TypeSport.Contains(_filterTypeSport)).ToList();
+                Events = Events.Where(b => b.TypeSport!.Contains(_filterTypeSport)).ToList();
             }
         }
 
-        public void Reset()
+        public async Task Reset()
         {
             _filterTown = "None";
             _filterTypeEvent = "None";
             _filterTypeSport = "None";
 
-            Filter();
+            await Filter();
         }
     }
 }

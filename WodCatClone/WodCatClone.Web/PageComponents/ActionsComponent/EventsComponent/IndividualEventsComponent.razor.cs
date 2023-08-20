@@ -8,19 +8,19 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 {
     public partial class IndividualEventsComponent
     {
-        [Parameter] public Events Event { get; set; }
+        [Parameter] public Events Event { get; set; } = new();
 
-        [Inject] public IEventsService EventsService { get; set; }
+        [Inject] public IEventsService EventsService { get; set; } = null!;
 
-        [Inject] public NavigationManager NavigationManager { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; } = null!;
 
-        public string Url { get; set; }
+        public string? Url { get; set; }
 
-        public string Image { get; set; }
+        public string? Image { get; set; }
 
-        public string StartDate { get; set; }
+        public string? StartDate { get; set; }
 
-        public string EndDate { get; set; }
+        public string? EndDate { get; set; }
 
         protected override void OnInitialized()
         {
@@ -45,7 +45,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             }
 
             Url = $"events/{Event.Id}";
-            Image = EventsService.GetImage(Event.EventsEmblemId);
+            Image = Event.EventEmblem!.Image;
             StartDate = Event.StartDate.ToString("dd MMMM", CultureInfo.InvariantCulture);
             EndDate = Event.EndDate.ToString("dd MMMM", CultureInfo.InvariantCulture);
         }

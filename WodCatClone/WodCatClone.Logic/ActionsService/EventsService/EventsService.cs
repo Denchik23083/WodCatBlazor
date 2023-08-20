@@ -16,9 +16,9 @@ namespace WodCatClone.Logic.ActionsService.EventsService
             _userRepository = userRepository;
         }
 
-        public IEnumerable<Events> GetAllEvents()
+        public async Task<IEnumerable<Events>> GetAllEvents()
         {
-            return _repository.GetAllEvents();
+            return await _repository.GetAllEvents();
         }
 
         public IEnumerable<User> GetAllEventsUsers(int id)
