@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.UserService;
 using WodCatClone.Web.Utilities.Types;
@@ -9,11 +7,11 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.RatingsComponent
 {
     public partial class FilterRatingsComponent
     {
-        [Parameter] public IEnumerable<User> Users { get; set; }
+        [Parameter] public IEnumerable<User> Users { get; set; } = new List<User>();
 
-        [Inject] public IUserService UserService { get; set; }
+        [Inject] public IUserService UserService { get; set; } = null!;
 
-        public string _filterTown = "None";
+        private string _filterTown = "None";
 
         public List<FilterHalls> FilterTown = new()
         {
@@ -30,9 +28,9 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.RatingsComponent
             new() { Content = "Львов", Filter = "Львов" },
         };
 
-        public void Filter()
+        public async Task Filter()
         {
-            Users = UserService.GetAllUsers();
+            Users = await UserService.GetAllUsers();
 
             if (_filterTown != "None")
             {
@@ -40,11 +38,11 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.RatingsComponent
             }
         }
 
-        public void Reset()
+        public async Task Reset()
         {
             _filterTown = "None";
 
-            Filter();
+            await Filter();
         }
     }
 }

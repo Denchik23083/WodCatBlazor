@@ -13,9 +13,15 @@ namespace WodCatClone.WebDb.UserRepository
             _context = context;
         }
 
-        public IEnumerable<User> GetAllUsers()
+        public async Task<IEnumerable<User>> GetAllUsers()
         {
-            return _context.Users;
+            return await _context.Users
+                .Include(_ => _.Gender)
+                .Include(_ => _.Halls)
+                .ThenInclude(_ => _!.EmblemHall)
+                .OrderBy(b => b.Points)
+                .Reverse()
+                .ToListAsync();
         }
 
         public async Task<User?> GetUser(User user)

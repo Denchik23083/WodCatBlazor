@@ -4,7 +4,7 @@ namespace WodCatClone.WebDb.UserRepository
 {
     public interface IUserRepository
     {
-        IEnumerable<User> GetAllUsers();
+        Task<IEnumerable<User>> GetAllUsers();
 
         Task<User?> GetUser(User user);
 

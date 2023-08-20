@@ -30,11 +30,11 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
             }
         }
 
-        public void Auth()
+        public async Task Auth()
         {
             if (AuthUser.Password == AuthUser.ConfirmPassword)
             {
-                var result = UserService.UpdateAuth(Map(AuthUser), User.Id);
+                var result = await UserService.UpdateAuth(Map(AuthUser), User.Id);
 
                 if (result)
                 {

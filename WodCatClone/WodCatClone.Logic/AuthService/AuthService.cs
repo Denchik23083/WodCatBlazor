@@ -34,7 +34,7 @@ namespace WodCatClone.Logic.AuthService
 
         public async Task<bool> Register(User register)
         {
-            var allUsers = _userRepository.GetAllUsers();
+            var allUsers = await _userRepository.GetAllUsers();
 
             if (allUsers.Any(b => b.Email!.Equals(register.Email)
                                   || b.NickName!.Equals(register.NickName)))

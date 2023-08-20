@@ -6,11 +6,16 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.RatingsComponent
 {
     public partial class ListRatingsComponent
     {
-        [Parameter] public IEnumerable<User> ListOfItems { get; set; }
+        [Parameter] public IEnumerable<User> ListOfItems { get; set; } = new List<User>();
 
         public int Position = 1;
 
-        protected override void OnAfterRender(bool firstRender)
+        protected override void OnInitialized()
+        {
+            Position = 1;
+        }
+
+        protected override void OnParametersSet()
         {
             Position = 1;
         }
