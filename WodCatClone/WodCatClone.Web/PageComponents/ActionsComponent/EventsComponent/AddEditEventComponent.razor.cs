@@ -137,7 +137,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             }
         }
 
-        private bool Validation()
+        public bool Validation()
         {
             if (Event.RegisterDate > DateTime.Now
                 && Event.StartDate > DateTime.Now

@@ -6,13 +6,13 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
 {
     public partial class IndividualArticlesComponent
     {
-        [Parameter] public Articles Article { get; set; }
+        [Parameter] public Articles Article { get; set; } = new();
 
-        [Inject] public IArticlesService ArticlesService { get; set; }
+        [Inject] public IArticlesService ArticlesService { get; set; } = null!;
 
-        public string Image { get; set; }
+        public string? Image { get; set; }
 
-        public string[] ArticleType { get; set; }
+        public string[]? ArticleType { get; set; }
 
         public int Value { get; set; }
 
@@ -32,10 +32,9 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
         {
             Value = 0;
             Url = $"articles/{Article.Id}";
-            if (Article.ArticleEmblemId is not null)
-            {
-                Image = ArticlesService.GetImage(Article.ArticleEmblemId);
-            }
+
+            Image = Article.ArticleEmblem!.Image;
+
             if (Article.Type is not null)
             {
                 ArticleType = Article.Type.Split(",");

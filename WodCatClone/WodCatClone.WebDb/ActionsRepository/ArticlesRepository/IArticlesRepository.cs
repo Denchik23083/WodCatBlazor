@@ -5,7 +5,7 @@ namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
 {
     public interface IArticlesRepository
     {
-        IEnumerable<Articles> GetAllArticles();
+        Task<IEnumerable<Articles>> GetAllArticles();
 
         IEnumerable<ArticleEmblem> GetAllArticleEmblem();
 

@@ -14,7 +14,10 @@
     }
     <div class="row p-3">
         <div class="col-3">
-            <div class="ArticleImage" style="background-image: url(/@Image)"></div>
+            @if (Image is not null)
+            {
+                <div class="ArticleImage" style="background-image: url(/@Image)"></div>
+            }
         </div>
         <div class="col-9">
             @Article.Description

@@ -7,20 +7,19 @@ namespace WodCatClone.Web.Pages.ActionsPage.ArticlesPage
 {
     public partial class ArticlesPage
     {
-        [Inject] public NavigationManager NavigationManager { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; } = null!;
 
-        [Inject] public IArticlesService ArticlesService { get; set; }
+        [Inject] public IArticlesService ArticlesService { get; set; } = null!; 
 
-        [Inject] public IUserService UserService { get; set; }
+        [Inject] public IUserService UserService { get; set; } = null!;
 
-        IEnumerable<Articles> Articles { get; set; }
+        public IEnumerable<Articles> Articles { get; set; } = new List<Articles>();
 
         public bool IsLoginUser { get; set; }
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
-            Articles = ArticlesService.GetAllArticles();
-
+            Articles = await ArticlesService.GetAllArticles();
             IsLoginUser = UserService.IsLoginUser();
         }
 

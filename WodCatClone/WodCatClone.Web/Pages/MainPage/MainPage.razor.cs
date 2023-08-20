@@ -36,7 +36,7 @@ namespace WodCatClone.Web.Pages.MainPage
             Workouts = await WorkoutsService.GetAllWorkouts();
             Exercises = await ExercisesService.GetAllExercises();
             Halls = await HallsService.GetAllHalls();
-            Articles = ArticlesService.GetAllArticles();
+            Articles = await ArticlesService.GetAllArticles();
         }
     }
 }
