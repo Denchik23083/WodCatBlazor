@@ -5,7 +5,7 @@ namespace WodCatClone.Logic.ActionsService.EventsService
 {
     public interface IEventsService
     {
-        IEnumerable<Events> GetAllEvents();
+        Task<IEnumerable<Events>> GetAllEvents();
 
         IEnumerable<User> GetAllEventsUsers(int id);
 

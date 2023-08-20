@@ -1,4 +1,5 @@
-﻿using WodCatClone.Db;
+﻿using Microsoft.EntityFrameworkCore;
+using WodCatClone.Db;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 
@@ -13,9 +14,13 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
             _context = context;
         }
 
-        public IEnumerable<Events> GetAllEvents()
+        public async Task<IEnumerable<Events>> GetAllEvents()
         {
-            return _context.Events;
+            return await _context.Events
+                .Include(_ => _.EventEmblem)
+                .Include(_ => _.Halls)
+                .Include(_ => _.Workouts)
+                .ToListAsync();
         }
 
         public IEnumerable<User> GetAllEventsUsers(int id)

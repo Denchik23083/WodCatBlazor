@@ -34,7 +34,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.RatingsComponent
 
             if (_filterTown != "None")
             {
-                Users = Users.Where(b => b.Town.Contains(_filterTown)).ToList();
+                Users = Users.Where(b => b.Town!.Contains(_filterTown)).ToList();
             }
         }
 

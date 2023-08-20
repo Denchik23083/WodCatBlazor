@@ -7,19 +7,19 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
 {
     public partial class EventsPage
     {
-        [Inject] public IEventsService EventsService { get; set; }
+        [Inject] public IEventsService EventsService { get; set; } = null!;
 
-        [Inject] public IUserService UserService { get; set; }
+        [Inject] public IUserService UserService { get; set; } = null!;
 
-        [Inject] public NavigationManager NavigationManager { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; } = null!;
 
-        public IEnumerable<Events> Events { get; set; }
+        public IEnumerable<Events> Events { get; set; } = new List<Events>();
 
         public bool IsLoginUser { get; set; }
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
-            Events = EventsService.GetAllEvents();
+            Events = await EventsService.GetAllEvents();
             IsLoginUser = UserService.IsLoginUser();
         }
 

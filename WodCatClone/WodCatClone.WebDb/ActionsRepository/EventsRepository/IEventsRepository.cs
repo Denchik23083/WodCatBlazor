@@ -5,7 +5,7 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
 {
     public interface IEventsRepository
     {
-        IEnumerable<Events> GetAllEvents();
+        Task<IEnumerable<Events>> GetAllEvents();
 
         IEnumerable<User> GetAllEventsUsers(int id);
 
