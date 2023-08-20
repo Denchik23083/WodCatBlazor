@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.ProgramsService;
 using WodCatClone.Web.Utilities.Types;
@@ -9,9 +7,9 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
 {
     public partial class FilterProgramsComponent
     {
-        [Parameter] public IEnumerable<Programs> Programs { get; set; }
+        [Parameter] public IEnumerable<Programs> Programs { get; set; } = new List<Programs>();
 
-        [Inject] public IProgramsService ProgramsService { get; set; }
+        [Inject] public IProgramsService ProgramsService { get; set; } = null!;
 
         private string _filterType = "None";
         private string _filterAim = "None";
@@ -31,26 +29,26 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
             new() { Content = "Performance", Filter = "Performance" },
         };
 
-        public void Filter()
+        public async Task Filter()
         {
-            Programs = ProgramsService.GetAllPrograms();
+            Programs = await ProgramsService.GetAllPrograms();
 
             if (_filterType != "None")
             {
-                Programs = Programs.Where(b => b.Type.Equals(_filterType)).ToList();
+                Programs = Programs.Where(b => b.Type!.Equals(_filterType)).ToList();
             }
             if (_filterAim != "None")
             {
-                Programs = Programs.Where(b => b.Aim.Equals(_filterAim)).ToList();
+                Programs = Programs.Where(b => b.Aim!.Equals(_filterAim)).ToList();
             }
         }
 
-        public void Reset()
+        public async Task Reset()
         {
             _filterType = "None";
             _filterAim = "None";
 
-            Filter();
+            await Filter();
         }
     }
 }

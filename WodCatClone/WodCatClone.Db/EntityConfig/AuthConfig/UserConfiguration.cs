@@ -34,15 +34,15 @@ namespace WodCatClone.Db.EntityConfig.AuthConfig
                 .HasForeignKey(b => b.GenderId);
 
             builder.HasOne(_ => _.Halls)
-                .WithMany()
+                .WithMany(_ => _.Users)
                 .HasForeignKey(b => b.HallId);
 
             builder.HasOne(_ => _.Programs)
-                .WithMany()
+                .WithMany(_ => _.Users)
                 .HasForeignKey(b => b.ProgramId);
 
             builder.HasOne(_ => _.Events)
-                .WithMany()
+                .WithMany(_ => _.Users)
                 .HasForeignKey(b => b.EventId);
 
             builder.ToTable("User").HasData(

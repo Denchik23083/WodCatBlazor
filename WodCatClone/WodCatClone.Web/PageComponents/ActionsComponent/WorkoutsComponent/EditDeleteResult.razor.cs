@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.UserService;
@@ -16,13 +15,13 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         [Parameter] public EventCallback OnCancelEdit { get; set; }
 
-        [Inject] public IUserService UserService { get; set; }
+        [Inject] public IUserService UserService { get; set; } = null!;
 
         public bool DisplayEditDeleteResult { get; set; }
 
         public bool DisplayEditResult { get; set; } = true;
 
-        public ResultWorkouts EditResultWorkout = new();
+        public ResultWorkouts EditResultWorkout { get; set; } = new();
 
         public void Show() => DisplayEditDeleteResult = true;
 
@@ -37,7 +36,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         public int ResultLoad { get; set; }
 
-        public User User { get; set; }
+        public User? User { get; set; }
 
         public DateTime Time { get; set; }
 

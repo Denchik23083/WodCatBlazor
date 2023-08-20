@@ -38,7 +38,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
 
         public StartWorkout StartWorkout { get; set; }
 
-        public int ResultWorkoutId { get; set; } = 0;
+        public int ResultWorkoutId { get; set; }
 
         protected override void OnInitialized()
         {

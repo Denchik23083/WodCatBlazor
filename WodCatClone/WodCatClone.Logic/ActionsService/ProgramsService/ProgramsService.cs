@@ -16,9 +16,9 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
             _userRepository = userRepository;
         }
 
-        public IEnumerable<Programs> GetAllPrograms()
+        public async Task<IEnumerable<Programs>> GetAllPrograms()
         {
-            return _repository.GetAllPrograms();
+            return await _repository.GetAllPrograms();
         }
 
         public IEnumerable<ProgramsWorkouts> GetAllProgramsWorkouts(int id)
@@ -89,11 +89,6 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
             }
 
             return _repository.StopProgram(id, loginUser, programTimeUser, isFinish);
-        }
-
-        public int Subscribers(int programId)
-        {
-            return _repository.Subscribers(programId);
         }
     }
 }

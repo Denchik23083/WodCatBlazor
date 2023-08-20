@@ -5,7 +5,7 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
 {
     public interface IProgramsRepository
     {
-        IEnumerable<Programs> GetAllPrograms();
+        Task<IEnumerable<Programs>> GetAllPrograms();
 
         IEnumerable<ProgramsWorkouts> GetAllProgramsWorkouts(int id);
 
@@ -22,7 +22,5 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
         bool BeginProgram(int id, User loginUser, ProgramTimeUser programTimeUser, ProgramTimeUser newProgramTimeUser);
 
         bool StopProgram(int id, User loginUser, ProgramTimeUser programTimeUser, bool isFinish);
-
-        int Subscribers(int programId);
     }
 }

@@ -32,7 +32,7 @@ namespace WodCatClone.Web.Pages.MainPage
 
         protected override async Task OnInitializedAsync()
         {
-            Programs = ProgramsService.GetAllPrograms();
+            Programs = await ProgramsService.GetAllPrograms();
             Workouts = await WorkoutsService.GetAllWorkouts();
             Exercises = await ExercisesService.GetAllExercises();
             Halls = HallsService.GetAllHalls();

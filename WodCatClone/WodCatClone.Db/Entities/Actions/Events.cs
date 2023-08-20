@@ -47,5 +47,7 @@ namespace WodCatClone.Db.Entities.Actions
         public User? User { get; set; }
 
         public List<EventTimeUser>? EventTimeUsers { get; set; }
+
+        public List<User>? Users { get; set; }
     }
 }

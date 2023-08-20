@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
-using WodCatClone.Logic.ActionsService.HallsService;
-using WodCatClone.Logic.ActionsService.WorkoutsService.ResultWorkoutsService;
-using WodCatClone.Logic.ActionsService.WorkoutsService.WorkoutsService;
 
 namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 {
@@ -12,19 +9,11 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         [Inject] public NavigationManager NavigationManager { get; set; } = null!;
 
-        [Inject] public IResultWorkoutsService ResultWorkoutsService { get; set; } = null!;
-
-        [Inject] public IWorkoutsService WorkoutsService { get; set; } = null!;
-
-        [Inject] public IHallsService HallsService { get; set; } = null!;
-
         public IEnumerable<WorkoutsExercises> WorkoutsExercises { get; set; } = new List<WorkoutsExercises>();
         
         public string[]? WorkoutsCategory { get; set; }
 
         public string? Image { get; set; }
-
-        public Halls Hall { get; set; } = new();
 
         public string Url = string.Empty;
 
@@ -45,9 +34,9 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
         private void FillOverrideFunctions()
         {
             Value = 0;
-            Hall = Workout.Halls!;
+            Image = Workout.Halls!.EmblemHall!.Image;
             WorkoutsCategory = Workout.Category!.Split(",");
-            ResultWorkoutsCount = Workout.ResultWorkouts!.Count();
+            ResultWorkoutsCount = Workout.ResultWorkouts!.Count;
             WorkoutsExercises = Workout.WorkoutsExercises!;
         }
 

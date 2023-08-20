@@ -1803,7 +1803,7 @@ namespace WodCatClone.Db.Migrations
             modelBuilder.Entity("WodCatClone.Db.Entities.Auth.User", b =>
                 {
                     b.HasOne("WodCatClone.Db.Entities.Actions.Events", "Events")
-                        .WithMany()
+                        .WithMany("Users")
                         .HasForeignKey("EventId");
 
                     b.HasOne("WodCatClone.Db.Entities.Auth.Gender", "Gender")
@@ -1811,11 +1811,11 @@ namespace WodCatClone.Db.Migrations
                         .HasForeignKey("GenderId");
 
                     b.HasOne("WodCatClone.Db.Entities.Actions.Halls", "Halls")
-                        .WithMany()
+                        .WithMany("Users")
                         .HasForeignKey("HallId");
 
                     b.HasOne("WodCatClone.Db.Entities.Actions.Programs", "Programs")
-                        .WithMany()
+                        .WithMany("Users")
                         .HasForeignKey("ProgramId");
 
                     b.Navigation("Events");
@@ -1841,6 +1841,8 @@ namespace WodCatClone.Db.Migrations
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Events", b =>
                 {
                     b.Navigation("EventTimeUsers");
+
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Exercises", b =>
@@ -1848,11 +1850,18 @@ namespace WodCatClone.Db.Migrations
                     b.Navigation("WorkoutsExercises");
                 });
 
+            modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Halls", b =>
+                {
+                    b.Navigation("Users");
+                });
+
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Programs", b =>
                 {
                     b.Navigation("ProgramTimeUsers");
 
                     b.Navigation("ProgramsWorkouts");
+
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("WodCatClone.Db.Entities.Actions.Workouts", b =>
