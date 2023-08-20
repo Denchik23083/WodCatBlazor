@@ -7,19 +7,19 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 {
     public partial class HallsPage
     {
-        [Inject] public IHallsService HallsService { get; set; }
+        [Inject] public IHallsService HallsService { get; set; } = null!;
 
-        [Inject] public IUserService UserService { get; set; }
+        [Inject] public IUserService UserService { get; set; } = null!;
 
-        [Inject] public NavigationManager NavigationManager { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; } = null!;
 
-        public IEnumerable<Halls> Halls { get; set; }
+        public IEnumerable<Halls> Halls { get; set; } = new List<Halls>();
 
         public bool IsLoginUser { get; set; }
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
-            Halls = HallsService.GetAllHalls();
+            Halls = await HallsService.GetAllHalls();
             IsLoginUser = UserService.IsLoginUser();
         }
 

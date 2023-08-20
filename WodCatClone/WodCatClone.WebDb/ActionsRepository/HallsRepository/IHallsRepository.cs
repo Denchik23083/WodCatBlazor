@@ -5,7 +5,7 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
 {
     public interface IHallsRepository
     {
-        IEnumerable<Halls> GetAllHalls();
+        Task<IEnumerable<Halls>> GetAllHalls();
 
         IEnumerable<HallEmblem> GetAllHallEmblem();
 

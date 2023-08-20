@@ -6,13 +6,13 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
 {
     public partial class IndividualHallsComponent
     {
-        [Parameter] public Halls Hall { get; set; }
+        [Parameter] public Halls Hall { get; set; } = new();
 
-        [Inject] public IHallsService HallsService { get; set; }
+        [Inject] public IHallsService HallsService { get; set; } = null!;
 
-        public string[] HallType { get; set; }
+        public string[]? HallType { get; set; }
 
-        public string Image { get; set; }
+        public string? Image { get; set; }
 
         public int Value { get; set; }
 
@@ -34,12 +34,15 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
         {
             Value = 0;
             Url = $"gymboxs/{Hall.Id}";
-            Image = HallsService.GetImage(Hall.EmblemHallId);
+            
+            Image = Hall.EmblemHall!.Image;
+
             if (Hall.Type is not null)
             {
                 HallType = Hall.Type.Split(",");
             }
-            Athletes = HallsService.Athlete(Hall.Id);
+
+            Athletes = Hall.Users!.Count;
         }
     }
 }

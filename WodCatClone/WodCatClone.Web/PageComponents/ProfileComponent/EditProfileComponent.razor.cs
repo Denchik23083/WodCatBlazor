@@ -67,7 +67,7 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
         {
             EditUser = User;
             UserHall = HallsService.GetHall(User.HallId);
-            Halls = HallsService.GetAllHalls();
+            //Halls = HallsService.GetAllHalls();
             if (UserHall is not null)
             {
                 HallImage = HallsService.GetImage(UserHall.EmblemHallId);

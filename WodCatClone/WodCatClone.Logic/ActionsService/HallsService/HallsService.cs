@@ -16,9 +16,9 @@ namespace WodCatClone.Logic.ActionsService.HallsService
             _userRepository = userRepository;
         }
 
-        public IEnumerable<Halls> GetAllHalls()
+        public async Task<IEnumerable<Halls>> GetAllHalls()
         {
-            return _repository.GetAllHalls();
+            return await _repository.GetAllHalls();
         }
 
         public IEnumerable<HallEmblem> GetAllHallEmblem()
