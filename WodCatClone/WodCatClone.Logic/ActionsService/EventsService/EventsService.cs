@@ -18,6 +18,10 @@ namespace WodCatClone.Logic.ActionsService.EventsService
 
         public async Task<IEnumerable<Events>> GetAllEvents()
         {
+            var endEvents = await _repository.GetAllEndEvents();
+            
+            await _repository.RemoveEndEvents(endEvents);
+
             return await _repository.GetAllEvents();
         }
 
