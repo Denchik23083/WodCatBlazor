@@ -34,16 +34,6 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         private void FillOverrideFunctions()
         {
-            if (Event.EndDate < DateTime.Now)
-            {
-                var result = EventsService.AutoRemoveEvent(Event.Id);
-
-                if (result)
-                {
-                    NavigationManager.NavigateTo("/events", true);
-                }
-            }
-
             Url = $"events/{Event.Id}";
             Image = Event.EventEmblem!.Image;
             StartDate = Event.StartDate.ToString("dd MMMM", CultureInfo.InvariantCulture);

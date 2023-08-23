@@ -20,6 +20,17 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
                 .Include(_ => _.EventEmblem)
                 .Include(_ => _.Halls)
                 .Include(_ => _.Workouts)
+                .Where(_ => _.EndDate > DateTime.Now)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Events>> GetAllEndEvents()
+        {
+            return await _context.Events
+                .Include(_ => _.EventEmblem)
+                .Include(_ => _.Halls)
+                .Include(_ => _.Workouts)
+                .Where(_ => _.EndDate < DateTime.Now)
                 .ToListAsync();
         }
 
@@ -118,6 +129,13 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
             _context.SaveChanges();
 
             return true;
+        }
+
+        public async Task RemoveEndEvents(IEnumerable<Events> endEvents)
+        {
+            _context.Events.RemoveRange(endEvents);
+
+            await _context.SaveChangesAsync();
         }
 
         public bool JoinEvent(int eventId, User loginUser)
