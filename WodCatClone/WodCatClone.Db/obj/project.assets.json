@@ -737,6 +737,16 @@
             "rid": "win"
           }
         }
+      },
+      "WodCatClone.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/WodCatClone.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WodCatClone.Core.dll": {}
+        }
       }
     }
   },
@@ -1902,12 +1912,18 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "WodCatClone.Core/1.0.0": {
+      "type": "project",
+      "path": "../WodCatClone.Core/WodCatClone.Core.csproj",
+      "msbuildProject": "../WodCatClone.Core/WodCatClone.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "Microsoft.EntityFrameworkCore >= 6.0.20",
-      "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.20"
+      "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.20",
+      "WodCatClone.Core >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -1936,7 +1952,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\User\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.Core\\WodCatClone.Core.csproj": {
+              "projectPath": "C:\\Users\\User\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.Core\\WodCatClone.Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using WodCatClone.Core;
 using WodCatClone.Db.Entities.Auth;
 
 namespace WodCatClone.Db.EntityConfig.AuthConfig
@@ -10,12 +11,12 @@ namespace WodCatClone.Db.EntityConfig.AuthConfig
         {
             builder.HasKey(_ => _.Id);
 
-            builder.Property(_ => _.Name).IsRequired();
+            builder.Property(_ => _.Type).HasConversion<int>();
             builder.Property(_ => _.Image).IsRequired();
 
             builder.ToTable("Gender").HasData(
-                new Gender { Id = 1, Name = "Мужской", Image = "img/man.png" },
-                new Gender { Id = 2, Name = "Женский", Image = "img/woman.png" });
+                new Gender { Id = 1, Type = GenderType.Male, Image = "img/man.png" },
+                new Gender { Id = 2, Type = GenderType.Female, Image = "img/woman.png" });
         }
     }
 }

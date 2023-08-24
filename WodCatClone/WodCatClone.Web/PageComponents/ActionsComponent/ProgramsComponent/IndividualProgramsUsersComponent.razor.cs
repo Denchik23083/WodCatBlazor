@@ -24,11 +24,8 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
             {
                 Image = HallsService.GetImage(hall.EmblemHallId);
             }
-
-            if (User.GenderId is not null)
-            {
-                GenderImage = UserService.GetGender(User.GenderId).Image;
-            }
+            
+            GenderImage = UserService.GetGender(User.GenderId).Image;
         }
     }
 }

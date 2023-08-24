@@ -12,7 +12,7 @@ using WodCatClone.Db;
 namespace WodCatClone.Db.Migrations
 {
     [DbContext(typeof(WodCatCloneContext))]
-    [Migration("20230820122420_init")]
+    [Migration("20230824121229_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1299,9 +1299,8 @@ namespace WodCatClone.Db.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("Type")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -1312,13 +1311,13 @@ namespace WodCatClone.Db.Migrations
                         {
                             Id = 1,
                             Image = "img/man.png",
-                            Name = "Мужской"
+                            Type = 0
                         },
                         new
                         {
                             Id = 2,
                             Image = "img/woman.png",
-                            Name = "Женский"
+                            Type = 1
                         });
                 });
 
@@ -1349,7 +1348,7 @@ namespace WodCatClone.Db.Migrations
                     b.Property<int?>("EventId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("GenderId")
+                    b.Property<int>("GenderId")
                         .HasColumnType("int");
 
                     b.Property<int?>("HallId")
@@ -1810,7 +1809,9 @@ namespace WodCatClone.Db.Migrations
 
                     b.HasOne("WodCatClone.Db.Entities.Auth.Gender", "Gender")
                         .WithMany()
-                        .HasForeignKey("GenderId");
+                        .HasForeignKey("GenderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("WodCatClone.Db.Entities.Actions.Halls", "Halls")
                         .WithMany("Users")

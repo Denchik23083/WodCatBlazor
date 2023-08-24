@@ -18,6 +18,8 @@ namespace WodCatClone.Web.Pages.AuthPage
 
         [Inject] public IMapper Mapper { get; set; } = null!;
 
+        public IEnumerable<Gender> Genders { get; set; } = new List<Gender>();
+
         public RegisterModel RegisterModel = new();
 
         public bool Man { get; set; } = true;
@@ -45,17 +47,7 @@ namespace WodCatClone.Web.Pages.AuthPage
         {
             if (RegisterModel.Password != RegisterModel.ConfirmPassword) return;
 
-            if (Man)
-            {
-                Gender = "Мужской";
-            }
-            if (Woman)
-            {
-                Gender = "Женский";
-            }
-
-            var gender = UserService.GetGender(Gender);
-            RegisterModel.GenderId = gender.Id;
+            Genders = await UserService.GetGenders();
 
             var mappedUser = Mapper.Map<User>(RegisterModel);
 

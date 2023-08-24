@@ -76,7 +76,7 @@ namespace WodCatClone.Db.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Type = table.Column<int>(type: "int", nullable: true),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -304,7 +304,7 @@ namespace WodCatClone.Db.Migrations
                     Height = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
                     Weight = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
                     AboutMe = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    GenderId = table.Column<int>(type: "int", nullable: true),
+                    GenderId = table.Column<int>(type: "int", nullable: false),
                     HallId = table.Column<int>(type: "int", nullable: true),
                     ProgramId = table.Column<int>(type: "int", nullable: true),
                     EventId = table.Column<int>(type: "int", nullable: true)
@@ -321,7 +321,8 @@ namespace WodCatClone.Db.Migrations
                         name: "FK_User_Gender_GenderId",
                         column: x => x.GenderId,
                         principalTable: "Gender",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_User_Halls_HallId",
                         column: x => x.HallId,
@@ -507,11 +508,11 @@ namespace WodCatClone.Db.Migrations
 
             migrationBuilder.InsertData(
                 table: "Gender",
-                columns: new[] { "Id", "Image", "Name" },
+                columns: new[] { "Id", "Image", "Type" },
                 values: new object[,]
                 {
-                    { 1, "img/man.png", "Мужской" },
-                    { 2, "img/woman.png", "Женский" }
+                    { 1, "img/man.png", 0 },
+                    { 2, "img/woman.png", 1 }
                 });
 
             migrationBuilder.InsertData(

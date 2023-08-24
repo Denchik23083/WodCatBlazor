@@ -4,7 +4,9 @@ namespace WodCatClone.Logic.UserService
 {
     public interface IUserService
     {
-        public Task<IEnumerable<User>> GetAllUsers();
+        Task<IEnumerable<User>> GetAllUsers();
+
+        Task<IEnumerable<Gender>> GetGenders();
 
         bool IsLoginUser();
 
@@ -14,9 +16,7 @@ namespace WodCatClone.Logic.UserService
 
         User GetUser(string nickName);
 
-        Gender GetGender(int? id);
-
-        Gender GetGender(string gender);
+        Gender GetGender(int id);
 
         bool EditUserHall(User user, int id);
 
