@@ -50,7 +50,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
         {
             Program = ProgramsService.GetProgram(ProgramId);
             IsLoginUser = UserService.IsLoginUser();
-            User = await UserService.GetUser();
+            User = UserService.GetUser();
             Users = ProgramsService.GetAllProgramsUsers(ProgramId);
             ProgramsWorkouts = ProgramsService.GetAllProgramsWorkouts(ProgramId);
 

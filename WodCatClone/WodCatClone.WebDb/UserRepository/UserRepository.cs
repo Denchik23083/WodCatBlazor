@@ -29,21 +29,18 @@ namespace WodCatClone.WebDb.UserRepository
             return await _context.Gender.ToListAsync();
         }
 
-        public async Task<User?> GetUser(User user)
-        {
-            return await _context.Users
-                .Include(_ => _.Gender)
-                .FirstOrDefaultAsync(b => b.Id == user!.Id);
-        }
-
         public User GetUser(int? id)
         {
-            return _context.Users.FirstOrDefault(b => b.Id == id);
+            return _context.Users
+                .Include(_ => _.Gender)
+                .FirstOrDefault(b => b.Id == id);
         }
 
         public User GetUser(string nickName)
         {
-            return _context.Users.FirstOrDefault(b => b.NickName.Equals(nickName));
+            return _context.Users
+                .Include(_ => _.Gender)
+                .FirstOrDefault(b => b.NickName.Equals(nickName));
         }
 
         public Gender GetGender(int id)

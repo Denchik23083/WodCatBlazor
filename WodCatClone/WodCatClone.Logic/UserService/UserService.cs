@@ -27,16 +27,9 @@ namespace WodCatClone.Logic.UserService
             return AuthService.AuthService.IsLoginUser;
         }
 
-        public async Task<User?> GetUser()
+        public User? GetUser()
         {
-            var user = AuthService.AuthService.User;
-
-            if (user is null)
-            {
-                return user!;
-            }
-
-            return await _repository.GetUser(user);
+            return AuthService.AuthService.User;
         }
 
         public User GetUser(int? id)

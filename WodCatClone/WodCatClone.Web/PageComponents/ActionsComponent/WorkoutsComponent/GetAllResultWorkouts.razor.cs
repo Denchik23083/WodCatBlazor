@@ -26,7 +26,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
         protected override async Task OnInitializedAsync()
         {
             ResultWorkouts = await ResultWorkoutsService.GetAllResultWorkouts(WorkoutId);
-            User = await UserService.GetUser();
+            User = UserService.GetUser();
         }
 
         public void PostId(int itemId)

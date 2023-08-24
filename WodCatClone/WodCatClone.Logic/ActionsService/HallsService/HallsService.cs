@@ -48,8 +48,7 @@ namespace WodCatClone.Logic.ActionsService.HallsService
 
         public async Task<bool> AddHall(Halls hall)
         {
-            var loginUser = AuthService.AuthService.User;
-            var user = await _userRepository.GetUser(loginUser);
+            var user = AuthService.AuthService.User;
 
             if (user is null)
             {
@@ -61,8 +60,7 @@ namespace WodCatClone.Logic.ActionsService.HallsService
 
         public async Task<bool> EditHall(Halls hall, int hallId)
         {
-            var loginUser = AuthService.AuthService.User;
-            var user = await _userRepository.GetUser(loginUser);
+            var user = AuthService.AuthService.User;
 
             if (user is null)
             {

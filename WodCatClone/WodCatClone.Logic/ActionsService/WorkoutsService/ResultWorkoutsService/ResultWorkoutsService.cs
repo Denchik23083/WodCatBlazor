@@ -8,12 +8,10 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService.ResultWorkoutsService
     public class ResultWorkoutsService : IResultWorkoutsService
     {
         private readonly IResultWorkoutsRepository _repository;
-        private readonly IUserRepository _userRepository;
 
-        public ResultWorkoutsService(IResultWorkoutsRepository repository, IUserRepository userRepository)
+        public ResultWorkoutsService(IResultWorkoutsRepository repository)
         {
             _repository = repository;
-            _userRepository = userRepository;
         }
 
         public async Task<IEnumerable<ResultWorkouts>> GetAllResultWorkouts(int id)
@@ -23,8 +21,7 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService.ResultWorkoutsService
 
         public async Task<bool> AddResultWorkouts(ResultWorkouts resultWorkouts)
         {
-            var loginUser = AuthService.AuthService.User;
-            var user = await _userRepository.GetUser(loginUser);
+            var user = AuthService.AuthService.User;
 
             if (user is null)
             {
@@ -36,8 +33,7 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService.ResultWorkoutsService
 
         public async Task<bool> EditResultWorkouts(ResultWorkouts resultWorkouts, int id)
         {
-            var loginUser = AuthService.AuthService.User;
-            var user = await _userRepository.GetUser(loginUser);
+            var user = AuthService.AuthService.User;
 
             if (user is null)
             {

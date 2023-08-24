@@ -8,12 +8,10 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
     public class ArticlesService : IArticlesService
     {
         private readonly IArticlesRepository _repository;
-        private readonly IUserRepository _userRepository;
 
-        public ArticlesService(IArticlesRepository repository, IUserRepository userRepository)
+        public ArticlesService(IArticlesRepository repository)
         {
             _repository = repository;
-            _userRepository = userRepository;
         }
 
         public async Task<IEnumerable<Articles>> GetAllArticles()
@@ -38,8 +36,7 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
 
         public async Task<bool> AddArticle(Articles article)
         {
-            var loginUser = AuthService.AuthService.User;
-            var user = await _userRepository.GetUser(loginUser);
+            var user = AuthService.AuthService.User;
 
             if (user is null)
             {
@@ -51,8 +48,7 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
 
         public async Task<bool> EditArticle(Articles article, int id)
         {
-            var loginUser = AuthService.AuthService.User;
-            var user = await _userRepository.GetUser(loginUser);
+            var user = AuthService.AuthService.User;
 
             if (user is null)
             {

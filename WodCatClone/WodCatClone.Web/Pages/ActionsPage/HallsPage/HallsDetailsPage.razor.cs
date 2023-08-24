@@ -69,7 +69,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
                     Type = Hall.Type.Split(",");
                 }
 
-                User = await UserService.GetUser();
+                User = UserService.GetUser();
                 Users = HallsService.GetAllHallsUsers(HallId);
                 Athletes = HallsService.Athlete(Hall.Id);
             }
