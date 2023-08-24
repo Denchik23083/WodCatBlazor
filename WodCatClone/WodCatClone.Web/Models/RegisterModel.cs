@@ -17,7 +17,8 @@ namespace WodCatClone.Web.Models
         [Required]
         public string? NickName { get; set; }
 
-        public int GenderId { get; set; }
+        [Required]
+        public int? GenderId { get; set; }
 
         [Required]
         public DateTime Birthday { get; set; }
