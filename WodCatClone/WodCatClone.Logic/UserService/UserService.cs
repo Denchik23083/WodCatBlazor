@@ -17,6 +17,11 @@ namespace WodCatClone.Logic.UserService
             return await _repository.GetAllUsers();
         }
 
+        public async Task<IEnumerable<Gender>> GetGenders()
+        {
+            return await _repository.GetGenders();
+        }
+
         public bool IsLoginUser()
         {
             return AuthService.AuthService.IsLoginUser;
@@ -44,14 +49,9 @@ namespace WodCatClone.Logic.UserService
             return _repository.GetUser(nickName);
         }
 
-        public Gender GetGender(int? id)
+        public Gender GetGender(int id)
         {
             return _repository.GetGender(id);
-        }
-
-        public Gender GetGender(string gender)
-        {
-            return _repository.GetGender(gender);
         }
 
         public bool EditUserHall(User user, int id)
@@ -68,13 +68,6 @@ namespace WodCatClone.Logic.UserService
 
         public bool Update(User updateUser, int id, string genderName)
         {
-            var genre = _repository.GetGender(genderName);
-
-            if (genre is null)
-            {
-                return false;
-            }
-
             var userToUpdate = _repository.GetUser(id);
 
             if (userToUpdate is null)
@@ -82,7 +75,7 @@ namespace WodCatClone.Logic.UserService
                 return false;
             }
 
-            return _repository.Update(updateUser, userToUpdate, genre);
+            return _repository.Update(updateUser, userToUpdate);
         }
 
         public async Task<bool> UpdateAuth(User updateUser, int id)

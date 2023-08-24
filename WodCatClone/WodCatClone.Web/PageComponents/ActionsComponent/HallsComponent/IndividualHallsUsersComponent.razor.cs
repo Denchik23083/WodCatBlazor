@@ -16,10 +16,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
 
         protected override void OnInitialized()
         {
-            if (User.GenderId is not null)
-            {
-                GenderImage = UserService.GetGender(User.GenderId).Image;
-            }
+            GenderImage = UserService.GetGender(User.GenderId).Image;
         }
     }
 }

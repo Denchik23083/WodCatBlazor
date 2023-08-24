@@ -38,7 +38,7 @@ namespace WodCatClone.Db.Entities.Auth
 
         public string? AboutMe { get; set; }
 
-        public int? GenderId { get; set; }
+        public int GenderId { get; set; }
 
         public Gender? Gender { get; set; } 
         

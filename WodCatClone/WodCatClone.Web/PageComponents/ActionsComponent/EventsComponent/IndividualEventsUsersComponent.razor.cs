@@ -31,10 +31,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
                 Time = EventTimeUser.Time.ToString("g");
             }
 
-            if (User.GenderId is not null)
-            {
-                GenderImage = UserService.GetGender(User.GenderId).Image;
-            }
+            GenderImage = UserService.GetGender(User.GenderId).Image;
         }
     }
 }

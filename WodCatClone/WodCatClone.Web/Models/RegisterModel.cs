@@ -19,15 +19,16 @@ namespace WodCatClone.Web.Models
 
         public int GenderId { get; set; }
 
+        [Required]
         public DateTime Birthday { get; set; }
+
+        [Required]
+        public string? Town { get; set; }
 
         [Required]
         public string? Password { get; set; }
 
         [Required]
         public string? ConfirmPassword { get; set; }
-
-        [Required]
-        public string? Town { get; set; }
     }
 }

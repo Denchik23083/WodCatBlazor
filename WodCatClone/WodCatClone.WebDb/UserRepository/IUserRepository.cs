@@ -6,19 +6,19 @@ namespace WodCatClone.WebDb.UserRepository
     {
         Task<IEnumerable<User>> GetAllUsers();
 
+        Task<IEnumerable<Gender>> GetGenders();
+
         Task<User?> GetUser(User user);
 
         User GetUser(int? id);
 
         User GetUser(string nickName);
 
-        Gender GetGender(int? id);
-
-        Gender GetGender(string gender);
+        Gender GetGender(int id);
 
         bool EditUserHall(User loginUser, int id);
 
-        bool Update(User updateUser, User userToUpdate, Gender gender);
+        bool Update(User updateUser, User userToUpdate);
 
         bool UpdateAuth(User updateUser, User userToUpdate);
     }

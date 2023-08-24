@@ -50,11 +50,8 @@ namespace WodCatClone.Web.Pages.ProfilePage
                 UserEnter = await UserService.GetUser();
 
                 IsLoginUser = UserService.IsLoginUser();
-
-                if (User.GenderId is not null)
-                {
-                    Image = UserService.GetGender(User.GenderId).Image;
-                }
+                
+                Image = UserService.GetGender(User.GenderId).Image;
 
                 if (User.HallId is not null)
                 {

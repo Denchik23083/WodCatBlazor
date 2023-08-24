@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Components;
+using WodCatClone.Core;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.ActionsService.HallsService;
@@ -72,18 +73,16 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
             {
                 HallImage = HallsService.GetImage(UserHall.EmblemHallId);
             }
-            if (User.GenderId is not null)
-            {
-                Image = UserService.GetGender(User.GenderId).Image;
-            }
+            
+            Image = UserService.GetGender(User.GenderId).Image;
 
             var gender = UserService.GetGender(User.GenderId);
-            if (gender.Name == "Мужской")
+            if (gender.Type == GenderType.Male)
             {
                 Man = true;
                 Woman = false;
             }
-            if (gender.Name == "Женский")
+            if (gender.Type == GenderType.Female)
             {
                 Man = false;
                 Woman = true;

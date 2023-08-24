@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WodCatClone.WebDb", "WodCat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WodCatClone.Tests", "WodCatClone.Tests\WodCatClone.Tests.csproj", "{EF64DF88-A8BD-4584-8C59-DA90AC38B95F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WodCatClone.Core", "WodCatClone.Core\WodCatClone.Core.csproj", "{29F4D445-7B5F-46B9-B364-AD0682B262EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{EF64DF88-A8BD-4584-8C59-DA90AC38B95F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF64DF88-A8BD-4584-8C59-DA90AC38B95F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF64DF88-A8BD-4584-8C59-DA90AC38B95F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29F4D445-7B5F-46B9-B364-AD0682B262EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29F4D445-7B5F-46B9-B364-AD0682B262EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29F4D445-7B5F-46B9-B364-AD0682B262EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29F4D445-7B5F-46B9-B364-AD0682B262EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

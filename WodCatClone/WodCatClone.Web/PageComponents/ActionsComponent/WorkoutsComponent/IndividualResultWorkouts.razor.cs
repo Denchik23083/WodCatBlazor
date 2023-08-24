@@ -19,10 +19,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
         {
             User = UserService.GetUser(ResultWorkout.UserId);
 
-            if (User.GenderId is not null)
-            {
-                Image = UserService.GetGender(User.GenderId).Image;
-            }
+            Image = UserService.GetGender(User.GenderId).Image;
         }
     }
 }

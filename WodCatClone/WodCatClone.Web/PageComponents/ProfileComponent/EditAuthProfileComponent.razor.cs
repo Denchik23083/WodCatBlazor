@@ -23,11 +23,8 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
         protected override void OnInitialized()
         {
             AuthUser = Map(User);
-
-            if (User.GenderId is not null)
-            {
-                Image = UserService.GetGender(User.GenderId).Image;
-            }
+            
+            Image = UserService.GetGender(User.GenderId).Image;
         }
 
         public async Task Auth()

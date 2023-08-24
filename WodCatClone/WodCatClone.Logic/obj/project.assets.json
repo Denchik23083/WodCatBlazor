@@ -738,12 +738,23 @@
           }
         }
       },
+      "WodCatClone.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/WodCatClone.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WodCatClone.Core.dll": {}
+        }
+      },
       "WodCatClone.Db/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "6.0.20",
-          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.20"
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.20",
+          "WodCatClone.Core": "1.0.0"
         },
         "compile": {
           "bin/placeholder/WodCatClone.Db.dll": {}
@@ -1929,6 +1940,11 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "WodCatClone.Core/1.0.0": {
+      "type": "project",
+      "path": "../WodCatClone.Core/WodCatClone.Core.csproj",
+      "msbuildProject": "../WodCatClone.Core/WodCatClone.Core.csproj"
     },
     "WodCatClone.Db/1.0.0": {
       "type": "project",

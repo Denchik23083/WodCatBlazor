@@ -24,6 +24,11 @@ namespace WodCatClone.WebDb.UserRepository
                 .ToListAsync();
         }
 
+        public async Task<IEnumerable<Gender>> GetGenders()
+        {
+            return await _context.Gender.ToListAsync();
+        }
+
         public async Task<User?> GetUser(User user)
         {
             return await _context.Users
@@ -41,14 +46,9 @@ namespace WodCatClone.WebDb.UserRepository
             return _context.Users.FirstOrDefault(b => b.NickName.Equals(nickName));
         }
 
-        public Gender GetGender(int? id)
+        public Gender GetGender(int id)
         {
             return _context.Gender.FirstOrDefault(b => b.Id == id);
-        }
-
-        public Gender GetGender(string gender)
-        {
-            return _context.Gender.FirstOrDefault(b => b.Name.Equals(gender));
         }
 
         public bool EditUserHall(User loginUser, int id)
@@ -60,7 +60,7 @@ namespace WodCatClone.WebDb.UserRepository
             return true;
         }
 
-        public bool Update(User updateUser, User userToUpdate, Gender gender)
+        public bool Update(User updateUser, User userToUpdate)
         {
             userToUpdate.Name = updateUser.Name;
             userToUpdate.Surname = updateUser.Surname;
@@ -71,7 +71,6 @@ namespace WodCatClone.WebDb.UserRepository
             userToUpdate.Height = updateUser.Height;
             userToUpdate.Weight = updateUser.Weight;
             userToUpdate.AboutMe = updateUser.AboutMe;
-            userToUpdate.GenderId = gender.Id;
 
             _context.SaveChanges();
 
