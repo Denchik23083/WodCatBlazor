@@ -22,12 +22,6 @@ namespace WodCatClone.Web.Pages.AuthPage
 
         public RegisterModel RegisterModel = new();
 
-        public bool Man { get; set; } = true;
-
-        public bool Woman { get; set; } = false;
-        
-        public string Gender { get; set; } = null!;
-
         public List<AuthTown> Town = new()
         {
             new() { Content = "Херсон", Value = "Херсон" },
@@ -43,11 +37,14 @@ namespace WodCatClone.Web.Pages.AuthPage
             new() { Content = "Львов", Value = "Львов" },
         };
 
+        protected override async Task OnInitializedAsync()
+        {
+            Genders = await UserService.GetGenders();
+        }
+
         public async Task Register()
         {
             if (RegisterModel.Password != RegisterModel.ConfirmPassword) return;
-
-            Genders = await UserService.GetGenders();
 
             var mappedUser = Mapper.Map<User>(RegisterModel);
 

@@ -49,29 +49,18 @@
                         @bind-Value="RegisterModel.Birthday"
                         class="mb-3 formLogin"
                         placeholder="Birthday"/>
-                    <div class="custom-control custom-checkbox mb-2">
-                        <input
-                            type="checkbox"
-                            class="custom-control-input"
-                            id="man"
-                            @bind="Man"
-                            @onclick="() => { Man = !Man; Woman = !Woman; }"/>
-                        <label
-                            class="custom-control-label"
-                            for="man"
-                            style="color: lightgrey">Мужчина</label>
-                    </div>
-                    <div class="custom-control custom-checkbox mb-2">
-                        <input
-                            type="checkbox"
-                            class="custom-control-input"
-                            id="woman"
-                            @bind="Woman"
-                            @onclick="() => { Woman = !Woman; Man = !Man; }"/>
-                        <label
-                            class="custom-control-label"
-                            for="woman"
-                            style="color: lightgrey">Женщина</label>
+                    <div class="row">
+                        <div class="col mb-2">
+                            <select class="selectedFormResult mb-2" @bind="RegisterModel.GenderId">
+                                <option value="">Пол</option>
+                                @foreach (var item in Genders)
+                                {
+                                    <option value="@item.Id">
+                                        @item.Type.ToString()
+                                    </option>
+                                }
+                            </select>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col mb-2">
