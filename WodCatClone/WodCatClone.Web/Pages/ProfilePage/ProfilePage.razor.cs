@@ -47,7 +47,7 @@ namespace WodCatClone.Web.Pages.ProfilePage
             {
                 Age = (DateTime.Today - User.Birthday).Days / 365;
 
-                UserEnter = await UserService.GetUser();
+                UserEnter = UserService.GetUser();
 
                 IsLoginUser = UserService.IsLoginUser();
                 

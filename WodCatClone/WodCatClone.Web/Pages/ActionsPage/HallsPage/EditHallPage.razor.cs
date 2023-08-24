@@ -32,7 +32,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
             else
             {
                 IsLoginUser = UserService.IsLoginUser();
-                User = await UserService.GetUser();
+                User = UserService.GetUser();
 
                 if (!IsLoginUser)
                 {

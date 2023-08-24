@@ -40,9 +40,9 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         public DateTime Time { get; set; }
 
-        protected override async Task OnInitializedAsync()
+        protected override void OnInitialized()
         {
-            User = await UserService.GetUser();
+            User = UserService.GetUser();
         }
 
         public void FillData()

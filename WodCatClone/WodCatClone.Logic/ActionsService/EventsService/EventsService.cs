@@ -60,8 +60,7 @@ namespace WodCatClone.Logic.ActionsService.EventsService
 
         public async Task<bool> AddEvent(Events @event)
         {
-            var loginUser = AuthService.AuthService.User;
-            var user = await _userRepository.GetUser(loginUser);
+            var user = AuthService.AuthService.User;
 
             if (user is null)
             {
@@ -73,8 +72,7 @@ namespace WodCatClone.Logic.ActionsService.EventsService
 
         public async Task<bool> EditEvent(Events @event, int eventId)
         {
-            var loginUser = AuthService.AuthService.User;
-            var user = await _userRepository.GetUser(loginUser);
+            var user = AuthService.AuthService.User;
 
             if (user is null)
             {

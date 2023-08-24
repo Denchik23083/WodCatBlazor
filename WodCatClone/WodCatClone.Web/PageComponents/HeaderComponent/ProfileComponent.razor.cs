@@ -16,20 +16,20 @@ namespace WodCatClone.Web.PageComponents.HeaderComponent
 
         public User? User { get; set; } = new() { Gender = new Gender {Image = ""} };
 
-        protected override async Task OnInitializedAsync()
+        protected override void OnInitialized()
         {
-            await FillOverrideFunctions();
+            FillOverrideFunctions();
         }
 
-        protected override async Task OnParametersSetAsync()
+        protected override void OnParametersSet()
         {
-            await FillOverrideFunctions();
+            FillOverrideFunctions();
         }
 
-        private async Task FillOverrideFunctions()
+        private void FillOverrideFunctions()
         {
             IsLoginUser = UserService.IsLoginUser();
-            User = await UserService.GetUser();
+            User = UserService.GetUser();
         }
 
         public void Auth() => NavigationManager.NavigateTo("/login");
