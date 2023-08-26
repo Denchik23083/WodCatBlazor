@@ -5,10 +5,13 @@
 <div class="row">
     <div class="col visualContainerProfile">
         <div class="row" style="margin: 0 250px;">
-            <div class="col-6 text-left text-light pages p-0 mb-3">
-                <a href="/" class="link">WODCAT</a> &rarr; 
-                Профиль &rarr; @User.NickName
-            </div>
+            @if (User is not null)
+            {
+                <div class="col-6 text-left text-light pages p-0 mb-3">
+                    <a href="/" class="link">WODCAT</a> &rarr;
+                    Профиль &rarr; @User.NickName
+                </div>
+            }
             @if (IsEnterUser && IsLoginUser)
             {
                 <div class="col-6 text-right text-light pages mb-3">
@@ -26,7 +29,7 @@
                     }
                 </div>
                 <div class="col-6">
-                    @if (User.Name is not null && User.Surname is not null)
+                    @if (User?.Name is not null && User?.Surname is not null)
                     {
                         <div class="row">
                             <div class="col mb-2 text-left">
@@ -36,18 +39,24 @@
                             </div>
                         </div>
                     }
-                    <div class="row">
-                        <div class="col mb-2 text-left">
-                            <span style="color: #161521;">@Age&nbsp;лет</span>
+                    @if (User is not null)
+                    {
+                        <div class="row">
+                            <div class="col mb-2 text-left">
+                                <span style="color: #161521;">@Age&nbsp;лет</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col mb-2 text-left">
-                            <img src="img/Ukraine.png" style="width: 30px; height: 20px;" class="mr-2"/>
-                            <span style="color: #161521;">@User.Town Украина</span>
+                    }
+                    @if (User?.Town is not null)
+                    {
+                        <div class="row">
+                            <div class="col mb-2 text-left">
+                                <img src="img/Ukraine.png" style="width: 30px; height: 20px;" class="mr-2"/>
+                                <span style="color: #161521;">@User.Town Украина</span>
+                            </div>
                         </div>
-                    </div>
-                    @if (Hall is not null && HallEmblem is not null)
+                    }
+                    @if (Hall is not null)
                     {
                         <div class="row">
                             <div class="col mb-2 text-left">
@@ -56,7 +65,7 @@
                             </div>
                         </div>
                     }
-                    @if (Program is not null && ProgramEmblem is not null)
+                    @if (Program is not null)
                     {
                         <div class="row">
                             <div class="col mb-2 text-left">
@@ -65,12 +74,15 @@
                             </div>
                         </div>
                     }
-                    <div class="row">
-                        <div class="col mb-2 text-left">
-                            <i class="fa-solid fa-coins" style="color: #9f9ea3;"></i>
-                            <span style="color: #161521;">@User.Points баллов</span>
+                    @if (User?.Points is not null)
+                    {
+                        <div class="row">
+                            <div class="col mb-2 text-left">
+                                <i class="fa-solid fa-coins" style="color: #9f9ea3;"></i>
+                                <span style="color: #161521;">@User.Points баллов</span>
+                            </div>
                         </div>
-                    </div>
+                    }
                 </div>
             </div>
         </div>
@@ -82,7 +94,7 @@
             <div class="row p-3">
                 <div class="col">
                     <strong class="mr-2">Рост:</strong>
-                    @if (User.Height is not null)
+                    @if (User?.Height is not null)
                     {
                         @User.Height
                     }
@@ -91,7 +103,7 @@
             <div class="row p-3">
                 <div class="col">
                     <strong class="mr-2">Вес:</strong>
-                    @if (User.Weight is not null)
+                    @if (User?.Weight is not null)
                     {
                         @User.Weight
                     }
@@ -100,7 +112,7 @@
             <div class="row p-3">
                 <div class="col">
                     <strong class="mr-2">О себе:</strong>
-                    @if (User.AboutMe is not null)
+                    @if (User?.AboutMe is not null)
                     {
                         @User.AboutMe
                     }

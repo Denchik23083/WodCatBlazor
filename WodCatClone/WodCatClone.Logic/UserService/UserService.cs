@@ -37,9 +37,9 @@ namespace WodCatClone.Logic.UserService
             return _repository.GetUser(id);
         }
 
-        public User GetUser(string nickName)
+        public async Task<User?> GetUser(string nickName)
         {
-            return _repository.GetUser(nickName);
+            return await _repository.GetUser(nickName);
         }
 
         public Gender GetGender(int id)

@@ -36,11 +36,17 @@ namespace WodCatClone.WebDb.UserRepository
                 .FirstOrDefault(b => b.Id == id);
         }
 
-        public User GetUser(string nickName)
+        public async Task<User?> GetUser(string nickName)
         {
-            return _context.Users
+            return await _context.Users
                 .Include(_ => _.Gender)
-                .FirstOrDefault(b => b.NickName.Equals(nickName));
+                .Include(_ => _.Halls)
+                .ThenInclude(_ => _!.EmblemHall)
+                .Include(_ => _.Programs)
+                .ThenInclude(_ => _!.ProgramEmblem)
+                .Include(_ => _.Events)
+                .ThenInclude(_ => _!.EventEmblem)
+                .FirstOrDefaultAsync(b => b.NickName!.Equals(nickName));
         }
 
         public Gender GetGender(int id)

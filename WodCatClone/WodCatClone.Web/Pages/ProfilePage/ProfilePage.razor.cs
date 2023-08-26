@@ -1,47 +1,41 @@
 ﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
-using WodCatClone.Logic.ActionsService.HallsService;
-using WodCatClone.Logic.ActionsService.ProgramsService;
 using WodCatClone.Logic.UserService;
 
 namespace WodCatClone.Web.Pages.ProfilePage
 {
     public partial class ProfilePage
     {
-        [Parameter] public string NickName { get; set; }
+        [Parameter] public string NickName { get; set; } = null!;
 
-        [Inject] public IUserService UserService { get; set; }
+        [Inject] public IUserService UserService { get; set; } = null!;
 
-        [Inject] public IHallsService HallsService { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; } = null!;
 
-        [Inject] public IProgramsService ProgramsService { get; set; }
+        public User? User { get; set; } = new();
 
-        [Inject] public NavigationManager NavigationManager { get; set; }
-
-        public User User { get; set; }
-
-        public User UserEnter { get; set; }
+        public User? UserEnter { get; set; } = new();
 
         public bool IsLoginUser { get; set; }
 
         public bool IsEnterUser { get; set; }
 
-        public string Image { get; set; }
+        public string? Image { get; set; }
 
-        public Halls Hall { get; set; }
+        public Halls? Hall { get; set; } = new();
 
-        public Programs Program { get; set; }
+        public Programs? Program { get; set; } = new();
 
-        public string HallEmblem { get; set; }
+        public string? HallEmblem { get; set; }
 
-        public string ProgramEmblem { get; set; }
+        public string? ProgramEmblem { get; set; }
 
         public int Age { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
-            User = UserService.GetUser(NickName);
+            User = await UserService.GetUser(NickName);
 
             if (User is not null)
             {
@@ -50,19 +44,20 @@ namespace WodCatClone.Web.Pages.ProfilePage
                 UserEnter = UserService.GetUser();
 
                 IsLoginUser = UserService.IsLoginUser();
-                
-                Image = UserService.GetGender(User.GenderId).Image;
 
-                if (User.HallId is not null)
+                Image = User.Gender!.Image!;
+
+                Hall = User.Halls!;
+                if (User.Halls is not null)
                 {
-                    Hall = HallsService.GetHall(User.HallId);
-                    HallEmblem = HallsService.GetImage(Hall.EmblemHallId);
+                    HallEmblem = User.Halls!.EmblemHall!.Image!;
                 }
 
-                if (User.ProgramId is not null)
+                Program = User.Programs!;
+
+                if (User.Programs is not null)
                 {
-                    Program = ProgramsService.GetProgram(User.ProgramId);
-                    ProgramEmblem = ProgramsService.GetImage(Program.ProgramsEmblemId);
+                    ProgramEmblem = User.Programs!.ProgramEmblem!.Image!;
                 }
 
                 if (UserEnter is not null)
