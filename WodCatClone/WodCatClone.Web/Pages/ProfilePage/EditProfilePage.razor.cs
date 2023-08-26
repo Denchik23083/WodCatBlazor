@@ -22,7 +22,7 @@ namespace WodCatClone.Web.Pages.ProfilePage
         {
             IsLoginUser = UserService.IsLoginUser();
 
-            User = UserService.GetUser(NickName);
+            User = await UserService.GetUser(NickName);
             UserEnter = UserService.GetUser();
 
             if (User is null || UserEnter is null)

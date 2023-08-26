@@ -85,7 +85,7 @@ namespace WodCatClone.Db.EntityConfig.AuthConfig
                     Id = 3,
                     Name = "Trevor",
                     Surname = "Philips",
-                    NickName = "GTA V",
+                    NickName = "GTA5",
                     Email = "trevor@gmail.com",
                     Password = "0000",
                     Country = "Ukraine",
