@@ -18,10 +18,10 @@ namespace WodCatClone.Logic.UserService
 
         Gender GetGender(int id);
 
-        bool EditUserHall(User user, int id);
+        Task<bool> EditUserHall(User user, int id);
 
-        bool Update(User updateUser, int id);
+        Task<bool> Update(User updateUser, int id);
 
-        Task<bool> UpdateAuth(User updateUser, int id);
+        Task<bool> UpdateAuth(User updateAuth, int id);
     }
 }

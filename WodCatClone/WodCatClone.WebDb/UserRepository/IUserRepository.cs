@@ -14,10 +14,10 @@ namespace WodCatClone.WebDb.UserRepository
 
         Gender GetGender(int id);
 
-        bool EditUserHall(User loginUser, int id);
+        Task<bool> EditUserHall(User loginUser);
 
-        bool Update(User updateUser, User userToUpdate);
+        Task<bool> Update(User userToUpdate);
 
-        bool UpdateAuth(User updateUser, User userToUpdate);
+        Task<bool> UpdateAuth(User userToUpdate);
     }
 }

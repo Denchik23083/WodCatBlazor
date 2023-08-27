@@ -1,190 +1,171 @@
-﻿<div class="p-3">   
-    <div class="row">
-        <div class="col text-center mb-2">
-            <span class="programslink" @onclick="DisplayProfile">ПРОФИЛЬ</span>
-            <span class="programslink" @onclick="DisplayAuth">АВТОРИЗАЦИЯ</span>
+﻿<div class="row">
+    <div class="col-6">
+        <div class="row">
+            <div class="col mb-2">
+                @if (Image is not null)
+                {
+                    <img src="@Image" alt="" width="150" height="150"/>
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mb-2">
+                <h5 style="color: white;">Выберите зал</h5>
+                @if (Hall is not null)
+                {
+                    <div class="selectedFormResult" @onclick="() => IsShowHall = !IsShowHall">
+                        @if (HallImage is not null)
+                        {
+                            <img src="@HallImage" width="75" height="75" />
+                        }
+                        
+                        @Hall.Name
+                    </div>
+                }
+                else
+                {
+                    <div class="selectedFormResult" @onclick="() => IsShowHall = !IsShowHall">Зал</div>
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mb-2">
+                @if (IsShowHall)
+                {
+                    <div class="selected mb-2">
+                        @foreach (var item in Halls)
+                        {
+                            <IndividualProfileHallComponent Hall="item" User="User"/>
+                        }
+                    </div>
+                }
+            </div>
         </div>
     </div>
-    @if (IsDisplayProfile)
-    {
+    <div class="col-6">
         <div class="row">
-            <div class="col-6">
-                <div class="row">
-                    <div class="col mb-2">
-                        @if (Image is not null)
-                        {
-                            <img src="@Image" alt="" width="150" height="150"/>
-                        }
+            <div class="col mb-2">
+                <EditForm Model="@UpdateUser" OnValidSubmit="Submit">
+                    <DataAnnotationsValidator/>
+                    <ValidationSummary/>
+                    <div class="row">
+                        <div class="col mb-2">
+                            <InputText @bind-Value="UpdateUser!.Name"
+                                class="selectedFormResult mb-2 mr-2"
+                                placeholder="Имя"/>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col mb-2">
-                        <h5 style="color: white;">Выберите зал</h5>
-                        @if (Hall is not null)
-                        {
-                            <div class="selectedFormResult" @onclick="() => IsShowHall = !IsShowHall">
-                                @if (HallImage is not null)
+                    <div class="row">
+                        <div class="col mb-2">
+                            <InputText @bind-Value="UpdateUser!.Surname"
+                                class="selectedFormResult mb-2 mr-2"
+                                placeholder="Фамилия"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mb-2">
+                            <select class="selectedFormResult mb-2" @bind="UpdateUser!.Town">
+                                <option value="">Город</option>
+                                @foreach (var item in Town)
                                 {
-                                    <img src="@HallImage" width="75" height="75" />
+                                    <option value="@item.Filter">
+                                        @item.Content
+                                    </option>
                                 }
-                                
-                                @Hall.Name
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="selectedFormResult" @onclick="() => IsShowHall = !IsShowHall">Зал</div>
-                        }
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col mb-2">
-                        @if (IsShowHall)
-                        {
-                            <div class="selected mb-2">
-                                @foreach (var item in Halls)
-                                {
-                                    <IndividualProfileHallComponent Hall="item" User="User"/>
-                                }
-                            </div>
-                        }
+                    <div class="row">
+                        <div class="col">
+                            <span style="color: lightgrey">Пол</span>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="row">
-                    <div class="col mb-2">
-                        <EditForm Model="@User" OnValidSubmit="Submit">
-                            <DataAnnotationsValidator/>
-                            <ValidationSummary/>
-                            <div class="row">
-                                <div class="col mb-2">
-                                    <InputText
-                                        @bind-Value="User.Name"
-                                        class="selectedFormResult mb-2 mr-2"
-                                        placeholder="Имя"/>
-                                </div>
+                    <div class="row">
+                        <div class="col mb-2">
+                            <div class="custom-control custom-checkbox">
+                                <input
+                                    type="checkbox"
+                                    class="custom-control-input"
+                                    id="man"
+                                    @bind="Man"
+                                    @onclick="() => Woman = !Woman"/>
+                                <label
+                                    class="custom-control-label"
+                                    for="man"
+                                    style="color: lightgrey">Мужчина</label>
                             </div>
-                            <div class="row">
-                                <div class="col mb-2">
-                                    <InputText
-                                        @bind-Value="User.Surname"
-                                        class="selectedFormResult mb-2 mr-2"
-                                        placeholder="Фамилия"/>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col mb-2">
-                                    <select class="selectedFormResult mb-2" @bind="User.Town">
-                                        <option value="">Город</option>
-                                        @foreach (var item in Town)
-                                        {
-                                            <option value="@item.Filter">
-                                                @item.Content
-                                            </option>
-                                        }
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <span style="color: lightgrey">Пол</span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col mb-2">
-                                    <div class="custom-control custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            class="custom-control-input"
-                                            id="man"
-                                            @bind="Man"
-                                            @onclick="() => Woman = !Woman"/>
-                                        <label
-                                            class="custom-control-label"
-                                            for="man"
-                                            style="color: lightgrey">Мужчина</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col mb-2">
-                                    <div class="custom-control custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            class="custom-control-input"
-                                            id="woman"
-                                            @bind="Woman"
-                                            @onclick="() => Man = !Man"/>
-                                        <label
-                                            class="custom-control-label"
-                                            for="woman"
-                                            style="color: lightgrey">Женщина</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <span style="color: lightgrey">День рождения</span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col mb-2">
-                                    <InputDate
-                                        @bind-Value="User.Birthday"
-                                        class="selectedFormResult mb-2"
-                                        placeholder="День рождения"/>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <span style="color: lightgrey">Рост</span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col mb-2">
-                                    <InputText
-                                        @bind-Value="User.Height"
-                                        class="selectedFormResult mb-2"/>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <span style="color: lightgrey">Вес</span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col mb-2">
-                                    <InputText
-                                        @bind-Value="User.Weight"
-                                        class="selectedFormResult mb-2"/>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <span style="color: lightgrey">О себе</span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col mb-2">
-                                    <InputText
-                                        @bind-Value="User.AboutMe"
-                                        class="selectedFormResult mb-2"/>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col text-right">
-                                    <button class="btn btn-primary" type="submit">Сохранить</button>
-                                </div>
-                            </div>
-                        </EditForm>
+                        </div>
                     </div>
-                </div>
+                    <div class="row">
+                        <div class="col mb-2">
+                            <div class="custom-control custom-checkbox">
+                                <input
+                                    type="checkbox"
+                                    class="custom-control-input"
+                                    id="woman"
+                                    @bind="Woman"
+                                    @onclick="() => Man = !Man"/>
+                                <label
+                                    class="custom-control-label"
+                                    for="woman"
+                                    style="color: lightgrey">Женщина</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <span style="color: lightgrey">День рождения</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mb-2">
+                            <InputDate @bind-Value="UpdateUser!.Birthday"
+                                class="selectedFormResult mb-2"
+                                placeholder="День рождения"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <span style="color: lightgrey">Рост</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mb-2">
+                            <InputText @bind-Value="UpdateUser!.Height"
+                                class="selectedFormResult mb-2"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <span style="color: lightgrey">Вес</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mb-2">
+                            <InputText
+                                @bind-Value="UpdateUser!.Weight"
+                                class="selectedFormResult mb-2"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <span style="color: lightgrey">О себе</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mb-2">
+                            <InputText @bind-Value="UpdateUser!.AboutMe"
+                                class="selectedFormResult mb-2"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-right">
+                            <button class="btn btn-primary" type="submit">Сохранить</button>
+                        </div>
+                    </div>
+                </EditForm>
             </div>
         </div>
-    }
-    @if (IsDisplayAuth)
-    {
-        <EditAuthProfileComponent User="User"/>
-    }
+    </div>
 </div>
+    

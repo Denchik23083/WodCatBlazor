@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.AuthService;
 using WodCatClone.Logic.UserService;
@@ -8,30 +9,37 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
 {
     public partial class EditAuthProfileComponent
     {
-        [Parameter] public User User { get; set; }
+        [Parameter] public User? User { get; set; } = new();
 
-        [Inject] public IUserService UserService { get; set; }
+        [Inject] public IUserService UserService { get; set; } = null!;
 
-        [Inject] public IAuthService AuthService { get; set; }
+        [Inject] public IAuthService AuthService { get; set; } = null!;
 
-        [Inject] public NavigationManager NavigationManager { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; } = null!;
 
-        public string Image { get; set; }
+        [Inject] public IMapper Mapper { get; set; } = null!;
 
-        public RegisterModel AuthUser { get; set; }
+        public string? Image { get; set; }
+
+        public RegisterModel? UpdateAuth { get; set; } = new();
 
         protected override void OnInitialized()
         {
-            AuthUser = Map(User);
-            
-            Image = UserService.GetGender(User.GenderId).Image;
+            UpdateAuth = Mapper.Map<RegisterModel>(User);
+
+            if (UpdateAuth?.Gender is not null)
+            {
+                Image = UpdateAuth.Gender!.Image!;
+            }
         }
 
         public async Task Auth()
         {
-            if (AuthUser.Password == AuthUser.ConfirmPassword)
+            if (UpdateAuth?.Password == UpdateAuth?.ConfirmPassword)
             {
-                var result = await UserService.UpdateAuth(Map(AuthUser), User.Id);
+                var mappedAuth = Mapper.Map<User>(UpdateAuth);
+
+                var result = await UserService.UpdateAuth(mappedAuth, User!.Id);
 
                 if (result)
                 {
@@ -43,26 +51,6 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
                     }
                 }
             }
-        }
-
-        private User Map(RegisterModel model)
-        {
-            return new User
-            {
-                NickName = model.NickName,
-                Email = model.Email,
-                Password = model.Password
-            };
-        }
-
-        private RegisterModel Map(User model)
-        {
-            return new RegisterModel
-            {
-                NickName = model.NickName,
-                Email = model.Email,
-                Password = model.Password
-            };
         }
     }
 }

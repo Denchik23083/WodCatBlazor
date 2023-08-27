@@ -47,43 +47,53 @@ namespace WodCatClone.Logic.UserService
             return _repository.GetGender(id);
         }
 
-        public bool EditUserHall(User user, int id)
+        public async Task<bool> EditUserHall(User user, int id)
         {
             var loginUser = _repository.GetUser(user.Id);
 
-            return _repository.EditUserHall(loginUser, id);
+            loginUser.HallId = id;
+
+            return await _repository.EditUserHall(loginUser);
         }
 
-        public bool Update(User updateUser, int id)
+        public async Task<bool> Update(User updateUser, int id)
         {
             var userToUpdate = _repository.GetUser(id);
 
-            if (userToUpdate is null)
-            {
-                return false;
-            }
+            userToUpdate.Name = updateUser.Name;
+            userToUpdate.Surname = updateUser.Surname;
+            userToUpdate.Town = updateUser.Town;
+            userToUpdate.HallId = updateUser.HallId;
+            userToUpdate.GenderId = updateUser.GenderId;
+            userToUpdate.Birthday = updateUser.Birthday;
+            userToUpdate.Height = updateUser.Height;
+            userToUpdate.Weight = updateUser.Weight;
+            userToUpdate.AboutMe = updateUser.AboutMe;
 
-            return _repository.Update(updateUser, userToUpdate);
+            return await _repository.Update(userToUpdate);
         }
 
-        public async Task<bool> UpdateAuth(User updateUser, int id)
+        public async Task<bool> UpdateAuth(User updateAuth, int id)
         {
             var userToUpdate = _repository.GetUser(id);
-
-            if (userToUpdate is null)
-            {
-                return false;
-            }
 
             var allUsers = await _repository.GetAllUsers();
 
-            if (allUsers.Any(b => b.Email.Equals(updateUser.Email)
-                                  || b.NickName.Equals(updateUser.NickName)))
+            var allUpdateUsers = allUsers.ToList();
+
+            var users = allUpdateUsers.Where(_ => _.Id != id).ToList();
+
+            if (users.Any(b => b.Email!.Equals(updateAuth.Email)
+                                    || b.NickName!.Equals(updateAuth.NickName)))
             {
                 return false;
             }
 
-            return _repository.UpdateAuth(updateUser, userToUpdate);
+            userToUpdate.NickName = updateAuth.NickName;
+            userToUpdate.Email = updateAuth.Email;
+            userToUpdate.Password = updateAuth.Password;
+
+            return await _repository.UpdateAuth(userToUpdate);
         }
     }
 }

@@ -24,6 +24,10 @@ namespace WodCatClone.Web.Pages.ProfilePage
 
         public User? UserEnter { get; set; } = new();
 
+        public bool IsDisplayProfile { get; set; } = true;
+
+        public bool IsDisplayAuth { get; set; }
+
         protected override async Task OnInitializedAsync()
         {
             IsLoginUser = UserService.IsLoginUser();
@@ -47,5 +51,17 @@ namespace WodCatClone.Web.Pages.ProfilePage
         }
 
         public void BackToProfile() => NavigationManager.NavigateTo($"/profile/{NickName}");
+
+        public void DisplayProfile()
+        {
+            IsDisplayProfile = true;
+            IsDisplayAuth = false;
+        }
+
+        public void DisplayAuth()
+        {
+            IsDisplayProfile = false;
+            IsDisplayAuth = true;
+        }
     }
 }

@@ -58,39 +58,23 @@ namespace WodCatClone.WebDb.UserRepository
             return _context.Gender.FirstOrDefault(b => b.Id == id);
         }
 
-        public bool EditUserHall(User loginUser, int id)
+        public async Task<bool> EditUserHall(User loginUser)
         {
-            loginUser.HallId = id;
-
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return true;
         }
 
-        public bool Update(User updateUser, User userToUpdate)
+        public async Task<bool> Update(User userToUpdate)
         {
-            userToUpdate.Name = updateUser.Name;
-            userToUpdate.Surname = updateUser.Surname;
-            userToUpdate.Town = updateUser.Town;
-            userToUpdate.HallId = updateUser.HallId;
-            userToUpdate.GenderId = updateUser.GenderId;
-            userToUpdate.Birthday = updateUser.Birthday;
-            userToUpdate.Height = updateUser.Height;
-            userToUpdate.Weight = updateUser.Weight;
-            userToUpdate.AboutMe = updateUser.AboutMe;
-
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return true;
         }
 
-        public bool UpdateAuth(User updateUser, User userToUpdate)
+        public async Task<bool> UpdateAuth(User userToUpdate)
         {
-            userToUpdate.NickName = updateUser.NickName;
-            userToUpdate.Email = updateUser.Email;
-            userToUpdate.Password = updateUser.Password;
-
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return true;
         }
