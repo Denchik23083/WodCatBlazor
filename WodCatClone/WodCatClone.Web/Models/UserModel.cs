@@ -1,22 +1,16 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 
 namespace WodCatClone.Web.Models
 {
-    public class RegisterModel
+    public class UserModel
     {
         [Required]
         public string? Name { get; set; }
 
         [Required]
         public string? Surname { get; set; }
-
-        [Required]
-        [EmailAddress(ErrorMessage = "Email format is not right")]
-        public string? Email { get; set; }
-
-        [Required]
-        public string? NickName { get; set; }
 
         [Required]
         public int? GenderId { get; set; }
@@ -30,10 +24,14 @@ namespace WodCatClone.Web.Models
         [Required]
         public string? Town { get; set; }
 
-        [Required]
-        public string? Password { get; set; }
+        public string? Height { get; set; }
 
-        [Required]
-        public string? ConfirmPassword { get; set; }
+        public string? Weight { get; set; }
+
+        public string? AboutMe { get; set; }
+
+        public int? HallId { get; set; }
+
+        public Halls? Halls { get; set; }
     }
 }

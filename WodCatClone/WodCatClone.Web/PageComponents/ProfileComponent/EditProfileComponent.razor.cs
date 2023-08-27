@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Components;
 using WodCatClone.Core;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
-using WodCatClone.Logic.ActionsService.HallsService;
 using WodCatClone.Logic.UserService;
+using WodCatClone.Web.Models;
 using WodCatClone.Web.Utilities.Types;
 
 namespace WodCatClone.Web.PageComponents.ProfileComponent
@@ -18,7 +19,7 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
 
         [Inject] public IUserService UserService { get; set; } = null!;
 
-        [Inject] public IHallsService HallsService { get; set; } = null!;
+        [Inject] public IMapper Mapper { get; set; } = null!;
 
         public Halls? Hall { get; set; }
 
@@ -32,9 +33,7 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
 
         public bool IsShowHall { get; set; } = false;
 
-        public bool IsDisplayProfile { get; set; } = true;
-
-        public bool IsDisplayAuth { get; set; }
+        public UserModel? UpdateUser { get; set; } = new();
 
         public List<FilterHalls> Town = new()
         {
@@ -63,60 +62,55 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
 
         private void FillOverrideFunctions()
         {
-            if (User?.Gender is null) return;
+            UpdateUser = Mapper.Map<UserModel>(User);
 
-            Image = User.Gender!.Image;
-            if (User.Halls is not null)
+            if (UpdateUser?.Gender is not null)
             {
-                Hall = User.Halls!;
-                if (Hall is not null)
+                Image = UpdateUser.Gender!.Image;
+
+                switch (UpdateUser.Gender!.Type)
                 {
-                    HallImage = User.Halls!.EmblemHall!.Image;
+                    case GenderType.Male:
+                        Man = true;
+                        Woman = false;
+                        break;
+                    case GenderType.Female:
+                        Man = false;
+                        Woman = true;
+                        break;
                 }
             }
-            switch (User.Gender!.Type)
+
+            if (UpdateUser?.Halls is not null)
             {
-                case GenderType.Male:
-                    Man = true;
-                    Woman = false;
-                    break;
-                case GenderType.Female:
-                    Man = false;
-                    Woman = true;
-                    break;
+                Hall = UpdateUser.Halls!;
+                if (Hall is not null)
+                {
+                    HallImage = UpdateUser.Halls!.EmblemHall!.Image;
+                }
             }
         }
 
-        public void Submit()
+        public async Task Submit()
         {
             if (Man && !Woman)
             {
-                User!.Gender!.Type = GenderType.Male;
+                UpdateUser!.Gender!.Type = GenderType.Male;
             }
 
             if (Woman && !Man)
             {
-                User!.Gender!.Type = GenderType.Female;
+                UpdateUser!.Gender!.Type = GenderType.Female;
             }
 
-            var result = UserService.Update(User!, User!.Id);
+            var mappedUser = Mapper.Map<User>(UpdateUser);
+
+            var result = await UserService.Update(mappedUser, User!.Id);
 
             if (result)
             {
                 NavigationManager.NavigateTo($"/profile/{User.NickName}");
             }
-        }
-
-        public void DisplayProfile()
-        {
-            IsDisplayProfile = true;
-            IsDisplayAuth = false;
-        }
-
-        public void DisplayAuth()
-        {
-            IsDisplayProfile = false;
-            IsDisplayAuth = true;
         }
     }
 }

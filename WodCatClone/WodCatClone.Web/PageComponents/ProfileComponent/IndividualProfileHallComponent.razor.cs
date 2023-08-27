@@ -35,9 +35,9 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
             }
         }
 
-        public void EditUserHall(int id)
+        public async Task EditUserHall(int id)
         {
-            var result = UserService.EditUserHall(User, id);
+            var result = await UserService.EditUserHall(User, id);
 
             if (result)
             {

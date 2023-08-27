@@ -12,13 +12,13 @@
     <div class="col-6">
         <div class="row">
             <div class="col mb-2">
-                <EditForm Model="@AuthUser" OnValidSubmit="Auth">
+                <EditForm Model="@UpdateAuth" OnValidSubmit="Auth">
                     <DataAnnotationsValidator />
                     <ValidationSummary />
                     <div class="row">
                         <div class="col mb-2">
                             <InputText
-                                @bind-Value="AuthUser.NickName"
+                                @bind-Value="UpdateAuth!.NickName"
                                 class="selectedFormResult mb-2 mr-2"
                                 placeholder="Ник"/>
                         </div>
@@ -26,7 +26,7 @@
                     <div class="row">
                         <div class="col mb-2">
                             <InputText
-                                @bind-Value="AuthUser.Email"
+                                @bind-Value="UpdateAuth!.Email"
                                 class="selectedFormResult mb-2 mr-2"
                                 placeholder="E-mail"/>
                         </div>
@@ -35,7 +35,7 @@
                         <div class="col mb-2">
                             <InputText
                                 type="password"
-                                @bind-Value="AuthUser.Password"
+                                @bind-Value="UpdateAuth!.Password"
                                 class="selectedFormResult mb-2 mr-2"
                                 placeholder="Пароль"/>
                         </div>
@@ -44,7 +44,7 @@
                         <div class="col mb-2">
                             <InputText
                                 type="password"
-                                @bind-Value="AuthUser.ConfirmPassword"
+                                @bind-Value="UpdateAuth!.ConfirmPassword"
                                 class="selectedFormResult mb-2 mr-2"
                                 placeholder="Подтвердить Пароль"/>
                         </div>
