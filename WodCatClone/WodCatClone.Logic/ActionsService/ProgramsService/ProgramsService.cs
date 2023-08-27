@@ -41,16 +41,6 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
             return _repository.GetProgram(id);
         }
 
-        public Programs GetProgram(int? id)
-        {
-            return _repository.GetProgram(id);
-        }
-
-        public string GetImage(int? programsEmblemId)
-        {
-            return _repository.GetImage(programsEmblemId)?.Image;
-        }
-
         public bool BeginProgram(int id, User user)
         {
             var loginUser = _userRepository.GetUser(user.Id);

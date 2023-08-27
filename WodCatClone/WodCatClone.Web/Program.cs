@@ -61,7 +61,7 @@ builder.Services.AddDbContext<WodCatCloneContext>(options =>
     var connectionString = builder.Configuration.GetConnectionString("WodCatClone");
 
     options.UseSqlServer(connectionString);
-}, ServiceLifetime.Transient);
+});
 
 var app = builder.Build();
 

@@ -19,6 +19,10 @@ namespace WodCatClone.WebDb.UserRepository
                 .Include(_ => _.Gender)
                 .Include(_ => _.Halls)
                 .ThenInclude(_ => _!.EmblemHall)
+                .Include(_ => _.Programs)
+                .ThenInclude(_ => _!.ProgramEmblem)
+                .Include(_ => _.Events)
+                .ThenInclude(_ => _!.EventEmblem)
                 .OrderBy(b => b.Points)
                 .Reverse()
                 .ToListAsync();

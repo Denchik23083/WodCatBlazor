@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Core;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
@@ -11,23 +10,21 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
 {
     public partial class EditProfileComponent
     {
-        [Parameter] public User User { get; set; }
+        [Parameter] public User? User { get; set; } = new();
 
-        [Inject] public NavigationManager NavigationManager { get; set; }
+        [Parameter] public IEnumerable<Halls> Halls { get; set; } = new List<Halls>();
 
-        [Inject] public IUserService UserService { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; } = null!;
 
-        [Inject] public IHallsService HallsService { get; set; }
+        [Inject] public IUserService UserService { get; set; } = null!;
 
-        public User EditUser { get; set; }
-        
-        public Halls UserHall { get; set; }
+        [Inject] public IHallsService HallsService { get; set; } = null!;
 
-        public IEnumerable<Halls> Halls { get; set; }
+        public Halls? Hall { get; set; }
 
-        public string HallImage { get; set; }
+        public string? HallImage { get; set; }
 
-        public string Image { get; set; }
+        public string? Image { get; set; }
 
         public bool Man { get; set; }
         
@@ -66,44 +63,43 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
 
         private void FillOverrideFunctions()
         {
-            EditUser = User;
-            UserHall = HallsService.GetHall(User.HallId);
-            //Halls = HallsService.GetAllHalls();
-            if (UserHall is not null)
-            {
-                HallImage = HallsService.GetImage(UserHall.EmblemHallId);
-            }
-            
-            Image = UserService.GetGender(User.GenderId).Image;
+            if (User?.Gender is null) return;
 
-            var gender = UserService.GetGender(User.GenderId);
-            if (gender.Type == GenderType.Male)
+            Image = User.Gender!.Image;
+            if (User.Halls is not null)
             {
-                Man = true;
-                Woman = false;
+                Hall = User.Halls!;
+                if (Hall is not null)
+                {
+                    HallImage = User.Halls!.EmblemHall!.Image;
+                }
             }
-            if (gender.Type == GenderType.Female)
+            switch (User.Gender!.Type)
             {
-                Man = false;
-                Woman = true;
+                case GenderType.Male:
+                    Man = true;
+                    Woman = false;
+                    break;
+                case GenderType.Female:
+                    Man = false;
+                    Woman = true;
+                    break;
             }
         }
 
         public void Submit()
         {
-            var genderName = string.Empty;
-
             if (Man && !Woman)
             {
-                genderName = "Мужской";
+                User!.Gender!.Type = GenderType.Male;
             }
 
             if (Woman && !Man)
             {
-                genderName = "Женский";
+                User!.Gender!.Type = GenderType.Female;
             }
 
-            var result = UserService.Update(EditUser, User.Id, genderName);
+            var result = UserService.Update(User!, User!.Id);
 
             if (result)
             {

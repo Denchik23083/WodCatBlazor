@@ -17,6 +17,12 @@ namespace WodCatClone.WebDb.AuthRepository
         {
             return _context.Users
                 .Include(_ => _.Gender)
+                .Include(_ => _.Halls)
+                .ThenInclude(_ => _!.EmblemHall)
+                .Include(_ => _.Programs)
+                .ThenInclude(_ => _!.ProgramEmblem)
+                .Include(_ => _.Events)
+                .ThenInclude(_ => _!.EventEmblem)
                 .FirstOrDefaultAsync(l => l.Email == loginUser.Email &&
                                      l.Password == loginUser.Password);
         }
