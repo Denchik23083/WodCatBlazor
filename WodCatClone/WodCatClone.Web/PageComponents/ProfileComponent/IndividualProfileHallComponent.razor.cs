@@ -1,24 +1,21 @@
 ﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
-using WodCatClone.Logic.ActionsService.HallsService;
 using WodCatClone.Logic.UserService;
 
 namespace WodCatClone.Web.PageComponents.ProfileComponent
 {
     public partial class IndividualProfileHallComponent
     {
-        [Parameter] public Halls Hall { get; set; }
+        [Parameter] public Halls? Hall { get; set; } = new();
+        
+        [Parameter] public User User { get; set; } = new();
 
-        [Inject] public IHallsService HallsService { get; set; }
+        [Inject] public IUserService UserService { get; set; } = null!;
 
-        [Inject] public IUserService UserService { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; } = null!;
 
-        [Inject] public NavigationManager NavigationManager { get; set; }
-
-        public string HallImage { get; set; }
-
-        public User User { get; set; }
+        public string? HallImage { get; set; }
 
         protected override void OnInitialized()
         {
@@ -32,10 +29,9 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
 
         private void FillOverrideFunctions()
         {
-            User = UserService.GetUser();
             if (Hall is not null)
             {
-                HallImage = HallsService.GetImage(Hall.EmblemHallId);
+                HallImage = Hall.EmblemHall!.Image!;
             }
         }
 

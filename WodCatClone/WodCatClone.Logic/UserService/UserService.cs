@@ -51,15 +51,10 @@ namespace WodCatClone.Logic.UserService
         {
             var loginUser = _repository.GetUser(user.Id);
 
-            if (loginUser is null)
-            {
-                return false;
-            }
-
             return _repository.EditUserHall(loginUser, id);
         }
 
-        public bool Update(User updateUser, int id, string genderName)
+        public bool Update(User updateUser, int id)
         {
             var userToUpdate = _repository.GetUser(id);
 

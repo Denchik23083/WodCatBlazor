@@ -20,11 +20,15 @@
                 <div class="row">
                     <div class="col mb-2">
                         <h5 style="color: white;">Выберите зал</h5>
-                        @if (UserHall is not null)
+                        @if (Hall is not null)
                         {
                             <div class="selectedFormResult" @onclick="() => IsShowHall = !IsShowHall">
-                                <img src="@HallImage" width="75" height="75"/>
-                                @UserHall.Name
+                                @if (HallImage is not null)
+                                {
+                                    <img src="@HallImage" width="75" height="75" />
+                                }
+                                
+                                @Hall.Name
                             </div>
                         }
                         else
@@ -40,7 +44,7 @@
                             <div class="selected mb-2">
                                 @foreach (var item in Halls)
                                 {
-                                    <IndividualProfileHallComponent Hall="item"/>
+                                    <IndividualProfileHallComponent Hall="item" User="User"/>
                                 }
                             </div>
                         }
@@ -50,13 +54,13 @@
             <div class="col-6">
                 <div class="row">
                     <div class="col mb-2">
-                        <EditForm Model="@EditUser" OnValidSubmit="Submit">
+                        <EditForm Model="@User" OnValidSubmit="Submit">
                             <DataAnnotationsValidator/>
                             <ValidationSummary/>
                             <div class="row">
                                 <div class="col mb-2">
                                     <InputText
-                                        @bind-Value="EditUser.Name"
+                                        @bind-Value="User.Name"
                                         class="selectedFormResult mb-2 mr-2"
                                         placeholder="Имя"/>
                                 </div>
@@ -64,7 +68,7 @@
                             <div class="row">
                                 <div class="col mb-2">
                                     <InputText
-                                        @bind-Value="EditUser.Surname"
+                                        @bind-Value="User.Surname"
                                         class="selectedFormResult mb-2 mr-2"
                                         placeholder="Фамилия"/>
                                 </div>
@@ -127,7 +131,7 @@
                             <div class="row">
                                 <div class="col mb-2">
                                     <InputDate
-                                        @bind-Value="EditUser.Birthday"
+                                        @bind-Value="User.Birthday"
                                         class="selectedFormResult mb-2"
                                         placeholder="День рождения"/>
                                 </div>
@@ -140,7 +144,7 @@
                             <div class="row">
                                 <div class="col mb-2">
                                     <InputText
-                                        @bind-Value="EditUser.Height"
+                                        @bind-Value="User.Height"
                                         class="selectedFormResult mb-2"/>
                                 </div>
                             </div>
@@ -152,7 +156,7 @@
                             <div class="row">
                                 <div class="col mb-2">
                                     <InputText
-                                        @bind-Value="EditUser.Weight"
+                                        @bind-Value="User.Weight"
                                         class="selectedFormResult mb-2"/>
                                 </div>
                             </div>
@@ -164,7 +168,7 @@
                             <div class="row">
                                 <div class="col mb-2">
                                     <InputText
-                                        @bind-Value="EditUser.AboutMe"
+                                        @bind-Value="User.AboutMe"
                                         class="selectedFormResult mb-2"/>
                                 </div>
                             </div>
