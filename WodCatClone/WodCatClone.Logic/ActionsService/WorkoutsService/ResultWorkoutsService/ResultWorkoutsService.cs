@@ -28,7 +28,12 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService.ResultWorkoutsService
                 return false;
             }
 
-            return _repository.AddResultWorkouts(resultWorkouts, user);
+            resultWorkouts.UserId = user.Id;
+            resultWorkouts.PublishDate = DateTime.Now;
+
+            user.Points += 10;
+
+            return await _repository.AddResultWorkouts(resultWorkouts, user);
         }
 
         public async Task<bool> EditResultWorkouts(ResultWorkouts resultWorkouts, int id)

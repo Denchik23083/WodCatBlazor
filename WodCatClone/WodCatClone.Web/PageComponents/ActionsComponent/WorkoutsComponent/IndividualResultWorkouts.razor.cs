@@ -7,19 +7,18 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 {
     public partial class IndividualResultWorkouts
     {
-        [Parameter] public ResultWorkouts ResultWorkout { get; set; }
+        [Parameter] public ResultWorkouts ResultWorkout { get; set; } = new();
 
-        [Inject] public IUserService UserService { get; set; }
+        [Parameter] public User? User { get; set; } = new();
 
-        public User User { get; set; }
-        
-        public string Image { get; set; }
+        public string? Image { get; set; }
 
         protected override void OnInitialized()
         {
-            User = UserService.GetUser(ResultWorkout.UserId);
-
-            Image = UserService.GetGender(User.GenderId).Image;
+            if (User is not null)
+            {
+                Image = User?.Gender!.Image;
+            }
         }
     }
 }

@@ -22,7 +22,7 @@
             {
                 <tbody @onclick="IsDisplayDialog">
                     <tr class="displayDialog" @onclick="() => PostId(item.Id)">
-                        <IndividualResultWorkouts ResultWorkout="item"/>
+                        <IndividualResultWorkouts ResultWorkout="item" User="User" />
                     </tr>
                 </tbody>
             }
@@ -30,7 +30,7 @@
             {
                 <tbody>
                     <tr class="displayDialog">
-                        <IndividualResultWorkouts ResultWorkout="item"/>
+                        <IndividualResultWorkouts ResultWorkout="item" User="User" />
                     </tr>
                 </tbody>
             }

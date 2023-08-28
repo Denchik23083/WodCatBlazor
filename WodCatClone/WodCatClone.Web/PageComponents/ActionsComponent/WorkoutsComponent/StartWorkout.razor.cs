@@ -27,7 +27,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
         public void StartTimer()
         {
             IsShowStart = false;
-            Timer.Elapsed += CountDownTimer;
+            Timer.Elapsed += CountDownTimer!;
             Timer.Start();
         }
 

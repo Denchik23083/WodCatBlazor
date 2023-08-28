@@ -26,16 +26,11 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository.ResultWorkoutsR
             return _context.ResultWorkouts.FirstOrDefault(b => b.Id == id);
         }
 
-        public bool AddResultWorkouts(ResultWorkouts resultWorkouts, User user)
+        public async Task<bool> AddResultWorkouts(ResultWorkouts resultWorkouts, User user)
         {
-            resultWorkouts.UserId = user.Id;
-            resultWorkouts.PublishDate = DateTime.Now;
+            await _context.ResultWorkouts.AddAsync(resultWorkouts);
 
-            _context.ResultWorkouts.Add(resultWorkouts);
-
-            user.Points += 10;
-
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return true;
         }

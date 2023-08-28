@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
+using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.ActionsService.HallsService;
 using WodCatClone.Logic.ActionsService.WorkoutsService.ResultWorkoutsService;
 using WodCatClone.Logic.ActionsService.WorkoutsService.WorkoutsService;
@@ -12,37 +13,40 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
     {
         [Parameter] public int WorkoutId { get; set; }
 
-        [Inject] public IWorkoutsService WorkoutsService { get; set; }
+        [Inject] public IWorkoutsService WorkoutsService { get; set; } = null!;
 
-        [Inject] public IUserService UserService { get; set; }
+        [Inject] public IUserService UserService { get; set; } = null!;
 
-        [Inject] public IResultWorkoutsService ResultWorkoutsService { get; set; }
+        [Inject] public IResultWorkoutsService ResultWorkoutsService { get; set; } = null!;
 
-        [Inject] public IHallsService HallsService { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; } = null!;
 
-        [Inject] public NavigationManager NavigationManager { get; set; }
+        public Workouts? Workout { get; set; } = new();
 
-        public Workouts Workout { get; set; }
+        public IEnumerable<WorkoutsExercises> WorkoutsExercises { get; set; } = new List<WorkoutsExercises>();
 
-        public IEnumerable<WorkoutsExercises> WorkoutsExercises { get; set; }
+        public IEnumerable<ResultWorkouts> ResultWorkouts { get; set; } = new List<ResultWorkouts>();
 
-        public string Image { get; set; }
+        public string? Image { get; set; }
 
         public bool IsLoginUser { get; set; }
 
-        public Halls Hall { get; set; }
+        public User? User { get; set; } 
 
-        public EditDeleteResult EditDeleteResult { get; set; }
+        public Halls? Hall { get; set; } = new();
 
-        public GetAllResultWorkouts GetAllResultWorkouts { get; set; }
+        public EditDeleteResult EditDeleteResult { get; set; } = new();
 
-        public StartWorkout StartWorkout { get; set; }
+        public GetAllResultWorkouts GetAllResultWorkouts { get; set; } = new();
+
+        public StartWorkout StartWorkout { get; set; } = new();
 
         public int ResultWorkoutId { get; set; }
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
-            Workout = WorkoutsService.GetWorkout(WorkoutId);
+            Workout = await WorkoutsService.GetWorkout(WorkoutId);
+
             if (Workout is null)
             {
                 NavigationManager.NavigateTo("/workouts");
@@ -50,12 +54,16 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
             else
             {
                 IsLoginUser = UserService.IsLoginUser();
-                Hall = HallsService.GetHall(Workout.HallId);
+                User = UserService.GetUser();
+
+                Hall = Workout.Halls!;
                 if (Hall is not null)
                 {
-                    Image = HallsService.GetImage(Hall.EmblemHallId);
+                    Image = Hall.EmblemHall!.Image;
                 }
-                WorkoutsExercises = WorkoutsService.GetAllWorkoutsExercises(WorkoutId);
+
+                WorkoutsExercises = Workout.WorkoutsExercises!;
+                ResultWorkouts = Workout.ResultWorkouts!;
             }
         }
 

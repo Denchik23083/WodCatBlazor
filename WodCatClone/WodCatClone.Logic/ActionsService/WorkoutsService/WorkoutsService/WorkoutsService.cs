@@ -27,9 +27,9 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService.WorkoutsService
             return _repository.GetAllWorkoutsExercises(id);
         }
 
-        public Workouts GetWorkout(int workoutId)
+        public async Task<Workouts?> GetWorkout(int workoutId)
         {
-            return _repository.GetWorkout(workoutId);
+            return await _repository.GetWorkout(workoutId);
         }
 
         public Workouts GetWorkout(int? workoutId)

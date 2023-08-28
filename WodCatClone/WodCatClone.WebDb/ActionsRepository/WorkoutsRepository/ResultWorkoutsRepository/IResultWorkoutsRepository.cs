@@ -9,7 +9,7 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository.ResultWorkoutsR
 
         ResultWorkouts GetResultWorkout(int id);
 
-        bool AddResultWorkouts(ResultWorkouts resultWorkouts, User user);
+        Task<bool> AddResultWorkouts(ResultWorkouts resultWorkouts, User user);
 
         bool EditResultWorkouts(ResultWorkouts resultWorkouts, ResultWorkouts resultWorkoutEdit, User user);
 

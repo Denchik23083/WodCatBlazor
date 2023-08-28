@@ -20,7 +20,7 @@ namespace WodCatClone.WebDb.CallBackRepository
 
         public async Task<Answer?> GetAnswer(int id)
         {
-            return await _context.Answer.FirstOrDefaultAsync(b => b!.Id == id);
+            return await _context.Answer.FirstOrDefaultAsync(b => b.Id == id);
         }
     }
 }

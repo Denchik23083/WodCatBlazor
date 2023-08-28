@@ -2,32 +2,32 @@
 
 <HeaderComponent />
 
-<StartWorkout 
+@*<StartWorkout 
     @ref="StartWorkout"
     Workout="Workout"
     WorkoutsExercises="WorkoutsExercises"
-    OnCancel="OnCancelEditStart"/>
+    OnCancel="OnCancelEditStart"/>*@
 
-<EditDeleteResult 
+@*<EditDeleteResult 
     @ref="EditDeleteResult"
     OnDelete="OnDelete"
     OnEdit="OnEdit"
     OnCancelEdit="OnCancelEdit"
-    OnCancel="OnCancel"/>
+    OnCancel="OnCancel"/>*@
 
 <div class="wrapperId">
     <div class="row mb-2">
         <div class="col text-left text-light pages">
             <a href="/" class="link">WODCAT</a>&nbsp;&rarr;&nbsp;
             <a href="/workouts" class="link">КросcФит Тренировки (WOD)</a>&nbsp;&rarr;&nbsp;
-            @Workout.Name
+            @Workout!.Name
         </div>
     </div>
     <div class="row mb-2">
         <div class="col">
-            <span class="NameId">@Workout.Name</span>
-            <span class="cub">@Workout.Modality</span>
-            <span class="greenCub">@Workout.Rating / 10</span>
+            <span class="NameId">@Workout!.Name</span>
+            <span class="cub">@Workout!.Modality</span>
+            <span class="greenCub">@Workout!.Rating / 10</span>
             <span class="greenCub">Рекомендуется</span>
         </div>
     </div>
@@ -44,7 +44,7 @@
                                 Color="#bdc1c6;"/>
                         </span><br/>
                         <span class="workoutsTimeId">
-                            Время @Workout.Time
+                            Время @Workout!.Time
                         </span>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
                     <div class="col text-center">
                         @if (Image is not null)
                         {
-                            <a href="/gymboxs/@Hall.Id">
+                            <a href="/gymboxs/@Hall!.Id">
                                 <img src="@Image" width="100" height="100"/>
                             </a>
                         }
@@ -91,7 +91,8 @@
     <div class="row p-3 mb-2">
         <div class="col pl-0">
             <GetAllResultWorkouts @ref="GetAllResultWorkouts"
-                WorkoutId="WorkoutId" 
+                User="User"
+                ResultWorkouts="ResultWorkouts"
                 IsDisplayDialog="IsDisplayDialog"/>
         </div>
     </div>
