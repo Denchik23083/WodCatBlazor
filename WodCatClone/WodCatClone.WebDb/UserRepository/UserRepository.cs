@@ -33,10 +33,16 @@ namespace WodCatClone.WebDb.UserRepository
             return await _context.Gender.ToListAsync();
         }
 
-        public User GetUser(int? id)
+        public User? GetUser(int id)
         {
             return _context.Users
                 .Include(_ => _.Gender)
+                .Include(_ => _.Halls)
+                .ThenInclude(_ => _!.EmblemHall)
+                .Include(_ => _.Programs)
+                .ThenInclude(_ => _!.ProgramEmblem)
+                .Include(_ => _.Events)
+                .ThenInclude(_ => _!.EventEmblem)
                 .FirstOrDefault(b => b.Id == id);
         }
 

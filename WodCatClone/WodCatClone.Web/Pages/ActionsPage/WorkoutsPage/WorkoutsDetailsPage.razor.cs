@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
-using WodCatClone.Logic.ActionsService.HallsService;
 using WodCatClone.Logic.ActionsService.WorkoutsService.ResultWorkoutsService;
 using WodCatClone.Logic.ActionsService.WorkoutsService.WorkoutsService;
 using WodCatClone.Logic.UserService;
@@ -20,6 +20,8 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
         [Inject] public IResultWorkoutsService ResultWorkoutsService { get; set; } = null!;
 
         [Inject] public NavigationManager NavigationManager { get; set; } = null!;
+
+        [Inject] public IMapper Mapper { get; set; } = null!;
 
         public Workouts? Workout { get; set; } = new();
 
@@ -83,31 +85,34 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
 
         public void Start() => StartWorkout.Show();
 
-        public void OnDelete()
-        {
-            var id = GetAllResultWorkouts.ResultWorkoutId;
-
-            var result = ResultWorkoutsService.DeleteResultWorkouts(id);
-
-            if (result)
-            {
-                EditDeleteResult.Hide();
-                
-                NavigationManager.NavigateTo($"/workouts/{WorkoutId}", true);
-            }
-        }
-
         public async Task OnEdit()
         {
             var id = GetAllResultWorkouts.ResultWorkoutId;
 
             EditDeleteResult.FillData();
+
             var resultWorkout = EditDeleteResult.EditResultWorkout;
 
-            var result = await ResultWorkoutsService.EditResultWorkouts(resultWorkout, id);
+            var mappedResultWorkouts = Mapper.Map<ResultWorkouts>(resultWorkout);
+
+            var result = await ResultWorkoutsService.EditResultWorkouts(mappedResultWorkouts, id);
 
             if (result)
             {
+                NavigationManager.NavigateTo($"/workouts/{WorkoutId}", true);
+            }
+        }
+
+        public async Task OnDelete()
+        {
+            var id = GetAllResultWorkouts.ResultWorkoutId;
+
+            var result = await ResultWorkoutsService.DeleteResultWorkouts(id);
+
+            if (result)
+            {
+                EditDeleteResult.Hide();
+                
                 NavigationManager.NavigateTo($"/workouts/{WorkoutId}", true);
             }
         }

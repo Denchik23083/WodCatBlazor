@@ -14,19 +14,12 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository.ResultWorkoutsR
             _context = context;
         }
 
-        public async Task<IEnumerable<ResultWorkouts>> GetAllResultWorkouts(int id)
+        public async Task<ResultWorkouts?> GetResultWorkout(int id)
         {
-            return await _context.ResultWorkouts
-                .Where(b => b.WorkoutId == id)
-                .ToListAsync();
+            return await _context.ResultWorkouts.FirstOrDefaultAsync(b => b.Id == id);
         }
 
-        public ResultWorkouts GetResultWorkout(int id)
-        {
-            return _context.ResultWorkouts.FirstOrDefault(b => b.Id == id);
-        }
-
-        public async Task<bool> AddResultWorkouts(ResultWorkouts resultWorkouts, User user)
+        public async Task<bool> AddResultWorkouts(ResultWorkouts resultWorkouts, User loginUser)
         {
             await _context.ResultWorkouts.AddAsync(resultWorkouts);
 
@@ -35,26 +28,17 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository.ResultWorkoutsR
             return true;
         }
 
-        public bool EditResultWorkouts(ResultWorkouts resultWorkouts, ResultWorkouts resultWorkoutEdit, User user)
+        public async Task<bool> EditResultWorkouts(ResultWorkouts resultWorkoutEdit, User loginUser)
         {
-            resultWorkoutEdit.Comment = resultWorkouts.Comment;
-            resultWorkoutEdit.Fascination = resultWorkouts.Fascination;
-            resultWorkoutEdit.Load = resultWorkouts.Load;
-            resultWorkoutEdit.Time = resultWorkouts.Time;
-            resultWorkoutEdit.Repeat = resultWorkouts.Repeat;
-            resultWorkoutEdit.PublishDate = resultWorkouts.PublishDate;
-
-            user.Points += 5;
-
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return true;
         }
 
-        public bool DeleteResultWorkouts(ResultWorkouts resultWorkoutRemove)
+        public async Task<bool> DeleteResultWorkouts(ResultWorkouts resultWorkoutRemove)
         {
             _context.ResultWorkouts.Remove(resultWorkoutRemove);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return true;
         }

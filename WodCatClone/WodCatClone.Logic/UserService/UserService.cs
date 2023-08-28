@@ -32,7 +32,7 @@ namespace WodCatClone.Logic.UserService
             return AuthService.AuthService.User;
         }
 
-        public User GetUser(int? id)
+        public async Task<User?> GetUser(int id)
         {
             return _repository.GetUser(id);
         }

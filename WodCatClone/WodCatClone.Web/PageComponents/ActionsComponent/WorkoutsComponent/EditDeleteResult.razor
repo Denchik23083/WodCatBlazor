@@ -15,14 +15,14 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content EditDeleteContent">
                     <div class="modal-header" style="border: 0;">
-                        <h5 style="color: #bdc1c6;" class="modal-title">@User.Name&nbsp;@User.Surname</h5>
+                        <h5 style="color: #bdc1c6;" class="modal-title">@User!.Name&nbsp;@User.Surname</h5>
                         <button class="close" @onclick="OnCancel" type="button">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-footer" style="border: 0;">
-                        <button class="btn btn-danger" @onclick="OnDelete" type="button">Удалить</button>
                         <button class="btn btn-info" @onclick="() => DisplayEditResult = !DisplayEditResult" type="button">Редактировать</button>
+                        <button class="btn btn-danger" @onclick="OnDelete" type="button">Удалить</button>
                         <button class="btn btn-primary" @onclick="OnCancel" type="button">Отмена</button>
                     </div>
                 </div>
@@ -101,11 +101,6 @@
                                         id="repeat"
                                         type="number"
                                         min="0"/>
-                                    <InputDate
-                                        @bind-Value="EditResultWorkout.PublishDate"
-                                        class="formResult mb-2 mr-2"
-                                        id="publishDate"
-                                        type="date"/>
                                 </div>
                                 <div class="col-6">
                                     <div class="row">

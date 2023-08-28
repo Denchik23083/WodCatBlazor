@@ -6,14 +6,14 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 {
     public partial class StartWorkout
     {
-        [Parameter] public Workouts Workout { get; set; }
+        [Parameter] public Workouts Workout { get; set; } = new();
 
         [Parameter] public EventCallback OnCancel { get; set; }
 
-        [Parameter] public IEnumerable<WorkoutsExercises> WorkoutsExercises { get; set; }
+        [Parameter] public IEnumerable<WorkoutsExercises> WorkoutsExercises { get; set; } = new List<WorkoutsExercises>();
 
         public bool DisplayStartWorkout { get; set; }
-
+        
         public static readonly System.Timers.Timer Timer = new(1000);
 
         public bool IsShowStart = true;
@@ -31,7 +31,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
             Timer.Start();
         }
 
-        public void CountDownTimer(Object source, ElapsedEventArgs e)
+        public void CountDownTimer(object source, ElapsedEventArgs e)
         {
             if (Time < Workout.Time)
             {

@@ -8,30 +8,28 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService.ResultWorkoutsService
     public class ResultWorkoutsService : IResultWorkoutsService
     {
         private readonly IResultWorkoutsRepository _repository;
+        private readonly IUserRepository _userRepository;
 
-        public ResultWorkoutsService(IResultWorkoutsRepository repository)
+        public ResultWorkoutsService(IResultWorkoutsRepository repository, IUserRepository userRepository)
         {
             _repository = repository;
-        }
-
-        public async Task<IEnumerable<ResultWorkouts>> GetAllResultWorkouts(int id)
-        {
-            return await _repository.GetAllResultWorkouts(id);
+            _userRepository = userRepository;
         }
 
         public async Task<bool> AddResultWorkouts(ResultWorkouts resultWorkouts)
         {
             var user = AuthService.AuthService.User;
+            var loginUser = _userRepository.GetUser(user!.Id);
 
-            if (user is null)
+            if (loginUser is null)
             {
                 return false;
             }
 
-            resultWorkouts.UserId = user.Id;
+            resultWorkouts.UserId = loginUser.Id;
             resultWorkouts.PublishDate = DateTime.Now;
 
-            user.Points += 10;
+            loginUser.Points += 10;
 
             return await _repository.AddResultWorkouts(resultWorkouts, user);
         }
@@ -39,32 +37,41 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService.ResultWorkoutsService
         public async Task<bool> EditResultWorkouts(ResultWorkouts resultWorkouts, int id)
         {
             var user = AuthService.AuthService.User;
+            var loginUser = _userRepository.GetUser(user!.Id);
 
-            if (user is null)
+            if (loginUser is null)
             {
                 return false;
             }
 
-            var resultWorkoutEdit = _repository.GetResultWorkout(id);
+            var resultWorkoutEdit = await _repository.GetResultWorkout(id);
 
             if (resultWorkoutEdit is null)
             {
                 return false;
             }
 
-            return _repository.EditResultWorkouts(resultWorkouts, resultWorkoutEdit, user);
+            resultWorkoutEdit.Comment = resultWorkouts.Comment;
+            resultWorkoutEdit.Fascination = resultWorkouts.Fascination;
+            resultWorkoutEdit.Load = resultWorkouts.Load;
+            resultWorkoutEdit.Time = resultWorkouts.Time;
+            resultWorkoutEdit.Repeat = resultWorkouts.Repeat;
+
+            loginUser.Points += 5;
+
+            return await _repository.EditResultWorkouts(resultWorkoutEdit, loginUser);
         }
 
-        public bool DeleteResultWorkouts(int id)
+        public async Task<bool> DeleteResultWorkouts(int id)
         {
-            var resultWorkoutRemove = _repository.GetResultWorkout(id);
+            var resultWorkoutRemove = await _repository.GetResultWorkout(id);
 
             if (resultWorkoutRemove is null)
             {
                 return false;
             }
 
-            return _repository.DeleteResultWorkouts(resultWorkoutRemove);
+            return await _repository.DeleteResultWorkouts(resultWorkoutRemove);
         }
     }
 }

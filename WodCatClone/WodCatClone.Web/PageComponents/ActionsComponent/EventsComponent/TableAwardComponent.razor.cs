@@ -17,19 +17,22 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         [Inject] public IUserService UserService { get; set; }
 
-        public string GenderImage { get; set; }
+        public string? GenderImage { get; set; }
 
-        public string Time { get; set; }
+        public string? Time { get; set; }
 
-        public User User { get; set; }
+        public User? User { get; set; } = new();
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
-            User = UserService.GetUser(EventTimeUser.UserId);
+            User = await UserService.GetUser(EventTimeUser.UserId);
 
             Time = EventTimeUser.Time.ToString("g");
-            
-            GenderImage = UserService.GetGender(User.GenderId).Image;
+
+            if (User is not null)
+            {
+                GenderImage = User.Gender!.Image!;
+            }
         }
     }
 }

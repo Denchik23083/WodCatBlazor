@@ -5,14 +5,12 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository.ResultWorkoutsR
 {
     public interface IResultWorkoutsRepository
     {
-        Task<IEnumerable<ResultWorkouts>> GetAllResultWorkouts(int id);
+        Task<ResultWorkouts?> GetResultWorkout(int id);
 
-        ResultWorkouts GetResultWorkout(int id);
+        Task<bool> AddResultWorkouts(ResultWorkouts resultWorkouts, User loginUser);
 
-        Task<bool> AddResultWorkouts(ResultWorkouts resultWorkouts, User user);
+        Task<bool> EditResultWorkouts(ResultWorkouts resultWorkoutEdit, User loginUser);
 
-        bool EditResultWorkouts(ResultWorkouts resultWorkouts, ResultWorkouts resultWorkoutEdit, User user);
-
-        bool DeleteResultWorkouts(ResultWorkouts resultWorkoutRemove);
+        Task<bool> DeleteResultWorkouts(ResultWorkouts resultWorkoutRemove);
     }
 }

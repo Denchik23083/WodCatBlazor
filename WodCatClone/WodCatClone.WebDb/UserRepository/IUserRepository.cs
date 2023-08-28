@@ -8,7 +8,7 @@ namespace WodCatClone.WebDb.UserRepository
 
         Task<IEnumerable<Gender>> GetGenders();
         
-        User GetUser(int? id);
+        User? GetUser(int id);
 
         Task<User?> GetUser(string nickName);
 
