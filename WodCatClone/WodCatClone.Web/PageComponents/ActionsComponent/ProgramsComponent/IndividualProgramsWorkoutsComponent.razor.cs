@@ -15,9 +15,9 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
 
         public Workouts Workout { get; set; }
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
-            Workout = WorkoutsService.GetWorkout(ProgramsWorkouts.WorkoutsId);
+            Workout = await WorkoutsService.GetWorkout(ProgramsWorkouts.WorkoutsId);
             WorkoutsExercises = WorkoutsService.GetAllWorkoutsExercises(ProgramsWorkouts.WorkoutsId);
         }
     }

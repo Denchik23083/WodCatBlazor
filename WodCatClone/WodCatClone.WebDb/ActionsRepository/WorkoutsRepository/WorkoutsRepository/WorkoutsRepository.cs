@@ -34,9 +34,15 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository.WorkoutsReposit
             return _context.WorkoutsExercises.Where(b => b.WorkoutsId == id);
         }
 
-        public Workouts GetWorkout(int workoutId)
+        public async Task<Workouts?> GetWorkout(int workoutId)
         {
-            return _context.Workouts.FirstOrDefault(x => x.Id == workoutId);
+            return await _context.Workouts
+                .Include(_ => _.Halls)
+                .ThenInclude(_ => _!.EmblemHall)
+                .Include(_ => _.ResultWorkouts)
+                .Include(_ => _.WorkoutsExercises)!
+                .ThenInclude(_ => _.Exercises)
+                .FirstOrDefaultAsync(_ => _.Id == workoutId);
         }
 
         public Workouts GetWorkout(int? workoutId)

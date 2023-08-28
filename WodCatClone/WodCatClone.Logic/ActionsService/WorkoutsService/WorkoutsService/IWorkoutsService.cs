@@ -10,7 +10,7 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService.WorkoutsService
 
         IEnumerable<WorkoutsExercises> GetAllWorkoutsExercises(int? id);
 
-        Workouts GetWorkout(int workoutId);
+        Task<Workouts?> GetWorkout(int workoutId);
 
         Workouts GetWorkout(int? workoutId);
     }

@@ -10,7 +10,7 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository.WorkoutsReposit
 
         IEnumerable<WorkoutsExercises> GetAllWorkoutsExercises(int? id);
 
-        Workouts GetWorkout(int workoutId);
+        Task<Workouts?> GetWorkout(int workoutId);
 
         Workouts GetWorkout(int? workoutId);
     }

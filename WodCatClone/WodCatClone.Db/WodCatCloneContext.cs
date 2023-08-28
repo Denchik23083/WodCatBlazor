@@ -45,7 +45,7 @@ namespace WodCatClone.Db
 
         public DbSet<Question> Question { get; set; } = null!;
 
-        public DbSet<Answer?> Answer { get; set; } = null!;
+        public DbSet<Answer> Answer { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

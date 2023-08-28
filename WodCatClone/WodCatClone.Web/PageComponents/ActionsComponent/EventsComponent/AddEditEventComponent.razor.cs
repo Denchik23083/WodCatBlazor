@@ -198,7 +198,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             }
         }
 
-        public void SelectedWorkoutImage(ChangeEventArgs e)
+        public async Task SelectedWorkoutImage(ChangeEventArgs e)
         {
             var selected = e.Value?.ToString();
 
@@ -206,7 +206,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             {
                 var id = int.Parse(e.Value!.ToString()!);
 
-                var workout = WorkoutsService.GetWorkout(id);
+                var workout = await WorkoutsService.GetWorkout(id);
 
                 if (workout is not null)
                 {

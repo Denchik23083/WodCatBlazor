@@ -1,9 +1,6 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
-using WodCatClone.Logic.ActionsService.WorkoutsService.ResultWorkoutsService;
-using WodCatClone.Logic.UserService;
 
 namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 {
@@ -13,21 +10,11 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         [Parameter] public EventCallback IsDisplayDialog { get; set; }
 
-        [Inject] public IResultWorkoutsService ResultWorkoutsService { get; set; }
+        [Parameter] public User? User { get; set; } = new();
 
-        [Inject] public IUserService UserService { get; set; }
+        [Parameter] public IEnumerable<ResultWorkouts> ResultWorkouts { get; set; } = new List<ResultWorkouts>();
         
         public int ResultWorkoutId { get; set; }
-        
-        public IEnumerable<ResultWorkouts> ResultWorkouts { get; set; }
-
-        public User? User { get; set; } = new();
-
-        protected override async Task OnInitializedAsync()
-        {
-            ResultWorkouts = await ResultWorkoutsService.GetAllResultWorkouts(WorkoutId);
-            User = UserService.GetUser();
-        }
 
         public void PostId(int itemId)
         {

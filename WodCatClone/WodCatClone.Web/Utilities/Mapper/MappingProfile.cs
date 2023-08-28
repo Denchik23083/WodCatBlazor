@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Web.Models;
 
@@ -15,6 +16,8 @@ namespace WodCatClone.Web.Utilities.Mapper
 
             CreateMap<UserModel, User>();
             CreateMap<User, UserModel>();
+
+            CreateMap<ResultWorkoutsModel, ResultWorkouts>();
         }
     }
 }

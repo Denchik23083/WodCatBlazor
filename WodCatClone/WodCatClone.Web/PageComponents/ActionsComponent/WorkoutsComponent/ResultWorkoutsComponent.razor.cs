@@ -1,7 +1,8 @@
-﻿using System;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.WorkoutsService.ResultWorkoutsService;
+using WodCatClone.Web.Models;
 
 namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 {
@@ -9,19 +10,23 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
     {
         [Parameter] public int WorkoutId { get; set; }
 
-        [Inject] public IResultWorkoutsService ResultWorkoutsService { get; set; }
+        [Inject] public IResultWorkoutsService ResultWorkoutsService { get; set; } = null!;
 
-        [Inject] public NavigationManager NavigationManager { get; set; }
+        [Inject] public IMapper Mapper { get; set; } = null!;
+
+        [Inject] public NavigationManager NavigationManager { get; set; } = null!;
 
         public DateTime Time { get; set; }
 
-        public ResultWorkouts ResultWorkouts = new();
+        public ResultWorkoutsModel ResultWorkouts = new();
 
         public async Task Result()
         {
             FillData();
 
-            var result = await ResultWorkoutsService.AddResultWorkouts(ResultWorkouts);
+            var mappedResultWorkouts = Mapper.Map<ResultWorkouts>(ResultWorkouts);
+
+            var result = await ResultWorkoutsService.AddResultWorkouts(mappedResultWorkouts);
 
             if (result)
             {
@@ -37,33 +42,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
         public int ResultFascination { get; set; }
 
         public int ResultLoad { get; set; }
-
-        public void ResetAll()
-        {
-            ResetFascinationLoadStars();
-
-            ResultWorkouts.Fascination = 0;
-            ResultWorkouts.Load = 0;
-            ResultWorkouts.Repeat = 0;
-            ResultWorkouts.PublishDate = new DateTime();
-            ResultWorkouts.Comment = string.Empty;
-            Time = new DateTime();
-        }
-
-        public void ResetFascinationLoadStars()
-        {
-            _oneFascination = false;
-            _twoFascination = false;
-            _threeFascination = false;
-            _fourFascination = false;
-            _fiveFascination = false;
-            _oneLoad = false;
-            _twoLoad = false;
-            _threeLoad = false;
-            _fourLoad = false;
-            _fiveLoad = false;
-        }
-
+        
         public void FillData()
         {
             ResultFascinationStars();
@@ -96,6 +75,32 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
             else if (_fourLoad) ResultLoad = 4;
             else if (_fiveLoad) ResultLoad = 5;
             else ResultLoad = 0;
+        }
+
+        public void ResetAll()
+        {
+            ResetFascinationLoadStars();
+
+            ResultWorkouts.Fascination = 0;
+            ResultWorkouts.Load = 0;
+            ResultWorkouts.Repeat = 0;
+            ResultWorkouts.PublishDate = new DateTime();
+            ResultWorkouts.Comment = string.Empty;
+            Time = new DateTime();
+        }
+
+        public void ResetFascinationLoadStars()
+        {
+            _oneFascination = false;
+            _twoFascination = false;
+            _threeFascination = false;
+            _fourFascination = false;
+            _fiveFascination = false;
+            _oneLoad = false;
+            _twoLoad = false;
+            _threeLoad = false;
+            _fourLoad = false;
+            _fiveLoad = false;
         }
     }
 }
