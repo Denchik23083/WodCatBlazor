@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
+using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.ActionsService.EventsService;
 using WodCatClone.Logic.UserService;
 
@@ -13,12 +14,15 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
 
         [Inject] public NavigationManager NavigationManager { get; set; } = null!;
 
+        public User? User { get; set; } = new();
+
         public IEnumerable<Events> Events { get; set; } = new List<Events>();
 
         public bool IsLoginUser { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
+            User = UserService.GetUser();
             Events = await EventsService.GetAllEvents();
             IsLoginUser = UserService.IsLoginUser();
         }

@@ -33,7 +33,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
 
         public bool IsLoginUser { get; set; }
 
-        public User? User { get; set; } 
+        public User? User { get; set; } = new();
 
         public Halls? Hall { get; set; } = new();
 
@@ -47,6 +47,8 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
 
         protected override async Task OnInitializedAsync()
         {
+            User = UserService.GetUser();
+
             Workout = await WorkoutsService.GetWorkout(WorkoutId);
 
             if (Workout is null)
@@ -56,7 +58,6 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
             else
             {
                 IsLoginUser = UserService.IsLoginUser();
-                User = UserService.GetUser();
 
                 Hall = Workout.Halls!;
                 if (Hall is not null)

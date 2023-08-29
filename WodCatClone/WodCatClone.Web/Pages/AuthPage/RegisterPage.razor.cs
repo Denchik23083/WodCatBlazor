@@ -10,7 +10,7 @@ namespace WodCatClone.Web.Pages.AuthPage
 {
     public partial class RegisterPage
     {
-        [Inject] private IAuthService AuthService { get; set; } = null!;
+        [Inject] public IAuthService AuthService { get; set; } = null!;
 
         [Inject] public IUserService UserService { get; set; } = null!;
 
@@ -21,6 +21,8 @@ namespace WodCatClone.Web.Pages.AuthPage
         public IEnumerable<Gender> Genders { get; set; } = new List<Gender>();
 
         public RegisterModel RegisterModel = new();
+
+        public User? User { get; set; } = new();
 
         public List<AuthTown> Town = new()
         {
@@ -40,6 +42,7 @@ namespace WodCatClone.Web.Pages.AuthPage
         protected override async Task OnInitializedAsync()
         {
             Genders = await UserService.GetGenders();
+            User = UserService.GetUser();
         }
 
         public async Task Register()

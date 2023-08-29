@@ -3,9 +3,9 @@
     <div class="row">
         <div class="col">
             <div class="d-inline mr-2">
-                <img src="@User!.Gender!.Image" style="width: 22px; height: 22px;" />
+                <img src="@User?.Gender!.Image" style="width: 22px; height: 22px;"/>
                 <select class="d-inline fingerMoreProfile" @onchange="Route">
-                    <option selected value="">@User.NickName</option>
+                    <option selected value="">@User?.NickName</option>
                     @foreach (var item in SelectProfile)
                     {
                         <option value="@item.Link">@item.Content</option>
@@ -13,7 +13,7 @@
                 </select>
             </div>
             <div class="d-inline fingerMore mr-2">
-                <i class="fa-solid fa-coins" style="color: #9f9ea3;"></i> @User.Points
+                <i class="fa-solid fa-coins" style="color: #9f9ea3;"></i> @User?.Points
             </div>
             <select class="d-inline fingerMore mr-5" @onchange="Route">
                 <option selected value="">Еще...</option>

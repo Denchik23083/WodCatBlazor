@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
+using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.ActionsService.ArticlesService;
 using WodCatClone.Logic.UserService;
 
@@ -13,12 +14,15 @@ namespace WodCatClone.Web.Pages.ActionsPage.ArticlesPage
 
         [Inject] public IUserService UserService { get; set; } = null!;
 
+        public User? User { get; set; } = new();
+
         public IEnumerable<Articles> Articles { get; set; } = new List<Articles>();
 
         public bool IsLoginUser { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
+            User = UserService.GetUser();
             Articles = await ArticlesService.GetAllArticles();
             IsLoginUser = UserService.IsLoginUser();
         }

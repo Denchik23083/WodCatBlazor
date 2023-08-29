@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
+using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.ActionsService.HallsService;
 using WodCatClone.Logic.UserService;
 
@@ -13,12 +14,15 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 
         [Inject] public NavigationManager NavigationManager { get; set; } = null!;
 
+        public User? User { get; set; } = new();
+
         public IEnumerable<Halls> Halls { get; set; } = new List<Halls>();
 
         public bool IsLoginUser { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
+            User = UserService.GetUser();
             Halls = await HallsService.GetAllHalls();
             IsLoginUser = UserService.IsLoginUser();
         }

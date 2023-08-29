@@ -14,7 +14,7 @@ namespace WodCatClone.Web.PageComponents.HeaderComponent
 
         public bool IsLoginUser { get; set; }
 
-        public User? User { get; set; } = new() { Gender = new Gender {Image = ""} };
+        [Parameter] public User? User { get; set; } = new();
 
         protected override void OnInitialized()
         {
@@ -29,7 +29,6 @@ namespace WodCatClone.Web.PageComponents.HeaderComponent
         private void FillOverrideFunctions()
         {
             IsLoginUser = UserService.IsLoginUser();
-            User = UserService.GetUser();
         }
 
         public void Auth() => NavigationManager.NavigateTo("/login");

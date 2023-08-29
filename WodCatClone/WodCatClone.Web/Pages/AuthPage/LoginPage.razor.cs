@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.AuthService;
+using WodCatClone.Logic.UserService;
 using WodCatClone.Web.Models;
 
 namespace WodCatClone.Web.Pages.AuthPage
@@ -10,6 +11,8 @@ namespace WodCatClone.Web.Pages.AuthPage
     {
         [Inject] public IAuthService AuthService { get; set; } = null!;
 
+        [Inject] public IUserService UserService { get; set; } = null!;
+
         [Inject] public NavigationManager NavigationManager { get; set; } = null!;
 
         [Inject] public IMapper Mapper { get; set; } = null!;
@@ -17,6 +20,13 @@ namespace WodCatClone.Web.Pages.AuthPage
         public LoginModel LoginModel = new();
 
         public bool IsFallLogin { get; set; }
+
+        public User? User { get; set; } = new();
+
+        protected override void OnInitialized()
+        {
+            User = UserService.GetUser();
+        }
 
         public async Task Login()
         {

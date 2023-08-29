@@ -2,20 +2,17 @@
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.UserService;
 
-namespace WodCatClone.Web.Pages.ActionsPage.RatingsPage
+namespace WodCatClone.Web
 {
-    public partial class RatingsPage
+    public partial class App
     {
         [Inject] public IUserService UserService { get; set; } = null!;
 
         public User? User { get; set; } = new();
 
-        public IEnumerable<User> Users { get; set; } = new List<User>();
-
-        protected override async Task OnInitializedAsync()
+        protected override void OnInitialized()
         {
             User = UserService.GetUser();
-            Users = await UserService.GetAllUsers();
         }
     }
 }

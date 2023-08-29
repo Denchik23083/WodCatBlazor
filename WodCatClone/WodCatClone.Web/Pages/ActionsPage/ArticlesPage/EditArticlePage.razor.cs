@@ -18,9 +18,9 @@ namespace WodCatClone.Web.Pages.ActionsPage.ArticlesPage
 
         public bool IsLoginUser { get; set; }
 
-        public User User { get; set; }
-
         public Articles Article { get; set; }
+
+        public User? User { get; set; } = new();
 
         protected override async Task OnInitializedAsync()
         {

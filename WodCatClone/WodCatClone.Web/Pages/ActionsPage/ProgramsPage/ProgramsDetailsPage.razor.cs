@@ -19,8 +19,8 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
         public Programs Program { get; set; }
 
         public ProgramsWorkouts ProgramWorkout { get; set; }
-        
-        public User User { get; set; }
+
+        public User? User { get; set; } = new();
 
         public bool IsLoginUser { get; set; }
 

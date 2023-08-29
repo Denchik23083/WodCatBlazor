@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.UserService;
 
 namespace WodCatClone.Web.Pages.ActionsPage.ArticlesPage
@@ -7,12 +8,16 @@ namespace WodCatClone.Web.Pages.ActionsPage.ArticlesPage
     {
         [Inject] public NavigationManager NavigationManager { get; set; }
 
-        [Inject] public IUserService UserService { get; set; }
+        [Inject] public IUserService UserService { get; set; } = null!;
+
+        public User? User { get; set; } = new();
 
         public bool IsLoginUser { get; set; }
 
         protected override void OnInitialized()
         {
+            User = UserService.GetUser();
+
             IsLoginUser = UserService.IsLoginUser();
 
             if (!IsLoginUser)
