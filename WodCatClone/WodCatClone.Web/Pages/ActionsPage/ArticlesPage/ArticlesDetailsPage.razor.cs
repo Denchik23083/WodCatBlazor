@@ -21,12 +21,14 @@ namespace WodCatClone.Web.Pages.ActionsPage.ArticlesPage
 
         public string Image { get; set; }
 
-        public User User { get; set; }
+        public User? User { get; set; } = new();
 
         public ConfirmRemoveArticle ConfirmRemoveArticle { get; set; }
 
         protected override void OnInitialized()
         {
+            User = UserService.GetUser();
+
             Article = ArticlesService.GetArticle(ArticleId);
             if (Article is null)
             {
@@ -35,7 +37,6 @@ namespace WodCatClone.Web.Pages.ActionsPage.ArticlesPage
             else
             {
                 Image = ArticlesService.GetImage(Article.ArticleEmblemId);
-                User = UserService.GetUser();
             }
         }
 

@@ -35,7 +35,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 
         public bool DisplayUsers { get; set; }
 
-        public User User { get; set; } 
+        public User? User { get; set; } = new();
 
         public int Value = 0;
 
@@ -53,6 +53,8 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 
         private async Task FillOverrideFunctions()
         {
+            User = UserService.GetUser();
+
             Hall = HallsService.GetHall(HallId);
             if (Hall is null)
             {
@@ -69,7 +71,6 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
                     Type = Hall.Type.Split(",");
                 }
 
-                User = UserService.GetUser();
                 Users = HallsService.GetAllHallsUsers(HallId);
                 Athletes = HallsService.Athlete(Hall.Id);
             }

@@ -1,17 +1,24 @@
 ﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
+using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.ActionsService.WorkoutsService.WorkoutsService;
+using WodCatClone.Logic.UserService;
 
 namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
 {
     public partial class WorkoutsPage
     {
-        [Inject] private IWorkoutsService WorkoutsService { get; set; } = null!;
+        [Inject] public IWorkoutsService WorkoutsService { get; set; } = null!;
+
+        [Inject] public IUserService UserService { get; set; } = null!;
+
+        public User? User { get; set; } = new();
 
         public IEnumerable<Workouts> Workouts { get; set; } = new List<Workouts>();
 
         protected override async Task OnInitializedAsync()
         {
+            User = UserService.GetUser();
             Workouts = await WorkoutsService.GetAllWorkouts();
         }
     }

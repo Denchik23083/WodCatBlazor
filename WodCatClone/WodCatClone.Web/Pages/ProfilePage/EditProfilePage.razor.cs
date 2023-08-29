@@ -32,8 +32,8 @@ namespace WodCatClone.Web.Pages.ProfilePage
         {
             IsLoginUser = UserService.IsLoginUser();
 
-            User = await UserService.GetUser(NickName);
             UserEnter = UserService.GetUser();
+            User = await UserService.GetUser(NickName);
 
             Halls = await HallsService.GetAllHalls();
 

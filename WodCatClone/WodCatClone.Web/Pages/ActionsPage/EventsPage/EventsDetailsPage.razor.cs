@@ -37,7 +37,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
 
         public bool IsLoginUser { get; set; }
 
-        public User User { get; set; }
+        public User? User { get; set; } = new();
         
         protected override void OnInitialized()
         {
@@ -51,6 +51,8 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
 
         private void FillOverrideFunctions()
         {
+            User = UserService.GetUser();
+
             Event = EventsService.GetEvent(EventId);
             if (Event is null || Event.EndDate < DateTime.Now)
             {
@@ -60,7 +62,6 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
             {
                 Users = EventsService.GetAllEventsUsers(EventId);
                 Workout = WorkoutsService.GetWorkout(Event.WorkoutId);
-                User = UserService.GetUser();
                 EventTimeUsers = EventsService.GetAllEventTimeUsers(EventId);
                 IsLoginUser = UserService.IsLoginUser();
             }

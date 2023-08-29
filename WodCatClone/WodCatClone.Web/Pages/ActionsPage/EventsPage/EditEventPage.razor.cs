@@ -20,10 +20,12 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
 
         public Events Event { get; set; }
 
-        public User User { get; set; }
+        public User? User { get; set; } = new();
 
         protected override async Task OnInitializedAsync()
         {
+            User = UserService.GetUser();
+
             Event = EventsService.GetEvent(EventId);
             if (Event is null)
             {
@@ -32,7 +34,6 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
             else
             {
                 IsLoginUser = UserService.IsLoginUser();
-                User = UserService.GetUser();
 
                 if (!IsLoginUser)
                 {

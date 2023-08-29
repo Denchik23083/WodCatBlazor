@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.UserService;
 
 namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
@@ -11,8 +12,12 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 
         public bool IsLoginUser { get; set; }
 
+        public User? User { get; set; } = new();
+
         protected override void OnInitialized()
         {
+            User = UserService.GetUser();
+
             IsLoginUser = UserService.IsLoginUser();
 
             if (!IsLoginUser)
