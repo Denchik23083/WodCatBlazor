@@ -14,7 +14,7 @@
         <div class="col text-left text-light pages">
             <a href="/" class="link">WODCAT</a>&nbsp;&rarr;&nbsp;
             <a href="/articles" class="link">Статьи</a>&nbsp;&rarr;&nbsp;
-            @Article.Name
+            @Article!.Name
         </div>
         @if (User is not null)
         {
@@ -125,13 +125,14 @@
             </div>
         </div>
     }
+    <div class="row">
+        <div class="col">
+            <h2 class="NameId">Описание</h2>
+        </div>
+    </div>
+
     @if (Article.FullDescription is not null)
     {
-        <div class="row">
-            <div class="col">
-                <h2 class="NameId">Описание</h2>
-            </div>
-        </div>
         <div class="row">
             <div class="col">
                 <p class="full">@Article.FullDescription</p>

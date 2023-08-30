@@ -6,16 +6,14 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
     {
         Task<IEnumerable<Articles>> GetAllArticles();
 
-        IEnumerable<ArticleEmblem> GetAllArticleEmblem();
+        Task<IEnumerable<ArticleEmblem>> GetAllArticleEmblem();
 
-        Articles GetArticle(int id);
-
-        string GetImage(int? articleId);
+        Task<Articles?> GetArticle(int id);
 
         Task<bool> AddArticle(Articles article);
 
         Task<bool> EditArticle(Articles article, int id);
 
-        bool RemoveArticle(int id);
+        Task<bool> RemoveArticle(int id);
     }
 }

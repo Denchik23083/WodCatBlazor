@@ -18,6 +18,10 @@ namespace WodCatClone.Web.Utilities.Mapper
             CreateMap<User, UserModel>();
 
             CreateMap<ResultWorkoutsModel, ResultWorkouts>();
+            CreateMap<ResultWorkouts, ResultWorkoutsModel>();
+
+            CreateMap<ArticlesModel, Articles>();
+            CreateMap<Articles, ArticlesModel>();
         }
     }
 }

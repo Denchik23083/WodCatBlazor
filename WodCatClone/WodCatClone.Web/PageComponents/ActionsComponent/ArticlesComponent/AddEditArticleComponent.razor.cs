@@ -1,18 +1,21 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.ArticlesService;
-using WodCatClone.Logic.ActionsService.HallsService;
+using WodCatClone.Web.Models;
 using WodCatClone.Web.Utilities.Types;
 
 namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
 {
     public partial class AddEditArticleComponent
     {
-        [Inject] public IArticlesService ArticlesService { get; set; }
+        [Inject] public IArticlesService ArticlesService { get; set; } = null!;
 
-        [Inject] public NavigationManager NavigationManager { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; } = null!;
+
+        [Inject] public IMapper Mapper { get; set; } = null!;
+
+        [Parameter] public Articles? Article { get; set; } = new();
 
         [Parameter] public bool Edit { get; set; }
 
@@ -20,9 +23,9 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
 
         [Parameter] public int ArticleId { get; set; }
 
-        public IEnumerable<ArticleEmblem> ArticleEmblem { get; set; }
-
-        public Articles Article { get; set; }
+        [Parameter] public IEnumerable<ArticleEmblem> ArticleEmblem { get; set; } = new List<ArticleEmblem>();
+        
+        public ArticlesModel? UpdateArticle { get; set; } = new();
 
         public bool IsShow { get; set; } = false;
 
@@ -73,24 +76,39 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
 
         protected override void OnInitialized()
         {
+            FillOverrideFunctions();
+        }
+
+        protected override void OnParametersSet()
+        {
+            FillOverrideFunctions();
+        }
+
+        private void FillOverrideFunctions()
+        {
             if (ArticleId == 0)
             {
-                Article = new Articles();
+                UpdateArticle = new ArticlesModel();
             }
             else
             {
-                Article = ArticlesService.GetArticle(ArticleId);
-                SelectedType = Article.Type.Split(",").ToList();
-                foreach (var selectedType in SelectedType)
+                UpdateArticle = Mapper.Map<ArticlesModel>(Article);
+
+                if (UpdateArticle.Type is not null)
                 {
-                    var item = ArticleTypes.FirstOrDefault(b => b.Value.Equals(selectedType));
-                    ArticleTypes.Remove(item);
+                    SelectedType = UpdateArticle!.Type!.Split(",").ToList();
+                    foreach (var selectedType in SelectedType)
+                    {
+                        var item = ArticleTypes.FirstOrDefault(b => b.Value.Equals(selectedType));
+                        ArticleTypes.Remove(item!);
+                    }
                 }
 
-                Image = ArticlesService.GetImage(Article.ArticleEmblemId);
+                if (UpdateArticle.ArticleEmblem is not null)
+                {
+                    Image = UpdateArticle.ArticleEmblem!.Image!;
+                }
             }
-
-            ArticleEmblem = ArticlesService.GetAllArticleEmblem();
         }
 
         public async Task Submit()
@@ -102,13 +120,17 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
                 ConvertSelectedTypes();
                 if (Add)
                 {
-                    var result = await ArticlesService.AddArticle(Article);
+                    var mappedArticle = Mapper.Map<Articles>(UpdateArticle);
+                        
+                    var result = await ArticlesService.AddArticle(mappedArticle);
 
                     NavigationManager.NavigateTo(result ? "/articles" : "/articles/add");
                 }
                 if (Edit)
                 {
-                    var result = await ArticlesService.EditArticle(Article, ArticleId);
+                    var mappedArticle = Mapper.Map<Articles>(UpdateArticle);
+
+                    var result = await ArticlesService.EditArticle(mappedArticle, ArticleId);
 
                     NavigationManager.NavigateTo(result ? $"/articles/{ArticleId}" : $"/articles/{ArticleId}/edit");
                 }
@@ -136,7 +158,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
 
             var item = ArticleTypes.FirstOrDefault(b => b.Value.Equals(selected));
 
-            ArticleTypes.Remove(item);
+            ArticleTypes.Remove(item!);
         }
 
         public void RemoveSelectedType(string item)
@@ -152,12 +174,12 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
             {
                 if (Value == 0)
                 {
-                    Article.Type = $"{item}";
+                    UpdateArticle!.Type = $"{item}";
                     Value++;
                 }
                 else
                 {
-                    Article.Type += $",{item}";
+                    UpdateArticle!.Type += $",{item}";
                 }
             }
         }
@@ -166,11 +188,11 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
         {
             var selected = e.Value?.ToString();
 
-            Image = selected;
+            Image = selected!;
 
-            var articleEmblem = ArticleEmblem.FirstOrDefault(b => b.Image.Equals(selected));
+            var articleEmblem = ArticleEmblem.FirstOrDefault(b => b.Image!.Equals(selected));
 
-            Article.ArticleEmblemId = articleEmblem?.Id;
+            UpdateArticle!.ArticleEmblemId = articleEmblem?.Id;
         }
     }
 }

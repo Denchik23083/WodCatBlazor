@@ -30,7 +30,7 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService.ResultWorkoutsService
 
             loginUser.Points += 10;
 
-            return await _repository.AddResultWorkouts(resultWorkouts, user);
+            return await _repository.AddResultWorkouts(resultWorkouts, loginUser);
         }
 
         public async Task<bool> EditResultWorkouts(ResultWorkouts resultWorkouts, int id)

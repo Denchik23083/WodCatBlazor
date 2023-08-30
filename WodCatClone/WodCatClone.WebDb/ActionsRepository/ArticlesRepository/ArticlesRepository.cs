@@ -21,54 +21,37 @@ namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
                 .ToListAsync();
         }
 
-        public IEnumerable<ArticleEmblem> GetAllArticleEmblem()
+        public async Task<IEnumerable<ArticleEmblem>> GetAllArticleEmblem()
         {
-            return _context.ArticleEmblem;
+            return await _context.ArticleEmblem.ToListAsync();
         }
 
-        public Articles GetArticle(int id)
+        public async Task<Articles?> GetArticle(int id)
         {
-            return _context.Articles.FirstOrDefault(b => b.Id == id);
+            return await _context.Articles
+                .Include(_ => _.ArticleEmblem)
+                .FirstOrDefaultAsync(b => b.Id == id);
         }
 
-        public ArticleEmblem GetImage(int? articleId)
+        public async Task<bool> AddArticle(Articles article, User loginUser)
         {
-            return _context.ArticleEmblem.FirstOrDefault(b => b.Id == articleId);
-        }
-
-        public bool AddArticle(Articles article, User user)
-        {
-            article.UserId = user.Id;
-
-            _context.Articles.Add(article);
-
-            user.Points += 50;
-
-            _context.SaveChanges();
+            await _context.Articles.AddAsync(article);
+            await _context.SaveChangesAsync();
 
             return true;
         }
 
-        public bool EditArticle(Articles article, Articles articleToEdit, User user)
+        public async Task<bool> EditArticle(Articles article, User loginUser)
         {
-            articleToEdit.Name = article.Name;
-            articleToEdit.Type = article.Type;
-            articleToEdit.ArticleEmblemId = article.ArticleEmblemId;
-            articleToEdit.Rating = article.Rating;
-            articleToEdit.Description = article.Description;
-            articleToEdit.FullDescription = article.FullDescription;
-
-            user.Points += 25;
-
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return true;
         }
 
-        public bool RemoveArticle(Articles articleToRemove)
+        public async Task<bool> RemoveArticle(Articles articleToRemove)
         {
             _context.Articles.Remove(articleToRemove);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return true;
         }

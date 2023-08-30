@@ -11,39 +11,39 @@ namespace WodCatClone.Web.Pages.ActionsPage.ArticlesPage
     {
         [Parameter] public int ArticleId { get; set; }
 
-        [Inject] public IArticlesService ArticlesService { get; set; }
+        [Inject] public IArticlesService ArticlesService { get; set; } = null!;
 
-        [Inject] public IUserService UserService { get; set; }
+        [Inject] public IUserService UserService { get; set; } = null!;
 
-        [Inject] public NavigationManager NavigationManager { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; } = null!;
 
-        public Articles Article { get; set; }
+        public Articles? Article { get; set; } = new();
 
-        public string Image { get; set; }
+        public string? Image { get; set; }
 
         public User? User { get; set; } = new();
 
-        public ConfirmRemoveArticle ConfirmRemoveArticle { get; set; }
+        public ConfirmRemoveArticle? ConfirmRemoveArticle { get; set; } = new();
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
             User = UserService.GetUser();
 
-            Article = ArticlesService.GetArticle(ArticleId);
+            Article = await ArticlesService.GetArticle(ArticleId);
             if (Article is null)
             {
                 NavigationManager.NavigateTo("/articles");
             }
             else
             {
-                Image = ArticlesService.GetImage(Article.ArticleEmblemId);
+                Image = Article.ArticleEmblem!.Image;
             }
         }
 
         public void Edit() => NavigationManager.NavigateTo($"/articles/{ArticleId}/edit");
 
-        public void OnShow() => ConfirmRemoveArticle.Show();
+        public void OnShow() => ConfirmRemoveArticle!.Show();
 
-        public void OnCancel() => ConfirmRemoveArticle.Hide();
+        public void OnCancel() => ConfirmRemoveArticle!.Hide();
     }
 }

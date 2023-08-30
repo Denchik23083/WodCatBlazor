@@ -7,16 +7,14 @@ namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
     {
         Task<IEnumerable<Articles>> GetAllArticles();
 
-        IEnumerable<ArticleEmblem> GetAllArticleEmblem();
+        Task<IEnumerable<ArticleEmblem>> GetAllArticleEmblem();
 
-        Articles GetArticle(int id);
+        Task<Articles?> GetArticle(int id);
 
-        ArticleEmblem GetImage(int? articleId);
+        Task<bool> AddArticle(Articles article, User loginUser);
 
-        bool AddArticle(Articles article, User user);
+        Task<bool> EditArticle(Articles article, User loginUser);
 
-        bool EditArticle(Articles article, Articles articleToEdit, User user);
-
-        bool RemoveArticle(Articles articleToRemove);
+        Task<bool> RemoveArticle(Articles articleToRemove);
     }
 }
