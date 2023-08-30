@@ -24,9 +24,9 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
 
         public void Hide() => DisplayRemoveHall = false;
 
-        public void Remove()
+        public async Task Remove()
         {
-            var result = HallsService.RemoveHall(HallId);
+            var result = await HallsService.RemoveHall(HallId);
 
             NavigationManager.NavigateTo(result ? "/gymboxs" : $"/gymboxs/{HallId}");
         }

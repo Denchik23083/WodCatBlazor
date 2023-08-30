@@ -175,7 +175,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             if (eventEmblem is not null) Event.EventsEmblemId = eventEmblem.Id;
         }
 
-        public void SelectedHallImage(ChangeEventArgs e)
+        public async Task SelectedHallImage(ChangeEventArgs e)
         {
             var selected = e.Value?.ToString();
             
@@ -183,7 +183,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             {
                 var id = int.Parse(e.Value!.ToString()!);
 
-                var hall = HallsService.GetHall(id);
+                var hall = await HallsService.GetHall(id);
                 var eventHallEmblem = HallEmblem.FirstOrDefault(b => b.Id == hall.EmblemHallId);
 
                 if (eventHallEmblem is not null)

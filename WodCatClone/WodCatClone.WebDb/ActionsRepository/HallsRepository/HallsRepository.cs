@@ -18,7 +18,8 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
         {
             return await _context.Halls
                 .Include(_ => _.EmblemHall)
-                .Include(_ => _.Users)
+                .Include(_ => _.Users)!
+                .ThenInclude(_ => _.Gender)
                 .ToListAsync();
         }
 
@@ -27,14 +28,13 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
             return _context.HallEmblem;
         }
 
-        public IEnumerable<User> GetAllHallsUsers(int id)
+        public async Task<Halls?> GetHall(int hallId)
         {
-            return _context.Users.Where(b => b.HallId == id);
-        }
-
-        public Halls GetHall(int hallId)
-        {
-            return _context.Halls.FirstOrDefault(b => b.Id == hallId);
+            return await _context.Halls
+                .Include(_ => _.EmblemHall)
+                .Include(_ => _.Users)!
+                .ThenInclude(_ => _.Gender)
+                .FirstOrDefaultAsync(b => b.Id == hallId);
         }
 
         public Halls GetHall(int? userHallId)
@@ -77,40 +77,31 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
             return true;
         }
 
-        public bool RemoveHall(IEnumerable<User> joinUserHall, Halls hallToRemove)
+        public bool RemoveHall(Halls hallToRemove)
         {
-            foreach (var user in joinUserHall)
-            {
-                user.HallId = null;
-            }
-
             _context.Halls.Remove(hallToRemove);
             _context.SaveChanges();
 
             return true;
         }
 
-        public bool JoinHall(int hallId, User loginUser)
+        public async Task<bool> JoinHall(int hallId, User loginUser)
         {
-            loginUser.HallId = hallId;
-
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return true;
         }
 
-        public bool ExitHall(int hallId, User loginUser)
+        public async Task<bool> ExitHall(int hallId, User loginUser)
         {
-            loginUser.HallId = null;
-
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return true;
         }
 
-        public int Athlete(int hallId)
+        public async Task<int> Athlete(int hallId)
         {
-            return _context.Users.Count(b => b.HallId == hallId);
+            return await _context.Users.CountAsync(b => b.HallId == hallId);
         }
     }
 }

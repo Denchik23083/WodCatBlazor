@@ -26,14 +26,9 @@ namespace WodCatClone.Logic.ActionsService.HallsService
             return _repository.GetAllHallEmblem();
         }
 
-        public IEnumerable<User> GetAllHallsUsers(int id)
+        public async Task<Halls?> GetHall(int hallId)
         {
-            return _repository.GetAllHallsUsers(id);
-        }
-
-        public Halls GetHall(int hallId)
-        {
-            return _repository.GetHall(hallId);
+            return await _repository.GetHall(hallId);
         }
 
         public Halls GetHall(int? hallId)
@@ -67,7 +62,7 @@ namespace WodCatClone.Logic.ActionsService.HallsService
                 return false;
             }
 
-            var hallToEdit = _repository.GetHall(hallId);
+            var hallToEdit = await _repository.GetHall(hallId);
 
             if (hallToEdit is null)
             {
@@ -77,21 +72,19 @@ namespace WodCatClone.Logic.ActionsService.HallsService
             return _repository.EditHall(hall, hallToEdit, user);
         }
 
-        public bool RemoveHall(int hallId)
+        public async Task<bool> RemoveHall(int hallId)
         {
-            var joinUserHall = _repository.GetAllHallsUsers(hallId);
-
-            var hallToRemove = _repository.GetHall(hallId);
+            var hallToRemove = await _repository.GetHall(hallId);
 
             if (hallToRemove is null)
             {
                 return false;
             }
 
-            return _repository.RemoveHall(joinUserHall, hallToRemove);
+            return _repository.RemoveHall(hallToRemove);
         }
 
-        public bool JoinHall(int hallId, User user)
+        public async Task<bool> JoinHall(int hallId, User user)
         {
             var loginUser = _userRepository.GetUser(user.Id);
 
@@ -100,10 +93,12 @@ namespace WodCatClone.Logic.ActionsService.HallsService
                 return false;
             }
 
-            return _repository.JoinHall(hallId, loginUser);
+            loginUser.HallId = hallId;
+
+            return await _repository.JoinHall(hallId, loginUser);
         }
 
-        public bool ExitHall(int hallId, User user)
+        public async Task<bool> ExitHall(int hallId, User user)
         {
             var loginUser = _userRepository.GetUser(user.Id);
 
@@ -112,12 +107,14 @@ namespace WodCatClone.Logic.ActionsService.HallsService
                 return false;
             }
 
-            return _repository.ExitHall(hallId, user);
+            loginUser.HallId = null;
+
+            return await _repository.ExitHall(hallId, user);
         }
 
-        public int Athlete(int hallId)
+        public async Task<int> Athlete(int hallId)
         {
-            return _repository.Athlete(hallId);
+            return await _repository.Athlete(hallId);
         }
     }
 }
