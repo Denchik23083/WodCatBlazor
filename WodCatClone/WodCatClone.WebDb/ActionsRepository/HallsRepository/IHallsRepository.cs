@@ -9,9 +9,7 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
 
         IEnumerable<HallEmblem> GetAllHallEmblem();
 
-        IEnumerable<User> GetAllHallsUsers(int id);
-
-        Halls GetHall(int hallId);
+        Task<Halls?> GetHall(int hallId);
 
         Halls GetHall(int? userHallId);
 
@@ -21,12 +19,12 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
 
         bool EditHall(Halls hall, Halls hallToEdit, User user);
 
-        bool RemoveHall(IEnumerable<User> joinUserHall, Halls hallToRemove);
+        bool RemoveHall(Halls hallToRemove);
 
-        bool JoinHall(int hallId, User user);
+        Task<bool> JoinHall(int hallId, User user);
 
-        bool ExitHall(int hallId, User user);
+        Task<bool> ExitHall(int hallId, User user);
 
-        int Athlete(int hallId);
+        Task<int> Athlete(int hallId);
     }
 }

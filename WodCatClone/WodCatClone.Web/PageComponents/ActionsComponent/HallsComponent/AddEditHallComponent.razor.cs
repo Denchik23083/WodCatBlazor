@@ -84,7 +84,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
             new() { Content = "10.0", Value = "10.0" }
         };
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
             if (HallId == 0)
             {
@@ -92,7 +92,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
             }
             else
             {
-                Hall = HallsService.GetHall(HallId);
+                Hall = await HallsService.GetHall(HallId);
                 SelectedType = Hall.Type.Split(",").ToList();
                 foreach (var selectedType in SelectedType)
                 {

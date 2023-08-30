@@ -26,7 +26,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
         {
             User = UserService.GetUser();
 
-            Hall = HallsService.GetHall(HallId);
+            Hall = await HallsService.GetHall(HallId);
             if (Hall is null)
             {
                 NavigationManager.NavigateTo("/gymboxs");

@@ -11,21 +11,23 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
     {
         [Parameter] public int HallId { get; set; }
 
-        [Inject] public IHallsService HallsService { get; set; }
+        [Inject] public IHallsService HallsService { get; set; } = null!;
 
-        [Inject] public IUserService UserService { get; set; }
+        [Inject] public IUserService UserService { get; set; } = null!;
 
-        [Inject] public NavigationManager NavigationManager { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; } = null!;
 
-        public ConfirmRemoveHall ConfirmRemoveHall { get; set; }
+        public ConfirmRemoveHall? ConfirmRemoveHall { get; set; } = new();
 
-        public Halls Hall { get; set; }
+        public Halls? Hall { get; set; } = new();
 
-        public IEnumerable<User> Users { get; set; }
+        public User? User { get; set; } = new();
 
-        public string Image { get; set; }
+        public IEnumerable<User> Users { get; set; } = new List<User>();
 
-        public string[] Type { get; set; }
+        public string? Image { get; set; }
+
+        public string[]? Type { get; set; }
 
         public bool IsLoginUser { get; set; }
 
@@ -35,35 +37,34 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 
         public bool DisplayUsers { get; set; }
 
-        public User? User { get; set; } = new();
-
         public int Value = 0;
 
         public string Top = "notLoginTop";
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
-            FillOverrideFunctions();
+            await FillOverrideFunctions();
         }
 
-        protected override void OnParametersSet()
+        protected override async Task OnParametersSetAsync()
         {
-            FillOverrideFunctions();
+            await FillOverrideFunctions();
         }
 
         private async Task FillOverrideFunctions()
         {
             User = UserService.GetUser();
+            IsLoginUser = UserService.IsLoginUser();
 
-            Hall = HallsService.GetHall(HallId);
+            Hall = await HallsService.GetHall(HallId);
             if (Hall is null)
             {
                 NavigationManager.NavigateTo("/gymboxs");
             }
             else
             {
-                Image = HallsService.GetImage(Hall.EmblemHallId);
-                IsLoginUser = UserService.IsLoginUser();
+                Image = Hall.EmblemHall!.Image;
+                
                 if (IsLoginUser) Top = "loginTop";
 
                 if (Hall.Type is not null)
@@ -71,35 +72,35 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
                     Type = Hall.Type.Split(",");
                 }
 
-                Users = HallsService.GetAllHallsUsers(HallId);
-                Athletes = HallsService.Athlete(Hall.Id);
+                Users = Hall.Users!;
+                Athletes = Users.Count();
             }
         }
 
         public void Edit() => NavigationManager.NavigateTo($"/gymboxs/{HallId}/edit");
 
-        public void OnShow() => ConfirmRemoveHall.Show(); 
+        public void OnShow() => ConfirmRemoveHall!.Show(); 
 
-        public void OnCancel() => ConfirmRemoveHall.Hide(); 
+        public void OnCancel() => ConfirmRemoveHall!.Hide(); 
 
-        public void Join()
+        public async Task Join()
         {
-            var result = HallsService.JoinHall(Hall.Id, User);
+            var result = await HallsService.JoinHall(Hall!.Id, User!);
 
             if (result)
             {
-                Athletes = HallsService.Athlete(Hall.Id);
+                await GetAthlete();
                 NavigationManager.NavigateTo($"/gymboxs/{HallId}");
             }
         }
         
-        public void Exit()
+        public async Task Exit()
         {
-            var result = HallsService.ExitHall(Hall.Id, User);
+            var result = await HallsService.ExitHall(Hall!.Id, User!);
 
             if (result)
             {
-                Athletes = HallsService.Athlete(Hall.Id);
+                await GetAthlete();
                 NavigationManager.NavigateTo($"/gymboxs/{HallId}");
             }
         }
@@ -114,6 +115,11 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
         {
             DisplayLocation = false;
             DisplayUsers = true;
+        }
+
+        private async Task GetAthlete()
+        {
+            Athletes = await HallsService.Athlete(Hall!.Id);
         }
     }
 }

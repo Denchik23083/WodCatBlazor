@@ -9,9 +9,7 @@ namespace WodCatClone.Logic.ActionsService.HallsService
 
         IEnumerable<HallEmblem> GetAllHallEmblem();
 
-        IEnumerable<User> GetAllHallsUsers(int id);
-
-        Halls GetHall(int hallId);
+        Task<Halls?> GetHall(int hallId);
 
         Halls GetHall(int? userHallId);
 
@@ -21,12 +19,12 @@ namespace WodCatClone.Logic.ActionsService.HallsService
 
         Task<bool> EditHall(Halls hall, int hallId);
 
-        bool RemoveHall(int hallId);
+        Task<bool> RemoveHall(int hallId);
 
-        bool JoinHall(int hallId, User user);
+        Task<bool> JoinHall(int hallId, User user);
 
-        bool ExitHall(int hallId, User user);
+        Task<bool> ExitHall(int hallId, User user);
 
-        int Athlete(int hallId);
+        Task<int> Athlete(int hallId);
     }
 }

@@ -67,12 +67,11 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
                     ProgramsWorkouts = Program.ProgramsWorkouts!;
                     if (User.ProgramId == ProgramId)
                     {
-                        var programTimeUser = await ProgramsService.GetProgramTimeUser(ProgramId, User);
+                        var programTimeUser = Program.ProgramTimeUsers!.FirstOrDefault(b => b.ProgramsId == ProgramId && b.UserId == User.Id);
                         if (programTimeUser is not null)
                         {
                             Day = (DateTime.Now - programTimeUser.BeginProgramDate).Days;
-                            ProgramWorkout = Program.ProgramsWorkouts!
-                                .ElementAtOrDefault(Day)!;
+                            ProgramWorkout = Program!.ProgramsWorkouts!.ElementAtOrDefault(Day)!;
                         }
                     }
                     else
@@ -93,7 +92,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
 
             if (result)
             {
-                await FillOverrideFunctions();
+                await GetProgramWorkout();
                 NavigationManager.NavigateTo($"/programs/{ProgramId}");
             }
         }
@@ -104,7 +103,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
 
             if (result)
             {
-                await FillOverrideFunctions();
+                await GetProgramWorkout();
                 NavigationManager.NavigateTo($"/programs/{ProgramId}");
             }
         }
@@ -128,6 +127,17 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
             DisplayWorkouts = false;
             DisplayDayWorkouts = false;
             DisplayUsers = true;
+        }
+
+        private async Task GetProgramWorkout()
+        {
+            var programTimeUser = await ProgramsService.GetProgramTimeUser(ProgramId, User!);
+            if (programTimeUser is not null)
+            {
+                Day = (DateTime.Now - programTimeUser.BeginProgramDate).Days;
+                ProgramWorkout = Program!.ProgramsWorkouts!
+                    .ElementAtOrDefault(Day)!;
+            }
         }
     }
 }

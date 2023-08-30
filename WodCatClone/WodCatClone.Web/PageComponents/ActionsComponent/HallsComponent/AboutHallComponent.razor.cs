@@ -5,7 +5,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
 {
     public partial class AboutHallComponent
     {
-        [Parameter] public Halls Hall { get; set; }
+        [Parameter] public Halls Hall { get; set; } = new();
 
         [Parameter] public int Athletes { get; set; }
     }
