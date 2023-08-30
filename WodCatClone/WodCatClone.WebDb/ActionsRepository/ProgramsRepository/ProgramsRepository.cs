@@ -24,56 +24,59 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
                 .Include(_ => _.ProgramEmblem)
                 .Include(_ => _.Halls)
                 .ThenInclude(_ => _!.EmblemHall)
-                .Include(_ => _.Users)
+                .Include(_ => _.Users)!
+                .ThenInclude(_ => _.Gender)
+                .Include(_ => _.Users)!
+                .ThenInclude(_ => _.Halls)
+                .ThenInclude(_ => _!.EmblemHall)
                 .ToListAsync();
         }
 
-        public IEnumerable<ProgramsWorkouts> GetAllProgramsWorkouts(int id)
+        public async Task<ProgramTimeUser?> GetProgramTimeUser(int programId, User user)
         {
-            return _context.ProgramsWorkouts.Where(b => b.ProgramsId == id);
+            return await _context.ProgramTimeUser
+                .FirstOrDefaultAsync(b => b.ProgramsId == programId 
+                                          && b.UserId == user.Id);
         }
 
-        public IEnumerable<User> GetAllProgramsUsers(int id)
+        public async Task<Programs?> GetProgram(int id)
         {
-            return _context.Users.Where(b => b.ProgramId == id);
+            return await _context.Programs
+                .Include(_ => _.Users)
+                .Include(_ => _.ProgramEmblem)
+                .Include(_ => _.ProgramsWorkouts)!
+                .ThenInclude(_ => _.Workouts)
+                .ThenInclude(_ => _!.WorkoutsExercises)!
+                .ThenInclude(_ => _.Exercises)
+                .Include(_ => _.ProgramTimeUsers)!
+                .ThenInclude(_ => _.User)
+                .Include(_ => _.Halls)
+                .ThenInclude(_ => _!.EmblemHall)
+                .FirstOrDefaultAsync(b => b.Id == id);
         }
 
-        public ProgramTimeUser GetProgramTimeUser(int programId, User user)
+        public async Task<bool> BeginProgram(int id, User loginUser, ProgramTimeUser? programTimeUser, ProgramTimeUser newProgramTimeUser)
         {
-            return _context.ProgramTimeUser.FirstOrDefault(b => b.ProgramsId == programId && b.UserId == user.Id);
-        }
-
-        public Programs GetProgram(int id)
-        {
-            return _context.Programs.FirstOrDefault(b => b.Id == id);
-        }
-
-        public bool BeginProgram(int id, User loginUser, ProgramTimeUser programTimeUser, ProgramTimeUser newProgramTimeUser)
-        {
-            loginUser.ProgramId = id;
-
             if (programTimeUser is not null)
             {
                 _context.ProgramTimeUser.Remove(programTimeUser);
             }
 
-            _context.ProgramTimeUser.Add(newProgramTimeUser);
-            _context.SaveChanges();
+            await _context.ProgramTimeUser.AddAsync(newProgramTimeUser);
+            await _context.SaveChangesAsync();
 
             return true;
         }
 
-        public bool StopProgram(int id, User loginUser, ProgramTimeUser programTimeUser, bool isFinish)
+        public async Task<bool> StopProgram(int id, User loginUser, ProgramTimeUser? programTimeUser, bool isFinish)
         {
-            loginUser.ProgramId = null;
-
             if (isFinish)
             {
                 loginUser.Points += 50;
             }
 
-            _context.ProgramTimeUser.Remove(programTimeUser);
-            _context.SaveChanges();
+            _context.ProgramTimeUser.Remove(programTimeUser!);
+            await _context.SaveChangesAsync();
 
             return true;
         }

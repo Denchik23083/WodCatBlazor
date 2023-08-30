@@ -10,15 +10,15 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
     {
         [Parameter] public int ProgramId { get; set; }
 
-        [Inject] public NavigationManager NavigationManager { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; } = null!;
 
-        [Inject] public IProgramsService ProgramsService { get; set; }
+        [Inject] public IProgramsService ProgramsService { get; set; } = null!;
 
-        [Inject] public IUserService UserService { get; set; }
+        [Inject] public IUserService UserService { get; set; } = null!;
 
-        public Programs Program { get; set; }
+        public Programs? Program { get; set; } = new();
 
-        public ProgramsWorkouts ProgramWorkout { get; set; }
+        public ProgramsWorkouts? ProgramWorkout { get; set; }
 
         public User? User { get; set; } = new();
 
@@ -32,27 +32,25 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
 
         public int Day { get; set; }
 
-        public IEnumerable<ProgramsWorkouts> ProgramsWorkouts { get; set; }
+        public IEnumerable<ProgramsWorkouts> ProgramsWorkouts { get; set; } = new List<ProgramsWorkouts>();
 
-        public IEnumerable<User> Users { get; set; }
+        public IEnumerable<User> Users { get; set; } = new List<User>();
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
-            FillOverrideFunctions();
+            await FillOverrideFunctions();
         }
 
-        protected override void OnParametersSet()
+        protected override async Task OnParametersSetAsync()
         {
-            FillOverrideFunctions();
+            await FillOverrideFunctions();
         }
 
         private async Task FillOverrideFunctions()
         {
-            Program = ProgramsService.GetProgram(ProgramId);
-            IsLoginUser = UserService.IsLoginUser();
             User = UserService.GetUser();
-            Users = ProgramsService.GetAllProgramsUsers(ProgramId);
-            ProgramsWorkouts = ProgramsService.GetAllProgramsWorkouts(ProgramId);
+
+            Program = await ProgramsService.GetProgram(ProgramId);
 
             if (Program is null)
             {
@@ -60,45 +58,53 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
             }
             else
             {
+                IsLoginUser = UserService.IsLoginUser();
+                Users = Program.Users!;
+                ProgramsWorkouts = Program.ProgramsWorkouts!;
+
                 if (User is not null)
                 {
-                    ProgramsWorkouts = ProgramsService.GetAllProgramsWorkouts(ProgramId);
+                    ProgramsWorkouts = Program.ProgramsWorkouts!;
                     if (User.ProgramId == ProgramId)
                     {
-                        var programTimeUser = ProgramsService.GetProgramTimeUser(ProgramId, User);
-                        Day = (DateTime.Now - programTimeUser.BeginProgramDate).Days;
-                        ProgramWorkout = ProgramsService
-                            .GetAllProgramsWorkouts(ProgramId)
-                            .ElementAtOrDefault(Day);
+                        var programTimeUser = await ProgramsService.GetProgramTimeUser(ProgramId, User);
+                        if (programTimeUser is not null)
+                        {
+                            Day = (DateTime.Now - programTimeUser.BeginProgramDate).Days;
+                            ProgramWorkout = Program.ProgramsWorkouts!
+                                .ElementAtOrDefault(Day)!;
+                        }
                     }
                     else
                     {
-                        ProgramsWorkouts = ProgramsService.GetAllProgramsWorkouts(ProgramId);
+                        ProgramsWorkouts = Program.ProgramsWorkouts!;
                     }
                 }
                 else
                 {
-                    ProgramsWorkouts = ProgramsService.GetAllProgramsWorkouts(ProgramId);
+                    ProgramsWorkouts = Program.ProgramsWorkouts!;
                 }
             }
         }
 
-        public void BeginProgram()
+        public async Task BeginProgram()
         {
-            var result = ProgramsService.BeginProgram(ProgramId, User);
+            var result = await ProgramsService.BeginProgram(ProgramId, User!);
 
             if (result)
             {
+                await FillOverrideFunctions();
                 NavigationManager.NavigateTo($"/programs/{ProgramId}");
             }
         }
 
-        public void StopProgram()
+        public async Task StopProgram()
         {
-            var result = ProgramsService.StopProgram(ProgramId, User, false);
+            var result = await ProgramsService.StopProgram(ProgramId, User!, false);
 
             if (result)
             {
+                await FillOverrideFunctions();
                 NavigationManager.NavigateTo($"/programs/{ProgramId}");
             }
         }
