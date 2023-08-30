@@ -17,15 +17,19 @@
                         </div>
                     }
                     <h5 style="color: white;">Выберите логотип</h5>
-                    <select class="select form-control" @onchange="SelectedImage">
-                        <option value="None">Эмблема</option>
-                        @foreach (var item in ArticleEmblem)
-                        {
-                            <option value="@item.Image">
-                                @item.Name
-                            </option>
-                        }
-                    </select>
+                    @if (ArticleEmblem is not null)
+                    {
+                        <select class="select form-control" @onchange="SelectedImage">
+                            <option value="None">Эмблема</option>
+                        
+                            @foreach (var item in ArticleEmblem)
+                            {
+                                <option value="@item.Image">
+                                    @item.Name
+                                </option>
+                            }
+                        </select>
+                    }
                 </div>
             </div>
             <div class="row">
@@ -38,13 +42,13 @@
             </div>
         </div>
         <div class="col-6">
-            <EditForm Model="@Article" OnValidSubmit="Submit">
+            <EditForm Model="@UpdateArticle" OnValidSubmit="Submit">
                 <DataAnnotationsValidator />
                 <ValidationSummary />
                 <div class="row">
                     <div class="col mb-2">
                         <InputText
-                            @bind-Value="Article.Name"
+                            @bind-Value="UpdateArticle!.Name"
                             class="selectedFormResult mb-2 mr-2"
                             placeholder="Имя Статьи"/>
                     </div>
@@ -88,7 +92,7 @@
                 </div>
                 <div class="row">
                     <div class="col mb-2">
-                        <select class="selectedFormResult mb-2" @bind="Article.Rating">
+                        <select class="selectedFormResult mb-2" @bind="UpdateArticle!.Rating">
                             <option value="None">Рейтинг</option>
                             @foreach (var item in ArticleRating)
                             {
@@ -103,8 +107,8 @@
                     <div class="col mb-2">
                         <textarea 
                                 placeholder="Описание" 
-                                class="textarea" 
-                                @bind="Article.Description">                                
+                                class="textarea"
+                        @bind="UpdateArticle.Description">                                
                         </textarea>
                     </div>
                 </div>
@@ -112,8 +116,8 @@
                     <div class="col mb-2">
                         <textarea 
                                 placeholder="Полное описание" 
-                                class="textarea" 
-                                @bind="Article.FullDescription">                                
+                                class="textarea"
+                        @bind="UpdateArticle.FullDescription">                                
                         </textarea>
                     </div>
                 </div>

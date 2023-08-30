@@ -12,11 +12,11 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
 
         [Parameter] public int ArticleId { get; set; }
 
-        [Parameter] public Articles Article { get; set; }
+        [Parameter] public Articles? Article { get; set; } = new();
 
-        [Inject] public IArticlesService ArticlesService { get; set; }
+        [Inject] public IArticlesService ArticlesService { get; set; } = null!;
 
-        [Inject] public NavigationManager NavigationManager { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; } = null!;
 
         public bool DisplayRemoveArticle { get; set; }
 
@@ -24,9 +24,9 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
 
         public void Hide() => DisplayRemoveArticle = false;
 
-        public void Remove()
+        public async Task Remove()
         {
-            var result = ArticlesService.RemoveArticle(ArticleId);
+            var result = await ArticlesService.RemoveArticle(ArticleId);
 
             NavigationManager.NavigateTo(result ? "/articles" : $"/articles/{ArticleId}");
         }
