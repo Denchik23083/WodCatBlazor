@@ -11,22 +11,15 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
 
         [Parameter] public int ProgramId { get; set; }
 
-        [Inject] public NavigationManager NavigationManager { get; set; }
+        [Parameter] public User? User { get; set; } = new();
 
-        [Inject] public IProgramsService ProgramsService { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; } = null!;
 
-        [Inject] public IUserService UserService { get; set; }
-
-        public User User { get; set; }
-
-        protected override void OnInitialized()
+        [Inject] public IProgramsService ProgramsService { get; set; } = null!;
+        
+        public async Task FinishProgram()
         {
-            User = UserService.GetUser();
-        }
-
-        public void FinishProgram()
-        {
-            var result = ProgramsService.StopProgram(ProgramId, User, true);
+            var result = await ProgramsService.StopProgram(ProgramId, User!, true);
 
             if (result)
             {

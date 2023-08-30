@@ -7,23 +7,23 @@
         <div class="col text-left text-light pages">
             <a href="/" class="link">WODCAT</a>&nbsp;&rarr;&nbsp;
             <a href="/programs" class="link">Программы тренировок</a>&nbsp;&rarr;&nbsp;
-            @Program.Name
+            @Program!.Name
         </div>
     </div>
     <div class="row mb-2">
         <div class="col">
-            <span class="NameId">@Program.Name</span>
-            <span class="cubId">@Program.Type</span>
-            <span class="greenCub">@Program.Aim</span>
-            @if (Program.Rating is not null)
+            <span class="NameId">@Program!.Name</span>
+            <span class="cubId">@Program!.Type</span>
+            <span class="greenCub">@Program!.Aim</span>
+            @if (Program!.Rating is not null)
             {
-                <span class="greenCub">@Program.Rating / 10</span>
+                <span class="greenCub">@Program!.Rating / 10</span>
             }
         </div>
     </div>
     @if (IsLoginUser)
     {
-        @if (User!.ProgramId != Program.Id)
+        @if (User!.ProgramId != Program!.Id)
         {
             <div class="row">
                 <div class="col text-center">
@@ -64,23 +64,34 @@
         }
         @if (DisplayDayWorkouts)
         {
-            if (User is not null)
+            if (User is not null && IsLoginUser)
             {
                 if (User.ProgramId == Program.Id)
                 {
                     if (Day < ProgramsWorkouts.Count())
                     {
-                        <DayProgramsWorkoutsComponent ProgramsWorkouts="ProgramWorkout"/>
+                        if (ProgramWorkout is not null)
+                        {
+                            <IndividualProgramsWorkoutsComponent ProgramsWorkouts="ProgramWorkout" />
+                        }
                     }
                     else
                     {
-                        <FinishesDayProgramsWorkoutsComponent IsEndOrNot="true" ProgramId="ProgramId"/>
+                        <FinishesDayProgramsWorkoutsComponent IsEndOrNot="true" ProgramId="ProgramId" User="User"/>
                     }
+                }
+                else
+                {
+                    <FinishesDayProgramsWorkoutsComponent IsEndOrNot="false" ProgramId="ProgramId" User="User"/>
                 }
             }
             else
             {
-                <FinishesDayProgramsWorkoutsComponent IsEndOrNot="false" ProgramId="ProgramId"/>
+                <div class="row">
+                    <div class="col text-center" style="color: #bdc1c6;">
+                        <h1>Тебе нужно войти!</h1>
+                    </div>
+                </div>
             }
         }
         else if (DisplayUsers)

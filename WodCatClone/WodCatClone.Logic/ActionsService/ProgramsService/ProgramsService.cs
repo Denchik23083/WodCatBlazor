@@ -21,27 +21,17 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
             return await _repository.GetAllPrograms();
         }
 
-        public IEnumerable<ProgramsWorkouts> GetAllProgramsWorkouts(int id)
+        public async Task<ProgramTimeUser?> GetProgramTimeUser(int programId, User user)
         {
-            return _repository.GetAllProgramsWorkouts(id);
+            return await _repository.GetProgramTimeUser(programId, user);
         }
 
-        public IEnumerable<User> GetAllProgramsUsers(int id)
+        public async Task<Programs?> GetProgram(int id)
         {
-            return _repository.GetAllProgramsUsers(id);
+            return await _repository.GetProgram(id);
         }
 
-        public ProgramTimeUser GetProgramTimeUser(int programId, User user)
-        {
-            return _repository.GetProgramTimeUser(programId, user);
-        }
-
-        public Programs GetProgram(int id)
-        {
-            return _repository.GetProgram(id);
-        }
-
-        public bool BeginProgram(int id, User user)
+        public async Task<bool> BeginProgram(int id, User user)
         {
             var loginUser = _userRepository.GetUser(user.Id);
 
@@ -57,12 +47,14 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
                 UserId = loginUser.Id
             };
 
-            var programTimeUser = _repository.GetProgramTimeUser(id, loginUser);
+            var programTimeUser = await _repository.GetProgramTimeUser(id, loginUser);
 
-            return _repository.BeginProgram(id, loginUser, programTimeUser, newProgramTimeUser);
+            loginUser.ProgramId = id;
+
+            return await _repository.BeginProgram(id, loginUser, programTimeUser, newProgramTimeUser);
         }
 
-        public bool StopProgram(int id, User user, bool isFinish)
+        public async Task<bool> StopProgram(int id, User user, bool isFinish)
         {
             var loginUser = _userRepository.GetUser(user.Id);
 
@@ -71,14 +63,16 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
                 return false;
             }
 
-            var programTimeUser = _repository.GetProgramTimeUser(id, loginUser);
+            var programTimeUser = await _repository.GetProgramTimeUser(id, loginUser);
 
             if (programTimeUser is null)
             {
                 return false;
             }
 
-            return _repository.StopProgram(id, loginUser, programTimeUser, isFinish);
+            loginUser.ProgramId = null;
+
+            return await _repository.StopProgram(id, loginUser, programTimeUser, isFinish);
         }
     }
 }

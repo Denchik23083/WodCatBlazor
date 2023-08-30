@@ -7,25 +7,22 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
 {
     public partial class IndividualProgramsUsersComponent
     {
-        [Parameter] public User User { get; set; }
+        [Parameter] public User User { get; set; } = new();
 
-        [Inject] public IHallsService HallsService { get; set; }
+        public string? Image { get; set; }
 
-        [Inject] public IUserService UserService { get; set; }
-
-        public string Image { get; set; }
-
-        public string GenderImage { get; set; }
+        public string? GenderImage { get; set; }
 
         protected override void OnInitialized()
         {
-            var hall  = HallsService.GetHall(User.HallId);
+            var hall = User.Halls;
+
             if (hall is not null)
             {
-                Image = HallsService.GetImage(hall.EmblemHallId);
+                Image = hall.EmblemHall!.Image!;
             }
-            
-            GenderImage = UserService.GetGender(User.GenderId).Image;
+
+            GenderImage = User.Gender!.Image!;
         }
     }
 }
