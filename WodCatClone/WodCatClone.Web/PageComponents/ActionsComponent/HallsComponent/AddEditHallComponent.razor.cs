@@ -1,17 +1,21 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.HallsService;
+using WodCatClone.Web.Models;
 using WodCatClone.Web.Utilities.Types;
 
 namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
 {
     public partial class AddEditHallComponent
     {
-        [Inject] public IHallsService HallsService { get; set; }
+        [Inject] public IHallsService HallsService { get; set; } = null!;
 
-        [Inject] public NavigationManager NavigationManager { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; } = null!;
+
+        [Inject] public IMapper Mapper { get; set; } = null!;
+
+        [Parameter] public Halls? Hall { get; set; } = new();
 
         [Parameter] public bool Edit { get; set; }
 
@@ -19,14 +23,14 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
 
         [Parameter] public int HallId { get; set; }
 
-        public IEnumerable<HallEmblem> HallEmblem { get; set; }
+        [Parameter] public IEnumerable<HallEmblem> HallEmblem { get; set; } = new List<HallEmblem>();
 
-        public Halls Hall { get; set; }
+        public HallsModel? UpdateHall { get; set; } = new();
 
         public bool IsShow { get; set; } = false;
 
         public bool IsBadEmblem { get; set; } = false;
-
+        
         public string Image = "None";
 
         public int Value { get; set; }
@@ -84,26 +88,41 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
             new() { Content = "10.0", Value = "10.0" }
         };
 
-        protected override async Task OnInitializedAsync()
+        protected override void OnInitialized()
+        {
+            FillOverrideFunctions();
+        }
+
+        protected override void OnParametersSet()
+        {
+            FillOverrideFunctions();
+        }
+
+        private void FillOverrideFunctions()
         {
             if (HallId == 0)
             {
-                Hall = new Halls();
+                UpdateHall = new HallsModel();
             }
             else
             {
-                Hall = await HallsService.GetHall(HallId);
-                SelectedType = Hall.Type.Split(",").ToList();
-                foreach (var selectedType in SelectedType)
+                UpdateHall = Mapper.Map<HallsModel>(Hall);
+
+                if (UpdateHall.Type is not null)
                 {
-                    var item = HallTypes.FirstOrDefault(b => b.Value.Equals(selectedType));
-                    HallTypes.Remove(item);
+                    SelectedType = UpdateHall!.Type!.Split(",").ToList();
+                    foreach (var selectedType in SelectedType)
+                    {
+                        var item = HallTypes.FirstOrDefault(b => b.Value.Equals(selectedType));
+                        HallTypes.Remove(item!);
+                    }
                 }
 
-                Image = HallsService.GetImage(Hall.EmblemHallId);
+                if (UpdateHall.EmblemHall is not null)
+                {
+                    Image = UpdateHall.EmblemHall!.Image!;
+                }                
             }
-
-            HallEmblem = HallsService.GetAllHallEmblem();
         }
 
         public async Task Submit()
@@ -115,13 +134,17 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
                 ConvertSelectedTypes();
                 if (Add)
                 {
-                    var result = await HallsService.AddHall(Hall);
+                    var mappedHall = Mapper.Map<Halls>(UpdateHall);
+
+                    var result = await HallsService.AddHall(mappedHall);
 
                     NavigationManager.NavigateTo(result ? "/gymboxs" : "/gymboxs/add");
                 }
                 if (Edit)
                 {
-                    var result = await HallsService.EditHall(Hall, HallId);
+                    var mappedHall = Mapper.Map<Halls>(UpdateHall);
+
+                    var result = await HallsService.EditHall(mappedHall, HallId);
 
                     NavigationManager.NavigateTo(result ? $"/gymboxs/{HallId}" : $"/gymboxs/{HallId}/edit");
                 }
@@ -149,7 +172,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
 
             var item = HallTypes.FirstOrDefault(b => b.Value.Equals(selected));
 
-            HallTypes.Remove(item);
+            HallTypes.Remove(item!);
         }
 
         public void RemoveSelectedType(string item)
@@ -165,12 +188,12 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
             {
                 if (Value == 0)
                 {
-                    Hall.Type = $"{item}";
+                    UpdateHall!.Type = $"{item}";
                     Value++;
                 }
                 else
                 {
-                    Hall.Type += $",{item}";
+                    UpdateHall!.Type += $",{item}";
                 }
             }
         }
@@ -179,11 +202,11 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
         {
             var selected = e.Value?.ToString();
 
-            Image = selected;
+            Image = selected!;
             
-            var hallEmblem = HallEmblem.FirstOrDefault(b => b.Image.Equals(selected));
+            var hallEmblem = HallEmblem.FirstOrDefault(b => b.Image!.Equals(selected));
 
-            Hall.EmblemHallId = hallEmblem?.Id;
+            UpdateHall!.EmblemHallId = hallEmblem?.Id;
         }
     }
 }

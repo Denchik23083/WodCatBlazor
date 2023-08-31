@@ -38,13 +38,13 @@
             </div>
         </div>
         <div class="col-6">
-            <EditForm Model="@Hall" OnValidSubmit="Submit">
+            <EditForm Model="@UpdateHall" OnValidSubmit="Submit">
                 <DataAnnotationsValidator />
                 <ValidationSummary />
                 <div class="row">
                     <div class="col mb-2">
                         <InputText
-                            @bind-Value="Hall.Name"
+                            @bind-Value="UpdateHall!.Name"
                             class="selectedFormResult mb-2 mr-2"
                             placeholder="Имя Клуба"/>
                     </div>
@@ -88,7 +88,7 @@
                 </div>
                 <div class="row">
                     <div class="col mb-2">
-                        <select class="selectedFormResult mb-2" @bind="Hall.Town">
+                        <select class="selectedFormResult mb-2" @bind="UpdateHall.Town">
                             <option value="">Город</option>
                             @foreach (var item in Town)
                             {
@@ -102,14 +102,14 @@
                 <div class="row">
                     <div class="col mb-2">
                         <InputText
-                            @bind-Value="Hall.Location"
+                            @bind-Value="UpdateHall!.Location"
                             class="selectedFormResult mb-2"
                             placeholder="Адрес"/>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col mb-2">
-                        <select class="selectedFormResult mb-2" @bind="Hall.Rating">
+                        <select class="selectedFormResult mb-2" @bind="UpdateHall.Rating">
                             <option value="None">Рейтинг</option>
                             @foreach (var item in HallRating)
                             {
@@ -125,7 +125,7 @@
                         <textarea 
                                 placeholder="Описание" 
                                 class="textarea" 
-                                @bind="Hall.Description">                                
+                                @bind="UpdateHall!.Description">                                
                         </textarea>
                     </div>
                 </div>

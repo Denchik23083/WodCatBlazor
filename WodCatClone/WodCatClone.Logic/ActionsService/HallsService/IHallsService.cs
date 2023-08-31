@@ -7,7 +7,7 @@ namespace WodCatClone.Logic.ActionsService.HallsService
     {
         Task<IEnumerable<Halls>> GetAllHalls();
 
-        IEnumerable<HallEmblem> GetAllHallEmblem();
+        Task<IEnumerable<HallEmblem>> GetAllHallEmblem();
 
         Task<Halls?> GetHall(int hallId);
 

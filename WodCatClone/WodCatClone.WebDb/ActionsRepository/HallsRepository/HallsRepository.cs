@@ -23,9 +23,9 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
                 .ToListAsync();
         }
 
-        public IEnumerable<HallEmblem> GetAllHallEmblem()
+        public async Task<IEnumerable<HallEmblem>> GetAllHallEmblem()
         {
-            return _context.HallEmblem;
+            return await _context.HallEmblem.ToListAsync();
         }
 
         public async Task<Halls?> GetHall(int hallId)
@@ -47,40 +47,25 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
             return _context.HallEmblem.FirstOrDefault(b => b.Id == imageId);
         }
 
-        public bool AddHall(Halls hall, User user)
+        public async Task<bool> AddHall(Halls hall, User loginUser)
         {
-            hall.UserId = user.Id;
-
-            _context.Halls.Add(hall);
-
-            user.Points += 50;
-
-            _context.SaveChanges();
+            await _context.Halls.AddAsync(hall);
+            await _context.SaveChangesAsync();
 
             return true;
         }
 
-        public bool EditHall(Halls hall, Halls hallToEdit, User user)
+        public async Task<bool> EditHall(Halls hallToEdit, User loginUser)
         {
-            hallToEdit.Name = hall.Name;
-            hallToEdit.Type = hall.Type;
-            hallToEdit.Town = hall.Town;
-            hallToEdit.Location = hall.Location;
-            hallToEdit.Rating = hall.Rating;
-            hallToEdit.Description = hall.Description;
-            hallToEdit.EmblemHallId = hall.EmblemHallId;
-
-            user.Points += 25;
-
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return true;
         }
 
-        public bool RemoveHall(Halls hallToRemove)
+        public async Task<bool> RemoveHall(Halls hallToRemove)
         {
             _context.Halls.Remove(hallToRemove);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return true;
         }

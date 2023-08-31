@@ -74,7 +74,7 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
 
             loginUser.Points += 25;
 
-            return await _repository.EditArticle(article, loginUser);
+            return await _repository.EditArticle(articleToEdit, loginUser);
         }
 
         public async Task<bool> RemoveArticle(int id)

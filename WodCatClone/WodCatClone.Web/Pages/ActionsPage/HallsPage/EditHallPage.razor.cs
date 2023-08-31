@@ -10,21 +10,24 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
     {
         [Parameter] public int HallId { get; set; }
 
-        [Inject] public NavigationManager NavigationManager { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; } = null!;
 
-        [Inject] public IUserService UserService { get; set; }
+        [Inject] public IUserService UserService { get; set; } = null!;
 
-        [Inject] public IHallsService HallsService { get; set; }
+        [Inject] public IHallsService HallsService { get; set; } = null!;
 
         public bool IsLoginUser { get; set; }
 
-        public Halls Hall { get; set; }
+        public IEnumerable<HallEmblem> HallEmblem { get; set; } = new List<HallEmblem>();
+
+        public Halls? Hall { get; set; } = new();
 
         public User? User { get; set; } = new();
 
         protected override async Task OnInitializedAsync()
         {
             User = UserService.GetUser();
+            IsLoginUser = UserService.IsLoginUser();
 
             Hall = await HallsService.GetHall(HallId);
             if (Hall is null)
@@ -33,18 +36,18 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
             }
             else
             {
-                IsLoginUser = UserService.IsLoginUser();
-
                 if (!IsLoginUser)
                 {
                     NavigationManager.NavigateTo("/login");
                 }
 
-                if (User.Id != Hall.UserId)
+                if (User?.Id != Hall.UserId)
                 {
                     NavigationManager.NavigateTo("/gymboxs");
                 }
             }
+
+            HallEmblem = await HallsService.GetAllHallEmblem();
         }
 
         public void BackToGymList() => NavigationManager.NavigateTo($"/gymboxs/{HallId}");

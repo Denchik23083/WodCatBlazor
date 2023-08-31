@@ -21,9 +21,9 @@ namespace WodCatClone.Logic.ActionsService.HallsService
             return await _repository.GetAllHalls();
         }
 
-        public IEnumerable<HallEmblem> GetAllHallEmblem()
+        public async Task<IEnumerable<HallEmblem>> GetAllHallEmblem()
         {
-            return _repository.GetAllHallEmblem();
+            return await _repository.GetAllHallEmblem();
         }
 
         public async Task<Halls?> GetHall(int hallId)
@@ -44,20 +44,26 @@ namespace WodCatClone.Logic.ActionsService.HallsService
         public async Task<bool> AddHall(Halls hall)
         {
             var user = AuthService.AuthService.User;
+            var loginUser = _userRepository.GetUser(user!.Id);
 
-            if (user is null)
+            if (loginUser is null)
             {
                 return false;
             }
 
-            return _repository.AddHall(hall, user);
+            hall.UserId = loginUser.Id;
+
+            loginUser.Points += 50;
+
+            return await _repository.AddHall(hall, loginUser);
         }
 
         public async Task<bool> EditHall(Halls hall, int hallId)
         {
             var user = AuthService.AuthService.User;
+            var loginUser = _userRepository.GetUser(user!.Id);
 
-            if (user is null)
+            if (loginUser is null)
             {
                 return false;
             }
@@ -69,7 +75,17 @@ namespace WodCatClone.Logic.ActionsService.HallsService
                 return false;
             }
 
-            return _repository.EditHall(hall, hallToEdit, user);
+            hallToEdit.Name = hall.Name;
+            hallToEdit.Type = hall.Type;
+            hallToEdit.Town = hall.Town;
+            hallToEdit.Location = hall.Location;
+            hallToEdit.Rating = hall.Rating;
+            hallToEdit.Description = hall.Description;
+            hallToEdit.EmblemHallId = hall.EmblemHallId;
+
+            loginUser.Points += 25;
+
+            return await _repository.EditHall(hallToEdit, loginUser);
         }
 
         public async Task<bool> RemoveHall(int hallId)
@@ -81,7 +97,7 @@ namespace WodCatClone.Logic.ActionsService.HallsService
                 return false;
             }
 
-            return _repository.RemoveHall(hallToRemove);
+            return await _repository.RemoveHall(hallToRemove);
         }
 
         public async Task<bool> JoinHall(int hallId, User user)

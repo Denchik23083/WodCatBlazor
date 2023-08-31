@@ -49,7 +49,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             FillOverrideFunctions();
         }
 
-        private async Task FillOverrideFunctions()
+        private void FillOverrideFunctions()
         {
             StartDate = Event.StartDate.ToString("dd MMMM yyyy HH:mm:ss");
             EndDate = Event.EndDate.ToString("dd MMMM yyyy HH:mm:ss");

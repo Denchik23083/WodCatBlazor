@@ -13,7 +13,7 @@ namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
 
         Task<bool> AddArticle(Articles article, User loginUser);
 
-        Task<bool> EditArticle(Articles article, User loginUser);
+        Task<bool> EditArticle(Articles articleToEdit, User loginUser);
 
         Task<bool> RemoveArticle(Articles articleToRemove);
     }

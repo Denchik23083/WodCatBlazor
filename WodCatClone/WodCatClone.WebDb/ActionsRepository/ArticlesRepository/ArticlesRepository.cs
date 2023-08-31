@@ -41,7 +41,7 @@ namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
             return true;
         }
 
-        public async Task<bool> EditArticle(Articles article, User loginUser)
+        public async Task<bool> EditArticle(Articles articleToEdit, User loginUser)
         {
             await _context.SaveChangesAsync();
 

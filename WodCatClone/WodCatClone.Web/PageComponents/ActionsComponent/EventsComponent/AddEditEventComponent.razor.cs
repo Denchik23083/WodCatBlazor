@@ -111,7 +111,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
             EventEmblem = EventsService.GetAllEventEmblem();
             //Halls = HallsService.GetAllHalls();
-            HallEmblem = HallsService.GetAllHallEmblem();
+            //HallEmblem = HallsService.GetAllHallEmblem();
             //Workouts = WorkoutsService.GetAllWorkouts();
         }
 

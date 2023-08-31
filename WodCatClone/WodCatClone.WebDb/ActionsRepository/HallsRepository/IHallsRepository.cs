@@ -7,7 +7,7 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
     {
         Task<IEnumerable<Halls>> GetAllHalls();
 
-        IEnumerable<HallEmblem> GetAllHallEmblem();
+        Task<IEnumerable<HallEmblem>> GetAllHallEmblem();
 
         Task<Halls?> GetHall(int hallId);
 
@@ -15,11 +15,11 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
 
         HallEmblem GetImage(int? imageId);
 
-        bool AddHall(Halls hall, User user);
+        Task<bool> AddHall(Halls hall, User loginUser);
 
-        bool EditHall(Halls hall, Halls hallToEdit, User user);
+        Task<bool> EditHall(Halls hallToEdit, User loginUser);
 
-        bool RemoveHall(Halls hallToRemove);
+        Task<bool> RemoveHall(Halls hallToRemove);
 
         Task<bool> JoinHall(int hallId, User user);
 

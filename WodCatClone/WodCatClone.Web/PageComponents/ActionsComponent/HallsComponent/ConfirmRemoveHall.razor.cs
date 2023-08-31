@@ -12,11 +12,11 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
 
         [Parameter] public int HallId { get; set; }
 
-        [Parameter] public Halls Hall { get; set; }
+        [Parameter] public Halls? Hall { get; set; } = new();
 
-        [Inject] public IHallsService HallsService { get; set; }
+        [Inject] public IHallsService HallsService { get; set; } = null!;
 
-        [Inject] public NavigationManager NavigationManager { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; } = null!;
 
         public bool DisplayRemoveHall { get; set; }
 
