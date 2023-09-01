@@ -53,28 +53,29 @@ namespace WodCatClone.Logic.ActionsService.EventsService
             return _repository.GetEventTimeUser(eventId, userId);
         }
 
-        public string GetImage(int id)
-        {
-            return _repository.GetImage(id).Image;
-        }
-
         public async Task<bool> AddEvent(Events @event)
         {
             var user = AuthService.AuthService.User;
+            var loginUser = _userRepository.GetUser(user!.Id);
 
-            if (user is null)
+            if (loginUser is null)
             {
                 return false;
             }
 
-            return _repository.AddEvent(@event, user);
+            @event.UserId = loginUser.Id;
+
+            loginUser.Points += 100;
+
+            return await _repository.AddEvent(@event, loginUser);
         }
 
         public async Task<bool> EditEvent(Events @event, int eventId)
         {
             var user = AuthService.AuthService.User;
+            var loginUser = _userRepository.GetUser(user!.Id);
 
-            if (user is null)
+            if (loginUser is null)
             {
                 return false;
             }
@@ -86,13 +87,23 @@ namespace WodCatClone.Logic.ActionsService.EventsService
                 return false;
             }
 
-            return _repository.EditEvent(@event, eventToEdit, user);
+            eventToEdit.Name = @event.Name;
+            eventToEdit.Town = @event.Town;
+            eventToEdit.TypeEvent = @event.TypeEvent;
+            eventToEdit.TypeSport = @event.TypeSport;
+            eventToEdit.Location = @event.Description;
+            eventToEdit.StartDate = @event.StartDate;
+            eventToEdit.EndDate = @event.EndDate;
+            eventToEdit.EventsEmblemId = @event.EventsEmblemId;
+            eventToEdit.HallId = @event.HallId;
+
+            loginUser.Points += 50;
+
+            return await _repository.EditEvent(eventToEdit, loginUser);
         }
 
-        public bool RemoveEvent(int eventId)
+        public async Task<bool> RemoveEvent(int eventId)
         {
-            var allUsers = _repository.GetAllEventsUsers(eventId);
-
             var eventToRemove = _repository.GetEvent(eventId);
 
             if (eventToRemove is null)
@@ -100,7 +111,7 @@ namespace WodCatClone.Logic.ActionsService.EventsService
                 return false;
             }
 
-            return _repository.RemoveEvent(allUsers, eventToRemove);
+            return await _repository.RemoveEvent(eventToRemove);
         }
 
         public bool AutoRemoveEvent(int eventId)

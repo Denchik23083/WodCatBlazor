@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.EventsService;
 using WodCatClone.Logic.ActionsService.HallsService;
 using WodCatClone.Logic.ActionsService.WorkoutsService.WorkoutsService;
+using WodCatClone.Web.Models;
 using WodCatClone.Web.Utilities.Types;
 
 namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
@@ -16,6 +18,8 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
         [Inject] public IWorkoutsService WorkoutsService { get; set; } = null!;
 
         [Inject] public NavigationManager NavigationManager { get; set; } = null!;
+
+        [Inject] public IMapper Mapper { get; set; } = null!;
 
         [Parameter] public Events Event { get; set; } = new();
 
@@ -35,7 +39,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         public bool IsBadLeftSite { get; set; }
 
-        public Events? UpdateEvent { get; set; } = new();
+        public EventsModel? UpdateEvent { get; set; } = new();
 
         public Workouts? Workout { get; set; } = new();
 
@@ -101,16 +105,16 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
         {
             if (EventId == 0)
             {
-                UpdateEvent = new Events();
+                UpdateEvent = new EventsModel();
             }
             else
             {
-                UpdateEvent = EventsService.GetEvent(EventId);
-                //Image = EventsService.GetImage(Event.EventsEmblemId);
+                /*UpdateEvent = EventsService.GetEvent(EventId);
+                Image = EventsService.GetImage(Event.EventsEmblemId);
                 Hall = HallsService.GetHall(UpdateEvent.HallId);
                 HallImage = HallsService.GetImage(Hall.EmblemHallId);
                 Workout = WorkoutsService.GetWorkout(UpdateEvent.WorkoutId);
-                WorkoutImage = Workout.Name!;
+                WorkoutImage = Workout.Name!;*/
             }
         }
 
@@ -122,12 +126,18 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             {
                 if (Add)
                 {
-                    var result = await EventsService.AddEvent(UpdateEvent);
+                    var mappedEvent = Mapper.Map<Events>(UpdateEvent);
+
+                    var result = await EventsService.AddEvent(mappedEvent);
+
                     NavigationManager.NavigateTo(result ? "/events" : "/events/add");
                 }
                 if (Edit)
                 {
-                    var result = await EventsService.EditEvent(UpdateEvent, EventId);
+                    var mappedEvent = Mapper.Map<Events>(UpdateEvent);
+
+                    var result = await EventsService.EditEvent(mappedEvent, EventId);
+
                     NavigationManager.NavigateTo(result ? $"/events/{EventId}" : $"/events/{UpdateEvent}/edit");
                 }
             }
@@ -135,7 +145,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         public bool Validation()
         {
-            if (UpdateEvent.RegisterDate > DateTime.Now
+            if (UpdateEvent!.RegisterDate > DateTime.Now
                 && UpdateEvent.StartDate > DateTime.Now
                 && UpdateEvent.EndDate > DateTime.Now
                 && UpdateEvent.RegisterDate < UpdateEvent.StartDate
@@ -188,7 +198,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
                 if (eventHallEmblem is not null)
                 {
                     HallImage = eventHallEmblem.Image!;
-                    UpdateEvent.HallId = hall!.Id;
+                    UpdateEvent!.HallId = hall!.Id;
                 }
             }
             else
@@ -211,7 +221,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
                 {
                     Workout = workout;
                     WorkoutImage = workout.Name!;
-                    UpdateEvent.WorkoutId = workout.Id;
+                    UpdateEvent!.WorkoutId = workout.Id;
                 }
             }
             else
