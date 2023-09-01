@@ -25,6 +25,9 @@ namespace WodCatClone.Web.Utilities.Mapper
 
             CreateMap<HallsModel, Halls>();
             CreateMap<Halls, HallsModel>();
+
+            CreateMap<EventsModel, Events>();
+            CreateMap<Events, EventsModel>();
         }
     }
 }

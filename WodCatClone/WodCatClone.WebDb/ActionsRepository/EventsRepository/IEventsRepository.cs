@@ -17,15 +17,13 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
 
         Events GetEvent(int eventId);
 
-        EventEmblem GetImage(int id);
-
         EventTimeUser GetEventTimeUser(int eventId, int userId);
 
-        bool AddEvent(Events @event, User user);
+        Task<bool> AddEvent(Events @event, User loginUser);
 
-        bool EditEvent(Events @event, Events eventToEdit, User user);
+        Task<bool> EditEvent(Events eventToEdit, User loginUser);
 
-        bool RemoveEvent(IEnumerable<User> allUsers, Events eventToRemove);
+        Task<bool> RemoveEvent(Events eventToRemove);
 
         bool AutoRemoveEvent(IEnumerable<User> allUsers, IEnumerable<User> usersToList, Events eventToRemove);
 

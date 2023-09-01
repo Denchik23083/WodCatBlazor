@@ -17,13 +17,11 @@ namespace WodCatClone.Logic.ActionsService.EventsService
 
         EventTimeUser GetEventTimeUser(int eventId, int userId);
 
-        string GetImage(int id);
-
         Task<bool> AddEvent(Events @event);
 
         Task<bool> EditEvent(Events @event, int eventId);
         
-        bool RemoveEvent(int eventId);
+        Task<bool> RemoveEvent(int eventId);
 
         bool AutoRemoveEvent(int eventId);
 

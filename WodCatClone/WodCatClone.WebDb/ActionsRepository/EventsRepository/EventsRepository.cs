@@ -64,57 +64,30 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
             return _context.Events.FirstOrDefault(b => b.Id == eventId);
         }
 
-        public EventEmblem GetImage(int id)
-        {
-            return _context.EventEmblem.FirstOrDefault(b => b.Id == id);
-        }
-
         public EventTimeUser GetEventTimeUser(int eventId, int userId)
         {
             return _context.EventTimeUser.FirstOrDefault(b => b.EventsId == eventId && b.UserId == userId);
         }
 
-        public bool AddEvent(Events @event, User user)
+        public async Task<bool> AddEvent(Events @event, User loginUser)
         {
-            @event.UserId = user.Id;
-
-            _context.Events.Add(@event);
-
-            user.Points += 100;
-
-            _context.SaveChanges();
+            await _context.Events.AddAsync(@event);
+            await _context.SaveChangesAsync();
 
             return true;
         }
 
-        public bool EditEvent(Events @event, Events eventToEdit, User user)
+        public async Task<bool> EditEvent(Events eventToEdit, User loginUser)
         {
-            eventToEdit.Name = @event.Name;
-            eventToEdit.Town = @event.Town;
-            eventToEdit.TypeEvent = @event.TypeEvent;
-            eventToEdit.TypeSport = @event.TypeSport;
-            eventToEdit.Location = @event.Description;
-            eventToEdit.StartDate = @event.StartDate;
-            eventToEdit.EndDate = @event.EndDate;
-            eventToEdit.EventsEmblemId = @event.EventsEmblemId;
-            eventToEdit.HallId = @event.HallId;
-
-            user.Points += 50;
-
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return true;
         }
 
-        public bool RemoveEvent(IEnumerable<User> allUsers, Events eventToRemove)
+        public async Task<bool> RemoveEvent(Events eventToRemove)
         {
-            foreach (var user in allUsers)
-            {
-                user.EventId = null;
-            }
-
             _context.Events.Remove(eventToRemove);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return true;
         }
