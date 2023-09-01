@@ -30,7 +30,7 @@ namespace WodCatClone.Db.Entities.Actions
         [Required]
         public DateTime RegisterDate { get; set; }
 
-        public int EventsEmblemId { get; set; }
+        public int? EventsEmblemId { get; set; }
 
         public EventEmblem? EventEmblem { get; set; }
 

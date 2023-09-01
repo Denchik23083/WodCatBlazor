@@ -74,7 +74,7 @@
             </div>
             <div class="row">
                 <div class="col mb-2">
-                    @if (WorkoutImage is not "None" && Workout is not null)
+                    @if (Workout is not null && WorkoutImage is not "None")
                     {
                         <IndividualWorkoutsComponent Workout="Workout"/>
                     }                    
@@ -82,7 +82,7 @@
             </div>
         </div>
         <div class="col-6">
-            <EditForm Model="@Event" OnValidSubmit="Submit">
+            <EditForm Model="@UpdateEvent" OnValidSubmit="Submit">
                 <DataAnnotationsValidator />
                 <ValidationSummary />
                 @if (IsFallEvent)
@@ -98,14 +98,14 @@
                 <div class="row">
                     <div class="col mb-2">
                         <InputText
-                            @bind-Value="Event.Name"
+                            @bind-Value="UpdateEvent.Name"
                             class="selectedFormResult mb-2 mr-2"
                             placeholder="Имя Клуба"/>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col mb-2">
-                        <select class="selectedFormResult mb-2" @bind="Event.TypeEvent">
+                        <select class="selectedFormResult mb-2" @bind="UpdateEvent.TypeEvent">
                             <option value="None">Тип мероприятия</option>
                             @foreach (var item in TypeEvent)
                             {
@@ -118,7 +118,7 @@
                 </div>
                 <div class="row">
                     <div class="col mb-2">
-                        <select class="selectedFormResult mb-2" @bind="Event.TypeSport">
+                        <select class="selectedFormResult mb-2" @bind="UpdateEvent.TypeSport">
                             <option value="None">Вид спорта</option>
                             @foreach (var item in TypeSport)
                             {
@@ -131,7 +131,7 @@
                 </div>
                 <div class="row">
                     <div class="col mb-2">
-                        <select class="selectedFormResult mb-2" @bind="Event.Town">
+                        <select class="selectedFormResult mb-2" @bind="UpdateEvent.Town">
                             <option value="">Город</option>
                             @foreach (var item in Town)
                             {
@@ -145,7 +145,7 @@
                 <div class="row">
                     <div class="col mb-2">
                         <InputText
-                            @bind-Value="Event.Location"
+                            @bind-Value="UpdateEvent.Location"
                             class="selectedFormResult mb-2"
                             placeholder="Адрес"/>
                     </div>
@@ -155,7 +155,7 @@
                         <textarea 
                                 placeholder="Описание" 
                                 class="textarea" 
-                                @bind="Event.Description">                                
+                                @bind="UpdateEvent.Description">                                
                         </textarea>
                     </div>
                 </div>
@@ -172,7 +172,7 @@
                                     type="datetime-local" 
                                     step="1" 
                                     class="selectedFormResult mb-2 mr-2" 
-                                    @bind="Event.StartDate"/>
+                                    @bind="UpdateEvent.StartDate"/>
                             </div>
                         </div>
                     </div>
@@ -190,7 +190,7 @@
                                     type="datetime-local" 
                                     step="1" 
                                     class="selectedFormResult mb-2 mr-2" 
-                                    @bind="Event.EndDate"/>
+                                    @bind="UpdateEvent.EndDate"/>
                             </div>
                         </div>
                     </div>
@@ -208,7 +208,7 @@
                                     type="datetime-local" 
                                     step="1" 
                                     class="selectedFormResult mb-2 mr-2" 
-                                    @bind="Event.RegisterDate"/>
+                                    @bind="UpdateEvent.RegisterDate"/>
                             </div>
                         </div>
                     </div>

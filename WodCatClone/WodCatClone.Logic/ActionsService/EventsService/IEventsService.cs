@@ -11,7 +11,7 @@ namespace WodCatClone.Logic.ActionsService.EventsService
 
         IEnumerable<EventTimeUser> GetAllEventTimeUsers(int eventId);
 
-        IEnumerable<EventEmblem> GetAllEventEmblem();
+        Task<IEnumerable<EventEmblem>> GetAllEventEmblem();
 
         Events GetEvent(int eventId);
 

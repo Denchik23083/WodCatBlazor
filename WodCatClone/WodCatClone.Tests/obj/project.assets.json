@@ -7860,19 +7860,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Anna\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Anna\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.Tests\\WodCatClone.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\User\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.Tests\\WodCatClone.Tests.csproj",
       "projectName": "WodCatClone.Tests",
-      "projectPath": "C:\\Users\\Anna\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.Tests\\WodCatClone.Tests.csproj",
-      "packagesPath": "C:\\Users\\Anna\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Anna\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.Tests\\obj\\",
+      "projectPath": "C:\\Users\\User\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.Tests\\WodCatClone.Tests.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Anna\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7886,11 +7886,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Anna\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.Db\\WodCatClone.Db.csproj": {
-              "projectPath": "C:\\Users\\Anna\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.Db\\WodCatClone.Db.csproj"
+            "C:\\Users\\User\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.Db\\WodCatClone.Db.csproj": {
+              "projectPath": "C:\\Users\\User\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.Db\\WodCatClone.Db.csproj"
             },
-            "C:\\Users\\Anna\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.Logic\\WodCatClone.Logic.csproj": {
-              "projectPath": "C:\\Users\\Anna\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.Logic\\WodCatClone.Logic.csproj"
+            "C:\\Users\\User\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.Logic\\WodCatClone.Logic.csproj": {
+              "projectPath": "C:\\Users\\User\\source\\repos\\WodCatBlazor\\WodCatClone\\WodCatClone.Logic\\WodCatClone.Logic.csproj"
             }
           }
         }
@@ -7942,7 +7942,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -9,13 +9,15 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 {
     public partial class AddEditEventComponent
     {
-        [Inject] public IEventsService EventsService { get; set; }
+        [Inject] public IEventsService EventsService { get; set; } = null!;
 
-        [Inject] public IHallsService HallsService { get; set; }
+        [Inject] public IHallsService HallsService { get; set; } = null!;
 
-        [Inject] public IWorkoutsService WorkoutsService { get; set; }
+        [Inject] public IWorkoutsService WorkoutsService { get; set; } = null!;
 
-        [Inject] public NavigationManager NavigationManager { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; } = null!;
+
+        [Parameter] public Events Event { get; set; } = new();
 
         [Parameter] public bool Edit { get; set; }
 
@@ -23,19 +25,21 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         [Parameter] public int EventId { get; set; }
 
-        public IEnumerable<EventEmblem> EventEmblem { get; set; }
+        [Parameter] public IEnumerable<EventEmblem> EventEmblem { get; set; } = new List<EventEmblem>();
 
-        public IEnumerable<Halls> Halls { get; set; }
+        [Parameter] public IEnumerable<Halls> Halls { get; set; } = new List<Halls>();
         
-        public IEnumerable<HallEmblem> HallEmblem { get; set; }
+        [Parameter] public IEnumerable<HallEmblem> HallEmblem { get; set; } = new List<HallEmblem>();
 
-        public IEnumerable<Workouts> Workouts { get; set; }
+        [Parameter] public IEnumerable<Workouts> Workouts { get; set; } = new List<Workouts>();
 
         public bool IsBadLeftSite { get; set; }
 
-        public Events Event { get; set; }
+        public Events? UpdateEvent { get; set; } = new();
 
-        public Workouts Workout { get; set; }
+        public Workouts? Workout { get; set; } = new();
+
+        public Halls? Hall { get; set; } = new();
         
         public bool IsFallEvent { get; set; }
 
@@ -97,22 +101,17 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
         {
             if (EventId == 0)
             {
-                Event = new Events();
+                UpdateEvent = new Events();
             }
             else
             {
-                Event = EventsService.GetEvent(EventId);
-                Image = EventsService.GetImage(Event.EventsEmblemId);
-                var hall = HallsService.GetHall(Event.HallId);
-                HallImage = HallsService.GetImage(hall.EmblemHallId);
-                Workout = WorkoutsService.GetWorkout(Event.WorkoutId);
-                WorkoutImage = Workout.Name;
+                UpdateEvent = EventsService.GetEvent(EventId);
+                //Image = EventsService.GetImage(Event.EventsEmblemId);
+                Hall = HallsService.GetHall(UpdateEvent.HallId);
+                HallImage = HallsService.GetImage(Hall.EmblemHallId);
+                Workout = WorkoutsService.GetWorkout(UpdateEvent.WorkoutId);
+                WorkoutImage = Workout.Name!;
             }
-
-            EventEmblem = EventsService.GetAllEventEmblem();
-            //Halls = HallsService.GetAllHalls();
-            //HallEmblem = HallsService.GetAllHallEmblem();
-            //Workouts = WorkoutsService.GetAllWorkouts();
         }
 
         public async Task Submit()
@@ -123,24 +122,24 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             {
                 if (Add)
                 {
-                    var result = await EventsService.AddEvent(Event);
+                    var result = await EventsService.AddEvent(UpdateEvent);
                     NavigationManager.NavigateTo(result ? "/events" : "/events/add");
                 }
                 if (Edit)
                 {
-                    var result = await EventsService.EditEvent(Event, EventId);
-                    NavigationManager.NavigateTo(result ? $"/events/{EventId}" : $"/events/{Event}/edit");
+                    var result = await EventsService.EditEvent(UpdateEvent, EventId);
+                    NavigationManager.NavigateTo(result ? $"/events/{EventId}" : $"/events/{UpdateEvent}/edit");
                 }
             }
         }
 
         public bool Validation()
         {
-            if (Event.RegisterDate > DateTime.Now
-                && Event.StartDate > DateTime.Now
-                && Event.EndDate > DateTime.Now
-                && Event.RegisterDate < Event.StartDate
-                && Event.StartDate < Event.EndDate)
+            if (UpdateEvent.RegisterDate > DateTime.Now
+                && UpdateEvent.StartDate > DateTime.Now
+                && UpdateEvent.EndDate > DateTime.Now
+                && UpdateEvent.RegisterDate < UpdateEvent.StartDate
+                && UpdateEvent.StartDate < UpdateEvent.EndDate)
             {
                 IsFallEvent = false;
                 if (WorkoutImage is not "None" 
@@ -168,11 +167,11 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
         {
             var selected = e.Value?.ToString();
 
-            Image = selected;
+            Image = selected!;
 
-            var eventEmblem = EventEmblem.FirstOrDefault(b => b.Image.Equals(selected));
+            var eventEmblem = EventEmblem.FirstOrDefault(b => b.Image!.Equals(selected));
 
-            if (eventEmblem is not null) Event.EventsEmblemId = eventEmblem.Id;
+            UpdateEvent!.EventsEmblemId = eventEmblem?.Id;
         }
 
         public async Task SelectedHallImage(ChangeEventArgs e)
@@ -184,12 +183,12 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
                 var id = int.Parse(e.Value!.ToString()!);
 
                 var hall = await HallsService.GetHall(id);
-                var eventHallEmblem = HallEmblem.FirstOrDefault(b => b.Id == hall.EmblemHallId);
+                var eventHallEmblem = HallEmblem.FirstOrDefault(b => b.Id == hall!.EmblemHallId);
 
                 if (eventHallEmblem is not null)
                 {
-                    HallImage = eventHallEmblem.Image;
-                    Event.HallId = hall.Id;
+                    HallImage = eventHallEmblem.Image!;
+                    UpdateEvent.HallId = hall!.Id;
                 }
             }
             else
@@ -211,8 +210,8 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
                 if (workout is not null)
                 {
                     Workout = workout;
-                    WorkoutImage = workout.Name;
-                    Event.WorkoutId = workout.Id;
+                    WorkoutImage = workout.Name!;
+                    UpdateEvent.WorkoutId = workout.Id;
                 }
             }
             else
