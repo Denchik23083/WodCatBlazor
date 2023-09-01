@@ -20,6 +20,11 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
                 .Include(_ => _.EventEmblem)
                 .Include(_ => _.Halls)
                 .Include(_ => _.Workouts)
+                .Include(_ => _.EventTimeUsers)!
+                .ThenInclude(_ => _.User)
+                .ThenInclude(_ => _!.Gender)
+                .Include(_ => _.Users)!
+                .ThenInclude(_ => _.Gender)
                 .Where(_ => _.EndDate > DateTime.Now)
                 .ToListAsync();
         }
@@ -30,6 +35,11 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
                 .Include(_ => _.EventEmblem)
                 .Include(_ => _.Halls)
                 .Include(_ => _.Workouts)
+                .Include(_ => _.EventTimeUsers)!
+                .ThenInclude(_ => _.User)
+                .ThenInclude(_ => _!.Gender)
+                .Include(_ => _.Users)!
+                .ThenInclude(_ => _.Gender)
                 .Where(_ => _.EndDate < DateTime.Now)
                 .ToListAsync();
         }
@@ -44,9 +54,9 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
             return _context.EventTimeUser.Where(b => b.EventsId == eventId);
         }
 
-        public IEnumerable<EventEmblem> GetAllEventEmblem()
+        public async Task<IEnumerable<EventEmblem>> GetAllEventEmblem()
         {
-            return _context.EventEmblem;
+            return await _context.EventEmblem.ToListAsync();
         }
 
         public Events GetEvent(int eventId)

@@ -54,7 +54,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             StartDate = Event.StartDate.ToString("dd MMMM yyyy HH:mm:ss");
             EndDate = Event.EndDate.ToString("dd MMMM yyyy HH:mm:ss");
             RegisterDate = Event.RegisterDate.ToString("dd MMMM yyyy HH:mm:ss");
-            Image = EventsService.GetImage(Event.EventsEmblemId);
+            //Image = EventsService.GetImage(Event.EventsEmblemId);
             Hall = HallsService.GetHall(Event.HallId);
             HallEmblem = HallsService.GetImage(Hall.EmblemHallId);
             User = UserService.GetUser();

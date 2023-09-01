@@ -37,7 +37,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         protected override void OnInitialized()
         {
-            Image = EventsService.GetImage(Event.EventsEmblemId);
+            //Image = EventsService.GetImage(Event.EventsEmblemId);
             WorkoutsExercises = WorkoutsService.GetAllWorkoutsExercises(Event.WorkoutId);
             Workout = WorkoutsService.GetWorkout(Event.WorkoutId);
             User = UserService.GetUser();

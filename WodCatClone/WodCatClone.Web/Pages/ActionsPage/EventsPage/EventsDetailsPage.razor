@@ -4,7 +4,7 @@
 
 @if (IsLoginUser)
 {
-    @if (User.EventId == Event.Id)
+    @if (User!.EventId == Event.Id)
     {
         @if (DateTime.Now >= Event.StartDate && DateTime.Now <= Event.EndDate)
         {

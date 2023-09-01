@@ -38,9 +38,9 @@ namespace WodCatClone.Logic.ActionsService.EventsService
                 .Reverse();
         }
 
-        public IEnumerable<EventEmblem> GetAllEventEmblem()
+        public async Task<IEnumerable<EventEmblem>> GetAllEventEmblem()
         {
-            return _repository.GetAllEventEmblem();
+            return await _repository.GetAllEventEmblem();
         }
 
         public Events GetEvent(int eventId)
