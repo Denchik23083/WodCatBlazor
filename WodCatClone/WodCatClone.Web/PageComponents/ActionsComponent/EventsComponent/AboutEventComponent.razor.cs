@@ -5,6 +5,6 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 {
     public partial class AboutEventComponent
     {
-        [Parameter] public Events Event { get; set; }
+        [Parameter] public Events? Event { get; set; } = new();
     }
 }

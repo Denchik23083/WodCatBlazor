@@ -15,7 +15,7 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
 
         Task<IEnumerable<EventEmblem>> GetAllEventEmblem();
 
-        Events GetEvent(int eventId);
+        Task<Events?> GetEvent(int eventId);
 
         EventTimeUser GetEventTimeUser(int eventId, int userId);
 

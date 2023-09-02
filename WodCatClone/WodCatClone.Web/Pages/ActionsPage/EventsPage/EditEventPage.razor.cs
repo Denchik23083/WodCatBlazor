@@ -26,7 +26,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
         {
             User = UserService.GetUser();
 
-            Event = EventsService.GetEvent(EventId);
+            Event = await EventsService.GetEvent(EventId);
             if (Event is null)
             {
                 NavigationManager.NavigateTo("/events");

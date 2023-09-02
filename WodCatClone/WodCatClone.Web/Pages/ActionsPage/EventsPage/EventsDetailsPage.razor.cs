@@ -11,21 +11,21 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
     {
         [Parameter] public int EventId { get; set; }
 
-        [Inject] public IEventsService EventsService { get; set; }
+        [Inject] public IEventsService EventsService { get; set; } = null!;
 
-        [Inject] public IWorkoutsService WorkoutsService { get; set; }
+        [Inject] public IWorkoutsService WorkoutsService { get; set; } = null!;
 
-        [Inject] public IUserService UserService { get; set; }
+        [Inject] public IUserService UserService { get; set; } = null!;
 
-        [Inject] public NavigationManager NavigationManager { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; } = null!;
 
-        public Events Event { get; set; }
+        public Events? Event { get; set; } = new();
 
-        public Workouts Workout { get; set; }
+        public Workouts? Workout { get; set; } = new();
 
-        public IEnumerable<User> Users { get; set; }
+        public IEnumerable<User> Users { get; set; } = new List<User>();
 
-        public IEnumerable<EventTimeUser> EventTimeUsers { get; set; }
+        public IEnumerable<EventTimeUser> EventTimeUsers { get; set; } = new List<EventTimeUser>();
 
         public bool DisplayEvent { get; set; } = true;
 
@@ -39,31 +39,34 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
 
         public User? User { get; set; } = new();
         
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
-            FillOverrideFunctions();
+            await FillOverrideFunctions();
         }
 
-        protected override void OnParametersSet()
+        protected override async Task OnParametersSetAsync()
         {
-            FillOverrideFunctions();
+            await FillOverrideFunctions();
         }
 
-        private void FillOverrideFunctions()
+        private async Task FillOverrideFunctions()
         {
             User = UserService.GetUser();
+            IsLoginUser = UserService.IsLoginUser();
 
-            Event = EventsService.GetEvent(EventId);
+            Event = await EventsService.GetEvent(EventId);
             if (Event is null || Event.EndDate < DateTime.Now)
             {
                 NavigationManager.NavigateTo("/events", true);
             }
             else
             {
-                Users = EventsService.GetAllEventsUsers(EventId);
-                Workout = WorkoutsService.GetWorkout(Event.WorkoutId);
-                EventTimeUsers = EventsService.GetAllEventTimeUsers(EventId);
-                IsLoginUser = UserService.IsLoginUser();
+                Users = Event.Users!;
+                Workout = Event.Workouts!;
+                EventTimeUsers = Event.EventTimeUsers!
+                    .OrderByDescending(b => b.Time)
+                    .Take(3)
+                    .Reverse();
             }
         }
 

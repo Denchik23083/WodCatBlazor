@@ -59,9 +59,23 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
             return await _context.EventEmblem.ToListAsync();
         }
 
-        public Events GetEvent(int eventId)
+        public async Task<Events?> GetEvent(int eventId)
         {
-            return _context.Events.FirstOrDefault(b => b.Id == eventId);
+            return await _context.Events
+                .Include(_ => _.EventTimeUsers)
+                .Include(_ => _.Users)!
+                .ThenInclude(_ => _.Gender)
+                .Include(_ => _.Halls)
+                .ThenInclude(_ => _!.EmblemHall)
+                .Include(_ => _.Workouts)
+                .ThenInclude(_ => _!.Halls)
+                .ThenInclude(_ => _!.EmblemHall)
+                .Include(_ => _.Workouts)
+                .ThenInclude(_ => _.ResultWorkouts)
+                .Include(_ => _.Workouts)
+                .ThenInclude(_ => _.WorkoutsExercises)!
+                .ThenInclude(_ => _.Exercises)
+                .FirstOrDefaultAsync(b => b.Id == eventId);
         }
 
         public EventTimeUser GetEventTimeUser(int eventId, int userId)
