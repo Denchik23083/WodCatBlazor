@@ -1,21 +1,16 @@
 ﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
-using WodCatClone.Logic.UserService;
 
 namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 {
     public partial class TableAwardComponent
     {
-        [Parameter] public EventTimeUser EventTimeUser { get; set; }
+        [Parameter] public EventTimeUser? EventTimeUser { get; set; } = new();
         
         [Parameter] public int Place { get; set; }
 
-        [Parameter] public int EventId { get; set; }
-
         [Parameter] public int Points { get; set; }
-
-        [Inject] public IUserService UserService { get; set; }
 
         public string? GenderImage { get; set; }
 
@@ -23,16 +18,13 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         public User? User { get; set; } = new();
 
-        protected override async Task OnInitializedAsync()
+        protected override void OnInitialized()
         {
-            User = await UserService.GetUser(EventTimeUser.UserId);
+            User = EventTimeUser!.User;
 
             Time = EventTimeUser.Time.ToString("g");
 
-            if (User is not null)
-            {
-                GenderImage = User.Gender!.Image!;
-            }
+            GenderImage = User!.Gender!.Image!;
         }
     }
 }
