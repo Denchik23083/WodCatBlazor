@@ -55,7 +55,7 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
                 .FirstOrDefaultAsync(b => b.Id == id);
         }
 
-        public async Task<bool> BeginProgram(int id, User loginUser, ProgramTimeUser? programTimeUser, ProgramTimeUser newProgramTimeUser)
+        public async Task<bool> BeginProgram(User loginUser, ProgramTimeUser? programTimeUser, ProgramTimeUser newProgramTimeUser)
         {
             if (programTimeUser is not null)
             {
@@ -68,7 +68,7 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
             return true;
         }
 
-        public async Task<bool> StopProgram(int id, User loginUser, ProgramTimeUser? programTimeUser, bool isFinish)
+        public async Task<bool> StopProgram(User loginUser, ProgramTimeUser? programTimeUser, bool isFinish)
         {
             if (isFinish)
             {

@@ -70,14 +70,14 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
             return true;
         }
 
-        public async Task<bool> JoinHall(int hallId, User loginUser)
+        public async Task<bool> JoinHall(User loginUser)
         {
             await _context.SaveChangesAsync();
 
             return true;
         }
 
-        public async Task<bool> ExitHall(int hallId, User loginUser)
+        public async Task<bool> ExitHall(User loginUser)
         {
             await _context.SaveChangesAsync();
 

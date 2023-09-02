@@ -62,18 +62,21 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
         public async Task<Events?> GetEvent(int eventId)
         {
             return await _context.Events
+                .Include(_ => _.EventEmblem)
                 .Include(_ => _.EventTimeUsers)
                 .Include(_ => _.Users)!
                 .ThenInclude(_ => _.Gender)
+                .Include(_ => _.Users)!
+                .ThenInclude(_ => _.EventTimeUsers)
                 .Include(_ => _.Halls)
                 .ThenInclude(_ => _!.EmblemHall)
                 .Include(_ => _.Workouts)
                 .ThenInclude(_ => _!.Halls)
                 .ThenInclude(_ => _!.EmblemHall)
                 .Include(_ => _.Workouts)
-                .ThenInclude(_ => _.ResultWorkouts)
+                .ThenInclude(_ => _!.ResultWorkouts)
                 .Include(_ => _.Workouts)
-                .ThenInclude(_ => _.WorkoutsExercises)!
+                .ThenInclude(_ => _!.WorkoutsExercises)!
                 .ThenInclude(_ => _.Exercises)
                 .FirstOrDefaultAsync(b => b.Id == eventId);
         }
@@ -135,28 +138,24 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
             await _context.SaveChangesAsync();
         }
 
-        public bool JoinEvent(int eventId, User loginUser)
+        public async Task<bool> JoinEvent(User loginUser)
         {
-            loginUser.EventId = eventId;
-
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return true;
         }
 
-        public bool ExitEvent(int eventId, User loginUser)
+        public async Task<bool> ExitEvent(User loginUser)
         {
-            loginUser.EventId = null;
-
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return true;
         }
 
-        public bool AddEventTimeUser(EventTimeUser eventTimeUser)
+        public async Task<bool> AddEventTimeUser(EventTimeUser eventTimeUser)
         {
-            _context.EventTimeUser.Add(eventTimeUser);
-            _context.SaveChanges();
+            await _context.EventTimeUser.AddAsync(eventTimeUser);
+            await _context.SaveChangesAsync();
 
             return true;
         }

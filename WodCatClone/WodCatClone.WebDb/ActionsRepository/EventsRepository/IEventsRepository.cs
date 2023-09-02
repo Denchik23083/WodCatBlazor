@@ -29,10 +29,10 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
 
         Task RemoveEndEvents(IEnumerable<Events> endEvents);
 
-        bool JoinEvent(int eventId, User user);
+        Task<bool> JoinEvent(User user);
 
-        bool ExitEvent(int eventId, User user);
+        Task<bool> ExitEvent(User user);
 
-        bool AddEventTimeUser(EventTimeUser eventTimeUser);
+        Task<bool> AddEventTimeUser(EventTimeUser eventTimeUser);
     }
 }

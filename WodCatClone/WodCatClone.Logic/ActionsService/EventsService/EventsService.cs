@@ -132,7 +132,7 @@ namespace WodCatClone.Logic.ActionsService.EventsService
             return _repository.AutoRemoveEvent(allUsers, usersToList, eventToRemove);
         }
 
-        public bool JoinEvent(int eventId, User user)
+        public async Task<bool> JoinEvent(int eventId, User user)
         {
             var loginUser = _userRepository.GetUser(user.Id);
 
@@ -141,10 +141,12 @@ namespace WodCatClone.Logic.ActionsService.EventsService
                 return false;
             }
 
-            return _repository.JoinEvent(eventId, loginUser);
+            loginUser.EventId = eventId;
+
+            return await _repository.JoinEvent(loginUser);
         }
 
-        public bool ExitEvent(int eventId, User user)
+        public async Task<bool> ExitEvent(int eventId, User user)
         {
             var loginUser = _userRepository.GetUser(user.Id);
 
@@ -153,12 +155,14 @@ namespace WodCatClone.Logic.ActionsService.EventsService
                 return false;
             }
 
-            return _repository.ExitEvent(eventId, loginUser);
+            loginUser.EventId = null;
+
+            return await _repository.ExitEvent(loginUser);
         }
 
-        public bool AddEventTimeUser(EventTimeUser eventTimeUser)
+        public async Task<bool> AddEventTimeUser(EventTimeUser eventTimeUser)
         {
-            return _repository.AddEventTimeUser(eventTimeUser);
+            return await _repository.AddEventTimeUser(eventTimeUser);
         }
     }
 }

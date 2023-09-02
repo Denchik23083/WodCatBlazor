@@ -51,7 +51,7 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
 
             loginUser.ProgramId = id;
 
-            return await _repository.BeginProgram(id, loginUser, programTimeUser, newProgramTimeUser);
+            return await _repository.BeginProgram(loginUser, programTimeUser, newProgramTimeUser);
         }
 
         public async Task<bool> StopProgram(int id, User user, bool isFinish)
@@ -72,7 +72,7 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
 
             loginUser.ProgramId = null;
 
-            return await _repository.StopProgram(id, loginUser, programTimeUser, isFinish);
+            return await _repository.StopProgram(loginUser, programTimeUser, isFinish);
         }
     }
 }

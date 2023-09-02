@@ -21,9 +21,9 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
 
         Task<bool> RemoveHall(Halls hallToRemove);
 
-        Task<bool> JoinHall(int hallId, User user);
+        Task<bool> JoinHall(User user);
 
-        Task<bool> ExitHall(int hallId, User user);
+        Task<bool> ExitHall(User user);
 
         Task<int> Athlete(int hallId);
     }

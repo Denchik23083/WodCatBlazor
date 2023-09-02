@@ -21,10 +21,10 @@ namespace WodCatClone.Logic.ActionsService.EventsService
 
         Task<bool> AutoRemoveEvent(int eventId);
 
-        bool JoinEvent(int eventId, User user);
+        Task<bool> JoinEvent(int eventId, User user);
 
-        bool ExitEvent(int eventId, User user);
+        Task<bool> ExitEvent(int eventId, User user);
 
-        bool AddEventTimeUser(EventTimeUser eventTimeUser);
+        Task<bool> AddEventTimeUser(EventTimeUser eventTimeUser);
     }
 }

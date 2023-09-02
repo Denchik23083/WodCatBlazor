@@ -1,29 +1,29 @@
 ﻿@page "/events/{EventId:int}"
 
-<HeaderComponent User="User"/>
+<HeaderComponent User="User" />
 
-@*@if (IsLoginUser)
+@if (IsLoginUser)
 {
     @if (User!.EventId == Event!.Id)
     {
         @if (DateTime.Now >= Event.StartDate && DateTime.Now <= Event.EndDate)
         {
-            <BeginEventTaskComponent Event="Event"/>
+            <BeginEventTaskComponent Event="Event" User="User" EventId="EventId" />
         }
         else
         {
-            <RegisterEventComponent Event="Event" EventId="EventId"/>
+            <RegisterEventComponent Event="Event" User="User" IsLoginUser="IsLoginUser" EventId="EventId" />
         }
     }
     else
     {
-        <RegisterEventComponent Event="Event" EventId="EventId"/>
+        <RegisterEventComponent Event="Event" User="User" IsLoginUser="IsLoginUser" EventId="EventId" />
     }
 }
 else
 {
-    <RegisterEventComponent Event="Event" EventId="EventId"/>
-}*@
+    <RegisterEventComponent Event="Event" User="User" IsLoginUser="IsLoginUser" EventId="EventId" />
+}
 
 <div class="row">
     <div class="col p-3 footerEvent" style="top: 695px;">

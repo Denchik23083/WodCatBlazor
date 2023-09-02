@@ -111,7 +111,7 @@ namespace WodCatClone.Logic.ActionsService.HallsService
 
             loginUser.HallId = hallId;
 
-            return await _repository.JoinHall(hallId, loginUser);
+            return await _repository.JoinHall(loginUser);
         }
 
         public async Task<bool> ExitHall(int hallId, User user)
@@ -125,7 +125,7 @@ namespace WodCatClone.Logic.ActionsService.HallsService
 
             loginUser.HallId = null;
 
-            return await _repository.ExitHall(hallId, user);
+            return await _repository.ExitHall(user);
         }
 
         public async Task<int> Athlete(int hallId)
