@@ -2,7 +2,6 @@
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.ActionsService.EventsService;
-using WodCatClone.Logic.ActionsService.WorkoutsService.WorkoutsService;
 using WodCatClone.Logic.UserService;
 
 namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
@@ -12,8 +11,6 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
         [Parameter] public int EventId { get; set; }
 
         [Inject] public IEventsService EventsService { get; set; } = null!;
-
-        [Inject] public IWorkoutsService WorkoutsService { get; set; } = null!;
 
         [Inject] public IUserService UserService { get; set; } = null!;
 

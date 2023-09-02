@@ -11,8 +11,8 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
 
         Task<Programs?> GetProgram(int id);
 
-        Task<bool> BeginProgram(int id, User loginUser, ProgramTimeUser? programTimeUser, ProgramTimeUser newProgramTimeUser);
+        Task<bool> BeginProgram(User loginUser, ProgramTimeUser? programTimeUser, ProgramTimeUser newProgramTimeUser);
 
-        Task<bool> StopProgram(int id, User loginUser, ProgramTimeUser? programTimeUser, bool isFinish);
+        Task<bool> StopProgram(User loginUser, ProgramTimeUser? programTimeUser, bool isFinish);
     }
 }

@@ -1,60 +1,63 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.ActionsService.EventsService;
-using WodCatClone.Logic.ActionsService.WorkoutsService.WorkoutsService;
-using WodCatClone.Logic.UserService;
 
 namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 {
     public partial class BeginEventTaskComponent
     {
-        [Parameter] public Events Event { get; set; }
+        [Parameter] public Events? Event { get; set; } = new();
 
-        [Inject] public IEventsService EventsService { get; set; }
+        [Parameter] public User? User { get; set; } = new();
 
-        [Inject] public IWorkoutsService WorkoutsService { get; set; }
+        [Parameter] public int EventId { get; set; }
 
-        [Inject] public IUserService UserService { get; set; }
+        [Inject] public IEventsService EventsService { get; set; } = null!;
 
-        [Inject] public NavigationManager NavigationManager { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; } = null!;
 
-        public IEnumerable<WorkoutsExercises> WorkoutsExercises { get; set; }
+        public IEnumerable<WorkoutsExercises> WorkoutsExercises { get; set; } = new List<WorkoutsExercises>();
 
-        public string Image { get; set; }
+        public string? Image { get; set; }
 
-        public Workouts Workout { get; set; }
-
-        public User User { get; set; }
-
+        public Workouts? Workout { get; set; } = new();
+        
         public DateTime Time { get; set; }
 
-        public EventTimeUser EventTimeUser { get; set; }
+        public EventTimeUser? EventTimeUser { get; set; } = new();
 
-        public EventTimeUser AddEventTimeUser = new();
+        public EventTimeUser? AddEventTimeUser = new();
 
         protected override void OnInitialized()
         {
-            //Image = EventsService.GetImage(Event.EventsEmblemId);
-            WorkoutsExercises = WorkoutsService.GetAllWorkoutsExercises(Event.WorkoutId);
-            Workout = WorkoutsService.GetWorkout(Event.WorkoutId);
-            User = UserService.GetUser();
-            EventTimeUser = EventsService.GetEventTimeUser(Event.Id, User.Id);
+            FillOverrideFunctions();
         }
 
-        public void SubmitTime()
+        protected override void OnParametersSet()
         {
-            AddEventTimeUser.Time = new TimeSpan(Time.Hour, Time.Minute, Time.Second);
-            AddEventTimeUser.UserId = User.Id;
-            AddEventTimeUser.EventsId = Event.Id;
+            FillOverrideFunctions();
+        }
 
-            var result = EventsService.AddEventTimeUser(AddEventTimeUser);
+        private void FillOverrideFunctions()
+        {
+            Image = Event!.EventEmblem!.Image!;
+            Workout = Event!.Workouts!;
+            WorkoutsExercises = Event.Workouts!.WorkoutsExercises!;
+            EventTimeUser = Event.EventTimeUsers!.FirstOrDefault(_ => _.UserId == User!.Id)!;
+        }
+
+        public async Task SubmitTime()
+        {
+            AddEventTimeUser!.Time = new TimeSpan(Time.Hour, Time.Minute, Time.Second);
+            AddEventTimeUser!.UserId = User!.Id;
+            AddEventTimeUser!.EventsId = Event!.Id;
+
+            var result = await EventsService.AddEventTimeUser(AddEventTimeUser);
 
             if (result)
             {
-                NavigationManager.NavigateTo($"/events/{Event.Id}", true);
+                NavigationManager.NavigateTo($"/events/{EventId}", true);
             }
         }
     }

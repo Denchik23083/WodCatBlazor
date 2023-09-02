@@ -2,9 +2,9 @@
     <div class="col visualContainerEvent" style="background-image: url(/@Image);">
         <div class="row m-3">
             <div class="col text-center">
-                <a class="Name" href="/workouts/@Workout.Id"><span class="bold">@Workout.Name</span></a><br/>
+                <a class="Name" href="/workouts/@Workout!.Id"><span class="bold">@Workout!.Name</span></a><br/>
                 <span style="color: white; font-size: 1.5rem;">На время:</span><br/>
-                <span style="color: white; font-size: 1.5rem;">@Workout.Time</span>
+                <span style="color: white; font-size: 1.5rem;">@Workout!.Time</span>
             </div>
         </div>
         <div class="row m-3">
@@ -16,10 +16,13 @@
         {
             <div class="row m-3">
                 <div class="col text-center">
-                    <form>
-                        <input type="time" @bind-value="Time" step="2"/>
-                        <button type="submit" @onclick="SubmitTime">Сохранить</button>
-                    </form>
+                    <EditForm Model="@AddEventTimeUser" OnValidSubmit="SubmitTime">
+                        <DataAnnotationsValidator />
+                        <ValidationSummary />
+                            <input type="time" @bind-value="Time" step="2"/>
+                            <button class="btn btn-primary"
+                                    type="submit">Сохранить</button>
+                    </EditForm>
                 </div>
             </div>
         }

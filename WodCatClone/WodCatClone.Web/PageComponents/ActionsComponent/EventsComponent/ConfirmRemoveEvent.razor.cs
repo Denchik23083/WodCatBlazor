@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.EventsService;
-using WodCatClone.Logic.ActionsService.HallsService;
 
 namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 {
@@ -13,11 +12,11 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         [Parameter] public int EventId { get; set; }
 
-        [Parameter] public Events Event { get; set; }
+        [Parameter] public Events? Event { get; set; } = new();
 
-        [Inject] public IEventsService EventsService { get; set; }
+        [Inject] public IEventsService EventsService { get; set; } = null!;
 
-        [Inject] public NavigationManager NavigationManager { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; } = null!;
 
         public bool DisplayRemoveEvent { get; set; }
 
