@@ -7,13 +7,9 @@ namespace WodCatClone.Logic.ActionsService.EventsService
     {
         Task<IEnumerable<Events>> GetAllEvents();
 
-        IEnumerable<User> GetAllEventsUsers(int id);
-
-        IEnumerable<EventTimeUser> GetAllEventTimeUsers(int eventId);
-
         Task<IEnumerable<EventEmblem>> GetAllEventEmblem();
 
-        Events GetEvent(int eventId);
+        Task<Events?> GetEvent(int eventId);
 
         EventTimeUser GetEventTimeUser(int eventId, int userId);
 
@@ -23,7 +19,7 @@ namespace WodCatClone.Logic.ActionsService.EventsService
         
         Task<bool> RemoveEvent(int eventId);
 
-        bool AutoRemoveEvent(int eventId);
+        Task<bool> AutoRemoveEvent(int eventId);
 
         bool JoinEvent(int eventId, User user);
 

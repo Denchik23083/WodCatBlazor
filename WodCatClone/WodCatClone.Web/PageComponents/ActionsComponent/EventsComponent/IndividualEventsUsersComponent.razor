@@ -5,18 +5,12 @@
             {
                 <img src="@GenderImage" width="50" height="50"/>
             }&nbsp;
-            <a href="/profile/@User.NickName" class="link">
-                @User.Name&nbsp;
-                @User.Surname
+            <a href="/profile/@User!.NickName" class="link">
+                @User!.Name&nbsp;
+                @User!.Surname
             </a>
         </td>
-        <td>@User.Town</td>
-        <td>@User.Points</td>
-        <td>
-            @if (Time is not null)
-            {
-                @Time
-            }
-        </td>
+        <td>@User!.Town</td>
+        <td>@User!.Points</td>
     </tr>
 </tbody>

@@ -7,9 +7,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 {
     public partial class AwardsComponent
     {
-        [Parameter] public IEnumerable<EventTimeUser> ListOfItems { get; set; }
-
-        [Parameter] public int EventId { get; set; }
+        [Parameter] public IEnumerable<EventTimeUser> ListOfItems { get; set; } = new List<EventTimeUser>();
 
         public int Places { get; set; }
 

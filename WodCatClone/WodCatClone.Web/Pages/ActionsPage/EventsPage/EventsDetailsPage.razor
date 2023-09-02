@@ -2,9 +2,9 @@
 
 <HeaderComponent User="User"/>
 
-@if (IsLoginUser)
+@*@if (IsLoginUser)
 {
-    @if (User!.EventId == Event.Id)
+    @if (User!.EventId == Event!.Id)
     {
         @if (DateTime.Now >= Event.StartDate && DateTime.Now <= Event.EndDate)
         {
@@ -23,7 +23,7 @@
 else
 {
     <RegisterEventComponent Event="Event" EventId="EventId"/>
-}
+}*@
 
 <div class="row">
     <div class="col p-3 footerEvent" style="top: 695px;">
@@ -39,17 +39,17 @@ else
         {
             <AboutEventComponent Event="Event"/>
         }
-        else if (DisplayEventWorkoutExercise)
+        @if (DisplayEventWorkoutExercise)
         {
             <IndividualWorkoutsComponent Workout="Workout" />
         }
-        else if (DisplayUser)
+        @if (DisplayUser)
         {
-            <ListEventsUsersComponent ListOfItems="Users" EventId="EventId"/>
+            <ListEventsUsersComponent ListOfItems="Users" />
         }
-        else if (DisplayAward)
+        @if (DisplayAward)
         {
-            <AwardsComponent ListOfItems="EventTimeUsers" EventId="EventId"/>
+            <AwardsComponent ListOfItems="EventTimeUsers" />
         }
     </div>
 </div>

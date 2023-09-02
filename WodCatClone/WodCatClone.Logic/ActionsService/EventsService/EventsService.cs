@@ -25,27 +25,14 @@ namespace WodCatClone.Logic.ActionsService.EventsService
             return await _repository.GetAllEvents();
         }
 
-        public IEnumerable<User> GetAllEventsUsers(int id)
-        {
-            return _repository.GetAllEventsUsers(id);
-        }
-
-        public IEnumerable<EventTimeUser> GetAllEventTimeUsers(int eventId)
-        {
-            return _repository.GetAllEventTimeUsers(eventId)
-                .OrderByDescending(b => b.Time)
-                .Take(3)
-                .Reverse();
-        }
-
         public async Task<IEnumerable<EventEmblem>> GetAllEventEmblem()
         {
             return await _repository.GetAllEventEmblem();
         }
 
-        public Events GetEvent(int eventId)
+        public async Task<Events?> GetEvent(int eventId)
         {
-            return _repository.GetEvent(eventId);
+            return await _repository.GetEvent(eventId);
         }
 
         public EventTimeUser GetEventTimeUser(int eventId, int userId)
@@ -80,7 +67,7 @@ namespace WodCatClone.Logic.ActionsService.EventsService
                 return false;
             }
 
-            var eventToEdit = _repository.GetEvent(eventId);
+            var eventToEdit = await _repository.GetEvent(eventId);
 
             if (eventToEdit is null)
             {
@@ -104,7 +91,7 @@ namespace WodCatClone.Logic.ActionsService.EventsService
 
         public async Task<bool> RemoveEvent(int eventId)
         {
-            var eventToRemove = _repository.GetEvent(eventId);
+            var eventToRemove = await _repository.GetEvent(eventId);
 
             if (eventToRemove is null)
             {
@@ -114,11 +101,11 @@ namespace WodCatClone.Logic.ActionsService.EventsService
             return await _repository.RemoveEvent(eventToRemove);
         }
 
-        public bool AutoRemoveEvent(int eventId)
+        public async Task<bool> AutoRemoveEvent(int eventId)
         {
             var allUsers = _repository.GetAllEventsUsers(eventId);
 
-            var eventToRemove = _repository.GetEvent(eventId);
+            var eventToRemove = await _repository.GetEvent(eventId);
 
             if (eventToRemove is null)
             {
