@@ -22,9 +22,11 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 
         protected override async Task OnInitializedAsync()
         {
-            User = UserService.GetUser();
+            User = await UserService.GetUser();
+            
+            IsLoginUser = await UserService.IsLoginUser();
+
             Halls = await HallsService.GetAllHalls();
-            IsLoginUser = UserService.IsLoginUser();
         }
 
         public void Add() => NavigationManager.NavigateTo("/gymboxs/add");

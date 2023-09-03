@@ -23,9 +23,9 @@ namespace WodCatClone.Web.Pages.AuthPage
 
         public User? User { get; set; } = new();
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
-            User = UserService.GetUser();
+            User = await UserService.GetUser();
         }
 
         public async Task Login()

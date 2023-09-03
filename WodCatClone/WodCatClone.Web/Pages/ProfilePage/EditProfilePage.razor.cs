@@ -30,9 +30,9 @@ namespace WodCatClone.Web.Pages.ProfilePage
 
         protected override async Task OnInitializedAsync()
         {
-            IsLoginUser = UserService.IsLoginUser();
+            IsLoginUser = await UserService.IsLoginUser();
 
-            UserEnter = UserService.GetUser();
+            UserEnter = await UserService.GetUser();
             User = await UserService.GetUser(NickName);
 
             Halls = await HallsService.GetAllHalls();

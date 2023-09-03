@@ -33,9 +33,9 @@ namespace WodCatClone.WebDb.UserRepository
             return await _context.Gender.ToListAsync();
         }
 
-        public User? GetUser(int id)
+        public async Task<User?> GetUser(int id)
         {
-            return _context.Users
+            return await _context.Users
                 .Include(_ => _.ProgramTimeUsers)!
                 .ThenInclude(_ => _.Programs)
                 .Include(_ => _.Gender)
@@ -45,7 +45,7 @@ namespace WodCatClone.WebDb.UserRepository
                 .ThenInclude(_ => _!.ProgramEmblem)
                 .Include(_ => _.Events)
                 .ThenInclude(_ => _!.EventEmblem)
-                .FirstOrDefault(b => b.Id == id);
+                .FirstOrDefaultAsync(b => b.Id == id);
         }
 
         public async Task<User?> GetUser(string nickName)

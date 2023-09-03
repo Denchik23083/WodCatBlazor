@@ -22,7 +22,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.ExercisesPage
 
         protected override async Task OnInitializedAsync()
         {
-            User = UserService.GetUser();
+            User = await UserService.GetUser();
 
             Exercise = await ExercisesService.GetExercise(ExerciseId);
 

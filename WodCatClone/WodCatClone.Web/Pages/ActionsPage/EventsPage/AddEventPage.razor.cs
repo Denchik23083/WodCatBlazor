@@ -34,9 +34,9 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
 
         protected override async Task OnInitializedAsync()
         {
-            User = UserService.GetUser();
+            User = await UserService.GetUser();
 
-            IsLoginUser = UserService.IsLoginUser();
+            IsLoginUser = await UserService.IsLoginUser();
 
             EventEmblem = await EventsService.GetAllEventEmblem();
             Halls = await HallsService.GetAllHalls();

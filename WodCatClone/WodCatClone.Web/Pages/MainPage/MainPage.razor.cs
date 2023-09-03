@@ -38,7 +38,7 @@ namespace WodCatClone.Web.Pages.MainPage
 
         protected override async Task OnInitializedAsync()
         {
-            User = UserService.GetUser();
+            User = await UserService.GetUser();
 
             Programs = await ProgramsService.GetAllPrograms();
             Workouts = await WorkoutsService.GetAllWorkouts();

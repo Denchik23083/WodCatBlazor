@@ -20,7 +20,7 @@ namespace WodCatClone.Web.Pages.MorePage
 
         protected override async Task OnInitializedAsync()
         {
-            User = UserService.GetUser();
+            User = await UserService.GetUser();
             Questions = await CallBackService.GetAllQuestions();
         }
 

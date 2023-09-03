@@ -28,7 +28,7 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
 
         public async Task<bool> BeginProgram(int id, User user)
         {
-            var loginUser = _userRepository.GetUser(user.Id);
+            var loginUser = await _userRepository.GetUser(user.Id);
 
             if (loginUser is null)
             {
@@ -51,7 +51,7 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
 
         public async Task<bool> StopProgram(int id, User user, bool isFinish)
         {
-            var loginUser = _userRepository.GetUser(user.Id);
+            var loginUser = await _userRepository.GetUser(user.Id);
 
             if (loginUser is null)
             {

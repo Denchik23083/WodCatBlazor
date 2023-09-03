@@ -63,8 +63,8 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
 
         private async Task FillOverrideFunctions()
         {
-            User = UserService.GetUser();
-            IsLoginUser = UserService.IsLoginUser();
+            User = await UserService.GetUser();
+            IsLoginUser = await UserService.IsLoginUser();
 
             Event = await EventsService.GetEvent(EventId);
             if (Event is null || Event.EndDate < DateTime.Now)

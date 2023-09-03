@@ -48,7 +48,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
 
         private async Task FillOverrideFunctions()
         {
-            User = UserService.GetUser();
+            User = await UserService.GetUser();
 
             Program = await ProgramsService.GetProgram(ProgramId);
 
@@ -58,7 +58,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
             }
             else
             {
-                IsLoginUser = UserService.IsLoginUser();
+                IsLoginUser = await UserService.IsLoginUser();
                 Users = Program.Users!;
                 ProgramsWorkouts = Program.ProgramsWorkouts!;
 

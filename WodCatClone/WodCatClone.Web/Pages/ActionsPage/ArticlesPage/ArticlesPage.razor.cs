@@ -22,9 +22,11 @@ namespace WodCatClone.Web.Pages.ActionsPage.ArticlesPage
 
         protected override async Task OnInitializedAsync()
         {
-            User = UserService.GetUser();
+            User = await UserService.GetUser();
+
+            IsLoginUser = await UserService.IsLoginUser();
+
             Articles = await ArticlesService.GetAllArticles();
-            IsLoginUser = UserService.IsLoginUser();
         }
 
         public void Add() => NavigationManager.NavigateTo("/articles/add");

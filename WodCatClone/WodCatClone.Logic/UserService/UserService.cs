@@ -22,16 +22,16 @@ namespace WodCatClone.Logic.UserService
             return await _repository.GetGenders();
         }
 
-        public bool IsLoginUser()
+        public Task<bool> IsLoginUser()
         {
-            return AuthService.AuthService.IsLoginUser;
+            return Task.FromResult(AuthService.AuthService.IsLoginUser);
         }
 
-        public User? GetUser()
+        public async Task<User?> GetUser()
         {
             var user = AuthService.AuthService.User;
 
-            return user is null ? user : _repository.GetUser(user.Id);
+            return user is null ? user : await _repository.GetUser(user.Id);
         }
 
         public async Task<User?> GetUser(string nickName)
@@ -41,7 +41,7 @@ namespace WodCatClone.Logic.UserService
 
         public async Task<bool> EditUserHall(User user, int id)
         {
-            var loginUser = _repository.GetUser(user.Id);
+            var loginUser = await _repository.GetUser(user.Id);
 
             if (loginUser is null)
             {
@@ -55,7 +55,7 @@ namespace WodCatClone.Logic.UserService
 
         public async Task<bool> Update(User updateUser, int id)
         {
-            var userToUpdate = _repository.GetUser(id);
+            var userToUpdate = await _repository.GetUser(id);
 
             if (userToUpdate is null)
             {
@@ -77,7 +77,7 @@ namespace WodCatClone.Logic.UserService
 
         public async Task<bool> UpdateAuth(User updateAuth, int id)
         {
-            var userToUpdate = _repository.GetUser(id);
+            var userToUpdate = await _repository.GetUser(id);
 
             if (userToUpdate is null)
             {
