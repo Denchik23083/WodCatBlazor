@@ -12,8 +12,6 @@ namespace WodCatClone.WebDb.UserRepository
 
         Task<User?> GetUser(string nickName);
 
-        Gender GetGender(int id);
-
         Task<bool> EditUserHall(User loginUser);
 
         Task<bool> Update(User userToUpdate);

@@ -12,11 +12,7 @@ namespace WodCatClone.Logic.UserService
 
         User? GetUser();
 
-        Task<User?> GetUser(int id);
-
         Task<User?> GetUser(string nickName);
-
-        Gender GetGender(int id);
 
         Task<bool> EditUserHall(User user, int id);
 

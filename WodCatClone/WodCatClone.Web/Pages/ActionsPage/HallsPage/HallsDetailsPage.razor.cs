@@ -89,9 +89,10 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 
             if (result)
             {
-                await GetAthlete();
                 NavigationManager.NavigateTo($"/gymboxs/{HallId}");
             }
+
+            GetAthlete();
         }
         
         public async Task Exit()
@@ -100,9 +101,10 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 
             if (result)
             {
-                await GetAthlete();
                 NavigationManager.NavigateTo($"/gymboxs/{HallId}");
             }
+
+            GetAthlete();
         }
 
         public void DisplayWorkout()
@@ -117,9 +119,9 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
             DisplayUsers = true;
         }
 
-        private async Task GetAthlete()
+        private void GetAthlete()
         {
-            Athletes = await HallsService.Athlete(Hall!.Id);
+            Athletes = Hall!.Users!.Count();
         }
     }
 }

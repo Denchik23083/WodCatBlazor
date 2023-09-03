@@ -7,8 +7,6 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
     {
         Task<IEnumerable<Programs>> GetAllPrograms();
 
-        Task<ProgramTimeUser?> GetProgramTimeUser(int programId, User user);
-
         Task<Programs?> GetProgram(int id);
 
         Task<bool> BeginProgram(int id, User user);

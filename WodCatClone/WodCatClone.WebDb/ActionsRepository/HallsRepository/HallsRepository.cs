@@ -37,16 +37,6 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
                 .FirstOrDefaultAsync(b => b.Id == hallId);
         }
 
-        public Halls GetHall(int? userHallId)
-        {
-            return _context.Halls.FirstOrDefault(b => b.Id == userHallId);
-        }
-
-        public HallEmblem GetImage(int? imageId)
-        {
-            return _context.HallEmblem.FirstOrDefault(b => b.Id == imageId);
-        }
-
         public async Task<bool> AddHall(Halls hall, User loginUser)
         {
             await _context.Halls.AddAsync(hall);
@@ -82,11 +72,6 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
             await _context.SaveChangesAsync();
 
             return true;
-        }
-
-        public async Task<int> Athlete(int hallId)
-        {
-            return await _context.Users.CountAsync(b => b.HallId == hallId);
         }
     }
 }

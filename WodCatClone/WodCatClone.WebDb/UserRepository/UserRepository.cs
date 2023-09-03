@@ -36,6 +36,8 @@ namespace WodCatClone.WebDb.UserRepository
         public User? GetUser(int id)
         {
             return _context.Users
+                .Include(_ => _.ProgramTimeUsers)!
+                .ThenInclude(_ => _.Programs)
                 .Include(_ => _.Gender)
                 .Include(_ => _.Halls)
                 .ThenInclude(_ => _!.EmblemHall)
@@ -57,11 +59,6 @@ namespace WodCatClone.WebDb.UserRepository
                 .Include(_ => _.Events)
                 .ThenInclude(_ => _!.EventEmblem)
                 .FirstOrDefaultAsync(b => b.NickName!.Equals(nickName));
-        }
-
-        public Gender GetGender(int id)
-        {
-            return _context.Gender.FirstOrDefault(b => b.Id == id);
         }
 
         public async Task<bool> EditUserHall(User loginUser)

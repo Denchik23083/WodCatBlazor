@@ -31,16 +31,6 @@ namespace WodCatClone.Logic.ActionsService.HallsService
             return await _repository.GetHall(hallId);
         }
 
-        public Halls GetHall(int? hallId)
-        {
-            return _repository.GetHall(hallId);
-        }
-
-        public string GetImage(int? imageId)
-        {
-            return _repository.GetImage(imageId)?.Image;
-        }
-
         public async Task<bool> AddHall(Halls hall)
         {
             var user = AuthService.AuthService.User;
@@ -126,11 +116,6 @@ namespace WodCatClone.Logic.ActionsService.HallsService
             loginUser.HallId = null;
 
             return await _repository.ExitHall(user);
-        }
-
-        public async Task<int> Athlete(int hallId)
-        {
-            return await _repository.Athlete(hallId);
         }
     }
 }

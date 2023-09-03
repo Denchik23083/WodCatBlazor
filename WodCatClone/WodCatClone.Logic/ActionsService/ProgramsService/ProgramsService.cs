@@ -21,11 +21,6 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
             return await _repository.GetAllPrograms();
         }
 
-        public async Task<ProgramTimeUser?> GetProgramTimeUser(int programId, User user)
-        {
-            return await _repository.GetProgramTimeUser(programId, user);
-        }
-
         public async Task<Programs?> GetProgram(int id)
         {
             return await _repository.GetProgram(id);
@@ -47,7 +42,7 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
                 UserId = loginUser.Id
             };
 
-            var programTimeUser = await _repository.GetProgramTimeUser(id, loginUser);
+            var programTimeUser = loginUser.ProgramTimeUsers?.FirstOrDefault(_ => _.ProgramsId == id);
 
             loginUser.ProgramId = id;
 
@@ -63,8 +58,8 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
                 return false;
             }
 
-            var programTimeUser = await _repository.GetProgramTimeUser(id, loginUser);
-
+            var programTimeUser = loginUser.ProgramTimeUsers?.FirstOrDefault(_ => _.ProgramsId == id);
+            
             if (programTimeUser is null)
             {
                 return false;
