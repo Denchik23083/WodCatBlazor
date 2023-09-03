@@ -3,6 +3,7 @@ using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.ActionsService.EventsService;
 using WodCatClone.Logic.UserService;
+using WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent;
 
 namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
 {
@@ -34,6 +35,20 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
 
         public bool IsLoginUser { get; set; }
 
+        public string? RegisterDate { get; set; }
+
+        public string? StartDate { get; set; }
+
+        public string? EndDate { get; set; }
+
+        public string? Image { get; set; }
+
+        public string? HallEmblem { get; set; }
+
+        public Halls? Hall { get; set; } = new();
+
+        public ConfirmRemoveEvent? ConfirmRemoveEvent { get; set; } = new();
+
         public User? User { get; set; } = new();
         
         protected override async Task OnInitializedAsync()
@@ -64,6 +79,50 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
                     .OrderByDescending(b => b.Time)
                     .Take(3)
                     .Reverse();
+
+                StartDate = Event!.StartDate.ToString("dd MMMM yyyy HH:mm:ss");
+                EndDate = Event!.EndDate.ToString("dd MMMM yyyy HH:mm:ss");
+                RegisterDate = Event!.RegisterDate.ToString("dd MMMM yyyy HH:mm:ss");
+
+                if (Event!.EventEmblem is not null)
+                {
+                    Image = Event!.EventEmblem!.Image!;
+                }
+
+                if (Event!.Halls is not null)
+                {
+                    Hall = Event!.Halls!;
+                    if (Hall.EmblemHall is not null)
+                    {
+                        HallEmblem = Hall.EmblemHall!.Image!;
+                    }
+                }
+            }
+        }
+
+        public void Edit() => NavigationManager.NavigateTo($"/events/{EventId}/edit");
+
+        public void OnShow() => ConfirmRemoveEvent!.Show();
+
+        public void OnCancel() => ConfirmRemoveEvent!.Hide();
+
+        public async Task Join()
+        {
+            var result = await EventsService.JoinEvent(Event!.Id, User!);
+
+            if (result)
+            {
+                NavigationManager.NavigateTo($"/events/{EventId}");
+            }
+        }
+
+        public async Task Exit()
+        {
+            var result = await EventsService.ExitEvent(Event!.Id, User!);
+
+            if (result)
+            {
+                NavigationManager.NavigateTo($"/events/{EventId}");
             }
         }
 

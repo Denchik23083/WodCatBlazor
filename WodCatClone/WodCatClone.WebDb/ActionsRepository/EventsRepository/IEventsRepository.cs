@@ -9,15 +9,9 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
 
         Task<IEnumerable<Events>> GetAllEndEvents();
 
-        IEnumerable<User> GetAllEventsUsers(int id);
-
-        IEnumerable<EventTimeUser> GetAllEventTimeUsers(int eventId);
-
         Task<IEnumerable<EventEmblem>> GetAllEventEmblem();
 
         Task<Events?> GetEvent(int eventId);
-
-        EventTimeUser GetEventTimeUser(int eventId, int userId);
 
         Task<bool> AddEvent(Events @event, User loginUser);
 
@@ -25,10 +19,8 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
 
         Task<bool> RemoveEvent(Events eventToRemove);
 
-        bool AutoRemoveEvent(IEnumerable<User> allUsers, IEnumerable<User> usersToList, Events eventToRemove);
-
-        Task RemoveEndEvents(IEnumerable<Events> endEvents);
-
+        Task<bool> AutoRemoveEvent(IEnumerable<User> usersToList, Events eventToRemove);
+        
         Task<bool> JoinEvent(User user);
 
         Task<bool> ExitEvent(User user);

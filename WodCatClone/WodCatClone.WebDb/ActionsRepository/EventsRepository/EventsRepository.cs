@@ -44,16 +44,6 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
                 .ToListAsync();
         }
 
-        public IEnumerable<User> GetAllEventsUsers(int id)
-        {
-            return _context.Users.Where(b => b.EventId == id);
-        }
-
-        public IEnumerable<EventTimeUser> GetAllEventTimeUsers(int eventId)
-        {
-            return _context.EventTimeUser.Where(b => b.EventsId == eventId);
-        }
-
         public async Task<IEnumerable<EventEmblem>> GetAllEventEmblem()
         {
             return await _context.EventEmblem.ToListAsync();
@@ -63,7 +53,8 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
         {
             return await _context.Events
                 .Include(_ => _.EventEmblem)
-                .Include(_ => _.EventTimeUsers)
+                .Include(_ => _.EventTimeUsers)!
+                .ThenInclude(_ => _.User)
                 .Include(_ => _.Users)!
                 .ThenInclude(_ => _.Gender)
                 .Include(_ => _.Users)!
@@ -79,11 +70,6 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
                 .ThenInclude(_ => _!.WorkoutsExercises)!
                 .ThenInclude(_ => _.Exercises)
                 .FirstOrDefaultAsync(b => b.Id == eventId);
-        }
-
-        public EventTimeUser GetEventTimeUser(int eventId, int userId)
-        {
-            return _context.EventTimeUser.FirstOrDefault(b => b.EventsId == eventId && b.UserId == userId);
         }
 
         public async Task<bool> AddEvent(Events @event, User loginUser)
@@ -109,13 +95,8 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
             return true;
         }
 
-        public bool AutoRemoveEvent(IEnumerable<User> allUsers, IEnumerable<User> usersToList, Events eventToRemove)
+        public async Task<bool> AutoRemoveEvent(IEnumerable<User> usersToList, Events eventToRemove)
         {
-            foreach (var user in allUsers)
-            {
-                user.EventId = null;
-            }
-
             var points = 200;
 
             foreach (var user in usersToList)
@@ -126,16 +107,9 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
             }
 
             _context.Events.Remove(eventToRemove);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return true;
-        }
-
-        public async Task RemoveEndEvents(IEnumerable<Events> endEvents)
-        {
-            _context.Events.RemoveRange(endEvents);
-
-            await _context.SaveChangesAsync();
         }
 
         public async Task<bool> JoinEvent(User loginUser)

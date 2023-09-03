@@ -1,5 +1,4 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.EventsService;

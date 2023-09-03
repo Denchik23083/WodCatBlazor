@@ -109,12 +109,29 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             }
             else
             {
-                /*UpdateEvent = EventsService.GetEvent(EventId);
-                Image = EventsService.GetImage(Event.EventsEmblemId);
-                Hall = HallsService.GetHall(UpdateEvent.HallId);
-                HallImage = HallsService.GetImage(Hall.EmblemHallId);
-                Workout = WorkoutsService.GetWorkout(UpdateEvent.WorkoutId);
-                WorkoutImage = Workout.Name!;*/
+                UpdateEvent = Mapper.Map<EventsModel>(Event);
+
+                if (UpdateEvent.EventEmblem is not null)
+                {
+                    Image = UpdateEvent.EventEmblem.Image!;
+                }
+
+                if (UpdateEvent.Halls is not null)
+                {
+                    Hall = UpdateEvent.Halls!;
+                    if (Hall is not null)
+                    {
+                        HallImage = Hall.EmblemHall!.Image!;
+                    }
+                }
+                if (UpdateEvent.Workouts is not null)
+                {
+                    Workout = UpdateEvent.Workouts!;
+                    if (Workout is not null)
+                    {
+                        WorkoutImage = Workout.Name!;
+                    }
+                }
             }
         }
 

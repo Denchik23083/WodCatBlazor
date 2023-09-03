@@ -13,13 +13,16 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         protected override void OnInitialized()
         {
-            var eventTimeUser = User!.EventTimeUsers!.FirstOrDefault(_ => _.EventsId == User.EventId);
-
-            if (eventTimeUser is not null)
+            if (User!.EventTimeUsers is not null)
             {
-                Time = eventTimeUser.Time.ToString("g");
-            }
+                var eventTimeUser = User!.EventTimeUsers!.FirstOrDefault(_ => _.EventsId == User.EventId);
 
+                if (eventTimeUser is not null)
+                {
+                    Time = eventTimeUser.Time.ToString("g");
+                }
+            }
+            
             GenderImage = User!.Gender!.Image!;
         }
     }

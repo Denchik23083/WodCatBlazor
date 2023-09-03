@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.ActionsService.ProgramsService;
-using WodCatClone.Logic.UserService;
 
 namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
 {
