@@ -64,7 +64,7 @@
                                 <div class="selected mb-2">
                                     @foreach (var item in ArticleTypes)
                                     {
-                                        <span class="item mb-2" @onclick="() => AddArticleType(item.Value)">@item.Content</span><br/>
+                                        <span class="item mb-2" @onclick="() => AddArticleType(item.Value!)">@item.Content</span><br/>
                                     }
                                 </div>
                             }

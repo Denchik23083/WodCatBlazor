@@ -5,7 +5,7 @@ namespace WodCatClone.Web.PageComponents.HeaderComponent
 {
     public partial class ActionsComponent
     {
-        [Inject] public NavigationManager NavigationManager { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; } = null!;
 
         public int Value = 0;
 

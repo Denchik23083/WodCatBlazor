@@ -99,7 +99,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
                     SelectedType = UpdateArticle!.Type!.Split(",").ToList();
                     foreach (var selectedType in SelectedType)
                     {
-                        var item = ArticleTypes.FirstOrDefault(b => b.Value.Equals(selectedType));
+                        var item = ArticleTypes.FirstOrDefault(b => b.Value!.Equals(selectedType));
                         ArticleTypes.Remove(item!);
                     }
                 }
@@ -156,7 +156,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
         {
             SelectedType.Add(selected);
 
-            var item = ArticleTypes.FirstOrDefault(b => b.Value.Equals(selected));
+            var item = ArticleTypes.FirstOrDefault(b => b.Value!.Equals(selected));
 
             ArticleTypes.Remove(item!);
         }
