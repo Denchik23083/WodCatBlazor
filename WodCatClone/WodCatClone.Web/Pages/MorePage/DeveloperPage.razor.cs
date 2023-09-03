@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Auth;
-using WodCatClone.Db.Entities.CallBack;
-using WodCatClone.Logic.CallBackService;
 using WodCatClone.Logic.UserService;
 
 namespace WodCatClone.Web.Pages.MorePage

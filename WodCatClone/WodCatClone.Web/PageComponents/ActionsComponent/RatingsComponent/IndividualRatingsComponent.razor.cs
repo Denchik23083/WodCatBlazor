@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Auth;
-using WodCatClone.Logic.ActionsService.HallsService;
-using WodCatClone.Logic.UserService;
 
 namespace WodCatClone.Web.PageComponents.ActionsComponent.RatingsComponent
 {

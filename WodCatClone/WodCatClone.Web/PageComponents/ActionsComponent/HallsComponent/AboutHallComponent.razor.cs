@@ -8,5 +8,15 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
         [Parameter] public Halls Hall { get; set; } = new();
 
         [Parameter] public int Athletes { get; set; }
+
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+        }
+
+        protected override void OnParametersSet()
+        {
+            base.OnParametersSet();
+        }
     }
 }

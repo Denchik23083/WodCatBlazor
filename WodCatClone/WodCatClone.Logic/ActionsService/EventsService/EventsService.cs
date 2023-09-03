@@ -18,11 +18,12 @@ namespace WodCatClone.Logic.ActionsService.EventsService
 
         public async Task<IEnumerable<Events>> GetAllEvents()
         {
-            var endEvents = await _repository.GetAllEndEvents();
-            
-            await _repository.RemoveEndEvents(endEvents);
-
             return await _repository.GetAllEvents();
+        }
+
+        public async Task<IEnumerable<Events>> GetAllEndEvents()
+        {
+            return await _repository.GetAllEndEvents();
         }
 
         public async Task<IEnumerable<EventEmblem>> GetAllEventEmblem()
@@ -33,11 +34,6 @@ namespace WodCatClone.Logic.ActionsService.EventsService
         public async Task<Events?> GetEvent(int eventId)
         {
             return await _repository.GetEvent(eventId);
-        }
-
-        public EventTimeUser GetEventTimeUser(int eventId, int userId)
-        {
-            return _repository.GetEventTimeUser(eventId, userId);
         }
 
         public async Task<bool> AddEvent(Events @event)
@@ -101,35 +97,16 @@ namespace WodCatClone.Logic.ActionsService.EventsService
             return await _repository.RemoveEvent(eventToRemove);
         }
 
-        public async Task<bool> AutoRemoveEvent(int eventId)
+        public async Task<bool> AutoRemoveEvent(Events eventToRemove)
         {
-            var allUsers = _repository.GetAllEventsUsers(eventId);
-
-            var eventToRemove = await _repository.GetEvent(eventId);
-
-            if (eventToRemove is null)
-            {
-                return false;
-            }
-
-            var allUsersTime = _repository.GetAllEventTimeUsers(eventId)
+            var allUsersTime = eventToRemove.EventTimeUsers!
                 .OrderByDescending(b => b.Time)
                 .Take(3)
                 .Reverse();
 
-            var usersToList = new List<User>();
+            var usersToList = allUsersTime.Select(item => item.User).ToList();
 
-            foreach (var item in allUsersTime)
-            {
-                var user = _userRepository.GetUser(item.UserId);
-
-                if (user is not null)
-                {
-                    usersToList.Add(user);
-                }
-            }
-
-            return _repository.AutoRemoveEvent(allUsers, usersToList, eventToRemove);
+            return await _repository.AutoRemoveEvent(usersToList!, eventToRemove);
         }
 
         public async Task<bool> JoinEvent(int eventId, User user)

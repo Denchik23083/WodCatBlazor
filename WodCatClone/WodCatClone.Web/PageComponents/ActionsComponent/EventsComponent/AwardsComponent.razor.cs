@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
-using WodCatClone.Db.Entities.Auth;
 
 namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 {
@@ -14,6 +12,12 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
         public int Points { get; set; }
 
         protected override void OnInitialized()
+        {
+            Places = 0;
+            Points = 200;
+        }
+
+        protected override void OnParametersSet()
         {
             Places = 0;
             Points = 200;
