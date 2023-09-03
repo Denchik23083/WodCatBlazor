@@ -68,27 +68,27 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             new() { Content = "Львов", Filter = "Львов" },
         };
 
-        public List<FilterEvents> TypeEvent = new()
+        public List<EventTypes> TypeEvent = new()
         {
-            new() { Content = "Выставки", Filter = "Выставки" },
-            new() { Content = "N/A", Filter = "N/A" },
-            new() { Content = "Онлайн соревнования", Filter = "Онлайн соревнования" },
-            new() { Content = "Cеминар", Filter = "Cеминар" },
-            new() { Content = "Соревнования", Filter = "Соревнования" },
+            new() { Content = "Выставки", Value = "Выставки" },
+            new() { Content = "N/A", Value = "N/A" },
+            new() { Content = "Онлайн соревнования", Value = "Онлайн соревнования" },
+            new() { Content = "Cеминар", Value = "Cеминар" },
+            new() { Content = "Соревнования", Value = "Соревнования" },
         };
 
-        public List<FilterEvents> TypeSport = new()
+        public List<SportType> TypeSport = new()
         {
-            new() { Content = "Лёгкая атлетика", Filter = "Лёгкая атлетика" },
-            new() { Content = "Бодибилдинг", Filter = "Бодибилдинг" },
-            new() { Content = "Бокс", Filter = "Бокс" },
-            new() { Content = "Фитнесс", Filter = "Фитнесс" },
-            new() { Content = "Кроссфит", Filter = "Кроссфит" },
-            new() { Content = "Гиревой спорт", Filter = "Гиревой спорт" },
-            new() { Content = "Мотокросс", Filter = "Мотокросс" },
-            new() { Content = "Пауэрлифтинг", Filter = "Пауэрлифтинг" },
-            new() { Content = "Стронгмен", Filter = "Стронгмен" },
-            new() { Content = "Тяжелая атлетика", Filter = "Тяжелая атлетика" },
+            new() { Content = "Лёгкая атлетика", Value = "Лёгкая атлетика" },
+            new() { Content = "Бодибилдинг", Value = "Бодибилдинг" },
+            new() { Content = "Бокс", Value = "Бокс" },
+            new() { Content = "Фитнесс", Value = "Фитнесс" },
+            new() { Content = "Кроссфит", Value = "Кроссфит" },
+            new() { Content = "Гиревой спорт", Value = "Гиревой спорт" },
+            new() { Content = "Мотокросс", Value = "Мотокросс" },
+            new() { Content = "Пауэрлифтинг", Value = "Пауэрлифтинг" },
+            new() { Content = "Стронгмен", Value = "Стронгмен" },
+            new() { Content = "Тяжелая атлетика", Value = "Тяжелая атлетика" },
         };
 
         protected override void OnInitialized()

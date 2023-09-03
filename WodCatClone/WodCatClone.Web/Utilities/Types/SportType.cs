@@ -1,6 +1,6 @@
 ﻿namespace WodCatClone.Web.Utilities.Types
 {
-    public class HallRating
+    public class SportType
     {
         public string? Content { get; set; }
 

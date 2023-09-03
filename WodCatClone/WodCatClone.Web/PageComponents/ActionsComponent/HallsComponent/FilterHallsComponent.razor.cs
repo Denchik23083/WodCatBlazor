@@ -47,11 +47,11 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
 
             if (_filterTown != "None")
             {
-                Halls = Halls.Where(b => b.Town.Contains(_filterTown)).ToList();
+                Halls = Halls.Where(b => b.Town!.Contains(_filterTown)).ToList();
             }
             if (_filterType != "None")
             {
-                Halls = Halls.Where(b => b.Type.Contains(_filterType)).ToList();
+                Halls = Halls.Where(b => b.Type!.Contains(_filterType)).ToList();
             }
         }
 

@@ -63,7 +63,7 @@
                                 <div class="selected mb-2">
                                     @foreach (var item in HallTypes)
                                     {
-                                        <span class="item mb-2" @onclick="() => AddHallType(item.Value)">@item.Content</span><br/>
+                                        <span class="item mb-2" @onclick="() => AddHallType(item.Value!)">@item.Content</span><br/>
                                     }
                                 </div>
                             }

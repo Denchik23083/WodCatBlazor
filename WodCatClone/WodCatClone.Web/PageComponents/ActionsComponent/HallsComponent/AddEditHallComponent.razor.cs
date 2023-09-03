@@ -113,7 +113,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
                     SelectedType = UpdateHall!.Type!.Split(",").ToList();
                     foreach (var selectedType in SelectedType)
                     {
-                        var item = HallTypes.FirstOrDefault(b => b.Value.Equals(selectedType));
+                        var item = HallTypes.FirstOrDefault(b => b.Value!.Equals(selectedType));
                         HallTypes.Remove(item!);
                     }
                 }
@@ -170,7 +170,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
         {
             SelectedType.Add(selected);
 
-            var item = HallTypes.FirstOrDefault(b => b.Value.Equals(selected));
+            var item = HallTypes.FirstOrDefault(b => b.Value!.Equals(selected));
 
             HallTypes.Remove(item!);
         }
