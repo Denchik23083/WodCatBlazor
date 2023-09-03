@@ -42,7 +42,7 @@ namespace WodCatClone.Web.Pages.AuthPage
         protected override async Task OnInitializedAsync()
         {
             Genders = await UserService.GetGenders();
-            User = UserService.GetUser();
+            User = await UserService.GetUser();
         }
 
         public async Task Register()

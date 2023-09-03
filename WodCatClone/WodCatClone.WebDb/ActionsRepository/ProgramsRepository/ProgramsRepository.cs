@@ -32,13 +32,6 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
                 .ToListAsync();
         }
 
-        public async Task<ProgramTimeUser?> GetProgramTimeUser(int programId, User user)
-        {
-            return await _context.ProgramTimeUser
-                .FirstOrDefaultAsync(b => b.ProgramsId == programId 
-                                          && b.UserId == user.Id);
-        }
-
         public async Task<Programs?> GetProgram(int id)
         {
             return await _context.Programs

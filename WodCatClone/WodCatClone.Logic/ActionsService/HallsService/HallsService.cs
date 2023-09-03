@@ -31,20 +31,10 @@ namespace WodCatClone.Logic.ActionsService.HallsService
             return await _repository.GetHall(hallId);
         }
 
-        public Halls GetHall(int? hallId)
-        {
-            return _repository.GetHall(hallId);
-        }
-
-        public string GetImage(int? imageId)
-        {
-            return _repository.GetImage(imageId)?.Image;
-        }
-
         public async Task<bool> AddHall(Halls hall)
         {
             var user = AuthService.AuthService.User;
-            var loginUser = _userRepository.GetUser(user!.Id);
+            var loginUser = await _userRepository.GetUser(user!.Id);
 
             if (loginUser is null)
             {
@@ -61,7 +51,7 @@ namespace WodCatClone.Logic.ActionsService.HallsService
         public async Task<bool> EditHall(Halls hall, int hallId)
         {
             var user = AuthService.AuthService.User;
-            var loginUser = _userRepository.GetUser(user!.Id);
+            var loginUser = await _userRepository.GetUser(user!.Id);
 
             if (loginUser is null)
             {
@@ -102,7 +92,7 @@ namespace WodCatClone.Logic.ActionsService.HallsService
 
         public async Task<bool> JoinHall(int hallId, User user)
         {
-            var loginUser = _userRepository.GetUser(user.Id);
+            var loginUser = await _userRepository.GetUser(user.Id);
 
             if (loginUser is null)
             {
@@ -116,7 +106,7 @@ namespace WodCatClone.Logic.ActionsService.HallsService
 
         public async Task<bool> ExitHall(int hallId, User user)
         {
-            var loginUser = _userRepository.GetUser(user.Id);
+            var loginUser = await _userRepository.GetUser(user.Id);
 
             if (loginUser is null)
             {
@@ -126,11 +116,6 @@ namespace WodCatClone.Logic.ActionsService.HallsService
             loginUser.HallId = null;
 
             return await _repository.ExitHall(user);
-        }
-
-        public async Task<int> Athlete(int hallId)
-        {
-            return await _repository.Athlete(hallId);
         }
     }
 }

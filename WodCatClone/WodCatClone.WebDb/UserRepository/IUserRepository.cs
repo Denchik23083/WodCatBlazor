@@ -8,11 +8,9 @@ namespace WodCatClone.WebDb.UserRepository
 
         Task<IEnumerable<Gender>> GetGenders();
         
-        User? GetUser(int id);
+        Task<User?> GetUser(int id);
 
         Task<User?> GetUser(string nickName);
-
-        Gender GetGender(int id);
 
         Task<bool> EditUserHall(User loginUser);
 

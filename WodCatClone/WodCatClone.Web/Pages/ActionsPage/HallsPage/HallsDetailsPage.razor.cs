@@ -53,8 +53,8 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 
         private async Task FillOverrideFunctions()
         {
-            User = UserService.GetUser();
-            IsLoginUser = UserService.IsLoginUser();
+            User = await UserService.GetUser();
+            IsLoginUser = await UserService.IsLoginUser();
 
             Hall = await HallsService.GetHall(HallId);
             if (Hall is null)
@@ -89,9 +89,10 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 
             if (result)
             {
-                await GetAthlete();
                 NavigationManager.NavigateTo($"/gymboxs/{HallId}");
             }
+
+            GetAthlete();
         }
         
         public async Task Exit()
@@ -100,9 +101,10 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 
             if (result)
             {
-                await GetAthlete();
                 NavigationManager.NavigateTo($"/gymboxs/{HallId}");
             }
+
+            GetAthlete();
         }
 
         public void DisplayWorkout()
@@ -117,9 +119,9 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
             DisplayUsers = true;
         }
 
-        private async Task GetAthlete()
+        private void GetAthlete()
         {
-            Athletes = await HallsService.Athlete(Hall!.Id);
+            Athletes = Hall!.Users!.Count;
         }
     }
 }

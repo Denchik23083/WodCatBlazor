@@ -11,10 +11,6 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
 
         Task<Halls?> GetHall(int hallId);
 
-        Halls GetHall(int? userHallId);
-
-        HallEmblem GetImage(int? imageId);
-
         Task<bool> AddHall(Halls hall, User loginUser);
 
         Task<bool> EditHall(Halls hallToEdit, User loginUser);
@@ -24,7 +20,5 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
         Task<bool> JoinHall(User user);
 
         Task<bool> ExitHall(User user);
-
-        Task<int> Athlete(int hallId);
     }
 }

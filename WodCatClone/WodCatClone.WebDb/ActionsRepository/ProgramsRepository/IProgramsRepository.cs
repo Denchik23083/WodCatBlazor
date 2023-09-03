@@ -7,8 +7,6 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
     {
         Task<IEnumerable<Programs>> GetAllPrograms();
 
-        Task<ProgramTimeUser?> GetProgramTimeUser(int programId, User user);
-
         Task<Programs?> GetProgram(int id);
 
         Task<bool> BeginProgram(User loginUser, ProgramTimeUser? programTimeUser, ProgramTimeUser newProgramTimeUser);

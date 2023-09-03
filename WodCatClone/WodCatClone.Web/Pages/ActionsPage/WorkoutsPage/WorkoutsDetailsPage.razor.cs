@@ -47,7 +47,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
 
         protected override async Task OnInitializedAsync()
         {
-            User = UserService.GetUser();
+            User = await UserService.GetUser();
 
             Workout = await WorkoutsService.GetWorkout(WorkoutId);
 
@@ -57,7 +57,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
             }
             else
             {
-                IsLoginUser = UserService.IsLoginUser();
+                IsLoginUser = await UserService.IsLoginUser();
 
                 Hall = Workout.Halls!;
                 if (Hall is not null)

@@ -39,7 +39,7 @@ namespace WodCatClone.Logic.ActionsService.EventsService
         public async Task<bool> AddEvent(Events @event)
         {
             var user = AuthService.AuthService.User;
-            var loginUser = _userRepository.GetUser(user!.Id);
+            var loginUser = await _userRepository.GetUser(user!.Id);
 
             if (loginUser is null)
             {
@@ -56,7 +56,7 @@ namespace WodCatClone.Logic.ActionsService.EventsService
         public async Task<bool> EditEvent(Events @event, int eventId)
         {
             var user = AuthService.AuthService.User;
-            var loginUser = _userRepository.GetUser(user!.Id);
+            var loginUser = await _userRepository.GetUser(user!.Id);
 
             if (loginUser is null)
             {
@@ -111,7 +111,7 @@ namespace WodCatClone.Logic.ActionsService.EventsService
 
         public async Task<bool> JoinEvent(int eventId, User user)
         {
-            var loginUser = _userRepository.GetUser(user.Id);
+            var loginUser = await _userRepository.GetUser(user.Id);
 
             if (loginUser is null)
             {
@@ -125,7 +125,7 @@ namespace WodCatClone.Logic.ActionsService.EventsService
 
         public async Task<bool> ExitEvent(int eventId, User user)
         {
-            var loginUser = _userRepository.GetUser(user.Id);
+            var loginUser = await _userRepository.GetUser(user.Id);
 
             if (loginUser is null)
             {

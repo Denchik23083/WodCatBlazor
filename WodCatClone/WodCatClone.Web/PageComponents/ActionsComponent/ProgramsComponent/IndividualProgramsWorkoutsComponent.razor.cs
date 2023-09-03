@@ -16,5 +16,11 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
             Workout = ProgramsWorkouts!.Workouts!;
             WorkoutsExercises = ProgramsWorkouts.Workouts!.WorkoutsExercises!;
         }
+
+        protected override void OnParametersSet()
+        {
+            Workout = ProgramsWorkouts!.Workouts!;
+            WorkoutsExercises = ProgramsWorkouts.Workouts!.WorkoutsExercises!;
+        }
     }
 }

@@ -33,7 +33,7 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
         public async Task<bool> AddArticle(Articles article)
         {
             var user = AuthService.AuthService.User;
-            var loginUser = _userRepository.GetUser(user!.Id);
+            var loginUser = await _userRepository.GetUser(user!.Id);
 
             if (loginUser is null)
             {
@@ -50,7 +50,7 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
         public async Task<bool> EditArticle(Articles article, int id)
         {
             var user = AuthService.AuthService.User;
-            var loginUser = _userRepository.GetUser(user!.Id);
+            var loginUser = await _userRepository.GetUser(user!.Id);
 
             if (loginUser is null)
             {

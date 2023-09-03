@@ -21,11 +21,6 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
             return await _repository.GetAllPrograms();
         }
 
-        public async Task<ProgramTimeUser?> GetProgramTimeUser(int programId, User user)
-        {
-            return await _repository.GetProgramTimeUser(programId, user);
-        }
-
         public async Task<Programs?> GetProgram(int id)
         {
             return await _repository.GetProgram(id);
@@ -33,7 +28,7 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
 
         public async Task<bool> BeginProgram(int id, User user)
         {
-            var loginUser = _userRepository.GetUser(user.Id);
+            var loginUser = await _userRepository.GetUser(user.Id);
 
             if (loginUser is null)
             {
@@ -47,7 +42,7 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
                 UserId = loginUser.Id
             };
 
-            var programTimeUser = await _repository.GetProgramTimeUser(id, loginUser);
+            var programTimeUser = loginUser.ProgramTimeUsers?.FirstOrDefault(_ => _.ProgramsId == id);
 
             loginUser.ProgramId = id;
 
@@ -56,15 +51,15 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
 
         public async Task<bool> StopProgram(int id, User user, bool isFinish)
         {
-            var loginUser = _userRepository.GetUser(user.Id);
+            var loginUser = await _userRepository.GetUser(user.Id);
 
             if (loginUser is null)
             {
                 return false;
             }
 
-            var programTimeUser = await _repository.GetProgramTimeUser(id, loginUser);
-
+            var programTimeUser = loginUser.ProgramTimeUsers?.FirstOrDefault(_ => _.ProgramsId == id);
+            
             if (programTimeUser is null)
             {
                 return false;

@@ -18,7 +18,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
 
         protected override async Task OnInitializedAsync()
         {
-            User = UserService.GetUser();
+            User = await UserService.GetUser();
             Programs = await ProgramsService.GetAllPrograms();
         }
     }

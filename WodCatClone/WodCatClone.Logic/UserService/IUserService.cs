@@ -8,15 +8,11 @@ namespace WodCatClone.Logic.UserService
 
         Task<IEnumerable<Gender>> GetGenders();
 
-        bool IsLoginUser();
+        Task<bool> IsLoginUser();
 
-        User? GetUser();
-
-        Task<User?> GetUser(int id);
+        Task<User?> GetUser();
 
         Task<User?> GetUser(string nickName);
-
-        Gender GetGender(int id);
 
         Task<bool> EditUserHall(User user, int id);
 

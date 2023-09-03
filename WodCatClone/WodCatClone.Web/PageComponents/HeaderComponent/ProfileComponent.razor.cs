@@ -11,23 +11,29 @@ namespace WodCatClone.Web.PageComponents.HeaderComponent
 
         [Inject] public IUserService UserService { get; set; } = null!;
 
-        public bool IsLoginUser { get; set; }
-
         [Parameter] public User? User { get; set; } = new();
 
-        protected override void OnInitialized()
+        public bool IsLoginUser { get; set; }
+
+        public string? Image { get; set; }
+
+        protected override async Task OnInitializedAsync()
         {
-            FillOverrideFunctions();
+            await FillOverrideFunctions();
         }
 
-        protected override void OnParametersSet()
+        protected override async Task OnParametersSetAsync()
         {
-            FillOverrideFunctions();
+            await FillOverrideFunctions();
         }
 
-        private void FillOverrideFunctions()
+        private async Task FillOverrideFunctions()
         {
-            IsLoginUser = UserService.IsLoginUser();
+            IsLoginUser = await UserService.IsLoginUser();
+            if (User?.Gender is not null)
+            {
+                Image = User.Gender.Image!;
+            }
         }
 
         public void Auth() => NavigationManager.NavigateTo("/login");
@@ -41,17 +47,17 @@ namespace WodCatClone.Web.PageComponents.HeaderComponent
 
         string? _link = string.Empty;
 
-        void Route(ChangeEventArgs currentItem)
+        private void Route(ChangeEventArgs currentItem)
         {
             _link = currentItem.Value?.ToString();
 
             if (_link == "/profile")
             {
-                _link += $"/{User.NickName}";
+                _link += $"/{User!.NickName}";
             }
             if (_link == "/edit")
             {
-                _link = $"/profile/{User.NickName}/edit";
+                _link = $"/profile/{User!.NickName}/edit";
             }
 
             NavigationManager.NavigateTo($"{_link}");

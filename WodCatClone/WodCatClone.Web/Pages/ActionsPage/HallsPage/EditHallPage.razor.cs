@@ -26,8 +26,8 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 
         protected override async Task OnInitializedAsync()
         {
-            User = UserService.GetUser();
-            IsLoginUser = UserService.IsLoginUser();
+            User = await UserService.GetUser();
+            IsLoginUser = await UserService.IsLoginUser();
 
             Hall = await HallsService.GetHall(HallId);
             if (Hall is null)
