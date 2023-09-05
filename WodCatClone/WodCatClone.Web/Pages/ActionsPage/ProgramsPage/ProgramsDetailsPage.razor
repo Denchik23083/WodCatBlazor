@@ -70,10 +70,7 @@
                 {
                     if (Day < ProgramsWorkouts.Count())
                     {
-                        if (ProgramWorkout is not null)
-                        {
-                            <IndividualProgramsWorkoutsComponent ProgramsWorkouts="ProgramWorkout" />
-                        }
+                        <DayProgramsWorkoutsComponent Program="Program" ProgramId="ProgramId" User="User" />
                     }
                     else
                     {

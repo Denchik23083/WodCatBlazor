@@ -36,7 +36,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
 
                 if (Program!.ProgramsWorkouts is not null)
                 {
-                    var programWorkout = Program!.ProgramsWorkouts!.ElementAtOrDefault(day)!;
+                    var programWorkout = Program!.ProgramsWorkouts!.ElementAtOrDefault(day);
 
                     if (programWorkout is not null)
                     {
