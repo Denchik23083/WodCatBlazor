@@ -77,7 +77,10 @@
             <div class="row">
                 <div class="col countAthletesBlock text-white">
                     <div class="countAthletes text-white">
-                        @Athletes
+                        @if(Hall?.Users is not null)
+                        {
+                            @Hall.Users.Count()
+                        }                        
                     </div>
                     
                 </div>
@@ -89,7 +92,7 @@
             </div>
             @if (IsLoginUser)
             {
-                @if (User!.HallId != Hall.Id)
+                @if (User!.HallId != Hall!.Id)
                 {
                     <div class="row mb-3">
                         <div class="col">
@@ -124,7 +127,7 @@
         </div>
         @if (DisplayLocation)
         {
-            <AboutHallComponent Hall="Hall" Athletes="Athletes"/>
+            <AboutHallComponent Hall="Hall"/>
         }
         @if (DisplayUsers)
         {

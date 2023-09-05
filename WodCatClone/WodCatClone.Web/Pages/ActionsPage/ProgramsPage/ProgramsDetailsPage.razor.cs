@@ -18,7 +18,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
 
         public Programs? Program { get; set; } = new();
 
-        public ProgramsWorkouts? ProgramWorkout { get; set; }
+        public ProgramsWorkouts? ProgramWorkout { get; set; } = new();
 
         public User? User { get; set; } = new();
 
@@ -49,6 +49,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
         private async Task FillOverrideFunctions()
         {
             User = await UserService.GetUser();
+            IsLoginUser = await UserService.IsLoginUser();
 
             Program = await ProgramsService.GetProgram(ProgramId);
 
@@ -57,8 +58,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
                 NavigationManager.NavigateTo("/programs");
             }
             else
-            {
-                IsLoginUser = await UserService.IsLoginUser();
+            {                
                 Users = Program.Users!;
                 ProgramsWorkouts = Program.ProgramsWorkouts!;
 
@@ -67,7 +67,12 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
                     ProgramsWorkouts = Program.ProgramsWorkouts!;
                     if (User.ProgramId == ProgramId)
                     {
-                        GetProgramWorkout();
+                        var programTimeUser = Program!.ProgramTimeUsers!.FirstOrDefault(b => b.ProgramsId == ProgramId && b.UserId == User!.Id);
+                        if (programTimeUser is not null)
+                        {
+                            Day = (DateTime.Now - programTimeUser.BeginProgramDate).Days;
+                            ProgramWorkout = Program!.ProgramsWorkouts!.ElementAtOrDefault(Day)!;
+                        }
                     }
                     else
                     {
@@ -89,8 +94,6 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
             {
                 NavigationManager.NavigateTo($"/programs/{ProgramId}");
             }
-
-            GetProgramWorkout();
         }
 
         public async Task StopProgram()
@@ -101,8 +104,6 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
             {
                 NavigationManager.NavigateTo($"/programs/{ProgramId}");
             }
-
-            GetProgramWorkout();
         }
 
         public void DisplayWorkout()
@@ -124,16 +125,6 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
             DisplayWorkouts = false;
             DisplayDayWorkouts = false;
             DisplayUsers = true;
-        }
-
-        private void GetProgramWorkout()
-        {
-            var programTimeUser = Program!.ProgramTimeUsers!.FirstOrDefault(b => b.ProgramsId == ProgramId && b.UserId == User!.Id);
-            if (programTimeUser is not null)
-            {
-                Day = (DateTime.Now - programTimeUser.BeginProgramDate).Days;
-                ProgramWorkout = Program!.ProgramsWorkouts!.ElementAtOrDefault(Day)!;
-            }
         }
     }
 }

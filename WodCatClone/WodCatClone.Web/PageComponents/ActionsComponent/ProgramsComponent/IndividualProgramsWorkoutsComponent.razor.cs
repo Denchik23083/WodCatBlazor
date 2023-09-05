@@ -9,15 +9,19 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
 
         public IEnumerable<WorkoutsExercises> WorkoutsExercises { get; set; } = new List<WorkoutsExercises>();
 
-        public Workouts Workout { get; set; } = new();
+        public Workouts? Workout { get; set; } = new();
 
         protected override void OnInitialized()
         {
-            Workout = ProgramsWorkouts!.Workouts!;
-            WorkoutsExercises = ProgramsWorkouts.Workouts!.WorkoutsExercises!;
+            FillOverrideFunctions();
         }
 
         protected override void OnParametersSet()
+        {
+            FillOverrideFunctions();
+        }
+
+        private void FillOverrideFunctions()
         {
             Workout = ProgramsWorkouts!.Workouts!;
             WorkoutsExercises = ProgramsWorkouts.Workouts!.WorkoutsExercises!;

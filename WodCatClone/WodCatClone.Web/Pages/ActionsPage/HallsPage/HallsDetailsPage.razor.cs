@@ -31,8 +31,6 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 
         public bool IsLoginUser { get; set; }
 
-        public int Athletes { get; set; }
-
         public bool DisplayLocation { get; set; } = true;
 
         public bool DisplayUsers { get; set; }
@@ -73,7 +71,6 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
                 }
 
                 Users = Hall.Users!;
-                Athletes = Users.Count();
             }
         }
 
@@ -91,8 +88,6 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
             {
                 NavigationManager.NavigateTo($"/gymboxs/{HallId}");
             }
-
-            GetAthlete();
         }
         
         public async Task Exit()
@@ -103,8 +98,6 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
             {
                 NavigationManager.NavigateTo($"/gymboxs/{HallId}");
             }
-
-            GetAthlete();
         }
 
         public void DisplayWorkout()
@@ -117,11 +110,6 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
         {
             DisplayLocation = false;
             DisplayUsers = true;
-        }
-
-        private void GetAthlete()
-        {
-            Athletes = Hall!.Users!.Count;
         }
     }
 }
