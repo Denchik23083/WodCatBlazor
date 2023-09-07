@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
-using WodCatClone.Logic.ActionsService.WorkoutsService.ResultWorkoutsService;
+using WodCatClone.Logic.ActionsService.WorkoutsService;
 using WodCatClone.Web.Models;
 
 namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
@@ -10,7 +10,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
     {
         [Parameter] public int WorkoutId { get; set; }
 
-        [Inject] public IResultWorkoutsService ResultWorkoutsService { get; set; } = null!;
+        [Inject] public IWorkoutsService WorkoutsService { get; set; } = null!;
 
         [Inject] public IMapper Mapper { get; set; } = null!;
 
@@ -26,7 +26,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
             var mappedResultWorkouts = Mapper.Map<ResultWorkouts>(ResultWorkouts);
 
-            var result = await ResultWorkoutsService.AddResultWorkouts(mappedResultWorkouts);
+            var result = await WorkoutsService.AddResultWorkouts(mappedResultWorkouts);
 
             if (result)
             {

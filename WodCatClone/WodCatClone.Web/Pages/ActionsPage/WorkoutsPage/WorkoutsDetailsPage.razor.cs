@@ -2,8 +2,7 @@
 using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Db.Entities.Auth;
-using WodCatClone.Logic.ActionsService.WorkoutsService.ResultWorkoutsService;
-using WodCatClone.Logic.ActionsService.WorkoutsService.WorkoutsService;
+using WodCatClone.Logic.ActionsService.WorkoutsService;
 using WodCatClone.Logic.UserService;
 using WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent;
 
@@ -16,8 +15,6 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
         [Inject] public IWorkoutsService WorkoutsService { get; set; } = null!;
 
         [Inject] public IUserService UserService { get; set; } = null!;
-
-        [Inject] public IResultWorkoutsService ResultWorkoutsService { get; set; } = null!;
 
         [Inject] public NavigationManager NavigationManager { get; set; } = null!;
 
@@ -96,7 +93,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
 
             var mappedResultWorkouts = Mapper.Map<ResultWorkouts>(resultWorkout);
 
-            var result = await ResultWorkoutsService.EditResultWorkouts(mappedResultWorkouts, id);
+            var result = await WorkoutsService.EditResultWorkouts(mappedResultWorkouts, id);
 
             if (result)
             {
@@ -108,7 +105,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
         {
             var id = GetAllResultWorkouts.ResultWorkoutId;
 
-            var result = await ResultWorkoutsService.DeleteResultWorkouts(id);
+            var result = await WorkoutsService.DeleteResultWorkouts(id);
 
             if (result)
             {
