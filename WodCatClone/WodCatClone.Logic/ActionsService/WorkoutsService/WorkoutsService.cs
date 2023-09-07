@@ -1,18 +1,28 @@
 ﻿using WodCatClone.Db.Entities.Actions;
-using WodCatClone.WebDb.ActionsRepository.WorkoutsRepository.ResultWorkoutsRepository;
+using WodCatClone.WebDb.ActionsRepository.WorkoutsRepository;
 using WodCatClone.WebDb.UserRepository;
 
-namespace WodCatClone.Logic.ActionsService.WorkoutsService.ResultWorkoutsService
+namespace WodCatClone.Logic.ActionsService.WorkoutsService
 {
-    public class ResultWorkoutsService : IResultWorkoutsService
+    public class WorkoutsService : IWorkoutsService
     {
-        private readonly IResultWorkoutsRepository _repository;
+        private readonly IWorkoutsRepository _repository;
         private readonly IUserRepository _userRepository;
 
-        public ResultWorkoutsService(IResultWorkoutsRepository repository, IUserRepository userRepository)
+        public WorkoutsService(IWorkoutsRepository repository, IUserRepository userRepository)
         {
             _repository = repository;
             _userRepository = userRepository;
+        }
+
+        public async Task<IEnumerable<Workouts>> GetAllWorkouts()
+        {
+            return await _repository.GetAllWorkouts();
+        }
+
+        public async Task<Workouts?> GetWorkout(int workoutId)
+        {
+            return await _repository.GetWorkout(workoutId);
         }
 
         public async Task<bool> AddResultWorkouts(ResultWorkouts resultWorkouts)

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
-using WodCatClone.Logic.ActionsService.WorkoutsService.WorkoutsService;
+using WodCatClone.Logic.ActionsService.WorkoutsService;
 using WodCatClone.Web.Utilities.Types;
 
 namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent

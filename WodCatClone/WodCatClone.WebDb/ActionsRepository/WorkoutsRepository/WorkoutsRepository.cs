@@ -1,8 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WodCatClone.Db;
 using WodCatClone.Db.Entities.Actions;
+using WodCatClone.Db.Entities.Auth;
 
-namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository.WorkoutsRepository
+namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
 {
     public class WorkoutsRepository : IWorkoutsRepository
     {
@@ -33,6 +34,35 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository.WorkoutsReposit
                 .Include(_ => _.WorkoutsExercises)!
                 .ThenInclude(_ => _.Exercises)
                 .FirstOrDefaultAsync(_ => _.Id == workoutId);
+        }
+
+        public async Task<ResultWorkouts?> GetResultWorkout(int id)
+        {
+            return await _context.ResultWorkouts.FirstOrDefaultAsync(b => b.Id == id);
+        }
+
+        public async Task<bool> AddResultWorkouts(ResultWorkouts resultWorkouts, User loginUser)
+        {
+            await _context.ResultWorkouts.AddAsync(resultWorkouts);
+
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async Task<bool> EditResultWorkouts(ResultWorkouts resultWorkoutEdit, User loginUser)
+        {
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async Task<bool> DeleteResultWorkouts(ResultWorkouts resultWorkoutRemove)
+        {
+            _context.ResultWorkouts.Remove(resultWorkoutRemove);
+            await _context.SaveChangesAsync();
+
+            return true;
         }
     }
 }

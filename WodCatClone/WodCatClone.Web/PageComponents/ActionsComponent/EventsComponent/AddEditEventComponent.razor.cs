@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.EventsService;
 using WodCatClone.Logic.ActionsService.HallsService;
-using WodCatClone.Logic.ActionsService.WorkoutsService.WorkoutsService;
+using WodCatClone.Logic.ActionsService.WorkoutsService;
 using WodCatClone.Web.Models;
 using WodCatClone.Web.Utilities.Types;
 
