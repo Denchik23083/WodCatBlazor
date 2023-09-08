@@ -8,6 +8,6 @@ namespace WodCatClone.Logic.AuthService
 
         Task<bool> Register(User register);
 
-        bool Logout();
+        Task<bool> Logout();
     }
 }
