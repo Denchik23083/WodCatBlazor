@@ -43,7 +43,7 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
 
                 if (result)
                 {
-                    var logout = AuthService.Logout();
+                    var logout = await AuthService.Logout();
 
                     if (logout)
                     {

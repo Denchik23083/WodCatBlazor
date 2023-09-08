@@ -24,6 +24,7 @@
   <ItemGroup>
     <ProjectReference Include="..\WodCatClone.Db\WodCatClone.Db.csproj" />
     <ProjectReference Include="..\WodCatClone.Logic\WodCatClone.Logic.csproj" />
+    <ProjectReference Include="..\WodCatClone.Web\WodCatClone.Web.csproj" />
   </ItemGroup>
 
 </Project>

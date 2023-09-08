@@ -9,9 +9,9 @@ namespace WodCatClone.Web.Pages.AuthPage
 
         [Inject] public IAuthService AuthService { get; set; } = null!;
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
-            var result = AuthService.Logout();
+            var result = await AuthService.Logout();
 
             if (result)
             {

@@ -8,6 +8,13 @@ namespace WodCatClone.Tests.CallBackTests
 {
     public class CallBackTests
     {
+        private readonly Mock<ICallBackRepository> _repository;
+
+        public CallBackTests()
+        {
+            _repository = new Mock<ICallBackRepository>();
+        }
+
         [Fact]
         public async Task GetAllQuestions()
         {
@@ -24,15 +31,16 @@ namespace WodCatClone.Tests.CallBackTests
                 new() { Id = 9, Name = "Можно ли редактировать или удалить программу тренировок, тренировку или упражнения?", AnswerId = 9 },
                 new() { Id = 10, Name = "Как получить баллы за мероприятие?", AnswerId = 10 }
             };
-        
 
-            var mock = new Mock<ICallBackRepository>();
-            mock.Setup(_ => _.GetAllQuestions())
-                .ReturnsAsync(() => questions);
+            _repository.Setup(_ => _.GetAllQuestions())
+                .ReturnsAsync(questions);
 
-            ICallBackService service = new CallBackService(mock.Object);
+            ICallBackService service = new CallBackService(_repository.Object);
 
             var result = await service.GetAllQuestions();
+
+            _repository.Verify(s =>
+                s.GetAllQuestions(), Times.Once);
 
             Assert.NotNull(result);
             Assert.Equal(questions.Count, result.Count());
@@ -41,18 +49,22 @@ namespace WodCatClone.Tests.CallBackTests
         [Fact]
         public async Task GetAnswer()
         {
-            var answer = new Answer { Id = 5, Name = "Только те, которые создал" };
+            var expectedId = 5;
 
-            var mock = new Mock<ICallBackRepository>();
-            mock.Setup(_ => _.GetAnswer(answer.Id))
-                .ReturnsAsync(() => answer);
+            var answer = new Answer { Id = expectedId, Name = "Только те, которые создал" };
+            
+            _repository.Setup(_ => _.GetAnswer(expectedId))
+                .ReturnsAsync(answer);
 
-            ICallBackService service = new CallBackService(mock.Object);
+            ICallBackService service = new CallBackService(_repository.Object);
 
-            var result = await service.GetAnswer(answer.Id);
+            var result = await service.GetAnswer(expectedId);
+
+            _repository.Verify(s =>
+                s.GetAnswer(expectedId), Times.Once);
 
             Assert.NotNull(result);
-            Assert.Equal(answer.Id, result!.Id);
+            Assert.Equal(expectedId, result!.Id);
         }
     }
 }

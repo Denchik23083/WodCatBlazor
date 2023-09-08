@@ -47,12 +47,12 @@ namespace WodCatClone.Logic.AuthService
             return await _repository.Register(register);
         }
 
-        public bool Logout()
+        public Task<bool> Logout()
         {
             User = null;
             IsLoginUser = false;
 
-            return true;
+            return Task.FromResult(true);
         }
     }
 }
