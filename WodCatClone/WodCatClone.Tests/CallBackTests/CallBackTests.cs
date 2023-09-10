@@ -39,8 +39,8 @@ namespace WodCatClone.Tests.CallBackTests
 
             var result = await service.GetAllQuestions();
 
-            _repository.Verify(s =>
-                s.GetAllQuestions(), Times.Once);
+            _repository.Verify(_ => _.GetAllQuestions(), 
+                Times.Once);
 
             Assert.NotNull(result);
             Assert.Equal(questions.Count, result.Count());
@@ -60,8 +60,8 @@ namespace WodCatClone.Tests.CallBackTests
 
             var result = await service.GetAnswer(expectedId);
 
-            _repository.Verify(s =>
-                s.GetAnswer(expectedId), Times.Once);
+            _repository.Verify(_ => _.GetAnswer(expectedId), 
+                Times.Once);
 
             Assert.NotNull(result);
             Assert.Equal(expectedId, result!.Id);

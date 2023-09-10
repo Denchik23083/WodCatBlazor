@@ -1,7 +1,6 @@
 ﻿using Moq;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.AuthService;
-using WodCatClone.Web.Models;
 using WodCatClone.WebDb.AuthRepository;
 using WodCatClone.WebDb.UserRepository;
 using Xunit;
@@ -22,21 +21,39 @@ namespace WodCatClone.Tests.AuthTests
         [Fact]
         public async Task Login()
         {
-            var user = new User
+            var userModel = new User
             {
                 Email = "deniskudravov228@gmail.com",
                 Password = "0000"
             };
 
-            _repository.Setup(_ => _.Login(It.Is<User>(u => u.Email == user.Email && u.Password == user.Password)))
+            var user = new User
+            {
+                Id = 1,
+                Name = "Денис",
+                Surname = "Кудрявов",
+                NickName = "SoEasyBlef",
+                Email = "deniskudravov228@gmail.com",
+                Password = "0000",
+                Country = "Ukraine",
+                Town = "Херсон",
+                Points = 200,
+                Birthday = new DateTime(2003, 08, 23),
+                Height = "185",
+                Weight = "70",
+                AboutMe = "I am a developer C#",
+                GenderId = 1
+            };
+
+            _repository.Setup(_ => _.Login(userModel))
                 .ReturnsAsync(user);
 
             IAuthService service = new AuthService(_repository.Object, _userRepository.Object);
 
-            var result = await service.Login(user);
+            var result = await service.Login(userModel);
 
-            _repository.Verify(s =>
-                s.Login(It.IsAny<User>()), Times.Once);
+            _repository.Verify(_ => _.Login(userModel), 
+                Times.Once);
 
             Assert.True(result);
         }
@@ -44,9 +61,7 @@ namespace WodCatClone.Tests.AuthTests
         [Fact]
         public async Task Register()
         {
-            var confirmPassword = "0000";
-
-            var user = new User
+            var userModel = new User
             {
                 Name = "Trevor2",
                 Surname = "Philips2",
@@ -118,18 +133,18 @@ namespace WodCatClone.Tests.AuthTests
             _userRepository.Setup(_ => _.GetAllUsers())
                 .ReturnsAsync(listUsers);
 
-            _repository.Setup(_ => _.Register(It.Is<User>(u => u.Password == user.Password && u.Password == confirmPassword)))
+            _repository.Setup(_ => _.Register(userModel))
                 .ReturnsAsync(true);
 
             IAuthService service = new AuthService(_repository.Object, _userRepository.Object);
 
-            var result = await service.Register(user);
+            var result = await service.Register(userModel);
 
-            _userRepository.Verify(s =>
-                s.GetAllUsers(), Times.Once);
+            _userRepository.Verify(_ => _.GetAllUsers(), 
+                Times.Once);
 
-            _repository.Verify(s =>
-                s.Register(It.IsAny<User>()), Times.Once);
+            _repository.Verify(_ => _.Register(userModel), 
+                Times.Once);
 
             Assert.True(result);
         }

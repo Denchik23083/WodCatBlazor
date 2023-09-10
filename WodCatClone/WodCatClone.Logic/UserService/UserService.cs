@@ -65,7 +65,6 @@ namespace WodCatClone.Logic.UserService
             userToUpdate.Name = updateUser.Name;
             userToUpdate.Surname = updateUser.Surname;
             userToUpdate.Town = updateUser.Town;
-            userToUpdate.HallId = updateUser.HallId;
             userToUpdate.GenderId = updateUser.GenderId;
             userToUpdate.Birthday = updateUser.Birthday;
             userToUpdate.Height = updateUser.Height;
