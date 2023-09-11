@@ -1,15 +1,15 @@
 ﻿using Moq;
 using WodCatClone.Core;
 using WodCatClone.Db.Entities.Auth;
-using WodCatClone.Logic.AuthService;
 using WodCatClone.Logic.UserService;
+using WodCatClone.Tests.Utilities;
 using WodCatClone.WebDb.AuthRepository;
 using WodCatClone.WebDb.UserRepository;
 using Xunit;
 
 namespace WodCatClone.Tests.UserTests
 {
-    public class UserTests
+    public class UserTests : AuthUser
     {
         private readonly Mock<IUserRepository> _repository;
         private readonly Mock<IAuthRepository> _authRepository;
@@ -148,9 +148,9 @@ namespace WodCatClone.Tests.UserTests
 
             Assert.True(authResult);
 
-            var expectedId = 1;
-
             var user = User();
+
+            var expectedId = 1;            
 
             _repository.Setup(_ => _.GetUser(expectedId))
                 .ReturnsAsync(user);
@@ -169,9 +169,9 @@ namespace WodCatClone.Tests.UserTests
         [Fact]
         public async Task GetUserByNickName()
         {
-            var expectedNickName = "SoEasyBlef";
-
             var user = User();
+
+            var expectedNickName = "SoEasyBlef";
 
             _repository.Setup(_ => _.GetUser(expectedNickName))
                 .ReturnsAsync(user);
@@ -190,13 +190,13 @@ namespace WodCatClone.Tests.UserTests
         [Fact]
         public async Task EditUserHall()
         {
-            var hallId = 1;
-
             var authResult = await IsAuthUser();
 
             Assert.True(authResult);
 
             var user = User();
+
+            var hallId = 1;
 
             _repository.Setup(_ => _.GetUser(user.Id))
                 .ReturnsAsync(user);
@@ -224,6 +224,8 @@ namespace WodCatClone.Tests.UserTests
 
             Assert.True(authResult);
 
+            var user = User();
+
             var updateUser = new User
             {
                 Name = "Hello",
@@ -234,9 +236,7 @@ namespace WodCatClone.Tests.UserTests
                 Height = "180",
                 Weight = "80",
                 AboutMe = "Hello"
-            };
-
-            var user = User();
+            };            
 
             _repository.Setup(_ => _.GetUser(user.Id))
                 .ReturnsAsync(user);
@@ -264,14 +264,14 @@ namespace WodCatClone.Tests.UserTests
 
             Assert.True(authResult);
 
+            var user = User();
+
             var updateUser = new User
             {
                 NickName = "Foo",
                 Email = "foo@gmail.com",
                 Password = "0000"
-            };
-
-            var user = User();
+            };           
 
             _repository.Setup(_ => _.GetUser(user.Id))
                 .ReturnsAsync(user);
@@ -290,50 +290,6 @@ namespace WodCatClone.Tests.UserTests
                 Times.Once);
 
             Assert.True(result);
-        }
-
-        private async Task<bool> IsAuthUser()
-        {
-            var userModel = new User
-            {
-                Email = "deniskudravov228@gmail.com",
-                Password = "0000"
-            };
-
-            var user = User();
-
-            _authRepository.Setup(_ => _.Login(userModel))
-                .ReturnsAsync(user);
-
-            IAuthService authService = new AuthService(_authRepository.Object, _repository.Object);
-
-            var authResult = await authService.Login(userModel);
-
-            _authRepository.Verify(_ => _.Login(userModel),
-                Times.Once);
-
-            return authResult;
-        }
-
-        private static User User()
-        {
-            return new User
-            {
-                Id = 1,
-                Name = "Денис",
-                Surname = "Кудрявов",
-                NickName = "SoEasyBlef",
-                Email = "deniskudravov228@gmail.com",
-                Password = "0000",
-                Country = "Ukraine",
-                Town = "Херсон",
-                Points = 200,
-                Birthday = new DateTime(2003, 08, 23),
-                Height = "185",
-                Weight = "70",
-                AboutMe = "I am a developer C#",
-                GenderId = 1
-            };
         }
     }
 }
