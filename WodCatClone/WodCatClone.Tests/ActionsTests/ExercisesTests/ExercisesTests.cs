@@ -184,7 +184,7 @@ namespace WodCatClone.Tests.ActionsTests.ExercisesTests
         }
 
         [Fact]
-        public async Task GetAnswer()
+        public async Task GetExercise()
         {
             var expectedId = 7;
 
