@@ -12,12 +12,10 @@ namespace WodCatClone.Tests.UserTests
     public class UserTests : AuthUser
     {
         private readonly Mock<IUserRepository> _repository;
-        private readonly Mock<IAuthRepository> _authRepository;
 
         public UserTests()
         {
             _repository = new Mock<IUserRepository>();
-            _authRepository = new Mock<IAuthRepository>();
         }
 
         [Fact]
