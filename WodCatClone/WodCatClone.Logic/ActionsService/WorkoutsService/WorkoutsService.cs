@@ -71,7 +71,7 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService
             return await _repository.EditResultWorkouts(resultWorkoutEdit, loginUser);
         }
 
-        public async Task<bool> DeleteResultWorkouts(int id)
+        public async Task<bool> RemoveResultWorkouts(int id)
         {
             var resultWorkoutRemove = await _repository.GetResultWorkout(id);
 
@@ -80,7 +80,7 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService
                 return false;
             }
 
-            return await _repository.DeleteResultWorkouts(resultWorkoutRemove);
+            return await _repository.RemoveResultWorkouts(resultWorkoutRemove);
         }
     }
 }

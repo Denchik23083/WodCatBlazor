@@ -126,7 +126,7 @@ namespace WodCatClone.Tests.ActionsTests.ArticlesTests
         [Fact]
         public async Task GetArticle()
         {
-            var expectedId = 7;
+            var expectedId = 2;
 
             var article = new Articles
             {
@@ -203,7 +203,7 @@ namespace WodCatClone.Tests.ActionsTests.ArticlesTests
 
             var user = User();
 
-            var expectedId = 7;
+            var expectedId = 2;
 
             var article = new Articles
             {
@@ -257,7 +257,7 @@ namespace WodCatClone.Tests.ActionsTests.ArticlesTests
         [Fact]
         public async Task RemoveArticle()
         {
-            var expectedId = 7;
+            var expectedId = 2;
 
             var article = new Articles
             {

@@ -105,7 +105,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
         {
             var id = GetAllResultWorkouts.ResultWorkoutId;
 
-            var result = await WorkoutsService.DeleteResultWorkouts(id);
+            var result = await WorkoutsService.RemoveResultWorkouts(id);
 
             if (result)
             {

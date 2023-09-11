@@ -15,6 +15,6 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
 
         Task<bool> EditResultWorkouts(ResultWorkouts resultWorkoutEdit, User loginUser);
 
-        Task<bool> DeleteResultWorkouts(ResultWorkouts resultWorkoutRemove);
+        Task<bool> RemoveResultWorkouts(ResultWorkouts resultWorkoutRemove);
     }
 }
