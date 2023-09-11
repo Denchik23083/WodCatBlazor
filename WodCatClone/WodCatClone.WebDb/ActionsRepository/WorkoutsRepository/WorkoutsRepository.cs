@@ -57,7 +57,7 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
             return true;
         }
 
-        public async Task<bool> DeleteResultWorkouts(ResultWorkouts resultWorkoutRemove)
+        public async Task<bool> RemoveResultWorkouts(ResultWorkouts resultWorkoutRemove)
         {
             _context.ResultWorkouts.Remove(resultWorkoutRemove);
             await _context.SaveChangesAsync();
