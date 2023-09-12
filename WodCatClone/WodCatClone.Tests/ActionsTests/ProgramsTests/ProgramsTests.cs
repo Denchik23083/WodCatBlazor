@@ -129,16 +129,16 @@ namespace WodCatClone.Tests.ActionsTests.ProgramsTests
 
             var user = User();
 
-            var expectedId = 4;
+            var programId = 4;
 
             var newProgramTimeUser  = new ProgramTimeUser
             {
                 BeginProgramDate = DateTime.Now,
-                ProgramsId = expectedId,
+                ProgramsId = programId,
                 UserId = user.Id
             };
 
-            var programTimeUser = user.ProgramTimeUsers?.FirstOrDefault(_ => _.ProgramsId == expectedId);
+            var programTimeUser = user.ProgramTimeUsers?.FirstOrDefault(_ => _.ProgramsId == programId);
 
             _userRepository.Setup(_ => _.GetUser(user.Id))
                 .ReturnsAsync(user);
@@ -148,7 +148,7 @@ namespace WodCatClone.Tests.ActionsTests.ProgramsTests
 
             IProgramsService service = new ProgramsService(_repository.Object, _userRepository.Object);
 
-            var result = await service.BeginProgram(expectedId, user);
+            var result = await service.BeginProgram(programId, user);
 
             _userRepository.Verify(_ => _.GetUser(user.Id),
                 Times.Once);
@@ -170,9 +170,9 @@ namespace WodCatClone.Tests.ActionsTests.ProgramsTests
 
             var user = User();
 
-            var expectedId = 4;
+            var programId = 4;
 
-            var programTimeUser = user.ProgramTimeUsers?.FirstOrDefault(_ => _.ProgramsId == expectedId);
+            var programTimeUser = user.ProgramTimeUsers?.FirstOrDefault(_ => _.ProgramsId == programId);
 
             _userRepository.Setup(_ => _.GetUser(user.Id))
                 .ReturnsAsync(user);
@@ -182,7 +182,7 @@ namespace WodCatClone.Tests.ActionsTests.ProgramsTests
 
             IProgramsService service = new ProgramsService(_repository.Object, _userRepository.Object);
 
-            var result = await service.StopProgram(expectedId, user, isFinish);
+            var result = await service.StopProgram(programId, user, isFinish);
 
             _userRepository.Verify(_ => _.GetUser(user.Id),
                 Times.Once);
