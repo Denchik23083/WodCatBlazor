@@ -120,18 +120,18 @@ namespace WodCatClone.Tests.ActionsTests.WorkoutsTests
         [Fact]
         public async Task GetWorkout()
         {
-            var expectedId = 3;
+            var expectedId = 6;
 
             var workout = new Workouts
             {
                 Id = expectedId,
-                Name = "Titan wod",
-                Rating = "10.0",
-                Category = "Couplet,Bodyweight,ForTime,Rower",
+                Name = "Siberian Bears",
+                Rating = "7.5",
+                Category = "Triplet,For-Time",
                 Complexity = "Нормальный",
-                Modality = "GM",
-                Time = new TimeSpan(00, 24, 00),
-                HallId = 1
+                Modality = "WGM",
+                Time = new TimeSpan(00, 19, 00),
+                HallId = 3
             };
 
             _repository.Setup(_ => _.GetWorkout(expectedId))

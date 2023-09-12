@@ -68,7 +68,11 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
                 loginUser.Points += 50;
             }
 
-            _context.ProgramTimeUser.Remove(programTimeUser!);
+            if (programTimeUser is not null)
+            {
+                _context.ProgramTimeUser.Remove(programTimeUser);
+            }
+
             await _context.SaveChangesAsync();
 
             return true;

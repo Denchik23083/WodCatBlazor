@@ -2,7 +2,6 @@
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.ProgramsService;
 using WodCatClone.Tests.Utilities;
-using WodCatClone.Web.Models;
 using WodCatClone.WebDb.ActionsRepository.ProgramsRepository;
 using WodCatClone.WebDb.UserRepository;
 using Xunit;
@@ -132,7 +131,7 @@ namespace WodCatClone.Tests.ActionsTests.ProgramsTests
 
             var expectedId = 4;
 
-            var newProgramTimeUser = new ProgramTimeUser
+            var newProgramTimeUser  = new ProgramTimeUser
             {
                 BeginProgramDate = DateTime.Now,
                 ProgramsId = expectedId,
