@@ -26,7 +26,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         public async Task Remove()
         {
-            var result = await EventsService.RemoveEvent(EventId);
+            var result = await EventsService.RemoveEventAsync(EventId);
 
             NavigationManager.NavigateTo(result ? "/events" : $"/events/{EventId}");
         }

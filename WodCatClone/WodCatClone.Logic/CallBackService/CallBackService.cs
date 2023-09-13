@@ -12,14 +12,14 @@ namespace WodCatClone.Logic.CallBackService
             _repository = repository;
         }
 
-        public async Task<IEnumerable<Question>> GetAllQuestions()
+        public async Task<IEnumerable<Question>> GetAllQuestionsAsync()
         {
-            return await _repository.GetAllQuestions();
+            return await _repository.GetAllQuestionsAsync();
         }
 
-        public async Task<Answer?> GetAnswer(int id)
+        public async Task<Answer?> GetAnswerAsync(int id)
         {
-            return await _repository.GetAnswer(id);
+            return await _repository.GetAnswerAsync(id);
         }
     }
 }

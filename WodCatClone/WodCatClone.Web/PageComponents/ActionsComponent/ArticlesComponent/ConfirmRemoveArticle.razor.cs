@@ -26,7 +26,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
 
         public async Task Remove()
         {
-            var result = await ArticlesService.RemoveArticle(ArticleId);
+            var result = await ArticlesService.RemoveArticleAsync(ArticleId);
 
             NavigationManager.NavigateTo(result ? "/articles" : $"/articles/{ArticleId}");
         }

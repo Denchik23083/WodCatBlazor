@@ -4,8 +4,8 @@ namespace WodCatClone.Logic.CallBackService
 {
     public interface ICallBackService
     {
-        Task<IEnumerable<Question>> GetAllQuestions();
+        Task<IEnumerable<Question>> GetAllQuestionsAsync();
 
-        Task<Answer?> GetAnswer(int id);
+        Task<Answer?> GetAnswerAsync(int id);
     }
 }

@@ -4,8 +4,8 @@ namespace WodCatClone.WebDb.ActionsRepository.ExercisesRepository
 {
     public interface IExercisesRepository
     {
-        Task<IEnumerable<Exercises>> GetAllExercises();
+        Task<IEnumerable<Exercises>> GetAllExercisesAsync();
 
-        Task<Exercises?> GetExercise(int exerciseId);
+        Task<Exercises?> GetExerciseAsync(int exerciseId);
     }
 }

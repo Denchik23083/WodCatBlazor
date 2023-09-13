@@ -13,7 +13,7 @@ namespace WodCatClone.WebDb.AuthRepository
             _context = context;
         }
 
-        public Task<User?> Login(User loginUser)
+        public Task<User?> LoginAsync(User loginUser)
         {
             return _context.Users
                 .Include(_ => _.Gender)
@@ -27,7 +27,7 @@ namespace WodCatClone.WebDb.AuthRepository
                                      l.Password == loginUser.Password);
         }
 
-        public async Task<bool> Register(User registerUser)
+        public async Task<bool> RegisterAsync(User registerUser)
         {
             await _context.Users.AddAsync(registerUser);
             await _context.SaveChangesAsync();

@@ -38,13 +38,13 @@ namespace WodCatClone.Web.Pages.MainPage
 
         protected override async Task OnInitializedAsync()
         {
-            User = await UserService.GetUser();
+            User = await UserService.GetUserAsync();
 
-            Programs = await ProgramsService.GetAllPrograms();
-            Workouts = await WorkoutsService.GetAllWorkouts();
-            Exercises = await ExercisesService.GetAllExercises();
-            Halls = await HallsService.GetAllHalls();
-            Articles = await ArticlesService.GetAllArticles();
+            Programs = await ProgramsService.GetAllProgramsAsync();
+            Workouts = await WorkoutsService.GetAllWorkoutsAsync();
+            Exercises = await ExercisesService.GetAllExercisesAsync();
+            Halls = await HallsService.GetAllHallsAsync();
+            Articles = await ArticlesService.GetAllArticlesAsync();
         }
     }
 }

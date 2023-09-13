@@ -27,9 +27,9 @@ namespace WodCatClone.Web.Pages.ActionsPage.ArticlesPage
 
         protected override async Task OnInitializedAsync()
         {
-            User = await UserService.GetUser();
+            User = await UserService.GetUserAsync();
 
-            Article = await ArticlesService.GetArticle(ArticleId);
+            Article = await ArticlesService.GetArticleAsync(ArticleId);
             if (Article is null)
             {
                 NavigationManager.NavigateTo("/articles");

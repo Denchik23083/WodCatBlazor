@@ -31,7 +31,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
 
         public async Task Filter()
         {
-            Programs = await ProgramsService.GetAllPrograms();
+            Programs = await ProgramsService.GetAllProgramsAsync();
 
             if (_filterType != "None")
             {

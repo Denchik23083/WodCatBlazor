@@ -75,14 +75,14 @@ namespace WodCatClone.Tests.ActionsTests.ProgramsTests
                 }
             };
 
-            _repository.Setup(_ => _.GetAllPrograms())
+            _repository.Setup(_ => _.GetAllProgramsAsync())
                 .ReturnsAsync(programs);
 
             IProgramsService service = new ProgramsService(_repository.Object, _userRepository.Object);
 
-            var result = await service.GetAllPrograms();
+            var result = await service.GetAllProgramsAsync();
 
-            _repository.Verify(_ => _.GetAllPrograms(),
+            _repository.Verify(_ => _.GetAllProgramsAsync(),
                 Times.Once);
 
             Assert.NotNull(result);
@@ -106,14 +106,14 @@ namespace WodCatClone.Tests.ActionsTests.ProgramsTests
                 ProgramsEmblemId = 2
             };
 
-            _repository.Setup(_ => _.GetProgram(expectedId))
+            _repository.Setup(_ => _.GetProgramAsync(expectedId))
                 .ReturnsAsync(program);
 
             IProgramsService service = new ProgramsService(_repository.Object, _userRepository.Object);
 
-            var result = await service.GetProgram(expectedId);
+            var result = await service.GetProgramAsync(expectedId);
 
-            _repository.Verify(_ => _.GetProgram(expectedId),
+            _repository.Verify(_ => _.GetProgramAsync(expectedId),
                 Times.Once);
 
             Assert.NotNull(result);
@@ -131,29 +131,20 @@ namespace WodCatClone.Tests.ActionsTests.ProgramsTests
 
             var programId = 4;
 
-            var newProgramTimeUser = new ProgramTimeUser
-            {
-                BeginProgramDate = DateTime.Now,
-                ProgramsId = programId,
-                UserId = user.Id
-            };
-
-            var programTimeUser = user.ProgramTimeUsers?.FirstOrDefault(_ => _.ProgramsId == programId);
-
-            _userRepository.Setup(_ => _.GetUser(user.Id))
+            _userRepository.Setup(_ => _.GetUserAsync(user.Id))
                 .ReturnsAsync(user);
 
-            _repository.Setup(_ => _.BeginProgram(user, It.IsAny<ProgramTimeUser>(), It.IsAny<ProgramTimeUser>()))
+            _repository.Setup(_ => _.BeginProgramAsync(user, It.IsAny<ProgramTimeUser>(), It.IsAny<ProgramTimeUser>()))
                 .ReturnsAsync(true);
 
             IProgramsService service = new ProgramsService(_repository.Object, _userRepository.Object);
 
-            var result = await service.BeginProgram(programId, user);
+            var result = await service.BeginProgramAsync(programId, user);
 
-            _userRepository.Verify(_ => _.GetUser(user.Id),
+            _userRepository.Verify(_ => _.GetUserAsync(user.Id),
                 Times.Once);
 
-            _repository.Verify(_ => _.BeginProgram(user, It.IsAny<ProgramTimeUser>(), It.IsAny<ProgramTimeUser>()),
+            _repository.Verify(_ => _.BeginProgramAsync(user, It.IsAny<ProgramTimeUser>(), It.IsAny<ProgramTimeUser>()),
                 Times.Once);
 
             Assert.True(result);
@@ -172,22 +163,20 @@ namespace WodCatClone.Tests.ActionsTests.ProgramsTests
 
             var programId = 4;
 
-            var programTimeUser = user.ProgramTimeUsers?.FirstOrDefault(_ => _.ProgramsId == programId);
-
-            _userRepository.Setup(_ => _.GetUser(user.Id))
+            _userRepository.Setup(_ => _.GetUserAsync(user.Id))
                 .ReturnsAsync(user);
 
-            _repository.Setup(_ => _.StopProgram(user, programTimeUser, isFinish))
+            _repository.Setup(_ => _.StopProgramAsync(user, It.IsAny<ProgramTimeUser>(), isFinish))
                 .ReturnsAsync(true);
 
             IProgramsService service = new ProgramsService(_repository.Object, _userRepository.Object);
 
-            var result = await service.StopProgram(programId, user, isFinish);
+            var result = await service.StopProgramAsync(programId, user, isFinish);
 
-            _userRepository.Verify(_ => _.GetUser(user.Id),
+            _userRepository.Verify(_ => _.GetUserAsync(user.Id),
                 Times.Once);
 
-            _repository.Verify(_ => _.StopProgram(user, programTimeUser, isFinish),
+            _repository.Verify(_ => _.StopProgramAsync(user, It.IsAny<ProgramTimeUser>(), isFinish),
                 Times.Once);
 
             Assert.True(result);

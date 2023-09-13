@@ -77,14 +77,14 @@ namespace WodCatClone.Tests.ActionsTests.HallsTests
                 }
             };
 
-            _repository.Setup(_ => _.GetAllHalls())
+            _repository.Setup(_ => _.GetAllHallsAsync())
                 .ReturnsAsync(halls);
 
             IHallsService service = new HallsService(_repository.Object, _userRepository.Object);
 
-            var result = await service.GetAllHalls();
+            var result = await service.GetAllHallsAsync();
 
-            _repository.Verify(_ => _.GetAllHalls(),
+            _repository.Verify(_ => _.GetAllHallsAsync(),
                 Times.Once);
 
             Assert.NotNull(result);
@@ -103,14 +103,14 @@ namespace WodCatClone.Tests.ActionsTests.HallsTests
                 new() { Id = 5, Name = "Banda", Image = "img/EmblemHalls/Banda.png" }
             };
 
-            _repository.Setup(_ => _.GetAllHallEmblem())
+            _repository.Setup(_ => _.GetAllHallEmblemAsync())
                 .ReturnsAsync(hallEmblem);
 
             IHallsService service = new HallsService(_repository.Object, _userRepository.Object);
 
-            var result = await service.GetAllHallEmblem();
+            var result = await service.GetAllHallEmblemAsync();
 
-            _repository.Verify(_ => _.GetAllHallEmblem(),
+            _repository.Verify(_ => _.GetAllHallEmblemAsync(),
                 Times.Once);
 
             Assert.NotNull(result);
@@ -133,14 +133,14 @@ namespace WodCatClone.Tests.ActionsTests.HallsTests
                 EmblemHallId = 3
             };
 
-            _repository.Setup(_ => _.GetHall(expectedId))
+            _repository.Setup(_ => _.GetHallAsync(expectedId))
                 .ReturnsAsync(hall);
 
             IHallsService service = new HallsService(_repository.Object, _userRepository.Object);
 
-            var result = await service.GetHall(expectedId);
+            var result = await service.GetHallAsync(expectedId);
 
-            _repository.Verify(_ => _.GetHall(expectedId),
+            _repository.Verify(_ => _.GetHallAsync(expectedId),
                 Times.Once);
 
             Assert.NotNull(result);
@@ -168,20 +168,20 @@ namespace WodCatClone.Tests.ActionsTests.HallsTests
                 UserId = user.Id
             };
 
-            _userRepository.Setup(_ => _.GetUser(user.Id))
+            _userRepository.Setup(_ => _.GetUserAsync(user.Id))
                 .ReturnsAsync(user);
 
-            _repository.Setup(_ => _.AddHall(hallModel, user))
+            _repository.Setup(_ => _.AddHallAsync(hallModel, user))
                 .ReturnsAsync(true);
 
             IHallsService service = new HallsService(_repository.Object, _userRepository.Object);
 
-            var result = await service.AddHall(hallModel);
+            var result = await service.AddHallAsync(hallModel);
 
-            _userRepository.Verify(_ => _.GetUser(user.Id),
+            _userRepository.Verify(_ => _.GetUserAsync(user.Id),
                 Times.Once);
 
-            _repository.Verify(_ => _.AddHall(hallModel, user),
+            _repository.Verify(_ => _.AddHallAsync(hallModel, user),
                 Times.Once);
 
             Assert.True(result);
@@ -220,26 +220,26 @@ namespace WodCatClone.Tests.ActionsTests.HallsTests
                 EmblemHallId = 3,
             };
 
-            _userRepository.Setup(_ => _.GetUser(user.Id))
+            _userRepository.Setup(_ => _.GetUserAsync(user.Id))
                 .ReturnsAsync(user);
 
-            _repository.Setup(_ => _.GetHall(expectedId))
+            _repository.Setup(_ => _.GetHallAsync(expectedId))
                 .ReturnsAsync(hall);
 
-            _repository.Setup(_ => _.EditHall(hall, user))
+            _repository.Setup(_ => _.EditHallAsync(hall, user))
                 .ReturnsAsync(true);
 
             IHallsService service = new HallsService(_repository.Object, _userRepository.Object);
 
-            var result = await service.EditHall(hallModel, expectedId);
+            var result = await service.EditHallAsync(hallModel, expectedId);
 
-            _userRepository.Verify(_ => _.GetUser(user.Id),
+            _userRepository.Verify(_ => _.GetUserAsync(user.Id),
                 Times.Once);
 
-            _repository.Verify(_ => _.GetHall(expectedId),
+            _repository.Verify(_ => _.GetHallAsync(expectedId),
                 Times.Once);
 
-            _repository.Verify(_ => _.EditHall(hall, user),
+            _repository.Verify(_ => _.EditHallAsync(hall, user),
                 Times.Once);
 
             Assert.True(result);
@@ -261,20 +261,20 @@ namespace WodCatClone.Tests.ActionsTests.HallsTests
                 EmblemHallId = 3
             };
 
-            _repository.Setup(_ => _.GetHall(expectedId))
+            _repository.Setup(_ => _.GetHallAsync(expectedId))
                 .ReturnsAsync(hall);
 
-            _repository.Setup(_ => _.RemoveHall(hall))
+            _repository.Setup(_ => _.RemoveHallAsync(hall))
                 .ReturnsAsync(true);
 
             IHallsService service = new HallsService(_repository.Object, _userRepository.Object);
 
-            var result = await service.RemoveHall(expectedId);
+            var result = await service.RemoveHallAsync(expectedId);
 
-            _repository.Verify(_ => _.GetHall(expectedId),
+            _repository.Verify(_ => _.GetHallAsync(expectedId),
                 Times.Once);
 
-            _repository.Verify(_ => _.RemoveHall(hall),
+            _repository.Verify(_ => _.RemoveHallAsync(hall),
                 Times.Once);
 
             Assert.True(result);
@@ -291,20 +291,20 @@ namespace WodCatClone.Tests.ActionsTests.HallsTests
 
             var hallId = 3;
 
-            _userRepository.Setup(_ => _.GetUser(user.Id))
+            _userRepository.Setup(_ => _.GetUserAsync(user.Id))
                 .ReturnsAsync(user);
 
-            _repository.Setup(_ => _.JoinHall(user))
+            _repository.Setup(_ => _.JoinHallAsync(user))
                 .ReturnsAsync(true);
 
             IHallsService service = new HallsService(_repository.Object, _userRepository.Object);
 
-            var result = await service.JoinHall(hallId, user);
+            var result = await service.JoinHallAsync(hallId, user);
 
-            _userRepository.Verify(_ => _.GetUser(user.Id),
+            _userRepository.Verify(_ => _.GetUserAsync(user.Id),
                 Times.Once);
 
-            _repository.Verify(_ => _.JoinHall(user),
+            _repository.Verify(_ => _.JoinHallAsync(user),
                 Times.Once);
 
             Assert.True(result);
@@ -321,20 +321,20 @@ namespace WodCatClone.Tests.ActionsTests.HallsTests
 
             var hallId = 3;
 
-            _userRepository.Setup(_ => _.GetUser(user.Id))
+            _userRepository.Setup(_ => _.GetUserAsync(user.Id))
                 .ReturnsAsync(user);
 
-            _repository.Setup(_ => _.ExitHall(user))
+            _repository.Setup(_ => _.ExitHallAsync(user))
                 .ReturnsAsync(true);
 
             IHallsService service = new HallsService(_repository.Object, _userRepository.Object);
 
-            var result = await service.ExitHall(hallId, user);
+            var result = await service.ExitHallAsync(hallId, user);
 
-            _userRepository.Verify(_ => _.GetUser(user.Id),
+            _userRepository.Verify(_ => _.GetUserAsync(user.Id),
                 Times.Once);
 
-            _repository.Verify(_ => _.ExitHall(user),
+            _repository.Verify(_ => _.ExitHallAsync(user),
                 Times.Once);
 
             Assert.True(result);

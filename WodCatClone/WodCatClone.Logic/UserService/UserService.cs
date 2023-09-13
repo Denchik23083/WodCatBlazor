@@ -12,36 +12,36 @@ namespace WodCatClone.Logic.UserService
             _repository = repository;
         }
 
-        public async Task<IEnumerable<User>> GetAllUsers()
+        public async Task<IEnumerable<User>> GetAllUsersAsync()
         {
-            return await _repository.GetAllUsers();
+            return await _repository.GetAllUsersAsync();
         }
 
-        public async Task<IEnumerable<Gender>> GetGenders()
+        public async Task<IEnumerable<Gender>> GetAllGendersAsync()
         {
-            return await _repository.GetGenders();
+            return await _repository.GetAllGendersAsync();
         }
 
-        public Task<bool> IsLoginUser()
+        public Task<bool> IsLoginUserAsync()
         {
             return Task.FromResult(AuthService.AuthService.IsLoginUser);
         }
 
-        public async Task<User?> GetUser()
+        public async Task<User?> GetUserAsync()
         {
             var user = AuthService.AuthService.User;
 
-            return user is null ? user : await _repository.GetUser(user.Id);
+            return user is null ? user : await _repository.GetUserAsync(user.Id);
         }
 
-        public async Task<User?> GetUser(string nickName)
+        public async Task<User?> GetUserAsync(string nickName)
         {
-            return await _repository.GetUser(nickName);
+            return await _repository.GetUserAsync(nickName);
         }
 
-        public async Task<bool> EditUserHall(User user, int id)
+        public async Task<bool> EditUserHallAsync(User user, int id)
         {
-            var loginUser = await _repository.GetUser(user.Id);
+            var loginUser = await _repository.GetUserAsync(user.Id);
 
             if (loginUser is null)
             {
@@ -50,12 +50,12 @@ namespace WodCatClone.Logic.UserService
 
             loginUser.HallId = id;
 
-            return await _repository.EditUserHall(loginUser);
+            return await _repository.EditUserHallAsync(loginUser);
         }
 
-        public async Task<bool> Update(User updateUser, int id)
+        public async Task<bool> UpdateAsync(User updateUser, int id)
         {
-            var userToUpdate = await _repository.GetUser(id);
+            var userToUpdate = await _repository.GetUserAsync(id);
 
             if (userToUpdate is null)
             {
@@ -71,19 +71,19 @@ namespace WodCatClone.Logic.UserService
             userToUpdate.Weight = updateUser.Weight;
             userToUpdate.AboutMe = updateUser.AboutMe;
 
-            return await _repository.Update(userToUpdate);
+            return await _repository.UpdateAsync(userToUpdate);
         }
 
-        public async Task<bool> UpdateAuth(User updateAuth, int id)
+        public async Task<bool> UpdateAuthAsync(User updateAuth, int id)
         {
-            var userToUpdate = await _repository.GetUser(id);
+            var userToUpdate = await _repository.GetUserAsync(id);
 
             if (userToUpdate is null)
             {
                 return false;
             }
 
-            var allUsers = await _repository.GetAllUsers();
+            var allUsers = await _repository.GetAllUsersAsync();
 
             var allUpdateUsers = allUsers.ToList();
 
@@ -99,7 +99,7 @@ namespace WodCatClone.Logic.UserService
             userToUpdate.Email = updateAuth.Email;
             userToUpdate.Password = updateAuth.Password;
 
-            return await _repository.UpdateAuth(userToUpdate);
+            return await _repository.UpdateAuthAsync(userToUpdate);
         }
     }
 }

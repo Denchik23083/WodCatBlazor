@@ -34,14 +34,14 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
 
         protected override async Task OnInitializedAsync()
         {
-            User = await UserService.GetUser();
+            User = await UserService.GetUserAsync();
 
-            IsLoginUser = await UserService.IsLoginUser();
+            IsLoginUser = await UserService.IsLoginUserAsync();
 
-            EventEmblem = await EventsService.GetAllEventEmblem();
-            Halls = await HallsService.GetAllHalls();
-            HallEmblem = await HallsService.GetAllHallEmblem();
-            Workouts = await WorkoutsService.GetAllWorkouts();
+            EventEmblem = await EventsService.GetAllEventEmblemAsync();
+            Halls = await HallsService.GetAllHallsAsync();
+            HallEmblem = await HallsService.GetAllHallEmblemAsync();
+            Workouts = await WorkoutsService.GetAllWorkoutsAsync();
 
             if (!IsLoginUser)
             {

@@ -14,7 +14,7 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
             _context = context;
         }
 
-        public async Task<IEnumerable<Events>> GetAllEvents()
+        public async Task<IEnumerable<Events>> GetAllEventsAsync()
         {
             return await _context.Events
                 .Include(_ => _.EventEmblem)
@@ -29,7 +29,7 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<Events>> GetAllEndEvents()
+        public async Task<IEnumerable<Events>> GetAllEndEventsAsync()
         {
             return await _context.Events
                 .Include(_ => _.EventEmblem)
@@ -44,12 +44,12 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<EventEmblem>> GetAllEventEmblem()
+        public async Task<IEnumerable<EventEmblem>> GetAllEventEmblemAsync()
         {
             return await _context.EventEmblem.ToListAsync();
         }
 
-        public async Task<Events?> GetEvent(int eventId)
+        public async Task<Events?> GetEventAsync(int eventId)
         {
             return await _context.Events
                 .Include(_ => _.EventEmblem)
@@ -72,7 +72,7 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
                 .FirstOrDefaultAsync(b => b.Id == eventId);
         }
 
-        public async Task<bool> AddEvent(Events @event, User loginUser)
+        public async Task<bool> AddEventAsync(Events @event, User loginUser)
         {
             await _context.Events.AddAsync(@event);
             await _context.SaveChangesAsync();
@@ -80,14 +80,14 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
             return true;
         }
 
-        public async Task<bool> EditEvent(Events eventToEdit, User loginUser)
+        public async Task<bool> EditEventAsync(Events eventToEdit, User loginUser)
         {
             await _context.SaveChangesAsync();
 
             return true;
         }
 
-        public async Task<bool> RemoveEvent(Events eventToRemove)
+        public async Task<bool> RemoveEventAsync(Events eventToRemove)
         {
             _context.Events.Remove(eventToRemove);
             await _context.SaveChangesAsync();
@@ -95,7 +95,7 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
             return true;
         }
 
-        public async Task<bool> AutoRemoveEvent(IEnumerable<User?>? usersToList, Events eventToRemove)
+        public async Task<bool> AutoRemoveEventAsync(IEnumerable<User?>? usersToList, Events eventToRemove)
         {
             var points = 200;
 
@@ -115,21 +115,21 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
             return true;
         }
 
-        public async Task<bool> JoinEvent(User loginUser)
+        public async Task<bool> JoinEventAsync(User loginUser)
         {
             await _context.SaveChangesAsync();
 
             return true;
         }
 
-        public async Task<bool> ExitEvent(User loginUser)
+        public async Task<bool> ExitEventAsync(User loginUser)
         {
             await _context.SaveChangesAsync();
 
             return true;
         }
 
-        public async Task<bool> AddEventTimeUser(EventTimeUser eventTimeUser)
+        public async Task<bool> AddEventTimeUserAsync(EventTimeUser eventTimeUser)
         {
             await _context.EventTimeUser.AddAsync(eventTimeUser);
             await _context.SaveChangesAsync();

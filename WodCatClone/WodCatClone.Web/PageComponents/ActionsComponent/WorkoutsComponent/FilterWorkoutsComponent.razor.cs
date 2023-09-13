@@ -60,7 +60,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
         public async Task Filter()
         {
-            Workouts = await WorkoutsService.GetAllWorkouts();
+            Workouts = await WorkoutsService.GetAllWorkoutsAsync();
 
             if (!string.IsNullOrWhiteSpace(_filterName))
             {

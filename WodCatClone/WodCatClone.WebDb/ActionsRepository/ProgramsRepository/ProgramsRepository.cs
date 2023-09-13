@@ -14,7 +14,7 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
             _context = context;
         }
 
-        public async Task<IEnumerable<Programs>> GetAllPrograms()
+        public async Task<IEnumerable<Programs>> GetAllProgramsAsync()
         {
             return await _context.Programs
                 .Include(_ => _.ProgramsWorkouts)!
@@ -32,7 +32,7 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
                 .ToListAsync();
         }
 
-        public async Task<Programs?> GetProgram(int id)
+        public async Task<Programs?> GetProgramAsync(int id)
         {
             return await _context.Programs
                 .Include(_ => _.Users)
@@ -48,7 +48,7 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
                 .FirstOrDefaultAsync(b => b.Id == id);
         }
 
-        public async Task<bool> BeginProgram(User loginUser, ProgramTimeUser? programTimeUser, ProgramTimeUser newProgramTimeUser)
+        public async Task<bool> BeginProgramAsync(User loginUser, ProgramTimeUser? programTimeUser, ProgramTimeUser newProgramTimeUser)
         {
             if (programTimeUser is not null)
             {
@@ -61,7 +61,7 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
             return true;
         }
 
-        public async Task<bool> StopProgram(User loginUser, ProgramTimeUser? programTimeUser, bool isFinish)
+        public async Task<bool> StopProgramAsync(User loginUser, ProgramTimeUser? programTimeUser, bool isFinish)
         {
             if (isFinish)
             {

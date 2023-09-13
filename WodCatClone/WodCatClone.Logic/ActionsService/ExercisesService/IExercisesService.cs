@@ -4,8 +4,8 @@ namespace WodCatClone.Logic.ActionsService.ExercisesService
 {
     public interface IExercisesService
     {
-        Task<IEnumerable<Exercises>> GetAllExercises();
+        Task<IEnumerable<Exercises>> GetAllExercisesAsync();
 
-        Task<Exercises?> GetExercise(int exerciseId);
+        Task<Exercises?> GetExerciseAsync(int exerciseId);
     }
 }

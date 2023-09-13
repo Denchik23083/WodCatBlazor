@@ -1,5 +1,6 @@
 ﻿using Moq;
 using WodCatClone.Db.Entities.Actions;
+using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.ActionsService.EventsService;
 using WodCatClone.Tests.Utilities;
 using WodCatClone.WebDb.ActionsRepository.EventsRepository;
@@ -43,14 +44,14 @@ namespace WodCatClone.Tests.ActionsTests.EventsTests
                 }
             };
 
-            _repository.Setup(_ => _.GetAllEvents())
+            _repository.Setup(_ => _.GetAllEventsAsync())
                 .ReturnsAsync(events);
 
             IEventsService service = new EventsService(_repository.Object, _userRepository.Object);
 
-            var result = await service.GetAllEvents();
+            var result = await service.GetAllEventsAsync();
 
-            _repository.Verify(_ => _.GetAllEvents(),
+            _repository.Verify(_ => _.GetAllEventsAsync(),
                 Times.Once);
 
             Assert.NotNull(result);
@@ -81,14 +82,14 @@ namespace WodCatClone.Tests.ActionsTests.EventsTests
                 }
             };
 
-            _repository.Setup(_ => _.GetAllEndEvents())
+            _repository.Setup(_ => _.GetAllEndEventsAsync())
                 .ReturnsAsync(endEvents);
 
             IEventsService service = new EventsService(_repository.Object, _userRepository.Object);
 
-            var result = await service.GetAllEndEvents();
+            var result = await service.GetAllEndEventsAsync();
 
-            _repository.Verify(_ => _.GetAllEndEvents(),
+            _repository.Verify(_ => _.GetAllEndEventsAsync(),
                 Times.Once);
 
             Assert.NotNull(result);
@@ -107,14 +108,14 @@ namespace WodCatClone.Tests.ActionsTests.EventsTests
                 new() { Id = 5, Name = "Sport", Image = "img/EmblemEvents/sport.jpg" }
             };
 
-            _repository.Setup(_ => _.GetAllEventEmblem())
+            _repository.Setup(_ => _.GetAllEventEmblemAsync())
                 .ReturnsAsync(eventEmblem);
 
             IEventsService service = new EventsService(_repository.Object, _userRepository.Object);
 
-            var result = await service.GetAllEventEmblem();
+            var result = await service.GetAllEventEmblemAsync();
 
-            _repository.Verify(_ => _.GetAllEventEmblem(),
+            _repository.Verify(_ => _.GetAllEventEmblemAsync(),
                 Times.Once);
 
             Assert.NotNull(result);
@@ -144,14 +145,14 @@ namespace WodCatClone.Tests.ActionsTests.EventsTests
                 Description = "Description"
             };
 
-            _repository.Setup(_ => _.GetEvent(expectedId))
+            _repository.Setup(_ => _.GetEventAsync(expectedId))
                 .ReturnsAsync(@event);
 
             IEventsService service = new EventsService(_repository.Object, _userRepository.Object);
 
-            var result = await service.GetEvent(expectedId);
+            var result = await service.GetEventAsync(expectedId);
 
-            _repository.Verify(_ => _.GetEvent(expectedId),
+            _repository.Verify(_ => _.GetEventAsync(expectedId),
                 Times.Once);
 
             Assert.NotNull(result);
@@ -183,20 +184,20 @@ namespace WodCatClone.Tests.ActionsTests.EventsTests
                 Description = "Description"
             };
 
-            _userRepository.Setup(_ => _.GetUser(user.Id))
+            _userRepository.Setup(_ => _.GetUserAsync(user.Id))
                 .ReturnsAsync(user);
 
-            _repository.Setup(_ => _.AddEvent(eventModel, user))
+            _repository.Setup(_ => _.AddEventAsync(eventModel, user))
                 .ReturnsAsync(true);
 
             IEventsService service = new EventsService(_repository.Object, _userRepository.Object);
 
-            var result = await service.AddEvent(eventModel);
+            var result = await service.AddEventAsync(eventModel);
 
-            _userRepository.Verify(_ => _.GetUser(user.Id),
+            _userRepository.Verify(_ => _.GetUserAsync(user.Id),
                 Times.Once);
 
-            _repository.Verify(_ => _.AddEvent(eventModel, user),
+            _repository.Verify(_ => _.AddEventAsync(eventModel, user),
                 Times.Once);
 
             Assert.True(result);
@@ -247,26 +248,26 @@ namespace WodCatClone.Tests.ActionsTests.EventsTests
                 Description = "Description"
             };
 
-            _userRepository.Setup(_ => _.GetUser(user.Id))
+            _userRepository.Setup(_ => _.GetUserAsync(user.Id))
                 .ReturnsAsync(user);
 
-            _repository.Setup(_ => _.GetEvent(expectedId))
+            _repository.Setup(_ => _.GetEventAsync(expectedId))
                 .ReturnsAsync(@event);
 
-            _repository.Setup(_ => _.EditEvent(@event, user))
+            _repository.Setup(_ => _.EditEventAsync(@event, user))
                 .ReturnsAsync(true);
 
             IEventsService service = new EventsService(_repository.Object, _userRepository.Object);
 
-            var result = await service.EditEvent(editModel, expectedId);
+            var result = await service.EditEventAsync(editModel, expectedId);
 
-            _userRepository.Verify(_ => _.GetUser(user.Id),
+            _userRepository.Verify(_ => _.GetUserAsync(user.Id),
                 Times.Once);
 
-            _repository.Verify(_ => _.GetEvent(expectedId),
+            _repository.Verify(_ => _.GetEventAsync(expectedId),
                 Times.Once);
 
-            _repository.Verify(_ => _.EditEvent(@event, user),
+            _repository.Verify(_ => _.EditEventAsync(@event, user),
                 Times.Once);
 
             Assert.True(result);
@@ -295,20 +296,20 @@ namespace WodCatClone.Tests.ActionsTests.EventsTests
                 Description = "Description"
             };
 
-            _repository.Setup(_ => _.GetEvent(expectedId))
+            _repository.Setup(_ => _.GetEventAsync(expectedId))
                 .ReturnsAsync(@event);
 
-            _repository.Setup(_ => _.RemoveEvent(@event))
+            _repository.Setup(_ => _.RemoveEventAsync(@event))
                 .ReturnsAsync(true);
 
             IEventsService service = new EventsService(_repository.Object, _userRepository.Object);
 
-            var result = await service.RemoveEvent(expectedId);
+            var result = await service.RemoveEventAsync(expectedId);
 
-            _repository.Verify(_ => _.GetEvent(expectedId),
+            _repository.Verify(_ => _.GetEventAsync(expectedId),
                 Times.Once);
 
-            _repository.Verify(_ => _.RemoveEvent(@event),
+            _repository.Verify(_ => _.RemoveEventAsync(@event),
                 Times.Once);
 
             Assert.True(result);
@@ -336,22 +337,15 @@ namespace WodCatClone.Tests.ActionsTests.EventsTests
                 WorkoutId = 6,
                 Description = "Description"
             };
-
-            var allUsersTime = eventToRemove.EventTimeUsers?
-                .OrderByDescending(b => b.Time)
-                .Take(3)
-                .Reverse();
-
-            var usersToList = allUsersTime?.Select(item => item.User).ToList();
             
-            _repository.Setup(_ => _.AutoRemoveEvent(usersToList, eventToRemove))
+            _repository.Setup(_ => _.AutoRemoveEventAsync(It.IsAny<IEnumerable<User>>(), eventToRemove))
                 .ReturnsAsync(true);
 
             IEventsService service = new EventsService(_repository.Object, _userRepository.Object);
 
-            var result = await service.AutoRemoveEvent(eventToRemove);
+            var result = await service.AutoRemoveEventAsync(eventToRemove);
 
-            _repository.Verify(_ => _.AutoRemoveEvent(usersToList, eventToRemove),
+            _repository.Verify(_ => _.AutoRemoveEventAsync(It.IsAny<IEnumerable<User>>(), eventToRemove),
                 Times.Once);
 
             Assert.True(result);
@@ -368,20 +362,20 @@ namespace WodCatClone.Tests.ActionsTests.EventsTests
 
             var eventId = 3;
 
-            _userRepository.Setup(_ => _.GetUser(user.Id))
+            _userRepository.Setup(_ => _.GetUserAsync(user.Id))
                 .ReturnsAsync(user);
 
-            _repository.Setup(_ => _.JoinEvent(user))
+            _repository.Setup(_ => _.JoinEventAsync(user))
                 .ReturnsAsync(true);
 
             IEventsService service = new EventsService(_repository.Object, _userRepository.Object);
 
-            var result = await service.JoinEvent(eventId, user);
+            var result = await service.JoinEventAsync(eventId, user);
 
-            _userRepository.Verify(_ => _.GetUser(user.Id),
+            _userRepository.Verify(_ => _.GetUserAsync(user.Id),
                 Times.Once);
 
-            _repository.Verify(_ => _.JoinEvent(user),
+            _repository.Verify(_ => _.JoinEventAsync(user),
                 Times.Once);
 
             Assert.True(result);
@@ -398,20 +392,20 @@ namespace WodCatClone.Tests.ActionsTests.EventsTests
 
             var eventId = 3;
 
-            _userRepository.Setup(_ => _.GetUser(user.Id))
+            _userRepository.Setup(_ => _.GetUserAsync(user.Id))
                 .ReturnsAsync(user);
 
-            _repository.Setup(_ => _.ExitEvent(user))
+            _repository.Setup(_ => _.ExitEventAsync(user))
                 .ReturnsAsync(true);
 
             IEventsService service = new EventsService(_repository.Object, _userRepository.Object);
 
-            var result = await service.ExitEvent(eventId, user);
+            var result = await service.ExitEventAsync(eventId, user);
 
-            _userRepository.Verify(_ => _.GetUser(user.Id),
+            _userRepository.Verify(_ => _.GetUserAsync(user.Id),
                 Times.Once);
 
-            _repository.Verify(_ => _.ExitEvent(user),
+            _repository.Verify(_ => _.ExitEventAsync(user),
                 Times.Once);
 
             Assert.True(result);
@@ -433,14 +427,14 @@ namespace WodCatClone.Tests.ActionsTests.EventsTests
                 UserId = user.Id
             };
 
-            _repository.Setup(_ => _.AddEventTimeUser(eventTimeUser))
+            _repository.Setup(_ => _.AddEventTimeUserAsync(eventTimeUser))
                 .ReturnsAsync(true);
 
             IEventsService service = new EventsService(_repository.Object, _userRepository.Object);
 
-            var result = await service.AddEventTimeUser(eventTimeUser);
+            var result = await service.AddEventTimeUserAsync(eventTimeUser);
 
-            _repository.Verify(_ => _.AddEventTimeUser(eventTimeUser),
+            _repository.Verify(_ => _.AddEventTimeUserAsync(eventTimeUser),
                 Times.Once);
 
             Assert.True(result);

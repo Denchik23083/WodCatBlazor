@@ -16,30 +16,30 @@ namespace WodCatClone.Logic.ActionsService.EventsService
             _userRepository = userRepository;
         }
 
-        public async Task<IEnumerable<Events>> GetAllEvents()
+        public async Task<IEnumerable<Events>> GetAllEventsAsync()
         {
-            return await _repository.GetAllEvents();
+            return await _repository.GetAllEventsAsync();
         }
 
-        public async Task<IEnumerable<Events>> GetAllEndEvents()
+        public async Task<IEnumerable<Events>> GetAllEndEventsAsync()
         {
-            return await _repository.GetAllEndEvents();
+            return await _repository.GetAllEndEventsAsync();
         }
 
-        public async Task<IEnumerable<EventEmblem>> GetAllEventEmblem()
+        public async Task<IEnumerable<EventEmblem>> GetAllEventEmblemAsync()
         {
-            return await _repository.GetAllEventEmblem();
+            return await _repository.GetAllEventEmblemAsync();
         }
 
-        public async Task<Events?> GetEvent(int eventId)
+        public async Task<Events?> GetEventAsync(int eventId)
         {
-            return await _repository.GetEvent(eventId);
+            return await _repository.GetEventAsync(eventId);
         }
 
-        public async Task<bool> AddEvent(Events @event)
+        public async Task<bool> AddEventAsync(Events @event)
         {
             var user = AuthService.AuthService.User;
-            var loginUser = await _userRepository.GetUser(user!.Id);
+            var loginUser = await _userRepository.GetUserAsync(user!.Id);
 
             if (loginUser is null)
             {
@@ -50,20 +50,20 @@ namespace WodCatClone.Logic.ActionsService.EventsService
 
             loginUser.Points += 100;
 
-            return await _repository.AddEvent(@event, loginUser);
+            return await _repository.AddEventAsync(@event, loginUser);
         }
 
-        public async Task<bool> EditEvent(Events @event, int eventId)
+        public async Task<bool> EditEventAsync(Events @event, int eventId)
         {
             var user = AuthService.AuthService.User;
-            var loginUser = await _userRepository.GetUser(user!.Id);
+            var loginUser = await _userRepository.GetUserAsync(user!.Id);
 
             if (loginUser is null)
             {
                 return false;
             }
 
-            var eventToEdit = await _repository.GetEvent(eventId);
+            var eventToEdit = await _repository.GetEventAsync(eventId);
 
             if (eventToEdit is null)
             {
@@ -82,22 +82,22 @@ namespace WodCatClone.Logic.ActionsService.EventsService
 
             loginUser.Points += 50;
 
-            return await _repository.EditEvent(eventToEdit, loginUser);
+            return await _repository.EditEventAsync(eventToEdit, loginUser);
         }
 
-        public async Task<bool> RemoveEvent(int eventId)
+        public async Task<bool> RemoveEventAsync(int eventId)
         {
-            var eventToRemove = await _repository.GetEvent(eventId);
+            var eventToRemove = await _repository.GetEventAsync(eventId);
 
             if (eventToRemove is null)
             {
                 return false;
             }
 
-            return await _repository.RemoveEvent(eventToRemove);
+            return await _repository.RemoveEventAsync(eventToRemove);
         }
 
-        public async Task<bool> AutoRemoveEvent(Events eventToRemove)
+        public async Task<bool> AutoRemoveEventAsync(Events eventToRemove)
         {
             var allUsersTime = eventToRemove.EventTimeUsers?
                 .OrderByDescending(b => b.Time)
@@ -106,12 +106,12 @@ namespace WodCatClone.Logic.ActionsService.EventsService
 
             var usersToList = allUsersTime?.Select(item => item.User).ToList();
 
-            return await _repository.AutoRemoveEvent(usersToList, eventToRemove);
+            return await _repository.AutoRemoveEventAsync(usersToList, eventToRemove);
         }
 
-        public async Task<bool> JoinEvent(int eventId, User user)
+        public async Task<bool> JoinEventAsync(int eventId, User user)
         {
-            var loginUser = await _userRepository.GetUser(user.Id);
+            var loginUser = await _userRepository.GetUserAsync(user.Id);
 
             if (loginUser is null)
             {
@@ -120,12 +120,12 @@ namespace WodCatClone.Logic.ActionsService.EventsService
 
             loginUser.EventId = eventId;
 
-            return await _repository.JoinEvent(loginUser);
+            return await _repository.JoinEventAsync(loginUser);
         }
 
-        public async Task<bool> ExitEvent(int eventId, User user)
+        public async Task<bool> ExitEventAsync(int eventId, User user)
         {
-            var loginUser = await _userRepository.GetUser(user.Id);
+            var loginUser = await _userRepository.GetUserAsync(user.Id);
 
             if (loginUser is null)
             {
@@ -134,12 +134,12 @@ namespace WodCatClone.Logic.ActionsService.EventsService
 
             loginUser.EventId = null;
 
-            return await _repository.ExitEvent(loginUser);
+            return await _repository.ExitEventAsync(loginUser);
         }
 
-        public async Task<bool> AddEventTimeUser(EventTimeUser eventTimeUser)
+        public async Task<bool> AddEventTimeUserAsync(EventTimeUser eventTimeUser)
         {
-            return await _repository.AddEventTimeUser(eventTimeUser);
+            return await _repository.AddEventTimeUserAsync(eventTimeUser);
         }
     }
 }

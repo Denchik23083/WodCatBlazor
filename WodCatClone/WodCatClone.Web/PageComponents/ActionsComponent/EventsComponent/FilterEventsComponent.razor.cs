@@ -55,7 +55,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
 
         public async Task Filter()
         {
-            Events = await EventsService.GetAllEvents();
+            Events = await EventsService.GetAllEventsAsync();
 
             if (_filterTown != "None")
             {

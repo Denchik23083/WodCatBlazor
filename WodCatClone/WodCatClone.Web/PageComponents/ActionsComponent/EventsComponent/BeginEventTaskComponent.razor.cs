@@ -53,7 +53,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             AddEventTimeUser!.UserId = User!.Id;
             AddEventTimeUser!.EventsId = Event!.Id;
 
-            var result = await EventsService.AddEventTimeUser(AddEventTimeUser);
+            var result = await EventsService.AddEventTimeUserAsync(AddEventTimeUser);
 
             if (result)
             {

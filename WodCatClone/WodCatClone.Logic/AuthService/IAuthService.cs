@@ -4,10 +4,10 @@ namespace WodCatClone.Logic.AuthService
 {
     public interface IAuthService
     {
-        Task<bool> Login(User login);
+        Task<bool> LoginAsync(User login);
 
-        Task<bool> Register(User register);
+        Task<bool> RegisterAsync(User register);
 
-        Task<bool> Logout();
+        Task<bool> LogoutAsync();
     }
 }

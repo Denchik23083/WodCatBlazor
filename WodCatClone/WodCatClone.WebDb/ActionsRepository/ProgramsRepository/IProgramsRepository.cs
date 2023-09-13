@@ -5,12 +5,12 @@ namespace WodCatClone.WebDb.ActionsRepository.ProgramsRepository
 {
     public interface IProgramsRepository
     {
-        Task<IEnumerable<Programs>> GetAllPrograms();
+        Task<IEnumerable<Programs>> GetAllProgramsAsync();
 
-        Task<Programs?> GetProgram(int id);
+        Task<Programs?> GetProgramAsync(int id);
 
-        Task<bool> BeginProgram(User loginUser, ProgramTimeUser? programTimeUser, ProgramTimeUser newProgramTimeUser);
+        Task<bool> BeginProgramAsync(User loginUser, ProgramTimeUser? programTimeUser, ProgramTimeUser newProgramTimeUser);
 
-        Task<bool> StopProgram(User loginUser, ProgramTimeUser? programTimeUser, bool isFinish);
+        Task<bool> StopProgramAsync(User loginUser, ProgramTimeUser? programTimeUser, bool isFinish);
     }
 }

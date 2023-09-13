@@ -4,16 +4,16 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
 {
     public interface IArticlesService
     {
-        Task<IEnumerable<Articles>> GetAllArticles();
+        Task<IEnumerable<Articles>> GetAllArticlesAsync();
 
-        Task<IEnumerable<ArticleEmblem>> GetAllArticleEmblem();
+        Task<IEnumerable<ArticleEmblem>> GetAllArticleEmblemAsync();
 
-        Task<Articles?> GetArticle(int id);
+        Task<Articles?> GetArticleAsync(int id);
 
-        Task<bool> AddArticle(Articles article);
+        Task<bool> AddArticleAsync(Articles article);
 
-        Task<bool> EditArticle(Articles article, int id);
+        Task<bool> EditArticleAsync(Articles article, int id);
 
-        Task<bool> RemoveArticle(int id);
+        Task<bool> RemoveArticleAsync(int id);
     }
 }

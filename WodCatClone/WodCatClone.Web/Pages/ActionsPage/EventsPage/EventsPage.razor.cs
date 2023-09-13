@@ -22,21 +22,21 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
 
         protected override async Task OnInitializedAsync()
         {
-            User = await UserService.GetUser();
-            IsLoginUser = await UserService.IsLoginUser();
+            User = await UserService.GetUserAsync();
+            IsLoginUser = await UserService.IsLoginUserAsync();
 
             await RemoveAllEndEvents();
 
-            Events = await EventsService.GetAllEvents();
+            Events = await EventsService.GetAllEventsAsync();
         }
 
         private async Task RemoveAllEndEvents()
         {
-            var endEvents = await EventsService.GetAllEndEvents();
+            var endEvents = await EventsService.GetAllEndEventsAsync();
 
             foreach (var endEvent in endEvents)
             {
-                await EventsService.AutoRemoveEvent(endEvent);
+                await EventsService.AutoRemoveEventAsync(endEvent);
             }
         }
 

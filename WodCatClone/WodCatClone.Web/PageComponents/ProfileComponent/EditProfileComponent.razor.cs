@@ -105,7 +105,7 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
 
             var mappedUser = Mapper.Map<User>(UpdateUser);
 
-            var result = await UserService.Update(mappedUser, User!.Id);
+            var result = await UserService.UpdateAsync(mappedUser, User!.Id);
 
             if (result)
             {

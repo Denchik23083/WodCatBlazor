@@ -18,7 +18,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ProgramsComponent
         
         public async Task FinishProgram()
         {
-            var result = await ProgramsService.StopProgram(ProgramId, User!, true);
+            var result = await ProgramsService.StopProgramAsync(ProgramId, User!, true);
 
             if (result)
             {

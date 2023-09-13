@@ -4,18 +4,18 @@ namespace WodCatClone.WebDb.UserRepository
 {
     public interface IUserRepository
     {
-        Task<IEnumerable<User>> GetAllUsers();
+        Task<IEnumerable<User>> GetAllUsersAsync();
 
-        Task<IEnumerable<Gender>> GetGenders();
+        Task<IEnumerable<Gender>> GetAllGendersAsync();
         
-        Task<User?> GetUser(int id);
+        Task<User?> GetUserAsync(int id);
 
-        Task<User?> GetUser(string nickName);
+        Task<User?> GetUserAsync(string nickName);
 
-        Task<bool> EditUserHall(User loginUser);
+        Task<bool> EditUserHallAsync(User loginUser);
 
-        Task<bool> Update(User userToUpdate);
+        Task<bool> UpdateAsync(User userToUpdate);
 
-        Task<bool> UpdateAuth(User userToUpdate);
+        Task<bool> UpdateAuthAsync(User userToUpdate);
     }
 }

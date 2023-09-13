@@ -39,11 +39,11 @@ namespace WodCatClone.Web.PageComponents.ProfileComponent
             {
                 var mappedAuth = Mapper.Map<User>(UpdateAuth);
 
-                var result = await UserService.UpdateAuth(mappedAuth, User!.Id);
+                var result = await UserService.UpdateAuthAsync(mappedAuth, User!.Id);
 
                 if (result)
                 {
-                    var logout = await AuthService.Logout();
+                    var logout = await AuthService.LogoutAsync();
 
                     if (logout)
                     {

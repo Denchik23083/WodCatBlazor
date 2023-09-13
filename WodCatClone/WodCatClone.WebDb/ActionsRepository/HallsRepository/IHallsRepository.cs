@@ -5,20 +5,20 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
 {
     public interface IHallsRepository
     {
-        Task<IEnumerable<Halls>> GetAllHalls();
+        Task<IEnumerable<Halls>> GetAllHallsAsync();
 
-        Task<IEnumerable<HallEmblem>> GetAllHallEmblem();
+        Task<IEnumerable<HallEmblem>> GetAllHallEmblemAsync();
 
-        Task<Halls?> GetHall(int hallId);
+        Task<Halls?> GetHallAsync(int hallId);
 
-        Task<bool> AddHall(Halls hall, User loginUser);
+        Task<bool> AddHallAsync(Halls hall, User loginUser);
 
-        Task<bool> EditHall(Halls hallToEdit, User loginUser);
+        Task<bool> EditHallAsync(Halls hallToEdit, User loginUser);
 
-        Task<bool> RemoveHall(Halls hallToRemove);
+        Task<bool> RemoveHallAsync(Halls hallToRemove);
 
-        Task<bool> JoinHall(User user);
+        Task<bool> JoinHallAsync(User user);
 
-        Task<bool> ExitHall(User user);
+        Task<bool> ExitHallAsync(User user);
     }
 }

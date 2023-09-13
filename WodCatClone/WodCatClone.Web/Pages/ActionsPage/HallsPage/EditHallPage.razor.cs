@@ -26,10 +26,10 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 
         protected override async Task OnInitializedAsync()
         {
-            User = await UserService.GetUser();
-            IsLoginUser = await UserService.IsLoginUser();
+            User = await UserService.GetUserAsync();
+            IsLoginUser = await UserService.IsLoginUserAsync();
 
-            Hall = await HallsService.GetHall(HallId);
+            Hall = await HallsService.GetHallAsync(HallId);
             if (Hall is null)
             {
                 NavigationManager.NavigateTo("/gymboxs");
@@ -47,7 +47,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
                 }
             }
 
-            HallEmblem = await HallsService.GetAllHallEmblem();
+            HallEmblem = await HallsService.GetAllHallEmblemAsync();
         }
 
         public void BackToGymList() => NavigationManager.NavigateTo($"/gymboxs/{HallId}");

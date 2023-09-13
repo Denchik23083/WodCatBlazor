@@ -5,26 +5,26 @@ namespace WodCatClone.Logic.ActionsService.EventsService
 {
     public interface IEventsService
     {
-        Task<IEnumerable<Events>> GetAllEvents();
+        Task<IEnumerable<Events>> GetAllEventsAsync();
 
-        Task<IEnumerable<Events>> GetAllEndEvents();
+        Task<IEnumerable<Events>> GetAllEndEventsAsync();
 
-        Task<IEnumerable<EventEmblem>> GetAllEventEmblem();
+        Task<IEnumerable<EventEmblem>> GetAllEventEmblemAsync();
 
-        Task<Events?> GetEvent(int eventId);
+        Task<Events?> GetEventAsync(int eventId);
 
-        Task<bool> AddEvent(Events @event);
+        Task<bool> AddEventAsync(Events @event);
 
-        Task<bool> EditEvent(Events @event, int eventId);
+        Task<bool> EditEventAsync(Events @event, int eventId);
         
-        Task<bool> RemoveEvent(int eventId);
+        Task<bool> RemoveEventAsync(int eventId);
 
-        Task<bool> AutoRemoveEvent(Events eventToRemove);
+        Task<bool> AutoRemoveEventAsync(Events eventToRemove);
 
-        Task<bool> JoinEvent(int eventId, User user);
+        Task<bool> JoinEventAsync(int eventId, User user);
 
-        Task<bool> ExitEvent(int eventId, User user);
+        Task<bool> ExitEventAsync(int eventId, User user);
 
-        Task<bool> AddEventTimeUser(EventTimeUser eventTimeUser);
+        Task<bool> AddEventTimeUserAsync(EventTimeUser eventTimeUser);
     }
 }

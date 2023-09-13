@@ -44,9 +44,9 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
 
         protected override async Task OnInitializedAsync()
         {
-            User = await UserService.GetUser();
+            User = await UserService.GetUserAsync();
 
-            Workout = await WorkoutsService.GetWorkout(WorkoutId);
+            Workout = await WorkoutsService.GetWorkoutAsync(WorkoutId);
 
             if (Workout is null)
             {
@@ -54,7 +54,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
             }
             else
             {
-                IsLoginUser = await UserService.IsLoginUser();
+                IsLoginUser = await UserService.IsLoginUserAsync();
 
                 Hall = Workout.Halls!;
                 if (Hall is not null)
@@ -93,7 +93,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
 
             var mappedResultWorkouts = Mapper.Map<ResultWorkouts>(resultWorkout);
 
-            var result = await WorkoutsService.EditResultWorkouts(mappedResultWorkouts, id);
+            var result = await WorkoutsService.EditResultWorkoutsAsync(mappedResultWorkouts, id);
 
             if (result)
             {
@@ -105,7 +105,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.WorkoutsPage
         {
             var id = GetAllResultWorkouts.ResultWorkoutId;
 
-            var result = await WorkoutsService.RemoveResultWorkouts(id);
+            var result = await WorkoutsService.RemoveResultWorkoutsAsync(id);
 
             if (result)
             {

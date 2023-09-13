@@ -5,20 +5,20 @@ namespace WodCatClone.Logic.ActionsService.HallsService
 {
     public interface IHallsService
     {
-        Task<IEnumerable<Halls>> GetAllHalls();
+        Task<IEnumerable<Halls>> GetAllHallsAsync();
 
-        Task<IEnumerable<HallEmblem>> GetAllHallEmblem();
+        Task<IEnumerable<HallEmblem>> GetAllHallEmblemAsync();
 
-        Task<Halls?> GetHall(int hallId);
+        Task<Halls?> GetHallAsync(int hallId);
 
-        Task<bool> AddHall(Halls hall);
+        Task<bool> AddHallAsync(Halls hall);
 
-        Task<bool> EditHall(Halls hall, int hallId);
+        Task<bool> EditHallAsync(Halls hall, int hallId);
 
-        Task<bool> RemoveHall(int hallId);
+        Task<bool> RemoveHallAsync(int hallId);
 
-        Task<bool> JoinHall(int hallId, User user);
+        Task<bool> JoinHallAsync(int hallId, User user);
 
-        Task<bool> ExitHall(int hallId, User user);
+        Task<bool> ExitHallAsync(int hallId, User user);
     }
 }
