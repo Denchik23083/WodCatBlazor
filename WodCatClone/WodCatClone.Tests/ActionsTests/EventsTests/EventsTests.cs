@@ -1,8 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
-using Moq;
+﻿using Moq;
 using WodCatClone.Db.Entities.Actions;
 using WodCatClone.Logic.ActionsService.EventsService;
-using WodCatClone.Logic.ActionsService.HallsService;
 using WodCatClone.Tests.Utilities;
 using WodCatClone.WebDb.ActionsRepository.EventsRepository;
 using WodCatClone.WebDb.UserRepository;
@@ -317,9 +315,46 @@ namespace WodCatClone.Tests.ActionsTests.EventsTests
         }
 
         [Fact]
-        public void AutoRemoveEvent()
+        public async Task AutoRemoveEvent()
         {
-            Assert.Equal(1, 2);
+            var expectedId = 1;
+
+            var eventToRemove = new Events
+            {
+                Id = expectedId,
+                Name = "Event",
+                Town = "Киев",
+                Location = "Location",
+                EventsEmblemId = 3,
+                HallId = 3,
+                TypeEvent = "TypeEvent",
+                TypeSport = "TypeSport",
+                StartDate = new DateTime(2023, 12, 20),
+                EndDate = new DateTime(2023, 12, 21),
+                RegisterDate = new DateTime(2023, 12, 19),
+                UserId = 1,
+                WorkoutId = 6,
+                Description = "Description"
+            };
+
+            var allUsersTime = eventToRemove.EventTimeUsers?
+                .OrderByDescending(b => b.Time)
+                .Take(3)
+                .Reverse();
+
+            var usersToList = allUsersTime?.Select(item => item.User).ToList();
+            
+            _repository.Setup(_ => _.AutoRemoveEvent(usersToList, eventToRemove))
+                .ReturnsAsync(true);
+
+            IEventsService service = new EventsService(_repository.Object, _userRepository.Object);
+
+            var result = await service.AutoRemoveEvent(eventToRemove);
+
+            _repository.Verify(_ => _.AutoRemoveEvent(usersToList, eventToRemove),
+                Times.Once);
+
+            Assert.True(result);
         }
 
         [Fact]

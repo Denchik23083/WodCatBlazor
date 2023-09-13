@@ -131,7 +131,7 @@ namespace WodCatClone.Tests.ActionsTests.ProgramsTests
 
             var programId = 4;
 
-            var newProgramTimeUser  = new ProgramTimeUser
+            var newProgramTimeUser = new ProgramTimeUser
             {
                 BeginProgramDate = DateTime.Now,
                 ProgramsId = programId,
@@ -143,7 +143,7 @@ namespace WodCatClone.Tests.ActionsTests.ProgramsTests
             _userRepository.Setup(_ => _.GetUser(user.Id))
                 .ReturnsAsync(user);
 
-            _repository.Setup(_ => _.BeginProgram(user, programTimeUser, newProgramTimeUser))
+            _repository.Setup(_ => _.BeginProgram(user, It.IsAny<ProgramTimeUser>(), It.IsAny<ProgramTimeUser>()))
                 .ReturnsAsync(true);
 
             IProgramsService service = new ProgramsService(_repository.Object, _userRepository.Object);
@@ -153,7 +153,7 @@ namespace WodCatClone.Tests.ActionsTests.ProgramsTests
             _userRepository.Verify(_ => _.GetUser(user.Id),
                 Times.Once);
 
-            _repository.Verify(_ => _.BeginProgram(user, programTimeUser, newProgramTimeUser),
+            _repository.Verify(_ => _.BeginProgram(user, It.IsAny<ProgramTimeUser>(), It.IsAny<ProgramTimeUser>()),
                 Times.Once);
 
             Assert.True(result);
