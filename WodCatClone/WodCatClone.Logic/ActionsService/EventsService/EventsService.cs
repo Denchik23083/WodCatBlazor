@@ -99,14 +99,14 @@ namespace WodCatClone.Logic.ActionsService.EventsService
 
         public async Task<bool> AutoRemoveEvent(Events eventToRemove)
         {
-            var allUsersTime = eventToRemove.EventTimeUsers!
+            var allUsersTime = eventToRemove.EventTimeUsers?
                 .OrderByDescending(b => b.Time)
                 .Take(3)
                 .Reverse();
 
-            var usersToList = allUsersTime.Select(item => item.User).ToList();
+            var usersToList = allUsersTime?.Select(item => item.User).ToList();
 
-            return await _repository.AutoRemoveEvent(usersToList!, eventToRemove);
+            return await _repository.AutoRemoveEvent(usersToList, eventToRemove);
         }
 
         public async Task<bool> JoinEvent(int eventId, User user)

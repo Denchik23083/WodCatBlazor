@@ -60,11 +60,6 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
 
             var programTimeUser = loginUser.ProgramTimeUsers?.FirstOrDefault(_ => _.ProgramsId == id);
             
-            if (programTimeUser is null)
-            {
-                return false;
-            }
-
             loginUser.ProgramId = null;
 
             return await _repository.StopProgram(loginUser, programTimeUser, isFinish);

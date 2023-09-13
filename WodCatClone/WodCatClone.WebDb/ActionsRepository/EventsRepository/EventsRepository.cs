@@ -95,15 +95,18 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
             return true;
         }
 
-        public async Task<bool> AutoRemoveEvent(IEnumerable<User> usersToList, Events eventToRemove)
+        public async Task<bool> AutoRemoveEvent(IEnumerable<User?>? usersToList, Events eventToRemove)
         {
             var points = 200;
 
-            foreach (var user in usersToList)
+            if (usersToList is not null)
             {
-                user.Points += points;
+                foreach (var user in usersToList)
+                {
+                    user!.Points += points;
 
-                points /= 2;
+                    points /= 2;
+                }
             }
 
             _context.Events.Remove(eventToRemove);

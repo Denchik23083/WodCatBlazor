@@ -3,7 +3,6 @@ using WodCatClone.Core;
 using WodCatClone.Db.Entities.Auth;
 using WodCatClone.Logic.UserService;
 using WodCatClone.Tests.Utilities;
-using WodCatClone.WebDb.AuthRepository;
 using WodCatClone.WebDb.UserRepository;
 using Xunit;
 
