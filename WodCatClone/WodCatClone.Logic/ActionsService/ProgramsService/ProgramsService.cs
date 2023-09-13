@@ -16,19 +16,19 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
             _userRepository = userRepository;
         }
 
-        public async Task<IEnumerable<Programs>> GetAllPrograms()
+        public async Task<IEnumerable<Programs>> GetAllProgramsAsync()
         {
-            return await _repository.GetAllPrograms();
+            return await _repository.GetAllProgramsAsync();
         }
 
-        public async Task<Programs?> GetProgram(int id)
+        public async Task<Programs?> GetProgramAsync(int id)
         {
-            return await _repository.GetProgram(id);
+            return await _repository.GetProgramAsync(id);
         }
 
-        public async Task<bool> BeginProgram(int id, User user)
+        public async Task<bool> BeginProgramAsync(int id, User user)
         {
-            var loginUser = await _userRepository.GetUser(user.Id);
+            var loginUser = await _userRepository.GetUserAsync(user.Id);
 
             if (loginUser is null)
             {
@@ -46,12 +46,12 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
 
             loginUser.ProgramId = id;
 
-            return await _repository.BeginProgram(loginUser, programTimeUser, newProgramTimeUser);
+            return await _repository.BeginProgramAsync(loginUser, programTimeUser, newProgramTimeUser);
         }
 
-        public async Task<bool> StopProgram(int id, User user, bool isFinish)
+        public async Task<bool> StopProgramAsync(int id, User user, bool isFinish)
         {
-            var loginUser = await _userRepository.GetUser(user.Id);
+            var loginUser = await _userRepository.GetUserAsync(user.Id);
 
             if (loginUser is null)
             {
@@ -62,7 +62,7 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
             
             loginUser.ProgramId = null;
 
-            return await _repository.StopProgram(loginUser, programTimeUser, isFinish);
+            return await _repository.StopProgramAsync(loginUser, programTimeUser, isFinish);
         }
     }
 }

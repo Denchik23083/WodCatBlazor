@@ -45,14 +45,14 @@ namespace WodCatClone.Tests.AuthTests
                 GenderId = 1
             };
 
-            _repository.Setup(_ => _.Login(userModel))
+            _repository.Setup(_ => _.LoginAsync(userModel))
                 .ReturnsAsync(user);
 
             IAuthService service = new AuthService(_repository.Object, _userRepository.Object);
 
-            var result = await service.Login(userModel);
+            var result = await service.LoginAsync(userModel);
 
-            _repository.Verify(_ => _.Login(userModel), 
+            _repository.Verify(_ => _.LoginAsync(userModel), 
                 Times.Once);
 
             Assert.True(result);
@@ -130,20 +130,20 @@ namespace WodCatClone.Tests.AuthTests
                 }
             };
 
-            _userRepository.Setup(_ => _.GetAllUsers())
+            _userRepository.Setup(_ => _.GetAllUsersAsync())
                 .ReturnsAsync(listUsers);
 
-            _repository.Setup(_ => _.Register(userModel))
+            _repository.Setup(_ => _.RegisterAsync(userModel))
                 .ReturnsAsync(true);
 
             IAuthService service = new AuthService(_repository.Object, _userRepository.Object);
 
-            var result = await service.Register(userModel);
+            var result = await service.RegisterAsync(userModel);
 
-            _userRepository.Verify(_ => _.GetAllUsers(), 
+            _userRepository.Verify(_ => _.GetAllUsersAsync(), 
                 Times.Once);
 
-            _repository.Verify(_ => _.Register(userModel), 
+            _repository.Verify(_ => _.RegisterAsync(userModel), 
                 Times.Once);
 
             Assert.True(result);
@@ -154,7 +154,7 @@ namespace WodCatClone.Tests.AuthTests
         {
             IAuthService service = new AuthService(_repository.Object, _userRepository.Object);
 
-            var result = await service.Logout();
+            var result = await service.LogoutAsync();
 
             Assert.True(result);
         }

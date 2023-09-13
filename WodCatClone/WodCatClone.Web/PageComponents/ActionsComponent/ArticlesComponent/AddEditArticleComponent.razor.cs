@@ -122,7 +122,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
                 {
                     var mappedArticle = Mapper.Map<Articles>(UpdateArticle);
                         
-                    var result = await ArticlesService.AddArticle(mappedArticle);
+                    var result = await ArticlesService.AddArticleAsync(mappedArticle);
 
                     NavigationManager.NavigateTo(result ? "/articles" : "/articles/add");
                 }
@@ -130,7 +130,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
                 {
                     var mappedArticle = Mapper.Map<Articles>(UpdateArticle);
 
-                    var result = await ArticlesService.EditArticle(mappedArticle, ArticleId);
+                    var result = await ArticlesService.EditArticleAsync(mappedArticle, ArticleId);
 
                     NavigationManager.NavigateTo(result ? $"/articles/{ArticleId}" : $"/articles/{ArticleId}/edit");
                 }

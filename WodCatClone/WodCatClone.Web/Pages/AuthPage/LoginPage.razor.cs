@@ -25,14 +25,14 @@ namespace WodCatClone.Web.Pages.AuthPage
 
         protected override async Task OnInitializedAsync()
         {
-            User = await UserService.GetUser();
+            User = await UserService.GetUserAsync();
         }
 
         public async Task Login()
         {
             var mappedUser = Mapper.Map<User>(LoginModel);
 
-            var result = await AuthService.Login(mappedUser);
+            var result = await AuthService.LoginAsync(mappedUser);
 
             if (result)
             {

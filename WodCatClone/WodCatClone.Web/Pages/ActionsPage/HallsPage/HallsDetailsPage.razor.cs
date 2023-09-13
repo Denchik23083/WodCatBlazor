@@ -51,10 +51,10 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 
         private async Task FillOverrideFunctions()
         {
-            User = await UserService.GetUser();
-            IsLoginUser = await UserService.IsLoginUser();
+            User = await UserService.GetUserAsync();
+            IsLoginUser = await UserService.IsLoginUserAsync();
 
-            Hall = await HallsService.GetHall(HallId);
+            Hall = await HallsService.GetHallAsync(HallId);
             if (Hall is null)
             {
                 NavigationManager.NavigateTo("/gymboxs");
@@ -82,7 +82,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
 
         public async Task Join()
         {
-            var result = await HallsService.JoinHall(Hall!.Id, User!);
+            var result = await HallsService.JoinHallAsync(Hall!.Id, User!);
 
             if (result)
             {
@@ -92,7 +92,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.HallsPage
         
         public async Task Exit()
         {
-            var result = await HallsService.ExitHall(Hall!.Id, User!);
+            var result = await HallsService.ExitHallAsync(Hall!.Id, User!);
 
             if (result)
             {

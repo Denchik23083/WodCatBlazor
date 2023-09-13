@@ -29,7 +29,7 @@ namespace WodCatClone.Web.PageComponents.HeaderComponent
 
         private async Task FillOverrideFunctions()
         {
-            IsLoginUser = await UserService.IsLoginUser();
+            IsLoginUser = await UserService.IsLoginUserAsync();
             if (User?.Gender is not null)
             {
                 Image = User.Gender.Image!;

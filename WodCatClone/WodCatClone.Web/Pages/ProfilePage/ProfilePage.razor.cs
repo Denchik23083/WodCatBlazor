@@ -35,14 +35,14 @@ namespace WodCatClone.Web.Pages.ProfilePage
 
         protected override async Task OnInitializedAsync()
         {
-            UserEnter = await UserService.GetUser();
-            User = await UserService.GetUser(NickName);
+            UserEnter = await UserService.GetUserAsync();
+            User = await UserService.GetUserAsync(NickName);
 
             if (User is not null)
             {
                 Age = (DateTime.Today - User.Birthday).Days / 365;
 
-                IsLoginUser = await UserService.IsLoginUser();
+                IsLoginUser = await UserService.IsLoginUserAsync();
 
                 Image = User.Gender!.Image!;
 

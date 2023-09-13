@@ -169,14 +169,14 @@ namespace WodCatClone.Tests.ActionsTests.ExercisesTests
                 }
             };
 
-            _repository.Setup(_ => _.GetAllExercises())
+            _repository.Setup(_ => _.GetAllExercisesAsync())
                 .ReturnsAsync(exercises);
 
             IExercisesService service = new ExercisesService(_repository.Object);
 
-            var result = await service.GetAllExercises();
+            var result = await service.GetAllExercisesAsync();
 
-            _repository.Verify(_ => _.GetAllExercises(),
+            _repository.Verify(_ => _.GetAllExercisesAsync(),
                 Times.Once);
 
             Assert.NotNull(result);
@@ -201,14 +201,14 @@ namespace WodCatClone.Tests.ActionsTests.ExercisesTests
                 Image = "https://www.youtube.com/embed/_HDZODOx7Zw"
             };
 
-            _repository.Setup(_ => _.GetExercise(expectedId))
+            _repository.Setup(_ => _.GetExerciseAsync(expectedId))
                 .ReturnsAsync(exercise);
 
             IExercisesService service = new ExercisesService(_repository.Object);
 
-            var result = await service.GetExercise(expectedId);
+            var result = await service.GetExerciseAsync(expectedId);
 
-            _repository.Verify(_ => _.GetExercise(expectedId),
+            _repository.Verify(_ => _.GetExerciseAsync(expectedId),
                 Times.Once);
 
             Assert.NotNull(result);

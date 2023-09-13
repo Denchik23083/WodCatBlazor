@@ -48,10 +48,10 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
 
         private async Task FillOverrideFunctions()
         {
-            User = await UserService.GetUser();
-            IsLoginUser = await UserService.IsLoginUser();
+            User = await UserService.GetUserAsync();
+            IsLoginUser = await UserService.IsLoginUserAsync();
 
-            Program = await ProgramsService.GetProgram(ProgramId);
+            Program = await ProgramsService.GetProgramAsync(ProgramId);
 
             if (Program is null)
             {
@@ -88,7 +88,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
 
         public async Task BeginProgram()
         {
-            var result = await ProgramsService.BeginProgram(ProgramId, User!);
+            var result = await ProgramsService.BeginProgramAsync(ProgramId, User!);
 
             if (result)
             {
@@ -98,7 +98,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.ProgramsPage
 
         public async Task StopProgram()
         {
-            var result = await ProgramsService.StopProgram(ProgramId, User!, false);
+            var result = await ProgramsService.StopProgramAsync(ProgramId, User!, false);
 
             if (result)
             {

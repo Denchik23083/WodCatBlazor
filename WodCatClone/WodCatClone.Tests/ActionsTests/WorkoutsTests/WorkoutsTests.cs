@@ -103,14 +103,14 @@ namespace WodCatClone.Tests.ActionsTests.WorkoutsTests
                 }
             };
 
-            _repository.Setup(_ => _.GetAllWorkouts())
+            _repository.Setup(_ => _.GetAllWorkoutsAsync())
                 .ReturnsAsync(workouts);
 
             IWorkoutsService service = new WorkoutsService(_repository.Object, _userRepository.Object);
 
-            var result = await service.GetAllWorkouts();
+            var result = await service.GetAllWorkoutsAsync();
 
-            _repository.Verify(_ => _.GetAllWorkouts(),
+            _repository.Verify(_ => _.GetAllWorkoutsAsync(),
                 Times.Once);
 
             Assert.NotNull(result);
@@ -134,14 +134,14 @@ namespace WodCatClone.Tests.ActionsTests.WorkoutsTests
                 HallId = 3
             };
 
-            _repository.Setup(_ => _.GetWorkout(expectedId))
+            _repository.Setup(_ => _.GetWorkoutAsync(expectedId))
                 .ReturnsAsync(workout);
 
             IWorkoutsService service = new WorkoutsService(_repository.Object, _userRepository.Object);
 
-            var result = await service.GetWorkout(expectedId);
+            var result = await service.GetWorkoutAsync(expectedId);
 
-            _repository.Verify(_ => _.GetWorkout(expectedId),
+            _repository.Verify(_ => _.GetWorkoutAsync(expectedId),
                 Times.Once);
 
             Assert.NotNull(result);
@@ -168,20 +168,20 @@ namespace WodCatClone.Tests.ActionsTests.WorkoutsTests
                 PublishDate = DateTime.Now
             };
 
-            _userRepository.Setup(_ => _.GetUser(user.Id))
+            _userRepository.Setup(_ => _.GetUserAsync(user.Id))
                 .ReturnsAsync(user);
 
-            _repository.Setup(_ => _.AddResultWorkouts(resultWorkoutsModel, user))
+            _repository.Setup(_ => _.AddResultWorkoutsAsync(resultWorkoutsModel, user))
                 .ReturnsAsync(true);
 
             IWorkoutsService service = new WorkoutsService(_repository.Object, _userRepository.Object);
 
-            var result = await service.AddResultWorkouts(resultWorkoutsModel);
+            var result = await service.AddResultWorkoutsAsync(resultWorkoutsModel);
 
-            _userRepository.Verify(_ => _.GetUser(user.Id),
+            _userRepository.Verify(_ => _.GetUserAsync(user.Id),
                 Times.Once);
 
-            _repository.Verify(_ => _.AddResultWorkouts(resultWorkoutsModel, user),
+            _repository.Verify(_ => _.AddResultWorkoutsAsync(resultWorkoutsModel, user),
                 Times.Once);
 
             Assert.True(result);
@@ -221,26 +221,26 @@ namespace WodCatClone.Tests.ActionsTests.WorkoutsTests
                 PublishDate = DateTime.Now
             };
 
-            _userRepository.Setup(_ => _.GetUser(user.Id))
+            _userRepository.Setup(_ => _.GetUserAsync(user.Id))
                 .ReturnsAsync(user);
 
-            _repository.Setup(_ => _.GetResultWorkout(expectedId))
+            _repository.Setup(_ => _.GetResultWorkoutAsync(expectedId))
                 .ReturnsAsync(resultWorkout);
 
-            _repository.Setup(_ => _.EditResultWorkouts(resultWorkout, user))
+            _repository.Setup(_ => _.EditResultWorkoutsAsync(resultWorkout, user))
                 .ReturnsAsync(true);
 
             IWorkoutsService service = new WorkoutsService(_repository.Object, _userRepository.Object);
 
-            var result = await service.EditResultWorkouts(resultWorkoutsModel, expectedId);
+            var result = await service.EditResultWorkoutsAsync(resultWorkoutsModel, expectedId);
 
-            _userRepository.Verify(_ => _.GetUser(user.Id),
+            _userRepository.Verify(_ => _.GetUserAsync(user.Id),
                 Times.Once);
 
-            _repository.Verify(_ => _.GetResultWorkout(expectedId),
+            _repository.Verify(_ => _.GetResultWorkoutAsync(expectedId),
                 Times.Once);
 
-            _repository.Verify(_ => _.EditResultWorkouts(resultWorkout, user),
+            _repository.Verify(_ => _.EditResultWorkoutsAsync(resultWorkout, user),
                 Times.Once);
 
             Assert.True(result);
@@ -263,20 +263,20 @@ namespace WodCatClone.Tests.ActionsTests.WorkoutsTests
                 PublishDate = DateTime.Now
             };
 
-            _repository.Setup(_ => _.GetResultWorkout(expectedId))
+            _repository.Setup(_ => _.GetResultWorkoutAsync(expectedId))
                 .ReturnsAsync(resultWorkout);
 
-            _repository.Setup(_ => _.RemoveResultWorkouts(resultWorkout))
+            _repository.Setup(_ => _.RemoveResultWorkoutsAsync(resultWorkout))
                 .ReturnsAsync(true);
 
             IWorkoutsService service = new WorkoutsService(_repository.Object, _userRepository.Object);
 
-            var result = await service.RemoveResultWorkouts(expectedId);
+            var result = await service.RemoveResultWorkoutsAsync(expectedId);
 
-            _repository.Verify(_ => _.GetResultWorkout(expectedId),
+            _repository.Verify(_ => _.GetResultWorkoutAsync(expectedId),
                 Times.Once);
 
-            _repository.Verify(_ => _.RemoveResultWorkouts(resultWorkout),
+            _repository.Verify(_ => _.RemoveResultWorkoutsAsync(resultWorkout),
                 Times.Once);
 
             Assert.True(result);

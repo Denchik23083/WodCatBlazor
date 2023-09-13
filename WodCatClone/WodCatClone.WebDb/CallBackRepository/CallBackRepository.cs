@@ -13,12 +13,12 @@ namespace WodCatClone.WebDb.CallBackRepository
             _context = context;
         }
 
-        public async Task<IEnumerable<Question>> GetAllQuestions()
+        public async Task<IEnumerable<Question>> GetAllQuestionsAsync()
         {
             return await _context.Question.ToListAsync();
         }
 
-        public async Task<Answer?> GetAnswer(int id)
+        public async Task<Answer?> GetAnswerAsync(int id)
         {
             return await _context.Answer.FirstOrDefaultAsync(b => b.Id == id);
         }

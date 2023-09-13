@@ -14,7 +14,7 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
             _context = context;
         }
 
-        public async Task<IEnumerable<Workouts>> GetAllWorkouts()
+        public async Task<IEnumerable<Workouts>> GetAllWorkoutsAsync()
         {
             return await _context.Workouts
                 .Include(_ => _.Halls)
@@ -25,7 +25,7 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
                 .ToListAsync();
         }
 
-        public async Task<Workouts?> GetWorkout(int workoutId)
+        public async Task<Workouts?> GetWorkoutAsync(int workoutId)
         {
             return await _context.Workouts
                 .Include(_ => _.Halls)
@@ -36,12 +36,12 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
                 .FirstOrDefaultAsync(_ => _.Id == workoutId);
         }
 
-        public async Task<ResultWorkouts?> GetResultWorkout(int id)
+        public async Task<ResultWorkouts?> GetResultWorkoutAsync(int id)
         {
             return await _context.ResultWorkouts.FirstOrDefaultAsync(b => b.Id == id);
         }
 
-        public async Task<bool> AddResultWorkouts(ResultWorkouts resultWorkouts, User loginUser)
+        public async Task<bool> AddResultWorkoutsAsync(ResultWorkouts resultWorkouts, User loginUser)
         {
             await _context.ResultWorkouts.AddAsync(resultWorkouts);
 
@@ -50,14 +50,14 @@ namespace WodCatClone.WebDb.ActionsRepository.WorkoutsRepository
             return true;
         }
 
-        public async Task<bool> EditResultWorkouts(ResultWorkouts resultWorkoutEdit, User loginUser)
+        public async Task<bool> EditResultWorkoutsAsync(ResultWorkouts resultWorkoutEdit, User loginUser)
         {
             await _context.SaveChangesAsync();
 
             return true;
         }
 
-        public async Task<bool> RemoveResultWorkouts(ResultWorkouts resultWorkoutRemove)
+        public async Task<bool> RemoveResultWorkoutsAsync(ResultWorkouts resultWorkoutRemove)
         {
             _context.ResultWorkouts.Remove(resultWorkoutRemove);
             await _context.SaveChangesAsync();

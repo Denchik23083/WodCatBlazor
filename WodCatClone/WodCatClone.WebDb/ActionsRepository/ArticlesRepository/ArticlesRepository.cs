@@ -14,26 +14,26 @@ namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
             _context = context;
         }
 
-        public async Task<IEnumerable<Articles>> GetAllArticles()
+        public async Task<IEnumerable<Articles>> GetAllArticlesAsync()
         {
             return await _context.Articles
                 .Include(_ => _.ArticleEmblem)
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<ArticleEmblem>> GetAllArticleEmblem()
+        public async Task<IEnumerable<ArticleEmblem>> GetAllArticleEmblemAsync()
         {
             return await _context.ArticleEmblem.ToListAsync();
         }
 
-        public async Task<Articles?> GetArticle(int id)
+        public async Task<Articles?> GetArticleAsync(int id)
         {
             return await _context.Articles
                 .Include(_ => _.ArticleEmblem)
                 .FirstOrDefaultAsync(b => b.Id == id);
         }
 
-        public async Task<bool> AddArticle(Articles article, User loginUser)
+        public async Task<bool> AddArticleAsync(Articles article, User loginUser)
         {
             await _context.Articles.AddAsync(article);
             await _context.SaveChangesAsync();
@@ -41,14 +41,14 @@ namespace WodCatClone.WebDb.ActionsRepository.ArticlesRepository
             return true;
         }
 
-        public async Task<bool> EditArticle(Articles articleToEdit, User loginUser)
+        public async Task<bool> EditArticleAsync(Articles articleToEdit, User loginUser)
         {
             await _context.SaveChangesAsync();
 
             return true;
         }
 
-        public async Task<bool> RemoveArticle(Articles articleToRemove)
+        public async Task<bool> RemoveArticleAsync(Articles articleToRemove)
         {
             _context.Articles.Remove(articleToRemove);
             await _context.SaveChangesAsync();

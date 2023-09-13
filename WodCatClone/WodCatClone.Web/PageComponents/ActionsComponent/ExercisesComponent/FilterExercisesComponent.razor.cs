@@ -57,7 +57,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ExercisesComponent
 
         public async Task Filter()
         {
-            Exercises = await ExercisesService.GetAllExercises();
+            Exercises = await ExercisesService.GetAllExercisesAsync();
 
             if (_filterModality != "None")
             {

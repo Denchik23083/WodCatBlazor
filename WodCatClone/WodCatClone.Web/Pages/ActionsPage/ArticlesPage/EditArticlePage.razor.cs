@@ -26,10 +26,10 @@ namespace WodCatClone.Web.Pages.ActionsPage.ArticlesPage
 
         protected override async Task OnInitializedAsync()
         {
-            User = await UserService.GetUser();
-            IsLoginUser = await UserService.IsLoginUser();
+            User = await UserService.GetUserAsync();
+            IsLoginUser = await UserService.IsLoginUserAsync();
 
-            Article = await ArticlesService.GetArticle(ArticleId);
+            Article = await ArticlesService.GetArticleAsync(ArticleId);
             if (Article is null)
             {
                 NavigationManager.NavigateTo("/articles");
@@ -47,7 +47,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.ArticlesPage
                 }
             }
 
-            ArticleEmblem = await ArticlesService.GetAllArticleEmblem();
+            ArticleEmblem = await ArticlesService.GetAllArticleEmblemAsync();
         }
 
         public void BackToArticle() => NavigationManager.NavigateTo($"/articles/{ArticleId}");

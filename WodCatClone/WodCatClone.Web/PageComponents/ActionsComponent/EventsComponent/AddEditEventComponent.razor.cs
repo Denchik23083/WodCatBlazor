@@ -145,7 +145,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
                 {
                     var mappedEvent = Mapper.Map<Events>(UpdateEvent);
 
-                    var result = await EventsService.AddEvent(mappedEvent);
+                    var result = await EventsService.AddEventAsync(mappedEvent);
 
                     NavigationManager.NavigateTo(result ? "/events" : "/events/add");
                 }
@@ -153,7 +153,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
                 {
                     var mappedEvent = Mapper.Map<Events>(UpdateEvent);
 
-                    var result = await EventsService.EditEvent(mappedEvent, EventId);
+                    var result = await EventsService.EditEventAsync(mappedEvent, EventId);
 
                     NavigationManager.NavigateTo(result ? $"/events/{EventId}" : $"/events/{UpdateEvent}/edit");
                 }
@@ -209,7 +209,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             {
                 var id = int.Parse(e.Value!.ToString()!);
 
-                var hall = await HallsService.GetHall(id);
+                var hall = await HallsService.GetHallAsync(id);
                 var eventHallEmblem = HallEmblem.FirstOrDefault(b => b.Id == hall!.EmblemHallId);
 
                 if (eventHallEmblem is not null)
@@ -232,7 +232,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.EventsComponent
             {
                 var id = int.Parse(e.Value!.ToString()!);
 
-                var workout = await WorkoutsService.GetWorkout(id);
+                var workout = await WorkoutsService.GetWorkoutAsync(id);
 
                 if (workout is not null)
                 {

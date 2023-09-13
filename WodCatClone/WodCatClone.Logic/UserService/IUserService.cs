@@ -4,20 +4,20 @@ namespace WodCatClone.Logic.UserService
 {
     public interface IUserService
     {
-        Task<IEnumerable<User>> GetAllUsers();
+        Task<IEnumerable<User>> GetAllUsersAsync();
 
-        Task<IEnumerable<Gender>> GetGenders();
+        Task<IEnumerable<Gender>> GetAllGendersAsync();
 
-        Task<bool> IsLoginUser();
+        Task<bool> IsLoginUserAsync();
 
-        Task<User?> GetUser();
+        Task<User?> GetUserAsync();
 
-        Task<User?> GetUser(string nickName);
+        Task<User?> GetUserAsync(string nickName);
 
-        Task<bool> EditUserHall(User user, int id);
+        Task<bool> EditUserHallAsync(User user, int id);
 
-        Task<bool> Update(User updateUser, int id);
+        Task<bool> UpdateAsync(User updateUser, int id);
 
-        Task<bool> UpdateAuth(User updateAuth, int id);
+        Task<bool> UpdateAuthAsync(User updateAuth, int id);
     }
 }

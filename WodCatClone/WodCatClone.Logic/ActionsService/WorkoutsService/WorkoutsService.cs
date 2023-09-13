@@ -15,20 +15,20 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService
             _userRepository = userRepository;
         }
 
-        public async Task<IEnumerable<Workouts>> GetAllWorkouts()
+        public async Task<IEnumerable<Workouts>> GetAllWorkoutsAsync()
         {
-            return await _repository.GetAllWorkouts();
+            return await _repository.GetAllWorkoutsAsync();
         }
 
-        public async Task<Workouts?> GetWorkout(int workoutId)
+        public async Task<Workouts?> GetWorkoutAsync(int workoutId)
         {
-            return await _repository.GetWorkout(workoutId);
+            return await _repository.GetWorkoutAsync(workoutId);
         }
 
-        public async Task<bool> AddResultWorkouts(ResultWorkouts resultWorkouts)
+        public async Task<bool> AddResultWorkoutsAsync(ResultWorkouts resultWorkouts)
         {
             var user = AuthService.AuthService.User;
-            var loginUser = await _userRepository.GetUser(user!.Id);
+            var loginUser = await _userRepository.GetUserAsync(user!.Id);
 
             if (loginUser is null)
             {
@@ -40,20 +40,20 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService
 
             loginUser.Points += 10;
 
-            return await _repository.AddResultWorkouts(resultWorkouts, loginUser);
+            return await _repository.AddResultWorkoutsAsync(resultWorkouts, loginUser);
         }
 
-        public async Task<bool> EditResultWorkouts(ResultWorkouts resultWorkouts, int id)
+        public async Task<bool> EditResultWorkoutsAsync(ResultWorkouts resultWorkouts, int id)
         {
             var user = AuthService.AuthService.User;
-            var loginUser = await _userRepository.GetUser(user!.Id);
+            var loginUser = await _userRepository.GetUserAsync(user!.Id);
 
             if (loginUser is null)
             {
                 return false;
             }
 
-            var resultWorkoutEdit = await _repository.GetResultWorkout(id);
+            var resultWorkoutEdit = await _repository.GetResultWorkoutAsync(id);
 
             if (resultWorkoutEdit is null)
             {
@@ -68,19 +68,19 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService
 
             loginUser.Points += 5;
 
-            return await _repository.EditResultWorkouts(resultWorkoutEdit, loginUser);
+            return await _repository.EditResultWorkoutsAsync(resultWorkoutEdit, loginUser);
         }
 
-        public async Task<bool> RemoveResultWorkouts(int id)
+        public async Task<bool> RemoveResultWorkoutsAsync(int id)
         {
-            var resultWorkoutRemove = await _repository.GetResultWorkout(id);
+            var resultWorkoutRemove = await _repository.GetResultWorkoutAsync(id);
 
             if (resultWorkoutRemove is null)
             {
                 return false;
             }
 
-            return await _repository.RemoveResultWorkouts(resultWorkoutRemove);
+            return await _repository.RemoveResultWorkoutsAsync(resultWorkoutRemove);
         }
     }
 }

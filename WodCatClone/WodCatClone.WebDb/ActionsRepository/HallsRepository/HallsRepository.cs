@@ -14,7 +14,7 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
             _context = context;
         }
 
-        public async Task<IEnumerable<Halls>> GetAllHalls()
+        public async Task<IEnumerable<Halls>> GetAllHallsAsync()
         {
             return await _context.Halls
                 .Include(_ => _.EmblemHall)
@@ -23,12 +23,12 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<HallEmblem>> GetAllHallEmblem()
+        public async Task<IEnumerable<HallEmblem>> GetAllHallEmblemAsync()
         {
             return await _context.HallEmblem.ToListAsync();
         }
 
-        public async Task<Halls?> GetHall(int hallId)
+        public async Task<Halls?> GetHallAsync(int hallId)
         {
             return await _context.Halls
                 .Include(_ => _.EmblemHall)
@@ -37,7 +37,7 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
                 .FirstOrDefaultAsync(b => b.Id == hallId);
         }
 
-        public async Task<bool> AddHall(Halls hall, User loginUser)
+        public async Task<bool> AddHallAsync(Halls hall, User loginUser)
         {
             await _context.Halls.AddAsync(hall);
             await _context.SaveChangesAsync();
@@ -45,14 +45,14 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
             return true;
         }
 
-        public async Task<bool> EditHall(Halls hallToEdit, User loginUser)
+        public async Task<bool> EditHallAsync(Halls hallToEdit, User loginUser)
         {
             await _context.SaveChangesAsync();
 
             return true;
         }
 
-        public async Task<bool> RemoveHall(Halls hallToRemove)
+        public async Task<bool> RemoveHallAsync(Halls hallToRemove)
         {
             _context.Halls.Remove(hallToRemove);
             await _context.SaveChangesAsync();
@@ -60,14 +60,14 @@ namespace WodCatClone.WebDb.ActionsRepository.HallsRepository
             return true;
         }
 
-        public async Task<bool> JoinHall(User loginUser)
+        public async Task<bool> JoinHallAsync(User loginUser)
         {
             await _context.SaveChangesAsync();
 
             return true;
         }
 
-        public async Task<bool> ExitHall(User loginUser)
+        public async Task<bool> ExitHallAsync(User loginUser)
         {
             await _context.SaveChangesAsync();
 

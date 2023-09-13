@@ -14,8 +14,8 @@ namespace WodCatClone.Web.Pages.ActionsPage.RatingsPage
 
         protected override async Task OnInitializedAsync()
         {
-            User = await UserService.GetUser();
-            Users = await UserService.GetAllUsers();
+            User = await UserService.GetUserAsync();
+            Users = await UserService.GetAllUsersAsync();
         }
     }
 }

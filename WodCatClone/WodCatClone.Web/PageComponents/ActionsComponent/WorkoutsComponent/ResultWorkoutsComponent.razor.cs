@@ -26,7 +26,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.WorkoutsComponent
 
             var mappedResultWorkouts = Mapper.Map<ResultWorkouts>(ResultWorkouts);
 
-            var result = await WorkoutsService.AddResultWorkouts(mappedResultWorkouts);
+            var result = await WorkoutsService.AddResultWorkoutsAsync(mappedResultWorkouts);
 
             if (result)
             {

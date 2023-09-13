@@ -5,12 +5,12 @@ namespace WodCatClone.Logic.ActionsService.ProgramsService
 {
     public interface IProgramsService
     {
-        Task<IEnumerable<Programs>> GetAllPrograms();
+        Task<IEnumerable<Programs>> GetAllProgramsAsync();
 
-        Task<Programs?> GetProgram(int id);
+        Task<Programs?> GetProgramAsync(int id);
 
-        Task<bool> BeginProgram(int id, User user);
+        Task<bool> BeginProgramAsync(int id, User user);
 
-        Task<bool> StopProgram(int id, User user, bool isFinish);
+        Task<bool> StopProgramAsync(int id, User user, bool isFinish);
     }
 }

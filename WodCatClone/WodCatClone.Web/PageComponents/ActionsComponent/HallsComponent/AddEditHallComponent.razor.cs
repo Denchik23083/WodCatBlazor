@@ -136,7 +136,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
                 {
                     var mappedHall = Mapper.Map<Halls>(UpdateHall);
 
-                    var result = await HallsService.AddHall(mappedHall);
+                    var result = await HallsService.AddHallAsync(mappedHall);
 
                     NavigationManager.NavigateTo(result ? "/gymboxs" : "/gymboxs/add");
                 }
@@ -144,7 +144,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
                 {
                     var mappedHall = Mapper.Map<Halls>(UpdateHall);
 
-                    var result = await HallsService.EditHall(mappedHall, HallId);
+                    var result = await HallsService.EditHallAsync(mappedHall, HallId);
 
                     NavigationManager.NavigateTo(result ? $"/gymboxs/{HallId}" : $"/gymboxs/{HallId}/edit");
                 }

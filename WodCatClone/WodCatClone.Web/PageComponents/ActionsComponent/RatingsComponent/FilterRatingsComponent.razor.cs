@@ -30,7 +30,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.RatingsComponent
 
         public async Task Filter()
         {
-            Users = await UserService.GetAllUsers();
+            Users = await UserService.GetAllUsersAsync();
 
             if (_filterTown != "None")
             {

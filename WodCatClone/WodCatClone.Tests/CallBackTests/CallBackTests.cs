@@ -32,14 +32,14 @@ namespace WodCatClone.Tests.CallBackTests
                 new() { Id = 10, Name = "Как получить баллы за мероприятие?", AnswerId = 10 }
             };
 
-            _repository.Setup(_ => _.GetAllQuestions())
+            _repository.Setup(_ => _.GetAllQuestionsAsync())
                 .ReturnsAsync(questions);
 
             ICallBackService service = new CallBackService(_repository.Object);
 
-            var result = await service.GetAllQuestions();
+            var result = await service.GetAllQuestionsAsync();
 
-            _repository.Verify(_ => _.GetAllQuestions(), 
+            _repository.Verify(_ => _.GetAllQuestionsAsync(), 
                 Times.Once);
 
             Assert.NotNull(result);
@@ -53,14 +53,14 @@ namespace WodCatClone.Tests.CallBackTests
 
             var answer = new Answer { Id = expectedId, Name = "Только те, которые создал" };
             
-            _repository.Setup(_ => _.GetAnswer(expectedId))
+            _repository.Setup(_ => _.GetAnswerAsync(expectedId))
                 .ReturnsAsync(answer);
 
             ICallBackService service = new CallBackService(_repository.Object);
 
-            var result = await service.GetAnswer(expectedId);
+            var result = await service.GetAnswerAsync(expectedId);
 
-            _repository.Verify(_ => _.GetAnswer(expectedId), 
+            _repository.Verify(_ => _.GetAnswerAsync(expectedId), 
                 Times.Once);
 
             Assert.NotNull(result);

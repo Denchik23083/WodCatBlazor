@@ -38,11 +38,11 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
 
         protected override async Task OnInitializedAsync()
         {
-            User = await UserService.GetUser();
+            User = await UserService.GetUserAsync();
 
-            IsLoginUser = await UserService.IsLoginUser();
+            IsLoginUser = await UserService.IsLoginUserAsync();
 
-            Event = await EventsService.GetEvent(EventId);
+            Event = await EventsService.GetEventAsync(EventId);
             if (Event is null)
             {
                 NavigationManager.NavigateTo("/events");
@@ -60,10 +60,10 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
                 }
             }
 
-            EventEmblem = await EventsService.GetAllEventEmblem();
-            Halls = await HallsService.GetAllHalls();
-            HallEmblem = await HallsService.GetAllHallEmblem();
-            Workouts = await WorkoutsService.GetAllWorkouts();
+            EventEmblem = await EventsService.GetAllEventEmblemAsync();
+            Halls = await HallsService.GetAllHallsAsync();
+            HallEmblem = await HallsService.GetAllHallEmblemAsync();
+            Workouts = await WorkoutsService.GetAllWorkoutsAsync();
         }
 
         public void BackToEventsList() => NavigationManager.NavigateTo("/events");

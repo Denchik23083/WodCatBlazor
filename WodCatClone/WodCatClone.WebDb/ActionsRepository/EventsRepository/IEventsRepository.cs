@@ -5,26 +5,26 @@ namespace WodCatClone.WebDb.ActionsRepository.EventsRepository
 {
     public interface IEventsRepository
     {
-        Task<IEnumerable<Events>> GetAllEvents();
+        Task<IEnumerable<Events>> GetAllEventsAsync();
 
-        Task<IEnumerable<Events>> GetAllEndEvents();
+        Task<IEnumerable<Events>> GetAllEndEventsAsync();
 
-        Task<IEnumerable<EventEmblem>> GetAllEventEmblem();
+        Task<IEnumerable<EventEmblem>> GetAllEventEmblemAsync();
 
-        Task<Events?> GetEvent(int eventId);
+        Task<Events?> GetEventAsync(int eventId);
 
-        Task<bool> AddEvent(Events @event, User loginUser);
+        Task<bool> AddEventAsync(Events @event, User loginUser);
 
-        Task<bool> EditEvent(Events eventToEdit, User loginUser);
+        Task<bool> EditEventAsync(Events eventToEdit, User loginUser);
 
-        Task<bool> RemoveEvent(Events eventToRemove);
+        Task<bool> RemoveEventAsync(Events eventToRemove);
 
-        Task<bool> AutoRemoveEvent(IEnumerable<User?>? usersToList, Events eventToRemove);
+        Task<bool> AutoRemoveEventAsync(IEnumerable<User?>? usersToList, Events eventToRemove);
         
-        Task<bool> JoinEvent(User user);
+        Task<bool> JoinEventAsync(User user);
 
-        Task<bool> ExitEvent(User user);
+        Task<bool> ExitEventAsync(User user);
 
-        Task<bool> AddEventTimeUser(EventTimeUser eventTimeUser);
+        Task<bool> AddEventTimeUserAsync(EventTimeUser eventTimeUser);
     }
 }

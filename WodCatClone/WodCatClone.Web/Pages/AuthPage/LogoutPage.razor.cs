@@ -11,7 +11,7 @@ namespace WodCatClone.Web.Pages.AuthPage
 
         protected override async Task OnInitializedAsync()
         {
-            var result = await AuthService.Logout();
+            var result = await AuthService.LogoutAsync();
 
             if (result)
             {

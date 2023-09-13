@@ -13,7 +13,7 @@ namespace WodCatClone.WebDb.UserRepository
             _context = context;
         }
 
-        public async Task<IEnumerable<User>> GetAllUsers()
+        public async Task<IEnumerable<User>> GetAllUsersAsync()
         {
             return await _context.Users
                 .Include(_ => _.Gender)
@@ -28,12 +28,12 @@ namespace WodCatClone.WebDb.UserRepository
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<Gender>> GetGenders()
+        public async Task<IEnumerable<Gender>> GetAllGendersAsync()
         {
             return await _context.Gender.ToListAsync();
         }
 
-        public async Task<User?> GetUser(int id)
+        public async Task<User?> GetUserAsync(int id)
         {
             return await _context.Users
                 .Include(_ => _.ProgramTimeUsers)!
@@ -48,7 +48,7 @@ namespace WodCatClone.WebDb.UserRepository
                 .FirstOrDefaultAsync(b => b.Id == id);
         }
 
-        public async Task<User?> GetUser(string nickName)
+        public async Task<User?> GetUserAsync(string nickName)
         {
             return await _context.Users
                 .Include(_ => _.Gender)
@@ -61,21 +61,21 @@ namespace WodCatClone.WebDb.UserRepository
                 .FirstOrDefaultAsync(b => b.NickName!.Equals(nickName));
         }
 
-        public async Task<bool> EditUserHall(User loginUser)
+        public async Task<bool> EditUserHallAsync(User loginUser)
         {
             await _context.SaveChangesAsync();
 
             return true;
         }
 
-        public async Task<bool> Update(User userToUpdate)
+        public async Task<bool> UpdateAsync(User userToUpdate)
         {
             await _context.SaveChangesAsync();
 
             return true;
         }
 
-        public async Task<bool> UpdateAuth(User userToUpdate)
+        public async Task<bool> UpdateAuthAsync(User userToUpdate)
         {
             await _context.SaveChangesAsync();
 

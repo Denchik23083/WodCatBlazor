@@ -16,25 +16,25 @@ namespace WodCatClone.Logic.ActionsService.HallsService
             _userRepository = userRepository;
         }
 
-        public async Task<IEnumerable<Halls>> GetAllHalls()
+        public async Task<IEnumerable<Halls>> GetAllHallsAsync()
         {
-            return await _repository.GetAllHalls();
+            return await _repository.GetAllHallsAsync();
         }
 
-        public async Task<IEnumerable<HallEmblem>> GetAllHallEmblem()
+        public async Task<IEnumerable<HallEmblem>> GetAllHallEmblemAsync()
         {
-            return await _repository.GetAllHallEmblem();
+            return await _repository.GetAllHallEmblemAsync();
         }
 
-        public async Task<Halls?> GetHall(int hallId)
+        public async Task<Halls?> GetHallAsync(int hallId)
         {
-            return await _repository.GetHall(hallId);
+            return await _repository.GetHallAsync(hallId);
         }
 
-        public async Task<bool> AddHall(Halls hall)
+        public async Task<bool> AddHallAsync(Halls hall)
         {
             var user = AuthService.AuthService.User;
-            var loginUser = await _userRepository.GetUser(user!.Id);
+            var loginUser = await _userRepository.GetUserAsync(user!.Id);
 
             if (loginUser is null)
             {
@@ -45,20 +45,20 @@ namespace WodCatClone.Logic.ActionsService.HallsService
 
             loginUser.Points += 50;
 
-            return await _repository.AddHall(hall, loginUser);
+            return await _repository.AddHallAsync(hall, loginUser);
         }
 
-        public async Task<bool> EditHall(Halls hall, int hallId)
+        public async Task<bool> EditHallAsync(Halls hall, int hallId)
         {
             var user = AuthService.AuthService.User;
-            var loginUser = await _userRepository.GetUser(user!.Id);
+            var loginUser = await _userRepository.GetUserAsync(user!.Id);
 
             if (loginUser is null)
             {
                 return false;
             }
 
-            var hallToEdit = await _repository.GetHall(hallId);
+            var hallToEdit = await _repository.GetHallAsync(hallId);
 
             if (hallToEdit is null)
             {
@@ -75,24 +75,24 @@ namespace WodCatClone.Logic.ActionsService.HallsService
 
             loginUser.Points += 25;
 
-            return await _repository.EditHall(hallToEdit, loginUser);
+            return await _repository.EditHallAsync(hallToEdit, loginUser);
         }
 
-        public async Task<bool> RemoveHall(int hallId)
+        public async Task<bool> RemoveHallAsync(int hallId)
         {
-            var hallToRemove = await _repository.GetHall(hallId);
+            var hallToRemove = await _repository.GetHallAsync(hallId);
 
             if (hallToRemove is null)
             {
                 return false;
             }
 
-            return await _repository.RemoveHall(hallToRemove);
+            return await _repository.RemoveHallAsync(hallToRemove);
         }
 
-        public async Task<bool> JoinHall(int hallId, User user)
+        public async Task<bool> JoinHallAsync(int hallId, User user)
         {
-            var loginUser = await _userRepository.GetUser(user.Id);
+            var loginUser = await _userRepository.GetUserAsync(user.Id);
 
             if (loginUser is null)
             {
@@ -101,12 +101,12 @@ namespace WodCatClone.Logic.ActionsService.HallsService
 
             loginUser.HallId = hallId;
 
-            return await _repository.JoinHall(loginUser);
+            return await _repository.JoinHallAsync(loginUser);
         }
 
-        public async Task<bool> ExitHall(int hallId, User user)
+        public async Task<bool> ExitHallAsync(int hallId, User user)
         {
-            var loginUser = await _userRepository.GetUser(user.Id);
+            var loginUser = await _userRepository.GetUserAsync(user.Id);
 
             if (loginUser is null)
             {
@@ -115,7 +115,7 @@ namespace WodCatClone.Logic.ActionsService.HallsService
 
             loginUser.HallId = null;
 
-            return await _repository.ExitHall(user);
+            return await _repository.ExitHallAsync(user);
         }
     }
 }

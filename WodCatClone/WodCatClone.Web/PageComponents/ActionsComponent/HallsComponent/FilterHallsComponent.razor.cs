@@ -43,7 +43,7 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.HallsComponent
 
         public async Task Filter()
         {
-            Halls = await HallsService.GetAllHalls();
+            Halls = await HallsService.GetAllHallsAsync();
 
             if (_filterTown != "None")
             {

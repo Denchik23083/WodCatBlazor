@@ -27,14 +27,14 @@ namespace WodCatClone.Tests.Utilities
 
             var user = User();
 
-            _authRepository.Setup(_ => _.Login(userModel))
+            _authRepository.Setup(_ => _.LoginAsync(userModel))
                 .ReturnsAsync(user);
 
             IAuthService authService = new AuthService(_authRepository.Object, _userRepository.Object);
 
-            var authResult = await authService.Login(userModel);
+            var authResult = await authService.LoginAsync(userModel);
 
-            _authRepository.Verify(_ => _.Login(userModel),
+            _authRepository.Verify(_ => _.LoginAsync(userModel),
                 Times.Once);
 
             return authResult;

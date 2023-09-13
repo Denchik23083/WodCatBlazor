@@ -15,25 +15,25 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
             _userRepository = userRepository;
         }
 
-        public async Task<IEnumerable<Articles>> GetAllArticles()
+        public async Task<IEnumerable<Articles>> GetAllArticlesAsync()
         {
-            return await _repository.GetAllArticles();
+            return await _repository.GetAllArticlesAsync();
         }
 
-        public async Task<IEnumerable<ArticleEmblem>> GetAllArticleEmblem()
+        public async Task<IEnumerable<ArticleEmblem>> GetAllArticleEmblemAsync()
         {
-            return await _repository.GetAllArticleEmblem();
+            return await _repository.GetAllArticleEmblemAsync();
         }
 
-        public async Task<Articles?> GetArticle(int id)
+        public async Task<Articles?> GetArticleAsync(int id)
         {
-            return await _repository.GetArticle(id);
+            return await _repository.GetArticleAsync(id);
         }
 
-        public async Task<bool> AddArticle(Articles article)
+        public async Task<bool> AddArticleAsync(Articles article)
         {
             var user = AuthService.AuthService.User;
-            var loginUser = await _userRepository.GetUser(user!.Id);
+            var loginUser = await _userRepository.GetUserAsync(user!.Id);
 
             if (loginUser is null)
             {
@@ -44,20 +44,20 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
 
             loginUser.Points += 50;
 
-            return await _repository.AddArticle(article, loginUser);
+            return await _repository.AddArticleAsync(article, loginUser);
         }
 
-        public async Task<bool> EditArticle(Articles article, int id)
+        public async Task<bool> EditArticleAsync(Articles article, int id)
         {
             var user = AuthService.AuthService.User;
-            var loginUser = await _userRepository.GetUser(user!.Id);
+            var loginUser = await _userRepository.GetUserAsync(user!.Id);
 
             if (loginUser is null)
             {
                 return false;
             }
 
-            var articleToEdit = await _repository.GetArticle(id);
+            var articleToEdit = await _repository.GetArticleAsync(id);
 
             if (articleToEdit is null)
             {
@@ -73,19 +73,19 @@ namespace WodCatClone.Logic.ActionsService.ArticlesService
 
             loginUser.Points += 25;
 
-            return await _repository.EditArticle(articleToEdit, loginUser);
+            return await _repository.EditArticleAsync(articleToEdit, loginUser);
         }
 
-        public async Task<bool> RemoveArticle(int id)
+        public async Task<bool> RemoveArticleAsync(int id)
         {
-            var articleToRemove = await _repository.GetArticle(id);
+            var articleToRemove = await _repository.GetArticleAsync(id);
 
             if (articleToRemove is null)
             {
                 return false;
             }
 
-            return await _repository.RemoveArticle(articleToRemove);
+            return await _repository.RemoveArticleAsync(articleToRemove);
         }
     }
 }

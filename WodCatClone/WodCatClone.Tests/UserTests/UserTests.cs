@@ -77,14 +77,14 @@ namespace WodCatClone.Tests.UserTests
                 }
             };
 
-            _repository.Setup(_ => _.GetAllUsers())
+            _repository.Setup(_ => _.GetAllUsersAsync())
                 .ReturnsAsync(users);
 
             IUserService service = new UserService(_repository.Object);
 
-            var result = await service.GetAllUsers();
+            var result = await service.GetAllUsersAsync();
 
-            _repository.Verify(_ => _.GetAllUsers(),
+            _repository.Verify(_ => _.GetAllUsersAsync(),
                 Times.Once);
 
             Assert.NotNull(result);
@@ -92,7 +92,7 @@ namespace WodCatClone.Tests.UserTests
         }
 
         [Fact]
-        public async Task GetGenders()
+        public async Task GetAllGenders()
         {
             var genders = new List<Gender>
             {
@@ -110,14 +110,14 @@ namespace WodCatClone.Tests.UserTests
                 }
             };
 
-            _repository.Setup(_ => _.GetGenders())
+            _repository.Setup(_ => _.GetAllGendersAsync())
                 .ReturnsAsync(genders);
 
             IUserService service = new UserService(_repository.Object);
 
-            var result = await service.GetGenders();
+            var result = await service.GetAllGendersAsync();
 
-            _repository.Verify(_ => _.GetGenders(),
+            _repository.Verify(_ => _.GetAllGendersAsync(),
                 Times.Once);
 
             Assert.NotNull(result);
@@ -133,7 +133,7 @@ namespace WodCatClone.Tests.UserTests
 
             IUserService userService = new UserService(_repository.Object);
 
-            var userResult = await userService.IsLoginUser();
+            var userResult = await userService.IsLoginUserAsync();
 
             Assert.True(userResult);
         }
@@ -149,14 +149,14 @@ namespace WodCatClone.Tests.UserTests
 
             var expectedId = 1;            
 
-            _repository.Setup(_ => _.GetUser(expectedId))
+            _repository.Setup(_ => _.GetUserAsync(expectedId))
                 .ReturnsAsync(user);
 
             IUserService userService = new UserService(_repository.Object);
 
-            var userResult = await userService.GetUser();
+            var userResult = await userService.GetUserAsync();
 
-            _repository.Verify(_ => _.GetUser(expectedId),
+            _repository.Verify(_ => _.GetUserAsync(expectedId),
                 Times.Once);
 
             Assert.NotNull(userResult);
@@ -170,14 +170,14 @@ namespace WodCatClone.Tests.UserTests
 
             var expectedNickName = "SoEasyBlef";
 
-            _repository.Setup(_ => _.GetUser(expectedNickName))
+            _repository.Setup(_ => _.GetUserAsync(expectedNickName))
                 .ReturnsAsync(user);
 
             IUserService service = new UserService(_repository.Object);
 
-            var result = await service.GetUser(expectedNickName);
+            var result = await service.GetUserAsync(expectedNickName);
 
-            _repository.Verify(_ => _.GetUser(expectedNickName),
+            _repository.Verify(_ => _.GetUserAsync(expectedNickName),
                 Times.Once);
 
             Assert.NotNull(result);
@@ -195,20 +195,20 @@ namespace WodCatClone.Tests.UserTests
 
             var hallId = 1;
 
-            _repository.Setup(_ => _.GetUser(user.Id))
+            _repository.Setup(_ => _.GetUserAsync(user.Id))
                 .ReturnsAsync(user);
 
-            _repository.Setup(_ => _.EditUserHall(user))
+            _repository.Setup(_ => _.EditUserHallAsync(user))
                 .ReturnsAsync(true);
 
             IUserService service = new UserService(_repository.Object);
 
-            var result = await service.EditUserHall(user, hallId);
+            var result = await service.EditUserHallAsync(user, hallId);
 
-            _repository.Verify(_ => _.GetUser(user.Id),
+            _repository.Verify(_ => _.GetUserAsync(user.Id),
                 Times.Once);
 
-            _repository.Verify(_ => _.EditUserHall(user),
+            _repository.Verify(_ => _.EditUserHallAsync(user),
                 Times.Once);
 
             Assert.True(result);
@@ -235,20 +235,20 @@ namespace WodCatClone.Tests.UserTests
                 AboutMe = "Hello"
             };            
 
-            _repository.Setup(_ => _.GetUser(user.Id))
+            _repository.Setup(_ => _.GetUserAsync(user.Id))
                 .ReturnsAsync(user);
 
-            _repository.Setup(_ => _.Update(user))
+            _repository.Setup(_ => _.UpdateAsync(user))
                 .ReturnsAsync(true);
 
             IUserService service = new UserService(_repository.Object);
 
-            var result = await service.Update(updateUser, user.Id);
+            var result = await service.UpdateAsync(updateUser, user.Id);
 
-            _repository.Verify(_ => _.GetUser(user.Id),
+            _repository.Verify(_ => _.GetUserAsync(user.Id),
                 Times.Once);
 
-            _repository.Verify(_ => _.Update(user),
+            _repository.Verify(_ => _.UpdateAsync(user),
                 Times.Once);
 
             Assert.True(result);
@@ -270,20 +270,20 @@ namespace WodCatClone.Tests.UserTests
                 Password = "0000"
             };           
 
-            _repository.Setup(_ => _.GetUser(user.Id))
+            _repository.Setup(_ => _.GetUserAsync(user.Id))
                 .ReturnsAsync(user);
 
-            _repository.Setup(_ => _.Update(user))
+            _repository.Setup(_ => _.UpdateAsync(user))
                 .ReturnsAsync(true);
 
             IUserService service = new UserService(_repository.Object);
 
-            var result = await service.Update(updateUser, user.Id);
+            var result = await service.UpdateAsync(updateUser, user.Id);
 
-            _repository.Verify(_ => _.GetUser(user.Id),
+            _repository.Verify(_ => _.GetUserAsync(user.Id),
                 Times.Once);
 
-            _repository.Verify(_ => _.Update(user),
+            _repository.Verify(_ => _.UpdateAsync(user),
                 Times.Once);
 
             Assert.True(result);

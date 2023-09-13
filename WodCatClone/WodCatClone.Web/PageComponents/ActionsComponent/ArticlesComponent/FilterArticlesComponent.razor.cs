@@ -27,14 +27,14 @@ namespace WodCatClone.Web.PageComponents.ActionsComponent.ArticlesComponent
 
         public async Task Filter(string type)
         {
-            Articles = await ArticlesService.GetAllArticles();
+            Articles = await ArticlesService.GetAllArticlesAsync();
 
             Articles = Articles.Where(b => b.Type!.Contains(type)).ToList();
         }
 
         public async Task Reset()
         {
-            Articles = await ArticlesService.GetAllArticles();
+            Articles = await ArticlesService.GetAllArticlesAsync();
         }
     }
 }

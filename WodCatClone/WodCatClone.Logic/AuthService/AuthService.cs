@@ -17,9 +17,9 @@ namespace WodCatClone.Logic.AuthService
             _userRepository = userRepository;
         }
 
-        public async Task<bool> Login(User login)
+        public async Task<bool> LoginAsync(User login)
         {
-            var user = await _repository.Login(login);
+            var user = await _repository.LoginAsync(login);
             
             if (user is null)
             {
@@ -32,9 +32,9 @@ namespace WodCatClone.Logic.AuthService
             return true;
         }
 
-        public async Task<bool> Register(User register)
+        public async Task<bool> RegisterAsync(User register)
         {
-            var allUsers = await _userRepository.GetAllUsers();
+            var allUsers = await _userRepository.GetAllUsersAsync();
 
             if (allUsers.Any(b => b.Email!.Equals(register.Email)
                                   || b.NickName!.Equals(register.NickName)))
@@ -44,10 +44,10 @@ namespace WodCatClone.Logic.AuthService
 
             register.Country = "Ukraine";
 
-            return await _repository.Register(register);
+            return await _repository.RegisterAsync(register);
         }
 
-        public Task<bool> Logout()
+        public Task<bool> LogoutAsync()
         {
             User = null;
             IsLoginUser = false;

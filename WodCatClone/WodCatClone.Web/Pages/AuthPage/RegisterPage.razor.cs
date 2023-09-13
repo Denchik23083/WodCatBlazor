@@ -41,8 +41,8 @@ namespace WodCatClone.Web.Pages.AuthPage
 
         protected override async Task OnInitializedAsync()
         {
-            Genders = await UserService.GetGenders();
-            User = await UserService.GetUser();
+            Genders = await UserService.GetAllGendersAsync();
+            User = await UserService.GetUserAsync();
         }
 
         public async Task Register()
@@ -51,7 +51,7 @@ namespace WodCatClone.Web.Pages.AuthPage
 
             var mappedUser = Mapper.Map<User>(RegisterModel);
 
-            var result = await AuthService.Register(mappedUser);
+            var result = await AuthService.RegisterAsync(mappedUser);
 
             if (result)
             {

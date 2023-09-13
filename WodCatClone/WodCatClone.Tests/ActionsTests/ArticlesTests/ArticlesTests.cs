@@ -83,14 +83,14 @@ namespace WodCatClone.Tests.ActionsTests.ArticlesTests
                 }
             };
 
-            _repository.Setup(_ => _.GetAllArticles())
+            _repository.Setup(_ => _.GetAllArticlesAsync())
                 .ReturnsAsync(articles);
 
             IArticlesService service = new ArticlesService(_repository.Object, _userRepository.Object);
 
-            var result = await service.GetAllArticles();
+            var result = await service.GetAllArticlesAsync();
 
-            _repository.Verify(_ => _.GetAllArticles(),
+            _repository.Verify(_ => _.GetAllArticlesAsync(),
                 Times.Once);
 
             Assert.NotNull(result);
@@ -109,14 +109,14 @@ namespace WodCatClone.Tests.ActionsTests.ArticlesTests
                 new() { Id = 5, Name = "Provides", Image = "img/EmblemArticles/provides.png" }
             };
 
-            _repository.Setup(_ => _.GetAllArticleEmblem())
+            _repository.Setup(_ => _.GetAllArticleEmblemAsync())
                 .ReturnsAsync(articleEmblem);
 
             IArticlesService service = new ArticlesService(_repository.Object, _userRepository.Object);
 
-            var result = await service.GetAllArticleEmblem();
+            var result = await service.GetAllArticleEmblemAsync();
 
-            _repository.Verify(_ => _.GetAllArticleEmblem(),
+            _repository.Verify(_ => _.GetAllArticleEmblemAsync(),
                 Times.Once);
 
             Assert.NotNull(result);
@@ -142,14 +142,14 @@ namespace WodCatClone.Tests.ActionsTests.ArticlesTests
                 ArticleEmblemId = 5
             };
 
-            _repository.Setup(_ => _.GetArticle(expectedId))
+            _repository.Setup(_ => _.GetArticleAsync(expectedId))
                 .ReturnsAsync(article);
 
             IArticlesService service = new ArticlesService(_repository.Object, _userRepository.Object);
 
-            var result = await service.GetArticle(expectedId);
+            var result = await service.GetArticleAsync(expectedId);
 
-            _repository.Verify(_ => _.GetArticle(expectedId),
+            _repository.Verify(_ => _.GetArticleAsync(expectedId),
                 Times.Once);
 
             Assert.NotNull(result);
@@ -175,20 +175,20 @@ namespace WodCatClone.Tests.ActionsTests.ArticlesTests
                 ArticleEmblemId = 4
             };
 
-            _userRepository.Setup(_ => _.GetUser(user.Id))
+            _userRepository.Setup(_ => _.GetUserAsync(user.Id))
                 .ReturnsAsync(user);
 
-            _repository.Setup(_ => _.AddArticle(articleModel, user))
+            _repository.Setup(_ => _.AddArticleAsync(articleModel, user))
                 .ReturnsAsync(true);
 
             IArticlesService service = new ArticlesService(_repository.Object, _userRepository.Object);
 
-            var result = await service.AddArticle(articleModel);
+            var result = await service.AddArticleAsync(articleModel);
 
-            _userRepository.Verify(_ => _.GetUser(user.Id),
+            _userRepository.Verify(_ => _.GetUserAsync(user.Id),
                 Times.Once);
 
-            _repository.Verify(_ => _.AddArticle(articleModel, user),
+            _repository.Verify(_ => _.AddArticleAsync(articleModel, user),
                 Times.Once);
 
             Assert.True(result);
@@ -229,26 +229,26 @@ namespace WodCatClone.Tests.ActionsTests.ArticlesTests
                 ArticleEmblemId = 4
             };
 
-            _userRepository.Setup(_ => _.GetUser(user.Id))
+            _userRepository.Setup(_ => _.GetUserAsync(user.Id))
                 .ReturnsAsync(user);
 
-            _repository.Setup(_ => _.GetArticle(expectedId))
+            _repository.Setup(_ => _.GetArticleAsync(expectedId))
                 .ReturnsAsync(article);
 
-            _repository.Setup(_ => _.EditArticle(article, user))
+            _repository.Setup(_ => _.EditArticleAsync(article, user))
                 .ReturnsAsync(true);
 
             IArticlesService service = new ArticlesService(_repository.Object, _userRepository.Object);
 
-            var result = await service.EditArticle(articleModel, expectedId);
+            var result = await service.EditArticleAsync(articleModel, expectedId);
 
-            _userRepository.Verify(_ => _.GetUser(user.Id),
+            _userRepository.Verify(_ => _.GetUserAsync(user.Id),
                 Times.Once);
 
-            _repository.Verify(_ => _.GetArticle(expectedId),
+            _repository.Verify(_ => _.GetArticleAsync(expectedId),
                 Times.Once);
 
-            _repository.Verify(_ => _.EditArticle(article, user),
+            _repository.Verify(_ => _.EditArticleAsync(article, user),
                 Times.Once);
 
             Assert.True(result);
@@ -273,20 +273,20 @@ namespace WodCatClone.Tests.ActionsTests.ArticlesTests
                 ArticleEmblemId = 5
             };
 
-            _repository.Setup(_ => _.GetArticle(expectedId))
+            _repository.Setup(_ => _.GetArticleAsync(expectedId))
                 .ReturnsAsync(article);
 
-            _repository.Setup(_ => _.RemoveArticle(article))
+            _repository.Setup(_ => _.RemoveArticleAsync(article))
                 .ReturnsAsync(true);
 
             IArticlesService service = new ArticlesService(_repository.Object, _userRepository.Object);
 
-            var result = await service.RemoveArticle(expectedId);
+            var result = await service.RemoveArticleAsync(expectedId);
 
-            _repository.Verify(_ => _.GetArticle(expectedId),
+            _repository.Verify(_ => _.GetArticleAsync(expectedId),
                 Times.Once);
 
-            _repository.Verify(_ => _.RemoveArticle(article),
+            _repository.Verify(_ => _.RemoveArticleAsync(article),
                 Times.Once);
 
             Assert.True(result);

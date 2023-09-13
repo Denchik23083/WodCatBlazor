@@ -63,10 +63,10 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
 
         private async Task FillOverrideFunctions()
         {
-            User = await UserService.GetUser();
-            IsLoginUser = await UserService.IsLoginUser();
+            User = await UserService.GetUserAsync();
+            IsLoginUser = await UserService.IsLoginUserAsync();
 
-            Event = await EventsService.GetEvent(EventId);
+            Event = await EventsService.GetEventAsync(EventId);
             if (Event is null || Event.EndDate < DateTime.Now)
             {
                 NavigationManager.NavigateTo("/events", true);
@@ -108,7 +108,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
 
         public async Task Join()
         {
-            var result = await EventsService.JoinEvent(Event!.Id, User!);
+            var result = await EventsService.JoinEventAsync(Event!.Id, User!);
 
             if (result)
             {
@@ -118,7 +118,7 @@ namespace WodCatClone.Web.Pages.ActionsPage.EventsPage
 
         public async Task Exit()
         {
-            var result = await EventsService.ExitEvent(Event!.Id, User!);
+            var result = await EventsService.ExitEventAsync(Event!.Id, User!);
 
             if (result)
             {

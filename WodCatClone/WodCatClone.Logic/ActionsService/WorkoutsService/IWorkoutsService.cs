@@ -4,14 +4,14 @@ namespace WodCatClone.Logic.ActionsService.WorkoutsService
 {
     public interface IWorkoutsService
     {
-        Task<IEnumerable<Workouts>> GetAllWorkouts();
+        Task<IEnumerable<Workouts>> GetAllWorkoutsAsync();
 
-        Task<Workouts?> GetWorkout(int workoutId);
+        Task<Workouts?> GetWorkoutAsync(int workoutId);
 
-        Task<bool> AddResultWorkouts(ResultWorkouts resultWorkouts);
+        Task<bool> AddResultWorkoutsAsync(ResultWorkouts resultWorkouts);
 
-        Task<bool> EditResultWorkouts(ResultWorkouts resultWorkouts, int id);
+        Task<bool> EditResultWorkoutsAsync(ResultWorkouts resultWorkouts, int id);
 
-        Task<bool> RemoveResultWorkouts(int id);
+        Task<bool> RemoveResultWorkoutsAsync(int id);
     }
 }
