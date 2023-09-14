@@ -23,31 +23,43 @@
     </div>
     @if (IsLoginUser)
     {
-        @if (User!.ProgramId != Program!.Id)
+        @if (User!.ProgramId is null)
         {
             <div class="row">
                 <div class="col text-center">
-                    <button
-                        type="button"
-                        class="btn btn-primary mb-2 mt-2"
-                        @onclick="BeginProgram">
-                        Начать тренировки по данной программе
+                    <button type="button"
+                            class="btn btn-primary mb-2 mt-2"
+                            @onclick="BeginProgram">
+                            Начать тренировки по данной программе
                     </button>
                 </div>
             </div>
         }
         else
         {
-            <div class="row">
-                <div class="col text-center">
-                    <button
-                        type="button"
-                        class="btn btn-danger mb-2 mt-2"
-                        @onclick="StopProgram">
-                        Остановить тренировки по данной программе
-                    </button>
+            @if (User!.ProgramId == Program!.Id)
+            {
+                <div class="row">
+                    <div class="col text-center">
+                        <button type="button"
+                                class="btn btn-danger mb-2 mt-2"
+                                @onclick="StopProgram">
+                                Остановить тренировки по данной программе
+                        </button>
+                    </div>
                 </div>
-            </div>
+            }
+            else
+            {
+                <div class="row">
+                    <div class="col text-center">
+                        <button type="button"
+                                class="btn btn-success mb-2 mt-2">
+                                Вы уже тренируетесь по другой программе
+                        </button>
+                    </div>
+                </div>
+            }
         }
     }
     <div class="p-3" style="background-color: #424242; border-radius: 5px;">
